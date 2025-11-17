@@ -164,10 +164,7 @@ We characterized potential actors within the Antarctic Treaty System as strategi
 
 These results challenge the broad characterization of the Antarctic Treaty System as merely a hub for scientific collaboration. Instead, they reveal a structured network of interrelated topics where countries navigate governance through strategic submissions. By analyzing revealed policy advantages and excess KL divergence, we uncover how countries prioritize policy domains, expose potential latent interests, and identify imbalances in engagement. This approach provides a clearer understanding of the dynamics shaping the Antarctic governance landscape and offers a basis for refining future analyses of international treaty systems.
 
-
 \section{Methods}
-% TODO:Parsa please add how the data was collected for this
-% Add the zenodo link here as well
 To construct the space of concerns, we analyze the working papers and information documents submitted to the Antartic Treaty System from 1959 to 2023. The data is collected from the official Antartic Treaty System website and includes all working papers and information documents submitted by treaty members during this period. We focus on the topics covered in these documents, which are categorized into different policy domains such as resource management, territorial claims, scientific research, and environmental protection.
 
 For these documents, a clustering was performed based on the co-submission patterns of working papers and information documents. The clustering algorithm groups topics that are frequently submitted together by the same agents. The Leiden algorithm was then used to identify clusters of agents that share similar policy interests as indicated by their co-submission patterns \cite{Traag2019}.
@@ -186,6 +183,13 @@ Finally, there is a smaller and more loosely affiliated set of actors (brown), i
 
 \appendix
 \section{Appendix}
+
+% Parsa please add how the data was collected for this
+% Add the zenodo link here as well
+\section{Data Collection and Methods}
+
+
+
 
 \subsection{Sensitivity Analysis}
 To evaluate the stability of the observed structure, we performed a sensitivity analysis by removing each country from the space of concerns and computing the root mean squared error between the proximity matrix of the full space and the space without that country. The process is repeated by iteratively removing the agent that produces the maximal difference between the current set of countries and the set of countries without that agent. This greedy approach would help us understand what each agent contributes to the construction of the space of concerns in Antartica.
