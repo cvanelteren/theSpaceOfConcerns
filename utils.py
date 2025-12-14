@@ -531,3 +531,89 @@ def nx_layout(graph, layout):
 
     edges = pd.DataFrame(list(graph.edges), columns=["source", "target"])
     return nodes, edges
+
+
+def load_data(fp) -> tuple[pd.DataFrame, pd.DataFrame, set]:
+    submitted = pd.read_csv(fp)
+    submitted = submitted.convert_dtypes()
+    submitted.columns = submitted.columns.str.lower()
+
+    countries = set()
+    for ridx, row in submitted.iterrows():
+        parties = row["submitted by"].split(",")
+        [countries.add(i.strip()) for i in parties]
+
+    df = {}
+
+    topics = set()
+    for idx, row in submitted.dropna(subset="category").iterrows():
+        for topic in row["category"].split("\t"):
+            topic = topic.replace("envirom", "environ")
+            topics.add(topic)
+
+    for country in countries:
+        df[country] = {topic: 0 for topic in topics}
+
+    for idx, row in submitted.dropna(subset="category").iterrows():
+        for topic in row.category.split("\t"):
+            topic = topic.replace("envirom", "environ")
+            for country in row["submitted by"].split(","):
+                country = country.strip()
+                df[country][topic] += 1
+
+    # There are some spelling mistakes in the data --> where does this come from?
+    df = pd.DataFrame(df)
+    spelling_correction_mapping = {
+        "Marine acoustics": "Marine acoustics",
+        "Fauna and flora general": "Fauna and flora general",
+        "Specially protocted species": "Specially protected species",
+        "Exchange of information": "Exchange of information",
+        "Emergency report and contingency plan": "Emergency report and contingency plan",
+        "Operational issues": "Operational issues",
+        "Sub glacial lakes": "Sub glacial lakes",
+        "Repair and remediation of environental damage": "Repair and remediation of environmental damage",
+        "Non-native speci es and quarantine": "Non-native species and quarantine",
+        "Operation of antarctic treaty system: Reports": "Operation of Antarctic Treaty System: Reports",
+        "Mineral resources": "Mineral resources",
+        "Enviromental protection general": "Environmental protection general",
+        "Human footprint and wilderness values": "Human footprint and wilderness values",
+        "Inspections": "Inspections",
+        "Liability": "Liability",
+        "Climate change": "Climate change",
+        "Drilling": "Drilling",
+        "Operation of the antarctic treaty system: General": "Operation of the Antarctic Treaty System: General",
+        "Marine living resources": "Marine living resources",
+        "Enviromental Domains Analysis": "Environmental Domains Analysis",
+        "State of the antarctic environent report": "State of the Antarctic environment report",
+        "Site guidelines for visitors": "Site guidelines for visitors",
+        "Tourism and NG activities": "Tourism and NG activities",
+        "Area Management and protection plans: General": "Area Management and protection plans: General",
+        "Management Plans": "Management Plans",
+        "Operation of antarctic treaty system: The secretariat": "Operation of Antarctic Treaty System: The secretariat",
+        "Prevention of marine pollution": "Prevention of marine pollution",
+        "Comprehensive environental evaluation": "Comprehensive environmental evaluation",
+        "CEP strategy discussions": "CEP strategy discussions",
+        "Marine protected areas": "Marine protected areas",
+        "Enviromental impact assessment(EIA): other EIA matters": "Environmental impact assessment (EIA): other EIA matters",
+        "Historic sites and monuments": "Historic sites and monuments",
+        "Waste management and disposal": "Waste management and disposal",
+        "Opening statement": "Opening statement",
+        "Instututional and legal matters": "Institutional and legal matters",  # This is the entry that fixes 'Instututional...'
+        "Operation of CEP": "Operation of CEP",
+        "Search and rescue": "Search and rescue",
+        "Multi-year strategic workplan": "Multi-year strategic workplan",
+        "Science issues": "Science issues",
+        "International polar year": "International polar year",
+        "Biological Prospecting": "Biological Prospecting",
+        "Cooperation with other organization": "Cooperation with other organization",
+        "Enviromental monitoring and reporting": "Environmental monitoring and reporting",
+        "Safety and Operations in antarctica": "Safety and Operations in Antarctica",
+        "Educational issues": "Educational issues",
+    }
+
+    # Apply the spelling correction to the DataFrame index
+    # The .rename() method takes a dictionary and applies it to the specified axis.
+    # 'inplace=True' modifies the DataFrame directly.
+    df.rename(index=spelling_correction_mapping, inplace=True)
+
+    return df, submitted, countries
