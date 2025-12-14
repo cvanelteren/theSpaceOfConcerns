@@ -208,10 +208,11 @@ Applied to the ATS, this framework reveals stability emerging not from the absen
 Beyond Antarctica, this approach offers a generalizable tool for studying how actors navigate complex institutional landscapes across international regimes—from climate governance to biodiversity protection to maritime law—where formal records capture negotiated outcomes but only partially illuminate the strategic calculations, capacity constraints, and evolving priorities that shape participation patterns over time.
 
 \section{Methods}
-% TODO:Parsa please add how the data was collected for this
-% Q: why is the ATS a country/party in the the data?
-% Add the zenodo link here as well
-To construct the space of concerns, we analyze the working papers and information documents submitted to the Antartic Treaty System from 1959 to 2023. The data is collected from the official Antartic Treaty System website and includes all working papers and information documents submitted by treaty members during this period. We focus on the topics covered in these documents, which are categorized into different policy domains such as resource management, territorial claims, scientific research, and environmental protection.
+
+\subsection{Data}
+We analyze working papers and information documents submitted to the Antarctic Treaty System from 1959 to 2023. The dataset was compiled from the official ATS document archive \cite{ATSSecretariat} and exported in CSV format. To construct a structured dataset with thematic categories, we retrieved all category labels from the database interface and merged them with document-level metadata (title, meeting number, year, submitting party, document type). The resulting dataset is publicly available via Zenodo \cite{Zenodo10578846}.
+
+The Submitting Party field occasionally lists ``ATS'' (Antarctic Treaty System), indicating that the document was submitted by the ATS Secretariat rather than by a member state or observer organization. These Secretariat-origin documents include agenda papers, draft decisions, administrative proposals, and annual reports. For completeness and fidelity to the official archive, we retained ``ATS'' as it appears in the source data. We focus on topics categorized into policy domains such as resource management, territorial claims, scientific research, and environmental protection.
 
 For these documents, a clustering was performed based on the co-submission patterns of working papers and information documents. The clustering algorithm groups topics that are frequently submitted together by the same agents. The Leiden algorithm was then used to identify clusters of agents that share similar policy interests as indicated by their co-submission patterns \cite{Traag2019}.
 
