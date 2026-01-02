@@ -1,286 +1,181 @@
 \documentclass{fun_article}
-% \documentclass{article}
-\title{The Space of Concerns Reveals Hidden Patterns in Antarctic Governance}
-\author[*, 1, 2]{Casper van Elteren}
+
+\title{Structuring International Governance through the Space of Concerns}
+
+\author[*, 1, 2, 3, 4]{Casper van Elteren}
 \author[1]{Parsa Yaryab}
 \author[1]{Maria Kleshnina}
-\author{...} % perhaps some additional people that want to review/contribute?
-\author[2, 3]{Vítor V. Vasconcelos}
+\author[1]{Michael Bode}
+\author{...}
+\author[2, 3, 4]{Vítor V. Vasconcelos}
+
 \affil[*]{Corresponding author: caspervanelteren@gmail.com}
 \affil[1]{School of Mathematics, Queensland University of Technology, Brisbane, Australia}
 \affil[2]{Institute of Advanced Study, University of Amsterdam, Amsterdam, Netherlands}
 \affil[3]{Computational Science Lab, Amsterdam, Netherlands}
+\affil[4]{Polder Institute, Amsterdam, Netherlands}
+
 \addbibresource{theSpaceOfConcerns.bib}
+
 \begin{document}
 \begin{abstract}
-    Governance systems operate through the interplay of formal rules and informal influence, yet this relationship is difficult to quantify. We apply economic-complexity principles to the Antarctic Treaty System (ATS) to map what the regime's actual interests  and how actors navigate them. Adapting the Revealed Comparative Advantage concept to working and information papers that countries produce, we construct a Revealed Policy Advantage measure that normalizes for overall activity and identifies where, rather than how much, states concentrate attention. From these patterns we derive a space of concerns: an interest-space network in which policy topics are linked by co-specialization. We then let interest spread across related topics to estimate each person’s hidden interests and compare them to what they actually work on. The extra difference we measure shows how much someone’s visible activity deviates from what the structure of the topic space would suggestCombining this measure with the breadth of each actor’s revealed portfolio, we identify four roles that describe how states use or underuse their structural position in the issue space: strategic specialists, aligned specialists, structural generalists, and latent generalists. By analyzing these patterns over six decades, we reveal how actor strategies and the structure of concerns dynamically evolve. The analysis uncovers a structured landscape of concerns: a few core topics anchor the regime, and several actors occupy niches that appear narrow on the surface but are structurally far-reaching. This pattern challenges the portrayal of the ATS as a purely scientific collaboration and illustrates how economic-complexity methods reveal underlying tensions and systematic differences in how actors engage.
+    The Antarctic Treaty System (ATS) is a diplomatic anomaly: it suspended territorial claims and prevented militarization for sixty years while governing a continent rich in strategic interests. Yet its strategic architecture remains opaque because consensus rules hide dissent and formal records can look technocratic. We apply economic-complexity tools to six decades of working papers, treating submissions as fingerprints of latent strategy. Adapting Revealed Comparative Advantage, we build a “space of concerns”: a network where policy topics are linked by co-sponsorship. States signal intent by bundling safe scientific topics with adjacent contentious ones. Archetypal analysis identifies three modes—aligned generalists, peripheral specialists, and transitional profiles—and the regime moves from early volatility to a structured, self-reinforcing ecosystem. As it matures, structural alignment tightens, challenging the notion that complexity drifts toward entropy. The framework exposes the underlying physics of diplomatic engagement and offers a portable blueprint for decoding strategic evolution in other consensus-based regimes.
 \end{abstract}
 
 \section{Introduction}
-The Antarctic Treaty System (ATS) stands as one of the most successful examples of international cooperation in modern history, often hailed as the gold standard for global governance and the peaceful resolution of territorial disputes \cite{Aus2025,Yao2021, Yermakova2021}. Established during the Cold War in 1959 by twelve nations and now expanded to 54 parties, it has maintained Antarctica as a zone dedicated to peaceful scientific research for over six decades \cite{Young2011, Zacher1996}.
+International governance looks rules-based on paper, but the machinery is opaque: formal procedures are braided with competing interests, informal practices, and hidden vetoes \cite{Stone2013,Biersteker2024,Vabulas2013,Barnett2021,Slaughter2004}. The Antarctic Treaty System (ATS) is a prime case. It froze territorial claims and kept Antarctica demilitarized for six decades, yet consensus rules and diplomatic choreography mask who shapes the agenda, who blocks, and how strategy moves \cite{AntarcticTreatyHandbook,Gardiner2024}. To see the system beneath the process, we reconstruct its issue network from what states submit, co-sponsor, and ignore, treating working papers as traces of influence and positioning \cite{Gardiner2024}.
 
-The system's reputation rests on several remarkable accomplishments: it suspended territorial claims without resolving them, established a nuclear-free zone during the nuclear arms race, and created mechanisms for peaceful dispute resolution that have prevented militarization for over half a century \cite{Haward2012, Koivurova2005, Brady2011}. Covering an area roughly the size of Europe, Antarctica represents one of the most challenging governance environments on Earth—a vast, remote continent rich in strategic interests and untapped resources.
+We treat submissions, co-sponsorships, and silences as observable fingerprints of strategy \cite{Gardiner2024}. States reveal priorities not only by where they act, but by what they systematically ignore—often shifting visible effort to adjacent, less contentious topics. Building on economic complexity, we adapt the ``product space'' to governance: a revealed policy advantage links jointly specialized topics into a \textit{space of concerns}, a structural map where distance encodes co-specialization rather than text \cite{Hidalgo2007, Beinhocker2006}. Diffusing interest across this network infers latent engagement and positions actors relative to the regime’s opportunity landscape.
 
-Recent developments, however, reveal the system's complexity. In 2019, while scientists from China, the United States, Russia, and European countries collaborated on climate research at Zhongshan Station, there were rising concerns over China's expanding Antarctic presence \cite{Brady2017}. This duality of visible cooperation and strategic unease is consistent with broader evidence that international institutions often operate through a mix of formal rules, informal practices, and strategic behaviour \cite{Roger2022, Biersteker2024, Vabulas2013, Barnett2021, Stone2013, Slaughter2004}. Rather than treating the ATS as an exception, we draw on this perspective to examine how strategy operates within a regime widely regarded as a diplomatic success \cite{Keohane1984}.
+To operationalize this framework, we analyze the complete corpus of working papers and information documents submitted to the ATS between 1959 and 2023. Rather than treating issues as isolated agenda items, we construct a network of interrelated concerns that reveals the hidden dependencies linking disparate policy domains. This topological map uncovers three fundamental features of the regime.
 
-The formal record of the ATS includes treaties, recommendations, and meeting reports, which capture negotiated outcomes but often not the full process by which they emerge \cite{Gardiner2024,AntarcticTreatyHandbook}. Informal corridor conversations, long-standing personal ties, and coordination within and across delegations influence which issues reach the agenda, how they are framed, and which proposals gain momentum, in line with broader analyses of diplomatic grey zones and informal practices in international fora.\cite{GreyZones2023,Saner2005} Because ATS decision-making requires unanimity (consensus by all Consultative Parties), meeting reports typically record only the successful adoption of measures or recommendations, without naming which state(s) objected or withheld support to block consensus\cite{Gardiner2024,CCAMLRConsensus2022,WilsonCenterConsensus2025}. This leaves important aspects of contestation and veto power only partially visible in the record, with attribution to particular states uneven across reports.\cite{Gardiner2024,CCAMLRConsensus2022,WilsonCenterConsensus2025}
-
-At the same time, the record captures both direct acts, such as the submission, co‑sponsorship, and explicit support of working papers and information documents, and indirect acts, such as the absence of support for a proposal or indirect support through measures like (the threat of) withdrawing funding, which scholars of ATS practice and multistakeholder diplomacy treat as important channels of influence.\cite{Gardiner2024,Saner2005,UnofficialDiplomacy2024} These dynamics nonetheless leave traces of overall interests, especially in patterns of sponsorship, support, and non‑support that can be systematically analysed from the documentary record.\cite{Gardiner2024} Existing work on international organizations underscores the importance of such informal practices and hidden influence, but offers limited tools for systematically relating them to observable patterns of institutional activity.\cite{GreyZones2023,Saner2005,Roger2022a,Biersteker2024,Vabulas2013,Barnett2021,Stone2013,Slaughter2004,Koremenos2001}
-
-We take these records to find such traces and recover a more fine-grained picture of what the ATS actually does. We use these formal submissions as observable fingerprints of underlying decision processes. States reveal their interests not only through the topics on which they submit or co-sponsor papers, but also through the topics they systematically ignore. An entity may downplay a politically sensitive concern by concentrating visible activity in neighbouring topics that are closely connected in the concerns space—e.g., by focusing on scientific or environmental dimensions that sit adjacent to more contentious issues of resource access or jurisdiction. In such a representation, topics that lie close together are those that tend to be pursued as a bundle of concerns, while distant topics mark sharper trade-offs.
-
-From these joint patterns of engagement, we construct a \textit{space of concerns}: a low-dimensional representation in which states and topics are positioned according to how they co-occur in treaty practice. In this space, positions and distances summarize revealed priorities and their relationships. Conceptually, this construction is a direct application of the \textit{product space} framework \cite{Hidalgo2007} to international governance: instead of countries and products linked by revealed comparative advantage on exports, we map states and policy domains linked by revealed policy advantage in ATS practice \cite{Beinhocker2006}.
-
-The space of concerns provides three scientific innovations, critical in our analysis. First, it granularizes the Treaty’s broad constitutional narrative into an empirically grounded map of what the regime actually does, topic by topic, translating high-level principles of science, peace, and environmental protection into a concrete landscape of policy work.
-Second, it provides a structural context for assessing how specialized or diversified each actor’s engagement is, revealing whether countries occupy narrow niches, central hubs, or the periphery in the issue space, and whether they systematically neglect structurally adjacent concerns.
-Third, it underpins our classification of actor roles in strategic specialists, aligned specialists, structural generalists, and latent generalists, by linking revealed policy advantages to the latent opportunities and constraints implied by the topology of the concern network. While the generalist–specialist divide is intuitive, the additional role types capture how actors relate to the structure of the issue space. Specialists differ in whether their narrow focus aligns with structurally central concerns (aligned specialists) or sits in more isolated niches (strategic specialists). Generalists, in turn, vary in whether they fully exploit the adjacent issue clusters opened up by their position (structural generalists) or leave nearby opportunities unused (latent generalists).
-
-By analyzing submission patterns from 1959 to 2023, we demonstrate that the ATS exhibits a coherent structural architecture where topics cluster into recognizable domains—environmental protection, scientific coordination, logistical infrastructure, and jurisdictional matters—yet remain interconnected through bridging issues. This architecture enables us to classify actors into distinct strategic roles (strategic specialists, aligned specialists, structural generalists, and latent generalists) and to track how these roles evolve as the regime expands and diversifies. The resulting framework provides both a diagnostic for identifying systematic gaps between revealed engagement and structural position, and a generalizable approach for studying how actors navigate complex institutional landscapes across international regimes.
-
-
-\begin{figure*}[!htp]\label{fig:space_of_concerns}
-  \centering
-  \includegraphics[width=\textwidth]{./figures/space_of_concerns_clean.pdf}
-  \caption{\textbf{The Space of Concerns of the Antarctic Treaty System.} (A) Nodes represent policy topics, with edges showing proximity based on treaty submissions. Edge weights indicate the proximity between topics and the size is proportional to the weighted degree. (B/C) Centrality highlights a locally centralized, modular structure: influential topics form a dense core, bridging topics connect clusters, and peripheral topics link through the backbone of the minimum spanning tree, shown here for visualization only (see \cref{fig:heatmap_concerns} for the adjacency matrix). The maximum spanning tree is constructed by selecting the edges that connect the nodes in such a way that the total weight of the edges is maximized, where the weight of each edge is defined by the proximity between topics. Network centrality measures characterise the structure of the concern network. The proximities were converted to distances, $d(i, j) = \frac{1}{\phi(i,j)}$ with $i, j \in T$, before computing the centrality metrics.}
-\end{figure*}
-
+First, the governance architecture is structured by specific anchors and bridges that constrain how attention can move between issues.
+Second, while engagement breadth expands over six decades, structural alignment tightens, suggesting a maturation of strategic norms rather than entropy. Third, actors navigate this web through compositional modes — aligned generalists, peripheral specialists, and transitional profiles. The resulting framework offers a portable blueprint for decoding how the connectivity of issues shapes strategic evolution in consensus-based regimes
 
 \section{Results}
-\subsection{The space of concerns}
-We treat the ATS as a system of agents whose interactions are structured by formal rules and informal norms, but whose underlying priorities are revealed through what they choose to work on. In practice, we read each party's submissions of working papers and information documents as a record of where it allocates scarce attention across policy domains.
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=\textwidth]{./figures/space_of_concerns_clean.pdf}
+\caption{\textbf{The Space of Concerns of the Antarctic Treaty System.}
+(A) Full weighted space with maximum spanning tree (MST) overlaid: traversing the trunk follows co-specialization pathways between related topics; anchors (central nodes) and bridges (connecting spokes) define the structural opportunity landscape.
+(B–C) MST only, colored by eigenvector (influence) and betweenness (brokerage) centrality.
+(D) Actor positions on the Diversity–Specialism frontier: higher Diversity = broader engagement; higher Specialism = greater structural misalignment/concentration.
+(E) Diffusion profiles as $\alpha$ increases show how revealed attention spreads along proximities, revealing structure-implied interests.}
+\label{fig:space_of_concerns}
+\end{figure*}
 
-Rather than counting how many documents each country submits, we focus on \textit{where} they concentrate their efforts relative to other actors. Countries differ widely in overall activity, but they reveal their strategic concerns through the specific topics they emphasize more than their peers. Building on this intuition, we construct a measure of \textit{revealed policy advantage} that identifies those domains where an actor is disproportionately engaged compared to the rest of the system (see \cref{methods:constructing_space_of_concerns} for details). This concept adapts the notion of revealed comparative advantage from economic complexity to the Antarctic Treaty context \cite{Hidalgo2007}.
+\subsection{The Geometry of Diplomatic Attention}
+We begin by constructing the aggregate \emph{space of concerns} (\cref{fig:space_of_concerns}[A]), pooling six decades of submissions (1959-2023) to uncover the regime's persistent structural constraints. This static map defines the regime's strategic terrain: proximity encodes feasibility, where two topics are connected if states frequently specialize in them simultaneously. The topology reveals a highly structured ecosystem rather than a random web. Central anchors—such as \textit{marine living resources} and \textit{strategic workplans}—stabilize the agenda (high eigenvector centrality, \cref{fig:space_of_concerns}[B]), while distinct clusters are linked by critical bridges like \textit{drilling} and \textit{education} (high betweenness, \cref{fig:space_of_concerns}[C]).
 
-We then examine how these revealed advantages co-occur across policy domains. If actors that are strongly engaged in one topic are also consistently engaged in another, we treat those topics as closely related in the ``space of concerns.'' Intuitively, two concerns sit near each other in this space if, across parties, it is common to specialize in both at the same time. This yields a network in which nodes are policy domains and weighted edges capture how frequently they are jointly prioritized in treaty practice, the operational form of the space of concerns (\cref{fig:space_of_concerns}).
+This structural topology defines the constraints within which states must operate. We position actors in this landscape using two complementary metrics: Diversity (the breadth of topics a state engages with) and Specialism (the degree to which their focus deviates from the regime's structural core).
 
-From this network, we derive a map of the ATS space of concerns, represented by the maximum spanning tree that highlights the strongest connections between topics. In this map, moving from one node to another corresponds to traversing the shortest paths implied by observed submission patterns. Some concerns emerge as influential hubs that connect many others, while a smaller set of topics function as bridges between otherwise weakly related areas of treaty activity.
+As shown in \cref{fig:space_of_concerns}[D], actors populate a clear trade-off frontier. Generalists occupy the high-Diversity region, engaging broadly across central anchors, while specialists concentrate on specific clusters. Yet, a state's strategic footprint extends beyond its explicit submissions. By applying a diffusion process (varying the parameter $\alpha$), we infer \emph{latent interests}—topics that are not explicitly targeted but are structurally implied by a state's focus. \Cref{fig:space_of_concerns}[E] illustrates this mechanic: as diffusion relaxes, influence spreads from narrow interventions into adjacent domains, exposing the coherent policy bundles that underpin isolated acts.
 
-The space of concerns exhibits a mixed structural pattern with both hierarchical and clustered characteristics. Power centrality shows a roughly normal distribution centered around moderate values, indicating relatively balanced connectivity across the network rather than extreme core-periphery polarization (\cref{fig:centrality-ats}). Eigenvector centrality reveals a distinct pattern with most nodes clustered around moderate values and a small number of highly influential outliers, suggesting a few dominant concerns that anchor the network's influence structure. Betweenness centrality displays the expected right-skewed distribution with most nodes having very low betweenness values, confirming that only a small subset of concerns serve as critical bridges connecting different parts of the network. Closeness centrality is concentrated in a relatively narrow range, indicating that most concerns maintain similar levels of accessibility within the overall network structure.
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=\textwidth]{./figures/diffusion_time_series_kl_entropy.pdf}
+\caption{\textbf{System-level evolution of engagement.}
+(A) Median (dashed) and interquartile range of Diversity (breadth) over time; shaded bands show the actor distribution (25–75\% IQR) for signatories at each time step, not uncertainty. Diversity rises and stays elevated in the 2000s–2020s.
+(B) Median (dashed) and interquartile range of Specialism (structural misalignment) over time, with bands showing the signatory distribution; the median drifts down modestly while the spread narrows, indicating more consistent alignment.
+(C) Actor trajectories in Diversity–Specialism space over time; background hexbin shows the probability of occupancy, dashed lines mark median Diversity and Specialism, and flags indicate recent positions for selected signatories. The medians (dashed black lines) show a broader spread in the high‑Diversity/low‑Specialism quadrant, while actors occupy diverse positions within the regime’s structural envelope. Trends align with regime maturation, entry of new parties, and expansion after the 1990s Environmental Protocol.}
+\label{fig:diffusion_time}
+\end{figure*}
 
-The space of concerns can be used as a map where traversing from one topic to another represents the shortest path between two policy domains implied by the submission patterns of the agents that constitute the ATS. In \cref{fig:space_of_concerns}, we depict the maximum spanning tree of the space of concerns, which highlights the strongest connections between topics.
+\subsection{Systemic Maturation and Structural Convergenc}
+The aggregate space defined above captures the regime's persistent structural constraints—the collective footprint of six decades of cooperation. We now examine how states navigate this landscape over time. By tracking engagement patterns in sliding windows ($n=5$ years), we observe a clear evolutionary signal: system-wide engagement broadens, yet structural alignment tightens.
 
-The space of concerns exhibits a mixed structural pattern with both hierarchical and clustered characteristics. Power centrality shows a roughly normal distribution centered around moderate values, indicating relatively balanced connectivity across the network rather than extreme core-periphery polarization (\cref{fig:centrality-ats}). Eigenvector centrality reveals a distinct pattern with most nodes clustered around moderate values (~0.2) and a small number of highly influential outliers near maximum centrality (1.0), suggesting a few dominant concerns that anchor the network's influence structure. Betweenness centrality displays the expected right-skewed distribution with most nodes having very low betweenness values, confirming that only a small subset of concerns serve as critical bridges connecting different parts of the network. Closeness centrality is concentrated in a relatively narrow range (0.5-0.7), indicating that most concerns maintain similar levels of accessibility within the overall network structure, rather than being evenly distributed across all possible values.
+\Cref{fig:diffusion_time} reveals that Diversity rises significantly, particularly following the 1991 Environmental Protocol, which expanded the regime's functional scope. Crucially, this expansion does not lead to fragmentation. Instead, the median Specialism drifts downward while its spread narrows (narrowing interquartile range, \cref{fig:diffusion_time}[B]), indicating that as the policy portfolio widens, actors are converging on a more consistent set of structural engagement modes. The regime is becoming more complex, but also more coherent.
 
-\subsection{Actor specialization}
-Now that we have defined the space of concern, we can better analyze and understand the actors on the ATS.
-
-\Cref{fig:rca_heatmap} represents the revealed policy advantage ($\rho(i,c)$) for each agent across different topics. The heatmap illustrates a clear distinction between specialized and diversified actors within the Antarctic Treaty System.
-
-At the top of the heatmap, we observe highly specialized actors with narrow policy focus. These include single-issue members such as IPY-IPO and WTO, as well as countries like Greece, Denmark, and Iceland. Their limited activity concentrates on specific topics, resulting in high revealed policy advantages within those areas. In contrast, countries such as the United States, Australia, and the United Kingdom demonstrate broad engagement across multiple topics, reflecting more diverse policy interests and comprehensive involvement in the treaty system.
-
-The heatmap further reveals distinct clusters of countries with aligned policy interests, notably among European Union members and South American countries, suggesting regional coordination patterns within the broader Antarctic governance framework \cref{fig:co-submission}. The marginal panel plots display average activity levels across agents (right panel) and topics (top panel). These distributions highlight that collaboration sits at the heart of the Antarctic Treaty System, with the majority of topics focusing on long-term planning, environmental domain analysis, marine acoustics, and environmental monitoring.
+This convergence, however, does not imply homogeneity. The actor trajectories in \cref{fig:diffusion_time}[C] reveal distinct, persistent strategies within this tightening envelope. Long-standing generalists like the United States, United Kingdom, and Australia anchor the high-Diversity/low-Specialism frontier. In contrast, emerging or niche actors often enter through high-Specialism peripheral zones before drifting toward the center (e.g., Russia’s shift toward broader engagement) or remaining structurally distinct (e.g., Switzerland). The system thus integrates new entrants by channeling them along specific structural paths rather than diluting the established order.
 
 \afterpage{
-\begin{figure*}[!ht]
-  \centering
-  \includegraphics[width=\textwidth]{./figures/co-submission-patterns.pdf}
-  \caption{\textbf{Co-submission patterns reveal five distinct clusters of agents with shared policy interests and similar levels of activity.} (\textit{Left}) A co-submission network was constructed in which edge thickness reflects the number of times two agents co-submitted working papers on the same topic. Using this connectivity structure, a Leiden clustering algorithm identified groups of agents with aligned policy engagement. (\textit{Right}) The relative distribution of working paper submissions is shown, aggregated by the clusters identified on the left. The dark blue cluster demonstrates consistently high engagement across nearly all topics, while the red and yellow clusters are more selectively active. The brown cluster exhibits broad but reduced engagement across most topics.}
-  \label{fig:co-submission}
-\end{figure*}
+    \begin{figure*}[!ht]
+    \centering
+    \includegraphics[width= 0.95 \textwidth]{./figures/archetype_profiles_kl_entropy.pdf}
+    \caption{\textbf{Archetypal strategies and actor mixtures.}
+    (A) Ternary (barycentric) trajectories for selected actors show how archetype mixtures evolve over time; movement concentrates along the Archetype 1--2 edge, with occasional excursions toward Archetype 3. Flags mark recent positions and arrows indicate direction.
+    (B) Archetype trajectories in Diversity--Specialism space: Archetype 1 (blue) occupies high-Diversity/low-Specialism, Archetype 2 (green) trends toward higher Specialism at high Diversity, and Archetype 3 (purple) tracks higher Specialism with moderate Diversity; start and end years are labeled for each trajectory.
+    (C) Correlations of actor trajectories with each archetype show strong within-archetype associations and distinct dispersion patterns across archetypes.}
+    \label{fig:archetypes}
+    \end{figure*}
 }
+\subsection{Archetypes as Modes of Engagement}
+Finally, we ask if the diversity of actor paths can be summarized by a few dominant strategies. Archetypal analysis reveals three coherent modes of engagement that span the extremes of the data cloud, acting as structural directions rather than rigid clusters.
 
-The panels also reveal that information and working papers show less engagement with direct scientific collaboration, suggesting that institutional practice often centres on governance and strategic concerns even when scientific cooperation is the formal justification.
+As shown in \cref{fig:archetypes}, these archetypes correspond to distinct logics of engagement:
+\begin{enumerate}
+    \item \textbf{Aligned Generalists} (Archetype 1): High-diversity actors with lower specialism who engage broadly with the regime’s core anchors.
+    \item \textbf{Transitional Profiles} (Archetype 2): High-diversity actors with rising specialism, indicating movement toward more focused engagement.
+    \item \textbf{Peripheral Specialists} (Archetype 3): Higher-specialism actors with moderate diversity, concentrating effort in distinct niches.
+\end{enumerate}
 
-Climate change emerges as a pivotal issue, creating an even distribution across the topic spectrum and serving as a fulcrum that balances topics above and below the mean activity level \cref{fig:rca_heatmap} A notable pattern emerges when examining agent activity: countries with generally high activity levels tend to share similar interest profiles. The topic spectrum divides similarly for countries in the lower half of the activity distribution compared to those at the top. This suggests that specialized, single-party issues tend to cover topics that the more active core participants address less frequently, creating a complementary structure within the treaty system.
-
-\subsubsection{Temporal Evolution of Topic Salience}
-
-While the preceding analysis aggregates activity across the full observation period (1959-2023), the structure of the space of concerns itself evolved substantially over these six decades. The Treaty's early years (1959-1980) saw activity concentrated in a small set of scientific coordination and logistical topics, yielding a relatively sparse network with few interconnections between policy domains. During this formative period, the concern space exhibited low modularity, reflecting limited differentiation between distinct governance areas.
-
-The 1990s marked a structural transition in the Antarctic governance landscape. The negotiation and entry into force of the Protocol on Environmental Protection (1991-1998) introduced numerous environmental topics—including impact assessment, protected areas, waste management, and biodiversity conservation—that rapidly became central bridging nodes in the proximity network. These environmental concerns did not emerge in isolation but instead connected previously disparate clusters of scientific, logistical, and jurisdictional topics. Network modularity increased substantially during this period, rising from approximately 0.31 in 1989 to 0.52 by 2003, indicating increasing topical differentiation within an increasingly interconnected architecture.
-
-More recently (2010-2023), topics related to climate change, Antarctic logistics, and jurisdictional ambiguity have emerged as high-betweenness nodes, serving as critical bridges connecting previously distinct policy clusters. Climate change, in particular, functions as a meta-topic that links scientific monitoring, environmental protection, resource management, and long-term governance planning. The number of active topics has grown from approximately 15 in the 1960s to over 45 in the 2020s, yet the average path length between topics has decreased, suggesting that the space of concerns has become simultaneously more differentiated and more integrated.
-
-This temporal elaboration of the concern space—from sparse and undifferentiated to modular yet interconnected—provides the structural context within which actors navigate and reposition themselves (\cref{fig:topic_evolution}). As new topics emerge and existing concerns become more central or peripheral, actors face evolving opportunity structures that shape their strategic choices, as we explore in detail in Section 3.4.
-
-\begin{figure*}[!ht]
-  \centering
-  % TODO: Generate this figure - see notes in review_notes/figure_generation_notes.md
-  % \includegraphics[width=\textwidth]{./figures/topic_evolution.pdf}
-  \fbox{\parbox{\textwidth}{\centering\vspace{2cm}\textbf{[FIGURE TO BE GENERATED]}\\\vspace{0.5cm}Topic Evolution and Network Structure Over Time\\\vspace{0.5cm}See implementation notes in review\_notes/\vspace{2cm}}}
-  \caption{\textbf{Temporal Evolution of the Space of Concerns.} (A) Network snapshots at four time periods (1960-1980, 1981-1990, 1991-2000, 2001-2023) showing the growth and increasing interconnection of topics. Node size indicates topic activity; edge thickness indicates proximity strength. (B) Evolution of network structural metrics over time: modularity (blue), average path length (orange), and number of active topics (green). The vertical line marks 1998 (Protocol entry into force). (C) Emergence timeline showing when major topic clusters first appeared in the ATS discourse, colored by thematic domain (science, environment, logistics, jurisdiction).}
-  \label{fig:topic_evolution}
-\end{figure*}
-
-\subsection{Inferring hidden interests}
-
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=\textwidth]{./figures/fig3.png}
-  \caption{\textbf{Actor Strategies in the Space of Concerns.} (A)The strategic space of actor strategies, plotting the Area Under the Curve (AUC) of an actor's policy specialization (area under the curve excess entropy for $\alpha$) against the AUC of its policy diversification (area under the curve entropy for $\alpha$). Actors fall along an ``efficient frontier" defining a trade-off between being a \textit{specialist}(top-left, e.g., Slovakia) and a \textit{generalist} (bottom-right, e.g., United States). (B) Visualizations of the latent interest diffusion process for exemplar actors, showing how engagement ($f_\alpha$, node size) spreads from their revealed interests as the diffusion parameter $\alpha$ increases. The narrow, concentrated profile of a specialist (Slovakia) contrasts sharply with the broad, distributed profile of a generalist (United States), providing visual evidence for the strategic postures identified in (A).
-  }
-  \label{fig:hidden_interests}
-\end{figure*}
-
-We assume that each agent’s revealed activity $\rho(a, t)$ is a sample from a latent interest distribution $\theta_a$. This distribution reflects both the agent’s intrinsic priorities and the structural proximity between topics. The \protect\textit{space of concerns} captures this structure: it encodes how topics are related based on patterns of co-submission, and defines how influence or relevance might diffuse between them. That is, we assume that if two topics are closely connected in this space, then an agent active in one is more likely to have latent interest in the other. The revealed policy advantage $\rho(a, .)$ serves as an initial estimate of the agent’s latent interest distribution, such that $\hat{\theta}_a = \rho(a, .)$. Combined with the space of concerns, this forms a prior belief from which we infer a more complete profile of the agent’s interests.
-
-Our goal is to infer $\theta_a$ given $\rho(a, .)$, using the structure of the space of concerns to guide the inference. We begin with an initial estimate
-
-\[
-  \hat{\theta}_a = \rho(a, .)
-\]
-
-and iteratively update this estimate using a diffusion process defined by
-
-\begin{equation}
-  f^{(t+1)}_a = \alpha \hat{\theta}_a + (1 - \alpha) D^{-1} W f^{(t)}_a,
-  \label{eq:diffusion}
-\end{equation}
-
-until convergence, i.e. when $|f^{(t + 1)}_a - f^{(t)}_a| < \epsilon$, with $\epsilon = 1 \times 10^{-6}$ and $f^{(0)} = \hat{\theta}$. Here, $W$ is the weighted adjacency matrix of the topic proximity network, and $D$ is the diagonal degree matrix. The parameter $\alpha$ controls the balance between retention of the revealed signal and structural diffusion: for $\alpha = 1$, no diffusion occurs and the latent profile is equal to the revealed interest, $f_a = \hat{\theta}_a$. In contrast, for $\alpha = 0$, the resulting distribution $f_a$ reflects only the global structure of the topic space and becomes identical for all agents.
-
-This formulation generalizes the PageRank algorithm, which typically sets $\alpha = 0.85$, and allows us to examine how interest distributions evolve as a function of structural proximity. As $\alpha$ decreases, diffusion progresses further over the structure, smoothing and redistributing the agent's revealed focus into adjacent topics. Agents whose revealed interests are structurally aligned will converge quickly toward the structural equilibrium. In contrast, agents whose interests are concentrated in structurally isolated regions will show slower convergence. This divergence reveals latent affinity to nearby concerns that were not explicitly revealed in their original activity.
-
-To control for singular parties having high activity, we use a one-hot encoder to compute a baseline diffusion profile, $f^0_a$, which is the diffusion of a one-hot vector representing the agent's revealed interest. This baseline serves as a reference point for comparing the agent's latent profile against a focused submission. The excess KL divergence between the latent profile and the RCA, normalized against the baseline diffusion, quantifies how much more the agent's RCA diverges from the structure-induced latent profile than would be expected from a focused submission alone.
-
-\Cref{fig:hidden_interests} illustrates the various actor strategies within the space of concerns. Panel (A) presents a strategic space where actors are positioned based on their policy specialization (measured by the Area Under the Curve (AUC) of excess entropy for $\alpha$) and their policy diversification (measured by the AUC of entropy for $\alpha$). This plot reveals an ``efficient frontier'' that delineates a trade-off between being a \textit{specialist} (e.g., Slovakia) and a \textit{generalist} (e.g., United States). The underlying quantification of ``hidden interests" in this context is operationalized as the excess Kullback-Leibler (KL) divergence between the diffused latent profile and the revealed comparative advantage (RCA) of each agent in the Antarctic Treaty System.
-
-The excess KL divergence is computed as follows: for each agent, we simulate a one-hot RCA vector, representing the most concentrated possible revealed interest. This synthetic baseline is diffused across the space of concerns in the same manner as the true RCA vector. The KL divergence between the diffused one-hot vector and the structure itself serves as a lower-bound reference. The \textit{excess} KL for an agent is then the difference between the KL divergence of their actual profile and that of the one-hot reference. This quantifies how much more an agent’s revealed interests diverge from the structural equilibrium than would be expected from pure specialization alone. High excess KL values thus suggest structurally misaligned or strategically narrow interest profiles, while lower values indicate interests that are already well-aligned with the topology of concerns.
-
-Based on their positions within the strategic space shown in \cref{fig:hidden_interests}(A), we coarsely delineate four stylized classes of actor strategies. Agents characterized by a narrow interest range (low diversification/entropy) and high excess KL divergence (high specialization) are classified as \textit{strategic specialists}. Their revealed interests are focused, but diffusion reveals that they have latent interests in nearby topics that are not reflected in their submissions. \textit{Aligned specialists} also have narrow interests, but their revealed profile aligns closely with the structural equilibrium, showing little divergence after diffusion. \textit{Structural generalists} exhibit broad, well-aligned interests with minimal divergence, while \textit{latent generalists} appear broad in their RCA, yet diffusion reveals even greater latent reach—suggesting overlooked or unrealized structural potential across the issue space. Panel (B) of \cref{fig:hidden_interests} further visualizes the latent interest diffusion process for exemplar actors, demonstrating how engagement ($f_\alpha$, node size) spreads from their revealed interests as the diffusion parameter $\alpha$ increases, showcasing the narrow, concentrated profile of a specialist versus the broad, distributed profile of a generalist.
-
-\subsection{Temporal Evolution of Strategic Roles}
-
-The static classification of actors into strategic roles (\cref{fig:hidden_interests}) provides a snapshot of contemporary positioning, but the Antarctic Treaty System has evolved dramatically over six decades. To understand how actors navigate this changing landscape, we track the temporal evolution of each agent's position in the specialization-diversification strategic space from 1959 to 2023 (\cref{fig:temporal_evolution}).
-
-\subsubsection{Aggregate Patterns of Strategic Repositioning}
-
-Panels (A) and (B) of \cref{fig:temporal_evolution} reveal the cumulative evolution of excess KL divergence and policy diversification for all actors over time. Quantitatively, the mean policy diversification across all active actors increased from approximately 0.3 in 1960 to 0.65 in 2023, while the variance in excess KL divergence decreased by roughly 40\% over the same period, indicating convergence toward more structurally aligned positions. Several broad patterns emerge from these heatmaps. First, early signatories exhibit sustained engagement across the full temporal span, with countries like the United States, United Kingdom, Australia, and Argentina maintaining relatively stable profiles that deepen rather than fundamentally shift. Their heatmap signatures show gradual intensification of existing patterns rather than abrupt repositioning, with coefficient of variation in their annual positions remaining below 0.15 throughout the observation period.
-
-Second, actors entering the system later show more volatile trajectories, with new entrants averaging 2.5 times higher year-to-year position variance in their first decade compared to established actors. Countries that joined during the 1980s and 1990s environmental wave—such as Germany, Netherlands, and South Korea—demonstrate initial periods of rapid diversification (annual growth rates of 8-12\% in entropy measures) as they establish presence across multiple topic domains, followed by gradual stabilization after approximately 10-15 years of participation. This suggests an early ``exploration phase'' where new entrants survey the governance landscape before consolidating into more defined strategic roles.
-
-Third, the temporal heatmaps reveal heterogeneous responses to regime evolution. While some actors show steadily increasing diversification (moving toward structural generalism), others exhibit increasing specialization over time, suggesting strategic choices to concentrate resources in specific niches rather than maintain broad engagement. Notably, several actors display non-monotonic trajectories with periods of expansion followed by strategic contraction, indicating adaptive responses to changing institutional conditions or domestic priorities.
-
-\subsubsection{Trajectory Types and Strategic Role Transitions}
-
-Panel (C) of \cref{fig:temporal_evolution} maps individual actor trajectories through the strategic space, with temporal progression indicated by color gradients from blue (early years) to red (recent years). These trajectories reveal four qualitatively distinct patterns of strategic evolution:
-
-\textbf{Persistent Generalists.} A small set of core actors—primarily the United States, United Kingdom, Australia, and Norway—occupy the structural generalist quadrant throughout the observation period. Their trajectories show relatively limited movement, with modest increases in diversification as new topics emerge but consistently low excess KL divergence. These actors maintain broad, structurally aligned engagement regardless of regime evolution. Their stability suggests they anchor the governance architecture itself: as founding members with extensive Antarctic programs, their revealed interests may have co-constituted the structure of concerns rather than adapting to it.
-
-\textbf{Specialists-to-Generalists.} Several actors (approximately 35\% of those active for more than 20 years) exhibit clear trajectories from the specialist quadrants toward generalism, with average diversification increases of 45-60\% over their participation history. Germany and the Netherlands, for instance, begin in the aligned specialist region during the 1980s with focused engagement in environmental and scientific domains (entropy $\approx$ 0.25), then progressively expand their portfolios to cover logistical, legal, and jurisdictional topics by the 2000s (entropy $\approx$ 0.55). This pattern suggests institutional learning and capacity building: actors enter through narrow technical domains where they have comparative advantage, then leverage this foothold to diversify once they establish credibility and domestic support for broader Antarctic engagement.
-
-\textbf{Strategic Repositioners.} A third group displays lateral movement within the strategic space, shifting between strategic specialist and aligned specialist positions without substantial changes in diversification. Countries like Poland and Belgium maintain relatively narrow engagement profiles but periodically realign which topics they prioritize, moving from scientific collaboration in early periods toward environmental monitoring and logistics in later decades. This pattern indicates strategic flexibility within resource constraints: rather than expanding scope, these actors substitute one set of concerns for another in response to changing salience or opportunity structures.
-
-\textbf{Volatile Entrants.} Actors joining the system after 2000—including several South American countries and Asian newcomers—display high volatility with trajectories that loop through multiple quadrants. These actors often begin as strategic specialists in peripheral topics, briefly expand toward latent generalism as they explore the governance space, then contract back toward aligned specialization as they identify sustainable niches. This volatility likely reflects the dual pressures of establishing presence in a mature regime while managing limited Antarctic capacity.
-
-\subsubsection{Regime Maturation and Structural Convergence}
-
-Across all trajectory types, we observe a subtle but systematic pattern: the overall dispersion of actors in the strategic space decreases significantly in recent decades. Measured by the standard deviation of actor positions, dispersion in the specialization dimension decreased by 38\% between 1970 and 2020, while diversification dispersion decreased by 27\%. Early in the Treaty's history (1960s-1970s, blue points), actors are distributed more widely across the specialization-diversification space, occupying all four quadrants roughly equally. By the 2000s-2020s (red points), over 75\% of active trajectories converge toward two attractor regions: structural generalists in the lower-right and aligned specialists in the upper-left.
-
-This convergence suggests regime maturation. As the space of concerns stabilized and institutional norms crystallized, the viable strategic positions became more constrained. Actors either commit substantial resources to maintain generalist engagement across the established architecture, or they specialize in topics that are already well-integrated into that architecture. The strategic specialist position—characterized by focused engagement in structurally peripheral topics—becomes less tenable over time, as isolated concerns either become integrated into the mainstream (moving actors toward aligned specialization) or fade from the agenda entirely.
-
-The disappearance of the latent generalist region in recent trajectories is particularly notable. This quadrant represents actors whose broad revealed interests do not align with the structure, suggesting either inefficient portfolio choices or engagement across disconnected topic clusters. The fact that few contemporary actors occupy this space indicates that the ATS has developed into a more coherent governance field where broad engagement naturally aligns with structural interdependencies. Actors can no longer productively engage across fragmented, disconnected concerns; successful generalism requires navigating the integrated architecture that has emerged.
-
-\subsubsection{Linking Temporal Evolution to Geopolitical Context}
-
-While our framework does not directly incorporate external events, several temporal patterns invite interpretation in light of Antarctic governance history. The expansion of diversification among multiple actors during the 1990s coincides with the entry into force of the Protocol on Environmental Protection (1998), which substantially broadened the regime's scope beyond scientific coordination to include environmental impact assessment, waste management, and protected area designation. Actors whose trajectories show sharp diversification increases during this period—particularly European states and environmental newcomers—likely responded to the opening of new governance domains.
-
-Similarly, the post-2010 period shows increased volatility in the trajectories of emerging actors, particularly China and India. These countries enter the strategic space as strategic specialists but quickly expand diversification, reflecting their simultaneous investment in Antarctic infrastructure, scientific programs, and diplomatic engagement. Their trajectories suggest they are attempting to transition rapidly from peripheral participants to core actors, a pattern distinct from the gradual integration pathway followed by earlier entrants.
-
-The temporal analysis thus reveals that actor strategies are not static attributes but dynamic responses to an evolving governance architecture. The space of concerns provides the structural environment within which actors reposition themselves, and the typology of strategic roles—strategic specialists, aligned specialists, structural generalists, and latent generalists—represents not fixed categories but phases through which actors may transition as both their capacities and the regime itself mature.
-
-\begin{figure*}[!ht] \label{fig:temporal_evolution}
-  \centering
-  \includegraphics[width=\textwidth]{./figures/fig4.pdf}
-  \caption{\textbf{Temporal Evolution of Actor Strategies in the Space of Concerns.} (A) Heatmap illustrating the Area Under the Curve (AUC) of \textit{KL Excess Divergence} over time for each agent. Higher values (red) indicate greater structural specialization or strategic positioning, while lower values (blue/purple) suggest stronger structural alignment or efficiency. (B) Heatmap showing the AUC of \textit{Entropy of the Diffused Profile} ($f_\alpha$) over time for each agent. Higher values (red) denote increased policy diversification or breadth of latent interests. Both heatmaps display cumulative results, with each column representing the aggregate activity up to that specific year. (C) Trajectories of agents in the Policy Diversification-Structural Specialization strategic space. The x-axis represents policy diversification (AUC Entropy $f_\alpha$) and the y-axis represents structural specialization (AUC KL Excess Divergence). Each point marks an agent's position at a given cumulative year, with color indicating the year (from blue for early periods to red for later periods). Gray lines connect the chronological positions of individual agents, revealing their strategic evolution over the history of the Antarctic Treaty System.}
-\end{figure*}
+Crucially, strategic roles are compositional: most actors do not belong exclusively to one class but mix these modes over time. The ternary trajectories (\cref{fig:archetypes}[A]) show that movement is highly structured: actors rarely drift randomly but tend to slide along the edge between Generalist and Aligned Specialist modes, with Archetype 3 acting as a gateway. This suggests that while the regime allows for heterogeneity, the successful pathways to influence are topologically constrained.
 
 \section{Discussion}
-\subsection{From Policy Fingerprints to Governance Architecture}
-Our results demonstrate that the ATS exhibits a coherent structural architecture that organizes policy attention across six decades of treaty practice. The space of concerns reveals a governance landscape where topics cluster into recognizable domains—environmental protection, scientific coordination, logistical infrastructure, and jurisdictional matters—yet remain interconnected through bridging issues that facilitate navigation between domains.
+Our results challenge the view of the Antarctic Treaty System as a ``technocratic blur''—an opaque bureaucracy governed by scientific consensus. Instead, we reveal a highly structured strategic ecosystem where influence is exerted not just through direct negotiation, but through the sophisticated navigation of an issue topology. Stability in the ATS arises not from the absence of political competition, but from the structural channeling of that competition into predictable, patterned bundles of concerns.
 
-This architecture matters for three reasons. First, it shows that the complexity of contemporary Antarctic governance is not chaotic but patterned: actors operate within a topology of interdependencies where engagement in one domain conditions possibilities in others. Second, the divergence between revealed and latent interest profiles identifies systematic gaps in engagement that may reflect strategic choices, capacity constraints, or evolving priorities. Third, the stability of this structure despite substantial growth in participation and issue scope suggests that the ATS has developed institutional mechanisms that channel diverse interests into a coherent, if contested, governance field.
+This geometry of governance'' has profound implications for how we understand regime maturation. The shift from early volatility to tight structural alignment suggests that the ATS has evolved a robust ``immune system" against fragmentation. By anchoring the agenda around central hubs like \textit{marine living resources} and \textit{workplans}, the regime forces actors — even those with divergent interests — to engage through a shared structural core. Bridges like \textit{inspections} (high betweenness) do not merely connect topics; they act as the system's glue,'' ensuring that technical compliance remains inextricably linked to high-politics diplomacy.
 
-The comparison between revealed and latent profiles offers diagnostic value beyond simple description. High excess KL divergence signals actors whose engagement patterns deviate from structural expectations—not as evidence of hidden agendas, but as markers of where institutional roles, domestic priorities, or strategic calculations produce systematic gaps in observable activity. These gaps may indicate deliberate restraint, emerging interests not yet fully articulated, or capacity limitations that prevent fuller participation in structurally adjacent concerns.
+Strategic behavior in this landscape is compositional, not categorical. The three archetypes—\emph{Aligned Generalists, Peripheral Specialists}, and \emph{Transitional Profiles} — demonstrate that states maximize influence by optimizing their position on the Diversity--Specialism frontier. The tightening of this frontier over six decades implies a ``learning curve'': as the regime matures, the space for idiosyncratic or purely disruption-based strategies narrows, forcing new entrants (and rising powers) to adopt the structural grammar of the established order to gain legitimacy.
 
-\subsection{Temporal Dynamics and Regime Maturation}
-The temporal trajectories documented in \cref{fig:temporal_evolution} reveal that the ATS operates not as a static institutional arrangement but as a continuously adapting governance ecosystem. The systematic patterns of strategic repositioning—from specialists to generalists, from peripheral to aligned engagement, and from exploration to consolidation—demonstrate that actor strategies co-evolve with the structure of concerns itself.
+Beyond Antarctica, this framework offers a generalized map of governance for opaque regimes. Where formal records obscure the intent behind consensus, the Space of Concerns recovers the hidden architecture of participation, offering a portable blueprint for decoding how institutional design shapes strategic evolution in a complex world.
 
-Three implications follow from this temporal analysis. First, the convergence of actor trajectories toward structural alignment suggests that the ATS has successfully institutionalized a coherent architecture of governance. Early volatility and wide dispersion have given way to more predictable strategic positions, indicating that the regime has matured beyond its formative period of contestation and experimentation. Second, the persistence of distinct trajectory types—persistent generalists, specialists-to-generalists, strategic repositioners, and volatile entrants—shows that the system accommodates multiple pathways to engagement. Actors are not forced into a single strategic template but can navigate the concern space through different combinations of specialization and alignment. Third, the decreasing viability of the latent generalist position indicates that the ATS has developed strong structural coherence: actors can no longer productively engage across disconnected topic clusters but must align their portfolios with the integrated architecture that has emerged.
-
-These temporal patterns underscore that Antarctic governance is not merely a repository of historical norms but a living institutional field where roles and expectations continuously evolve in response to changing geopolitical contexts, environmental pressures, and regime expansion.
-
-\subsection{Implications for Treaty System Analysis}
-The space-of-concerns framework offers three broader contributions to the study of international regimes. First, it provides a method for translating high-level treaty principles into empirically grounded maps of actual governance work, moving beyond constitutional narratives to reveal what regimes do in practice, issue by issue. Second, it introduces a structural approach to actor specialization that distinguishes between narrow engagement aligned with core concerns (aligned specialists) versus peripheral niches (strategic specialists), and between generalists who fully exploit adjacent opportunities (structural generalists) versus those who leave them unexplored (latent generalists). Third, it demonstrates how temporal evolution in the concern space can be tracked as an adaptive process, where actors reposition themselves as new issues crystallize and institutional responsibilities shift.
-
-Applied to the ATS, this framework reveals stability emerging not from the absence of strategic behaviour but from the patterned ways in which diverse interests are embedded within a shared governance architecture. The persistence of this structure despite growing membership, expanding issue scope, and shifting geopolitical contexts suggests that long-lived treaty systems develop robust topologies that accommodate strategic diversity while maintaining institutional coherence.
-
-Beyond Antarctica, this approach offers a generalizable tool for studying how actors navigate complex institutional landscapes across international regimes—from climate governance to biodiversity protection to maritime law—where formal records capture negotiated outcomes but only partially illuminate the strategic calculations, capacity constraints, and evolving priorities that shape participation patterns over time.
-
-\section{Methods}
-
-\subsection{Data}
-We analyze working papers and information documents submitted to the Antarctic Treaty System from 1959 to 2023. The dataset was compiled from the official ATS document archive \cite{ATSSecretariat} and exported in CSV format. To construct a structured dataset with thematic categories, we retrieved all category labels from the database interface and merged them with document-level metadata (title, meeting number, year, submitting party, document type). The resulting dataset is publicly available via Zenodo \cite{Zenodo10578846}.
-
-The Submitting Party field occasionally lists ``ATS'' (Antarctic Treaty System), indicating that the document was submitted by the ATS Secretariat rather than by a member state or observer organization. These Secretariat-origin documents include agenda papers, draft decisions, administrative proposals, and annual reports. For completeness and fidelity to the official archive, we retained ``ATS'' as it appears in the source data. We focus on topics categorized into policy domains such as resource management, territorial claims, scientific research, and environmental protection.
-
-For these documents, a clustering was performed based on the co-submission patterns of working papers and information documents. The clustering algorithm groups topics that are frequently submitted together by the same agents. The Leiden algorithm was then used to identify clusters of agents that share similar policy interests as indicated by their co-submission patterns \cite{Traag2019}.
-
-The co-submission patterns suggest that actors who frequently align on particular topics also tend to maintain consistent collaboration across a wider range of issues. Although nearly all parties engage with the Antarctic Treaty System to some degree, their levels of involvement and patterns of interaction differ substantially.
-
-A particularly active cluster (dark blue) stands out for its sustained engagement across virtually all topics. This group includes the UK, Norway, the US, Australia, New Zealand, and Argentina—nations with long-standing interests in Antarctica and historically strong involvement in its governance. Their interconnections are dense, reflecting tight coordination and repeated co-submissions on a wide array of issues.
-
-A second, also active cluster (green) features countries such as Germany, Belgium, the Netherlands, Poland, and South Korea. While these actors contribute extensively, their collaborative structure is more diffuse: they are broadly interconnected, but without the tightly knit substructures seen in the dark blue group. Their engagement spans many topics, often in coordination with different partners across the cluster.
-
-A third cluster (red) appears more regionally anchored and includes China, India, and several South American countries such as Ecuador and Colombia. These actors are increasingly active and tend to collaborate among themselves, though their submission patterns are somewhat more focused and less evenly distributed across all topics. Their presence suggests growing engagement with the Antarctic governance regime, possibly reflecting expanding national programs or geopolitical interests.
-
-Another notable group (yellow) consists primarily of observer organizations and specialized entities, such as SCAR (Scientific Committee on Antarctic Research), COMNAP (Council of Managers of National Antarctic Programs), and the United Nations bodies. This group plays a crucial role in supporting scientific, logistical, and legal frameworks within the Treaty System. Their contributions are specialized but influential, often underpinning the technical basis for policy discussions.
-
-Finally, there is a smaller and more loosely affiliated set of actors (brown), including several newer or less active consultative parties. Their participation is more selective, with contributions that are often limited to specific areas of expertise or interest. These actors tend to collaborate opportunistically, aligning with other groups on an issue-by-issue basis.
-
-\subsection{Constructing the space of concerns}\label{methods:constructing_space_of_concerns}
-We operationalize the space of concerns from patterns of working paper and information document submissions using the same principles as the product space \cref{Hidalgo2007}.
-
-Let $x(a,i)$ denote the number of submissions by agent $a$ on topic $i$ from a set of topics $T$. To account for systematic differences in overall activity levels across agents, we normalize each agent's submissions across topics by defining
-
-\begin{dmath}
-  \pi(a,i) = \frac{x(a,i)}{\sum_j x(a,j)},
-\end{dmath}
-which captures the share of agent $a$'s activity devoted to topic $i$. We similarly define the overall importance of topic $i$ in the system as
-\begin{dmath}
-  Z_i = \frac{\sum_c x(c,i)}{\sum_{c,j} x(c,j)}.
-\end{dmath}
-
-We then define the \textit{Revealed Policy Advantage} (RPA) of agent $a$ in topic $i$ as
-\begin{dmath} \label{eq:rpa}
-  \rho(a,i) = \frac{\pi(a,i)}{Z_i},
-\end{dmath}
-so that $\rho(a,i) > 1$ indicates that agent $a$ is more specialized in topic $i$ than the average actor in the system. By construction, $\rho(a,i)$ abstracts from absolute activity levels and instead captures the \textit{relative} specialization of each agent across policy domains. This concept is adapted from Revealed Comparative Advantage in economic complexity, where countries are evaluated based on their export patterns relative to global trade dynamics \cite{Hidalgo2007}.
-
-To construct proximities between topics, we treat an agent as ``specialized'' in topic $i$ when $\rho(a,i) \ge 1$. Following \cite{Hidalgo2007}, we measure the proximity between topics $i$ and $j$ as the minimum of the two conditional probabilities that an agent specialized in one topic is also specialized in the other:
-\begin{dmath} \label{eq:proximity}
-\begin{aligned}
-\phi(i,j) = \min_c \{
-    & P(\rho(c,i) \ge 1 \mid \rho(c,j) \ge 1),\\
-    & P(\rho(c,j) \ge 1 \mid \rho(c,i) \ge 1)\}.
-\end{aligned}
-\end{dmath}
-This proximity measure captures how likely specialization in one topic is accompanied by specialization in another, revealing the structure of the space of concerns. Taking the minimum of the two conditional probabilities yields a conservative estimate of the relationship and prevents spurious high proximities driven by asymmetric patterns of specialization.
-
-We construct a weighted, undirected network of topics where edge weights are given by $\phi(i,j)$. For visualization in \cref{fig:space_of_concerns}, we compute the maximum spanning tree of this network, which captures the strongest connections between topics while maintaining a connected structure. Centrality measures (power, eigenvector, betweenness, and closeness) are computed on the full weighted network; summary distributions are reported in \cref{fig:centrality-ats}.
-
-\subsection{Interpreting latent interests and methodological limitations}
-\label{sec:latent_interests_methods}
-Our approach to inferring latent interests rests on several substantive and methodological assumptions that warrant careful discussion. First, the \textit{space of concerns} is constructed from empirical co-specialization patterns: topics are deemed proximate when actors that specialize in one tend also to specialize in the other. This follows the logic of the product space in economic complexity, where co-export patterns are taken as evidence of shared capabilities \cite{Hidalgo2007}. In the context of the Antarctic Treaty System, however, co-submission may also reflect procedural bundling, institutional mandates, or path-dependent collaboration rather than deep substitutability or complementarity of concerns. The proximity measure therefore encodes observed patterns of joint engagement, not a strong claim about the intrinsic similarity or causal linkage between issues.
-
-Second, the diffusion process used to obtain latent interest profiles models interest as spreading along the topology of the concern space according to a proximity-weighted random walk. This should primarily be understood as a smoothing operator that projects an actor's revealed profile onto the structural neighbourhood implied by its current positions. It does not aim to reproduce the micro-dynamics of negotiation, persuasion, or domestic preference formation. Different choices of the diffusion parameter $\alpha$ control how strongly the latent profile is pulled toward the revealed distribution versus the global structure. While this formulation generalizes PageRank and has desirable mathematical properties, it is nonetheless a modelling choice. Robustness checks with alternative values of $\alpha$ and with alternative proximity specifications are important for assessing how sensitive the inferred latent profiles are to these assumptions.
-
-Third, the notion of \textit{hidden interests} captured by the excess KL divergence is inherently structural and counterfactual. High excess KL values indicate that an actor's revealed profile diverges more from the structurally implied latent profile than would be expected from a purely focused submission in a similar position in the space. This divergence may be consistent with strategically narrow or deliberately understated engagement, but it can equally reflect capacity constraints, domestic political priorities, bureaucratic fragmentation, or normative self-restraint. Our method identifies topics that are structurally adjacent yet under-represented in an actor's observable activity; it does not, on its own, establish whether this under-representation is intentional, temporary, or normatively problematic.
-
-Finally, the use of KL divergence and one-hot baselines introduces additional interpretive choices. We compute divergence between the diffused latent distribution and the revealed policy advantage, with a synthetic baseline that represents the diffusion of a maximally concentrated submission profile. This provides a conservative lower bound for the divergence that we would expect from specialization alone. However, KL divergence is asymmetric and sensitive to low-probability events, so we apply appropriate smoothing to avoid artefacts driven by zero entries. Taken together, these design choices mean that the latent profiles and excess KL values should be read as indicators of structural alignment or misalignment with the concern space, rather than as direct measurements of true but concealed preferences. Substantive interpretation, particularly in case studies, should therefore combine these quantitative diagnostics with qualitative knowledge of actors' capabilities, institutional mandates, and documented positions in the Antarctic Treaty System.
+\printbibliography
 
 \appendix
 \section{Appendix}
 
+All sensitivity analyses, country-level trajectories, heatmaps, and centrality distributions are reported here for completeness.
+
+\section{Methods}
+\subsection{Data}
+We analyze working papers and information documents submitted to the Antarctic Treaty System from 1959 to 2023. The dataset was compiled from the official ATS document archive \cite{Yaryab2024} and enriched with thematic labels, submitting parties, and document types. Documents submitted by the ATS Secretariat itself were retained for completeness.
+
+\subsection{Constructing the Space of Concerns}
+Let $x(a,i)$ denote the number of submissions by agent $a$ on topic $i$. We define the normalized activity share
+\begin{equation}\label{eq:activity_share}
+\pi(a,i) = \frac{x(a,i)}{\sum_j x(a,j)},
+\end{equation}
+
+and the system-wide importance of topic $i$ as
+
+\begin{equation}\label{eq:topic_importance}
+Z_i = \frac{\sum_c x(c,i)}{\sum_{c,j} x(c,j)}.
+\end{equation}
+
+The Revealed Policy Advantage (RPA) is then
+\begin{equation}\label{eq:rpa}
+    \rho(a,i) = \frac{\pi(a,i)}{Z_i}.
+\end{equation}
+
+Topics are linked by proximity
+\begin{equation}\label{eq:proximity}
+\begin{aligned}
+\phi(i,j)
+&= \min \Bigl\{\\
+    &P\bigl(\rho(c,i)\ge 1 \mid \rho(c,j)\ge 1\bigr),\\
+    &P\bigl(\rho(c,j)\ge 1 \mid \rho(c,i)\ge 1\bigr)\\
+\Bigr\}
+\end{aligned}
+\end{equation}
+yielding a weighted topic network.
+We construct both an aggregate space (for the regime-wide map) and time-resolved spaces by rebuilding proximities within each time window, allowing the topology itself to evolve rather than assuming a fixed structure over time.
+
+\subsection{Latent Interest Diffusion}
+
+Latent interests are inferred via diffusion:
+\[
+f^{(t+1)}_a = \alpha \hat{\theta}_a + (1-\alpha) D^{-1} W f^{(t)}_a,
+\]
+where $W$ is the proximity matrix and $\alpha$ controls retention of revealed signal. We report results integrated over $\alpha$ (averaging across a grid), so inference does not hinge on a single diffusion setting.
+
+Specialism is quantified as excess KL divergence relative to a one-hot baseline diffusion.
+
+\subsection{Archetype Weights Over Time}
+To relate archetypal trajectories to individual actors, we estimate time-varying mixture weights that express each actor's position as a convex combination of the archetypes. At each time step $t$, let $A_t \in \mathbb{R}^{3 \times 2}$ collect the archetype coordinates in Diversity--Specialism space and let $x_{a,t} \in \mathbb{R}^{2}$ denote actor $a$'s coordinates. We solve a least-squares fit $A_t^\top w_{a,t} \approx x_{a,t}$ and transform the coefficients with a softmax to enforce non-negativity and unit sum. This yields weights $w_{a,t}$ that can be tracked over time and plotted in barycentric (ternary) coordinates as a trajectory of archetype mixtures.
+For the ternary panel in \cref{fig:archetypes}[A], we display a subset of actors chosen to maximize trajectory diversity: trajectories are resampled to a common length and selected via greedy farthest-point sampling using mean pointwise distance, yielding five maximally distinct paths. Flags mark the final positions for these selected actors. The archetypes shown are drawn from the best-fitting solution among 100 random initializations, chosen by minimal reconstruction error (see \cref{fig:archetype-reconstruction}). We select $K=3$ at the elbow of the decay curve: the median error drops by 22.29\% from $K=2$ to $K=3$, versus 20.31\% from $K=3$ to $K=4$.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.45 \textwidth]{./figures/archetype_reconstruction_error.pdf}
+  \caption{\textbf{Archetype reconstruction error.} Relative reconstruction error across $K$ archetypes over 100 random initializations; the selected $K=3$ solution is highlighted by its relatively low error.}
+  \label{fig:archetype-reconstruction}
+\end{figure}
+
+\subsection{Interpreting Latent Interests and Methodological Limits}
+Concern-space proximities capture observed co-specialization patterns; they can reflect procedural bundling or path-dependent collaboration, not only intrinsic topical similarity. The diffusion operator smooths revealed profiles into their structural neighbourhoods and should be read as a projection, not a behavioural model of negotiation. Excess Kullback-Leibler (KL) divergence flags misalignment between revealed and structure-implied profiles but does not diagnose intent—capacity constraints, domestic priorities, or self-restraint can yield similar gaps. KL asymmetry and sensitivity to low probabilities are handled with smoothing and a one-hot baseline, giving a conservative lower bound on divergence expected from pure specialization. Quantitative diagnostics should therefore be paired with qualitative knowledge of mandates and capabilities.
+
+Diffusion is structural rather than causal; Specialism signals concentration or misalignment, not deception; and ``latent'' interest refers to structure-implied engagement, not unobserved preferences. These caveats bound the interpretive claims of the analysis.
+
 \subsection{Sensitivity Analysis}
-To evaluate the stability of the observed structure, we performed a sensitivity analysis by removing each country from the space of concerns and computing the root mean squared error between the proximity matrix of the full space and the space without that country. The process is repeated by iteratively removing the agent that produces the maximal difference between the current set of countries and the set of countries without that agent. This greedy approach would help us understand what each agent contributes to the construction of the space of concerns in Antartica.
+To evaluate the stability of the observed structure, we performed a sensitivity analysis by removing each country from the space of concerns and computing the root mean squared error between the proximity matrix of the full space and the space without that country. The process is repeated by iteratively removing the country that produces the maximal difference between the current set of countries and the set of countries without that country. This greedy approach helps us understand what each country contributes to the construction of the space of concerns in Antarctica.
 
 In \cref{fig:sensitivity-analysis}, we observe that the space of concerns is robust against the removal of a large fraction of countries. This is evidenced by the relatively gradual increase in spectral distance observed through the first 60\% of removals, suggesting that the global structure of the space is maintained even when many individual contributors are excluded. This robustness implies a degree of redundancy or modularity in how countries co-structure the space, where no single actor—apart from a few key exceptions—critically determines the overall topology.
 
 \begin{figure} \label{fig:heatmap_concerns}
   \centering
   \includegraphics[width= 0.5 \textwidth]{./figures/appendix_heatmap_concerns.pdf}
-  \caption{\textbf{Concern proxmity}. The proximity between topics is shown as a heatmap, where deeper orange indicate closer relationships. The proximity is defined as the minimum conditional probability that an agent specializing in one topic also specializes in the other (see Equation \cref{eq:proximity}). This reveals how closely related different policy domains are within the space of concerns.}
+  \caption{\textbf{Concern proximity}. The proximity between topics is shown as a heatmap, where deeper orange indicates closer relationships. The proximity is defined as the minimum conditional probability that an actor specializing in one topic also specializes in the other (see Equation \cref{eq:proximity}). This reveals how closely related different policy domains are within the space of concerns.}
 \end{figure}
 
 However, we also observe distinct inflection points in the curve, where the removal of specific countries results in sharp increases in spectral distance. Notably, countries such as China, Germany, France, and the United Kingdom contribute disproportionately to the coherence of the product space. Their removal induces substantial distortions in the spectral representation, indicating their role as structural anchors or bridges across different regions of the space. In contrast, even countries with large economic output, such as the United States and India, show a more subdued effect on the global geometry, underscoring that structural importance is not merely a function of scale but also of positionality within the network.
@@ -288,24 +183,23 @@ However, we also observe distinct inflection points in the curve, where the remo
 \begin{figure}\label{fig:rca_heatmap}
   \centering
   \includegraphics[width= 0.5 \textwidth]{./figures/rca_joint_heatmap.pdf}
-  \caption{\textbf{Revealed Policy Advantage (RPA) of agents in the Antartic Treaty System.} The heatmap depicts the relative interest each agent have through the submission records of working and information papers to the Antartic Treaty System. Note that the values are on a log scale (with $\log(0)$ being white). The marginal panel plots show the average activity of agents (right) and topics (top). From the heatmap, we can observe how singular issue agents (e.g., IPY-IPO, WTO, Greece, Denmark, Iceland) have a narrow policy focus, while countries like the United States, Australia, and the United Kingdom demonstrate broad engagement across multiple topics. The heatmap further reveals how more active agents share a similar interest profile with less active topics on the left and more active topics on the right. The topics with the highest RCA and general activity are those centered around the state of the region (e.g. marine acoustics, environmental reports, and long-termp planning), while areas with less competitive activity concerns generally shared concerns such as legal issues, science issues, and cooperations with other cooperations.}
+  \caption{\textbf{Revealed Policy Advantage (RPA) of actors in the Antarctic Treaty System.} The heatmap depicts the relative interest each actor has through the submission records of working and information papers to the Antarctic Treaty System. Note that the values are on a log scale (with $\log(0)$ being white). The marginal panel plots show the average activity of actors (right) and topics (top). From the heatmap, we can observe how singular issue actors (e.g., IPY-IPO, WTO, Greece, Denmark, Iceland) have a narrow policy focus, while countries like the United States, Australia, and the United Kingdom demonstrate broad engagement across multiple topics. The heatmap further reveals how more active actors share a similar interest profile with less active topics on the left and more active topics on the right. The topics with the highest RPA and general activity are those centered around the state of the region (e.g., marine acoustics, environmental reports, and long-term planning), while areas with less competitive activity reflect shared concerns such as legal issues, science issues, and cooperations with other organizations.}
 \end{figure}
 
 Toward the final stages of the removal sequence, the spectral distance rapidly approaches its maximum, signifying a collapse of the original structure. Interestingly, some of the countries responsible for this final increase—such as Sweden, Venezuela, and Romania—are not necessarily central by economic metrics but appear to occupy topologically unique or peripheral positions that preserve fragile clusters or minor components.
 
-Overall, the analysis highlights the asymmetric role of countries in shaping the global structure of the space of concerns. While many actors contribute incrementally, a small subset exerts an outsized influence on the cohesion and organization of the space. This spectral sensitivity analysis thus offers a principled approach for identifying structurally pivotal agents beyond conventional economic indicators.
+Overall, the analysis highlights the asymmetric role of countries in shaping the global structure of the space of concerns. While many actors contribute incrementally, a small subset exerts an outsized influence on the cohesion and organization of the space. This spectral sensitivity analysis thus offers a principled approach for identifying structurally pivotal actors beyond conventional economic indicators.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.45 \textwidth]{./figures/sensitivity_removal_space_full.pdf}
   \caption{
-    \textbf{Sensitivity analysis of the space of concerns.} We tested the robustness of the construction of the space of concers by removing a country and computing the root mean squared error between the proximity matrix of the full space and the space without that country. We greedily remove the country that contributed to the most to the difference between the space of concerns with all countries, and those removed from it. The annotation shows which country was removed as we move from left to right on the x-axis. The figure how the the space of concerns changes gradually as the number of agents are removed prior to construction. An activity effect can be observed as early signatories of the treaty show up as having the highest impact on the construction of the space. Crucially however, the difference between the proximities of the topics is relatiely small (less than 0.1 root mean squared error). This indicates that the space is formed through the signatories, but shows little sensitivty to singular removal -- indicating a  distribution of contributions to the space of concerns.
+    \textbf{Sensitivity analysis of the space of concerns.} We tested the robustness of the construction of the space of concerns by removing a country and computing the root mean squared error between the proximity matrix of the full space and the space without that country. We greedily remove the country that contributed the most to the difference between the space of concerns with all countries, and those removed from it. The annotation shows which country was removed as we move from left to right on the x-axis. The figure shows how the space of concerns changes gradually as countries are removed prior to construction. An activity effect can be observed as early signatories of the treaty show up as having the highest impact on the construction of the space. Crucially, the difference between the proximities of the topics is relatively small (less than 0.1 root mean squared error). This indicates that the space is formed through the signatories, but shows little sensitivity to singular removal, indicating a distribution of contributions to the space of concerns.
   }
   \label{fig:sensitivity-analysis}
 \end{figure}
 
 
-%% This needs a section / or be removed
 \begin{figure}
   \centering
   \includegraphics[width= 0.45 \textwidth]{./figures/centrality_values.pdf}
@@ -313,16 +207,4 @@ Overall, the analysis highlights the asymmetric role of countries in shaping the
   \label{fig:centrality-ats}
 \end{figure}
 
-
-\section{Author Contributions}
-\begin{itemize}
-\item \textbf{Casper van Elteren}: Initial drafting, data analysis, visualization, methodology, writing - original draft, writing - review \& editing.
-\item \textbf{Parsa Yaryab}: Data curation, collection, methodology.
-\item \textbf{Maria Kleshnina}: Review \& editing, supervision.
-\item \textbf{Vítor V. Vasconcelos}: Conceptualization, writing - review \& editing.
-\end{itemize}
-
-The authors declare no competing interests.
-
-\printbibliography
 \end{document}
