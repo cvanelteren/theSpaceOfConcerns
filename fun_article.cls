@@ -24,6 +24,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{savetrees}
 \usepackage{capt-of}
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-}
@@ -358,3 +359,6 @@ This chapter is based on the publication \printbibentry{#1}{author} (\printbiben
     labelfont=bf,
     textfont=normalfont
 }
+
+
+\setlength{\footskip}{24pt} % increase space between text and footer
