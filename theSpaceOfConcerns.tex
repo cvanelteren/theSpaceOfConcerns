@@ -17,18 +17,18 @@
 \usepackage[most]{tcolorbox}
 \newtcolorbox{significancebox}{
   enhanced,
-  breakable,
   colback=Linen!75!white,
   colframe=DarkGoldenrod,
   coltitle=DarkRed,
   title=Significance,
   fonttitle=\bfseries\usefont{OT1}{phv}{b}{n},
+  fontupper=\footnotesize,
   boxrule=0.9pt,
   arc=2.5mm,
-  left=2mm,
-  right=2mm,
-  top=1.5mm,
-  bottom=1.5mm,
+  left=1.6mm,
+  right=1.6mm,
+  top=1.0mm,
+  bottom=1.0mm,
   attach boxed title to top left={xshift=2.5mm, yshift=-2mm},
   boxed title style={
     colback=black!8,
@@ -41,23 +41,35 @@
     bottom=0.4mm
   }
 }
+\newcommand{\significancetext}{%
+Consensus institutions are often read as technocratic because unanimity obscures disagreement. Using six decades of Antarctic Treaty submissions, we recover actor-level activity fingerprints from revealed topic priorities rather than collaboration ties. This reveals a dense procedural-environmental core that channels sensitive agendas, local path dependence in issue adoption, and recurrent strategic modes with distinct early-adoption profiles not explained by economic size alone. The results identify where strategic pressure accumulates in formally consensual regimes and provide a portable diagnostic for pressure points and adaptation in other consensus-based governance systems.%
+}
 
 \begin{document}
 \begin{abstract}
     Consensus institutions often mask strategic competition because formal unanimity obscures disagreement in official outcomes. We address this by inferring actor-level activity fingerprints from revealed topic priorities, rather than from collaboration ties alone. Using economic-complexity tools on six decades of Antarctic Treaty submissions, we build a ``space of concerns'' in which policy topics are linked when actors recurrently co-specialize in them. We find that members often bundle low-salience scientific topics with adjacent contentious ones, signaling intent through composition rather than volume. Archetypal analysis identifies three modes—Specialists, Moderate Specialists, and Aligned Generalists—and the regime moves from early volatility to a structured, self-reinforcing ecosystem. As participation broadens, structural alignment tightens, challenging the notion that complexity drifts toward entropy. The space recovers the latent topology of diplomatic engagement and offers a portable blueprint for decoding strategic evolution in consensus-based governance.
 \end{abstract}
 
+\begin{strip}
+\vspace{-0.25em}
+\noindent
+\begin{minipage}[t]{0.65\textwidth}
+\vspace{0pt}
 \section{Introduction}
 Consensus regimes are often treated as low-conflict settings because formal unanimity masks disagreement in official outcomes. Yet in practice, contestation is displaced into agenda-setting, linkage, and selective engagement \cite{Hurd2015,Gardiner2024}. The core empirical problem is therefore methodological: how do we detect strategic behavior when formal records appear procedural and voting signals are absent?
 
 We address this by shifting attention from collaboration ties to revealed issue activity. Rather than inferring strategy from who collaborates with whom, we extract each actor's activity fingerprint from the topics they repeatedly prioritize in the forum. We then ask: what issue topology emerges from co-specialization, how does it evolve, and how do actors move through it under consensus constraints?
 
 The Antarctic Treaty System (ATS) is an ideal case for this question. Since 1959, the ATS has demilitarized a resource-rich continent while suspending sovereignty claims \cite{AntarcticTreaty1959,NTI2024}, and it is frequently described as exceptional and technocratic \cite{BASTreatyExplained}. Yet strategic pressures around militarization and resource access persist and often surface indirectly through science, logistics, and compliance files. What enters (or stays off) the ATS agenda is therefore a critical site of strategic maneuver.
-
-% For final release?
-% \begin{significancebox}
-% Consensus-based institutions are often viewed as technocratic arenas where politics is muted. Using six decades of Antarctic Treaty submissions, we show that the opposite is true: contestation is structured, with sensitive agendas routed through a procedural-environmental core rather than disappearing. By combining complexity-based mapping with temporal and archetype analysis, we find that issue change is locally path-dependent and that actors follow recurring strategic modes, with early influence emerging through either broad system alignment or narrow focused intervention, not simply economic size. The results also highlight a dual-use governance zone where science-facing capabilities and strategic value overlap, requiring sustained procedural scrutiny. Beyond Antarctica, this provides a practical method for detecting pressure points and unintended consequences in other consensus-driven governance systems.
-% \end{significancebox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\textwidth}
+\vspace{0pt}
+\begin{significancebox}
+\significancetext
+\end{significancebox}
+\end{minipage}
+\vspace{-0.2em}
+\end{strip}
 
 Our approach adapts economic complexity tools to governance. Using revealed policy advantage, we link topics that members jointly specialize in to build a \emph{space of concerns}, a co-specialization map where distance reflects shared engagement, not semantics. This map makes consensus politics empirically legible in three ways. First, it shows how the ATS tends to channel historically sensitive matters (demilitarization, extraction, tourism access) through a procedural-environmental core rather than direct confrontation. Second, it supports temporal analysis: hazard models reveal that new attention tends to move locally within the space, indicating structured, path-dependent agenda shifts. Third, it enables strategic profiling: archetype analysis identifies recurring engagement modes (Specialists, Moderate Specialists, Aligned Generalists) and their trajectories.
 
@@ -145,7 +157,7 @@ All sensitivity analyses, country-level trajectories, heatmaps, and centrality d
 
 \section{Methods}
 \subsection{Data}
-We analyze working papers and information documents submitted to the Antarctic Treaty System (ATS) from 1959 to 2023. The corpus was compiled from the official ATS document archive \cite{Yaryab2024} and enriched with thematic labels, submitting parties, and document types. Documents submitted by the ATS Secretariat were retained for completeness.
+We analyze working papers and information documents submitted to the Antarctic Treaty System (ATS) from 1959 to 2023. The corpus was compiled from the official ATS document archive and enriched with thematic labels, submitting parties, and document types. Documents submitted by the ATS Secretariat were retained for completeness.
 
 Data collection was performed on 6 February 2026 from the ATS website (\url{https://www.ats.aq/devAS/Meetings/DocDatabase?lang=e}) using the antarctic-database-go collector by Carlo Hamalainen (\url{https://github.com/carlohamalainen/antarctic-database-go}). A key property of this framework is reproducibility: it stores cached HTTP responses and local copies of retrieved source documents, records processing status in SQLite, and supports deterministic re-runs and auditability of the extraction pipeline. That means that if the website changes or documents are removed, the collected dataset can be reconstructed from the cached responses, ensuring that the analysis can be replicated even if the source data evolves.
 
@@ -331,5 +343,8 @@ Taken together, these checks do not prove uniqueness of $k=3$, but they make the
 \label{fig:competition-appendix}
 \end{figure}
 
+% TODO: uncomment for final submission
+% \subsection{Author Contributions}
+% Casper van Elteren: first draft, analysis, interpretation, visualizations, conceptualization, editing, review. Vítor V. Vasconcelos: conceptualization, review, and editing. Maria Kleshnina: supervision, review, and editing. Michael Bode: review and edition. All authors contributed to the final manuscript.
 
 \end{document}
