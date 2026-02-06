@@ -6,7 +6,6 @@
 \author[1]{Maria Kleshnina}
 \author[1]{Michael Bode}
 \author{...}
-\author[1]{Parsa Yaryab}
 \author[2, 3, 4]{Vítor V. Vasconcelos}
 
 \affil[*]{Corresponding author: caspervanelteren@gmail.com}
@@ -146,7 +145,9 @@ All sensitivity analyses, country-level trajectories, heatmaps, and centrality d
 
 \section{Methods}
 \subsection{Data}
-We analyze working papers and information documents submitted to the Antarctic Treaty System from 1959 to 2023. The dataset was compiled from the official ATS document archive \cite{Yaryab2024} and enriched with thematic labels, submitting parties, and document types. Documents submitted by the ATS Secretariat itself were retained for completeness.
+We analyze working papers and information documents submitted to the Antarctic Treaty System (ATS) from 1959 to 2023. The corpus was compiled from the official ATS document archive \cite{Yaryab2024} and enriched with thematic labels, submitting parties, and document types. Documents submitted by the ATS Secretariat were retained for completeness.
+
+Data collection was performed on 6 February 2026 from the ATS website (\url{https://www.ats.aq/devAS/Meetings/DocDatabase?lang=e}) using the antarctic-database-go collector by Carlo Hamalainen (\url{https://github.com/carlohamalainen/antarctic-database-go}). A key property of this framework is reproducibility: it stores cached HTTP responses and local copies of retrieved source documents, records processing status in SQLite, and supports deterministic re-runs and auditability of the extraction pipeline. That means that if the website changes or documents are removed, the collected dataset can be reconstructed from the cached responses, ensuring that the analysis can be replicated even if the source data evolves.
 
 \subsection{Constructing the Space of Concerns}
 Let $x(a,i)$ denote the number of submissions by agent $a$ on topic $i$. We define the normalized activity share
@@ -330,6 +331,5 @@ Taken together, these checks do not prove uniqueness of $k=3$, but they make the
 \label{fig:competition-appendix}
 \end{figure}
 
-\
 
 \end{document}

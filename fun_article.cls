@@ -362,3 +362,6 @@ This chapter is based on the publication \printbibentry{#1}{author} (\printbiben
 
 
 \setlength{\footskip}{24pt} % increase space between text and footer
+
+\usepackage{sidecap}
+\sidecaptionvpos{figure}{c}
