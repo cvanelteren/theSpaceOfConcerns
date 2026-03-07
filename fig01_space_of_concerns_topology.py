@@ -1167,7 +1167,7 @@ def draw_grouped_rca_inset(ax, edge_a, edge_b, groups):
                     alpha=0.92,
                     zorder=1,
                 )
-            img = load_flag(rec["country"], save=True, base="./figures/flags")
+            img = load_flag(rec["country"], save=True, base="./assets/flags")
             if img is not None:
                 zoom = 30 / max(img.shape[:2])
                 ab = AnnotationBbox(

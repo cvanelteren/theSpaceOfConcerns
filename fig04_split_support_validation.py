@@ -102,7 +102,7 @@ def build_figure() -> plt.Figure:
 
     # Panel A: sequential model schematic
     ax_a.format(
-        title="Sequential Split-Support Model",
+        title="Sequential Retain-and-Enter Model",
         xlim=(0, 1),
         ylim=(0, 1),
         xlocator=[],
@@ -210,7 +210,7 @@ def build_figure() -> plt.Figure:
         lw=1.6,
         alpha=0.9,
         linestyle="--",
-        label="One-stage",
+        label="Direct allocation",
     )
     ax_b.fill_between(
         years,
@@ -227,7 +227,7 @@ def build_figure() -> plt.Figure:
         lw=1.6,
         alpha=0.9,
         linestyle=":",
-        label="Pooled support",
+        label="Single-rule support",
     )
     ax_b.fill_between(
         years,
@@ -243,7 +243,7 @@ def build_figure() -> plt.Figure:
         color=COLORS["split_support"],
         lw=2.0,
         alpha=0.95,
-        label="Split support",
+        label="Retain-and-enter",
     )
     ax_b.format(
         title="Mean Active Topics Per Actor",
@@ -290,7 +290,7 @@ def build_figure() -> plt.Figure:
         lw=1.6,
         alpha=0.9,
         linestyle="--",
-        label="One-stage",
+        label="Direct allocation",
     )
     ax_c.fill_between(
         years,
@@ -307,7 +307,7 @@ def build_figure() -> plt.Figure:
         lw=1.6,
         alpha=0.9,
         linestyle=":",
-        label="Pooled support",
+        label="Single-rule support",
     )
     ax_c.fill_between(
         years,
@@ -323,7 +323,7 @@ def build_figure() -> plt.Figure:
         color=COLORS["split_support"],
         lw=2.0,
         alpha=0.95,
-        label="Split support",
+        label="Retain-and-enter",
     )
     ax_c.format(
         title="Mean Topic Popularity",
@@ -352,7 +352,7 @@ def build_figure() -> plt.Figure:
     entry_two = process_entry[process_entry["model"] == "two_stage"].iloc[0]
     entry_split = process_entry[process_entry["model"] == "split_support"].iloc[0]
     entry_obs = process_entry[process_entry["model"] == "observed"].iloc[0]
-    models = ["One-stage", "Pooled support", "Split support"]
+    models = ["Direct allocation", "Single-rule support", "Retain-and-enter"]
     values = [
         float(entry_one["mean_entry_phi_rank_mean"]),
         float(entry_two["mean_entry_phi_rank_mean"]),
@@ -423,7 +423,7 @@ def build_figure() -> plt.Figure:
         Line2D([0], [0], color=COLORS["two_stage"], lw=1.6, linestyle=":"),
         Line2D([0], [0], color=COLORS["split_support"], lw=2.0),
     ]
-    labels = ["Observed", "One-stage", "Pooled support", "Split support"]
+    labels = ["Observed", "Direct allocation", "Single-rule support", "Retain-and-enter"]
     fig.legend(handles, labels, loc="b", ncols=4, frame=False)
     return fig
 

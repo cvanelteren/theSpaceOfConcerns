@@ -446,7 +446,7 @@ def _local_flag_name(actor: str) -> str:
 
 
 def _load_local_flags(
-    actors: list[str], base: str = "./figures/flags"
+    actors: list[str], base: str = "./assets/flags"
 ) -> dict[str, np.ndarray]:
     base_path = Path(base)
     base_path.mkdir(parents=True, exist_ok=True)
@@ -764,7 +764,7 @@ rca = get_rca(counts).reindex(index=ordered_topics)
 
 actor_df = actor_df[actor_df["actor"].isin(rca.columns)].copy()
 subset_df = _select_exemplars(actor_df)
-flag_images = _load_local_flags(actor_df["actor"].tolist(), base="./figures/flags")
+flag_images = _load_local_flags(actor_df["actor"].tolist(), base="./assets/flags")
 
 OUT_A.parent.mkdir(parents=True, exist_ok=True)
 OUT_A_ALL.parent.mkdir(parents=True, exist_ok=True)

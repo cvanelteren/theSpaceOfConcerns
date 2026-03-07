@@ -203,7 +203,12 @@ def build_figure(df, model_anchor, model_partial, x_resid, y_resid):
     x_pad = max(1.0, 0.04 * (x_breadth.max() - x_breadth.min()))
     y_pad = max(0.8, 0.06 * (y_pioneer.max() - y_pioneer.min()))
     flag_lookup = {
-        country: load_flag(country, save=False, target_area_px=12000)
+        country: load_flag(
+            country,
+            save=False,
+            base="./assets/flags",
+            target_area_px=12000,
+        )
         for country in df["country"].unique()
     }
 
