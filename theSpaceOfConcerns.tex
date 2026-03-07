@@ -3,6 +3,7 @@
 \title{Structuring International Governance through the Space of Concerns}
 
 \author[*, 1, 2, 3, 4]{Casper van Elteren}
+\author[1]{Zach Carter}
 \author[1]{Maria Kleshnina}
 \author[1]{Michael Bode}
 \author{...}
@@ -42,12 +43,12 @@
   }
 }
 \newcommand{\significancetext}{%
-Consensus institutions are often read as technocratic because unanimity obscures disagreement. Using six decades of Antarctic Treaty submissions, we recover actor-level activity fingerprints from revealed topic priorities rather than collaboration ties. This reveals a dense procedural-environmental core that channels sensitive agendas, local path dependence in issue adoption, and recurrent strategic modes with distinct early-adoption profiles not explained by economic size alone. The results identify where strategic pressure accumulates in formally consensual regimes and provide a portable diagnostic for pressure points and adaptation in other consensus-based governance systems.%
+Consensus can make governance look uniform even when actor strategies diverge. Across six decades of Antarctic Treaty submissions, we recover a shared space of concerns that reveals three recurring engagement regimes and shows that actors expand locally from anchored portfolio positions rather than governing uniformly. A simple sequential model reproduces these sparse, path-dependent portfolio dynamics, making hidden strategic pressure visible inside a formally unanimous institution. The result is a concrete way to study how consensus systems absorb conflict before it becomes explicit.
 }
 
 \begin{document}
 \begin{abstract}
-    Consensus institutions often mask strategic competition because formal unanimity obscures disagreement in official outcomes. We address this by inferring actor-level activity fingerprints from revealed topic priorities, rather than from collaboration ties alone. Using economic-complexity tools on six decades of Antarctic Treaty submissions, we build a ``space of concerns'' in which policy topics are linked when actors recurrently co-specialize in them. We find that members often bundle low-salience scientific topics with adjacent contentious ones, signaling intent through composition rather than volume. Archetypal analysis identifies three modes—Specialists, Moderate Specialists, and Aligned Generalists—and the regime moves from early volatility to a structured, self-reinforcing ecosystem. As participation broadens, structural alignment tightens, challenging the notion that complexity drifts toward entropy. The space recovers the latent topology of diplomatic engagement and offers a portable blueprint for decoding strategic evolution in consensus-based governance.
+    Consensus institutions can hide strategic differentiation because formal unanimity obscures disagreement in official outcomes. Using six decades of Antarctic Treaty submissions, we infer actor-level activity fingerprints from revealed topic priorities and build a ``space of concerns'' in which institution-defined topics are linked when actors recurrently co-specialize in them. The resulting topology organizes actors into three recurring engagement regimes. Portfolio change is local and path dependent: adoption odds decline with concern-space distance, regime shifts are mostly within or adjacent, and early agenda entry is associated with both broader portfolios and stronger anchoring within one regime rather than with membership in any single regime. A simple split-support mechanism, conditioned on the observed active actors, budgets, and pooled concern space, closely reproduces mean breadth, topic popularity, and local entry patterns. The space of concerns thus provides a behavioral map of how consensus governance organizes and absorbs strategic pressure.
 \end{abstract}
 
 \begin{strip}
@@ -58,9 +59,9 @@ Consensus institutions are often read as technocratic because unanimity obscures
 \section{Introduction}
 Consensus regimes are often treated as low-conflict settings because formal unanimity masks disagreement in official outcomes. Yet in practice, contestation is displaced into agenda-setting, linkage, and selective engagement \cite{Stone2013,Abbott2015,Hurd2015,Gardiner2025,Drubel2023HiddenContestation}. The core empirical problem is therefore methodological: how do we detect strategic behavior when formal records appear procedural and voting signals are absent?
 
-We address this by shifting attention from collaboration ties to revealed issue activity. Rather than inferring strategy from who collaborates with whom, we extract each actor's activity fingerprint from the topics they repeatedly prioritize in the forum. We then ask: what issue topology emerges from co-specialization, how does it evolve, and how do actors move through it under consensus constraints?
+We address this by shifting attention from collaboration ties to revealed issue activity. Rather than inferring strategy from who collaborates with whom, we extract each actor's activity fingerprint from the \emph{institution’s own topic categories} that they repeatedly prioritize in the forum (as labeled in the ATS document database). We then ask: what behavioral issue topology emerges from co-specialization in these categories, how does it evolve, and how do actors move through it under consensus constraints?
 
-The Antarctic Treaty System (ATS) is an ideal case for this question. Since 1959, the ATS has demilitarized a resource-rich continent while suspending sovereignty claims \cite{AntarcticTreaty1959,NTI2024}, and it is frequently described as exceptional and technocratic \cite{BASTreatyExplained,Joyner1998,Dodds2019,Yao2021}. Yet strategic pressures around militarization and resource access persist and often surface indirectly through science, logistics, and compliance files \cite{DoddsBoulegue2023,Brady2017,Haward2012,Szpak2025}. What enters (or stays off) the ATS agenda is therefore a critical site of strategic maneuver.
+The Antarctic Treaty System (ATS) is an ideal case for this question. Antarctica has no permanent population, but it carries scientific value, strategic significance, and long-standing resource potential. The ATS emerged in 1959 to demilitarize the continent and suspend sovereignty conflict, and it has since broadened into a governance arena for science, environmental protection, logistics, tourism, and resource-related questions \cite{AntarcticTreaty1959,NTI2024,BASTreatyExplained,Joyner1998,Dodds2019,Yao2021}. Yet strategic pressures around militarization and resource access persist and often surface indirectly through science, logistics, and compliance files \cite{DoddsBoulegue2023,Brady2017,Haward2012,Szpak2025}. The archive itself is uneven across both topics and time, with submission volume rising sharply after the 1990s and concentrating in a subset of recurring issue categories (Appendix \cref{fig:topic-submission-overview}). What enters (or stays off) the ATS agenda is therefore a critical site of strategic maneuver with consequences that extend well beyond the continent: what happens in Antarctica does not stay in Antarctica \cite{Guterres2023}.
 \end{minipage}\hfill
 \begin{minipage}[t]{0.3\textwidth}
 \vspace{0pt}
@@ -71,98 +72,190 @@ The Antarctic Treaty System (ATS) is an ideal case for this question. Since 1959
 \vspace{-0.2em}
 \end{strip}
 
-Our approach adapts economic complexity tools to governance \cite{Hidalgo2007,Orsini2019}. Using revealed policy advantage, we link topics that members jointly specialize in to build a \emph{space of concerns}, a co-specialization map where distance reflects shared engagement, not semantics. This map makes consensus politics empirically legible in three ways. First, it shows how the ATS tends to channel historically sensitive matters (demilitarization, extraction, tourism access) through a procedural-environmental core rather than direct confrontation. Second, it supports temporal analysis: hazard models reveal that new attention tends to move locally within the space, indicating structured, path-dependent agenda shifts. Third, it enables strategic profiling: archetype analysis identifies recurring engagement modes (Specialists, Moderate Specialists, Aligned Generalists) and their trajectories.
+Our approach adapts economic complexity tools to governance \cite{Hidalgo2007,Orsini2019}. Using revealed policy advantage, we link \emph{institution-defined} topics that members jointly specialize in to build a \emph{space of concerns}, a co-specialization map where distance reflects shared engagement in ATS categories, not linguistic similarity. Because topics are not derived from NLP or topic models, the geometry reflects patterned participation within the institution’s own issue taxonomy. This map makes consensus politics empirically legible in three ways. First, it shows how the ATS tends to channel historically sensitive matters (demilitarization, extraction, tourism access) through a procedural-environmental core rather than direct confrontation. Second, it supports temporal analysis: hazard models reveal that new attention tends to move locally within the space, indicating structured, path-dependent agenda shifts. Third, it enables strategic profiling: regime position and regime anchoring reveal recurring engagement modes and how actors time entry from those positions.
 
-Substantively, we find a dense procedural–environmental hub with distinct arms toward extraction/science, tourism/visitation, and coordination, and we show that participation growth coincides with tighter structural alignment rather than fragmentation. Methodologically, the space of concerns offers a portable way to study how consensus regimes filter conflict into patterned issue bundles—useful for monitoring resilience, anticipating pressure points, and comparing across consensus-based institutions beyond Antarctica.
+\begin{figure*}[!htbp]
+\centering \includegraphics[width=\textwidth]{./figures/fig1_space_of_concerns_ant_tessellated.pdf}
+\caption{\textbf{Diplomatic attention in the Antarctic Treaty System is structured around a dense governance core, with constrained pathways to frontier issues.} The network links topics that members jointly specialize in above the system average (RPA $>$ 1 in both), so proximity reflects shared institutional engagement rather than semantic similarity. We show the maximum-spanning-tree backbone plus the strongest additional links (top 5\% by proximity weight). Inset: Germany has above-average specialization in both Drilling and Marine Acoustics, illustrating how co-specialization generates topic proximity.}
+\label{fig:the_space_of_concerns}
+\end{figure*}
+
+Substantively, we find a dense procedural–environmental hub with distinct arms toward extraction/science, tourism/visitation, and coordination, and we show that participation growth coincides with tighter structural alignment rather than fragmentation. Methodologically, the space of concerns suggests one way to study how consensus regimes filter conflict into structured issue pathways with identifiable boundary zones—useful for monitoring resilience, anticipating pressure points, and motivating comparison across consensus-based institutions beyond Antarctica.
+
+
 
 \section{Results}
 
-\begin{figure*}[!htbp]\label{fig:the_space_of_concerns}
-\centering \includegraphics[width=\textwidth]{./figures/fig1_space_of_concerns_ant_tessellated.pdf}
-\caption{\textbf{The space of concerns in the Antarctic Treaty System reveals governance focus and actor interests.} Governance in Antarctica is centered around a dense procedural-environmental core, with a distinct branch focused on extraction-related concerns. Shown is the maximum spanning tree. In the space, edges are constructed from the interest across all actors that are above the system-wide average (RCA $>$ 1 indicated in red in the inset), so proximity captures co-specialization rather than semantic similarity. For example, Germany shows higher than average interest in both drilling and marine acoustics. The core clusters legal and procedural matters (inspections, information exchange, meeting formalities), while thinner branches extend toward extraction, safety/operations, and specialized science.}
+% C: forcing this here as otherwise the flow fo the placement looks odd -- I prefer text --> immediate figure with figure slightly or at the same level of the text
+\begin{figure*}[!htbp]
+\centering \includegraphics[width=\textwidth]{./figures/tmp_fig45_joint_regime_panels_allmembers.png}
+\caption{\textbf{ATS members occupy three recurring engagement regimes, with limited but meaningful overlap.} (A) Member portfolios are projected onto a one-dimensional ordering of the concern space; black markers denote specialization (RPA $>$ 1), gray markers denote non-specialized activity, and name color indicates the dominant regime. (B) Three broad regions emerge along this ordering; black bars mark each member's portfolio center and colored bars show interquartile spread. (C) Regime membership is structured but not rigid: several members split attention across adjacent regions. The horizontal axis is a 1D MDS embedding for visualization, so equal spacing should not be interpreted as equal structural distance.}
+\label{fig:portfolio_space_ridgelines}
 \end{figure*}
-
 
 \subsection{The Geometry of Diplomatic Attention}
-The space of concerns reveals a dense procedural--environmental core—opening statements, exchange of information, environmental monitoring/reporting, liability, inspections, educational issues—from which distinct arms extend toward extraction, tourism/visitation, and coordination topics \cref{fig:the_space_of_concerns}. Edges connect topics that any member co-specializes in (RCA $>$ 1 in both), so proximity captures shared engagement rather than semantic similarity.
+The space of concerns in \cref{fig:the_space_of_concerns} is a numerically constructed proximity network based on co-specialization: edges link topic pairs for which at least one member specializes in both (RPA $>$ 1 in each), so distance reflects recurrent co-engagement rather than semantic similarity. For exposition, we use qualitative labels (e.g., ``core'', ``corridor'', ``chain'') to describe visually dense or elongated regions of this network; these labels are interpretive and are not themselves model-estimated clusters.
 
-This geometry encodes two defining constraints of the ATS. First, the 1959 Antarctic Treaty demilitarized the continent, pushing strategic maneuver into procedure and science \cite{AntarcticTreaty1959,Joyner1998,Yao2021}. Second, the 1991 Madrid Protocol banned mineral resource activities while permitting tightly regulated scientific drilling \cite{MadridProtocol1991,Koivurova2005}. Accordingly, a resource/science arm runs from management plans through environmental domains analysis and marine acoustics to drilling and sub-glacial lakes. We interpret this branch as a dual-use governance zone: the same technical capacities that support legitimate science can also carry latent strategic value, so they remain close enough to the procedural core to be monitored and negotiated \cite{Sampaio2022,Aus2025,DoddsBoulegue2023,Szpak2025}. This interpretation does not imply covert military use in each instance; it indicates that technical capabilities with potential strategic spillovers are institutionally managed as sensitive. Bioprospecting sits nearer the core than the extraction tip, consistent with its framing as science with potential biomedical value rather than classic extraction.
+Under this interpretive reading, a dense procedural--environmental zone (opening statements, exchange of information, environmental monitoring/reporting, environmental protection, liability, inspections) sits near the center, with thinner extensions toward resource/science frontiers, tourism/visitation, and operations/planning.
 
-Inspections sit on the spine between the core and the extraction/conservation arms, reflecting their Article VII role as the compliance hinge linking procedural debate to operational practice. Marine living resources and marine protected areas connect that spine to a tourism/visitation arm (tourism and NGO activities, site guidelines), showing how access is routed via conservation and reporting obligations rather than overt bargaining \cite{Haward2012,CCAMLRConsensus2022}. A coordination/operations arm carries CEP strategy discussions, general operations, and educational issues, marking softer coordination and legitimacy work. Climate change occupies a spur between the core and extraction, indicating recognition without full absorption into the procedural bundle. The map therefore replaces a technocratic blur with a structured agenda in which sensitive issues are typically translated into procedural and environmental forms before they can advance \cite{Sampaio2022}.
+This geometry is consistent with two defining ATS constraints. The 1959 Antarctic Treaty demilitarized the continent, channeling strategic contestation into procedure and science \cite{AntarcticTreaty1959,Joyner1998,Yao2021}, while the 1991 Madrid Protocol prohibited mineral resource activities but allowed tightly regulated scientific drilling \cite{MadridProtocol1991,Koivurova2005}. In the map, this appears as a resource/science corridor linking management and assessment topics to environmental domains analysis, marine acoustics, drilling, and sub-glacial lakes. We interpret this corridor as a dual-use governance zone: capabilities with legitimate scientific value but potential strategic spillovers remain institutionally tethered to core procedural nodes where they can be monitored and negotiated \cite{Sampaio2022,Aus2025,DoddsBoulegue2023,Szpak2025}. Bioprospecting sits closer to core procedural topics than to the corridor's extraction-end topics (especially Drilling and Sub glacial Lakes), which fits this logic.
 
-\subsection{Shifting Concerns and Strategic Movement}
+Bridge topics structure movement between core and periphery. Inspections function as a compliance hinge, while Human Footprint and wilderness values and Marine Protected Areas connect the core to an access-oriented chain (tourism and NGO activities, prevention of marine pollution, site guidelines for visitors, and search and rescue), indicating that access pressures are mediated through conservation and safety obligations rather than overt distributive bargaining \cite{Haward2012,CCAMLRConsensus2022}. Climate change and CEP strategy appear as adjacent connectors rather than detached outliers. In the full concern space, the topology is connected but bounded: only 37 of 1,035 topic pairs have zero proximity (3.57\%), no topic is fully isolated, and the zero-proximity ties are concentrated in a small set of boundary topics, especially Sub glacial Lakes, State of the Antarctic Environment Report SAER, Environmental Domains Analysis, Drilling, Marine Protected Areas, and Prevention of marine pollution (Appendix \cref{fig:heatmap_concerns}). A full ribbon view of all actor-topic supports with RPA $> 1$ across adjacent periods is shown in Appendix \cref{fig:space-ribbon-full}; ribbon width reflects weighted country support rather than static edge magnitude. Simple network summaries point in the same direction: density and giant-component size increase as participation expands, while clustering and betweenness remain low, indicating a broadly connected space rather than tightening local cliques or single-topic brokerage; a greedy member-removal sensitivity check likewise remains modest until late in the deletion sequence, suggesting that the geometry is not driven by any single actor (Appendix \cref{fig:space_network_metrics,fig:sensitivity-analysis}).
 
-\begin{figure*}[!htbp]\label{fig:space_of_ribbons}
-\centering \includegraphics[width=\textwidth]{figures/fig2_space_of_concerns_ribbon.pdf}
-\caption{\textbf{Topic trajectories in the ATS, 1959--2024.} Each ribbon tracks a single topic across adjacent periods; a ribbon segment appears when at least one actor has RCA $>1$ in that topic in both periods. Ribbon width is proportional to the number of actors with RCA $>1$, so thicker paths indicate broader engagement. The lower panel quantifies period-to-period change using earth mover’s distance on RCA vectors: system-level shifts stabilize after 2000 while country-level shifts remain more volatile, indicating macro stability alongside micro-level heterogeneity.}
-\end{figure*}
 
-Two natural questions follow. First, how do interests evolve through this issue space over time? Second, does this geometry correspond to strategic movement by actors, or is it merely descriptive? We address the first by decomposing the space of concerns over time. In \cref{fig:space_of_ribbons} we visualize shifting attention by drawing flows between topics that remain salient (RCA $>$ 1) across adjacent periods. The space starts with a relatively small set of topics focused on cooperation (exchange of information, science issues, cooperation with other organizations) and accountability (inspections). As the system matures, the space grows and diversifies (\cref{fig:space_of_ribbons}, bottom inset). The procedural core shows increased attention to liability in the 1980s, with renewed focus in the 2000s. Educational issues rise in the 1980s and persist across periods. A brief focus on historical sites also emerges from management concerns in the preceding decade. Overall, the core operates as a recurrent hub: attention in the 1980s shifts from the core toward extraction-adjacent topics such as marine living resources, bioprospecting, and drilling, while climate-related concern in the same period feeds into marine protected areas.
-
-The second question is answered by the hazard analysis: despite high volatility in which topics are active, new attention is biased toward nearby issues in the space rather than random jumps (\cref{fig:hazard-distance-timeseries}). This indicates that the space is an empirically grounded aggregate of governance behavior, not just a descriptive visualization. It also implies that the map can be used to trace strategic trajectories, including how actors expand, cluster, and reposition their portfolios, which motivates the next section.
-
-\begin{figure}[!h] \label{fig:hazard-distance-timeseries}
-    \centering
-    \includegraphics[width=0.45\textwidth]{figures/fig3_space_of_concerns_hazard_distance_timeseries.pdf}
-    \caption{\textbf{Locality of topic adoption in Antarctic governance.} Heatmap cells give the estimated effect of distance in the issue space on the probability that a country adopts a new topic in the next window, with negative values indicating preferential expansion into nearby topics. The top panel shows the system-level median effect with interquartile range. Each row corresponds to a country; $x$ marks windows with no change in its topic portfolio, and red ticks indicate treaty accession years.}
-\end{figure}
-
-For completeness, network-level metrics in the Appendix summarize the system’s stabilization over time and align with the event windows discussed above (Appendix \cref{fig:space_network_metrics}). Additional appendix diagnostics report topic competition/concentration (\cref{fig:competition-appendix}) and sensitivity/robustness checks on topic heatmaps and RCA structure (\cref{fig:heatmap_concerns,fig:rca_heatmap,fig:sensitivity-analysis}).
-
-The space maps issues, but not influence. Mapping actors onto this terrain (Appendix \cref{fig:actors_on_space}) shows a dominant core of longstanding consultative parties spanning governance and operations, with peripheral clusters specializing in cooperation with other organizations, educational issues, and science/extraction niches. This asymmetry motivates the archetype analysis that follows.
 
 \subsection{Modes of Engagement and Actor Strategies}
-\label{sec:modes_of_engagement}
-\begin{figure*}[!htbp]
+The Space of Concerns reveals how members allocate attention across issues and how they position themselves in ATS governance. As shown in \cref{fig:portfolio_space_ridgelines}, attention is uneven: countries concentrate in distinct parts of the issue space, and those clusters define three broad engagement regimes. Importantly, the 1D MDS axis is an embedding for visualization rather than a uniform metric ruler: local neighborhood structure is preserved approximately, but dense portions of the network appear compressed while sparse portions are expanded.
+
+Taken together, the regimes form a gradient rather than isolated silos. Regime 1 (institutional coordination and information exchange) emphasizes opening statements, science and education, information exchange, and ATS reporting and operational topics. Regime 2 (compliance and environmental management) centers on environmental protection, EIA, liability, waste and pollution, legal-institutional matters, inspections, and protected-area governance. Regime 3 (frontier impacts, resources, and strategic planning) concentrates on drilling, mineral resources, tourism pressure, SAER/environmental domains, marine acoustics, sub-glacial lakes, CEP strategy, and multiyear planning, where scientific capability, environmental risk, and long-horizon positioning intersect.
+
+These regimes capture dominant orientations, not fixed blocs. Members most strongly aligned with Regime 1 include Switzerland, Malaysia, Estonia, and Bulgaria; with Regime 2, UNEP, COMNAP, Belarus, and IUCN; and with Regime 3, the Russian Federation, the United States, New Zealand, and Australia (Appendix Table~\ref{tab:regime_alignment_full}). Some countries remain tightly concentrated in one region, while others maintain mixed portfolios across neighboring regions, separating structural position from strategic flexibility as agendas shift.
+
+Australia illustrates this distinction: although its portfolio spans all three regions, its center of gravity remains in Regime 3 (share $=0.553$), indicating a diversified but not genuinely between-regime position (Appendix Table~\ref{tab:regime_alignment_full}).
+
+Supplementary co-sponsorship and competition views are consistent with this regime picture. Actor communities concentrate unevenly across the same concern regions, and topic-level concentration remains stable even as participation expands, indicating layered rather than homogenizing growth in agenda engagement (Appendix \cref{fig:actors_on_space,fig:competition-appendix}).
+
+\subsection{Growth of Interest Portfolios is not Random Drift but Local Movement in the Concern Space}
+The regime map above is descriptive; the hazard model tests whether movement through this space is structured. We find a strong locality gradient: in the pooled specification, adoption odds fall as concern-space distance increases ($\beta_{\mathrm{distance}}=-0.652$, odds ratio $=0.52$). The empirical adoption curve in \cref{fig:hazard-distance-timeseries} shows the same pattern nonparametrically, with adoption declining from 8.43\% in the nearest distance quartile to 0.79\% in the farthest quartile. The distance effect remains negative under alternative space constructions (instantaneous: $-0.539$; cumulative-lagged: $-0.533$; Appendix \cref{fig:hazard-space-sensitivity}). Consistent with this locality, dominant-regime assignments are highly persistent in rolling 5-year windows: 82.0\% of member transitions remain in the same regime, 99.0\% remain in the same or an adjacent regime, and direct Regime 1$\leftrightarrow$Regime 3 jumps are rare (1.0\%). A direct 1-year versus 5-year comparison (Appendix \cref{fig:regime-window-sensitivity}) shows the expected smoothing: same-regime persistence rises from 58.6\% to 82.0\%, while direct Regime 1$\leftrightarrow$Regime 3 jumps fall from 2.7\% to 1.0\%. Together, these results support interpreting engagement modes as path-dependent orientations rather than static labels, because actors tend to extend portfolios into nearby concerns rather than making long-range jumps.
+
+\begin{figure*}[!h]
     \centering
-    \includegraphics[width=\textwidth]{figures/fig4_archetypes_profiles.pdf}
-    \caption{\textbf{Profiles of Strategic Archetypes in the Space of Concerns.} While the space of concerns depicts the focus of governance in the ATS, we focus here on the kinds of strategic behaviors that actors employ to navigate this space. Using archetype analysis, we identify three primary modes of engagement: \emph{Specialists} (yellow), \emph{Moderate Specialists} (green), and \emph{Aligned Generalists} (purple). (A) Each archetype exhibits a distinct profile across key metrics: Entropy (diversity of engagement), Excess KL Divergence (degree of specialization). Specialists will remain focused on a few topics (low entropy) and exhibit high specialization (high KL divergence), while Aligned Generalists spread their attention broadly (high entropy) and align closely with the latent structure of the space (low KL divergence). Moderate Specialists fall in between these extremes. (B) The ternary plot positions each actor based on their mixture of archetype affiliations, revealing clusters of strategic behavior within the ATS. The final position of the 12 signatories are indicated by their flag and the border matches the start position indicated by a hollow circle.}
-    \label{fig:archetype_profiles}
+    \includegraphics[width=\textwidth]{figures/new_fig3_hazard_retention.pdf}
+    \caption{\textbf{Portfolio change in the ATS is local, persistent, and regime-stable rather than random drift.} (A) Adoption probability declines sharply with concern-space distance to a member's prior portfolio (binned estimates with Wilson 95\% intervals). (B) Kaplan--Meier retention curves show that once topics are adopted, activity persists across years under alternative gap definitions. (C) Row-normalized regime transitions show high within-regime persistence and rare direct Regime 1$\leftrightarrow$Regime 3 jumps. Together, the panels indicate path-dependent adaptation through nearby concerns.}
+    \label{fig:hazard-distance-timeseries}
 \end{figure*}
 
-Having mapped the thematic landscape—the space of concerns—we next examine how actors navigate it. We use archetype analysis to identify recurrent engagement modes over time, allowing actor trajectories to be interpreted as movement along a common strategic frontier rather than as disconnected case studies. This step matters because consensus institutions reward strategic composition of portfolios: actors rarely contest rules directly, but they do vary in where and when they allocate attention.
+\subsection{Local Entry and Selective Persistence Recover ATS Portfolio Structure}
 
-Our analysis identifies three strategic archetypes: Specialist, Moderate Specialist, and Aligned Generalist. \Cref{fig:archetype_profiles} shows that these modes separate cleanly on diversity and specialization metrics: Specialists concentrate attention on narrow portfolios, Aligned Generalists sustain broad portfolios that track system structure, and Moderate Specialists occupy an intermediate region. Robustness diagnostics in Appendix \cref{fig:archetype_robustness} support this specification. RSS drops from 92.12 at $k=2$ to 3.57 at $k=3$, then changes only marginally and non-monotonically for higher $k$, consistent with an elbow at three modes. Jackknife perturbations remain moderate (L2 shifts 0.007--0.380), and feature sensitivity indicates that KL contributes most strongly to the dominant axes, while entropy mainly reshapes positions nonlinearly toward highly specialized cases without overturning the three-mode structure. Substantively, the three modes capture distinct approaches to influence: concentrated intervention, broad procedural alignment, and hybrid positioning.
+The hazard results establish local movement, but they do not show whether that mechanism is strong enough to recover the observed organization of ATS portfolios. We therefore fit a simple split-support model that holds fixed the observed active actor set in each year, the actor-specific budgets they deploy, and a pooled concern-space geometry, then asks whether portfolio dynamics alone can reproduce the observed system. The model updates portfolios in three steps: actors retain part of their prior support, add new topics locally in the concern space, and allocate effort within that selected support. Despite these restrictions, the model reproduces the observed ATS closely: it matches mean actor breadth (observed $3.35$, simulated $3.32$), mean topic popularity (observed $2.45$, simulated $2.45$), annual variation in breadth ($r=0.87$), annual variation in topic popularity ($r=0.98$), and local entry rank in $\phi$-space (observed $0.677$, simulated $0.679$; \cref{fig:split-support-model}). Across 64 repeated simulations with the fitted parameters held fixed, the 5--95\% process band remains centered on the observed series and the split model's local-entry rank stays in a narrow interval around the observed value ($0.662$--$0.688$ versus $0.677$; \cref{fig:split-support-model}). Approximate parameter intervals remain clearly positive for allocation persistence, local fit, entry locality, and retention on prior portfolio weight (Appendix \cref{fig:split-support-params}). Repeated year-balanced thinning of the raw corpus leaves this pattern intact: at 40--80\% retention of submissions, breadth-tracking correlations remain between $0.78$ and $0.86$, and local-entry rank stays within $0.016$ of the observed value (Appendix \cref{fig:split-support-thinning}). This is a mechanism check rather than a full theory of ATS evolution, since participation, budget formation, and possible changes in the concern space are held outside the model. The substantive implication is that much of the observed ATS can be generated by selective persistence, local entry, and constrained allocation, rather than by smooth diffusion across the full issue topology.
 
-The simplex embedding reveals concrete strategic positions. The Aligned Generalist corner is anchored by long-running core actors such as the United Kingdom and Australia, while many issue-bounded organizations and small-footprint actors cluster toward the Specialist corner (e.g., IPY-IPO, WTO, ICAO). Moderate Specialist positions are populated by actors combining broad participation with selective emphasis (e.g., Ukraine, Finland, France, South Africa). This distribution is consistent with the institutional structure of the ATS: established consultative actors can sustain broad engagement across procedural and operational files, while narrower actors tend to exert influence through targeted agenda windows.
+\begin{figure*}[!h]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig17_split_support_model_validation.pdf}
+\caption{\textbf{A sequential split-support model reproduces sparse, local portfolio change in the ATS.} (A) The model proceeds in three steps: active actors retain some previously held topics, enter a small number of nearby topics in the pooled concern space $\Phi$, and allocate their observed budget within the resulting support. (B) Mean active topics per actor over time. (C) Mean topic popularity over time, measured as the average number of active actors per topic. (D) Mean rank of newly entered topics among all not-yet-held candidates when ordered by $\Phi$-proximity to the actor's prior support. Colored lines and bars show simulation means; shaded bands and whiskers show 5--95\% process uncertainty across 64 repeated simulations with fitted parameters held fixed. The split-support model closely matches both sparsity and local entry, improving on the diffuse one-stage model and the overly conservative pooled-support variant. All simulations condition on the observed active actor set, observed actor budgets, and the fixed pooled concern space.}
+\label{fig:split-support-model}
+\end{figure*}
 
-These modes are not merely descriptive; they are associated with differential timing performance. \Cref{fig:pioneer_scatter} shows a strong nonlinear relation between breadth and early-adoption residuals ($R^2=0.52$): early movers appear both among broad portfolio actors (United Kingdom, United States, Australia, Chile) and among narrow but highly active actors (e.g., IMO), while many mid-to-broad participants enter later than expected. This pattern indicates two viable pathways to early influence under consensus constraints: broad alignment with procedural-core dynamics, or concentrated pushes in narrow opportunity windows. Consistent with this, early-adoption association is positive for Aligned Generalists ($r=0.256$), negative for Specialists ($r=-0.225$), and weakly positive for Moderate Specialists ($r=0.151$; Appendix \cref{fig:archetype_robustness}). Empirically, intermediate strategies more often sit closer to the trend line or below it than either extreme. As shown in Figure~\ref{fig:residuals_gdp}, this variation is not explained by GDP per capita alone.
+
+
+\subsubsection{Agenda Pioneering Reflects Breadth and Regime Anchoring}
+Early agenda entry is not concentrated in one dominant regime. Actors from all three regimes appear among the pioneers, but earlier movers tend to combine broader portfolios with stronger concentration within one regime rather than evenly mixed portfolios. A simple OLS using the relative pioneer index as the outcome shows that breadth and max regime share are both positive predictors of earlier entry ($\beta_{\mathrm{breadth}}=0.26$, $p=0.001$; $\beta_{\mathrm{anchor}}=17.70$, $p<0.001$), while dominant-regime indicators are not distinguishable from zero. This pattern is stable to alternative cumulative-volume thresholds for defining topic emergence (Appendix \cref{fig:emergence-threshold-sensitivity}). Pioneering therefore appears less as membership in one privileged bloc than as regime-positioned timing from a clear portfolio base.
+
+\begin{figure*}[!htbp]
+    \centering \includegraphics[width = \textwidth]{./figures/fig5_pioneer_regime_position.pdf}
+    \caption{\textbf{Agenda pioneering reflects portfolio breadth and regime anchoring, not membership in a single dominant regime.} (A) Each point is a member positioned by portfolio breadth and relative pioneer index; pie glyphs encode regime activity shares, showing that pioneers appear across all three regimes rather than clustering in one. (B) Added-variable view of regime anchoring: both axes are residualized on breadth and dominant-regime indicators, so the dashed line corresponds directly to the reported breadth-adjusted coefficient on max regime share. Point color indicates the actor's dominant regime. The inset reports the same OLS used in the text.}
+    \label{fig:pioneer_plot}
+\end{figure*}
 
 \section{Discussion}
-\begin{figure*}[!htbp]
-    \centering \includegraphics[width=\textwidth]{figures/fig5_pioneer_archetype_glyph_plot.pdf}
-\caption{\textbf{Early Adoption by Strategic Archetype.} Scatter plot of early-adoption residual versus breadth (number of specialized topics). Each point is an ATS actor, with the pie indicating archetype mixture. A quadratic trendline is fitted to the data ($R^2=0.52$). The upper envelope includes both broad, system-aligned actors and narrow, focused actors, while many intermediate strategies cluster near or below trend. This indicates that both broad and focused engagement can yield early influence, whereas intermediate strategies are more often on-trend or lagging. Consistent with \cref{fig:residuals_gdp}, these deviations are not explained by GDP per capita alone.}
-    \label{fig:pioneer_scatter}
-\end{figure*}
-
-Consensus can hide strategy. In forums where unanimity suppresses overt conflict signals, strategic competition is displaced into issue selection, linkage, and timing \cite{Stone2013,Hurd2015,Abbott2015,Drubel2023HiddenContestation}. The space of concerns makes that displaced competition observable by tracking revealed activity across topics, rather than relying on formal voting outcomes or collaboration ties alone.
+Consensus regimes are often treated as low-conflict settings, as formal unanimity in official outcomes obscures underlying disagreement. In practice, however, contestation is displaced into agenda-setting, issue linkage, and selective engagement, allowing actors to shape collective trajectories without overtly contesting decisions on record \cite{Stone2013,Hurd2015,Abbott2015,Drubel2023HiddenContestation}. The space of concerns makes that displaced competition observable by tracking revealed activity across topics, rather than relying on formal voting outcomes or collaboration ties alone.
 
 This contribution complements, rather than replaces, existing social-science approaches. Legal-institutional analyses explain mandate design and norm development; diplomatic-history work explains sequencing and practice; co-sponsorship networks explain who aligns with whom \cite{Keohane1984,Dodds2019,Yao2021,Sampaio2022}. Our added value is different: we recover where actors place attention in the issue topology, how that topology is structured, and how actors move through it over time.
 
-Substantively, the ATS appears as a structured system with a procedural--environmental core that absorbs and refracts sensitive agendas. The core is not merely administrative. It functions as a governance filter through which high-friction issues are translated into inspectable, reportable, and negotiable forms. This is most visible in the extraction/science arm, where technical files sit adjacent to politically sensitive resource and security questions. That pattern is consistent with current scholarship on dual-use pressures in Antarctica and the persistence of geopolitical tension under a formally cooperative regime \cite{Brady2017,DoddsBoulegue2023,Aus2025,Szpak2025}.
+Substantively, the ATS appears as a structured concern space organized around a dense procedural--environmental hub, with more specialized but still connected regions around extraction and science, tourism and visitation, and coordination. This topology does not imply a detached extraction arena; rather, it is consistent with an institutional setting in which historically contentious issues, especially resource extraction, are tightly constrained and therefore remain embedded in adjacent procedural, scientific, and environmental pathways. That reading is consistent with current scholarship on dual-use pressures in Antarctica and the persistence of geopolitical tension under a formally cooperative regime \cite{Brady2017,DoddsBoulegue2023,Aus2025,Szpak2025}.
 
-The temporal results strengthen this interpretation. New attention does not diffuse randomly; it tends to move locally in the concern space, and actor trajectories cluster into a small number of recurrent engagement modes. This indicates structured adaptation rather than drift. In practical terms, change in the ATS is more likely to appear as recombination of adjacent concerns than as abrupt displacement to distant issues. The archetype diagnostics do not prove a unique truth at $k=3$, but they do support a stable and policy-interpretable three-mode summary for the present data.
+The temporal results strengthen this interpretation. New attention does not diffuse randomly; it tends to move locally in the concern space, and actor trajectories cluster into a small number of recurrent engagement regimes. This indicates structured adaptation rather than drift. In practical terms, change in the ATS is more likely to appear as recombination of adjacent concerns than as abrupt displacement to distant issues. The regime diagnostics do not imply hard blocs, but they do support a stable and policy-interpretable three-regime summary for the present data. The mechanism check reported in the Results is consistent with this reading: ATS portfolios are better described by selective persistence and local expansion within a shared issue arena than by smooth diffusion across the full topology.
 
-These findings also sharpen how consensus stability should be interpreted. Relative institutional stability does not imply absence of strategic pressure; it can reflect effective filtering of disagreement into recurring issue bundles \cite{CCAMLRConsensus2022,Gardiner2025}. Influence in such systems is therefore expressed through portfolio positioning and timing of entry into gateway concerns, not only through activity volume or economic size.
+These findings also sharpen how consensus stability should be interpreted. Relative institutional stability does not imply absence of strategic pressure; it can reflect effective filtering of disagreement into recurrent issue pathways with stable boundary zones \cite{CCAMLRConsensus2022,Gardiner2025}. Influence in such systems is therefore expressed through portfolio positioning and timing of entry into gateway concerns, not only through activity volume or economic size.
 
-For policy practice, the map can be used as an early-warning layer. As pressures intensify around tourism, climate adaptation, logistics, and infrastructure, likely contention points should emerge first near existing high-salience clusters, especially around inspections, reporting, and management instruments that connect multiple branches of the system \cite{Haward2012,Gardiner2025}. More broadly, this strategy can be applied to other consensus-based institutions where formal agreement conceals strategic differentiation \cite{Vabulas2013,Abbott2015}: it provides a tractable way to monitor where pressure accumulates and how institutions adapt before conflict becomes explicit.
+For policy practice, the map can be used as an early-warning layer. As pressures intensify around tourism, climate adaptation, logistics, and infrastructure, likely contention points should emerge first near existing high-salience clusters, especially around inspections, reporting, and management instruments that connect multiple branches of the system \cite{Haward2012,Gardiner2025}. More broadly, this strategy suggests a tractable way to examine other consensus-based institutions where formal agreement conceals strategic differentiation \cite{Vabulas2013,Abbott2015}, though that extension remains to be demonstrated directly.
 
 \printbibliography
+
+\subsection*{Author Contributions}
+Casper van Elteren: first draft, analysis, interpretation, visualizations, conceptualization, editing, review. Vítor V. Vasconcelos: conceptualization, review, and editing. Zach Carter: Review, editing, Maria Kleshnina: supervision, review, and editing. Michael Bode: review and editing. All authors contributed to the final manuscript.
+
+\subsection*{Acknowledgements}
+CvE would like to thank Dr. Fiona Lippert for the many discussions and inputs regarding the manuscript. CvE would also like to thank M.Sc. Larissa Lubiana Botelho for discussions and inputs regarding the manuscript and the Antarctic Treaty System at large.
 
 \appendix
 \renewcommand{\thefigure}{S\arabic{figure}}
 \section{Appendix}
 
-All sensitivity analyses, country-level trajectories, heatmaps, and centrality distributions are reported here for completeness.
+All sensitivity analyses, member-level trajectories, heatmaps, and centrality distributions are reported here for completeness.
 
-\section{Methods}
-\subsection{Data}
-We analyze working papers and information documents submitted to the Antarctic Treaty System (ATS) from 1959 to 2023. The corpus was compiled from the official ATS document archive and enriched with thematic labels, submitting parties, and document types \cite{AntarcticTreatyHandbook,Yaryab2024}. Documents submitted by the ATS Secretariat were retained for completeness.
+\begin{table*}[!htbp]
+\centering
+\scriptsize
+\caption{\textbf{All members by dominant regime alignment.} Actors are sorted within each regime by dominant regime share (fraction of portfolio mass in that regime). Strong aligners are marked with an asterisk, defined as share $\geq 0.70$. Between-regime actors are marked with \textsuperscript{\dag}, defined as having a small top-two share gap ($\leq 0.12$) and a substantial second-largest share ($\geq 0.33$).}
+\label{tab:regime_alignment_full}
+\begin{tabular}{l c l c l c}
+\hline
+\textbf{Regime 1 actor} & \textbf{Share} & \textbf{Regime 2 actor} & \textbf{Share} & \textbf{Regime 3 actor} & \textbf{Share} \\
+\hline
+Malaysia & 1.000* & UNEP & 0.919* & New Zealand & 0.778* \\
+Switzerland & 1.000* & ACAP & 0.879* & Russian Federation & 0.755* \\
+Estonia & 0.897* & COMNAP & 0.842* & IAATO & 0.727* \\
+IOC & 0.813* & Belarus & 0.828* & Norway & 0.711* \\
+Bulgaria & 0.805* & IUCN & 0.779* & SCAR & 0.675 \\
+Portugal & 0.765* & Poland & 0.776* & Ukraine & 0.668 \\
+Türkiye & 0.749* & India & 0.770* & United States & 0.647 \\
+Venezuela & 0.742* & Brazil & 0.735* & Korea (ROK) & 0.614 \\
+Canada & 0.722* & Finland & 0.733* & France & 0.602 \\
+IHO & 0.673 & China & 0.698 & Australia & 0.553 \\
+Peru & 0.670 & Netherlands & 0.680 & United Kingdom\textsuperscript{\dag} & 0.552 \\
+Colombia & 0.647 & Chile & 0.677 & Monaco\textsuperscript{\dag} & 0.528 \\
+ &  & Czechia & 0.675 &  &  \\
+ &  & Germany & 0.657 &  &  \\
+ &  & Uruguay & 0.649 &  &  \\
+ &  & Romania & 0.646 &  &  \\
+ &  & WMO & 0.614 &  &  \\
+ &  & Ecuador & 0.581 &  &  \\
+ &  & Spain & 0.571 &  &  \\
+ &  & Belgium & 0.555 &  &  \\
+ &  & ASOC\textsuperscript{\dag} & 0.528 &  &  \\
+ &  & Sweden & 0.528 &  &  \\
+ &  & ATS\textsuperscript{\dag} & 0.503 &  &  \\
+ &  & South Africa & 0.501 &  &  \\
+ &  & CCAMLR & 0.467 &  &  \\
+ &  & Italy\textsuperscript{\dag} & 0.420 &  &  \\
+ &  & Argentina & 0.405 &  &  \\
+ &  & Japan\textsuperscript{\dag} & 0.387 &  &  \\
+\hline
+\end{tabular}
+\end{table*}
+
+\section{Methods and Data}
+\subsection{Data Description and Processing}
+We analyze working papers and information documents submitted to the Antarctic Treaty System (ATS) from 1961 to 2025. The corpus was compiled from the official ATS document archive and enriched with thematic labels, submitting parties, and document types \cite{AntarcticTreatyHandbook,Yaryab2024}. Documents submitted by the ATS Secretariat were retained for completeness.
 
 Data collection was performed on 6 February 2026 from the ATS website (\url{https://www.ats.aq/devAS/Meetings/DocDatabase?lang=e}) using the antarctic-database-go collector by Carlo Hamalainen (\url{https://github.com/carlohamalainen/antarctic-database-go}). A key property of this framework is reproducibility: it stores cached HTTP responses and local copies of retrieved source documents, records processing status in SQLite, and supports deterministic re-runs and auditability of the extraction pipeline. That means that if the website changes or documents are removed, the collected dataset can be reconstructed from the cached responses, ensuring that the analysis can be replicated even if the source data evolves.
 
+The category labels are Secretariat-assigned (not NLP-derived) and thus the space reflects co-participation within the ATS’s own issue taxonomy rather than semantic similarity. Because agenda items vary across meetings over time, the Secretariat created cross-temporal categories to provide a harmonized, consistent classification of documents across the archive (ATS correspondence). For preprocessing, we expanded multi-party entries into one row per submitting actor and deduplicated attachment-linked records using unique \texttt{paper\_id}, yielding 6,591 unique papers in the 1961--2025 analysis panel. We also excluded records labeled \texttt{ALL}, which were largely uncategorized and introduced noise into topic assignment (especially in recent years). The extracted dataset had the following columns:
+
+\small
+\noindent
+\begin{tabular}{@{}p{0.48\columnwidth} p{0.48\columnwidth}@{}}
+\texttt{meeting\_year}         & \texttt{paper\_id} \\
+\texttt{meeting\_type}         & \texttt{party\_type} \\
+\texttt{meeting\_number}       & \texttt{paper\_name} \\
+\texttt{meeting\_name}         & \texttt{paper\_number} \\
+\texttt{party}                 & \texttt{paper\_revision} \\
+\texttt{category}              & \texttt{paper\_language} \\
+\texttt{page\_url}             & \texttt{paper\_url} \\
+\texttt{page\_nr}              & \texttt{exists} \\
+\texttt{payload\_json}         & \texttt{agendas} \\
+                               & \texttt{parties} \\
+                               & \texttt{attachment\_id} \\
+                               & \texttt{attachment\_name} \\
+                               & \texttt{attachment\_language} \\
+                               & \texttt{attachment\_url} \\
+                               & \texttt{attachment\_exists} \\
+\end{tabular}
+and is provided at INSERT ZENODO LINK.
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig54_appendix_overview_submissions.pdf}
+\caption{\textbf{Coverage of the ATS document archive across topics and time.} (A) Unique submissions by Secretariat-assigned topic across the 1961--2025 corpus. (B) Unique ATS submissions by year, with a centered 5-year rolling mean overlaid. The archive is uneven in both dimensions: some topics attract far more traffic than others, and the overall volume of submissions rises sharply in the post-1990 period.}
+\label{fig:topic-submission-overview}
+\end{figure*}
+
+Our unit of analysis is the \emph{submitting actor}, not legal status within the Treaty. We therefore retain consultative parties, non-consultative parties, observers, expert bodies, and Secretariat submissions whenever they appear in the document archive. The reason is substantive: this paper studies issue positioning and agenda formation in the ATS document system, not formal voting power at the final consensus stage. These actor types are not institutionally equivalent, but they all contribute to what enters the agenda, how issues are framed, and which concerns are repeatedly linked in practice. Mixing them would be inappropriate for a model of formal decision authority; it is appropriate for a model of revealed issue activity in the broader ATS arena \cite{Sampaio2022,AntarcticTreatyHandbook}.
+
+
 \subsection{Constructing the Space of Concerns}
-Let $x(a,i)$ denote the number of submissions by agent $a$ on topic $i$. We define the normalized activity share
+Let $x(a,i)$ denote the number of submissions by actor $a$ on topic $i$, where actors include consultative parties, non-consultative parties, observers, relevant organizations, and the ATS Secretariat whenever they appear as submitters in the archive. We define the normalized activity share
 \begin{equation}\label{eq:activity_share}
 \pi(a,i) = \frac{x(a,i)}{\sum_j x(a,j)},
 \end{equation}
@@ -173,179 +266,219 @@ and the system-wide importance of topic $i$ as
 Z_i = \frac{\sum_c x(c,i)}{\sum_{c,j} x(c,j)}.
 \end{equation}
 
-The Revealed Policy Advantage (RPA) is then
+The Revealed Policy Advantage (RPA; an RCA-style specialization index) is then
 \begin{equation}\label{eq:rpa}
     \rho(a,i) = \frac{\pi(a,i)}{Z_i}.
 \end{equation}
 
 Topics are linked by proximity
 \begin{equation}\label{eq:proximity}
-\begin{aligned}
 \phi(i,j)
-&= \min \Bigl\{\\
-    &P\bigl(\rho(i)\ge 1 \mid \rho(j)\ge 1\bigr),\\
-    &P\bigl(\rho(j)\ge 1 \mid \rho(i)\ge 1\bigr)\\
-\Bigr\}
+=
+\min\!\left\{
+\begin{aligned}
+&\Pr\!\bigl(\rho(a,i) > 1 \mid \rho(a,j) > 1\bigr),\\
+&\Pr\!\bigl(\rho(a,j) > 1 \mid \rho(a,i) > 1\bigr)
 \end{aligned}
+\right\}.
 \end{equation}
-yielding a weighted topic network.
+yielding a weighted topic network. Taking the minimum of the two conditional probabilities serves three purposes. First, using conditional rather than joint probability controls for differences in topic prevalence: two relatively rare topics can still register as close if specialization in one reliably coincides with specialization in the other, whereas a joint probability would mechanically shrink with rarity. Second, taking the minimum prevents one-way dependence from overstating proximity. If a niche topic almost always appears alongside a broad topic, ($P(\text{broad}\mid \text{niche})$) may be high even when the reverse is low; the minimum forces the proximity to be limited by that weaker direction. Third, this yields a symmetric measure of relatedness, so the link between topics reflects mutual co-specialization rather than directional inclusion. Probabilities are estimated empirically across members within the relevant analysis window.
 We construct both an aggregate space (for the regime-wide map) and time-resolved spaces by rebuilding proximities within each time window, allowing the topology itself to evolve rather than assuming a fixed structure over time.
 This adapts the product-space proximity logic from economic complexity to governance concerns \cite{Hidalgo2007}.
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig2_space_of_concerns_ribbon_full.pdf}
+\caption{\textbf{Full ribbon view of RPA-specialized topic supports across adjacent periods.} Topics are held in fixed rows across time windows. For each adjacent period pair, a country contributes to every topic pair in which it has RPA $> 1$ at both ends, and each country's total contribution is weighted to sum to one within that period transition. Ribbon width therefore reflects aggregated country support across all specialized topic-to-topic continuities and shifts, rather than static proximity magnitude. The view complements the filtered main-text ribbon by showing the full set of RPA-qualified supports.}
+\label{fig:space-ribbon-full}
+\end{figure*}
 
-\subsection{Pioneering Behavior and Strategic Group Analysis}
-To move beyond static measures of engagement and capture the temporal dynamics of strategy, we define an early-adoption residual designed to quantify how proactive each actor is, conditional on its breadth of specialization. The calculation proceeds in four steps.
+
+\subsection{Hazard Model for Local Topic Adoption}
+To test whether agenda expansion is local in the concern space, we estimate a rolling member-level hazard model on adjacent annual windows. For each member $a$, topic $i$, and transition $t-1 \rightarrow t$, an observation is included only if the topic is at risk:
+\[
+\text{at-risk}_{a i t}=1 \iff \rho_{a i, t-1} < 1.
+\]
+The binary outcome is then
+\[
+y_{a i t}=1 \iff \rho_{a i, t} \ge 1 \ \text{and}\ \rho_{a i, t-1} < 1.
+\]
+Within each member-window panel we fit a logistic model with standardized covariates
+\begin{dmath}
+\Pr(y_{a i t}=1)=\mathrm{logit}^{-1}\!\left(
+\beta_0
+\!+\!\beta_d\,\tilde d_{a i, t-1}
+\!+\!\beta_b\,\widetilde{\mathrm{breadth}}_{a,t-1}
+\!+\!\beta_p\,\widetilde{\mathrm{pop}}_{i,t-1}
+\right),
+\end{dmath}
+where $d_{a i, t-1}$ is the minimum concern-space distance from topic $i$ to the member's previously active topics, $\mathrm{breadth}_{a,t-1}$ is the number of previously active topics, and $\mathrm{pop}_{i,t-1}$ is prior topic popularity (share of members with $\rho \ge 1$). The plotted heatmap reports $\beta_d$ by member and window; negative values indicate preferential expansion into nearby topics. We summarize each window with the median and interquartile range across members.
+In the main specification, distances are computed from the aggregate concern space; Appendix \cref{fig:hazard-space-sensitivity} reports sensitivity to instantaneous and cumulative-lagged spaces.
+For regime-persistence diagnostics, we assign each member-window a dominant regime from region shares computed on $\max(\rho-1,0)$ over the fixed three-region topic partition used in \cref{fig:portfolio_space_ridgelines}, then tabulate member transitions across adjacent windows. We report same-regime, adjacent-regime, and far-jump ($1\leftrightarrow3$) transition rates.
+
+\subsection{Sequential Split-Support Model of Portfolio Dynamics}
+To test whether the ATS can be approximated by a simple generative mechanism, we fit a reduced-form model conditioned on three observed objects: (i) the active actor set in each year, (ii) actor-specific budgets $K_{at}$, and (iii) a fixed pooled concern-space matrix $\phi$ from \cref{eq:proximity}. The goal is not to explain who becomes active or how budgets arise, but whether the observed organization of interests can be reproduced once those constraints are given.
+
+A single support equation proved too blunt because it conflated topic retention and topic entry. We therefore model portfolio change sequentially. Let $x_{ait}$ denote actor $a$'s submission mass on topic $i$ at time $t$, let $x_{at}$ denote the corresponding topic-allocation vector, and let $K_{at}=\sum_i x_{ait}$ be the observed total budget in that year. Define the support indicator $z_{ait}=1[x_{ait}>0]$ and the support set $S_{at}=\{i:z_{ait}=1\}$. We write $s_{ai,t-1}=x_{ai,t-1}/K_{a,t-1}$ for the prior topic share and $p_{i,t-1}$ for prior topic popularity. The latent Bernoulli draws $z^{\mathrm{ret}}_{ait}$ and $z^{\mathrm{ent}}_{ait}$ indicate whether a previously held topic is retained and whether a previously absent topic is entered, respectively; $\alpha_i^{\mathrm{ret}}$, $\alpha_i^{\mathrm{ent}}$, and $\alpha_i$ are topic-specific intercepts, while $\delta_{\mathrm{ret}}$ and $\delta_{\mathrm{ent}}$ are stage-specific intercept shifts. For topics already in the portfolio, retention is
+\begin{dmath}
+\Pr\!\left(z^{\mathrm{ret}}_{ait}=1 \mid z_{ai,t-1}=1\right)
+=
+\mathrm{logit}^{-1}\!\Bigl(
+\alpha_i^{\mathrm{ret}}
+\!+\!
+\delta_{\mathrm{ret}}
+\!+\!
+\lambda_{\mathrm{ret}} s_{ai,t-1}
+\!+\!
+\gamma_{\mathrm{ret}} p_{i,t-1}
+\Bigr).
+\end{dmath}
+For topics not yet held, entry is
+\begin{dmath}
+\Pr\!\left(z^{\mathrm{ent}}_{ait}=1 \mid z_{ai,t-1}=0\right)
+=
+\mathrm{logit}^{-1}\!\Bigl(
+\alpha_i^{\mathrm{ent}}
+\!+\!
+\delta_{\mathrm{ent}}
+\!+\!
+\beta_{\mathrm{ent}}\,\mathrm{Fit}_{ait}
+\!+\!
+\gamma_{\mathrm{ent}} p_{i,t-1}
+\Bigr),
+\end{dmath}
+with
+\begin{dmath}
+\mathrm{Fit}_{ait}
+=
+\frac{1}{|S_{a,t-1}|}
+\sum_{j\in S_{a,t-1}}
+\phi(i,j),
+\end{dmath}
+so new topics are favored when they are close to the actor's prior support in the native concern space. The same $\mathrm{Fit}_{ait}$ term enters the allocation stage below as the average $\phi$-proximity of candidate topic $i$ to the actor's previous support.
+
+After combining retained and entered topics into the support set $S_{at}$, the observed budget $K_{at}$ is allocated across the selected support by
+\begin{dmath}
+x_{at} \sim \mathrm{Multinomial}\!\Bigl(K_{at}, \mathrm{softmax}\!\Bigl( \alpha_i \!+\! \rho s_{ai,t-1} \!+\! \beta\,\mathrm{Fit}_{ait} \!+\! \gamma p_{i,t-1}\Bigr)_{i\in S_{at}} \Bigr).
+\end{dmath}
+Topic intercepts $\alpha_i$, $\alpha_i^{\mathrm{ent}}$, and $\alpha_i^{\mathrm{ret}}$ are empirical baselines estimated from pooled topic mass, pooled entry frequency, and pooled retention frequency. The free coefficients $(\rho,\beta,\gamma)$, $(\delta_{\mathrm{ent}},\beta_{\mathrm{ent}},\gamma_{\mathrm{ent}})$, and $(\delta_{\mathrm{ret}},\lambda_{\mathrm{ret}},\gamma_{\mathrm{ret}})$ are estimated by maximum likelihood. A final scalar intercept calibration is then applied to the entry and retention logits during simulation to align support levels while keeping the fitted slopes fixed.
+
+This sequential split-support model performs well despite its simplicity. The fitted allocation stage remains strongly persistent and local ($\rho=4.29$, $\beta=3.97$), the entry stage is also local ($\beta_{\mathrm{ent}}=0.58$), and retention favors previously important topics ($\lambda_{\mathrm{ret}}=0.42$). After the intercept calibration, the model reproduces mean actor breadth (observed $3.35$, simulated $3.32$), mean topic popularity (observed $2.45$, simulated $2.45$), annual variation in breadth ($r=0.87$), annual variation in topic popularity ($r=0.98$), and local entry rank in $\phi$-space (observed $0.677$, simulated $0.679$). The main implication is that a large share of ATS portfolio structure can be generated by selective persistence, local entry, and constrained allocation, without requiring actors to diffuse uniformly across the issue space.
+
+Approximate parameter intervals tell the same story. In the split model, allocation persistence and local fit remain clearly positive ($\rho=4.29$, 95\% Wald interval $[3.87,4.71]$; $\beta=3.97$, $[2.92,5.02]$), the entry stage remains local ($\beta_{\mathrm{ent}}=0.58$, $[0.19,0.97]$), and retention continues to favor previously important topics ($\lambda_{\mathrm{ret}}=0.42$, $[0.11,0.74]$; \cref{fig:split-support-params}). By contrast, the retention-stage popularity term is imprecise and overlaps zero, suggesting that the robust part of the mechanism lies in persistence, local entry, and prior portfolio weight rather than in a strong retention response to topic-wide popularity.
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig53_split_support_parameter_uncertainty.pdf}
+\caption{\textbf{Approximate parameter uncertainty for the split-support model.} Points show maximum-likelihood estimates and horizontal lines show approximate 95\% Wald intervals from the inverse-Hessian for the allocation, entry, and retention stages. The strongest and most stable effects are positive persistence and local fit in the allocation stage, positive local fit in the entry stage, and positive prior-share effects in the retention stage. The retention-stage popularity effect is comparatively imprecise and overlaps zero.}
+\label{fig:split-support-params}
+\end{figure*}
+
+The model's strong fit could in principle be an artifact of later, denser ATS years. To probe that possibility, we repeated the full fitting and simulation exercise after randomly thinning the raw submissions within each year, rebuilding the actor-topic panels each time while holding the pooled concern space fixed. The split-support model remains the best simple specification across these thinned corpora: at 40--80\% retention of the raw submissions, mean breadth-tracking correlations remain between $0.78$ and $0.86$, above the pooled-support alternative ($0.69$--$0.75$), while local-entry rank stays close to the observed value (difference at most $0.016$; \cref{fig:split-support-thinning}). This suggests that the split result is not simply an artifact of dense late-period data.
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig52_split_support_subsample_robustness.pdf}
+\caption{\textbf{Split-support validation remains strong under year-balanced thinning of the raw ATS corpus.} We randomly retain 40\%, 60\%, or 80\% of raw submissions within each year, rebuild the actor-topic panels, refit the one-stage, pooled-support, and split-support models, and compare their implied histories to the corresponding thinned ATS. Points at 1.0 show the full-data fit. (A) Correlation between simulated and observed mean active topics per actor. (B) Correlation between simulated and observed mean topic popularity. (C) Mean $\Phi$-rank of newly entered topics; the dashed line marks the random baseline at $0.5$. Across thinned corpora, the split-support model remains the strongest simple model on breadth tracking while preserving the local-entry pattern seen in the observed ATS. Error bars show one standard deviation across repeated thinning draws.}
+\label{fig:split-support-thinning}
+\end{figure*}
+
+
+\subsection{Pioneering Timing and Regime Position}
+To characterize how early agenda entry relates to the regime structure, we define a member-level pioneer index and then relate it to breadth and regime position.
 
 First, we establish a topic emergence year for each policy topic. This is defined as the first year in which the cumulative number of submissions on that topic reaches 15\% of its total historical volume. This metric identifies when a topic transitions from a niche issue to part of the mainstream agenda.
 
-Second, we determine a country entry year for each country-topic pair. Using a 5-year rolling window to smooth out short-term fluctuations, we calculate the Revealed Comparative Advantage (RCA) for every country in every topic for each window. A country is considered to have ``entered'' a topic in the first year its RCA value is greater than or equal to 1.0, signifying specialization.
+Second, we determine a member entry year for each member-topic pair. Using a 5-year rolling window to smooth out short-term fluctuations, we calculate RPA for every member in every topic for each window. A member is considered to have ``entered'' a topic in the first year its RPA value is greater than or equal to 1.0, signifying specialization.
 
-Third, we calculate a relative pioneer index. For each country-topic specialization, we compute a ``relative lag'': the difference between the country's entry year and the topic's emergence year (or the country's first year of activity, whichever is later). A negative lag indicates pioneering behavior, i.e. adopting a topic before it becomes mainstream, while a positive lag indicates a follower. The pioneer index for a given country is the negative of its average relative lag across all topics it specializes in, such that a higher, positive score corresponds to earlier adoption.
+Third, we calculate a relative pioneer index. For each member-topic specialization, we compute a ``relative lag'': the difference between the member's entry year and the topic's emergence year (or the member's first year of activity, whichever is later). A negative lag indicates pioneering behavior, i.e. adopting a topic before it becomes mainstream, while a positive lag indicates a follower. The pioneer index for a given member is the negative of its average relative lag across all topics it specializes in, such that a higher, positive score corresponds to earlier adoption.
 
-Finally, we define the strategic groups using the early-adoption residual. A quadratic curve was fitted to the data of pioneer index versus engagement breadth (number of specialized topics) to model the system's main behavioral trend. We then calculated the residual for each actor (their vertical distance from this curve). Actors were categorized into three groups based on the tertiles of the residual distribution: the top third were labeled over-performers, the bottom third under-performers, and the middle third on-trend. This method allows for a robust, distribution-agnostic classification of actors who significantly deviate from the expected timing given their breadth.
-
-\subsection{Latent Interest Diffusion}
-
-Latent interests are inferred via diffusion:
-\[
-f^{(t+1)}_a = \alpha \hat{\theta}_a + (1-\alpha) D^{-1} W f^{(t)}_a,
-\]
-where $W$ is the proximity matrix and $\alpha$ controls retention of revealed signal. We report results integrated over $\alpha$ (averaging across a grid), so inference does not hinge on a single diffusion setting.
-
-Specialism is quantified as excess KL divergence relative to a one-hot baseline diffusion.
-
-\subsection{Inferring Strategic Behavior Regimes using Archetype Analysis}
-\subsubsection{Time-Varying Archetype Analysis}
-To characterize the evolution of extreme states within the system, we employed Time-Varying Archetype Analysis (AA). Unlike centroid-based clustering (e.g., K-means) which identifies average profiles, Archetype Analysis identifies ``pure types'' or extremes located on the convex hull of the data distribution \cite{cutler1994archetypal}. The aim is to find extreme dimensions that represent idealized modes of engagement, allowing us to interpret strategic behavior in terms of archetypal profiles rather than average tendencies. This is particularly relevant in the context of the Antarctic Treaty System, where strategic behavior may manifest as distinct modes. It is therefore expected that members will show mixtures of these modes, rather than clustering around a single average profile.
-
-\subsubsection{Mathematical Formulation}
-Archetype Analysis performs a constrained matrix factorization of a data matrix $X \in \mathbb{R}^{n \times m}$, where $n$ is the number of observations and $m$ is the number of metrics. For a given number of archetypes $k$, the algorithm seeks to find a set of archetypes $Z \in \mathbb{R}^{k \times m}$ governed by two primary constraints:
-\begin{enumerate}
-    \item Each observation is a convex combination of the archetypes: $X \approx AZ$, where $A \in \mathbb{R}^{n \times k}$ is the matrix of mixing coefficients.
-    \item Each archetype is a convex combination of the actual data points: $Z = BX$, where $B \in \mathbb{R}^{k \times n}$ defines the archetypes as weighted averages of observations.
-\end{enumerate}
-
-The optimization objective is to minimize the Residual Sum of Squares (RSS):
+Finally, we summarize each member's regime position using the same three-region partition employed in \cref{fig:portfolio_space_ridgelines}. Let $\omega_{ar}$ denote member $a$'s share of excess specialization signal in regime $r$, and let $m_a=\max_r \omega_{ar}$ denote the member's regime anchoring. We then estimate a simple cross-sectional model
 \begin{equation}
-    \min_{A, B} \| X - ABX \|^2_F
+    \mathrm{PioneerIndex}_a = \alpha + \beta\,\mathrm{Breadth}_a + \lambda\,m_a + \delta_{R(a)} + \varepsilon_a,
 \end{equation}
-subject to the constraints:
-\begin{equation}
-    a_{ij} \ge 0, \sum_{j=1}^k a_{ij} = 1 \quad \text{and} \quad b_{ji} \ge 0, \sum_{i=1}^n b_{ji} = 1
-\end{equation}
-This formulation ensures that the archetypes are physically interpretable as idealized extremes of the observed population.
-
-\subsubsection{Feature Standardization and Scaling}
-To ensure that the archetype geometry was not biased by disparate feature scales (e.g., entropy in bits vs. excess metrics), we applied Z-score standardization. Features were scaled globally across the entire temporal extent of the dataset to maintain a consistent coordinate system:
-\begin{equation}
-    x'_{i} = \frac{x_i - \mu_{global}}{\sigma_{global}}
-\end{equation}
-This global scaling allows for the tracking of absolute movements in the ``frontier'' of the data over time, rather than just relative changes within a single year.
-
-\subsubsection{Temporal Rolling Windows and Longitudinal Stability}
-To capture the dynamic evolution of these extremes, archetypes were fitted using a sliding temporal window of $W = 5$ years. For each year $t$, the algorithm was trained on the subset of data points $X_t$ falling within the interval $[t - \lfloor W/2 \rfloor, t + \lfloor W/2 \rfloor]$.
-
-To resolve the ``label switching'' problem inherent in iterative matrix factorization, we implemented a longitudinal tracking mechanism. Archetypes in window $t$ were matched to those in window $t-1$ by minimizing the total Euclidean distance between archetype coordinates. This assignment was solved using the Kuhn-Munkres (Hungarian) algorithm:
-\begin{equation}
-    \min \sum_{i=1}^k d(z_{i, t-1}, z_{j, t})
-\end{equation}
-where $d(\cdot)$ is the Euclidean distance in the feature space. This ensures that archetype identities (e.g., ``the high-diversity extreme'') remain consistent throughout the trajectory, enabling a stable longitudinal analysis.
-
-\subsection{Interpreting Latent Interests and Methodological Limits}
-Concern-space proximities capture observed co-specialization patterns; they can reflect procedural bundling or path-dependent collaboration, not only intrinsic topical similarity. The diffusion operator smooths revealed profiles into their structural neighbourhoods and should be read as a projection, not a behavioural model of negotiation. Excess Kullback-Leibler (KL) divergence flags misalignment between revealed and structure-implied profiles but does not diagnose intent—capacity constraints, domestic priorities, or self-restraint can yield similar gaps. KL asymmetry and sensitivity to low probabilities are handled with smoothing and a one-hot baseline, giving a conservative lower bound on divergence expected from pure specialization. Quantitative diagnostics should therefore be paired with qualitative knowledge of mandates and capabilities.
-
-Diffusion is structural rather than causal; Specialism signals concentration or misalignment, not deception; and ``latent'' interest refers to structure-implied engagement, not unobserved preferences. Similarly, behavioral regime classification captures temporal patterns in trajectories but does not directly infer strategic intent—volatile behavior may reflect responsiveness, capacity constraints, or institutional role rather than deliberate exploration. These caveats bound the interpretive claims of the analysis.
+where $\mathrm{Breadth}_a$ is the number of specialized topics and $R(a)$ is the member's dominant regime. In the fitted data, both breadth ($\beta=0.26$, $p=0.001$) and regime anchoring ($\lambda=17.70$, $p<0.001$) are positively associated with earlier entry, while dominant-regime indicators are not distinguishable from zero. This is why the main-text pioneer result is framed in terms of regime position and anchoring rather than a distinct ``pioneer type'' attached to one regime alone.
 
 \subsection{Sensitivity Analysis}
-To evaluate the stability of the observed structure, we performed a sensitivity analysis by removing each country from the space of concerns and computing the root mean squared error between the proximity matrix of the full space and the space without that country. The process is repeated by iteratively removing the country that produces the maximal difference between the current set of countries and the set of countries without that country. This greedy approach helps us understand what each country contributes to the construction of the space of concerns in Antarctica.
+To evaluate the stability of the observed structure, we performed a sensitivity analysis by removing each member from the space of concerns and computing the root mean squared error between the proximity matrix of the full space and the space without that member. The process is repeated by iteratively removing the member that produces the maximal difference between the current set of members and the set of members without that member. This greedy approach helps us understand what each member contributes to the construction of the space of concerns in Antarctica.
 
-In \cref{fig:sensitivity-analysis}, we observe that the space of concerns is robust against the removal of a large fraction of countries. This is evidenced by the relatively gradual increase in spectral distance observed through the first 60\% of removals, suggesting that the global structure of the space is maintained even when many individual contributors are excluded. This robustness implies a degree of redundancy or modularity in how countries co-structure the space, where no single actor—apart from a few key exceptions—critically determines the overall topology.
+In \cref{fig:sensitivity-analysis}, we observe that the space of concerns is robust against the removal of a large fraction of members. This is evidenced by the relatively gradual increase in spectral distance observed through the first 60\% of removals, suggesting that the global structure of the space is maintained even when many individual contributors are excluded. This robustness implies a degree of redundancy or modularity in how members co-structure the space, where no single actor—apart from a few key exceptions—critically determines the overall topology.
 
-\begin{figure} \label{fig:heatmap_concerns}
+Because early-adoption metrics depend on topic-emergence timing, we also recomputed topic emergence years over cumulative-volume thresholds from 5\% to 30\% (\cref{fig:emergence-threshold-sensitivity}). Median emergence timing remains stable, and shifts relative to the 15\% baseline are generally small across topics, indicating that the pioneer timing results are not driven by a single percentile choice.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.45\textwidth]{./figures/fig14_emergence_threshold_sensitivity.pdf}
+  \caption{\textbf{Sensitivity of topic emergence timing to cumulative-volume thresholds.} Left: topic-level emergence years recomputed across thresholds from 5\% to 30\% of cumulative topic volume (thin lines), with median and interquartile range across topics overlaid. Right: distribution of emergence-year shifts relative to the 15\% baseline. Across thresholds, median timing and interquartile spread remain stable, and year shifts are generally modest.}
+  \label{fig:emergence-threshold-sensitivity}
+\end{figure}
+
+We also tested whether locality findings depend on how the concern space is constructed. \Cref{fig:hazard-space-sensitivity} compares three distance definitions: aggregate full-history, instantaneous previous-window, and cumulative-lagged (all data up to $t-1$). The pooled distance effect remains negative in all three cases (aggregate: $-0.589$, instantaneous: $-0.542$, cumulative-lagged: $-0.538$), indicating robust local adoption despite expected variation in sparsity and edge availability.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.45\textwidth]{./figures/fig15_hazard_space_sensitivity.pdf}
+  \caption{\textbf{Hazard sensitivity to concern-space definition.} Left: period-wise median (line) and interquartile range (band) of the distance coefficient under three space constructions. Right: pooled member-clustered logistic coefficients (95\% CI) for the distance term. Across aggregate, instantaneous, and cumulative-lagged spaces, coefficients remain negative, supporting locality of topic adoption.}
+  \label{fig:hazard-space-sensitivity}
+\end{figure}
+
+To verify that regime-persistence claims are not an artifact of a specific temporal aggregation, we compare dominant-regime transitions under annual and rolling 5-year windows in \cref{fig:regime-window-sensitivity}. The annual window captures more tactical switching, while the 5-year window captures the longer-run center of gravity; in both cases, transitions remain overwhelmingly local (same or adjacent regime), with rare direct Regime 1$\leftrightarrow$Regime 3 jumps.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=\textwidth]{./figures/fig16_regime_window_sensitivity.pdf}
+  \caption{\textbf{Regime-transition stability under annual versus 5-year windows.} (A) Row-normalized dominant-regime transition matrix for annual windows. Off-diagonal mass is concentrated in adjacent moves through Regime 2, with limited direct Regime 1$\leftrightarrow$Regime 3 switching. (B) The same matrix for rolling 5-year windows, showing stronger diagonal concentration and reduced long-jump mass after temporal smoothing. (C) Side-by-side comparison of summary rates confirms this pattern: same-regime persistence is higher in 5-year windows, while far Regime 1$\leftrightarrow$Regime 3 jumps are lower; in both windows, same-or-adjacent transitions dominate.}
+  \label{fig:regime-window-sensitivity}
+\end{figure*}
+
+\begin{figure}
   \centering
   \includegraphics[width=0.45\textwidth]{./figures/fig6_appendix_heatmap_concerns.pdf}
   \caption{\textbf{Concern proximity}. The proximity between topics is shown as a heatmap, where deeper orange indicates closer relationships. The proximity is defined as the minimum conditional probability that an actor specializing in one topic also specializes in the other (see Equation \cref{eq:proximity}). This reveals how closely related different policy domains are within the space of concerns.}
+  \label{fig:heatmap_concerns}
 \end{figure}
 
-However, we also observe distinct inflection points in the curve, where the removal of specific countries results in sharp increases in spectral distance. Notably, countries such as China, Germany, France, and the United Kingdom contribute disproportionately to the coherence of the product space. Their removal induces substantial distortions in the spectral representation, indicating their role as structural anchors or bridges across different regions of the space. In contrast, even countries with large economic output, such as the United States and India, show a more subdued effect on the global geometry, underscoring that structural importance is not merely a function of scale but also of positionality within the network.
+However, we also observe distinct inflection points in the curve, where the removal of specific members results in sharp increases in spectral distance. Notably, members such as China, Germany, France, and the United Kingdom contribute disproportionately to the coherence of the product space. Their removal induces substantial distortions in the spectral representation, indicating their role as structural anchors or bridges across different regions of the space. In contrast, even members with large economic output, such as the United States and India, show a more subdued effect on the global geometry, underscoring that structural importance is not merely a function of scale but also of positionality within the network.
 
-\begin{figure}\label{fig:rca_heatmap}
-  \centering
-  \includegraphics[width=0.45\textwidth]{./figures/fig7_rca_joint_heatmap.pdf}
-  \caption{\textbf{Revealed Competitive Advantage (RCA) of actors in the Antarctic Treaty System.} The heatmap depicts the relative interest each actor has through the submission records of working and information papers to the Antarctic Treaty System. Note that the values are on a log scale (with $\log(0)$ being white). The marginal panel plots show the average activity of actors (right) and topics (top). From the heatmap, we can observe how singular issue actors (e.g., IPY-IPO, WTO, Greece, Denmark, Iceland) have a narrow policy focus, while countries like the United States, Australia, and the United Kingdom demonstrate broad engagement across multiple topics. The heatmap further reveals how more active actors share a similar interest profile with less active topics on the left and more active topics on the right. The topics with the highest RPA and general activity are those centered around the state of the region (e.g., marine acoustics, environmental reports, and long-term planning), while areas with less competitive activity reflect shared concerns such as legal issues, science issues, and cooperations with other organizations.}
-\end{figure}
+Toward the final stages of the removal sequence, the spectral distance rapidly approaches its maximum, signifying a collapse of the original structure. Interestingly, some of the members responsible for this final increase—such as Sweden, Venezuela, and Romania—are not necessarily central by economic metrics but appear to occupy topologically unique or peripheral positions that preserve fragile clusters or minor components.
 
-Toward the final stages of the removal sequence, the spectral distance rapidly approaches its maximum, signifying a collapse of the original structure. Interestingly, some of the countries responsible for this final increase—such as Sweden, Venezuela, and Romania—are not necessarily central by economic metrics but appear to occupy topologically unique or peripheral positions that preserve fragile clusters or minor components.
-
-Overall, the analysis highlights the asymmetric role of countries in shaping the global structure of the space of concerns. While many actors contribute incrementally, a small subset exerts an outsized influence on the cohesion and organization of the space. This spectral sensitivity analysis thus offers a principled approach for identifying structurally pivotal actors beyond conventional economic indicators.
+Overall, the analysis highlights the asymmetric role of members in shaping the global structure of the space of concerns. While many actors contribute incrementally, a small subset exerts an outsized influence on the cohesion and organization of the space. This spectral sensitivity analysis thus offers a principled approach for identifying structurally pivotal actors beyond conventional economic indicators.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.45\textwidth]{./figures/fig8_sensitivity_removal_space_full.pdf}
   \caption{
-    \textbf{Sensitivity analysis of the space of concerns.} We tested the robustness of the construction of the space of concerns by removing a country and computing the root mean squared error between the proximity matrix of the full space and the space without that country. We greedily remove the country that contributed the most to the difference between the space of concerns with all countries, and those removed from it. The annotation shows which country was removed as we move from left to right on the x-axis. The figure shows how the space of concerns changes gradually as countries are removed prior to construction. An activity effect can be observed as early signatories of the treaty show up as having the highest impact on the construction of the space. Crucially, the difference between the proximities of the topics is relatively small (less than 0.1 root mean squared error). This indicates that the space is formed through the signatories, but shows little sensitivity to singular removal, indicating a distribution of contributions to the space of concerns.
+    \textbf{Sensitivity analysis of the space of concerns.} We tested the robustness of the construction of the space of concerns by removing a member and computing the root mean squared error between the proximity matrix of the full space and the space without that member. We greedily remove the member that contributed the most to the difference between the space of concerns with all members, and those removed from it. The annotation shows which member was removed as we move from left to right on the x-axis. The figure shows how the space of concerns changes gradually as members are removed prior to construction. An activity effect can be observed as early signatories of the treaty show up as having the highest impact on the construction of the space. Crucially, the difference between the proximities of the topics is relatively small (less than 0.1 root mean squared error). This indicates that the space is formed through the signatories, but shows little sensitivity to singular removal, indicating a distribution of contributions to the space of concerns.
   }
   \label{fig:sensitivity-analysis}
 \end{figure}
 
-\begin{figure*}\label{fig:space_network_metrics}
+\begin{figure*}
 \includegraphics[width = \textwidth]{./figures/fig9_space_of_concerns_metrics.pdf}
 \caption{\textbf{Network properties of the space of concerns in the ATS.} The space of concerns codifies governance across the ATS. Over time the topics are well connected but show low clustering, implying a broadly connected network without tight local cliques. Betweenness stays low and stable, suggesting no single topic consistently acts as a critical bridge. Connectivity rises with the entry of new members in the 1990s, visible in higher density, giant component size, and increases in degree and closeness. Outliers persist across the period, indicating some topics are consistently more or less central than the median without dominating the overall structure. Eigenvector centrality is comparatively flat with a slight downward trend, consistent with influence becoming more evenly distributed as the space matures.}
+\label{fig:space_network_metrics}
 \end{figure*}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.45\textwidth]{figures/fig10_pioneer_residuals_vs_gdp.png}
-\caption{\textbf{Early-Adoption Residuals vs. Economic Capacity.} Scatter plot of the residuals from the early-adoption trendline versus GDP per capita. A positive residual indicates over-performance (earlier adoption than expected for their breadth), while a negative residual indicates under-performance. The lack of a clear trend demonstrates that strategic timing is not a simple function of wealth.}
-    \label{fig:residuals_gdp}
-\end{figure}
 
 \section{Supplementary Results}
 \subsection*{Co-sponsorship clusters}
 \begin{figure*}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{./figures/fig11_overview_all.png}
-\caption{\textbf{Contributions to the ATS are uneven and clustered.} Four actor communities (Leiden, 1959--2023) emerge from co-sponsorship patterns (A) and hold distinct submission portfolios (B). A dense core of mostly Western countries (blue) dominates volume and spans many topics, interacting broadly with other clusters. Peripheral clusters focus on narrower bundles: cooperation with other organizations (red), educational issues (purple), and sub-glacial lakes and science niches (green). Embedding the clusters in the space of concerns (C) highlights where each dominates; callouts mark highest relative-interest topics and dashed circles indicate topics with RCA $\geq$ 1. Topic ownership shifts over time (D): pixels show each cluster’s relative intensity by year, tracing how agenda control moves across communities.}
+\caption{\textbf{Co-sponsorship communities have distinct RPA-specialized profiles in the ATS.} Three Leiden communities identified from the aggregate co-sponsorship network are shown as dashed outlines in panel A. Panel B reports, for each topic with at least one specialized community, the normalized share of community support among cases with RPA $> 1$. Panel C places those same communities into the concern space: node fill colors denote broad thematic families, dashed colored rings mark topics where a community has RPA $\geq 1$, and callouts label each community's highest-RPA topic. Panel D shows the dominant specialized community by topic over time, with cells fading to white when no community exceeds RPA $=1$ and color intensity scaled by the winning community's RPA strength. Together, the panels show asymmetric but overlapping community specialization rather than a uniform division of issue activity.}
 \label{fig:actors_on_space}
 \end{figure*}
 
-Mapping actors onto this terrain (\cref{fig:actors_on_space}) shows clustered, asymmetric contributions. Panels A/B (aggregate) reveal four Leiden communities \cite{Traag2019}: a dominant blue core of longstanding consultative parties with permanent stations and logistics (e.g., United States, United Kingdom, Australia) that spans governance anchors and operations (blue dominates most topic bars); a red community mixing organizations (IPY-IPO, IUCN) with mid-activity or newer programs (e.g., Turkey, Bulgaria, Czech Republic, Malaysia) that takes the largest share on cooperation-with-other-organizations and adjacent governance items; a purple group anchored by smaller, education-focused programs (e.g., Peru, Uruguay) centered on the educational-issues callout; and a green cluster led by science-intensive programs (China, India, Russia) that targets a narrow science/operations niche around sub-glacial lakes and environmental domains analysis.
+Mapping actors onto this terrain (\cref{fig:actors_on_space}) shows clustered, asymmetric specialization. Panels A/B reveal three Leiden communities \cite{Traag2019}: one broad community that covers much of the procedural--environmental core, and two smaller communities that dominate narrower specialized slices of the agenda. In the current specialization view, the clearest community anchors are Cooperation with Other Organisations, Educational issues, and Operation of the CEP.
 
-Panel C embeds these clusters into the space of concerns, marking each cluster’s highest relative-interest topics (RCA $\geq 1$) with dashed circles, and panel D tracks how dominance shifts over time. We can coarsely delineate between four engagement modes based on where each cluster concentrates its influence.
-
-Backbone cluster (blue). The blue cluster maintains broad dominance across governance and operations, with only a modest dip in the 1990s as new entrants expand participation. Foundational topics—marine acoustics, management plans, inspections, and opening statements—remain blue-led throughout, indicating that early signatories anchor the procedural spine even as participation broadens.
-
-Coordination cluster (red). The red community surges in the early 2000s around cooperation with other organizations, planning, and status reports, coinciding with the International Polar Year and tourism guidelines. The mix of time-bounded coordination bodies (IPY-IPO) and smaller or newer national programs aligns with this timing: their influence concentrates when cross-institutional coordination becomes salient, then tapers as those agenda items recede.
-
-Educational/procedural cluster (purple). The purple group peaks in the late 1990s/early 2000s on educational and adjacent procedural issues. Many of these actors run seasonal or small-footprint programs (e.g., Uruguay’s Artigas base, Peru’s Machu Picchu station), which aligns with a strategy of targeted visibility through education and outreach rather than broad operational control.
-
-Science/extraction cluster (green). The green cluster gains traction in the 2010s on science and resource-extraction niches—drilling, sub-glacial lakes, biological prospecting—aligning with the expansion of large national programs (China’s multi-station network, India’s Maitri/Bharati, Russia’s long-standing multi-station presence). Its appearances are sharp and bounded, reflecting targeted pushes into specific opportunity zones rather than broad agenda control.
-
-While the blue cluster is dominant, other clusters show a greater intensity in interest in specific clusters, indicating that influence is both concentrated and distributed depending on the topic. The regime thus exhibits a layered structure with a procedural core held by longstanding actors, and specialized branches where newer or niche programs can assert influence through targeted engagement.
-
-\subsection*{Archetype robustness}
-We validate the archetype specification along five dimensions (Figure \ref{fig:archetype_robustness}). (A) Bootstrap stability: refitting on resampled rows keeps each archetype concentrated around its baseline location, indicating that the geometry is not a sampling artifact. (B) Actor jackknife: removing each of the five most-active actors changes coordinates only moderately (L2 shifts range 0.007--0.380), indicating that no single major contributor determines the structure. (C) Model order: reconstruction error falls rapidly from 92.12 ($k=2$) to 3.57 ($k=3$), then changes only marginally and non-monotonically for higher $k$, consistent with an elbow at three archetypes rather than unrestricted complexity growth. (D) Feature sensitivity: alternative feature specifications (entropy variant, standardized features, and KL-only) move archetypes but preserve separation of strategic extremes. The largest shifts occur under KL-only (mean shift 8.51, max 10.30), indicating that KL defines the dominant axis of variation, while entropy contributes nonlinear refinement that is most visible among highly specialized actors. (E) Transition structure: dominant-mode transitions are strongly diagonal (89\%), showing persistence in strategic orientation with limited cross-mode switching. (F) External association: archetype mixtures correlate with early-adoption residuals (Specialist $r=-0.225$, Moderate Specialist $r=0.151$, Aligned Generalist $r=0.256$), providing criterion validity for the strategy labels.
-
-Taken together, these checks do not prove uniqueness of $k=3$, but they make the three-mode interpretation substantially more credible for the present dataset and inferential goal.
-
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/fig12_archetype_robustness_panel.pdf}
-\caption{\textbf{Archetype robustness and validation.} (A) Bootstrap resamples (points) around baseline archetype coordinates (crosses). (B) Jackknife removal of the five most-active actors; points show shifts relative to baseline. (C) Reconstruction RSS across $k$, showing an elbow near $k=3$. (D) Mean coordinate shifts under alternative feature specifications. (E) Dominant-archetype transition counts (diagonal concentration indicates persistence). (F) Correlation between mean archetype weights and early-adoption residuals (residual $>0$ indicates earlier-than-expected adoption at given breadth).}
-\label{fig:archetype_robustness}
-\end{figure*}
+Panel C embeds these communities into the main concern-space layout used in the paper, making clear that co-sponsorship structure overlaps with, but does not replace, the regime structure. Panel D tracks the dominant specialized community by topic over time. The main pattern is layered rather than segmented: one community remains broadly present across core governance topics, while the others dominate intermittently in narrower coordination and procedural niches.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.45\textwidth]{./figures/fig13_competition_rca.pdf}
 \caption{\textbf{Topic competition and concentration over time.}
-\textbf{Top panel}: Mean Gini coefficient across all topics remains stable around 0.25--0.30 throughout the period, indicating persistent inequality in RCA distributions despite expanding participation.
-\textbf{Heatmap}: Fraction of countries with RCA $\geq$ 1 for each topic (rows) over time (columns), ordered by hierarchical clustering to group topics with similar temporal dynamics. Color intensity indicates competition level (fraction of active countries). The clustering reveals three distinct temporal patterns: (1) \emph{Top cluster}: Historic and administrative topics (sites and monuments, CEP strategy, secretariat operations, inspections) show sporadic, low-intensity engagement concentrated in specific periods; (2) \emph{Middle cluster}: Mixed procedural and environmental topics display moderate, patchy participation with variable temporal patterns; (3) \emph{Bottom cluster}: Core operational and governance topics (climate change, management plans, science issues, educational issues, general operations) show sustained, high-intensity competition (40--50\% of countries) particularly from 2000 onward. Notable transient dynamics include the tourism spike in the 1990s. The combination of expanding participation (darker colors in recent years, especially in the bottom cluster) with stable Gini (top panel) demonstrates proportional expansion: new entrants join without disrupting existing hierarchies.}
+\textbf{Top panel}: Mean Gini coefficient across all topics remains stable around 0.25--0.30 throughout the period, indicating persistent inequality in RPA distributions despite expanding participation.
+\textbf{Heatmap}: Fraction of members with RPA $\geq$ 1 for each topic (rows) over time (columns), ordered by hierarchical clustering to group topics with similar temporal dynamics. Color intensity indicates competition level (fraction of active members). The clustering reveals three distinct temporal patterns: (1) \emph{Top cluster}: Historic and administrative topics (sites and monuments, CEP strategy, secretariat operations, inspections) show sporadic, low-intensity engagement concentrated in specific periods; (2) \emph{Middle cluster}: Mixed procedural and environmental topics display moderate, patchy participation with variable temporal patterns; (3) \emph{Bottom cluster}: Core operational and governance topics (climate change, management plans, science issues, educational issues, general operations) show sustained, high-intensity competition (40--50\% of members) particularly from 2000 onward. Notable transient dynamics include the tourism spike in the 1990s. The combination of expanding participation (darker colors in recent years, especially in the bottom cluster) with stable Gini (top panel) demonstrates proportional expansion: new entrants join without disrupting existing hierarchies.}
 \label{fig:competition-appendix}
 \end{figure}
-
-% TODO: uncomment for final submission
-% \subsection{Author Contributions}
-% Casper van Elteren: first draft, analysis, interpretation, visualizations, conceptualization, editing, review. Vítor V. Vasconcelos: conceptualization, review, and editing. Maria Kleshnina: supervision, review, and editing. Michael Bode: review and edition. All authors contributed to the final manuscript.
 
 \end{document}

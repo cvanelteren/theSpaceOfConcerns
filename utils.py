@@ -11,8 +11,8 @@ import requests
 import ultraplot as plt
 from PIL import Image
 from scipy import stats
-from scipy.spatial.distance import jensenshannon
 from scipy.integrate import quad  # Added missing import
+from scipy.spatial.distance import jensenshannon
 
 # ==========================================
 # 1. Image & Flag Utilities
@@ -28,12 +28,71 @@ def get_country_code(country_name):
     return country.alpha_2.lower()
 
 
-def load_flag(name, save=True, base="./figures/flags"):
+def _resize_image_to_area(
+    img: Image.Image, target_area_px: Optional[int] = 273_280
+) -> Image.Image:
+    """
+    Normalize image footprint so rendered markers have comparable visual size.
+
+    Uses constant pixel area while preserving aspect ratio.
+    """
+    if target_area_px is None or target_area_px <= 0:
+        return img
+    width, height = img.size
+    if width <= 0 or height <= 0:
+        return img
+
+    scale = float(np.sqrt(float(target_area_px) / float(width * height)))
+    new_width = max(1, int(round(width * scale)))
+    new_height = max(1, int(round(height * scale)))
+    if (new_width, new_height) == (width, height):
+        return img
+
+    resampling = (
+        Image.Resampling.LANCZOS
+        if hasattr(Image, "Resampling")
+        else Image.LANCZOS
+    )
+    return img.resize((new_width, new_height), resample=resampling)
+
+
+def _trim_transparent_border(img: Image.Image) -> Image.Image:
+    """Remove transparent outer padding when alpha is available."""
+    if "A" not in img.getbands():
+        return img
+    alpha = img.getchannel("A")
+    bbox = alpha.getbbox()
+    if bbox is None:
+        return img
+    return img.crop(bbox)
+
+
+def _load_local_image(path: Path, target_area_px: Optional[int]) -> Optional[np.ndarray]:
+    """Load local png and normalize size for consistent marker rendering."""
+    try:
+        with Image.open(path) as img:
+            if img.mode not in {"RGB", "RGBA"}:
+                img = img.convert("RGBA")
+            img = _trim_transparent_border(img)
+            img = _resize_image_to_area(img, target_area_px=target_area_px)
+            return np.array(img)
+    except Exception:
+        return None
+
+
+def load_flag(
+    name,
+    save=True,
+    base="./figures/flags",
+    normalize_size=True,
+    target_area_px=273_280,
+):
     """
     Load flag from url (and download), or load from disk
     """
     dir = Path(base)
     dir.mkdir(parents=True, exist_ok=True)  # Ensure directory exists
+    size_target = int(target_area_px) if normalize_size else None
 
     # Check if country flag exists
     if "korea (rok)" in name.lower():
@@ -42,11 +101,14 @@ def load_flag(name, save=True, base="./figures/flags"):
         name = "Korea, Democratic People's Republic of"
 
     if (dir / f"{name}_flag.png").exists():
-        return plt.pyplot.imread(dir / f"{name}_flag.png")
+        return _load_local_image(dir / f"{name}_flag.png", target_area_px=size_target)
 
     # Check if logo organization exists
     if (dir / f"{name.lower()}_logo.png").exists():
-        return plt.pyplot.imread(dir / f"{name.lower()}_logo.png")
+        return _load_local_image(
+            dir / f"{name.lower()}_logo.png",
+            target_area_px=size_target,
+        )
 
     # Attempt to load
     country_code = get_country_code(name)
@@ -56,20 +118,18 @@ def load_flag(name, save=True, base="./figures/flags"):
     # Get flat flag from flagcdn.com
     flag_url = f"https://flagcdn.com/w640/{country_code}.png"
     try:
-        response = requests.get(flag_url)
+        response = requests.get(flag_url, timeout=15)
         response.raise_for_status()
         img = Image.open(BytesIO(response.content))
-        if img.mode != "RGB":
-            img = img.convert("RGB")
+        if img.mode not in {"RGB", "RGBA"}:
+            img = img.convert("RGBA")
+        img = _trim_transparent_border(img)
+        img = _resize_image_to_area(img, target_area_px=size_target)
         img_array = np.array(img)
 
-        # Keep the logo?
+        # Save normalized flag image for reproducible local reloads.
         if save:
-            fig, ax = plt.subplots()
-            ax.imshow(img_array, cmap=None)
-            ax.axis(False)
-            fig.savefig(dir / f"{name}_flag.png", dpi=800, transparent=True)
-            plt.close(fig)
+            img.save(dir / f"{name}_flag.png")
         return img_array
     except Exception as e:
         print(f"Could not load flag for {name}: {e}")
@@ -101,12 +161,100 @@ def _normalize_topic_label(topic: str) -> str:
     """Normalize topic label variants used across ATS exports."""
     topic = str(topic).strip()
     topic = topic.replace("envirom", "environ")
-    if topic.upper() == "ALL":
-        return "Other"
     return topic
 
 
-def preprocess_dataframe(fp: str) -> pd.DataFrame:
+def _is_excluded_topic_label(topic: str) -> bool:
+    """Return True for placeholder categories that should not count as topics."""
+    topic = str(topic).strip()
+    if not topic:
+        return True
+    return topic.upper() == "ALL" or topic.casefold() == "other"
+
+
+def _clean_category_cell(value, delimiter="\t"):
+    """Drop placeholder topics and return a normalized multi-topic category cell."""
+    topics = []
+    for topic in _split_multi_value(value, delimiter=delimiter):
+        topic = _normalize_topic_label(topic)
+        if _is_excluded_topic_label(topic):
+            continue
+        topics.append(topic)
+    if not topics:
+        return pd.NA
+    return delimiter.join(topics)
+
+
+def _deduplicate_document_rows(
+    df: pd.DataFrame, dedup_attachments: bool = True
+) -> pd.DataFrame:
+    """
+    Remove repeated document rows from ATS exports.
+
+    When ``dedup_attachments`` is True, collapse attachment-level repeated rows
+    so the returned frame contains one row per paper record. When False, keep
+    attachment-level multiplicity and only remove exact duplicate rows.
+    """
+    if df is None or df.empty:
+        return df
+
+    tmp = df.copy()
+    if not dedup_attachments:
+        return tmp.reset_index(drop=True)
+
+    dedup_cols = []
+
+    if "agendas" in tmp.columns:
+        tmp["_agendas_key"] = tmp["agendas"].apply(
+            lambda v: tuple(_split_multi_value(v))
+        )
+        dedup_cols.append("_agendas_key")
+    if "parties" in tmp.columns:
+        tmp["_parties_key"] = tmp["parties"].apply(
+            lambda v: tuple(_split_multi_value(v))
+        )
+        dedup_cols.append("_parties_key")
+
+    dedup_cols.extend(
+        [
+            c
+            for c in [
+                "meeting_year",
+                "meeting_type",
+                "meeting_number",
+                "meeting_name",
+                "party",
+                "category",
+                "paper_id",
+                "party_type",
+                "paper_name",
+                "paper_number",
+                "paper_revision",
+                "paper_language",
+                "paper_url",
+                "exists",
+                "submitted by",
+            ]
+            if c in tmp.columns
+        ]
+    )
+
+    # Fall back to page-level identity if paper-level ids are unavailable.
+    if "paper_id" not in tmp.columns:
+        dedup_cols.extend(
+            [c for c in ["meeting_year", "meeting_type", "meeting_number"] if c in tmp.columns]
+        )
+        dedup_cols.extend([c for c in ["party", "category"] if c in tmp.columns])
+        dedup_cols.extend([c for c in ["page_url", "page_nr"] if c in tmp.columns])
+
+    if not dedup_cols:
+        return tmp.reset_index(drop=True)
+
+    tmp = tmp.drop_duplicates(subset=dedup_cols).reset_index(drop=True)
+    return tmp.drop(columns=["_agendas_key", "_parties_key"], errors="ignore")
+
+
+def preprocess_dataframe(fp: str, dedup_attachments: bool = True) -> pd.DataFrame:
     """Load CSV/parquet and standardize columns used across analysis scripts."""
     path = Path(fp)
     if path.suffix.lower() == ".parquet":
@@ -136,7 +284,10 @@ def preprocess_dataframe(fp: str) -> pd.DataFrame:
     if "parties" not in df.columns and "submitted by" in df.columns:
         df["parties"] = df["submitted by"].apply(_split_multi_value)
 
-    return df
+    if "category" in df.columns:
+        df["category"] = df["category"].apply(_clean_category_cell)
+
+    return _deduplicate_document_rows(df, dedup_attachments=dedup_attachments)
 
 
 def extract_unique_countries(df: pd.DataFrame) -> Set[str]:
@@ -155,12 +306,18 @@ def extract_unique_topics(df: pd.DataFrame) -> Set[str]:
     subset = df.dropna(subset=["category"])
     for _, row in subset.iterrows():
         for topic in _split_multi_value(row["category"], delimiter="\t"):
-            topics.add(_normalize_topic_label(topic))
+            topic = _normalize_topic_label(topic)
+            if _is_excluded_topic_label(topic):
+                continue
+            topics.add(topic)
     return topics
 
 
 def generate_interaction_matrix(
-    subset_df: pd.DataFrame, all_countries: Set[str], all_topics: Set[str]
+    subset_df: pd.DataFrame,
+    all_countries: Set[str],
+    all_topics: Set[str],
+    dedup_attachments: bool = True,
 ) -> pd.DataFrame:
     """
     Vectorized generation of interaction matrix.
@@ -176,6 +333,7 @@ def generate_interaction_matrix(
     df["category"] = df["category"].apply(lambda v: _split_multi_value(v, "\t"))
     df = df.explode("category")
     df["category"] = df["category"].apply(_normalize_topic_label)
+    df = df[~df["category"].apply(_is_excluded_topic_label)]
 
     df["submitted by"] = df["submitted by"].apply(_split_multi_value)
     df = df.explode("submitted by")
@@ -183,6 +341,34 @@ def generate_interaction_matrix(
     df = df.dropna(subset=["category", "submitted by"])
     if df.empty:
         return pd.DataFrame(0, index=list(all_topics), columns=list(all_countries))
+    # The processed ATS summary can repeat the same paper across multiple rows
+    # (for example when a single paper record carries several attachments).
+    # For RCA/proximity construction we want each unique paper to count once per
+    # actor-topic pair, not once per repeated row.
+    dedup_cols = None
+    if dedup_attachments:
+        dedup_cols = ["category", "submitted by"]
+        if "paper_id" in df.columns:
+            dedup_cols = ["paper_id"] + dedup_cols
+        else:
+            doc_id_cols = [
+                c
+                for c in [
+                    "meeting_year",
+                    "meeting_type",
+                    "meeting_number",
+                    "paper_name",
+                    "paper_number",
+                    "paper_revision",
+                    "paper_url",
+                    "page_url",
+                    "page_nr",
+                ]
+                if c in df.columns
+            ]
+            dedup_cols = doc_id_cols + dedup_cols
+    if dedup_cols:
+        df = df.drop_duplicates(subset=dedup_cols)
     # Avoid duplicate index labels introduced by explode (strict in newer pandas).
     df = df.reset_index(drop=True)
 
@@ -247,21 +433,24 @@ def standardize_index_labels(df: pd.DataFrame) -> pd.DataFrame:
         "Enviromental monitoring and reporting": "Environmental monitoring and reporting",
         "Safety and Operations in antarctica": "Safety and Operations in Antarctica",
         "Educational issues": "Educational issues",
-        "ALL": "Other",
     }
     return df.rename(index=spelling_correction_mapping)
 
 
-def load_data(fp) -> Tuple[pd.DataFrame, pd.DataFrame, Set[str], Set[str]]:
+def load_data(
+    fp, dedup_attachments: bool = True
+) -> Tuple[pd.DataFrame, pd.DataFrame, Set[str], Set[str]]:
     """
     Orchestrator function that pipelines the separate operators.
     Returns: Final_Counts, Raw_DF, Countries_Set, Topics_Set
     """
-    submitted_df = preprocess_dataframe(fp)
+    submitted_df = preprocess_dataframe(fp, dedup_attachments=dedup_attachments)
     countries = extract_unique_countries(submitted_df)
     topics = extract_unique_topics(submitted_df)
 
-    counts_df = generate_interaction_matrix(submitted_df, countries, topics)
+    counts_df = generate_interaction_matrix(
+        submitted_df, countries, topics, dedup_attachments=dedup_attachments
+    )
     final_df = standardize_index_labels(counts_df)
 
     # UPDATED: Now returns 'topics' as well, which is crucial for the Time Block analysis
@@ -291,6 +480,78 @@ def get_rca(df):
             product_totals.to_numpy()[:, np.newaxis] / total_exports
         )
     return rca.fillna(0)
+
+
+def compute_rolling_rca(
+    submitted_df: pd.DataFrame,
+    window_years: int = 5,
+    dedup_attachments: bool = True,
+) -> pd.DataFrame:
+    """
+    Compute RCA for each country-topic pair over rolling time windows.
+
+    For each year ``t`` in the observed range, this computes RCA on documents
+    from the half-open interval ``(t - window_years, t]``.
+
+    Args:
+        submitted_df: Long-form submissions table (typically from ``load_data``).
+        window_years: Rolling window size in years.
+        dedup_attachments: Forwarded to ``generate_interaction_matrix`` to control
+            paper-level deduplication when repeated attachment rows are present.
+
+    Returns:
+        DataFrame with columns ``topic``, ``country``, ``rca``, ``year``.
+    """
+    if submitted_df is None or submitted_df.empty:
+        return pd.DataFrame(columns=["topic", "country", "rca", "year"])
+
+    df = submitted_df.copy()
+    if "year" not in df.columns and "meeting_year" in df.columns:
+        df["year"] = df["meeting_year"]
+    if "year" not in df.columns:
+        raise KeyError("Expected 'year' or 'meeting_year' in submitted_df.")
+
+    df["year"] = pd.to_numeric(df["year"], errors="coerce")
+    df = df.dropna(subset=["year"]).copy()
+    if df.empty:
+        return pd.DataFrame(columns=["topic", "country", "rca", "year"])
+    df["year"] = df["year"].astype(int)
+
+    years = sorted(df["year"].unique())
+    if not years:
+        return pd.DataFrame(columns=["topic", "country", "rca", "year"])
+
+    min_year = int(min(years))
+    max_year = int(max(years))
+    records = []
+    for year in range(min_year + window_years, max_year + 1):
+        mask = (df["year"] > (year - window_years)) & (df["year"] <= year)
+        df_window = df.loc[mask]
+        if df_window.empty:
+            continue
+
+        countries = extract_unique_countries(df_window)
+        topics = extract_unique_topics(df_window)
+        if not countries or not topics:
+            continue
+
+        counts_df = generate_interaction_matrix(
+            df_window,
+            countries,
+            topics,
+            dedup_attachments=dedup_attachments,
+        )
+        rca_df = get_rca(counts_df)
+        rca_df.index.name = "topic"
+        melted = rca_df.reset_index().melt(
+            id_vars="topic", var_name="country", value_name="rca"
+        )
+        melted["year"] = int(year)
+        records.append(melted)
+
+    if not records:
+        return pd.DataFrame(columns=["topic", "country", "rca", "year"])
+    return pd.concat(records, ignore_index=True)
 
 
 def compute_product_space(rca: pd.DataFrame, threshold: float = 1.0) -> pd.DataFrame:
@@ -510,9 +771,7 @@ def diffuse_interests(
                     idx_original_topic = topic_to_idx_map[topic_name]
                     p_t = f_t[idx_original_topic]
                     baseline_kl += rca_weight * (-np.log(p_t + 1e-12))
-                    baseline_js += (
-                        rca_weight * one_hot_js_distances[alpha][topic_name]
-                    )
+                    baseline_js += rca_weight * one_hot_js_distances[alpha][topic_name]
 
             row = {
                 "agent": agent_name,

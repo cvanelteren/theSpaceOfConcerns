@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import json
-from collections import Counter, defaultdict
+from collections import defaultdict
 from pathlib import Path
 import sys
 
@@ -17,11 +17,13 @@ if str(ROOT) not in sys.path:
 from fig2_fig_space_of_concerns_ribbon import (
     DATA_PATHS,
     DEFAULT_THEME,
+    EDGE_WIDTH_METRIC,
     OTHER_LABEL,
     PERIOD_YEARS,
     RCA_THRESHOLD,
     START_YEAR,
     THEME_COLORS,
+    TRANSITION_SOURCE,
     TOP_N_COUNTRIES,
     TOP_N_TOPICS,
     TOPIC_TO_THEME,
@@ -92,7 +94,7 @@ period_index = {label: i for i, label in enumerate(period_labels)}
 
 
 # %%
-# 1) Per-period top RCA topic for each country.
+# 1) Per-period topic assignments for each country.
 rows = []
 for start, end, label in periods:
     period_df = submitted_df[
@@ -102,23 +104,39 @@ for start, end, label in periods:
         continue
     interaction = generate_interaction_matrix(period_df, countries, topics)
     interaction = standardize_index_labels(interaction)
+    if interaction.index.has_duplicates:
+        interaction = interaction.groupby(level=0).sum()
     rca = get_rca(interaction)
     for country in rca.columns:
         series = rca[country]
         if series.sum() <= 0:
             continue
-        top_topic = series.idxmax()
-        top_rca = float(series.loc[top_topic])
-        if top_rca < RCA_THRESHOLD:
-            continue
-        rows.append(
-            {
-                "period": label,
-                "country": country,
-                "topic": str(top_topic),
-                "rca": top_rca,
-            }
-        )
+        if TRANSITION_SOURCE == "top_rca":
+            top_topic = series.idxmax()
+            top_rca = float(series.loc[top_topic])
+            if top_rca < RCA_THRESHOLD:
+                continue
+            rows.append(
+                {
+                    "period": label,
+                    "country": country,
+                    "topic": str(top_topic),
+                    "rca": top_rca,
+                }
+            )
+        else:
+            active = series[series >= RCA_THRESHOLD]
+            if active.empty:
+                continue
+            for topic, value in active.items():
+                rows.append(
+                    {
+                        "period": label,
+                        "country": country,
+                        "topic": str(topic),
+                        "rca": float(value),
+                    }
+                )
 
 df = pd.DataFrame(rows)
 if df.empty:
@@ -175,37 +193,78 @@ topic_color_map = {
 # %%
 # 3) Country paths and transitions between consecutive periods.
 country_paths = {}
-transitions = defaultdict(lambda: {"value": 0, "countries": []})
+transitions = defaultdict(lambda: {"support": 0.0, "countries": set()})
 
-for country, group in df.groupby("country"):
-    group = group.copy()
-    group["period_order"] = group["period"].map(period_index)
-    group = group.sort_values("period_order")
-    path = []
-    for _, row in group.iterrows():
-        path.append(
-            {
-                "period": row["period"],
-                "topic": row["topic_group"],
-                "rca": float(row["rca"]),
-                "period_order": int(row["period_order"]),
-            }
-        )
-    country_paths[country] = path
+if TRANSITION_SOURCE == "top_rca":
+    for country, group in df.groupby("country"):
+        group = group.copy()
+        group["period_order"] = group["period"].map(period_index)
+        group = group.sort_values("period_order")
+        path = []
+        for _, row in group.iterrows():
+            path.append(
+                {
+                    "period": row["period"],
+                    "topic": row["topic_group"],
+                    "rca": float(row["rca"]),
+                    "period_order": int(row["period_order"]),
+                }
+            )
+        country_paths[country] = path
 
-    for i in range(len(group) - 1):
-        cur = group.iloc[i]
-        nxt = group.iloc[i + 1]
-        if int(nxt["period_order"]) != int(cur["period_order"]) + 1:
-            continue
-        key = (
-            str(cur["period"]),
-            str(cur["topic_group"]),
-            str(nxt["period"]),
-            str(nxt["topic_group"]),
-        )
-        transitions[key]["value"] += 1
-        transitions[key]["countries"].append(country)
+        for i in range(len(group) - 1):
+            cur = group.iloc[i]
+            nxt = group.iloc[i + 1]
+            if int(nxt["period_order"]) != int(cur["period_order"]) + 1:
+                continue
+            key = (
+                str(cur["period"]),
+                str(cur["topic_group"]),
+                str(nxt["period"]),
+                str(nxt["topic_group"]),
+            )
+            transitions[key]["support"] += 1.0
+            transitions[key]["countries"].add(country)
+else:
+    per_country_period = (
+        df.groupby(["country", "period"])["topic_group"]
+        .apply(lambda s: sorted(set(s)))
+        .reset_index()
+    )
+
+    for country, group in df.groupby("country"):
+        group = group.copy()
+        group["period_order"] = group["period"].map(period_index)
+        group = group.sort_values(["period_order", "topic_group"])
+        path = []
+        for _, row in group.iterrows():
+            path.append(
+                {
+                    "period": row["period"],
+                    "topic": row["topic_group"],
+                    "rca": float(row["rca"]),
+                    "period_order": int(row["period_order"]),
+                }
+            )
+        country_paths[country] = path
+
+    for country, group in per_country_period.groupby("country"):
+        period_topics = {
+            str(row["period"]): list(row["topic_group"]) for _, row in group.iterrows()
+        }
+        for i in range(len(periods_present) - 1):
+            p0 = periods_present[i]
+            p1 = periods_present[i + 1]
+            topics0 = period_topics.get(p0, [])
+            topics1 = period_topics.get(p1, [])
+            if not topics0 or not topics1:
+                continue
+            w = 1.0 / (len(topics0) * len(topics1))
+            for t0 in topics0:
+                for t1 in topics1:
+                    key = (str(p0), str(t0), str(p1), str(t1))
+                    transitions[key]["support"] += w
+                    transitions[key]["countries"].add(country)
 
 
 # %%
@@ -223,6 +282,11 @@ count_lookup = {
     (str(r["period"]), str(r["topic_group"])): int(r["count"])
     for _, r in period_counts.iterrows()
 }
+node_country_lookup = (
+    df.groupby(["period", "topic_group"])["country"]
+    .apply(lambda s: sorted(set(map(str, s))))
+    .to_dict()
+)
 
 for period in periods_present:
     for topic in topics_order:
@@ -246,6 +310,7 @@ for period in periods_present:
                 "is_end": period == last,
                 "period_index": int(period_position[period]),
                 "topic_index": int(topics_order.index(topic)),
+                "countries": node_country_lookup.get((str(period), str(topic)), []),
             }
         )
 
@@ -258,6 +323,14 @@ for (p0, t0, p1, t1), payload in transitions.items():
         continue
     if period_position[p1] != period_position[p0] + 1:
         continue
+    actor_count = int(len(payload["countries"]))
+    support_value = float(payload["support"])
+    if EDGE_WIDTH_METRIC == "actor_count":
+        value = float(actor_count)
+    elif EDGE_WIDTH_METRIC == "weighted_support":
+        value = support_value
+    else:
+        raise ValueError(f"Unsupported EDGE_WIDTH_METRIC: {EDGE_WIDTH_METRIC}")
     links.append(
         {
             "id": f"{p0}::{t0}-->{p1}::{t1}",
@@ -269,8 +342,10 @@ for (p0, t0, p1, t1), payload in transitions.items():
             "target_topic": t1,
             "source_theme": _topic_theme(t0, theme_lookup),
             "target_theme": _topic_theme(t1, theme_lookup),
-            "value": int(payload["value"]),
-            "countries": sorted(set(payload["countries"])),
+            "value": value,
+            "support_value": support_value,
+            "countries": sorted(payload["countries"]),
+            "actor_count": actor_count,
         }
     )
 
@@ -309,6 +384,8 @@ out = {
         "description": "Interactive Figure 2 ribbon data export",
         "period_years": int(PERIOD_YEARS),
         "rca_threshold": float(RCA_THRESHOLD),
+        "transition_source": str(TRANSITION_SOURCE),
+        "edge_width_metric": str(EDGE_WIDTH_METRIC),
         "n_rows": int(len(df)),
         "n_topics": int(len(topics_order)),
         "n_countries": int(df["country"].nunique()),
