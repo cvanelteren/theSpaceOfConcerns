@@ -31,12 +31,13 @@ DATA_PATHS = [
 
 OUT_PNG = Path("figures/fig03_local_portfolio_movement.png")
 OUT_PDF = Path("figures/fig03_local_portfolio_movement.pdf")
-OUT_ADOPTION_PNG = Path("output/fig03_local_portfolio_movement_adoption_panel.png")
-OUT_ADOPTION_PDF = Path("output/fig03_local_portfolio_movement_adoption_panel.pdf")
-OUT_RETENTION_PNG = Path("output/fig03_local_portfolio_movement_retention_panel.png")
-OUT_RETENTION_PDF = Path("output/fig03_local_portfolio_movement_retention_panel.pdf")
-OUT_TRANSITION_PNG = Path("output/fig03_local_portfolio_movement_transition_panel.png")
-OUT_TRANSITION_PDF = Path("output/fig03_local_portfolio_movement_transition_panel.pdf")
+SLIDES_DIR = Path("slides")
+OUT_ADOPTION_PNG = SLIDES_DIR / "fig03_local_portfolio_movement_adoption_panel.png"
+OUT_ADOPTION_PDF = SLIDES_DIR / "fig03_local_portfolio_movement_adoption_panel.pdf"
+OUT_RETENTION_PNG = SLIDES_DIR / "fig03_local_portfolio_movement_retention_panel.png"
+OUT_RETENTION_PDF = SLIDES_DIR / "fig03_local_portfolio_movement_retention_panel.pdf"
+OUT_TRANSITION_PNG = SLIDES_DIR / "fig03_local_portfolio_movement_transition_panel.png"
+OUT_TRANSITION_PDF = SLIDES_DIR / "fig03_local_portfolio_movement_transition_panel.pdf"
 
 REGIME_SUMMARY_PATHS = [
     Path("output/fig45_regime_transition_summary_window5.csv"),

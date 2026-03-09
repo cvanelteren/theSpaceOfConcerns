@@ -12,6 +12,7 @@ import ultraplot as uplt
 PROJECT_ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = PROJECT_ROOT / "output"
 FIG_DIR = PROJECT_ROOT / "figures"
+SLIDE_DIR = PROJECT_ROOT / "slides"
 
 SUMMARY_PATH = OUTPUT_DIR / "actor_topic_modeling_starter_summary.json"
 PROCESS_HISTORY = OUTPUT_DIR / "actor_topic_modeling_starter_process_uncertainty_history.csv"
@@ -19,6 +20,48 @@ PROCESS_ENTRY = OUTPUT_DIR / "actor_topic_modeling_starter_process_uncertainty_e
 
 OUT_PDF = FIG_DIR / "fig04_split_support_validation.pdf"
 OUT_PNG = FIG_DIR / "fig04_split_support_validation.png"
+
+SLIDE_OUTPUTS = {
+    "observed_only": {
+        "title": "Observed Data",
+        "label": "Observed",
+        "stem": "fig04_observed_only_validation_slide",
+    },
+    "one_stage": {
+        "title": "Model 1: Direct Allocation",
+        "label": "Direct allocation",
+        "stem": "fig04_direct_allocation_validation_slide",
+    },
+    "two_stage": {
+        "title": "Model 2: Pooled Support",
+        "label": "Pooled support",
+        "stem": "fig04_pooled_support_validation_slide",
+    },
+    "split_support": {
+        "title": "Model 3: Split Support",
+        "label": "Split support",
+        "stem": "fig04_split_support_validation_slide",
+    },
+}
+
+STAGE_SEQUENCE = {
+    "observed_only": [],
+    "one_stage": ["one_stage"],
+    "two_stage": ["one_stage", "two_stage"],
+    "split_support": ["one_stage", "two_stage", "split_support"],
+}
+
+MODEL_DISPLAY = {
+    "one_stage": "Direct allocation",
+    "two_stage": "Single-rule support",
+    "split_support": "Retain-and-enter",
+}
+
+MODEL_SHORT = {
+    "one_stage": "Direct",
+    "two_stage": "Single-rule",
+    "split_support": "Retain-enter",
+}
 
 
 COLORS = {
@@ -78,6 +121,308 @@ def _draw_step_box(
         color="#222222",
         linespacing=1.25,
     )
+
+
+def _metric_map(model_key: str) -> dict[str, str]:
+    return {
+        "one_stage": {
+            "breadth_mean": "mean_active_topics_mean",
+            "breadth_q05": "mean_active_topics_q05",
+            "breadth_q95": "mean_active_topics_q95",
+            "breadth_avg": "mean_active_topics_sim_avg",
+            "breadth_corr": "corr_mean_active_topics",
+            "pop_mean": "mean_topic_popularity_mean",
+            "pop_q05": "mean_topic_popularity_q05",
+            "pop_q95": "mean_topic_popularity_q95",
+            "pop_avg": "mean_topic_popularity_sim_avg",
+            "pop_corr": "corr_mean_topic_popularity",
+        },
+        "two_stage": {
+            "breadth_mean": "mean_active_topics_mean",
+            "breadth_q05": "mean_active_topics_q05",
+            "breadth_q95": "mean_active_topics_q95",
+            "breadth_avg": "mean_active_topics_two_stage_avg",
+            "breadth_corr": "corr_mean_active_topics_two_stage",
+            "pop_mean": "mean_topic_popularity_mean",
+            "pop_q05": "mean_topic_popularity_q05",
+            "pop_q95": "mean_topic_popularity_q95",
+            "pop_avg": "mean_topic_popularity_two_stage_avg",
+            "pop_corr": "corr_mean_topic_popularity_two_stage",
+        },
+        "split_support": {
+            "breadth_mean": "mean_active_topics_mean",
+            "breadth_q05": "mean_active_topics_q05",
+            "breadth_q95": "mean_active_topics_q95",
+            "breadth_avg": "mean_active_topics_split_avg",
+            "breadth_corr": "corr_mean_active_topics_split",
+            "pop_mean": "mean_topic_popularity_mean",
+            "pop_q05": "mean_topic_popularity_q05",
+            "pop_q95": "mean_topic_popularity_q95",
+            "pop_avg": "mean_topic_popularity_split_avg",
+            "pop_corr": "corr_mean_topic_popularity_split",
+        },
+    }[model_key]
+
+
+def _plot_breadth_panel(
+    ax: plt.Axes,
+    summary: pd.Series,
+    observed: pd.DataFrame,
+    process_history: pd.DataFrame,
+    active_models: list[str],
+    focus_model: str,
+    *,
+    show_title: bool = True,
+    show_inset: bool = True,
+) -> None:
+    years = observed["window_end"]
+    ax.plot(years, observed["mean_active_topics_obs"], color=COLORS["observed"], lw=2.3)
+    for model_key in active_models:
+        metrics = _metric_map(model_key)
+        history = process_history[process_history["model"] == model_key].sort_values("window_end")
+        ax.fill_between(
+            years,
+            history[metrics["breadth_q05"]],
+            history[metrics["breadth_q95"]],
+            color=COLORS[model_key],
+            alpha=0.35,
+            lw=0,
+        )
+        ax.plot(years, history[metrics["breadth_mean"]], color=COLORS[model_key], lw=2.0)
+    focus_metrics = _metric_map(focus_model)
+    ax.format(
+        title="Actor Breadth" if show_title else "",
+        xlabel="Year",
+        ylabel="Active topics" if not show_title else "Active topics per actor",
+        grid=True,
+        ylim=(0.0, 9.0) if not show_title else None,
+    )
+    if show_inset:
+        ax.text(
+            0.98,
+            0.97,
+            (
+                f"Observed mean = {summary['mean_active_topics_obs_avg']:.2f}\n"
+                f"{MODEL_DISPLAY[focus_model]} = {summary[focus_metrics['breadth_avg']]:.2f}\n"
+                f"$r$ = {summary[focus_metrics['breadth_corr']]:.3f}"
+            ),
+            transform=ax.transAxes,
+            va="top",
+            ha="right",
+            fontsize=9,
+            bbox=dict(facecolor="white", edgecolor="#cccccc", boxstyle="round,pad=0.25"),
+        )
+
+
+def _plot_popularity_panel(
+    ax: plt.Axes,
+    summary: pd.Series,
+    observed: pd.DataFrame,
+    process_history: pd.DataFrame,
+    active_models: list[str],
+    focus_model: str,
+    *,
+    show_title: bool = True,
+    show_inset: bool = True,
+) -> None:
+    years = observed["window_end"]
+    ax.plot(years, observed["mean_topic_popularity_obs"], color=COLORS["observed"], lw=2.3)
+    for model_key in active_models:
+        metrics = _metric_map(model_key)
+        history = process_history[process_history["model"] == model_key].sort_values("window_end")
+        ax.fill_between(
+            years,
+            history[metrics["pop_q05"]],
+            history[metrics["pop_q95"]],
+            color=COLORS[model_key],
+            alpha=0.35,
+            lw=0,
+        )
+        ax.plot(years, history[metrics["pop_mean"]], color=COLORS[model_key], lw=2.0)
+    focus_metrics = _metric_map(focus_model)
+    ax.format(
+        title="Topic Popularity" if show_title else "",
+        xlabel="Year",
+        ylabel="Actors per topic" if not show_title else "Active actors per topic",
+        grid=True,
+        ylim=(0.0, 7.0) if not show_title else None,
+    )
+    if show_inset:
+        ax.text(
+            0.98,
+            0.97,
+            (
+                f"Observed mean = {summary['mean_topic_popularity_obs_avg']:.2f}\n"
+                f"{MODEL_DISPLAY[focus_model]} = {summary[focus_metrics['pop_avg']]:.2f}\n"
+                f"$r$ = {summary[focus_metrics['pop_corr']]:.3f}"
+            ),
+            transform=ax.transAxes,
+            va="top",
+            ha="right",
+            fontsize=9,
+            bbox=dict(facecolor="white", edgecolor="#cccccc", boxstyle="round,pad=0.25"),
+        )
+
+
+def _plot_entry_panel(
+    ax: plt.Axes,
+    process_entry: pd.DataFrame,
+    active_models: list[str],
+    focus_model: str,
+    *,
+    show_title: bool = True,
+    show_inset: bool = True,
+) -> None:
+    entry_obs = process_entry[process_entry["model"] == "observed"].iloc[0]
+    x = [0, 1, 2]
+    keys = ["one_stage", "two_stage", "split_support"]
+    labels = [MODEL_SHORT[key] if key in active_models else "" for key in keys]
+    ax.axhline(float(entry_obs["mean_entry_phi_rank_mean"]), color=COLORS["observed"], lw=1.8)
+    ax.axhline(0.5, color=COLORS["baseline"], lw=1.2, linestyle="--")
+    for xpos, model_key in zip(x, keys):
+        if model_key not in active_models:
+            continue
+        entry_model = process_entry[process_entry["model"] == model_key].iloc[0]
+        model_value = float(entry_model["mean_entry_phi_rank_mean"])
+        yerr = [
+            [float(model_value - entry_model["mean_entry_phi_rank_q05"])],
+            [float(entry_model["mean_entry_phi_rank_q95"] - model_value)],
+        ]
+        ax.bar(
+            [xpos],
+            [model_value],
+            yerr=yerr,
+            color=[COLORS[model_key]],
+            width=0.62,
+            edgecolor="#333333",
+            linewidth=0.6,
+            capsize=3,
+            error_kw=dict(ecolor="#333333", lw=0.8),
+        )
+    focus_entry = process_entry[process_entry["model"] == focus_model].iloc[0]
+    ax.format(
+        title=r"Local Entry In $\Phi$-Space" if show_title else "",
+        ylabel="Locality rank" if not show_title else "Mean rank of entered topics",
+        ylim=(0.45, 0.76),
+        xlim=(-0.5, 2.5),
+        xticks=x,
+        xticklabels=labels,
+        grid="y",
+    )
+    if show_inset:
+        ax.text(
+            0.98,
+            0.97,
+            (
+                f"Observed = {entry_obs['mean_entry_phi_rank_mean']:.3f}\n"
+                f"{MODEL_DISPLAY[focus_model]} = {focus_entry['mean_entry_phi_rank_mean']:.3f}\n"
+                f"5--95% = [{focus_entry['mean_entry_phi_rank_q05']:.3f}, {focus_entry['mean_entry_phi_rank_q95']:.3f}]"
+            ),
+            transform=ax.transAxes,
+            va="top",
+            ha="right",
+            fontsize=9,
+            bbox=dict(facecolor="white", edgecolor="#cccccc", boxstyle="round,pad=0.25"),
+        )
+
+
+def _build_model_slide(
+    summary: pd.Series,
+    process_history: pd.DataFrame,
+    process_entry: pd.DataFrame,
+    model_key: str,
+) -> plt.Figure:
+    config = SLIDE_OUTPUTS[model_key]
+    observed = process_history[process_history["model"] == "split_support"].sort_values("window_end")
+    active_models = STAGE_SEQUENCE[model_key]
+
+    fig, axs = uplt.subplots(ncols=3, share=0, refnum=2)
+    ax_b, ax_c, ax_d = axs
+    _plot_breadth_panel(
+        ax_b,
+        summary,
+        observed,
+        process_history,
+        active_models,
+        focus_model="one_stage" if model_key == "observed_only" else model_key,
+        show_title=False,
+        show_inset=False,
+    )
+    _plot_popularity_panel(
+        ax_c,
+        summary,
+        observed,
+        process_history,
+        active_models,
+        focus_model="one_stage" if model_key == "observed_only" else model_key,
+        show_title=False,
+        show_inset=False,
+    )
+    _plot_entry_panel(
+        ax_d,
+        process_entry,
+        active_models,
+        focus_model="one_stage" if model_key == "observed_only" else model_key,
+        show_title=False,
+        show_inset=False,
+    )
+
+    handles = [
+        Line2D([0], [0], color=COLORS["observed"], lw=2.2),
+        *[Line2D([0], [0], color=COLORS[key], lw=2.0) for key in active_models],
+        Line2D([0], [0], color=COLORS["baseline"], lw=1.2, linestyle="--"),
+    ]
+    labels = ["Observed", *[MODEL_DISPLAY[key] for key in active_models], "Random baseline"]
+    fig.legend(handles, labels, loc="b", ncols=len(labels), frame=False)
+    return fig
+
+
+def _build_metric_slide(
+    summary: pd.Series,
+    process_history: pd.DataFrame,
+    process_entry: pd.DataFrame,
+    model_key: str,
+    metric: str,
+) -> plt.Figure:
+    config = SLIDE_OUTPUTS[model_key]
+    active_models = STAGE_SEQUENCE[model_key]
+    observed = process_history[process_history["model"] == "split_support"].sort_values("window_end")
+    fig, ax = uplt.subplots(refnum=2)
+    focus_model = "one_stage" if model_key == "observed_only" else model_key
+    if metric == "breadth":
+        _plot_breadth_panel(
+            ax,
+            summary,
+            observed,
+            process_history,
+            active_models,
+            focus_model,
+            show_title=False,
+            show_inset=False,
+        )
+    elif metric == "popularity":
+        _plot_popularity_panel(
+            ax,
+            summary,
+            observed,
+            process_history,
+            active_models,
+            focus_model,
+            show_title=False,
+            show_inset=False,
+        )
+    elif metric == "entry":
+        _plot_entry_panel(
+            ax,
+            process_entry,
+            active_models,
+            focus_model,
+            show_title=False,
+            show_inset=False,
+        )
+    else:
+        raise ValueError(metric)
+    return fig
 
 
 def build_figure() -> plt.Figure:
@@ -430,12 +775,35 @@ def build_figure() -> plt.Figure:
 
 def main() -> None:
     FIG_DIR.mkdir(parents=True, exist_ok=True)
+    SLIDE_DIR.mkdir(parents=True, exist_ok=True)
     fig = build_figure()
     fig.savefig(OUT_PDF, dpi=300, bbox_inches="tight")
     fig.savefig(OUT_PNG, dpi=300, bbox_inches="tight", transparent=True)
     plt.close(fig)
     print("Wrote", OUT_PDF)
     print("Wrote", OUT_PNG)
+
+    summary = _load_summary()
+    process_history = _load_history(PROCESS_HISTORY)
+    process_entry = _load_history(PROCESS_ENTRY)
+    for model_key, config in SLIDE_OUTPUTS.items():
+        slide_fig = _build_model_slide(summary, process_history, process_entry, model_key)
+        pdf_path = SLIDE_DIR / f"{config['stem']}.pdf"
+        png_path = SLIDE_DIR / f"{config['stem']}.png"
+        slide_fig.savefig(pdf_path, dpi=300, bbox_inches="tight")
+        slide_fig.savefig(png_path, dpi=300, bbox_inches="tight", transparent=True)
+        plt.close(slide_fig)
+        print("Wrote", pdf_path)
+        print("Wrote", png_path)
+        for metric in ("breadth", "popularity", "entry"):
+            metric_fig = _build_metric_slide(summary, process_history, process_entry, model_key, metric)
+            metric_pdf = SLIDE_DIR / f"{config['stem']}_{metric}.pdf"
+            metric_png = SLIDE_DIR / f"{config['stem']}_{metric}.png"
+            metric_fig.savefig(metric_pdf, dpi=300, bbox_inches="tight")
+            metric_fig.savefig(metric_png, dpi=300, bbox_inches="tight", transparent=True)
+            plt.close(metric_fig)
+            print("Wrote", metric_pdf)
+            print("Wrote", metric_png)
 
 
 if __name__ == "__main__":

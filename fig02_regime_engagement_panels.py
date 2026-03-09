@@ -17,8 +17,9 @@ REGION_FP = Path("output/fig45_portfolio_space_ridgelines_region_summary.csv")
 
 OUT_A = Path("output/fig02_regime_exemplars_ridgelines.png")
 OUT_A_ALL = Path("output/fig02_regime_allmembers_ridgelines.png")
-OUT_A_SLIDE = Path("output/fig02_regime_exemplars_ridgelines_slide_clean.png")
-OUT_A_ALL_SLIDE = Path("output/fig02_regime_allmembers_ridgelines_slide_clean.png")
+SLIDES_DIR = Path("slides")
+OUT_A_SLIDE = SLIDES_DIR / "fig02_regime_exemplars_ridgelines_slide_clean.png"
+OUT_A_ALL_SLIDE = SLIDES_DIR / "fig02_regime_allmembers_ridgelines_slide_clean.png"
 OUT_B = Path("output/fig02_centroid_separation.png")
 OUT_C = Path("output/fig02_regime_share_fractions.png")
 OUT_JOINT = Path("output/fig02_regime_engagement_panels.png")
