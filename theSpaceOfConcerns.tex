@@ -43,12 +43,12 @@
   }
 }
 \newcommand{\significancetext}{%
-Consensus can make governance look uniform even when actor strategies diverge. Across six decades of Antarctic Treaty submissions, we recover a shared space of concerns that reveals three recurring engagement regimes and shows that actors expand locally from anchored portfolio positions rather than governing uniformly. A simple sequential model reproduces these sparse, path-dependent portfolio dynamics, making hidden strategic pressure visible inside a formally unanimous institution. The result is a concrete way to study how consensus systems absorb conflict before it becomes explicit.
+Consensus can make governance look uniform even when actors occupy distinct positions beneath unanimous outcomes. Across six decades of Antarctic Treaty submissions, we recover three recurring engagement regimes, show that actors usually bridge adjacent rather than distant regions, and find that agenda growth is local and path dependent. The ATS therefore appears not as a homogeneous forum or a clean division-of-labor system, but as a shared arena with structured positions and selective complementarity. This makes hidden strategic pressure visible inside a formally unanimous institution.
 }
 
 \begin{document}
 \begin{abstract}
-    Consensus institutions can hide strategic differentiation because formal unanimity obscures disagreement in official outcomes. Using six decades of Antarctic Treaty submissions, we infer actor-level activity fingerprints from revealed topic priorities and build a ``space of concerns'' in which institution-defined topics are linked when actors recurrently co-specialize in them. The resulting topology organizes actors into three recurring engagement regimes. Portfolio change is local and path dependent: adoption odds decline with concern-space distance, regime shifts are mostly within or adjacent, and early agenda entry is associated with both broader portfolios and stronger anchoring within one regime rather than with membership in any single regime. A simple retain-and-enter mechanism, conditioned on the observed active actors, budgets, and pooled concern space, closely reproduces mean breadth, topic popularity, and local entry patterns. The space of concerns thus provides a behavioral map of how consensus governance organizes and absorbs strategic pressure.
+    Consensus institutions can hide strategic differentiation because formal unanimity obscures disagreement in official outcomes. Using six decades of Antarctic Treaty submissions, we infer actor-level activity fingerprints from revealed topic priorities and build a ``space of concerns'' in which institution-defined topics are linked when actors recurrently co-specialize in them. The resulting topology supports a minimum adequate three-regime summary. Actors frequently span adjacent regimes but effectively never bridge the two extremes directly without passing through the middle. Portfolio change is local and path dependent: adoption odds decline with concern-space distance, regime shifts are mostly within or adjacent, and early agenda entry is associated with both broader portfolios and stronger anchoring within one regime rather than with membership in any single regime. Among strongly anchored actors, some regime combinations---especially across the Regime 1--3 boundary---are more complementary than redundant, even though the system retains a substantial shared core. A simple retain-and-enter mechanism, conditioned on the observed active actors, budgets, and pooled concern space, closely reproduces mean breadth, topic popularity, and local entry patterns. The ATS therefore appears neither uniformly governed nor cleanly partitioned, but as a shared arena with structured positions, local movement, and selective complementarity.
 \end{abstract}
 
 \begin{strip}
@@ -105,15 +105,17 @@ Bridge topics structure movement between core and periphery. Inspections functio
 
 
 \subsection{Modes of Engagement and Actor Strategies}
-The Space of Concerns reveals how members allocate attention across issues and how they position themselves in ATS governance. As shown in \cref{fig:portfolio_space_ridgelines}, attention is uneven: countries concentrate in distinct parts of the issue space, and those clusters define three broad engagement regimes. Importantly, the 1D MDS axis is an embedding for visualization rather than a uniform metric ruler: local neighborhood structure is preserved approximately, but dense portions of the network appear compressed while sparse portions are expanded.
+The Space of Concerns reveals how members allocate attention across issues and how they position themselves in ATS governance. As shown in \cref{fig:portfolio_space_ridgelines}, attention is uneven: countries concentrate in distinct parts of the issue space, and those clusters define three broad engagement regimes. We treat three regimes as the minimum adequate summary of the ordered concern space rather than as an arbitrary clustering choice (Appendix \cref{fig:regime-k-validation}). Importantly, the 1D MDS axis is an embedding for visualization rather than a uniform metric ruler: local neighborhood structure is preserved approximately, but dense portions of the network appear compressed while sparse portions are expanded.
 
-Taken together, the regimes form a gradient rather than isolated silos. Regime 1 (institutional coordination and information exchange) emphasizes opening statements, science and education, information exchange, and ATS reporting and operational topics. Regime 2 (compliance and environmental management) centers on environmental protection, EIA, liability, waste and pollution, legal-institutional matters, inspections, and protected-area governance. Regime 3 (frontier impacts, resources, and strategic planning) concentrates on drilling, mineral resources, tourism pressure, SAER/environmental domains, marine acoustics, sub-glacial lakes, CEP strategy, and multiyear planning, where scientific capability, environmental risk, and long-horizon positioning intersect.
+Taken together, the regimes form a gradient rather than isolated silos. Regime 1 (institutional coordination and information exchange) emphasizes opening statements, science and education, information exchange, and ATS reporting and operational topics. Regime 2 (compliance and environmental management) centers on environmental protection, EIA, liability, waste and pollution, legal-institutional matters, inspections, and protected-area governance. Regime 3 (frontier impacts, resources, and strategic planning) concentrates on drilling, mineral resources, tourism pressure, SAER/environmental domains, marine acoustics, sub-glacial lakes, CEP strategy, and multiyear planning, where scientific capability, environmental risk, and long-horizon positioning intersect. The full topic-to-regime assignment is reported in Appendix Table~\ref{tab:regime_topics_full}.
 
 These regimes capture dominant orientations, not fixed blocs. Members most strongly aligned with Regime 1 include Switzerland, Malaysia, Estonia, and Bulgaria; with Regime 2, UNEP, COMNAP, Belarus, and IUCN; and with Regime 3, the Russian Federation, the United States, New Zealand, and Australia (Appendix Table~\ref{tab:regime_alignment_full}). Some countries remain tightly concentrated in one region, while others maintain mixed portfolios across neighboring regions, separating structural position from strategic flexibility as agendas shift.
 
 Australia illustrates this distinction: although its portfolio spans all three regions, its center of gravity remains in Regime 3 (share $=0.553$), indicating a diversified but not genuinely between-regime position (Appendix Table~\ref{tab:regime_alignment_full}).
 
-Supplementary co-sponsorship and competition views are consistent with this regime picture. Actor communities concentrate unevenly across the same concern regions, and topic-level concentration remains stable even as participation expands, indicating layered rather than homogenizing growth in agenda engagement (Appendix \cref{fig:actors_on_space,fig:competition-appendix}).
+A fuzzy-threshold view confirms that these are adjacent occupancy zones rather than rigid classes: actors commonly span Regime 1+2 or Regime 2+3, only one actor spans all three regions at the chosen threshold, and no actor spans Regime 1+3 without also passing through Regime 2 (Appendix \cref{fig:fuzzy-regime-classes}). The regimes are also historically ordered in the archive itself. Regime 1 actors are later and shorter-tenure on average, Regime 2 actors are intermediate, and Regime 3 actors are the earliest and longest-running participants (Appendix \cref{fig:regime-tenure}).
+
+These positions overlap with, but are not reducible to, collaboration or broad geopolitical grouping. Co-sponsorship communities concentrate unevenly across the same concern regions, and country pairs that co-submit more often also show greater portfolio overlap, but simple geodesic proximity does not recover the same structure and EU/NATO pairings are not unusually similar; BRICS alignment is positive but small-sample and therefore exploratory (Appendix \cref{fig:actors_on_space,fig:portfolio-share-collaboration,fig:geo-portfolio-overlap,fig:bloc-overlap}). At the same time, the regime structure is not only redundant. Among strongly anchored actors, hard Regime 1--3 pairs cover more distinct topics and show less internal overlap than size-matched baselines, and this pattern survives a fuzzy-class check in which adjacent bridge actors are separated out: pure 1--3 and 1+2--3 pairings remain the clearest complementary combinations, whereas 2--2 and 1+2--2 pairings are more redundant (Appendix \cref{fig:fuzzy-pair-coverage,fig:regime-pair-institutional}).
 
 \subsection{Growth of Interest Portfolios is not Random Drift but Local Movement in the Concern Space}
 The regime map above is descriptive; the hazard model tests whether movement through this space is structured. We find a strong locality gradient: in the pooled specification, adoption odds fall as concern-space distance increases ($\beta_{\mathrm{distance}}=-0.652$, odds ratio $=0.52$). The empirical adoption curve in \cref{fig:hazard-distance-timeseries} shows the same pattern nonparametrically, with adoption declining from 8.43\% in the nearest distance quartile to 0.79\% in the farthest quartile. The distance effect remains negative under alternative space constructions (instantaneous: $-0.539$; cumulative-lagged: $-0.533$; Appendix \cref{fig:hazard-space-sensitivity}). Consistent with this locality, dominant-regime assignments are highly persistent in rolling 5-year windows: 82.0\% of member transitions remain in the same regime, 99.0\% remain in the same or an adjacent regime, and direct Regime 1$\leftrightarrow$Regime 3 jumps are rare (1.0\%). A direct 1-year versus 5-year comparison (Appendix \cref{fig:regime-window-sensitivity}) shows the expected smoothing: same-regime persistence rises from 58.6\% to 82.0\%, while direct Regime 1$\leftrightarrow$Regime 3 jumps fall from 2.7\% to 1.0\%. Together, these results support interpreting engagement modes as path-dependent orientations rather than static labels, because actors tend to extend portfolios into nearby concerns rather than making long-range jumps.
@@ -139,7 +141,7 @@ The hazard results establish local movement, but they do not show whether that m
 
 
 \subsubsection{Agenda Pioneering Reflects Breadth and Regime Anchoring}
-Early agenda entry is not concentrated in one dominant regime. Actors from all three regimes appear among the pioneers, but earlier movers tend to combine broader portfolios with stronger concentration within one regime rather than evenly mixed portfolios. A simple OLS using the relative pioneer index as the outcome shows that breadth and max regime share are both positive predictors of earlier entry ($\beta_{\mathrm{breadth}}=0.26$, $p=0.001$; $\beta_{\mathrm{anchor}}=17.70$, $p<0.001$), while dominant-regime indicators are not distinguishable from zero. This pattern is stable to alternative cumulative-volume thresholds for defining topic emergence (Appendix \cref{fig:emergence-threshold-sensitivity}). Pioneering therefore appears less as membership in one privileged bloc than as regime-positioned timing from a clear portfolio base.
+Early agenda entry is not concentrated in one dominant regime. As shown in \cref{fig:pioneer_plot}, actors from all three regimes appear among the pioneers, but earlier movers tend to combine broader portfolios with stronger concentration within one regime rather than evenly mixed portfolios. A simple OLS using the relative pioneer index as the outcome shows that breadth and max regime share are both positive predictors of earlier entry ($\beta_{\mathrm{breadth}}=0.26$, $p=0.001$; $\beta_{\mathrm{anchor}}=17.70$, $p<0.001$), while dominant-regime indicators are not distinguishable from zero. This pattern is stable to alternative cumulative-volume thresholds for defining topic emergence (Appendix \cref{fig:emergence-threshold-sensitivity}). Pioneering therefore appears less as membership in one privileged bloc than as regime-positioned timing from a clear portfolio base.
 
 \begin{figure*}[!htbp]
     \centering \includegraphics[width = \textwidth]{./figures/fig05_pioneer_regime_position.pdf}
@@ -154,7 +156,11 @@ This contribution complements, rather than replaces, existing social-science app
 
 Substantively, the ATS appears as a structured concern space organized around a dense procedural--environmental hub, with more specialized but still connected regions around extraction and science, tourism and visitation, and coordination. This topology does not imply a detached extraction arena; rather, it is consistent with an institutional setting in which historically contentious issues, especially resource extraction, are tightly constrained and therefore remain embedded in adjacent procedural, scientific, and environmental pathways. That reading is consistent with current scholarship on dual-use pressures in Antarctica and the persistence of geopolitical tension under a formally cooperative regime \cite{Brady2017,DoddsBoulegue2023,Aus2025,Szpak2025}.
 
-The temporal results strengthen this interpretation. New attention does not diffuse randomly; it tends to move locally in the concern space, and actor trajectories cluster into a small number of recurrent engagement regimes. This indicates structured adaptation rather than drift. In practical terms, change in the ATS is more likely to appear as recombination of adjacent concerns than as abrupt displacement to distant issues. The regime diagnostics do not imply hard blocs, but they do support a stable and policy-interpretable three-regime summary for the present data. The mechanism check reported in the Results is consistent with this reading: ATS portfolios are better described by selective persistence and local expansion within a shared issue arena than by smooth diffusion across the full topology.
+The temporal results strengthen this interpretation. New attention does not diffuse randomly; it tends to move locally in the concern space, and actor trajectories cluster into a small number of recurrent engagement regimes. This indicates structured adaptation rather than drift. In practical terms, change in the ATS is more likely to appear as recombination of adjacent concerns than as abrupt displacement to distant issues. The regime diagnostics do not imply hard blocs, but they do support a stable and policy-interpretable three-regime summary for the present data. The fuzzy occupancy check sharpens this point: actors frequently bridge adjacent regimes, but effectively never span Regime 1 and Regime 3 directly without also occupying Regime 2. The mechanism check reported in the Results is consistent with this reading: ATS portfolios are better described by selective persistence and local expansion within a shared issue arena than by smooth diffusion across the full topology.
+
+The same regime geometry also clarifies what this paper does and does not mean by division of labor. The ATS does not look like a fully partitioned system in which actors simply split the agenda into non-overlapping domains. The shared procedural--environmental core remains substantial. But neither is the system merely redundant. Once actors are conditioned on strong regime anchoring, some pairings become more complementary than others. In particular, the clearest complementarity appears across the Regime 1--3 boundary: those pairs cover more distinct topics and overlap less than expected, and the effect survives a fuzzy-class sensitivity check that separates pure anchors from adjacent bridge actors. The accompanying institutional profile indicates that these complementary pairs are more often mixed CP/NCP, gateway-linked, and claimant-linked than expected, but the claimant enrichment should be read together with tenure: the effect is largely carried by long-established Regime 3 anchors rather than by claimant status alone (Appendix \cref{fig:fuzzy-pair-coverage,fig:regime-pair-institutional,fig:regime-tenure}). This is therefore better understood as selective complementarity inside a shared arena than as a global division-of-labor equilibrium.
+
+At the same time, the retain-and-enter model should be read at the level it was designed to address. It captures average breadth, average topic popularity, local entry, and period-to-period stability better than it captures the exact realized actor-topic support in any one period. That limitation is substantively useful rather than merely technical. It suggests that this paper identifies the broad geometry of ATS attention and the main local growth rules, but not yet the finer-grained forces that determine why actors occupying the same formal consensus regime still choose different issue bundles and timings. That residual variation is the natural entry point for a next step on \emph{apparent consensus}: explaining how formally unanimous outcomes can coexist with persistent strategic differentiation inside a shared concern space.
 
 These findings also sharpen how consensus stability should be interpreted. Relative institutional stability does not imply absence of strategic pressure; it can reflect effective filtering of disagreement into recurrent issue pathways with stable boundary zones \cite{CCAMLRConsensus2022,Gardiner2025}. Influence in such systems is therefore expressed through portfolio positioning and timing of entry into gateway concerns, not only through activity volume or economic size.
 
@@ -215,6 +221,29 @@ Colombia & 0.647 & Chile & 0.677 & Monaco\textsuperscript{\dag} & 0.528 \\
 \end{tabular}
 \end{table*}
 
+\begin{table*}[!htbp]
+\centering
+\scriptsize
+\caption{\textbf{Topic assignments for the three concern-space regimes.} Topics are listed in their 1D concern-space order and assigned to the regime defined by the nearest weighted center of aggregate excess engagement, after smoothing the aggregate $(\rho-1)_+$ signal across the ordered space.}
+\label{tab:regime_topics_full}
+\begin{tabular}{p{0.31\textwidth} p{0.33\textwidth} p{0.31\textwidth}}
+\hline
+\textbf{Regime 1: institutional coordination and information exchange} & \textbf{Regime 2: compliance and environmental management} & \textbf{Regime 3: frontier impacts, resources, and strategic planning} \\
+\hline
+Educational issues; Science issues; Opening statements; Exchange of Information; Operation of the Antarctic Treaty system -- The Secretariat; Operation of the Antarctic Treaty system -- General; Environmental Monitoring and Reporting; Operation of the Antarctic Treaty system -- Reports; Operational issues. &
+Safety and Operations in Antarctica; Environmental Impact Assessment -- Other EIA Matters; Environmental Protection -- General; Biological Prospecting; Comprehensive Environmental Evaluations; International Polar Year; Fauna and Flora -- General; Cooperation with Other Organisations; Management Plans; Inspections; Liability; Nonnative Species and Quarantine; Waste management and disposal; Climate Change; Prevention of marine pollution; Institutional and legal matters; Marine Protected Areas; Emergency report and contingency planning; Repair and remediation of environmental damage; Historic Sites and Monuments; Area Protection and Management Plans -- General. &
+Mineral resources; Human Footprint and wilderness values; CEP Strategy Discussions; Search and Rescue; Site Guidelines for Visitors; Marine living resources; Specially Protected Species; Tourism and NG Activities; Drilling; Operation of the CEP; Multiyear strategic workplan; Marine Acoustics; Sub-glacial Lakes; State of the Antarctic Environment Report (SAER); Environmental Domains Analysis. \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig21_regime_portfolio_validation.pdf}
+\caption{\textbf{Why three regimes? Portfolio-grounded validation of the concern-space partition.} (A) Weighted within-region inertia under the same snapped weighted-center partition rule used in the main analysis. The large drop from $k=2$ to $k=3$ marks the first clear elbow. (B) Portfolio-similarity preservation: for each $k$, actor portfolios are compressed to $k$ regime shares and the resulting pairwise actor-similarity matrix is compared with the full excess-specialization similarity matrix. The jump from $k=2$ to $k=3$ is large, while later gains are modest. (C) Increasing $k$ weakens regime anchoring and quickly produces very small regions. We therefore interpret $k=3$ as the minimum adequate partition: it captures the main portfolio structure while keeping the regime summary policy-interpretable.}
+\label{fig:regime-k-validation}
+\end{figure*}
+
 \section{Methods and Data}
 \subsection{Data Description and Processing}
 We analyze working papers and information documents submitted to the Antarctic Treaty System (ATS) from 1961 to 2025. The corpus was compiled from the official ATS document archive and enriched with thematic labels, submitting parties, and document types \cite{AntarcticTreatyHandbook,Yaryab2024}. Documents submitted by the ATS Secretariat were retained for completeness.
@@ -263,7 +292,7 @@ Let $x(a,i)$ denote the number of submissions by actor $a$ on topic $i$, where a
 and the system-wide importance of topic $i$ as
 
 \begin{equation}\label{eq:topic_importance}
-Z_i = \frac{\sum_c x(c,i)}{\sum_{c,j} x(c,j)}.
+Z_i = \frac{\sum_c x(c,i)}{\sum_{d,j} x(d,j)}.
 \end{equation}
 
 The Revealed Policy Advantage (RPA; an RCA-style specialization index) is then
@@ -275,7 +304,7 @@ Topics are linked by proximity
 \begin{equation}\label{eq:proximity}
 \phi(i,j)
 =
-\min\!\left\{
+\min_a\!\left\{
 \begin{aligned}
 &\Pr\!\bigl(\rho(a,i) > 1 \mid \rho(a,j) > 1\bigr),\\
 &\Pr\!\bigl(\rho(a,j) > 1 \mid \rho(a,i) > 1\bigr)
@@ -292,6 +321,32 @@ This adapts the product-space proximity logic from economic complexity to govern
 \caption{\textbf{Full ribbon view of RPA-specialized topic supports across adjacent periods.} Topics are held in fixed rows across time windows. For each adjacent period pair, a country contributes to every topic pair in which it has RPA $> 1$ at both ends, and each country's total contribution is weighted to sum to one within that period transition. Ribbon width therefore reflects aggregated country support across all specialized topic-to-topic continuities and shifts, rather than static proximity magnitude. The view complements the filtered main-text ribbon by showing the full set of RPA-qualified supports.}
 \label{fig:space-ribbon-full}
 \end{figure*}
+
+\subsection{Constructing Regimes from the Concern Space}
+The three engagement regimes in the main text are not obtained by clustering actors directly. Instead, they are defined as contiguous regions of the recovered topic space and actors are then assigned by how much of their excess portfolio mass falls into each region. This choice is deliberate: the substantive object of interest is movement and positioning \emph{within} a shared concern space, so the regimes should respect that geometry rather than grouping actors by similarity alone.
+
+We begin from the full actor-topic specialization matrix, not from an already aggregated topic profile. The aggregate proximity matrix $\phi$ in \cref{eq:proximity} is first constructed from repeated co-specialization across actors, so actor-level differences enter the regime procedure initially through the concern-space geometry itself. We then convert $\phi$ into a weighted distance graph by assigning each positive edge the length
+\begin{equation}
+    d(i,j) = -\log\!\bigl(\max\{\phi(i,j), \varepsilon\}\bigr),
+\end{equation}
+with a small $\varepsilon>0$ to avoid taking logs of zero. We then compute all-pairs shortest-path distances on this topic graph and obtain a one-dimensional coordinate for each topic by classical multidimensional scaling (MDS). The resulting axis is used only as an ordered embedding: it provides a consistent left-to-right representation of the concern space, but it is not interpreted as a literal Euclidean policy spectrum.
+
+To identify broad regions on this ordered space, we aggregate excess specialization across actors using
+\begin{equation}
+    g_i = \sum_a \max\{\rho(a,i)-1,0\},
+\end{equation}
+where $g_i$ is large when many actors place disproportionate attention on topic $i$. This aggregate signal is introduced only \emph{after} the concern-space axis has been constructed. The regime fit itself is then performed on topic positions in the 1D embedding, not on actor observations directly. In the weighted specification used in the paper, we smooth $g_i$ over the 1D ordering with a short Gaussian kernel and locate $R=3$ region centers by an iterative 1D assignment-and-update step. Starting from three evenly spaced initial centers, each topic is assigned to its nearest center in the 1D embedding and each center is updated to the \emph{weighted} mean position of the topics currently assigned to it, using the smoothed excess-engagement signal as the weight. After convergence, each center is snapped to the nearest observed topic, and the regime boundaries are taken as the midpoints between adjacent centers. An unweighted comparison therefore corresponds to the same 1D procedure with equal topic weights: the concern-space geometry remains actor-derived, but the partition itself is no longer pulled toward high-engagement parts of that space.
+
+This procedure yields three contiguous topic blocks on the ordered concern space. The regimes therefore summarize broad zones of issue concentration rather than unrestricted network communities. They are intentionally more structured than off-the-shelf actor clustering methods such as $k$-means, hierarchical clustering, or Leiden community detection, which can be useful descriptively but do not enforce the spatial contiguity needed for our interpretation of local movement and regime transitions. It is therefore useful to distinguish the two objects involved: the concern space itself is a topology of joint interest, whereas the weighted regime partition is an engagement summary of how actors occupy that topology. We selected $R=3$ as the minimum adequate partition rather than as a universal optimum. Appendix \cref{fig:regime-k-validation} reports two complementary checks using the same snapped weighted-center rule as the main analysis. First, weighted within-region inertia shows a clear elbow at $k=3$. Second, compressing actor portfolios to $k$-regime shares yields a large gain in preservation of pairwise actor similarity from $k=2$ to $k=3$, while additional regimes provide only modest improvement and rapidly create very small residual regions. We therefore treat three regimes as the smallest partition that captures the main portfolio geometry without over-fragmenting the concern space.
+
+Actors are then positioned relative to this fixed topic partition. For actor $a$, let $r(i)\in\{1,2,3\}$ denote the regime assigned to topic $i$. We compute regime weights from the same excess specialization signal,
+\begin{equation}
+    \omega_{ar}
+    =
+    \frac{\sum_{i:r(i)=r} \max\{\rho(a,i)-1,0\}}
+         {\sum_i \max\{\rho(a,i)-1,0\}},
+\end{equation}
+so that $\omega_{ar}$ is the share of actor $a$'s excess portfolio mass falling in regime $r$. The actor's dominant regime is the maximizer of $\omega_{ar}$, and the dominant-regime share $\max_r \omega_{ar}$ measures regime anchoring. This is the quantity used in the main-text discussion of strong aligners, mixed portfolios, and regime-persistence transitions. The complete topic-to-regime mapping is reported in Appendix Table~\ref{tab:regime_topics_full}.
 
 
 \subsection{Hazard Model for Local Topic Adoption}
@@ -460,6 +515,35 @@ Overall, the analysis highlights the asymmetric role of members in shaping the g
 \end{figure*}
 
 \section{Supplementary Results}
+\subsection*{Regime Occupancy and Complementarity}
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig33_fuzzy_regime_classes.pdf}
+\caption{\textbf{Fuzzy regime classes show adjacent bridging rather than arbitrary spanning.} Actors are assigned to all regimes for which their regime share exceeds 0.25. (A) Most actors are either anchored in one regime or bridge adjacent regimes (1+2 or 2+3). No actor occupies Regime 1 and Regime 3 without also occupying Regime 2. (B) Boundary-spanning classes are broader on average than pure anchors, but remain structured rather than fully diffuse.}
+\label{fig:fuzzy-regime-classes}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig35_regime_tenure.pdf}
+\caption{\textbf{Regime position is associated with actor tenure in the ATS archive.} Regime 1 actors are later entrants and active for fewer years on average, Regime 2 actors are intermediate, and Regime 3 actors are the earliest and longest-running participants. Points show actors; thick vertical bars show the interquartile range and median by dominant regime.}
+\label{fig:regime-tenure}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig34_fuzzy_pair_coverage_anchored.pdf}
+\caption{\textbf{Complementarity is concentrated on the 1--3 boundary and survives fuzzy regime definitions.} We restrict attention to strongly anchored actors and compare fuzzy regime pairings against size-matched baselines and regime-label permutations. Left: distinct-topic share, defined as $|\cup S_i|/\sum |S_i|$, where $S_i$ are the pair members' specialized topic sets. Right: internal pairwise overlap. Pure 1--3 and 1+2--3 pairs provide the clearest complementary coverage, whereas 2--2 and 1+2--2 pairs are more redundant. Stars show permutation significance and daggers/obelisks indicate direction relative to the size-matched null.}
+\label{fig:fuzzy-pair-coverage}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig32_regime_pair_institutional_profiles.pdf}
+\caption{\textbf{Complementary Regime 1--3 pairings are more ATS-native than generic geopolitical.} Left: strongly anchored Regime 1--3 pairs are enriched for mixed CP/NCP combinations, gateway-linked pairs, and pairs involving claimants, but not for same Leiden co-sponsorship community. Right: the actors carrying those pairings combine shorter-tenure Regime 1 members with long-established Regime 3 anchors, indicating that the claimant signal is largely a tenure-and-position effect rather than a standalone geopolitical bloc story. Stars show permutation significance for the left-panel attribute contrasts.}
+\label{fig:regime-pair-institutional}
+\end{figure*}
+
 \subsection*{Co-sponsorship clusters}
 \begin{figure*}[!htbp]
     \centering
@@ -472,13 +556,29 @@ Mapping actors onto this terrain (\cref{fig:actors_on_space}) shows clustered, a
 
 Panel C embeds these communities into the main concern-space layout used in the paper, making clear that co-sponsorship structure overlaps with, but does not replace, the regime structure. Panel D tracks the dominant specialized community by topic over time. The main pattern is layered rather than segmented: one community remains broadly present across core governance topics, while the others dominate intermittently in narrower coordination and procedural niches.
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/fig18_collaboration_portfolio_overlap.pdf}
+\caption{\textbf{Collaborating country pairs that co-submit more often also hold more similar portfolios.} Panels A and B show raw pair-period observations for collaborating country pairs within non-overlapping 10-year ATS periods; the x-axis counts co-submitted papers in that period (displayed on a $\log(1+x)$ scale) and the y-axis reports Jaccard overlap between their topic portfolios. Panel A uses specialized support (RPA $> 1$); panel B uses any observed activity. Panel C pools the full archive at the country-pair level. Colored lines trace median overlap across positive-collaboration bins. More frequent collaboration is associated with greater portfolio overlap in both definitions, but the relationship remains moderate rather than deterministic, reinforcing that co-sponsorship structure overlaps with, but does not substitute for, the concern-space and regime structure.}
+\label{fig:portfolio-share-collaboration}
+\end{figure*}
+
+This pair-level association is exactly what we would expect if co-sponsorship partly tracks shared concern positions. At the same time, it does not collapse the concern-space result into a simple collaboration network: even among collaborating pairs, overlap varies substantially, and repeated co-submission is far from a deterministic proxy for concern-space similarity. Co-sponsorship therefore provides a useful adjacent view of ATS coordination, but it does not replace the issue-space perspective developed in the main text.
+
+Simple external correlates do less explanatory work. Geographic distance shows no clear negative overlap gradient, EU and NATO pairings are not unusually aligned under permutation, and only BRICS pairs show a positive signal---but on a much smaller ATS sample. These checks therefore point back toward ATS-native positioning rather than broad geography or bloc politics as the more informative lens (\cref{fig:geo-portfolio-overlap,fig:bloc-overlap}).
+
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.45\textwidth]{./figures/fig17_topic_competition_concentration.pdf}
-\caption{\textbf{Topic competition and concentration over time.}
-\textbf{Top panel}: Mean Gini coefficient across all topics remains stable around 0.25--0.30 throughout the period, indicating persistent inequality in RPA distributions despite expanding participation.
-\textbf{Heatmap}: Fraction of members with RPA $\geq$ 1 for each topic (rows) over time (columns), ordered by hierarchical clustering to group topics with similar temporal dynamics. Color intensity indicates competition level (fraction of active members). The clustering reveals three distinct temporal patterns: (1) \emph{Top cluster}: Historic and administrative topics (sites and monuments, CEP strategy, secretariat operations, inspections) show sporadic, low-intensity engagement concentrated in specific periods; (2) \emph{Middle cluster}: Mixed procedural and environmental topics display moderate, patchy participation with variable temporal patterns; (3) \emph{Bottom cluster}: Core operational and governance topics (climate change, management plans, science issues, educational issues, general operations) show sustained, high-intensity competition (40--50\% of members) particularly from 2000 onward. Notable transient dynamics include the tourism spike in the 1990s. The combination of expanding participation (darker colors in recent years, especially in the bottom cluster) with stable Gini (top panel) demonstrates proportional expansion: new entrants join without disrupting existing hierarchies.}
-\label{fig:competition-appendix}
+\includegraphics[width=0.45\textwidth]{./figures/fig24_geography_portfolio_overlap.pdf}
+\caption{\textbf{Geographic proximity does not provide a simple explanation of portfolio overlap.} Each point is a sovereign-state pair in the aggregate archive. The x-axis reports great-circle distance between country representative points; the y-axis reports portfolio overlap under RPA $> 1$ (left) or any observed activity (right). The cloud shows no strong negative geographic gradient, indicating that simple state-to-state distance does not recover the concern-space alignment seen in the main text.}
+\label{fig:geo-portfolio-overlap}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.45\textwidth]{./figures/fig26_geopolitical_bloc_overlap.pdf}
+\caption{\textbf{Generic geopolitical blocs explain little of the regime structure.} Pairwise portfolio overlap is compared for country pairs that share EU, NATO, or BRICS membership versus all other sovereign-state pairs. EU and NATO pairings do not show unusually high overlap under permutation, whereas BRICS pairs do, but on a much smaller ATS sample. We therefore treat the BRICS signal as exploratory and conclude that broad geopolitical bloc membership is not the main organizer of ATS concern-space position.}
+\label{fig:bloc-overlap}
 \end{figure}
 
 \end{document}

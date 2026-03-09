@@ -174,7 +174,7 @@ def draw_pie(ax, x, y, weights, radius_px=7):
     ab.set_in_layout(False)
 
 
-def draw_flag(ax, x, y, flag_img, y_offset_pts=6, zoom=0.013):
+def draw_flag(ax, x, y, flag_img, y_offset_pts=7, zoom=0.08):
     if flag_img is None:
         return
     box = OffsetImage(flag_img, zoom=zoom, cmap=None)
