@@ -103,12 +103,12 @@ def build_payload() -> dict:
 
     rpa = get_rca(counts_df)
     actor_type_map = {}
-    if "submitted by" in submitted_df.columns and "party_type" in submitted_df.columns:
+    if "submitted by" in submitted_df.columns and "party type" in submitted_df.columns:
         actor_type_map = (
-            submitted_df[["submitted by", "party_type"]]
+            submitted_df[["submitted by", "party type"]]
             .dropna()
             .assign(**{"submitted by": lambda df: df["submitted by"].astype(str).str.strip()})
-            .groupby("submitted by")["party_type"]
+            .groupby("submitted by")["party type"]
             .agg(lambda s: s.mode().iloc[0] if not s.mode().empty else s.iloc[0])
             .to_dict()
         )

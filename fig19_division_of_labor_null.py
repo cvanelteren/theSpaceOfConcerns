@@ -166,15 +166,17 @@ def exact_row_col_swap_null(
 def main() -> None:
     _df, submitted, countries, topics = load_data(str(DATA_PATH))
     submitted = submitted.copy()
-    submitted["meeting_year"] = pd.to_numeric(submitted["meeting_year"], errors="coerce")
-    submitted = submitted.dropna(subset=["meeting_year"]).copy()
-    submitted["meeting_year"] = submitted["meeting_year"].astype(int)
+    submitted["meeting year"] = pd.to_numeric(
+        submitted["meeting year"], errors="coerce"
+    )
+    submitted = submitted.dropna(subset=["meeting year"]).copy()
+    submitted["meeting year"] = submitted["meeting year"].astype(int)
 
     countries = sorted(countries)
     topics = sorted(topics)
     periods = build_periods(
-        int(submitted["meeting_year"].min()),
-        int(submitted["meeting_year"].max()),
+        int(submitted["meeting year"].min()),
+        int(submitted["meeting year"].max()),
         PERIOD_YEARS,
     )
     rng = np.random.default_rng(SEED)
@@ -188,7 +190,9 @@ def main() -> None:
     ]
 
     for period_start, period_end, period_label, period_idx in periods:
-        period_submitted = submitted[submitted["meeting_year"].between(period_start, period_end)].copy()
+        period_submitted = submitted[
+            submitted["meeting year"].between(period_start, period_end)
+        ].copy()
         if period_submitted.empty:
             continue
 

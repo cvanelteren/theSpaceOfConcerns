@@ -40,17 +40,17 @@ def load_data_with_fallback() -> tuple[pd.DataFrame, pd.DataFrame, set[str], set
 
 
 def build_yearly_counts(submitted_df: pd.DataFrame) -> pd.DataFrame:
-    base = submitted_df[["meeting_year", "paper_id"]].dropna().copy()
-    base["meeting_year"] = pd.to_numeric(base["meeting_year"], errors="coerce")
-    base = base.dropna(subset=["meeting_year"]).copy()
-    base["meeting_year"] = base["meeting_year"].astype(int)
+    base = submitted_df[["meeting year", "paper id"]].dropna().copy()
+    base["meeting year"] = pd.to_numeric(base["meeting year"], errors="coerce")
+    base = base.dropna(subset=["meeting year"]).copy()
+    base["meeting year"] = base["meeting year"].astype(int)
 
     yearly = (
-        base.groupby("meeting_year")["paper_id"]
+        base.groupby("meeting year")["paper id"]
         .nunique()
         .rename("n_unique_submissions")
         .reset_index()
-        .sort_values("meeting_year")
+        .sort_values("meeting year")
     )
     yearly["rolling_5y_mean"] = (
         yearly["n_unique_submissions"]
@@ -61,15 +61,15 @@ def build_yearly_counts(submitted_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_topic_counts(submitted_df: pd.DataFrame) -> pd.DataFrame:
-    base = submitted_df[["paper_id", "category"]].dropna().copy()
+    base = submitted_df[["paper id", "category"]].dropna().copy()
     base["category"] = base["category"].astype(str).str.split("\t")
     base = base.explode("category").dropna(subset=["category"]).copy()
     base["category"] = base["category"].astype(str).str.strip()
     base = base[base["category"] != ""].copy()
-    base = base.drop_duplicates(subset=["paper_id", "category"])
+    base = base.drop_duplicates(subset=["paper id", "category"])
 
     topic_counts = (
-        base.groupby("category")["paper_id"]
+        base.groupby("category")["paper id"]
         .nunique()
         .rename("n_unique_submissions")
         .reset_index()
@@ -127,7 +127,7 @@ def build_figure():
         )
 
     ax = axs[1]
-    years = yearly["meeting_year"].to_numpy()
+    years = yearly["meeting year"].to_numpy()
     counts = yearly["n_unique_submissions"].to_numpy()
     trend = yearly["rolling_5y_mean"].to_numpy()
 
@@ -154,7 +154,7 @@ def build_figure():
     )
 
     peak_idx = int(yearly["n_unique_submissions"].idxmax())
-    peak_year = int(yearly.loc[peak_idx, "meeting_year"])
+    peak_year = int(yearly.loc[peak_idx, "meeting year"])
     peak_count = int(yearly.loc[peak_idx, "n_unique_submissions"])
     ax.annotate(
         f"Peak: {peak_count} ({peak_year})",

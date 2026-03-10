@@ -40,15 +40,16 @@ def rolling_metrics(window=5):
     counts_df, submitted, countries, topics = load_data_with_fallback()
     total_topics = len(counts_df.index)
 
-    min_year = int(submitted.meeting_year.min())
-    max_year = int(submitted.meeting_year.max())
+    min_year = int(submitted["meeting year"].min())
+    max_year = int(submitted["meeting year"].max())
 
     rows = []
     for end_year in range(min_year + window - 1, max_year + 1):
         start_year = end_year - window + 1
-        subset = submitted.query(
-            f"meeting_year >= {start_year} and meeting_year <= {end_year}"
-        )
+        subset = submitted[
+            (submitted["meeting year"] >= start_year)
+            & (submitted["meeting year"] <= end_year)
+        ]
         if subset.empty:
             continue
 

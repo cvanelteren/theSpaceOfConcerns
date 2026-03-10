@@ -72,12 +72,12 @@ def parse_thresholds(text: str) -> list[float]:
 
 def sanitize_year_column(submitted_df: pd.DataFrame) -> pd.DataFrame:
     df = submitted_df.copy()
-    year_col = "meeting_year" if "meeting_year" in df.columns else "year"
+    year_col = "meeting year" if "meeting year" in df.columns else "year"
     if year_col not in df.columns:
-        raise KeyError("No meeting_year or year column found in source data.")
-    df["meeting_year"] = pd.to_numeric(df[year_col], errors="coerce")
-    df = df.dropna(subset=["meeting_year"]).copy()
-    df["meeting_year"] = df["meeting_year"].astype(int)
+        raise KeyError("No meeting year or year column found in source data.")
+    df["meeting year"] = pd.to_numeric(df[year_col], errors="coerce")
+    df = df.dropna(subset=["meeting year"]).copy()
+    df["meeting year"] = df["meeting year"].astype(int)
     return df
 
 
@@ -86,7 +86,7 @@ def explode_topic_long(submitted_df: pd.DataFrame) -> pd.DataFrame:
     if topic_col not in submitted_df.columns:
         raise KeyError("No category/topic column found in source data.")
 
-    out = submitted_df[["meeting_year", topic_col]].dropna(subset=[topic_col]).copy()
+    out = submitted_df[["meeting year", topic_col]].dropna(subset=[topic_col]).copy()
     out["topic"] = out[topic_col].astype(str).str.split("\t")
     out = out.explode("topic")
     out["topic"] = out["topic"].astype(str).str.strip()
@@ -98,7 +98,7 @@ def explode_topic_long(submitted_df: pd.DataFrame) -> pd.DataFrame:
     proxy = pd.DataFrame(index=out["topic"].to_numpy())
     proxy = standardize_index_labels(proxy)
     out["topic_std"] = proxy.index.to_numpy()
-    return out[["meeting_year", "topic_std"]]
+    return out[["meeting year", "topic_std"]]
 
 
 def compute_topic_emergence(
@@ -106,16 +106,20 @@ def compute_topic_emergence(
     min_topic_volume: int,
     emergence_percentile: float,
 ) -> pd.DataFrame:
-    yearly = topic_long_df.groupby(["meeting_year", "topic_std"]).size().reset_index(name="count")
+    yearly = topic_long_df.groupby(["meeting year", "topic_std"]).size().reset_index(
+        name="count"
+    )
     rows = []
     for topic, dfi in yearly.groupby("topic_std"):
-        dfi = dfi.sort_values("meeting_year")
+        dfi = dfi.sort_values("meeting year")
         total = int(dfi["count"].sum())
         if total < int(min_topic_volume):
             continue
         dfi["cum"] = dfi["count"].cumsum()
         dfi["pct"] = dfi["cum"] / total
-        emergence_year = int(dfi.loc[dfi["pct"] >= emergence_percentile, "meeting_year"].iloc[0])
+        emergence_year = int(
+            dfi.loc[dfi["pct"] >= emergence_percentile, "meeting year"].iloc[0]
+        )
         rows.append(
             {
                 "topic": topic,

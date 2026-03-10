@@ -90,16 +90,18 @@ def main() -> None:
     topics = sorted(topics)
 
     submitted = submitted.copy()
-    submitted["meeting_year"] = pd.to_numeric(submitted["meeting_year"], errors="coerce")
-    submitted = submitted.dropna(subset=["meeting_year"]).copy()
-    submitted["meeting_year"] = submitted["meeting_year"].astype(int)
+    submitted["meeting year"] = pd.to_numeric(
+        submitted["meeting year"], errors="coerce"
+    )
+    submitted = submitted.dropna(subset=["meeting year"]).copy()
+    submitted["meeting year"] = submitted["meeting year"].astype(int)
     submitted["parties_list"] = submitted["parties"].apply(to_party_list)
     submitted["n_parties"] = submitted["parties_list"].apply(len)
     submitted = submitted[submitted["n_parties"] > 0].copy()
 
     periods = build_periods(
-        int(submitted["meeting_year"].min()),
-        int(submitted["meeting_year"].max()),
+        int(submitted["meeting year"].min()),
+        int(submitted["meeting year"].max()),
         PERIOD_YEARS,
     )
 
@@ -107,7 +109,7 @@ def main() -> None:
 
     for period_start, period_end, period_label, period_idx in periods:
         period_submitted = submitted[
-            submitted["meeting_year"].between(period_start, period_end)
+            submitted["meeting year"].between(period_start, period_end)
         ].copy()
         if period_submitted.empty:
             continue

@@ -1,8 +1,16 @@
 # %%
-"""Graph-only figure: space of concerns fitted to Antarctica silhouette."""
+"""Graph-only figure: space of concerns fitted to Antarctica silhouette.
 
+The expensive part of this figure is not the node layout itself, which is
+already loaded from disk when available, but the side-label assignment and
+connector-routing scaffold. Cache that derived layout so routine reruns only
+recompute it when the underlying geometry changes.
+"""
+
+import json
 import shutil
 import subprocess
+import time
 from dataclasses import dataclass
 from heapq import heappop, heappush
 from pathlib import Path
@@ -28,6 +36,24 @@ from utils import (
     load_flag,
     load_saved_layout_positions,
 )
+
+USE_CACHED_SIDE_LAYOUT = True
+REFRESH_SIDE_LAYOUT = False
+SIDE_LAYOUT_CACHE_VERSION = 9
+SIDE_LAYOUT_CACHE_PATH = Path("assets/cache/fig01_side_layout_cache.json")
+USE_SAVED_NODE_LAYOUT = False
+SAVE_MAIN_SVG = False
+GENERATE_REVEAL_SEQUENCE = False
+DEBUG_PROGRESS = True
+REVEAL_OUTPUT_DIR = Path("./output/fig01_reveals")
+SAVE_MAIN_PNG = True
+SAVE_MAIN_PDF = True
+MAIN_PNG_DPI = 1200
+
+
+def debug_print(message):
+    if DEBUG_PROGRESS:
+        print(f"[fig01] {message}", flush=True)
 
 
 def load_data_with_fallback():
@@ -751,16 +777,44 @@ def deterministic_layout(g):
     return nx.kamada_kawai_layout(g, pos=init, weight="weight")
 
 
+_t0 = time.perf_counter()
+debug_print("Building concern-space graphs...")
 mst, full_graph = build_graphs()
+debug_print(f"Built graphs in {time.perf_counter() - _t0:.2f}s")
+
+_t0 = time.perf_counter()
+debug_print("Loading saved node layout...")
 saved_pos = load_saved_layout_positions(mst)
-saved_pos = None
-pos = saved_pos if saved_pos is not None else deterministic_layout(mst)
+debug_print(
+    "Loaded saved node layout in " f"{time.perf_counter() - _t0:.2f}s"
+    if saved_pos is not None
+    else f"No saved node layout found ({time.perf_counter() - _t0:.2f}s)"
+)
+if not USE_SAVED_NODE_LAYOUT:
+    debug_print(
+        "Ignoring saved node layout; using deterministic layout to preserve figure geometry."
+    )
+    saved_pos = None
+if saved_pos is None:
+    _t0 = time.perf_counter()
+    debug_print("Computing deterministic node layout...")
+    pos = deterministic_layout(mst)
+    debug_print(
+        f"Computed deterministic node layout in {time.perf_counter() - _t0:.2f}s"
+    )
+else:
+    pos = saved_pos
 
 fp = Path("1024px-AntarcticaContour.svg.png")
 if fp.exists():
+    _t0 = time.perf_counter()
+    debug_print("Loading Antarctica mask and tessellation...")
     tess_points, mask_img, mask_extent = tessellate_mask(fp)
+    debug_print(f"Prepared mask/tessellation in {time.perf_counter() - _t0:.2f}s")
 
     # Map Kamada-Kawai positions to tessellated points.
+    _t0 = time.perf_counter()
+    debug_print("Snapping graph layout to Antarctica tessellation...")
     snapped = snap_to_tessellation(pos, tess_points)
     x_min, x_max, y_min, y_max = mask_extent
     snapped = {
@@ -788,6 +842,7 @@ if fp.exists():
         n: np.array([cx + (p[0] - cx) * scale, cy + (p[1] - cy) * scale])
         for n, p in snapped.items()
     }
+    debug_print(f"Snapped and transformed layout in {time.perf_counter() - _t0:.2f}s")
 else:
     print(f"Warning: mask image not found at {fp}. Falling back to graph-only layout.")
     mask_img = None
@@ -940,7 +995,7 @@ if mask_img is not None:
         extent=mask_extent,
         alpha=0.18,
         zorder=-1,
-        interpolation="nearest",
+        interpolation="bilinear",
     )
 inax.axis("off")
 inax.set_facecolor("none")
@@ -1210,7 +1265,7 @@ def draw_overlap_formula_inset(ax):
     ax.set_yticks([])
     if img is not None:
         # Keep high-DPI formula raster bounded inside the inset.
-        target_px = 260
+        target_px = 175
         zoom = max(0.02, min(0.18, target_px / max(img.shape[0], img.shape[1])))
         imagebox = OffsetImage(img, zoom=zoom)
         ab = AnnotationBbox(
@@ -1270,8 +1325,10 @@ bottom_nodes.sort(key=lambda n: r[n][0])
 left_nodes.sort(key=lambda n: r[n][1])
 
 pad = 0.22 * (rect_x_max - rect_x_min)
-side_fs = 10
+side_fs = 11.6
 SPREAD_BLEND = 0.62
+LEFT_SIDE_SPREAD_BLEND = 0.18
+RIGHT_SIDE_SPREAD_BLEND = 0.18
 
 
 def monotone_packed_positions(desired, start, end, min_gap):
@@ -1329,41 +1386,50 @@ def build_side_layouts(
     rect_x_min, rect_x_max, rect_y_min, rect_y_max = rect_bounds
     width = rect_x_max - rect_x_min
     height = rect_y_max - rect_y_min
-    label_gap_x = 0.045 * width
+    top_label_gap_x = 0.046 * width
+    bottom_label_gap_x = 0.046 * width
     label_gap_y = 0.06 * height
-    left_label_gap_y = 0.082 * height
-    right_label_gap_y = 0.105 * height
-    right_label_start = rect_y_min - 1.55 * pad
-    right_label_end = rect_y_max + 1.55 * pad
+    left_label_gap_y = 0.102 * height
+    right_label_gap_y = 0.108 * height
+    top_label_start = rect_x_min - 2.10 * pad
+    top_label_end = rect_x_max + 2.10 * pad
+    bottom_label_start = rect_x_min - 2.10 * pad
+    bottom_label_end = rect_x_max + 2.10 * pad
+    left_label_start = rect_y_min - 5.10 * pad
+    left_label_end = rect_y_max + 5.10 * pad
+    right_label_start = rect_y_min - 5.30 * pad
+    right_label_end = rect_y_max + 5.30 * pad
 
     top_label = spaced_monotone_positions(
         [positions[node][0] for node in top_nodes],
-        rect_x_min,
-        rect_x_max,
-        label_gap_x,
+        top_label_start,
+        top_label_end,
+        top_label_gap_x,
     )
     bottom_label = spaced_monotone_positions(
         [positions[node][0] for node in bottom_nodes],
-        rect_x_min,
-        rect_x_max,
-        label_gap_x,
+        bottom_label_start,
+        bottom_label_end,
+        bottom_label_gap_x,
     )
     left_label = spaced_monotone_positions(
         [positions[node][1] for node in left_nodes],
-        rect_y_min - pad,
-        rect_y_max + pad,
+        left_label_start,
+        left_label_end,
         left_label_gap_y,
+        blend=LEFT_SIDE_SPREAD_BLEND,
     )
     right_label = spaced_monotone_positions(
         [positions[node][1] for node in right_nodes],
         right_label_start,
         right_label_end,
         right_label_gap_y,
+        blend=RIGHT_SIDE_SPREAD_BLEND,
     )
     left_label = np.clip(
         left_label + 0.34 * pad,
-        rect_y_min - pad,
-        rect_y_max + pad,
+        left_label_start,
+        left_label_end,
     )
 
     left_preentry = (
@@ -1526,7 +1592,18 @@ def build_side_layouts(
             )
         elif side in ("top", "bottom"):
             axis_vals = np.asarray([positions[node][0] for node in payload["nodes"]])
-            label_start, label_end, label_gap = (rect_x_min, rect_x_max, label_gap_x)
+            if side == "top":
+                label_start, label_end, label_gap = (
+                    top_label_start,
+                    top_label_end,
+                    top_label_gap_x,
+                )
+            else:
+                label_start, label_end, label_gap = (
+                    bottom_label_start,
+                    bottom_label_end,
+                    bottom_label_gap_x,
+                )
             pre_start, pre_end, pre_gap = (
                 rect_x_min + 0.02 * width,
                 rect_x_max - 0.02 * width,
@@ -1747,6 +1824,133 @@ def build_side_layouts(
         _optimize_side_node_assignment(side, max_passes=4)
 
     return layout
+
+
+def _round_float(value, ndigits=6):
+    return round(float(value), int(ndigits))
+
+
+def _side_layout_signature(
+    positions,
+    top_nodes,
+    right_nodes,
+    bottom_nodes,
+    left_nodes,
+    rect_bounds,
+    pad,
+):
+    return {
+        "version": SIDE_LAYOUT_CACHE_VERSION,
+        "positions": {
+            node: [_round_float(x), _round_float(y)]
+            for node, (x, y) in sorted(positions.items())
+        },
+        "sides": {
+            "top": list(top_nodes),
+            "right": list(right_nodes),
+            "bottom": list(bottom_nodes),
+            "left": list(left_nodes),
+        },
+        "rect_bounds": [_round_float(v) for v in rect_bounds],
+        "pad": _round_float(pad),
+    }
+
+
+def _serialize_side_layout(layout):
+    serial = {}
+    for side_name, payload in layout.items():
+        serial[side_name] = {
+            "nodes": list(payload["nodes"]),
+            "label_positions": [
+                float(v) for v in np.asarray(payload["label_positions"])
+            ],
+            "route_values": [float(v) for v in np.asarray(payload["route_values"])],
+            "entry_extras": [float(v) for v in np.asarray(payload["entry_extras"])],
+            "pre_entry_values": [
+                float(v) for v in np.asarray(payload["pre_entry_values"])
+            ],
+        }
+    return serial
+
+
+def _deserialize_side_layout(payload):
+    layout = {}
+    for side_name, side_payload in payload.items():
+        layout[side_name] = {
+            "nodes": list(side_payload["nodes"]),
+            "label_positions": np.asarray(side_payload["label_positions"], dtype=float),
+            "route_values": np.asarray(side_payload["route_values"], dtype=float),
+            "entry_extras": np.asarray(side_payload["entry_extras"], dtype=float),
+            "pre_entry_values": np.asarray(
+                side_payload["pre_entry_values"], dtype=float
+            ),
+        }
+    return layout
+
+
+def load_cached_side_layout(
+    positions,
+    top_nodes,
+    right_nodes,
+    bottom_nodes,
+    left_nodes,
+    rect_bounds,
+    pad,
+):
+    if not USE_CACHED_SIDE_LAYOUT or REFRESH_SIDE_LAYOUT:
+        return None
+    if not SIDE_LAYOUT_CACHE_PATH.exists():
+        return None
+    try:
+        payload = json.loads(SIDE_LAYOUT_CACHE_PATH.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"Warning: failed to read side-layout cache: {exc}")
+        return None
+
+    expected = _side_layout_signature(
+        positions, top_nodes, right_nodes, bottom_nodes, left_nodes, rect_bounds, pad
+    )
+    if payload.get("signature") != expected:
+        return None
+
+    try:
+        layout = _deserialize_side_layout(payload["layout"])
+    except Exception as exc:
+        print(f"Warning: failed to decode side-layout cache: {exc}")
+        return None
+    print(f"Loaded cached side layout from {SIDE_LAYOUT_CACHE_PATH}.")
+    return layout
+
+
+def save_cached_side_layout(
+    layout,
+    positions,
+    top_nodes,
+    right_nodes,
+    bottom_nodes,
+    left_nodes,
+    rect_bounds,
+    pad,
+):
+    if not USE_CACHED_SIDE_LAYOUT:
+        return
+    SIDE_LAYOUT_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "signature": _side_layout_signature(
+            positions,
+            top_nodes,
+            right_nodes,
+            bottom_nodes,
+            left_nodes,
+            rect_bounds,
+            pad,
+        ),
+        "layout": _serialize_side_layout(layout),
+    }
+    SIDE_LAYOUT_CACHE_PATH.write_text(
+        json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8"
+    )
+    print(f"Saved side layout cache to {SIDE_LAYOUT_CACHE_PATH}.")
 
 
 def draw_chamfered_trace(ax, points, color, lw, alpha, zorder, chamfer):
@@ -2465,15 +2669,49 @@ def draw_box_connector(
     return _polyline_segments(routed)
 
 
-side_layouts = build_side_layouts(
+_rect_bounds = (rect_x_min, rect_x_max, rect_y_min, rect_y_max)
+_t0 = time.perf_counter()
+side_layouts = load_cached_side_layout(
     r,
     top_nodes,
     right_nodes,
     bottom_nodes,
     left_nodes,
-    (rect_x_min, rect_x_max, rect_y_min, rect_y_max),
+    _rect_bounds,
     pad,
 )
+if side_layouts is None:
+    debug_print("No valid side-layout cache found; computing side layout...")
+    _t1 = time.perf_counter()
+    side_layouts = build_side_layouts(
+        r,
+        top_nodes,
+        right_nodes,
+        bottom_nodes,
+        left_nodes,
+        _rect_bounds,
+        pad,
+    )
+    debug_print(f"Computed side layout in {time.perf_counter() - _t1:.2f}s")
+    save_cached_side_layout(
+        side_layouts,
+        r,
+        top_nodes,
+        right_nodes,
+        bottom_nodes,
+        left_nodes,
+        _rect_bounds,
+        pad,
+    )
+    debug_print(
+        f"Saved side-layout cache to {SIDE_LAYOUT_CACHE_PATH} "
+        f"({time.perf_counter() - _t0:.2f}s total)"
+    )
+else:
+    debug_print(
+        f"Loaded side-layout cache from {SIDE_LAYOUT_CACHE_PATH} "
+        f"in {time.perf_counter() - _t0:.2f}s"
+    )
 
 
 def _swap_label_slots(layout, node_a, node_b):
@@ -2688,30 +2926,30 @@ def _draw_side_labels_and_connectors(side, nodes, label_positions):
 side_label_artists = []
 side_label_artists.extend(
     _draw_side_labels_and_connectors(
-    "top",
-    side_layouts["top"]["nodes"],
-    side_layouts["top"]["label_positions"],
+        "top",
+        side_layouts["top"]["nodes"],
+        side_layouts["top"]["label_positions"],
     )
 )
 side_label_artists.extend(
     _draw_side_labels_and_connectors(
-    "right",
-    side_layouts["right"]["nodes"],
-    side_layouts["right"]["label_positions"],
+        "right",
+        side_layouts["right"]["nodes"],
+        side_layouts["right"]["label_positions"],
     )
 )
 side_label_artists.extend(
     _draw_side_labels_and_connectors(
-    "bottom",
-    side_layouts["bottom"]["nodes"],
-    side_layouts["bottom"]["label_positions"],
+        "bottom",
+        side_layouts["bottom"]["nodes"],
+        side_layouts["bottom"]["label_positions"],
     )
 )
 side_label_artists.extend(
     _draw_side_labels_and_connectors(
-    "left",
-    side_layouts["left"]["nodes"],
-    side_layouts["left"]["label_positions"],
+        "left",
+        side_layouts["left"]["nodes"],
+        side_layouts["left"]["label_positions"],
     )
 )
 
@@ -2724,12 +2962,12 @@ highlight_axes = []
 if edge_a in snapped and edge_b in snapped:
     highlight_line_artists.extend(
         ax.plot(
-        [snapped[edge_a][0], snapped[edge_b][0]],
-        [snapped[edge_a][1], snapped[edge_b][1]],
-        color="black",
-        linewidth=2.0,
-        linestyle=(0, (2, 1)),
-        zorder=3,
+            [snapped[edge_a][0], snapped[edge_b][0]],
+            [snapped[edge_a][1], snapped[edge_b][1]],
+            color="black",
+            linewidth=2.0,
+            linestyle=(0, (2, 1)),
+            zorder=3,
         )
     )
     # Inset positioned near the highlighted edge (data coords).
@@ -2870,24 +3108,30 @@ if hull_bounds is not None:
 ax.set_xlim(plot_x_min - plot_margin_x, plot_x_max + plot_margin_x)
 ax.set_ylim(plot_y_min - plot_margin_y, plot_y_max + plot_margin_y)
 Path("./figures").mkdir(parents=True, exist_ok=True)
-Path("./output/fig01_reveals").mkdir(parents=True, exist_ok=True)
-fig.savefig(
-    "./figures/fig01_space_of_concerns_topology.png",
-    dpi=1200,
-    bbox_inches="tight",
-    pad_inches=0.05,
-    transparent=True,
-)
-fig.savefig(
-    "./figures/fig01_space_of_concerns_topology.pdf",
-    bbox_inches="tight",
-    pad_inches=0.05,
-)
-fig.savefig(
-    "./output/fig01_space_of_concerns_topology.svg",
-    bbox_inches="tight",
-    pad_inches=0.05,
-)
+debug_print("Saving main figure assets...")
+_t0 = time.perf_counter()
+if SAVE_MAIN_PNG:
+    fig.savefig(
+        "./figures/fig01_space_of_concerns_topology.png",
+        dpi=MAIN_PNG_DPI,
+        bbox_inches="tight",
+        pad_inches=0.05,
+        transparent=True,
+    )
+if SAVE_MAIN_PDF:
+    fig.savefig(
+        "./figures/fig01_space_of_concerns_topology.pdf",
+        bbox_inches="tight",
+        pad_inches=0.05,
+    )
+if SAVE_MAIN_SVG:
+    debug_print("Saving SVG export...")
+    fig.savefig(
+        "./output/fig01_space_of_concerns_topology.svg",
+        bbox_inches="tight",
+        pad_inches=0.05,
+    )
+debug_print(f"Saved main figure assets in {time.perf_counter() - _t0:.2f}s")
 
 
 def _slugify_label(text):
@@ -2909,14 +3153,14 @@ def _set_many_visible(artists, visible):
 
 def _save_reveal_frame(stem):
     fig.savefig(
-        f"./output/fig01_reveals/{stem}.png",
+        str(REVEAL_OUTPUT_DIR / f"{stem}.png"),
         dpi=1200,
         bbox_inches="tight",
         pad_inches=0.05,
         transparent=True,
     )
     fig.savefig(
-        f"./output/fig01_reveals/{stem}.pdf",
+        str(REVEAL_OUTPUT_DIR / f"{stem}.pdf"),
         bbox_inches="tight",
         pad_inches=0.05,
     )
@@ -2951,11 +3195,13 @@ def _apply_semantic_filter(cluster_id, show_dashed=False):
     # Hide/show semantic areas.
     for cid, artists in hull_artists_by_cluster.items():
         _set_many_visible(
-            artists, bool(show_all or (cluster_id is not None and int(cid) == int(cluster_id)))
+            artists,
+            bool(show_all or (cluster_id is not None and int(cid) == int(cluster_id))),
         )
     for cid, artists in semantic_label_artists_by_cluster.items():
         _set_many_visible(
-            artists, bool(show_all or (cluster_id is not None and int(cid) == int(cluster_id)))
+            artists,
+            bool(show_all or (cluster_id is not None and int(cid) == int(cluster_id))),
         )
 
     # Hide/show side topic boxes + connectors while preserving fixed coordinates.
@@ -2975,33 +3221,37 @@ def _apply_semantic_filter(cluster_id, show_dashed=False):
         inset_ax.set_visible(False)
 
 
-# Slide reveal sequence with fixed geometry:
-#   00: themes only (no boxes / no areas)
-#   01..N: one semantic area at a time, with only corresponding topic boxes shown.
-_apply_slide_text_scale(scale=1.0)
-if legend_obj is not None:
-    legend_obj.set_visible(False)
-_apply_semantic_filter(cluster_id=None, show_dashed=True)
-_save_reveal_frame("fig01_space_of_concerns_topology_reveal_00_themes_only")
-for idx, cid in enumerate(sorted(hull_artists_by_cluster.keys()), start=1):
-    _apply_semantic_filter(cluster_id=int(cid), show_dashed=True)
-    label = cluster_label_by_id.get(cid, f"cluster_{cid}")
-    slug = _slugify_label(label)
-    _save_reveal_frame(
-        f"fig01_space_of_concerns_topology_reveal_{idx:02d}_{slug}"
-    )
-_apply_semantic_filter(cluster_id="all", show_dashed=True)
-_save_reveal_frame("fig01_space_of_concerns_topology_reveal_05_all_semantics")
+if GENERATE_REVEAL_SEQUENCE:
+    debug_print("Generating reveal sequence...")
+    _t0 = time.perf_counter()
+    REVEAL_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    # Slide reveal sequence with fixed geometry:
+    #   00: themes only (no boxes / no areas)
+    #   01..N: one semantic area at a time, with only corresponding topic boxes shown.
+    _apply_slide_text_scale(scale=1.0)
+    if legend_obj is not None:
+        legend_obj.set_visible(False)
+    _apply_semantic_filter(cluster_id=None, show_dashed=True)
+    _save_reveal_frame("fig01_space_of_concerns_topology_reveal_00_themes_only")
+    for idx, cid in enumerate(sorted(hull_artists_by_cluster.keys()), start=1):
+        debug_print(f"Saving reveal frame for cluster {cid} ({idx})...")
+        _apply_semantic_filter(cluster_id=int(cid), show_dashed=True)
+        label = cluster_label_by_id.get(cid, f"cluster_{cid}")
+        slug = _slugify_label(label)
+        _save_reveal_frame(f"fig01_space_of_concerns_topology_reveal_{idx:02d}_{slug}")
+    _apply_semantic_filter(cluster_id="all", show_dashed=True)
+    _save_reveal_frame("fig01_space_of_concerns_topology_reveal_05_all_semantics")
 
-# Extra slide pair:
-# - graph only (no semantic overlays)
-# - graph + callout inset and proximity label
-_apply_semantic_filter(cluster_id=None, show_dashed=False)
-_save_reveal_frame("fig01_space_of_concerns_topology_reveal_06_graph_only")
-_apply_semantic_filter(cluster_id=None, show_dashed=True)
-_set_many_visible(highlight_other_artists, True)
-for inset_ax in highlight_axes:
-    inset_ax.set_visible(True)
-_save_reveal_frame(
-    "fig01_space_of_concerns_topology_reveal_07_graph_only_with_callout"
-)
+    # Extra slide pair:
+    # - graph only (no semantic overlays)
+    # - graph + callout inset and proximity label
+    _apply_semantic_filter(cluster_id=None, show_dashed=False)
+    _save_reveal_frame("fig01_space_of_concerns_topology_reveal_06_graph_only")
+    _apply_semantic_filter(cluster_id=None, show_dashed=True)
+    _set_many_visible(highlight_other_artists, True)
+    for inset_ax in highlight_axes:
+        inset_ax.set_visible(True)
+    _save_reveal_frame(
+        "fig01_space_of_concerns_topology_reveal_07_graph_only_with_callout"
+    )
+    debug_print(f"Generated reveal sequence in {time.perf_counter() - _t0:.2f}s")

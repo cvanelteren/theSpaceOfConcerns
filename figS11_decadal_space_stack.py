@@ -213,12 +213,14 @@ def main():
     coords = np.array([np.asarray(pos[t], dtype=float) for t in full_topics])
 
     windows = sampaio_windows(
-        submitted.meeting_year.min(),
-        submitted.meeting_year.max(),
+        submitted["meeting year"].min(),
+        submitted["meeting year"].max(),
     )
     blocks = []
     for start, end, label in windows:
-        subset = submitted.query("@start <= meeting_year <= @end")
+        subset = submitted[
+            (submitted["meeting year"] >= start) & (submitted["meeting year"] <= end)
+        ]
         if subset.empty:
             continue
         interaction = generate_interaction_matrix(subset, countries, set(full_topics))

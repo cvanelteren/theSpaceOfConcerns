@@ -686,7 +686,7 @@ for side, items in annotations.items():
             annotation_clip=False,
         )
 
-years = sorted(submitted_recoded["meeting_year"].dropna().unique())
+years = sorted(submitted_recoded["meeting year"].dropna().unique())
 cluster_ids = list(range(len(community_ids)))
 cluster_colors = {cid: colors[cid][:3] for cid in cluster_ids}
 topic_count = len(topic_order)
@@ -695,7 +695,7 @@ max_cluster = np.full((topic_count, year_count), -1, dtype=int)
 max_value = np.zeros((topic_count, year_count), dtype=float)
 
 for j, year in enumerate(years):
-    df_year = submitted_recoded[submitted_recoded["meeting_year"] == year]
+    df_year = submitted_recoded[submitted_recoded["meeting year"] == year]
     counts_year = generate_interaction_matrix(df_year, communities, topics)
     final_year = standardize_index_labels(counts_year)
     rca_year = get_rca(final_year)

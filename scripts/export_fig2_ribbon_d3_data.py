@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from fig2_fig_space_of_concerns_ribbon import (
+from figS03_specialized_support_ribbons import (
     DATA_PATHS,
     DEFAULT_THEME,
     EDGE_WIDTH_METRIC,
@@ -80,9 +80,9 @@ def _topic_theme(topic: str, lookup: dict[str, str]) -> str:
 
 # %%
 counts_df, submitted_df, countries, topics = _load_data_with_fallback()
-year_col = "meeting_year" if "meeting_year" in submitted_df.columns else "year"
+year_col = "meeting year" if "meeting year" in submitted_df.columns else "year"
 if year_col not in submitted_df.columns:
-    raise KeyError("No meeting_year or year column found in source data.")
+    raise KeyError("No meeting year or year column found in source data.")
 
 submitted_df = _sanitize_years(submitted_df, year_col)
 year_min = int(submitted_df[year_col].min())

@@ -185,6 +185,12 @@ def _clean_category_cell(value, delimiter="\t"):
     return delimiter.join(topics)
 
 
+def _normalize_column_label(label: object) -> str:
+    """Canonicalize incoming dataframe column labels."""
+    text = str(label).strip().lower().replace("_", " ")
+    return " ".join(text.split())
+
+
 def _deduplicate_document_rows(
     df: pd.DataFrame, dedup_attachments: bool = True
 ) -> pd.DataFrame:
@@ -219,19 +225,19 @@ def _deduplicate_document_rows(
         [
             c
             for c in [
-                "meeting_year",
-                "meeting_type",
-                "meeting_number",
-                "meeting_name",
+                "meeting year",
+                "meeting type",
+                "meeting number",
+                "meeting name",
                 "party",
                 "category",
-                "paper_id",
-                "party_type",
-                "paper_name",
-                "paper_number",
-                "paper_revision",
-                "paper_language",
-                "paper_url",
+                "paper id",
+                "party type",
+                "paper name",
+                "paper number",
+                "paper revision",
+                "paper language",
+                "paper url",
                 "exists",
                 "submitted by",
             ]
@@ -240,12 +246,16 @@ def _deduplicate_document_rows(
     )
 
     # Fall back to page-level identity if paper-level ids are unavailable.
-    if "paper_id" not in tmp.columns:
+    if "paper id" not in tmp.columns:
         dedup_cols.extend(
-            [c for c in ["meeting_year", "meeting_type", "meeting_number"] if c in tmp.columns]
+            [
+                c
+                for c in ["meeting year", "meeting type", "meeting number"]
+                if c in tmp.columns
+            ]
         )
         dedup_cols.extend([c for c in ["party", "category"] if c in tmp.columns])
-        dedup_cols.extend([c for c in ["page_url", "page_nr"] if c in tmp.columns])
+        dedup_cols.extend([c for c in ["page url", "page nr"] if c in tmp.columns])
 
     if not dedup_cols:
         return tmp.reset_index(drop=True)
@@ -263,15 +273,12 @@ def preprocess_dataframe(fp: str, dedup_attachments: bool = True) -> pd.DataFram
         df = pd.read_csv(path)
 
     df = df.convert_dtypes()
-    df.columns = df.columns.str.lower()
+    df = df.rename(columns=_normalize_column_label)
 
-    if "submitted_by" in df.columns and "submitted by" not in df.columns:
-        df = df.rename(columns={"submitted_by": "submitted by"})
-
-    if "year" not in df.columns and "meeting_year" in df.columns:
-        df["year"] = df["meeting_year"]
-    if "meeting_year" not in df.columns and "year" in df.columns:
-        df["meeting_year"] = df["year"]
+    if "year" not in df.columns and "meeting year" in df.columns:
+        df["year"] = df["meeting year"]
+    if "meeting year" not in df.columns and "year" in df.columns:
+        df["meeting year"] = df["year"]
 
     if "submitted by" not in df.columns:
         if "parties" in df.columns:
@@ -327,7 +334,7 @@ def generate_interaction_matrix(
     df = subset_df.dropna(subset=["category", "submitted by"]).copy()
     if df.empty:
         # Return empty matrix with correct shape if no data
-        return pd.DataFrame(0, index=list(all_topics), columns=list(all_countries))
+        return pd.DataFrame(0, index=sorted(all_topics), columns=sorted(all_countries))
 
     # 2. Normalize and explode multi-value columns.
     df["category"] = df["category"].apply(lambda v: _split_multi_value(v, "\t"))
@@ -340,7 +347,7 @@ def generate_interaction_matrix(
 
     df = df.dropna(subset=["category", "submitted by"])
     if df.empty:
-        return pd.DataFrame(0, index=list(all_topics), columns=list(all_countries))
+        return pd.DataFrame(0, index=sorted(all_topics), columns=sorted(all_countries))
     # The processed ATS summary can repeat the same paper across multiple rows
     # (for example when a single paper record carries several attachments).
     # For RCA/proximity construction we want each unique paper to count once per
@@ -348,21 +355,21 @@ def generate_interaction_matrix(
     dedup_cols = None
     if dedup_attachments:
         dedup_cols = ["category", "submitted by"]
-        if "paper_id" in df.columns:
-            dedup_cols = ["paper_id"] + dedup_cols
+        if "paper id" in df.columns:
+            dedup_cols = ["paper id"] + dedup_cols
         else:
             doc_id_cols = [
                 c
                 for c in [
-                    "meeting_year",
-                    "meeting_type",
-                    "meeting_number",
-                    "paper_name",
-                    "paper_number",
-                    "paper_revision",
-                    "paper_url",
-                    "page_url",
-                    "page_nr",
+                    "meeting year",
+                    "meeting type",
+                    "meeting number",
+                    "paper name",
+                    "paper number",
+                    "paper revision",
+                    "paper url",
+                    "page url",
+                    "page nr",
                 ]
                 if c in df.columns
             ]
@@ -506,10 +513,10 @@ def compute_rolling_rca(
         return pd.DataFrame(columns=["topic", "country", "rca", "year"])
 
     df = submitted_df.copy()
-    if "year" not in df.columns and "meeting_year" in df.columns:
-        df["year"] = df["meeting_year"]
+    if "year" not in df.columns and "meeting year" in df.columns:
+        df["year"] = df["meeting year"]
     if "year" not in df.columns:
-        raise KeyError("Expected 'year' or 'meeting_year' in submitted_df.")
+        raise KeyError("Expected 'year' or 'meeting year' in submitted_df.")
 
     df["year"] = pd.to_numeric(df["year"], errors="coerce")
     df = df.dropna(subset=["year"]).copy()

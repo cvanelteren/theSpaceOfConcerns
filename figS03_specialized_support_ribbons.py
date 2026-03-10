@@ -329,9 +329,9 @@ def main(view_mode: str = "main") -> None:
 
     counts_df, submitted_df, countries, topics = load_data_with_fallback()
 
-    year_col = "meeting_year" if "meeting_year" in submitted_df.columns else "year"
+    year_col = "meeting year" if "meeting year" in submitted_df.columns else "year"
     if year_col not in submitted_df.columns:
-        raise KeyError("No meeting_year or year column found in data.")
+        raise KeyError("No meeting year or year column found in data.")
 
     submitted_df = sanitize_years(submitted_df, year_col)
     year_min = int(submitted_df[year_col].min())

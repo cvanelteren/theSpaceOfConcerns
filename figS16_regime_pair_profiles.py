@@ -110,7 +110,7 @@ def actor_tenure_for_13_pairs(pairs: pd.DataFrame) -> pd.DataFrame:
         ["actor", "dominant_region", "dominant_region_share"]
     ].drop_duplicates()
     _, submitted, _, _ = load_data(str(DATA_FP))
-    year_col = "year" if "year" in submitted.columns else "meeting_year"
+    year_col = "year" if "year" in submitted.columns else "meeting year"
     actor_rows = []
     source_col = "parties" if "parties" in submitted.columns else "submitted by"
     for _, row in submitted[[source_col, year_col]].dropna().iterrows():

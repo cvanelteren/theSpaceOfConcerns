@@ -224,9 +224,9 @@ def fit_pooled_logit(panel_df: pd.DataFrame) -> pd.DataFrame:
 
 def main() -> None:
     counts_df, submitted_df, members_raw, topics_raw = load_data_with_fallback()
-    year_col = "meeting_year" if "meeting_year" in submitted_df.columns else "year"
+    year_col = "meeting year" if "meeting year" in submitted_df.columns else "year"
     if year_col not in submitted_df.columns:
-        raise KeyError("No meeting_year or year column found in source data.")
+        raise KeyError("No meeting year or year column found in source data.")
     submitted_df = sanitize_years(submitted_df, year_col)
 
     topics = counts_df.index.tolist()
