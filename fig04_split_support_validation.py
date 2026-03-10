@@ -79,7 +79,7 @@ COLORS = {
 
 SCHEMATIC_MARGIN = 0.16
 SCHEMATIC_SPAN = 0.68
-RIGHT_STATE_SCALE = 0.50
+RIGHT_STATE_SCALE = 0.40
 CURRENT_INSET_BOUNDS = (0.02, 0.08, 0.33, 0.80)
 FINAL_INSET_BOUNDS = (0.72, 0.11, 0.23, 0.70)
 STAGE_LABEL_Y_OFFSET = 0.0
@@ -92,7 +92,7 @@ STAGE_BOX_HALF_WIDTHS = {
     "Allocate": 0.046,
 }
 ROW_Y = (0.74, 0.50, 0.26)
-ROW_INSET_Y = (0.82, 0.50, 0.18)
+ROW_INSET_Y = (0.85, 0.50, 0.158)
 ROW_LABEL_X = 0.395
 
 
@@ -209,8 +209,8 @@ def _draw_portfolio_schematic(
 
     if show_reach_outline and reach_label:
         ax.text(
-            0.86,
-            0.10,
+            0.88,
+            0.30,
             reach_label,
             ha="right",
             va="center",
@@ -876,9 +876,7 @@ def build_figure() -> plt.Figure:
         prev = (branch_start_x, y)
         for stage, x_stage in row["stages"]:
             stage_half_width = STAGE_BOX_HALF_WIDTHS.get(stage, 0.06)
-            target_x = (
-                x_stage - stage_half_width if stage != "t+1" else final_x0 - 0.02
-            )
+            target_x = x_stage - stage_half_width if stage != "t+1" else final_x0 - 0.02
             target = (target_x, y)
             arrow = FancyArrowPatch(
                 prev,
