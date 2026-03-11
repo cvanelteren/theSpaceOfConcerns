@@ -42,16 +42,31 @@ SIDE_MARKER_FRACS = (0.2, 0.4, 0.6, 0.8)
 PEAK_LABEL_N = 8
 PEAK_LABEL_MIN_SEP = 2
 PEAK_LABEL_MAX_LEN = 20
-RIDGE_TOP_PAD = 1.10
+TOP_LABEL_PEAK_N = 16
+TOP_LABEL_PEAK_MIN_SEP = 1
+TOP_LABEL_TARGET_N = 16
+TOP_LABEL_CANDIDATE_N = 36
+TOP_LABEL_BIN_N = 14
+TOP_LABEL_MIN_PROFILE_FRAC = 0.20
+TOP_LABEL_SELECTION_MIN_DX = 0.028
+TOP_LABEL_MERGE_DX = 0.010
+RIDGE_TOP_PAD = 1.32
 ALL_INTEREST_DOT_COLOR = "#9ca3af"
 ACTIVE_INTEREST_DOT_COLOR = "black"
 ALL_INTEREST_DOT_SIZE = 7
 ACTIVE_INTEREST_DOT_SIZE = 13
-TOP_LABEL_FONTSIZE = 6.0
-TOP_LABEL_BASE_PT = 4.0
-TOP_LABEL_ROW_STEP_PT = 34.0
-TOP_LABEL_PAD_PX = 22.0
-TOP_LABEL_WRAP_CHARS = 9
+TOP_LABEL_FONTSIZE = 7.6
+TOP_LABEL_BASE_PT = 7.0
+TOP_LABEL_ROW_STEP_PT = 22.0
+TOP_LABEL_PAD_PX = 16.0
+TOP_LABEL_GAP_PX = 18.0
+TOP_LABEL_MAX_SHIFT_PX = 3.0
+TOP_LABEL_EXTRA_SHIFT_PER_ROW_PX = 10.0
+TOP_LABEL_ROW_PENALTY_PX = 1.0
+TOP_LABEL_STAGGER_CYCLE = 5
+TOP_LABEL_STAGGER_STEP_PT = 7.0
+TOP_LABEL_STAGGER_ROW_PREFERENCE_PX = 6.0
+TOP_LABEL_WRAP_CHARS = 11
 TOP_LABEL_MAX_LINES = 2
 TOP_LABEL_SPECIAL_Y_NUDGE_PT = {
     "educ": 22.0,
@@ -276,9 +291,17 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
     fig = ax.figure
     fig.canvas.draw()
     renderer = fig.canvas.get_renderer()
+    axes_bbox = ax.get_window_extent(renderer=renderer)
     x_display = ax.transData.transform(
         np.column_stack([x_positions, np.zeros_like(x_positions)])
     )[:, 0]
+    bbox_style = {
+        "boxstyle": "round,pad=0.18",
+        "facecolor": "white",
+        "edgecolor": "#6b7280",
+        "linewidth": 0.72,
+        "alpha": 0.98,
+    }
 
     widths = []
     heights = []
@@ -288,14 +311,9 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
             0,
             label,
             fontsize=TOP_LABEL_FONTSIZE,
+            fontweight="semibold",
             visible=False,
-            bbox={
-                "boxstyle": "round,pad=0.14",
-                "facecolor": "white",
-                "edgecolor": "#9ca3af",
-                "linewidth": 0.65,
-                "alpha": 0.98,
-            },
+            bbox=bbox_style,
         )
         bbox = tmp.get_window_extent(renderer=renderer)
         widths.append(float(bbox.width) + TOP_LABEL_PAD_PX)
@@ -303,64 +321,106 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
         tmp.remove()
 
     max_h_px = max(heights) if heights else 0.0
-    row_step_pt = max(TOP_LABEL_ROW_STEP_PT, (max_h_px + 4.0) * 72.0 / fig.dpi)
+    row_step_pt = max(TOP_LABEL_ROW_STEP_PT, (max_h_px + 16.0) * 72.0 / fig.dpi)
 
     order = np.argsort(x_display)
-    row_right_edges = []
     row_indices = np.zeros(len(labels), dtype=int)
-    for idx in order:
-        x_px = float(x_display[idx])
-        width_px = float(widths[idx])
-        left_px = float(x_px - width_px / 2.0)
-        right_px = float(x_px + width_px / 2.0)
-        placed = False
-        for row_idx, last_right in enumerate(row_right_edges):
-            if left_px >= last_right + TOP_LABEL_PAD_PX:
-                row_right_edges[row_idx] = right_px
-                row_indices[idx] = row_idx
-                placed = True
-                break
-        if not placed:
-            row_right_edges.append(right_px)
-            row_indices[idx] = len(row_right_edges) - 1
+    x_offsets_pt = np.zeros(len(labels), dtype=float)
+    stagger_offsets_pt = np.zeros(len(labels), dtype=float)
+    preferred_rows = np.zeros(len(labels), dtype=int)
+    row_right_edges: list[float] = []
 
-    for xpos, label, row_idx in zip(x_positions, labels, row_indices):
-        y_offset_pt = TOP_LABEL_BASE_PT + row_idx * row_step_pt
-        label_key = str(label).replace("\n", " ").strip().lower()
+    def _label_y_nudge_pt(label_text: str) -> float:
+        label_key = str(label_text).replace("\n", " ").strip().lower()
         for key, delta in TOP_LABEL_SPECIAL_Y_NUDGE_PT.items():
             if key in label_key:
-                y_offset_pt += float(delta)
-                break
+                return float(delta)
+        return 0.0
+
+    for rank, idx in enumerate(order):
+        target_x_px = float(x_display[idx])
+        width_px = float(widths[idx])
+        half_width_px = width_px / 2.0
+        min_center_px = float(axes_bbox.x0 + TOP_LABEL_GAP_PX + half_width_px)
+        max_center_px = float(axes_bbox.x1 - TOP_LABEL_GAP_PX - half_width_px)
+        target_center_px = min(max(target_x_px, min_center_px), max_center_px)
+        stagger_phase = rank % TOP_LABEL_STAGGER_CYCLE
+        preferred_rows[idx] = int(stagger_phase)
+        stagger_offsets_pt[idx] = float(
+            (TOP_LABEL_STAGGER_CYCLE - 1 - stagger_phase) * TOP_LABEL_STAGGER_STEP_PT
+        )
+
+        best_row = None
+        best_center_px = None
+        best_cost = None
+        for row_idx, last_right in enumerate(row_right_edges):
+            center_px = max(
+                target_center_px,
+                float(last_right) + TOP_LABEL_GAP_PX + half_width_px,
+            )
+            if center_px > max_center_px:
+                continue
+            shift_px = abs(center_px - target_x_px)
+            allowed_shift_px = TOP_LABEL_MAX_SHIFT_PX + (
+                row_idx * TOP_LABEL_EXTRA_SHIFT_PER_ROW_PX
+            )
+            if shift_px > allowed_shift_px:
+                continue
+            cost = (
+                shift_px
+                + row_idx * TOP_LABEL_ROW_PENALTY_PX
+                + abs(row_idx - preferred_rows[idx])
+                * TOP_LABEL_STAGGER_ROW_PREFERENCE_PX
+            )
+            if best_cost is None or cost < best_cost:
+                best_row = row_idx
+                best_center_px = center_px
+                best_cost = cost
+
+        if best_row is None:
+            best_row = len(row_right_edges)
+            best_center_px = target_center_px
+            row_right_edges.append(best_center_px + half_width_px)
+        else:
+            row_right_edges[best_row] = best_center_px + half_width_px
+
+        row_indices[idx] = best_row
+        x_offsets_pt[idx] = (best_center_px - target_x_px) * 72.0 / fig.dpi
+
+    for xpos, label, row_idx, x_offset_pt, stagger_offset_pt in zip(
+        x_positions, labels, row_indices, x_offsets_pt, stagger_offsets_pt
+    ):
+        y_offset_pt = (
+            TOP_LABEL_BASE_PT
+            + row_idx * row_step_pt
+            + stagger_offset_pt
+            + _label_y_nudge_pt(label)
+        )
         ax.annotate(
             label,
             xy=(float(xpos), 1.0),
             xycoords=("data", "axes fraction"),
-            xytext=(0.0, y_offset_pt),
+            xytext=(float(x_offset_pt), y_offset_pt),
             textcoords="offset points",
             ha="center",
             va="bottom",
             fontsize=TOP_LABEL_FONTSIZE,
+            fontweight="semibold",
             color="#374151",
             zorder=8,
             clip_on=False,
-            bbox={
-                "boxstyle": "round,pad=0.14",
-                "facecolor": "white",
-                "edgecolor": "#9ca3af",
-                "linewidth": 0.65,
-                "alpha": 0.98,
-            },
+            bbox=bbox_style,
         )
         ax.annotate(
             "",
             xy=(float(xpos), 1.0),
             xycoords=("data", "axes fraction"),
-            xytext=(0.0, y_offset_pt - 1.2),
+            xytext=(float(x_offset_pt), y_offset_pt - 1.2),
             textcoords="offset points",
             arrowprops={
                 "arrowstyle": "-",
                 "color": "#9ca3af",
-                "lw": 0.6,
+                "lw": 0.7,
                 "shrinkA": 0.0,
                 "shrinkB": 0.0,
             },
@@ -435,6 +495,117 @@ def _append_forced_topic_labels(
             continue
         x_positions.append(float(x_plot_vals[idx]))
         labels.append(_short_topic_label(topic))
+
+
+def _top_topic_indices_by_bin(
+    profile: np.ndarray, x_plot_vals: np.ndarray, *, bin_n: int = TOP_LABEL_BIN_N
+) -> list[int]:
+    """Pick one strong label candidate from each x-range bin."""
+    if bin_n <= 0:
+        return []
+
+    x_vals = np.asarray(x_plot_vals, dtype=float)
+    y_vals = np.asarray(profile, dtype=float)
+    if x_vals.size == 0 or y_vals.size == 0:
+        return []
+
+    max_score = float(np.nanmax(y_vals))
+    if not np.isfinite(max_score) or max_score <= 0.0:
+        return []
+    min_score = TOP_LABEL_MIN_PROFILE_FRAC * max_score
+
+    edges = np.linspace(float(np.nanmin(x_vals)), float(np.nanmax(x_vals)), bin_n + 1)
+    keep: list[int] = []
+    for bin_idx in range(bin_n):
+        if bin_idx == bin_n - 1:
+            mask = (x_vals >= edges[bin_idx]) & (x_vals <= edges[bin_idx + 1])
+        else:
+            mask = (x_vals >= edges[bin_idx]) & (x_vals < edges[bin_idx + 1])
+        if not np.any(mask):
+            continue
+        cand_idx = np.where(mask)[0]
+        best_local = int(np.nanargmax(y_vals[cand_idx]))
+        best_idx = int(cand_idx[best_local])
+        if float(y_vals[best_idx]) >= min_score:
+            keep.append(best_idx)
+    return keep
+
+
+def _select_spread_topic_indices(
+    profile: np.ndarray,
+    x_plot_vals: np.ndarray,
+    peak_idx: list[int],
+    *,
+    target_n: int = TOP_LABEL_TARGET_N,
+) -> list[int]:
+    """Blend local peaks with strong labels spread across topic space."""
+    x_vals = np.asarray(x_plot_vals, dtype=float)
+    y_vals = np.asarray(profile, dtype=float)
+    if x_vals.size == 0 or y_vals.size == 0:
+        return []
+
+    peak_idx = [int(i) for i in peak_idx]
+    peak_set = set(peak_idx)
+    bin_idx = _top_topic_indices_by_bin(y_vals, x_vals)
+    bin_set = set(bin_idx)
+    score_idx = [
+        int(i)
+        for i in np.argsort(y_vals)[::-1][: min(len(y_vals), TOP_LABEL_CANDIDATE_N)]
+    ]
+    candidate_idx = list(dict.fromkeys(peak_idx + bin_idx + score_idx))
+    if not candidate_idx:
+        return []
+
+    candidate_idx.sort(
+        key=lambda i: (
+            float(y_vals[i])
+            + (0.14 if i in peak_set else 0.0)
+            + (0.08 if i in bin_set else 0.0)
+        ),
+        reverse=True,
+    )
+
+    selected: list[int] = []
+    min_dx_schedule = (
+        TOP_LABEL_SELECTION_MIN_DX,
+        max(TOP_LABEL_SELECTION_MIN_DX * 0.82, TOP_LABEL_MERGE_DX),
+        max(TOP_LABEL_SELECTION_MIN_DX * 0.66, TOP_LABEL_MERGE_DX),
+    )
+    for min_dx in min_dx_schedule:
+        for idx in candidate_idx:
+            if idx in selected:
+                continue
+            x_val = float(x_vals[idx])
+            if all(abs(x_val - float(x_vals[j])) >= float(min_dx) for j in selected):
+                selected.append(int(idx))
+            if len(selected) >= target_n:
+                break
+        if len(selected) >= target_n:
+            break
+
+    if not selected:
+        return []
+    return sorted(selected, key=lambda i: float(x_vals[i]))
+
+
+def _aggregate_top_topic_labels(
+    rca_df: pd.DataFrame,
+    actors: list[str],
+    topics: list[str],
+    x_plot_vals: np.ndarray,
+) -> tuple[np.ndarray, list[str]]:
+    """Select readable top labels from the aggregate portfolio profile."""
+    profile = _mean_normalized_profile(rca_df, actors)
+    peak_idx = _find_peak_indices(
+        profile, top_n=TOP_LABEL_PEAK_N, min_sep=TOP_LABEL_PEAK_MIN_SEP
+    )
+    selected_idx = _select_spread_topic_indices(profile, x_plot_vals, peak_idx)
+    if not selected_idx:
+        selected_idx = peak_idx
+    x_positions = [float(x_plot_vals[idx]) for idx in selected_idx]
+    labels = [_short_topic_label(topics[idx]) for idx in selected_idx]
+    _append_forced_topic_labels(x_positions, labels, topics, x_plot_vals)
+    return _unique_peak_topic_labels(x_positions, labels, min_dx=TOP_LABEL_MERGE_DX)
 
 
 def _local_flag_name(actor: str) -> str:
@@ -919,8 +1090,6 @@ print(f"Wrote {OUT_A_SLIDE}")
 n_all = len(actor_df)
 fig_a_all_height = max(8.4, 0.22 * n_all + 1.5)
 fig_a_all, ax_a_all = uplt.subplots(figsize=(9.2, fig_a_all_height), share=0)
-row_peak_x_all = []
-row_peak_label_all = []
 
 for row_idx, row in actor_df.iterrows():
     actor = row["actor"]
@@ -948,12 +1117,6 @@ for row_idx, row in actor_df.iterrows():
         zorder=3,
     )
     _plot_interest_dots(ax_a_all, x_plot, vals, baseline)
-    peak_idx = int(np.nanargmax(ridge)) if ridge.size else 0
-    peak_x = float(x_plot[peak_idx])
-    row_peak_x_all.append(peak_x)
-    row_peak_label_all.append(_short_topic_label(ordered_topics[peak_idx]))
-
-_append_forced_topic_labels(row_peak_x_all, row_peak_label_all, ordered_topics, x_plot)
 
 for _, row in region_df.sort_values("region_id").iterrows():
     rid = int(row["region_id"])
@@ -993,8 +1156,8 @@ ax_a_all.format(
 ax_a_all.grid(axis="x", alpha=0.22, linewidth=0.7)
 ax_a_all.grid(axis="y", visible=False)
 ax_a_all.yaxis.set_minor_locator(NullLocator())
-peak_x_all, peak_labels_all = _unique_peak_topic_labels(
-    row_peak_x_all, row_peak_label_all
+peak_x_all, peak_labels_all = _aggregate_top_topic_labels(
+    rca, actor_df["actor"].tolist(), ordered_topics, x_plot
 )
 _add_non_overlapping_top_labels(ax_a_all, peak_x_all, peak_labels_all)
 fig_a_all.savefig(OUT_A_ALL, dpi=230, bbox_inches="tight", pad_inches=0.16)
@@ -1266,14 +1429,13 @@ layout = [[1, 2], [1, 3]]
 joint_all_height = max(10.0, 0.22 * n_all + 1.8)
 fig_ja, axs_all = uplt.subplots(
     layout,
-    figsize=(13.9, joint_all_height),
+    width_ratios=(1.22, 1.0),
+    figsize=(14.2, joint_all_height),
     share=0,
     wspace="10em",
     hspace="6em",
 )
 ax_la, ax_tb, ax_cb = axs_all
-row_peak_x_joint_all = []
-row_peak_label_joint_all = []
 
 for row_idx, row in actor_df.iterrows():
     actor = row["actor"]
@@ -1301,14 +1463,6 @@ for row_idx, row in actor_df.iterrows():
         zorder=3,
     )
     _plot_interest_dots(ax_la, x_plot, vals, baseline)
-    peak_idx = int(np.nanargmax(ridge)) if ridge.size else 0
-    peak_x = float(x_plot[peak_idx])
-    row_peak_x_joint_all.append(peak_x)
-    row_peak_label_joint_all.append(_short_topic_label(ordered_topics[peak_idx]))
-
-_append_forced_topic_labels(
-    row_peak_x_joint_all, row_peak_label_joint_all, ordered_topics, x_plot
-)
 
 for _, row in region_df.sort_values("region_id").iterrows():
     rid = int(row["region_id"])
@@ -1379,8 +1533,8 @@ ax_la.format(
     ylabel="",
     title="",
 )
-peak_x_joint_all, peak_labels_joint_all = _unique_peak_topic_labels(
-    row_peak_x_joint_all, row_peak_label_joint_all
+peak_x_joint_all, peak_labels_joint_all = _aggregate_top_topic_labels(
+    rca, actor_df["actor"].tolist(), ordered_topics, x_plot
 )
 _add_non_overlapping_top_labels(ax_la, peak_x_joint_all, peak_labels_joint_all)
 ax_tb.format(
