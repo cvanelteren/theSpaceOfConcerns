@@ -11,6 +11,9 @@ import ultraplot as uplt
 from utils import generate_interaction_matrix, get_rca, load_data, standardize_index_labels
 
 DATA_PATH = Path("antarctic-database-go/data/processed/document-summary.parquet")
+# TODO(meeting-sequence): The null comparison still aggregates over calendar-year
+# periods. Revisit PERIOD_YEARS/build_periods if this analysis should track
+# sequential meetings instead.
 PERIOD_YEARS = 10
 AGGREGATE_ONLY = os.getenv("FIG19_AGGREGATE_ONLY", "0") == "1"
 RPA_THRESHOLD = 1.0

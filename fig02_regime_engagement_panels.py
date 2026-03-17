@@ -55,17 +55,18 @@ ALL_INTEREST_DOT_COLOR = "#9ca3af"
 ACTIVE_INTEREST_DOT_COLOR = "black"
 ALL_INTEREST_DOT_SIZE = 7
 ACTIVE_INTEREST_DOT_SIZE = 13
-TOP_LABEL_FONTSIZE = 7.6
-TOP_LABEL_BASE_PT = 7.0
-TOP_LABEL_ROW_STEP_PT = 22.0
-TOP_LABEL_PAD_PX = 16.0
-TOP_LABEL_GAP_PX = 18.0
+TOP_LABEL_FONTSIZE = 9.2
+TOP_LABEL_BASE_PT = 8.0
+TOP_LABEL_ROW_STEP_PT = 28.0
+TOP_LABEL_PAD_PX = 14.0
+TOP_LABEL_GAP_PX = 12.0
+TOP_LABEL_VERTICAL_GAP_PX = 6.0
+TOP_LABEL_DRAW_GAP_PX = 2.0
+TOP_LABEL_DRAW_VERTICAL_GAP_PX = 2.0
 TOP_LABEL_MAX_SHIFT_PX = 3.0
-TOP_LABEL_EXTRA_SHIFT_PER_ROW_PX = 10.0
+TOP_LABEL_EXTRA_SHIFT_PER_ROW_PX = 16.0
 TOP_LABEL_ROW_PENALTY_PX = 1.0
-TOP_LABEL_STAGGER_CYCLE = 5
-TOP_LABEL_STAGGER_STEP_PT = 7.0
-TOP_LABEL_STAGGER_ROW_PREFERENCE_PX = 6.0
+TOP_LABEL_RELAX_MAX_PASSES = 12
 TOP_LABEL_WRAP_CHARS = 11
 TOP_LABEL_MAX_LINES = 2
 TOP_LABEL_SPECIAL_Y_NUDGE_PT = {
@@ -324,11 +325,9 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
     row_step_pt = max(TOP_LABEL_ROW_STEP_PT, (max_h_px + 16.0) * 72.0 / fig.dpi)
 
     order = np.argsort(x_display)
-    row_indices = np.zeros(len(labels), dtype=int)
     x_offsets_pt = np.zeros(len(labels), dtype=float)
-    stagger_offsets_pt = np.zeros(len(labels), dtype=float)
-    preferred_rows = np.zeros(len(labels), dtype=int)
-    row_right_edges: list[float] = []
+    y_offsets_pt = np.zeros(len(labels), dtype=float)
+    placements: list[dict[str, float]] = []
 
     def _label_y_nudge_pt(label_text: str) -> float:
         label_key = str(label_text).replace("\n", " ").strip().lower()
@@ -337,27 +336,45 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
                 return float(delta)
         return 0.0
 
-    for rank, idx in enumerate(order):
+    def _vertical_overlap(
+        bottom_a: float, top_a: float, bottom_b: float, top_b: float
+    ) -> bool:
+        return not (
+            bottom_a >= top_b + TOP_LABEL_VERTICAL_GAP_PX
+            or top_a <= bottom_b - TOP_LABEL_VERTICAL_GAP_PX
+        )
+
+    for idx in order:
         target_x_px = float(x_display[idx])
         width_px = float(widths[idx])
+        height_px = float(heights[idx])
         half_width_px = width_px / 2.0
         min_center_px = float(axes_bbox.x0 + TOP_LABEL_GAP_PX + half_width_px)
         max_center_px = float(axes_bbox.x1 - TOP_LABEL_GAP_PX - half_width_px)
         target_center_px = min(max(target_x_px, min_center_px), max_center_px)
-        stagger_phase = rank % TOP_LABEL_STAGGER_CYCLE
-        preferred_rows[idx] = int(stagger_phase)
-        stagger_offsets_pt[idx] = float(
-            (TOP_LABEL_STAGGER_CYCLE - 1 - stagger_phase) * TOP_LABEL_STAGGER_STEP_PT
-        )
+        label_y_nudge_pt = _label_y_nudge_pt(labels[idx])
 
         best_row = None
         best_center_px = None
         best_cost = None
-        for row_idx, last_right in enumerate(row_right_edges):
-            center_px = max(
-                target_center_px,
-                float(last_right) + TOP_LABEL_GAP_PX + half_width_px,
-            )
+        best_y_offset_pt = None
+        for row_idx in range(len(labels)):
+            y_offset_pt = TOP_LABEL_BASE_PT + row_idx * row_step_pt + label_y_nudge_pt
+            bottom_px = float(axes_bbox.y1 + y_offset_pt * fig.dpi / 72.0)
+            top_px = bottom_px + height_px
+            center_px = target_center_px
+            for placed in placements:
+                if not _vertical_overlap(
+                    bottom_px,
+                    top_px,
+                    placed["bottom"],
+                    placed["top"],
+                ):
+                    continue
+                center_px = max(
+                    center_px,
+                    float(placed["right"]) + TOP_LABEL_GAP_PX + half_width_px,
+                )
             if center_px > max_center_px:
                 continue
             shift_px = abs(center_px - target_x_px)
@@ -366,37 +383,53 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
             )
             if shift_px > allowed_shift_px:
                 continue
-            cost = (
-                shift_px
-                + row_idx * TOP_LABEL_ROW_PENALTY_PX
-                + abs(row_idx - preferred_rows[idx])
-                * TOP_LABEL_STAGGER_ROW_PREFERENCE_PX
-            )
+            cost = shift_px + row_idx * TOP_LABEL_ROW_PENALTY_PX
             if best_cost is None or cost < best_cost:
                 best_row = row_idx
                 best_center_px = center_px
                 best_cost = cost
+                best_y_offset_pt = y_offset_pt
 
         if best_row is None:
-            best_row = len(row_right_edges)
+            best_row = len(labels)
+            best_y_offset_pt = (
+                TOP_LABEL_BASE_PT + best_row * row_step_pt + label_y_nudge_pt
+            )
             best_center_px = target_center_px
-            row_right_edges.append(best_center_px + half_width_px)
-        else:
-            row_right_edges[best_row] = best_center_px + half_width_px
+            bottom_px = float(axes_bbox.y1 + best_y_offset_pt * fig.dpi / 72.0)
+            top_px = bottom_px + height_px
+            for placed in placements:
+                if not _vertical_overlap(
+                    bottom_px,
+                    top_px,
+                    placed["bottom"],
+                    placed["top"],
+                ):
+                    continue
+                best_center_px = max(
+                    best_center_px,
+                    float(placed["right"]) + TOP_LABEL_GAP_PX + half_width_px,
+                )
+            best_center_px = min(best_center_px, max_center_px)
 
-        row_indices[idx] = best_row
         x_offsets_pt[idx] = (best_center_px - target_x_px) * 72.0 / fig.dpi
-
-    for xpos, label, row_idx, x_offset_pt, stagger_offset_pt in zip(
-        x_positions, labels, row_indices, x_offsets_pt, stagger_offsets_pt
-    ):
-        y_offset_pt = (
-            TOP_LABEL_BASE_PT
-            + row_idx * row_step_pt
-            + stagger_offset_pt
-            + _label_y_nudge_pt(label)
+        y_offsets_pt[idx] = float(best_y_offset_pt)
+        bottom_px = float(axes_bbox.y1 + y_offsets_pt[idx] * fig.dpi / 72.0)
+        placements.append(
+            {
+                "right": float(best_center_px + half_width_px),
+                "bottom": bottom_px,
+                "top": float(bottom_px + height_px),
+            }
         )
-        ax.annotate(
+
+    label_artists = [None] * len(labels)
+    leader_artists = [None] * len(labels)
+
+    for idx, (xpos, label, x_offset_pt, y_offset_pt) in enumerate(
+        zip(x_positions, labels, x_offsets_pt, y_offsets_pt)
+    ):
+        label_artists[idx] = ax.annotate(
             label,
             xy=(float(xpos), 1.0),
             xycoords=("data", "axes fraction"),
@@ -411,7 +444,7 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
             clip_on=False,
             bbox=bbox_style,
         )
-        ax.annotate(
+        leader_artists[idx] = ax.annotate(
             "",
             xy=(float(xpos), 1.0),
             xycoords=("data", "axes fraction"),
@@ -427,6 +460,64 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
             zorder=7,
             clip_on=False,
         )
+
+    def _set_annotation_offsets(idx: int):
+        xytext = (float(x_offsets_pt[idx]), float(y_offsets_pt[idx]))
+        label_artists[idx].set_position(xytext)
+        leader_artists[idx].set_position((xytext[0], xytext[1] - 1.2))
+
+    def _actual_label_bbox(idx: int):
+        patch = label_artists[idx].get_bbox_patch()
+        if patch is not None:
+            return patch.get_window_extent(renderer=renderer)
+        return label_artists[idx].get_window_extent(renderer=renderer)
+
+    def _bbox_overlap(box_a, box_b) -> bool:
+        return not (
+            box_a.x0 >= box_b.x1 + TOP_LABEL_DRAW_GAP_PX
+            or box_a.x1 <= box_b.x0 - TOP_LABEL_DRAW_GAP_PX
+            or box_a.y0 >= box_b.y1 + TOP_LABEL_DRAW_VERTICAL_GAP_PX
+            or box_a.y1 <= box_b.y0 - TOP_LABEL_DRAW_VERTICAL_GAP_PX
+        )
+
+    # Finalize against the actual drawn annotation boxes instead of the
+    # estimated pre-draw extents; this catches any bbox growth after render.
+    for _ in range(TOP_LABEL_RELAX_MAX_PASSES):
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        bboxes = {
+            idx: _actual_label_bbox(idx)
+            for idx in range(len(labels))
+            if label_artists[idx] is not None
+        }
+        sorted_idx = sorted(
+            bboxes.keys(),
+            key=lambda idx: (float(bboxes[idx].x0), float(bboxes[idx].y0)),
+        )
+
+        changed = False
+        seen: list[int] = []
+        for idx in sorted_idx:
+            bbox = bboxes[idx]
+            delta_y_px = 0.0
+            for prev_idx in seen:
+                prev_bbox = bboxes[prev_idx]
+                if not _bbox_overlap(bbox, prev_bbox):
+                    continue
+                delta_y_px = max(
+                    delta_y_px,
+                    float(prev_bbox.y1 + TOP_LABEL_DRAW_VERTICAL_GAP_PX - bbox.y0),
+                )
+
+            if delta_y_px > 0.5:
+                y_offsets_pt[idx] += delta_y_px * 72.0 / fig.dpi
+                _set_annotation_offsets(idx)
+                changed = True
+
+            seen.append(idx)
+
+        if not changed:
+            break
 
 
 def _unique_peak_topic_labels(

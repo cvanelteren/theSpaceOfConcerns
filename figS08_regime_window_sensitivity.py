@@ -1,9 +1,9 @@
-"""Supplementary Figure S08. Compares regime persistence under annual and rolling five-year windows. Checks that the transition result is not a temporal-aggregation artifact."""
+"""Supplementary Figure S08. Compares regime persistence under short and wider rolling windows."""
 
 #!/usr/bin/env python3
 from __future__ import annotations
 
-# Plot 1y vs 5y regime-transition stability diagnostics for SI.
+# Plot regime-transition stability diagnostics for two window sizes.
 
 from pathlib import Path
 
@@ -14,18 +14,40 @@ import ultraplot as uplt
 OUT_PDF = Path("figures/figS08_regime_window_sensitivity.pdf")
 OUT_PNG = Path("figures/figS08_regime_window_sensitivity.png")
 
-MATRIX_PATHS = {
-    1: Path("output/fig45_regime_transition_matrix_row_normalized_window1.csv"),
-    5: Path("output/fig45_regime_transition_matrix_row_normalized_window5.csv"),
-}
-SUMMARY_PATHS = {
-    1: Path("output/fig45_regime_transition_summary_window1.csv"),
-    5: Path("output/fig45_regime_transition_summary_window5.csv"),
-}
+TIME_UNIT = "year"  # switch to "meeting" to prefer sequential meeting outputs
+WINDOW_SIZES = (1, 5)
 
 
-def _load_matrix(window_years: int) -> pd.DataFrame:
-    path = MATRIX_PATHS[window_years]
+def _candidate_path(stem: str, window_size: int) -> Path:
+    time_unit = str(TIME_UNIT).strip().lower()
+    candidates = (
+        [
+            Path(f"output/{stem}_{time_unit}_window{window_size}.csv"),
+            Path(f"output/{stem}_window{window_size}.csv"),
+            Path(f"output/{stem}_year_window{window_size}.csv"),
+        ]
+        if time_unit == "meeting"
+        else [
+            Path(f"output/{stem}_window{window_size}.csv"),
+            Path(f"output/{stem}_year_window{window_size}.csv"),
+            Path(f"output/{stem}_meeting_window{window_size}.csv"),
+        ]
+    )
+    for path in candidates:
+        if path.exists():
+            return path
+    return candidates[0]
+
+
+def _window_label(window_size: int, time_unit: str) -> str:
+    unit = "meeting" if str(time_unit).strip().lower() == "meeting" else "year"
+    if int(window_size) == 1:
+        return f"1 {unit}"
+    return f"{int(window_size)} {unit}s"
+
+
+def _load_matrix(window_size: int) -> pd.DataFrame:
+    path = _candidate_path("fig45_regime_transition_matrix_row_normalized", window_size)
     if not path.exists():
         raise FileNotFoundError(f"Missing matrix file: {path}")
     mat = pd.read_csv(path, index_col=0)
@@ -37,8 +59,8 @@ def _load_matrix(window_years: int) -> pd.DataFrame:
     return mat
 
 
-def _load_summary(window_years: int) -> dict:
-    path = SUMMARY_PATHS[window_years]
+def _load_summary(window_size: int) -> dict:
+    path = _candidate_path("fig45_regime_transition_summary", window_size)
     if not path.exists():
         raise FileNotFoundError(f"Missing summary file: {path}")
     df = pd.read_csv(path)
@@ -82,8 +104,20 @@ def _plot_rate_comparison(ax, s1: dict, s5: dict):
     y1 = np.asarray([float(s1[k]) for k in metric_keys], dtype=float)
     y5 = np.asarray([float(s5[k]) for k in metric_keys], dtype=float)
 
-    bars1 = ax.bar(x - width / 2, y1, width=width, label="1-year window", color="gray6")
-    bars5 = ax.bar(x + width / 2, y5, width=width, label="5-year window", color="teal7")
+    bars1 = ax.bar(
+        x - width / 2,
+        y1,
+        width=width,
+        label=_window_label(1, s1.get("time_unit", TIME_UNIT)),
+        color="gray6",
+    )
+    bars5 = ax.bar(
+        x + width / 2,
+        y5,
+        width=width,
+        label=_window_label(5, s5.get("time_unit", TIME_UNIT)),
+        color="teal7",
+    )
 
     label_offset = 0.018
     for bar in list(bars1) + list(bars5):
@@ -104,7 +138,10 @@ def _plot_rate_comparison(ax, s1: dict, s5: dict):
     ax.format(
         xlabel="Transition statistic",
         ylabel="Rate",
-        title=f"Window comparison (n1={n1}, n5={n5})",
+        title=(
+            f"Window comparison ({str(s1.get('time_unit', TIME_UNIT)).strip().lower()}; "
+            f"n1={n1}, n5={n5})"
+        ),
         xticks=x,
         xticklabels=metric_labels,
         ylim=(0.0, y_top),
@@ -114,17 +151,21 @@ def _plot_rate_comparison(ax, s1: dict, s5: dict):
 
 
 def main():
-    mat1 = _load_matrix(1)
-    mat5 = _load_matrix(5)
-    s1 = _load_summary(1)
-    s5 = _load_summary(5)
+    mat1 = _load_matrix(WINDOW_SIZES[0])
+    mat5 = _load_matrix(WINDOW_SIZES[1])
+    s1 = _load_summary(WINDOW_SIZES[0])
+    s5 = _load_summary(WINDOW_SIZES[1])
 
     fig, axs = uplt.subplots(ncols=3, share=0)
     axs.format(abc="[A]")
     ax1, ax2, ax3 = axs
 
-    img = _plot_transition_matrix(ax1, mat1, "Regime transitions (1-year windows)")
-    _plot_transition_matrix(ax2, mat5, "Regime transitions (5-year windows)")
+    img = _plot_transition_matrix(
+        ax1, mat1, f"Regime transitions ({_window_label(WINDOW_SIZES[0], s1.get('time_unit', TIME_UNIT))})"
+    )
+    _plot_transition_matrix(
+        ax2, mat5, f"Regime transitions ({_window_label(WINDOW_SIZES[1], s5.get('time_unit', TIME_UNIT))})"
+    )
     _plot_rate_comparison(ax3, s1, s5)
 
     cbar = ax2.colorbar(img, loc="r")

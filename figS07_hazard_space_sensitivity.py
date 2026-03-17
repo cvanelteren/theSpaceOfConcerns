@@ -30,6 +30,9 @@ from utils import (
     standardize_index_labels,
 )
 
+# TODO(meeting-sequence): This sensitivity analysis still rolls over calendar years.
+# If the main hazard analysis standardizes on sequential meetings, convert this
+# window definition and period builder to meeting-number windows as well.
 WINDOW_YEARS = 5
 RCA_THRESHOLD = 1.0
 

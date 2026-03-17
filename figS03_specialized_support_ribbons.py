@@ -40,6 +40,9 @@ DATA_PATHS = [
 ]
 
 START_YEAR = None  # None = use dataset min
+# TODO(meeting-sequence): Ribbon periods are still binned in calendar-year blocks.
+# Revisit PERIOD_YEARS if we want the interactive and static ribbon analyses to
+# align with sequential meeting windows.
 PERIOD_YEARS = 10
 RCA_THRESHOLD = 1.0
 TOP_N_TOPICS = 1000

@@ -14,6 +14,9 @@ from scipy.stats import pearsonr, spearmanr
 from utils import generate_interaction_matrix, get_rca, load_data, standardize_index_labels
 
 DATA_PATH = Path("antarctic-database-go/data/processed/document-summary.parquet")
+# TODO(meeting-sequence): Pairwise overlap periods are still calendar-year bins.
+# Convert PERIOD_YEARS/build_periods if this comparison should match meeting-
+# sequence periodization used in the hazard analysis.
 PERIOD_YEARS = 10
 RPA_THRESHOLD = 1.0
 

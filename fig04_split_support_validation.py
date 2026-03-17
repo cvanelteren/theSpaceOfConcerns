@@ -104,6 +104,11 @@ def _load_history(path: Path) -> pd.DataFrame:
     return pd.read_csv(path)
 
 
+def _time_axis_label(summary: pd.Series) -> str:
+    time_unit = str(summary.get("time_unit", "year")).strip().lower()
+    return "Meeting" if time_unit == "meeting" else "Year"
+
+
 SCHEMATIC_GRAPH = nx.florentine_families_graph().copy()
 _SCHEMATIC_LAYOUT = nx.kamada_kawai_layout(SCHEMATIC_GRAPH)
 _xs = [xy[0] for xy in _SCHEMATIC_LAYOUT.values()]
@@ -443,7 +448,7 @@ def _plot_breadth_panel(
     focus_metrics = _metric_map(focus_model)
     ax.format(
         title="Actor Breadth" if show_title else "",
-        xlabel="Year",
+        xlabel=_time_axis_label(summary),
         ylabel="Active topics" if not show_title else "Active topics per actor",
         grid=True,
         ylim=(0.0, 9.0) if not show_title else None,
@@ -499,7 +504,7 @@ def _plot_popularity_panel(
     focus_metrics = _metric_map(focus_model)
     ax.format(
         title="Topic Popularity" if show_title else "",
-        xlabel="Year",
+        xlabel=_time_axis_label(summary),
         ylabel="Actors per topic" if not show_title else "Active actors per topic",
         grid=True,
         ylim=(0.0, 7.0) if not show_title else None,
@@ -970,7 +975,7 @@ def build_figure() -> plt.Figure:
     )
     ax_b.format(
         title="Mean Active Topics Per Actor",
-        xlabel="Year",
+        xlabel=_time_axis_label(summary),
         ylabel="Topics",
         grid=True,
     )
@@ -1050,7 +1055,7 @@ def build_figure() -> plt.Figure:
     )
     ax_c.format(
         title="Mean Topic Popularity",
-        xlabel="Year",
+        xlabel=_time_axis_label(summary),
         ylabel="Active actors per topic",
         grid=True,
     )

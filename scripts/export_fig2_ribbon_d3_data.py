@@ -88,6 +88,9 @@ submitted_df = _sanitize_years(submitted_df, year_col)
 year_min = int(submitted_df[year_col].min())
 year_max = int(submitted_df[year_col].max())
 
+# TODO(meeting-sequence): Interactive ribbon periods still use fixed calendar-year
+# blocks via PERIOD_YEARS from figS03. Revisit if we standardize periodization on
+# sequential meetings across the analysis stack.
 periods = _build_periods(year_min, year_max, PERIOD_YEARS)
 period_labels = [label for _, _, label in periods]
 period_index = {label: i for i, label in enumerate(period_labels)}

@@ -14,7 +14,7 @@ from utils import (
 )
 
 RPA_THRESHOLD = 1.0
-RETENTION_WINDOW_YEARS = 1
+RETENTION_WINDOW_SIZE = 1
 MAX_ALLOWED_CONSEC_GAPS = 5
 LOG_EPS = 1e-12
 N_DISTANCE_BINS = 30
@@ -39,14 +39,37 @@ OUT_RETENTION_PDF = SLIDES_DIR / "fig03_local_portfolio_movement_retention_panel
 OUT_TRANSITION_PNG = SLIDES_DIR / "fig03_local_portfolio_movement_transition_panel.png"
 OUT_TRANSITION_PDF = SLIDES_DIR / "fig03_local_portfolio_movement_transition_panel.pdf"
 
-REGIME_SUMMARY_PATHS = [
-    Path("output/fig45_regime_transition_summary_window5.csv"),
-    Path("output/fig45_regime_transition_summary_window1.csv"),
-]
-REGIME_MATRIX_PATHS = [
-    Path("output/fig45_regime_transition_matrix_row_normalized_window5.csv"),
-    Path("output/fig45_regime_transition_matrix_row_normalized_window1.csv"),
-]
+REGIME_TIME_UNIT = "year"  # switch to "meeting" to prefer sequential meeting outputs
+REGIME_WINDOW_SIZES = [5, 1]
+
+
+def _regime_output_candidates(stem: str) -> list[Path]:
+    preferred = str(REGIME_TIME_UNIT).strip().lower()
+    candidates: list[Path] = []
+    for window_size in REGIME_WINDOW_SIZES:
+        if preferred == "meeting":
+            candidates.extend(
+                [
+                    Path(f"output/{stem}_meeting_window{window_size}.csv"),
+                    Path(f"output/{stem}_window{window_size}.csv"),
+                    Path(f"output/{stem}_year_window{window_size}.csv"),
+                ]
+            )
+        else:
+            candidates.extend(
+                [
+                    Path(f"output/{stem}_window{window_size}.csv"),
+                    Path(f"output/{stem}_year_window{window_size}.csv"),
+                    Path(f"output/{stem}_meeting_window{window_size}.csv"),
+                ]
+            )
+    return candidates
+
+
+REGIME_SUMMARY_PATHS = _regime_output_candidates("fig45_regime_transition_summary")
+REGIME_MATRIX_PATHS = _regime_output_candidates(
+    "fig45_regime_transition_matrix_row_normalized"
+)
 
 
 def _load_json_or_empty(path: Path) -> dict:
@@ -75,8 +98,53 @@ def _sanitize_years(df_in: pd.DataFrame, year_col: str) -> pd.DataFrame:
     return out
 
 
+def _sanitize_int_column(df_in: pd.DataFrame, col: str) -> pd.DataFrame:
+    out = df_in.copy()
+    out[col] = pd.to_numeric(out[col], errors="coerce")
+    out = out.dropna(subset=[col]).copy()
+    out[col] = out[col].astype(int)
+    return out
+
+
 def _build_periods(year_min: int, year_max: int, window: int):
     return [(y - window + 1, y) for y in range(year_min + window - 1, year_max + 1)]
+
+
+def _build_periods_for_unit(
+    submitted_df: pd.DataFrame,
+    *,
+    year_col: str,
+    meeting_col: str | None,
+    time_unit: str,
+    window_size: int,
+):
+    time_unit = str(time_unit).strip().lower()
+    window_size = max(1, int(window_size))
+
+    if time_unit == "year":
+        year_min = int(submitted_df[year_col].min())
+        year_max = int(submitted_df[year_col].max())
+        return _build_periods(year_min, year_max, window_size)
+
+    if time_unit == "meeting":
+        if meeting_col is None or meeting_col not in submitted_df.columns:
+            raise KeyError(
+                "No meeting-number column found in source data for time_unit='meeting'."
+            )
+        values = (
+            pd.to_numeric(submitted_df[meeting_col], errors="coerce")
+            .dropna()
+            .astype(int)
+            .sort_values()
+            .unique()
+            .tolist()
+        )
+        return [
+            (int(values[idx - window_size + 1]), int(values[idx]))
+            for idx in range(window_size - 1, len(values))
+        ]
+
+    raise ValueError(f"Unknown time_unit={time_unit!r}. Use year|meeting.")
 
 
 def _build_window_interaction(
@@ -121,7 +189,20 @@ def _km_survival(duration_windows: np.ndarray, censored: np.ndarray) -> pd.DataF
     return pd.DataFrame(rows)
 
 
-def _compute_retention_curves() -> dict[int, dict]:
+def _format_window_unit(window_size: int, time_unit: str) -> str:
+    unit = "meeting" if str(time_unit).strip().lower() == "meeting" else "year"
+    if int(window_size) == 1:
+        return f"1 {unit}"
+    return f"{int(window_size)} {unit}s"
+
+
+def _time_axis_label(time_unit: str) -> str:
+    return "meetings" if str(time_unit).strip().lower() == "meeting" else "years"
+
+
+def _compute_retention_curves(
+    *, time_unit: str, window_size: int
+) -> tuple[dict[int, dict], str]:
     counts_df, submitted_df, members_raw, topics_raw = _load_data_with_fallback(
         DATA_PATHS
     )
@@ -129,22 +210,35 @@ def _compute_retention_curves() -> dict[int, dict]:
     if year_col not in submitted_df.columns:
         raise KeyError("No meeting year or year column found in source data.")
     submitted_df = _sanitize_years(submitted_df, year_col)
+    meeting_col = (
+        "meeting number" if "meeting number" in submitted_df.columns else "meeting_number"
+    )
+    if meeting_col in submitted_df.columns:
+        submitted_df = _sanitize_int_column(submitted_df, meeting_col)
+    else:
+        meeting_col = None
 
     topics = counts_df.index.tolist()
     members = counts_df.columns.tolist()
     all_members_raw = set(members_raw)
     all_topics_raw = set(topics_raw)
 
-    year_min = int(submitted_df[year_col].min())
-    year_max = int(submitted_df[year_col].max())
-    periods = _build_periods(year_min, year_max, RETENTION_WINDOW_YEARS)
+    periods = _build_periods_for_unit(
+        submitted_df=submitted_df,
+        year_col=year_col,
+        meeting_col=meeting_col,
+        time_unit=time_unit,
+        window_size=window_size,
+    )
+    time_col = meeting_col if str(time_unit).strip().lower() == "meeting" else year_col
+    step_label = _time_axis_label(time_unit)
 
     rcas = []
     entry_active = []
     for start, end in periods:
         inter = _build_window_interaction(
             submitted_df=submitted_df,
-            year_col=year_col,
+            year_col=time_col,
             year_start=int(start),
             year_end=int(end),
             all_members_raw=all_members_raw,
@@ -196,14 +290,14 @@ def _compute_retention_curves() -> dict[int, dict]:
             duration_windows=np.asarray(durations, dtype=int),
             censored=np.asarray(censored, dtype=bool),
         )
-        km["t_years"] = km["t"]
+        km["t_step"] = km["t"]
         curves[allowed_gaps] = {
             "curve": km,
             "label": f"{allowed_gaps}-gap tolerance",
             "color": color,
         }
 
-    return curves
+    return curves, step_label
 
 
 def _load_regime_transition_summary(paths: list[Path]) -> dict:
@@ -282,7 +376,21 @@ def _build_regime_summary_lines(
     hazard_meta: dict, regime_transition_meta: dict
 ) -> list[str]:
     topic_persistence_rate = float(hazard_meta.get("persistence_rate", np.nan))
-    window_years = regime_transition_meta.get("window_years", np.nan)
+    hazard_time_unit = str(hazard_meta.get("time_unit", "year")).strip().lower()
+    hazard_window_size = int(
+        hazard_meta.get(
+            "window_size",
+            hazard_meta.get("window_years", RETENTION_WINDOW_SIZE),
+        )
+    )
+    regime_source = str(regime_transition_meta.get("_source_path", ""))
+    regime_time_unit = str(regime_transition_meta.get("time_unit", "")).strip().lower()
+    if regime_time_unit not in {"meeting", "year"}:
+        regime_time_unit = "meeting" if "_meeting_" in regime_source else "year"
+    regime_window_size = regime_transition_meta.get(
+        "window_size",
+        regime_transition_meta.get("window_years", np.nan),
+    )
     same_region_rate = float(regime_transition_meta.get("same_region_rate", np.nan))
     adjacent_or_same_rate = float(
         regime_transition_meta.get("adjacent_or_same_rate", np.nan)
@@ -291,10 +399,15 @@ def _build_regime_summary_lines(
 
     lines: list[str] = []
     if np.isfinite(topic_persistence_rate):
-        lines.append(f"Topic persistence (1y): {topic_persistence_rate:.1%}")
+        lines.append(
+            f"Topic persistence ({_format_window_unit(hazard_window_size, hazard_time_unit)}): "
+            f"{topic_persistence_rate:.1%}"
+        )
     if np.isfinite(same_region_rate):
         regime_label = (
-            f"{int(window_years)}y" if np.isfinite(window_years) else "windowed"
+            _format_window_unit(int(regime_window_size), regime_time_unit)
+            if np.isfinite(regime_window_size)
+            else "windowed"
         )
         lines.append(f"Same regime ({regime_label}): {same_region_rate:.1%}")
     if np.isfinite(adjacent_or_same_rate):
@@ -341,13 +454,17 @@ def _plot_adoption_panel(
 
 
 def _plot_retention_panel(
-    ax, retention_curves: dict[int, dict], regime_lines: list[str]
+    ax,
+    retention_curves: dict[int, dict],
+    regime_lines: list[str],
+    *,
+    step_label: str,
 ):
     for allowed_gaps in sorted(retention_curves):
         item = retention_curves[allowed_gaps]
         km_df = item["curve"]
         ax.step(
-            km_df["t_years"].to_numpy(dtype=float),
+            km_df["t_step"].to_numpy(dtype=float),
             km_df["S"].to_numpy(dtype=float),
             where="post",
             color=item["color"],
@@ -356,8 +473,8 @@ def _plot_retention_panel(
             label=item["label"],
         )
     ax.format(
-        xlabel="Time since adoption (years)",
-        ylabel="P(topic remains active ≥ t years after adoption)",
+        xlabel=f"Time since adoption ({step_label})",
+        ylabel=f"P(topic remains active ≥ t {step_label} after adoption)",
         ylim=(0.0, 1.02),
         title="Retention sensitivity with regime-stability summary",
     )
@@ -390,7 +507,8 @@ def _plot_retention_panel(
 def _plot_transition_matrix_panel(
     ax,
     regime_transition_matrix: pd.DataFrame,
-    window_years,
+    window_size,
+    time_unit: str,
     regime_matrix_source: str,
     *,
     show_title: bool = True,
@@ -424,8 +542,8 @@ def _plot_transition_matrix_panel(
             ax.text(j, i, txt, ha="center", va="center", fontsize=8, color=color)
 
     matrix_label = (
-        f"{int(window_years)}y"
-        if np.isfinite(window_years)
+        _format_window_unit(int(window_size), time_unit)
+        if np.isfinite(window_size)
         else Path(regime_matrix_source).stem.replace("_", " ")
     )
     format_kwargs = {
@@ -466,7 +584,17 @@ def _save_panel(fig, out_png: Path, out_pdf: Path):
 def main():
     df = pd.read_parquet(HAZARD_PANEL_PATH)
     hazard_meta = _load_json_or_empty(HAZARD_META_PATH)
-    retention_curves = _compute_retention_curves()
+    hazard_time_unit = str(hazard_meta.get("time_unit", "year")).strip().lower()
+    hazard_window_size = int(
+        hazard_meta.get(
+            "window_size",
+            hazard_meta.get("window_years", RETENTION_WINDOW_SIZE),
+        )
+    )
+    retention_curves, retention_step_label = _compute_retention_curves(
+        time_unit=hazard_time_unit,
+        window_size=hazard_window_size,
+    )
     regime_transition_meta = _load_regime_transition_summary(REGIME_SUMMARY_PATHS)
     regime_transition_matrix, regime_matrix_source = _load_regime_transition_matrix(
         REGIME_MATRIX_PATHS
@@ -478,7 +606,14 @@ def main():
     df["log_distance"] = _compute_log_distance(raw_distance, distance_definition)
     agg, event_rate = _binned_adoption_curve(df)
     regime_lines = _build_regime_summary_lines(hazard_meta, regime_transition_meta)
-    window_years = regime_transition_meta.get("window_years", np.nan)
+    regime_window_size = regime_transition_meta.get(
+        "window_size",
+        regime_transition_meta.get("window_years", np.nan),
+    )
+    regime_source = str(regime_transition_meta.get("_source_path", regime_matrix_source))
+    regime_time_unit = str(regime_transition_meta.get("time_unit", "")).strip().lower()
+    if regime_time_unit not in {"meeting", "year"}:
+        regime_time_unit = "meeting" if "_meeting_" in regime_source else "year"
 
     fig, axs = uplt.subplots(ncols=3, share=0)
     axs.format(abc="[A]", abcloc="ul")
@@ -491,12 +626,16 @@ def main():
         event_rate=event_rate,
     )
     _plot_retention_panel(
-        ax=ax2, retention_curves=retention_curves, regime_lines=regime_lines
+        ax=ax2,
+        retention_curves=retention_curves,
+        regime_lines=regime_lines,
+        step_label=retention_step_label,
     )
     _plot_transition_matrix_panel(
         ax=ax3,
         regime_transition_matrix=regime_transition_matrix,
-        window_years=window_years,
+        window_size=regime_window_size,
+        time_unit=regime_time_unit,
         regime_matrix_source=regime_matrix_source,
     )
 
@@ -517,7 +656,10 @@ def main():
 
     fig_r, ax_r = uplt.subplots()
     _plot_retention_panel(
-        ax=ax_r, retention_curves=retention_curves, regime_lines=regime_lines
+        ax=ax_r,
+        retention_curves=retention_curves,
+        regime_lines=regime_lines,
+        step_label=retention_step_label,
     )
     _save_panel(fig_r, OUT_RETENTION_PNG, OUT_RETENTION_PDF)
 
@@ -525,7 +667,8 @@ def main():
     _plot_transition_matrix_panel(
         ax=ax_t,
         regime_transition_matrix=regime_transition_matrix,
-        window_years=window_years,
+        window_size=regime_window_size,
+        time_unit=regime_time_unit,
         regime_matrix_source=regime_matrix_source,
         show_title=False,
         xlabel="to regime",
