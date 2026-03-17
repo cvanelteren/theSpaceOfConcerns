@@ -85,7 +85,7 @@ def main() -> None:
     }
     OUT_SUMMARY.write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
-    fig, ax = uplt.subplots(refwidth=5.2, refaspect=0.8)
+    fig, ax = uplt.subplots(refwidth=5.2, refaspect=0.72)
 
     ax.scatter(
         x[~complementary],
@@ -109,8 +109,8 @@ def main() -> None:
     ax.axvline(x_med, color="black", lw=1.0, ls="--", alpha=0.65, zorder=1)
     ax.axhline(y_med, color="black", lw=1.0, ls="--", alpha=0.65, zorder=1)
 
-    xlim = _centered_limits(x, x_med)
-    ylim = _centered_limits(y, y_med)
+    xlim = _centered_limits(x, x_med, pad_frac=0.10)
+    ylim = _centered_limits(y, y_med, pad_frac=0.18)
 
     ax.format(
         abc="[A]",
@@ -119,6 +119,8 @@ def main() -> None:
         xlim=xlim,
         ylim=ylim,
     )
+    ax.xaxis.labelpad = 10
+    ax.yaxis.labelpad = 10
     ax.grid(alpha=0.16, color="black")
 
     ax.text(

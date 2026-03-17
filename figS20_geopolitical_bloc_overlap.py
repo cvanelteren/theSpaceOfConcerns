@@ -256,7 +256,7 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    fig, axs = uplt.subplots(ncols=2, refwidth=3.4, refaspect=1.0, share=False)
+    fig, axs = uplt.subplots(ncols=2, refwidth=3.4, refaspect=0.82, share=False)
     axs.format(abc="[A]", grid=False)
 
     panel_specs = [
@@ -268,9 +268,16 @@ def main() -> None:
 
     for ax, (metric, title, color) in zip(axs, panel_specs):
         sub = summary_df[summary_df["metric"] == metric].set_index("bloc").loc[bloc_order]
+        vals = sub["same_group_minus_other"].to_numpy(dtype=float)
+        y_min = float(np.nanmin(vals))
+        y_max = float(np.nanmax(vals))
+        y_span = max(y_max - y_min, 0.05)
+        label_offset = 0.06 * y_span
+        y_lower = y_min - 0.24 * y_span
+        y_upper = y_max + 0.24 * y_span
         ax.bar(
             x,
-            sub["same_group_minus_other"].to_numpy(dtype=float),
+            vals,
             color=color,
             edgecolor="black",
             lw=0.6,
@@ -282,7 +289,8 @@ def main() -> None:
             pval = float(sub.loc[bloc, "p_two_sided"])
             ax.text(
                 xi,
-                sub.loc[bloc, "same_group_minus_other"] + (0.008 if sub.loc[bloc, "same_group_minus_other"] >= 0 else -0.012),
+                sub.loc[bloc, "same_group_minus_other"]
+                + (label_offset if sub.loc[bloc, "same_group_minus_other"] >= 0 else -label_offset),
                 f"n={n_same}\np={pval:.3f}",
                 ha="center",
                 va="bottom" if sub.loc[bloc, "same_group_minus_other"] >= 0 else "top",
@@ -294,7 +302,10 @@ def main() -> None:
             ylabel="Same-group minus other overlap",
             xticks=x,
             xticklabels=bloc_order,
+            ylim=(y_lower, y_upper),
         )
+        ax.xaxis.labelpad = 8
+        ax.yaxis.labelpad = 8
         ax.grid(alpha=0.18, color="black")
 
     fig.format(suptitle="Do current geopolitical blocs align with ATS portfolio similarity?")
