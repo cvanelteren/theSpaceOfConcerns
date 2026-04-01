@@ -365,3 +365,9 @@ This chapter is based on the publication \printbibentry{#1}{author} (\printbiben
 
 \usepackage{sidecap}
 \sidecaptionvpos{figure}{c}
+
+\RequirePackage[columnwise]{lineno}
+\AtBeginDocument{%
+  \setlength\linenumbersep{4pt}%
+  \linenumbers
+}

@@ -165,7 +165,7 @@ def main() -> None:
     OUT_PDF.parent.mkdir(parents=True, exist_ok=True)
     OUT_PNG.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT_PDF, bbox_inches="tight")
-    fig.savefig(OUT_PNG, dpi=320, bbox_inches="tight")
+    fig.savefig(OUT_PNG, dpi=320, bbox_inches="tight", transparent=True)
     print(f"Wrote {OUT_PDF}")
     print(f"Wrote {OUT_PNG}")
     print(f"Wrote {OUT_SUMMARY}")
