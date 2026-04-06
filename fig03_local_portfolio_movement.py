@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import ultraplot as uplt
 
+from scripts import hazard_conditional_logit as hcl
 from utils import (
     generate_interaction_matrix,
     get_rca,
@@ -17,7 +18,7 @@ RPA_THRESHOLD = 1.0
 RETENTION_WINDOW_SIZE = 1
 MAX_ALLOWED_CONSEC_GAPS = 5
 LOG_EPS = 1e-12
-N_DISTANCE_BINS = 30
+N_DISTANCE_BINS = 12
 
 HAZARD_PANEL_PATH = Path("output/hazard_panel_at_risk.parquet")
 HAZARD_META_PATH = Path("output/hazard_panel_at_risk_meta.json")
@@ -333,29 +334,32 @@ def _load_regime_transition_matrix(paths: list[Path]) -> tuple[pd.DataFrame, str
     return pd.DataFrame(), ""
 
 
-def _compute_log_distance(
-    raw_distance: np.ndarray, distance_definition: str
-) -> np.ndarray:
-    distance_definition = str(distance_definition).strip().lower()
-    if distance_definition == "shortest_path_neg_log_proximity":
-        return raw_distance
-    if np.nanmin(raw_distance) >= -1e-9 and np.nanmax(raw_distance) <= 1.0 + 1e-9:
-        phi = np.clip(1.0 - raw_distance, LOG_EPS, 1.0)
-        return -np.log(phi)
-    return raw_distance
+def _load_adoption_panel() -> tuple[pd.DataFrame, dict]:
+    panel_df, meta = hcl.build_conditional_logit_panel()
+    adoption_df = panel_df[panel_df["mode"] == "aggregate"].copy()
+    if adoption_df.empty:
+        raise RuntimeError("Aggregate conditional-logit adoption panel is empty.")
+    return adoption_df, meta
 
 
 def _binned_adoption_curve(df: pd.DataFrame) -> tuple[pd.DataFrame, float]:
-    max_log_distance = float(np.nanmax(df["log_distance"].to_numpy(dtype=float)))
-    if not np.isfinite(max_log_distance) or max_log_distance <= 0:
-        max_log_distance = 1.0
-    bins = np.linspace(0.0, max_log_distance, N_DISTANCE_BINS)
-    binned = df.copy()
-    binned["dist_bin"] = pd.cut(binned["log_distance"], bins=bins, include_lowest=True)
+    event_rate = float(df["adopted"].mean())
+    binned = df.dropna(subset=["plot_distance"]).copy()
+    n_unique = int(binned["plot_distance"].nunique())
+    n_bins = max(4, min(N_DISTANCE_BINS, n_unique))
+    binned["dist_bin"] = pd.qcut(
+        binned["plot_distance"], q=n_bins, duplicates="drop"
+    )
 
-    g = binned.groupby("dist_bin", observed=True)["adopted"]
-    agg = g.agg(n="size", k="sum").reset_index()
-    agg["x"] = agg["dist_bin"].apply(lambda iv: float(iv.mid)).astype(float)
+    agg = (
+        binned.groupby("dist_bin", observed=True)
+        .agg(
+            n=("adopted", "size"),
+            k=("adopted", "sum"),
+            x=("plot_distance", "median"),
+        )
+        .reset_index()
+    )
 
     z = 1.959963984540054
     n = agg["n"].to_numpy(dtype=float)
@@ -368,7 +372,6 @@ def _binned_adoption_curve(df: pd.DataFrame) -> tuple[pd.DataFrame, float]:
     agg["p"] = p
     agg["ci_low"] = np.clip(center - half, 0, 1)
     agg["ci_high"] = np.clip(center + half, 0, 1)
-    event_rate = float(k.sum() / np.clip(n.sum(), 1.0, None))
     return agg, event_rate
 
 
@@ -420,27 +423,25 @@ def _build_regime_summary_lines(
 def _plot_adoption_panel(
     ax,
     agg: pd.DataFrame,
-    log_distance: np.ndarray,
+    plot_distance: np.ndarray,
     event_rate: float,
     *,
-    xlabel: str = "Min -log(proximity) to prior portfolio (t-1)",
+    xlabel: str = r"Raw distance to prior portfolio, $1-\max(\phi)$",
     show_legend: bool = True,
     show_title: bool = True,
 ):
-    ax.plot(agg["x"], agg["p"], marker="o", lw=1.8, ms=4, label="Binned mean")
-    ax.fill_between(
-        agg["x"], agg["ci_low"], agg["ci_high"], alpha=0.2, label="Wilson 95% CI"
-    )
-    med = float(np.nanmedian(log_distance))
-    ax.axvline(med, color="black", ls="--", lw=1.2, alpha=0.8)
-    ax.text(
-        med,
-        0.98,
-        f" median={med:.2f}",
-        transform=ax.get_xaxis_transform(),
-        va="top",
-        ha="left",
-        fontsize=9,
+    lower = agg["p"].to_numpy(dtype=float) - agg["ci_low"].to_numpy(dtype=float)
+    upper = agg["ci_high"].to_numpy(dtype=float) - agg["p"].to_numpy(dtype=float)
+    ax.errorbar(
+        agg["x"],
+        agg["p"],
+        yerr=np.vstack([lower, upper]),
+        fmt="o-",
+        lw=1.8,
+        ms=4,
+        capsize=2.5,
+        elinewidth=1.0,
+        color="C0",
     )
     if show_legend:
         ax.legend(frameon=False, loc="cr", ncols=1)
@@ -449,7 +450,7 @@ def _plot_adoption_panel(
         "ylabel": "P(adopt at t | at risk at t-1)",
     }
     if show_title:
-        format_kwargs["title"] = f"Adoption vs log-distance (event rate={event_rate:.2%})"
+        format_kwargs["title"] = "New topics are adopted near prior portfolios"
     ax.format(**format_kwargs)
 
 
@@ -476,7 +477,7 @@ def _plot_retention_panel(
         xlabel=f"Time since adoption ({step_label})",
         ylabel=f"P(topic remains active ≥ t {step_label} after adoption)",
         ylim=(0.0, 1.02),
-        title="Retention sensitivity with regime-stability summary",
+        title="Adopted topics usually persist after entry",
     )
     ax.legend(
         title="Allowed consecutive gaps",
@@ -528,7 +529,7 @@ def _plot_transition_matrix_panel(
         )
         format_kwargs = {"xticks": [], "yticks": []}
         if show_title:
-            format_kwargs["title"] = "Regime transition matrix"
+            format_kwargs["title"] = "Regime shifts are mostly local"
         ax.format(**format_kwargs)
         return
 
@@ -555,7 +556,7 @@ def _plot_transition_matrix_panel(
         "yticklabels": ["R1", "R2", "R3"],
     }
     if show_title:
-        format_kwargs["title"] = f"Regime transition matrix ({matrix_label})"
+        format_kwargs["title"] = f"Regime shifts are mostly local ({matrix_label})"
     ax.format(**format_kwargs)
     ax.xaxis.tick_top()
     ax.tick_params(axis="x", top=True, labeltop=True, bottom=False, labelbottom=False)
@@ -582,7 +583,7 @@ def _save_panel(fig, out_png: Path, out_pdf: Path):
 
 
 def main():
-    df = pd.read_parquet(HAZARD_PANEL_PATH)
+    adoption_df, adoption_meta = _load_adoption_panel()
     hazard_meta = _load_json_or_empty(HAZARD_META_PATH)
     hazard_time_unit = str(hazard_meta.get("time_unit", "year")).strip().lower()
     hazard_window_size = int(
@@ -600,11 +601,10 @@ def main():
         REGIME_MATRIX_PATHS
     )
 
-    raw_distance = df["distance"].to_numpy(dtype=float)
-    distance_definition = hazard_meta.get("distance_definition", "")
-    df = df.copy()
-    df["log_distance"] = _compute_log_distance(raw_distance, distance_definition)
-    agg, event_rate = _binned_adoption_curve(df)
+    raw_distance = adoption_df["distance"].to_numpy(dtype=float)
+    adoption_df = adoption_df.copy()
+    adoption_df["plot_distance"] = raw_distance
+    agg, event_rate = _binned_adoption_curve(adoption_df)
     regime_lines = _build_regime_summary_lines(hazard_meta, regime_transition_meta)
     regime_window_size = regime_transition_meta.get(
         "window_size",
@@ -622,8 +622,9 @@ def main():
     _plot_adoption_panel(
         ax=ax,
         agg=agg,
-        log_distance=df["log_distance"].to_numpy(dtype=float),
+        plot_distance=adoption_df["plot_distance"].to_numpy(dtype=float),
         event_rate=event_rate,
+        show_legend=False,
     )
     _plot_retention_panel(
         ax=ax2,
@@ -646,9 +647,9 @@ def main():
     _plot_adoption_panel(
         ax=ax_a,
         agg=agg,
-        log_distance=df["log_distance"].to_numpy(dtype=float),
+        plot_distance=adoption_df["plot_distance"].to_numpy(dtype=float),
         event_rate=event_rate,
-        xlabel="Distance in topic space",
+        xlabel=r"Raw distance to prior portfolio, $1-\max(\phi)$",
         show_legend=False,
         show_title=False,
     )

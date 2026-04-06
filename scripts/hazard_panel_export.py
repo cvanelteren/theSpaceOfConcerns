@@ -1114,7 +1114,11 @@ if plt is not None:
     not_adopted = panel_df.loc[panel_df["adopted"] == 0, "distance"].to_numpy(
         dtype=float
     )
-    bins = 30
+    adopted = adopted[np.isfinite(adopted)]
+    not_adopted = not_adopted[np.isfinite(not_adopted)]
+    hist_min = float(min(np.min(adopted), np.min(not_adopted)))
+    hist_max = float(max(np.max(adopted), np.max(not_adopted)))
+    bins = np.linspace(hist_min, hist_max, 31)
     ax.hist(not_adopted, bins=bins, alpha=0.35, label="Not adopted", density=True)
     ax.hist(adopted, bins=bins, alpha=0.55, label="Adopted", density=True)
     ax.set_xlabel("Min log-distance to prior portfolio (t-1)")
