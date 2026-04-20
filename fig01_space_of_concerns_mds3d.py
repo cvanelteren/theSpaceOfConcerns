@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from matplotlib.animation import FFMpegWriter, FuncAnimation
 import networkx as nx
 import numpy as np
 import pandas as pd
@@ -24,12 +25,18 @@ DATA_CANDIDATES = [
 TOPIC_ORDER_CSV = Path("output/fig45_portfolio_space_ridgelines_topic_order.csv")
 OUT_PNG = Path("figures/fig01_space_of_concerns_mds3d.png")
 OUT_PDF = Path("figures/fig01_space_of_concerns_mds3d.pdf")
+OUT_MP4 = Path("figures/fig01_space_of_concerns_mds3d_rotate.mp4")
 OUT_COORDS = Path("output/fig01_space_of_concerns_mds3d_coords.csv")
 OUT_META = Path("output/fig01_space_of_concerns_mds3d_meta.json")
 
 LOG_EPS = 1e-12
 EDGE_PERCENTILE = 95
 LABEL_N_EXTRA = 6
+VIEW_ELEV = 19
+VIEW_AZIM = -58
+ROTATE_FPS = 24
+ROTATE_SECONDS = 8
+ROTATE_FRAMES = ROTATE_FPS * ROTATE_SECONDS
 REGION_COLORS = {
     1: "#e41a1c",
     2: "#377eb8",
@@ -155,7 +162,12 @@ def choose_labels(meta: pd.DataFrame, graph: nx.Graph, coords: np.ndarray) -> li
     labels = set(meta.loc[meta["is_region_anchor"], "topic"].tolist())
 
     degree_strength = pd.Series(
-        {node: float(sum(d.get("weight", 0.0) for _, _, d in graph.edges(node, data=True))) for node in graph.nodes()},
+        {
+            node: float(
+                sum(d.get("weight", 0.0) for _, _, d in graph.edges(node, data=True))
+            )
+            for node in graph.nodes()
+        },
         name="weighted_degree",
     )
     for topic in degree_strength.sort_values(ascending=False).head(LABEL_N_EXTRA).index:
@@ -168,7 +180,9 @@ def choose_labels(meta: pd.DataFrame, graph: nx.Graph, coords: np.ndarray) -> li
     return sorted(labels)
 
 
-def plot_3d(meta: pd.DataFrame, graph: nx.Graph, scaffold: nx.Graph, coords: np.ndarray):
+def build_3d_figure(
+    meta: pd.DataFrame, graph: nx.Graph, scaffold: nx.Graph, coords: np.ndarray
+):
     fig, ax = uplt.subplots(
         projection="3d",
         width="16cm",
@@ -195,23 +209,27 @@ def plot_3d(meta: pd.DataFrame, graph: nx.Graph, scaffold: nx.Graph, coords: np.
             [p0[2], p1[2]],
             color="#7f8b95",
             alpha=0.025 + 0.18 * weight,
-            lw=0.08 + 2.4 * weight,
+            lw=0.08 + 10.4 * weight,
             solid_capstyle="round",
             zorder=1,
         )
 
     weighted_degree = np.array(
         [
-            float(sum(d.get("weight", 0.0) for _, _, d in graph.edges(topic, data=True)))
+            float(
+                sum(d.get("weight", 0.0) for _, _, d in graph.edges(topic, data=True))
+            )
             for topic in meta["topic"]
         ],
         dtype=float,
     )
     sizes = 10.0 + 85.0 * weighted_degree / max(float(weighted_degree.max()), 1e-9)
     colors = [
-        REGION_COLORS.get(int(region), FALLBACK_NODE_COLOR)
-        if np.isfinite(region)
-        else FALLBACK_NODE_COLOR
+        (
+            REGION_COLORS.get(int(region), FALLBACK_NODE_COLOR)
+            if np.isfinite(region)
+            else FALLBACK_NODE_COLOR
+        )
         for region in meta["region_id"].to_numpy(dtype=float)
     ]
 
@@ -250,7 +268,7 @@ def plot_3d(meta: pd.DataFrame, graph: nx.Graph, scaffold: nx.Graph, coords: np.
     ax.set_zlabel("")
     ax.grid(False)
     ax.axis(False)
-    ax.view_init(elev=19, azim=-58)
+    ax.view_init(elev=VIEW_ELEV, azim=VIEW_AZIM)
     try:
         ax.dist = 7.0
     except Exception:
@@ -265,10 +283,37 @@ def plot_3d(meta: pd.DataFrame, graph: nx.Graph, scaffold: nx.Graph, coords: np.
         axis.pane.fill = False
         axis.pane.set_edgecolor((1, 1, 1, 0))
 
+    return fig, ax
+
+
+def save_static_outputs(fig):
     OUT_PNG.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT_PNG, dpi=300, bbox_inches="tight", pad_inches=-0.02)
     fig.savefig(OUT_PDF, dpi=300, bbox_inches="tight", pad_inches=-0.02)
-    uplt.close(fig)
+
+
+def save_rotation_mp4(fig, ax):
+    OUT_MP4.parent.mkdir(parents=True, exist_ok=True)
+    azims = np.linspace(VIEW_AZIM, VIEW_AZIM + 360.0, ROTATE_FRAMES, endpoint=False)
+
+    def update(frame_idx):
+        ax.view_init(elev=VIEW_ELEV, azim=float(azims[frame_idx]))
+        return ()
+
+    anim = FuncAnimation(
+        fig,
+        update,
+        frames=len(azims),
+        interval=1000 / ROTATE_FPS,
+        blit=False,
+    )
+    writer = FFMpegWriter(
+        fps=ROTATE_FPS,
+        codec="libx264",
+        bitrate=2400,
+        metadata={"title": "ATS space of concerns 3D rotation"},
+    )
+    anim.save(OUT_MP4, writer=writer, dpi=200)
 
 
 def main():
@@ -294,7 +339,9 @@ def main():
 
     positive = eigvals[eigvals > 0]
     explained = (
-        (np.clip(eigvals[:3], 0.0, None) / positive.sum()).tolist() if positive.size else []
+        (np.clip(eigvals[:3], 0.0, None) / positive.sum()).tolist()
+        if positive.size
+        else []
     )
     OUT_META.write_text(
         json.dumps(
@@ -303,6 +350,10 @@ def main():
                 "embedding": "classical_mds_3d",
                 "rendered_edges": "full_graph_all_edges",
                 "edge_width_mapping": "0.08 + 2.4 * phi_weight",
+                "static_outputs": [str(OUT_PNG), str(OUT_PDF)],
+                "rotation_output": str(OUT_MP4),
+                "rotation_fps": int(ROTATE_FPS),
+                "rotation_seconds": int(ROTATE_SECONDS),
                 "n_topics": int(len(topics)),
                 "n_edges_full": int(graph.number_of_edges()),
                 "n_edges_scaffold": int(scaffold.number_of_edges()),
@@ -313,7 +364,10 @@ def main():
         )
     )
 
-    plot_3d(meta, graph, scaffold, coords)
+    fig, ax = build_3d_figure(meta, graph, scaffold, coords)
+    save_static_outputs(fig)
+    save_rotation_mp4(fig, ax)
+    uplt.close(fig)
 
 
 if __name__ == "__main__":
