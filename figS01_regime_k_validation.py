@@ -15,6 +15,7 @@ from utils import compute_product_space, get_rca, load_data, standardize_index_l
 DATA_FP = Path("./antarctic-database-go/data/processed/document-summary.parquet")
 TOPIC_FP = Path("output/fig45_portfolio_space_ridgelines_topic_order.csv")
 OUT_CSV = Path("output/fig21_regime_portfolio_validation_summary.csv")
+OUT_ASSIGNMENTS_CSV = Path("output/fig21_regime_topic_assignments_by_k.csv")
 OUT_JSON = Path("output/fig21_regime_portfolio_validation_meta.json")
 OUT_PDF = Path("figures/figS01_regime_k_validation.pdf")
 OUT_PNG = Path("figures/figS01_regime_k_validation.png")
@@ -28,7 +29,18 @@ N_ITER = 50
 
 
 def _prepare_counts() -> pd.DataFrame:
-    counts, _, _, _ = load_data(DATA_FP)
+    data_paths = [
+        DATA_FP,
+        Path("../antarctic-database-go/data/processed/document-summary.parquet"),
+    ]
+    for path in data_paths:
+        if path.exists():
+            counts, _, _, _ = load_data(path)
+            break
+    else:
+        raise FileNotFoundError(
+            "Could not find document-summary.parquet in expected data paths."
+        )
     counts = standardize_index_labels(counts)
     if counts.index.has_duplicates:
         counts = counts.groupby(level=0).sum()
@@ -109,6 +121,7 @@ def main() -> None:
     tri_upper = np.triu_indices(full_similarity.shape[0], k=1)
 
     rows: list[dict[str, float | int]] = []
+    assignment_rows: list[dict[str, float | int | str]] = []
     centers_meta: dict[str, list[float]] = {}
     anchors_meta: dict[str, list[str]] = {}
     for k in range(K_MIN, K_MAX + 1):
@@ -122,6 +135,20 @@ def main() -> None:
             0.5 * (anchor_x[:-1] + anchor_x[1:]) if len(anchor_x) > 1 else np.array([])
         )
         topic_region_idx = np.digitize(x_plot, boundaries).astype(int)
+        for topic_idx, topic in enumerate(ordered_topics):
+            region_idx = int(topic_region_idx[topic_idx])
+            anchor_topic = ordered_topics[anchor_idx[region_idx]]
+            assignment_rows.append(
+                {
+                    "k": int(k),
+                    "topic_order": int(topic_idx),
+                    "topic": topic,
+                    "x_plot": float(x_plot[topic_idx]),
+                    "region": int(region_idx + 1),
+                    "region_anchor": anchor_topic,
+                    "region_anchor_x": float(x_plot[anchor_idx[region_idx]]),
+                }
+            )
 
         region_centers = x_plot[anchor_idx]
         weighted_inertia = float(
@@ -180,6 +207,7 @@ def main() -> None:
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     summary.to_csv(OUT_CSV, index=False)
+    pd.DataFrame(assignment_rows).to_csv(OUT_ASSIGNMENTS_CSV, index=False)
     OUT_JSON.write_text(
         json.dumps(
             {
@@ -187,6 +215,7 @@ def main() -> None:
                 "k_max": K_MAX,
                 "anchors_by_k": anchors_meta,
                 "centers_by_k": centers_meta,
+                "topic_assignments_csv": str(OUT_ASSIGNMENTS_CSV),
                 "note": (
                     "Validation uses the same snapped weighted-center regime rule as the "
                     "main paper, then asks how well the resulting regime shares preserve "

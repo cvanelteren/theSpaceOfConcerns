@@ -10,7 +10,7 @@ from matplotlib.ticker import NullLocator
 from utils import get_rca, load_data, load_flag, standardize_index_labels
 
 # %%
-DATA_FP = Path("./antarctic-database-go/data/processed/document-summary.parquet")
+DATA_FP = Path("../antarctic-database-go/data/processed/document-summary.parquet")
 TOPIC_FP = Path("output/fig45_portfolio_space_ridgelines_topic_order.csv")
 ACTOR_FP = Path("output/fig45_portfolio_space_ridgelines_actor_summary.csv")
 REGION_FP = Path("output/fig45_portfolio_space_ridgelines_region_summary.csv")
@@ -21,7 +21,7 @@ SLIDES_DIR = Path("slides")
 OUT_A_SLIDE = SLIDES_DIR / "fig02_regime_exemplars_ridgelines_slide_clean.png"
 OUT_A_ALL_SLIDE = SLIDES_DIR / "fig02_regime_allmembers_ridgelines_slide_clean.png"
 OUT_B = Path("output/fig02_centroid_separation.png")
-OUT_C = Path("output/fig02_regime_share_fractions.png")
+OUT_C = Path("slides/fig02_regime_share_fractions.png")
 OUT_JOINT = Path("output/fig02_regime_engagement_panels.png")
 OUT_JOINT_ALL = Path("figures/fig02_regime_engagement_panels_allmembers.png")
 OUT_SUBSET = Path("output/fig02_regime_exemplar_actors.csv")
@@ -1103,14 +1103,12 @@ for tick, reg in zip(
 ):
     tick.set_color(REGION_COLORS.get(int(reg), "black"))
 ax_a.format(
-    abc=["[A]"],
     xlabel="MDS-scaled position in topic space (0-1)",
     ylabel="",
     title="Regime Exemplars in the Space of Concerns",
     labelsize=FS_LABEL,
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
-    abcsize=FS_ABC,
 )
 ax_a.grid(axis="x", alpha=0.22, linewidth=0.7)
 ax_a.grid(axis="y", visible=False)
@@ -1235,14 +1233,12 @@ for tick, reg in zip(
 ):
     tick.set_color(REGION_COLORS.get(int(reg), "black"))
 ax_a_all.format(
-    abc=["[A]"],
     xlabel="MDS-scaled position in topic space (0-1)",
     ylabel="",
     title="",
     labelsize=FS_LABEL,
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
-    abcsize=FS_ABC,
 )
 ax_a_all.grid(axis="x", alpha=0.22, linewidth=0.7)
 ax_a_all.grid(axis="y", visible=False)
@@ -1340,14 +1336,12 @@ ax_b.set_xlim(0.5, 3.5)
 ax_b.set_xticks([1, 2, 3])
 ax_b.set_xticklabels(["Regime 1", "Regime 2", "Regime 3"])
 ax_b.format(
-    abc=["[B]"],
     xlabel="Dominant regime",
     ylabel="Portfolio centroid (MDS 0-1)",
     title="Centroid Separation by Regime",
     labelsize=FS_LABEL,
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
-    abcsize=FS_ABC,
 )
 ax_b.grid(axis="y", alpha=0.22, linewidth=0.7)
 ax_b.grid(axis="x", visible=False)
@@ -1370,11 +1364,7 @@ _plot_regime_ternary(
     title="Regime Share Fractions Across Actors",
 )
 ax_c.format(
-    abc=["[C]"],
-    labelsize=FS_LABEL,
-    ticklabelsize=FS_TICK,
-    titlesize=FS_TITLE,
-    abcsize=FS_ABC,
+    labelsize=FS_LABEL, ticklabelsize=FS_TICK, titlesize=FS_TITLE, titlepad="1.0em"
 )
 fig_c.savefig(
     OUT_C,
@@ -1504,11 +1494,9 @@ _plot_regime_ternary(
     title=None,
 )
 axs.format(
-    abc="[A]",
     labelsize=FS_LABEL,
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
-    abcsize=FS_ABC,
 )
 
 fig_j.savefig(OUT_JOINT, dpi=230, bbox_inches="tight", pad_inches=0.16)
@@ -1639,11 +1627,9 @@ ax_cb.format(
     title="Regime Share Fractions Across Actors",
 )
 axs_all.format(
-    abc="[A]",
     labelsize=FS_LABEL,
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
-    abcsize=FS_ABC,
 )
 fig_ja.savefig(OUT_JOINT_ALL, dpi=230, bbox_inches="tight", pad_inches=0.16)
 print(f"Wrote {OUT_JOINT_ALL}")
