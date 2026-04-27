@@ -8,8 +8,6 @@ recompute it when the underlying geometry changes.
 """
 
 import json
-import shutil
-import subprocess
 import time
 from dataclasses import dataclass
 from heapq import heappop, heappush
@@ -59,6 +57,7 @@ def debug_print(message):
 def load_data_with_fallback():
     paths = [
         Path("antarctic-database-go/data/processed/document-summary.parquet"),
+        Path("../antarctic-database-go/data/processed/document-summary.parquet"),
         Path(
             "antarctic-treaty-system-ATCM-papers/dataset-DATESTAMP-HASH/summary.parquet"
         ),
@@ -1009,92 +1008,6 @@ def smartwrap(text, width):
     return "\n".join(textwrap.wrap(text, width=width, break_long_words=False))
 
 
-def load_overlap_formula_image():
-    """Load overlap glyph image, generating PNG from overlap.pdf when needed."""
-    output_dir = Path("output")
-    output_dir.mkdir(parents=True, exist_ok=True)
-    png_out = output_dir / "overlap_formula.png"
-    pdf_path = Path("overlap.pdf")
-    tex_path = Path("overlap.tex")
-
-    if not pdf_path.exists() and tex_path.exists() and shutil.which("pdflatex"):
-        subprocess.run(
-            [
-                "pdflatex",
-                "-interaction=nonstopmode",
-                "-halt-on-error",
-                str(tex_path),
-            ],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            check=False,
-        )
-
-    needs_render = (not png_out.exists()) or (
-        pdf_path.exists()
-        and png_out.exists()
-        and png_out.stat().st_mtime < pdf_path.stat().st_mtime
-    )
-    if needs_render and pdf_path.exists():
-        rendered = False
-
-        # Preferred conversion path: Ghostscript with alpha output.
-        if shutil.which("gs"):
-            gs_pattern = output_dir / "overlap_formula-%03d.png"
-            subprocess.run(
-                [
-                    "gs",
-                    "-dSAFER",
-                    "-dBATCH",
-                    "-dNOPAUSE",
-                    "-sDEVICE=pngalpha",
-                    "-r1800",
-                    "-o",
-                    str(gs_pattern),
-                    str(pdf_path),
-                ],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                check=False,
-            )
-            gs_first_page = output_dir / "overlap_formula-001.png"
-            if gs_first_page.exists():
-                shutil.copyfile(gs_first_page, png_out)
-                for tmp in output_dir.glob("overlap_formula-*.png"):
-                    if tmp != png_out:
-                        try:
-                            tmp.unlink()
-                        except OSError:
-                            pass
-                rendered = True
-
-        # Fallback conversion path when Ghostscript is unavailable.
-        if (not rendered) and shutil.which("pdftoppm"):
-            subprocess.run(
-                [
-                    "pdftoppm",
-                    "-singlefile",
-                    "-r",
-                    "1800",
-                    "-png",
-                    str(pdf_path),
-                    str(png_out.with_suffix("")),
-                ],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                check=False,
-            )
-
-    if png_out.exists():
-        arr = np.array(Image.open(png_out).convert("RGBA"))
-        # Strip white page background so the formula inset stays transparent.
-        white = (arr[:, :, 0] > 248) & (arr[:, :, 1] > 248) & (arr[:, :, 2] > 248)
-        arr[white, 3] = 0
-        Image.fromarray(arr, mode="RGBA").save(png_out)
-        return arr
-    return None
-
-
 def build_interest_groups(edge_a, edge_b):
     """Group countries by RCA>1 specialization in drilling/marine acoustics."""
     counts_df, _, _, _ = load_data_with_fallback()
@@ -1129,7 +1042,9 @@ def build_interest_groups(edge_a, edge_b):
     return groups
 
 
-def draw_grouped_rca_inset(ax, edge_a, edge_b, groups):
+def draw_grouped_rca_inset(
+    ax, edge_a, edge_b, groups, callout_color="#E0007A", callout_linewidth=1.8
+):
     """Inset: countries grouped by single vs joint RCA>1 interest."""
     from matplotlib.colors import to_rgb
     from matplotlib.offsetbox import AnnotationBbox, OffsetImage
@@ -1146,7 +1061,13 @@ def draw_grouped_rca_inset(ax, edge_a, edge_b, groups):
     anc_mix = ((anc_a[0] + anc_b[0]) / 2, 0.94)
 
     ax.plot(
-        [anc_a[0], anc_b[0]], [anc_a[1], anc_b[1]], ls="--", lw=1.2, c="0.35", zorder=1
+        [anc_a[0], anc_b[0]],
+        [anc_a[1], anc_b[1]],
+        ls="--",
+        lw=callout_linewidth,
+        c=callout_color,
+        alpha=0.95,
+        zorder=1,
     )
     ax.scatter(
         [anc_a[0], anc_b[0]], [anc_a[1], anc_b[1]], s=70, c=[col_a, col_b], zorder=3
@@ -1245,58 +1166,14 @@ def draw_grouped_rca_inset(ax, edge_a, edge_b, groups):
                     zorder=4,
                 )
 
-    ax.set_xlim(0.02, 0.98)
-    ax.set_ylim(0.02, 1.04)
+    ax.set_xlim(-0.06, 1.06)
+    ax.set_ylim(-0.06, 1.08)
     ax.set_xticks([])
     ax.set_yticks([])
     ax.set_facecolor((1, 1, 1, 0.88))
     for spine in ax.spines.values():
         spine.set_edgecolor("0.5")
         spine.set_linewidth(0.6)
-
-
-def draw_overlap_formula_inset(ax):
-    from matplotlib.offsetbox import AnnotationBbox, OffsetImage
-
-    img = load_overlap_formula_image()
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    ax.set_xticks([])
-    ax.set_yticks([])
-    if img is not None:
-        # Keep high-DPI formula raster bounded inside the inset.
-        target_px = 175
-        zoom = max(0.02, min(0.18, target_px / max(img.shape[0], img.shape[1])))
-        imagebox = OffsetImage(img, zoom=zoom)
-        ab = AnnotationBbox(
-            imagebox,
-            (0.15, 0.5),
-            xycoords="data",
-            frameon=True,
-            box_alignment=(0.5, 0.5),
-            pad=0.0,
-            zorder=3,
-            bboxprops=dict(ec="k", lw=1.2, boxstyle="round,pad=0.08"),
-        )
-        ab.set_clip_on(True)
-        ab.set_in_layout(False)
-        ax.add_artist(ab)
-    else:
-        ax.text(
-            0.25,
-            0.15,
-            r"$\phi_{ij}=\min\left\{\frac{P(\cap)}{P(i)},\frac{P(\cap)}{P(j)}\right\}$",
-            ha="center",
-            va="center",
-            fontsize=8,
-            bbox=dict(
-                boxstyle="round,pad=0.3",
-                facecolor="white",
-                edgecolor="0.5",
-                linewidth=0.6,
-            ),
-        )
-    ax.axis("off")
 
 
 # Simple, evenly spaced labels around the map.
@@ -2953,49 +2830,65 @@ side_label_artists.extend(
     )
 )
 
-# Highlight a specific edge and add grouped RCA inset + overlap-formula inset.
+# Highlight a specific edge and add a grouped RCA inset.
 edge_a = "Drilling"
 edge_b = "Marine Acoustics"
 highlight_line_artists = []
 highlight_other_artists = []
 highlight_axes = []
 if edge_a in snapped and edge_b in snapped:
+    callout_color = "#E0007A"
+    callout_linewidth = 1.8
+    mx = (snapped[edge_a][0] + snapped[edge_b][0]) / 2
+    my = (snapped[edge_a][1] + snapped[edge_b][1]) / 2
+    dx_edge = snapped[edge_b][0] - snapped[edge_a][0]
+    dy_edge = snapped[edge_b][1] - snapped[edge_a][1]
+    edge_len = float(np.hypot(dx_edge, dy_edge))
+    edge_angle = float(np.degrees(np.arctan2(dy_edge, dx_edge)))
+    from matplotlib.patches import Ellipse
+
+    region = Ellipse(
+        (mx, my),
+        width=max(1.22 * edge_len, 0.62 * pad),
+        height=0.42 * pad,
+        angle=edge_angle,
+        facecolor=callout_color,
+        edgecolor=callout_color,
+        linewidth=1.35,
+        linestyle="-",
+        alpha=0.16,
+        zorder=0.42,
+    )
+    ax.add_patch(region)
+    highlight_other_artists.append(region)
     highlight_line_artists.extend(
         ax.plot(
             [snapped[edge_a][0], snapped[edge_b][0]],
             [snapped[edge_a][1], snapped[edge_b][1]],
-            color="black",
-            linewidth=2.0,
+            color=callout_color,
+            linewidth=callout_linewidth,
             linestyle=(0, (2, 1)),
             zorder=3,
         )
     )
     # Inset positioned near the highlighted edge (data coords).
-    mx = (snapped[edge_a][0] + snapped[edge_b][0]) / 2
-    my = (snapped[edge_a][1] + snapped[edge_b][1]) / 2
     extent_w = rect_x_max - rect_x_min
     extent_h = rect_y_max - rect_y_min
     inset_w = 0.43 * extent_w
     inset_h = 0.48 * extent_h
-    formula_w = 0.36 * extent_w
-    formula_h = 0.34 * extent_h
 
-    # Anchor inset near requested region: under "Drilling" and left of "Biological Prospecting".
+    # Center the inset under the highlighted link so the leader is vertical.
     drill_xy = snapped.get("Drilling")
-    bio_xy = snapped.get("Biological Prospecting")
+    inset_x_target = mx - inset_w / 2
     if drill_xy is not None:
-        inset_x_target = float(drill_xy[0]) - 1.35 * pad
         inset_y_target = float(drill_xy[1]) - 3.45 * pad
     else:
-        inset_x_target = rect_x_min - 1.75 * pad
         inset_y_target = rect_y_min - 3.45 * pad
-    if bio_xy is not None:
-        inset_x_target = min(inset_x_target, float(bio_xy[0]) - 1.00 * pad)
 
     inset_x = float(
         np.clip(
             inset_x_target,
-            rect_x_min - 3.05 * pad,
+            rect_x_min - 3.55 * pad,
             rect_x_max - inset_w - 0.02 * extent_w,
         )
     )
@@ -3007,17 +2900,39 @@ if edge_a in snapped and edge_b in snapped:
         )
     )
 
-    # Arrow targets the grouped inset top-center.
-    arrow_target_x = inset_x + inset_w / 2
-    arrow_target_y = inset_y + inset_h
-
     grouped = build_interest_groups(edge_a, edge_b)
     bax = ax.inset_axes(
         [inset_x, inset_y, inset_w, inset_h], transform=ax.transData, zoom=0
     )
     highlight_axes.append(bax)
     bax.set_in_layout(False)
-    draw_grouped_rca_inset(bax, edge_a=edge_a, edge_b=edge_b, groups=grouped)
+    draw_grouped_rca_inset(
+        bax,
+        edge_a=edge_a,
+        edge_b=edge_b,
+        groups=grouped,
+        callout_color=callout_color,
+        callout_linewidth=callout_linewidth,
+    )
+    bax.set_facecolor("white")
+    bax.patch.set_alpha(0.96)
+    bax.patch.set_edgecolor(callout_color)
+    bax.patch.set_linewidth(callout_linewidth)
+    for spine in bax.spines.values():
+        spine.set_edgecolor(callout_color)
+        spine.set_linewidth(callout_linewidth)
+    ax.text(
+        inset_x + inset_w / 2,
+        inset_y - 0.035 * extent_h,
+        "Actors behind this topic link",
+        ha="center",
+        va="top",
+        fontsize=8.0,
+        color=callout_color,
+        bbox=dict(facecolor="white", edgecolor="none", alpha=0.92, pad=0.18),
+        zorder=6,
+        clip_on=False,
+    )
     # bax.text(
     #     0.03,
     #     0.03,
@@ -3030,55 +2945,29 @@ if edge_a in snapped and edge_b in snapped:
     # )
     #
     # bax.invert_yaxis()
-    bax.axis("off")
 
-    # Place proximity formula diagonally up-right of the grouped inset.
-    formula_dx = 0.015 * extent_w
-    formula_dy = 0.52 * extent_h
-    formula_x = float(
-        np.clip(
-            inset_x + inset_w + formula_dx,
-            rect_x_min - 3.05 * pad,
-            rect_x_max - formula_w - 0.02 * extent_w,
-        )
-    )
-    formula_y = float(
-        np.clip(
-            inset_y + formula_dy,
-            rect_y_min - 3.45 * pad,
-            rect_y_max - formula_h - 0.02 * extent_h,
-        )
-    )
-    fax = ax.inset_axes(
-        [formula_x, formula_y, formula_w, formula_h], transform=ax.transData, zoom=0
-    )
-    highlight_axes.append(fax)
-    fax.set_in_layout(False)
-    draw_overlap_formula_inset(fax)
-
-    # Curved arrow from edge midpoint to inset center.
-    inset_cx = inset_x + inset_w / 2
-    inset_cy = inset_y + inset_h
-    arrow_x, arrow_y = arrow_target_x, arrow_target_y
+    # Straight leader from edge midpoint to the nearest point on the inset top edge.
+    arrow_x = float(np.clip(mx, inset_x + 0.06 * inset_w, inset_x + 0.94 * inset_w))
+    arrow_y = inset_y + inset_h
     from matplotlib.patches import FancyArrowPatch
 
     arrow = FancyArrowPatch(
         (mx, my),
         (arrow_x, arrow_y),
         arrowstyle="->",
-        mutation_scale=10,
-        linewidth=0.8,
-        color="black",
-        alpha=0.7,
-        connectionstyle="arc3,rad=-0.15",
+        mutation_scale=12,
+        linewidth=callout_linewidth,
+        color=callout_color,
+        alpha=0.9,
+        connectionstyle="arc3,rad=0.0",
         transform=ax.transData,
-        zorder=1.1,
+        zorder=3.2,
         clip_on=False,
     )
     ax.add_patch(arrow)
     highlight_other_artists.append(arrow)
 
-    # Keep slide callout clean: do not add a separate proximity text box.
+    # Keep the callout clean: do not add a separate proximity text box.
 
 from matplotlib import patches as mpatches
 
