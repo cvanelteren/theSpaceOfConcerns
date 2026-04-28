@@ -2847,20 +2847,31 @@ if edge_a in snapped and edge_b in snapped:
     edge_angle = float(np.degrees(np.arctan2(dy_edge, dx_edge)))
     from matplotlib.patches import Ellipse
 
-    region = Ellipse(
+    region_fill = Ellipse(
         (mx, my),
         width=max(1.22 * edge_len, 0.62 * pad),
         height=0.42 * pad,
         angle=edge_angle,
         facecolor=callout_color,
+        edgecolor="none",
+        alpha=0.13,
+        zorder=0.42,
+    )
+    region_brim = Ellipse(
+        (mx, my),
+        width=max(1.22 * edge_len, 0.62 * pad),
+        height=0.42 * pad,
+        angle=edge_angle,
+        facecolor="none",
         edgecolor=callout_color,
         linewidth=1.35,
         linestyle="-",
-        alpha=0.16,
-        zorder=0.42,
+        alpha=0.62,
+        zorder=0.43,
     )
-    ax.add_patch(region)
-    highlight_other_artists.append(region)
+    ax.add_patch(region_fill)
+    ax.add_patch(region_brim)
+    highlight_other_artists.extend([region_fill, region_brim])
     highlight_line_artists.extend(
         ax.plot(
             [snapped[edge_a][0], snapped[edge_b][0]],
@@ -2877,9 +2888,10 @@ if edge_a in snapped and edge_b in snapped:
     inset_w = 0.43 * extent_w
     inset_h = 0.48 * extent_h
 
-    # Center the inset under the highlighted link so the leader is vertical.
+    # Keep the inset left of the highlighted link while letting the vertical
+    # leader meet the inset near its right edge.
     drill_xy = snapped.get("Drilling")
-    inset_x_target = mx - inset_w / 2
+    inset_x_target = mx - 0.84 * inset_w
     if drill_xy is not None:
         inset_y_target = float(drill_xy[1]) - 3.45 * pad
     else:
@@ -2927,7 +2939,7 @@ if edge_a in snapped and edge_b in snapped:
         "Actors behind this topic link",
         ha="center",
         va="top",
-        fontsize=8.0,
+        fontsize=12.0,
         color=callout_color,
         bbox=dict(facecolor="white", edgecolor="none", alpha=0.92, pad=0.18),
         zorder=6,
@@ -2946,7 +2958,7 @@ if edge_a in snapped and edge_b in snapped:
     #
     # bax.invert_yaxis()
 
-    # Straight leader from edge midpoint to the nearest point on the inset top edge.
+    # Straight leader from edge midpoint to the inset top edge.
     arrow_x = float(np.clip(mx, inset_x + 0.06 * inset_w, inset_x + 0.94 * inset_w))
     arrow_y = inset_y + inset_h
     from matplotlib.patches import FancyArrowPatch
