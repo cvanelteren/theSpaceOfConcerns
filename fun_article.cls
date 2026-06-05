@@ -243,8 +243,7 @@
     \twocolumn[%
         \maketitle
         \begin{@twocolumnfalse}%
-            \small
-            \vspace{-9em}%
+            \small \relax \vspace{-9em}%
             \begin{list}{}{%
                 \setlength{\leftmargin}{5mm}%
                 \setlength{\rightmargin}{\leftmargin}%
@@ -253,7 +252,7 @@
             \item\relax
             \lettrineabstract{\BODY}
             \end{list}%
-        \vspace{1em}
+        \vspace{0.25em}
         \end{@twocolumnfalse}%
     ]%
 }

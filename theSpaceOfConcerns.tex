@@ -18,6 +18,28 @@
 \affil[4]{Polder Center, Institute for Advanced Study, University of Amsterdam, 1012 GC Amsterdam, The Netherlands}
 \affil[5]{Space Research Organisation Netherlands, Netherlands Institute for Space Research, 2333 CA Leiden, The Netherlands}
 \addbibresource{theSpaceOfConcerns.bib}
+
+% --- guard for missing kernel macro on older LaTeX kernels -----------------
+% \@outputdblcol calls \kernel@version@MMXXV (LaTeX 2025 kernel marker).
+% Older kernels lack it, triggering an Undefined control sequence error in
+% the output routine that can drop content from the title-strip page.
+\makeatletter
+\@ifundefined{if@kernel@version@MMXXV}{\newif\if@kernel@version@MMXXV}{}
+\let\@setmarks\@empty
+\makeatother
+% ---------------------------------------------------------------------------
+
+% --- override fragile lettrineabstract from fun_article.cls ----------------
+% the class's \lettrineabstract pipes the body through xstring's
+% \StrGobbleLeft, which fails on long abstracts containing em-dashes
+% and math, pushing text past the right margin.  Replace with a
+% pass-through and split the lettrine letter from the body explicitly
+% in the abstract environment via \AbstractLettrine{<letter>}{<rest>}.
+\makeatletter
+\renewcommand{\lettrineabstract}[1]{#1}
+\newcommand{\AbstractLettrine}[2]{\initial{#1}\textbf{#2}}
+\makeatother
+% ---------------------------------------------------------------------------
 \usepackage[most]{tcolorbox}
 \newtcolorbox{significancebox}{
   enhanced,
@@ -70,7 +92,7 @@ The map shows that Treaty-centered agenda formation is structured, local, and pe
 \begin{document}
 \makeatother
 \begin{abstract}
-    Consensus-governed institutions leave few informative voting traces because final outcomes are formally unanimous. We show that their document archives can still recover a predictive topology of institutional attention. Using a six-decade Antarctic Treaty Consultative Meeting (ATCM)-centered corpus (6,591 documents, 66 actors, 45 institution-defined topics), we construct the space of concerns, a relational map in which topics are linked by repeated actor-topic co-specialization. The recovered topology contains a dense procedural--environmental core with bounded pathways toward tourism, strategic planning, and resource frontiers. Using a cumulative-lagged version of this topology built only from prior information, we show that portfolio growth is local and persistent: new specialization is substantially more likely near an actor's existing portfolio, adjacent shifts dominate, and direct jumps between outer positions are rare. Actors also occupy recurring positions within the topology, and earlier entry into emerging concerns is associated with broad yet anchored portfolios rather than membership in any single bloc. Closing the loop from agenda structure to formal output, the same position-in-space measure predicts the production of binding instruments in the official meeting record: actor-topic cells with above-average specialization produce hard-law Measures at nearly five times the rate of non-specialist cells (odds ratio~$\approx$~5), holding under restriction to the 30 Consultative Parties. These results show how documentary attention can make pre-decisional agenda structure observable in a forum designed to erase it---and how that structure translates into formal governance output.
+    \AbstractLettrine{C}{onsensus-governed institutions leave few informative voting traces because final outcomes are formally unanimous. We show that their document archives can still recover a predictive topology of institutional attention. Using a six-decade Antarctic Treaty Consultative Meeting (ATCM)-centered corpus (6,591 documents, 66 actors, 45 institution-defined topics), we construct the space of concerns, a relational map in which topics are linked by repeated actor-topic co-specialization. The recovered topology contains a dense procedural--environmental core with bounded pathways toward tourism, strategic planning, and resource frontiers. Using a cumulative-lagged version of this topology built only from prior information, we show that portfolio growth is local and persistent: new specialization is substantially more likely near an actor's existing portfolio, adjacent shifts dominate, and direct jumps between outer positions are rare. Actors also occupy recurring positions within the topology, and earlier entry into emerging concerns is associated with broad yet anchored portfolios rather than membership in any single bloc. Closing the loop from agenda structure to formal output, the same position-in-space measure predicts the production of binding instruments in the official meeting record: actor-topic cells with above-average specialization produce hard-law Measures at nearly five times the rate of non-specialist cells (odds ratio~$\approx$~5), holding under restriction to the 30 Consultative Parties. These results show how documentary attention can make pre-decisional agenda structure observable in a forum designed to erase it---and how that structure translates into formal governance output.}
 \end{abstract}
 
 \begin{strip}
@@ -84,8 +106,6 @@ Consensus institutions make influence difficult to observe. When decisions are f
 We formalize one observable aspect of this process as \emph{agenda capacity}. By this we mean the latent practical capabilities that allow actors to sustain engagement across different parts of the documented concern space. As in product-space applications, these capabilities are not observed directly; they are inferred from patterned specialization, co-specialization, and movement within the archive. In this paper, agenda capacity refers to issue-space positioning within the Treaty-centered submission system, not direct observation of control over final consensus outcomes.
 
 The Antarctic Treaty System (ATS) provides an unusual six-decade laboratory in which to study this problem. Since 1959, the Antarctic Treaty has demilitarized the continent, suspended sovereignty claims, and enforced strict consensus rules \cite{AntarcticTreaty1959,BASTreatyExplained,Yao2021,Gould1965}. Because decisions cannot be forced by majority vote and much of the visible record is procedural rather than electoral, the Treaty-centered archive is especially well suited to measuring how issues are routed through institutional attention \cite{Joyner1998,Dodds2019,Sampaio2022,Carter2025,Chown2013}. Our object is this full submission arena, not formal decision authority alone: consultative parties, non-consultative parties, observers, expert bodies, and Secretariat actors all help determine what enters the record, how issues are classified, and which concerns become repeatedly linked before any final consensus outcome.
-
-To recover this structure, we adapt the ``product space'' framework from economic complexity \cite{Hidalgo2007} to international governance. In economic complexity, product-space methods infer latent structure from repeated co-occurrence patterns across high-dimensional activity profiles. We apply the same logic to Treaty-centered issue activity: each actor leaves a specialized topic profile in the Antarctic Treaty Consultative Meeting (ATCM) archive, and topics are close when the same actors repeatedly specialize in both. By calculating \emph{Revealed Policy Advantage} (RPA)---a governance adaptation of revealed comparative advantage---we reconstruct what we term the \emph{space of concerns}. This is a latent network of institution-assigned issues where proximity reflects shared actor specialization rather than semantic text similarity. If the same actors repeatedly deploy disproportionate effort on two otherwise distinct topics, those topics are strongly linked in the resulting topology of institutional attention.
 \end{minipage}\hfill
 \begin{minipage}[t]{0.3\textwidth}
 \vspace{0pt}
@@ -95,6 +115,8 @@ To recover this structure, we adapt the ``product space'' framework from economi
 \end{minipage}
 \vspace{-0.2em}
 \end{strip}
+
+To recover this structure, we adapt the ``product space'' framework from economic complexity \cite{Hidalgo2007} to international governance. In economic complexity, product-space methods infer latent structure from repeated co-occurrence patterns across high-dimensional activity profiles. We apply the same logic to Treaty-centered issue activity: each actor leaves a specialized topic profile in the Antarctic Treaty Consultative Meeting (ATCM) archive, and topics are close when the same actors repeatedly specialize in both. By calculating \emph{Revealed Policy Advantage} (RPA)---a governance adaptation of revealed comparative advantage---we reconstruct what we term the \emph{space of concerns}. This is a latent network of institution-assigned issues where proximity reflects shared actor specialization rather than semantic text similarity. If the same actors repeatedly deploy disproportionate effort on two otherwise distinct topics, those topics are strongly linked in the resulting topology of institutional attention.
 
 We deploy this framework on an exhaustive computational corpus of 6,591 unique working papers and information documents from 1961--2025, submitted by 66 actors across 45 harmonized institutional topics (Appendix \cref{fig:topic-submission-overview}). Because the classifications reflect the forum's own historical vocabulary, the recovered structure maps exactly how actors make their concerns legible to the institution \cite{Guterres2023,Gardiner2025}.
 
