@@ -60,8 +60,8 @@ def main():
 
     ax.bar(x, summary["n_actors"], color=colors, edgecolor="black", linewidth=0.6)
     ax.format(
-        title="How many actors span adjacent regimes?",
-        xlabel="Fuzzy regime class",
+        title="How many actors span adjacent modes?",
+        xlabel="Fuzzy mode class",
         ylabel="Actors",
         xticks=x,
         xticklabels=summary["fuzzy_class"].tolist(),
@@ -82,7 +82,7 @@ def main():
         ax.plot([xi, xi], [0, yi], color="0.75", lw=1.2, zorder=1)
     ax.format(
         title="Bridge classes are broader, but not fully diffuse",
-        xlabel="Fuzzy regime class",
+        xlabel="Fuzzy mode class",
         ylabel="Mean active topics",
         xticks=x,
         xticklabels=summary["fuzzy_class"].tolist(),

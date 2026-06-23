@@ -212,7 +212,9 @@ def _compute_retention_curves(
         raise KeyError("No meeting year or year column found in source data.")
     submitted_df = _sanitize_years(submitted_df, year_col)
     meeting_col = (
-        "meeting number" if "meeting number" in submitted_df.columns else "meeting_number"
+        "meeting number"
+        if "meeting number" in submitted_df.columns
+        else "meeting_number"
     )
     if meeting_col in submitted_df.columns:
         submitted_df = _sanitize_int_column(submitted_df, meeting_col)
@@ -347,9 +349,7 @@ def _binned_adoption_curve(df: pd.DataFrame) -> tuple[pd.DataFrame, float]:
     binned = df.dropna(subset=["plot_distance"]).copy()
     n_unique = int(binned["plot_distance"].nunique())
     n_bins = max(4, min(N_DISTANCE_BINS, n_unique))
-    binned["dist_bin"] = pd.qcut(
-        binned["plot_distance"], q=n_bins, duplicates="drop"
-    )
+    binned["dist_bin"] = pd.qcut(binned["plot_distance"], q=n_bins, duplicates="drop")
 
     agg = (
         binned.groupby("dist_bin", observed=True)
@@ -412,9 +412,9 @@ def _build_regime_summary_lines(
             if np.isfinite(regime_window_size)
             else "windowed"
         )
-        lines.append(f"Same regime ({regime_label}): {same_region_rate:.1%}")
+        lines.append(f"Same mode ({regime_label}): {same_region_rate:.1%}")
     if np.isfinite(adjacent_or_same_rate):
-        lines.append(f"Same/adjacent regime: {adjacent_or_same_rate:.1%}")
+        lines.append(f"Same/adjacent mode: {adjacent_or_same_rate:.1%}")
     if np.isfinite(far_jump_rate):
         lines.append(f"Far 1<->3 jumps: {far_jump_rate:.1%}")
     return lines
@@ -447,7 +447,7 @@ def _plot_adoption_panel(
         ax.legend(frameon=False, loc="cr", ncols=1)
     format_kwargs = {
         "xlabel": xlabel,
-        "ylabel": "P(adopt at t | at risk at t-1)",
+        "ylabel": "Adoption probability (topics not yet held)",
     }
     if show_title:
         format_kwargs["title"] = "New topics are adopted near prior portfolios"
@@ -513,15 +513,15 @@ def _plot_transition_matrix_panel(
     regime_matrix_source: str,
     *,
     show_title: bool = True,
-    xlabel: str = "To regime",
-    ylabel: str = "From regime",
+    xlabel: str = "To mode",
+    ylabel: str = "From mode",
     xlabel_on_top: bool = True,
 ):
     if regime_transition_matrix.empty:
         ax.text(
             0.5,
             0.5,
-            "No regime transition matrix available",
+            "No mode transition matrix available",
             transform=ax.transAxes,
             ha="center",
             va="center",
@@ -529,7 +529,7 @@ def _plot_transition_matrix_panel(
         )
         format_kwargs = {"xticks": [], "yticks": []}
         if show_title:
-            format_kwargs["title"] = "Regime shifts are mostly local"
+            format_kwargs["title"] = "Mode shifts are mostly local"
         ax.format(**format_kwargs)
         return
 
@@ -556,7 +556,7 @@ def _plot_transition_matrix_panel(
         "yticklabels": ["R1", "R2", "R3"],
     }
     if show_title:
-        format_kwargs["title"] = f"Regime shifts are mostly local ({matrix_label})"
+        format_kwargs["title"] = f"Mode shifts are mostly local ({matrix_label})"
     ax.format(**format_kwargs)
     ax.xaxis.tick_top()
     ax.tick_params(axis="x", top=True, labeltop=True, bottom=False, labelbottom=False)
@@ -610,13 +610,14 @@ def main():
         "window_size",
         regime_transition_meta.get("window_years", np.nan),
     )
-    regime_source = str(regime_transition_meta.get("_source_path", regime_matrix_source))
+    regime_source = str(
+        regime_transition_meta.get("_source_path", regime_matrix_source)
+    )
     regime_time_unit = str(regime_transition_meta.get("time_unit", "")).strip().lower()
     if regime_time_unit not in {"meeting", "year"}:
         regime_time_unit = "meeting" if "_meeting_" in regime_source else "year"
 
     fig, axs = uplt.subplots(ncols=3, share=0)
-    axs.format(abc="[A]", abcloc="ul")
     ax, ax2, ax3 = axs
 
     _plot_adoption_panel(
@@ -639,6 +640,22 @@ def main():
         time_unit=regime_time_unit,
         regime_matrix_source=regime_matrix_source,
     )
+
+    # Panel letters drawn manually: ultraplot's abc shifts a long centered title
+    # sideways to dodge the label, so we place the letters ourselves and let the
+    # titles stay centered on each plot box.
+    for _ax, _lab in zip((ax, ax2, ax3), ("A", "B", "C")):
+        _ax.text(
+            0.025,
+            0.96,
+            f"[{_lab}]",
+            transform=_ax.transAxes,
+            ha="left",
+            va="top",
+            fontweight="bold",
+            fontsize=11,
+            zorder=10,
+        )
 
     _save_panel(fig, OUT_PNG, OUT_PDF)
 
@@ -672,13 +689,13 @@ def main():
         time_unit=regime_time_unit,
         regime_matrix_source=regime_matrix_source,
         show_title=False,
-        xlabel="to regime",
-        ylabel="from regime",
+        xlabel="to mode",
+        ylabel="from mode",
         xlabel_on_top=False,
     )
     _save_panel(fig_t, OUT_TRANSITION_PNG, OUT_TRANSITION_PDF)
 
-    uplt.show(block=1)
+    # uplt.show(block=1)
 
 
 if __name__ == "__main__":

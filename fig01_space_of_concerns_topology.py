@@ -1074,7 +1074,7 @@ def draw_grouped_rca_inset(
     )
     ax.text(
         anc_a[0],
-        1.02,
+        1.04,
         smartwrap(edge_a, 14),
         ha="center",
         va="top",
@@ -1083,7 +1083,7 @@ def draw_grouped_rca_inset(
     )
     ax.text(
         anc_b[0],
-        1.02,
+        1.04,
         smartwrap(edge_b, 16),
         ha="center",
         va="top",
@@ -2936,7 +2936,7 @@ if edge_a in snapped and edge_b in snapped:
     ax.text(
         inset_x + inset_w / 2,
         inset_y - 0.035 * extent_h,
-        "Actors behind this topic link",
+        "Actors behind this link",
         ha="center",
         va="top",
         fontsize=12.0,

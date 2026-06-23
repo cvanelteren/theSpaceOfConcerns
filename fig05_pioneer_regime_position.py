@@ -14,7 +14,7 @@ from utils import get_rca, load_data, load_flag, standardize_index_labels
 
 
 REGIME_COLS = ["region_1_share", "region_2_share", "region_3_share"]
-REGIME_NAMES = ["Regime 1", "Regime 2", "Regime 3"]
+REGIME_NAMES = ["Mode 1", "Mode 2", "Mode 3"]
 REGIME_COLORS = ["#d94841", "#3f88c5", "#4daf4a"]
 
 OUT_FIG = Path("figures/fig05_pioneer_regime_position")
@@ -267,7 +267,7 @@ def build_figure(df, model_anchor, model_partial, x_resid, y_resid):
     ax1.axhline(0, color="black", lw=0.8, ls="--", alpha=0.5, zorder=1)
     ax1.axvline(0, color="black", lw=0.8, ls="--", alpha=0.35, zorder=1)
     ax1.format(
-        xlabel="Regime anchoring residual",
+        xlabel="Mode anchoring residual",
         ylabel="Pioneer index residual",
         grid=True,
         xlim=(x_resid.min() - x_pad1, x_resid.max() + x_pad1),

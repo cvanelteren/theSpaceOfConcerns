@@ -319,8 +319,8 @@ def main() -> None:
     from matplotlib.lines import Line2D
 
     handles = [
-        Line2D([0], [0], color="#1f77b4", lw=2, label="Regime 1 anchor"),
-        Line2D([0], [0], color="#d62728", lw=2, label="Regime 3 anchor"),
+        Line2D([0], [0], color="#1f77b4", lw=2, label="Mode 1 anchor"),
+        Line2D([0], [0], color="#d62728", lw=2, label="Mode 3 anchor"),
         Line2D(
             [0],
             [0],

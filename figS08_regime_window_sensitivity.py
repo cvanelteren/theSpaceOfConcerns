@@ -80,8 +80,8 @@ def _plot_transition_matrix(ax, mat: pd.DataFrame, title: str):
             ax.text(j, i, label, ha="center", va="center", fontsize=8, color=text_color)
 
     ax.format(
-        xlabel="To regime",
-        ylabel="From regime",
+        xlabel="To mode",
+        ylabel="From mode",
         title=title,
         xticks=[0, 1, 2],
         yticks=[0, 1, 2],
@@ -97,7 +97,7 @@ def _plot_rate_comparison(ax, s1: dict, s5: dict):
         "adjacent_or_same_rate",
         "far_jump_rate",
     ]
-    metric_labels = ["Same regime", "Same/adjacent", "Far jump (1<->3)"]
+    metric_labels = ["Same mode", "Same/adjacent", "Far jump (1<->3)"]
 
     x = np.arange(len(metric_keys), dtype=float)
     width = 0.34
@@ -161,10 +161,10 @@ def main():
     ax1, ax2, ax3 = axs
 
     img = _plot_transition_matrix(
-        ax1, mat1, f"Regime transitions ({_window_label(WINDOW_SIZES[0], s1.get('time_unit', TIME_UNIT))})"
+        ax1, mat1, f"Mode transitions ({_window_label(WINDOW_SIZES[0], s1.get('time_unit', TIME_UNIT))})"
     )
     _plot_transition_matrix(
-        ax2, mat5, f"Regime transitions ({_window_label(WINDOW_SIZES[1], s5.get('time_unit', TIME_UNIT))})"
+        ax2, mat5, f"Mode transitions ({_window_label(WINDOW_SIZES[1], s5.get('time_unit', TIME_UNIT))})"
     )
     _plot_rate_comparison(ax3, s1, s5)
 

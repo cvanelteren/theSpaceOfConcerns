@@ -181,10 +181,11 @@ def _draw_portfolio_schematic(
         edge = "#bbbbbb"
         lw = 1.0
         if value > 0:
-            face = accent
+            face = "#1a1a1a"  # retained/original topics stay black
             edge = "#2f2f2f"
             lw = 0.8
         if node in added_nodes:
+            face = accent  # only newly adopted topics carry the model color
             edge = "#111111"
             lw = 1.6
         if node in reachable_nodes:
@@ -346,10 +347,11 @@ def _draw_network_state(
         edge = "#bbbbbb"
         lw = 0.9
         if value > 0:
-            face = accent
+            face = "#1a1a1a"  # retained/original topics stay black
             edge = "#2f2f2f"
             lw = 0.8
         if node in added_nodes:
+            face = accent  # only newly adopted topics carry the model color
             edge = "#111111"
             lw = 1.5
         ax.add_patch(
@@ -726,7 +728,7 @@ def build_figure() -> plt.Figure:
     ]
     fig, axs = uplt.subplots(layout, share=0, refnum=2, hratios=(1.05, 1.0))
     ax_a, ax_b, ax_c, ax_d = axs
-    axs.format(abc="[A]")
+    axs.format(abc="[A]", abcloc="ul")
 
     # Panel A: portfolio evolution schematic
     ax_a.format(
@@ -974,27 +976,11 @@ def build_figure() -> plt.Figure:
         label="Retain-and-adopt",
     )
     ax_b.format(
-        title="Mean Active Topics Per Actor",
+        title="",
         xlabel=_time_axis_label(summary),
-        ylabel="Topics",
+        ylabel="Mean active topics per actor",
         grid=True,
     )
-    ax_b.text(
-        0.98,
-        0.97,
-        (
-            f"Observed mean = {summary['mean_active_topics_obs_avg']:.2f}\n"
-            f"Split model = {summary['mean_active_topics_split_avg']:.2f}\n"
-            f"$r$ = {summary['corr_mean_active_topics_split']:.3f}\n"
-            f"Band = 5--95% over {int(summary['process_uncertainty_reps'])} runs"
-        ),
-        transform=ax_b.transAxes,
-        va="top",
-        ha="right",
-        fontsize=9,
-        bbox=dict(facecolor="white", edgecolor="#cccccc", boxstyle="round,pad=0.25"),
-    )
-
     # Panel C: topic popularity over time
     ax_c.plot(
         years,
@@ -1054,27 +1040,11 @@ def build_figure() -> plt.Figure:
         label="Retain-and-adopt",
     )
     ax_c.format(
-        title="Mean Topic Popularity",
+        title="",
         xlabel=_time_axis_label(summary),
-        ylabel="Active actors per topic",
+        ylabel="Mean active actors per topic",
         grid=True,
     )
-    ax_c.text(
-        0.98,
-        0.97,
-        (
-            f"Observed mean = {summary['mean_topic_popularity_obs_avg']:.2f}\n"
-            f"Split model = {summary['mean_topic_popularity_split_avg']:.2f}\n"
-            f"$r$ = {summary['corr_mean_topic_popularity_split']:.3f}\n"
-            f"Band = 5--95% over {int(summary['process_uncertainty_reps'])} runs"
-        ),
-        transform=ax_c.transAxes,
-        va="top",
-        ha="right",
-        fontsize=9,
-        bbox=dict(facecolor="white", edgecolor="#cccccc", boxstyle="round,pad=0.25"),
-    )
-
     # Panel D: Phi-local entry comparison
     entry_one = process_entry[process_entry["model"] == "one_stage"].iloc[0]
     entry_two = process_entry[process_entry["model"] == "two_stage"].iloc[0]
@@ -1147,39 +1117,26 @@ def build_figure() -> plt.Figure:
         label="Random baseline",
     )
     ax_d.format(
-        title=r"Local Entry In $\Phi$-Space",
+        title="",
         ylabel="Mean rank of entered topics",
         ylim=(0.45, 0.76),
         grid="y",
     )
-    ax_d.text(
-        0.98,
-        0.97,
-        (
-            f"Observed = {entry_obs['mean_entry_phi_rank_mean']:.3f}\n"
-            f"Split model = {entry_split['mean_entry_phi_rank_mean']:.3f}\n"
-            f"5--95% = [{entry_split['mean_entry_phi_rank_q05']:.3f}, {entry_split['mean_entry_phi_rank_q95']:.3f}]"
-        ),
-        transform=ax_d.transAxes,
-        va="top",
-        ha="right",
-        fontsize=9,
-        bbox=dict(facecolor="white", edgecolor="#cccccc", boxstyle="round,pad=0.25"),
-    )
-
     handles = [
         Line2D([0], [0], color=COLORS["observed"], lw=2.2),
         Line2D([0], [0], color=COLORS["one_stage"], lw=1.6, linestyle="--"),
         Line2D([0], [0], color=COLORS["two_stage"], lw=1.6, linestyle=":"),
         Line2D([0], [0], color=COLORS["split_support"], lw=2.0),
+        Line2D([0], [0], color=COLORS["baseline"], lw=1.2, linestyle="--"),
     ]
     labels = [
         "Observed",
         MODEL_DISPLAY["one_stage"],
         MODEL_DISPLAY["two_stage"],
         MODEL_DISPLAY["split_support"],
+        "Random baseline (panel D)",
     ]
-    fig.legend(handles, labels, loc="b", ncols=4, frame=False)
+    fig.legend(handles, labels, loc="b", ncols=5, frame=False)
     return fig
 
 

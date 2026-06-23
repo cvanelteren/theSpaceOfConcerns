@@ -249,7 +249,7 @@ def main() -> None:
         zorder=4,
     )
     ax.format(
-        xlabel="Regimes $k$",
+        xlabel="Modes $k$",
         ylabel="Weighted within-region inertia",
         xticks=ks,
     )
@@ -268,7 +268,7 @@ def main() -> None:
         zorder=4,
     )
     ax.format(
-        xlabel="Regimes $k$",
+        xlabel="Modes $k$",
         ylabel="Portfolio-similarity preservation\n(Spearman $\\rho$)",
         xticks=ks,
         ylim=(0.0, max(0.5, summary["portfolio_similarity_spearman"].max() + 0.03)),
@@ -291,11 +291,11 @@ def main() -> None:
         color="gray6",
         alpha=0.35,
         width=0.65,
-        label="Smallest regime size (scaled)",
+        label="Smallest mode size (scaled)",
     )
     ax.axvline(3, color="black", lw=1.0, ls="--", alpha=0.45)
     ax.format(
-        xlabel="Regimes $k$",
+        xlabel="Modes $k$",
         ylabel="Anchoring / fragmentation",
         xticks=ks,
         ylim=(0.0, 1.05),
@@ -304,11 +304,11 @@ def main() -> None:
     ax.grid(alpha=0.18, color="black")
 
     fig.format(
-        suptitle="Regime-count validation against actor portfolios",
+        suptitle="Mode-count validation against actor portfolios",
         toplabels=(
             "Fit of the weighted contiguous partition",
-            "How well regime shares preserve\nfull portfolio structure",
-            "Anchoring stays interpretable before regimes fragment",
+            "How well mode shares preserve\nfull portfolio structure",
+            "Anchoring stays interpretable before modes fragment",
         ),
     )
     fig.savefig(OUT_PNG, dpi=320, bbox_inches="tight")

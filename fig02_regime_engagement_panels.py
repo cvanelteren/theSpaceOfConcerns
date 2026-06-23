@@ -285,17 +285,244 @@ def _plot_interest_dots(ax, x_plot: np.ndarray, vals: np.ndarray, baseline: floa
         )
 
 
+# def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[str]):
+#     if len(x_positions) == 0 or len(labels) == 0:
+#         return
+
+#     fig = ax.figure
+#     fig.canvas.draw()
+#     renderer = fig.canvas.get_renderer()
+#     axes_bbox = ax.get_window_extent(renderer=renderer)
+#     x_display = ax.transData.transform(
+#         np.column_stack([x_positions, np.zeros_like(x_positions)])
+#     )[:, 0]
+#     bbox_style = {
+#         "boxstyle": "round,pad=0.18",
+#         "facecolor": "white",
+#         "edgecolor": "#6b7280",
+#         "linewidth": 0.72,
+#         "alpha": 0.98,
+#     }
+
+#     widths = []
+#     heights = []
+#     for label in labels:
+#         tmp = fig.text(
+#             0,
+#             0,
+#             label,
+#             fontsize=TOP_LABEL_FONTSIZE,
+#             fontweight="semibold",
+#             visible=False,
+#             bbox=bbox_style,
+#         )
+#         bbox = tmp.get_window_extent(renderer=renderer)
+#         widths.append(float(bbox.width) + TOP_LABEL_PAD_PX)
+#         heights.append(float(bbox.height))
+#         tmp.remove()
+
+#     max_h_px = max(heights) if heights else 0.0
+#     row_step_pt = max(TOP_LABEL_ROW_STEP_PT, (max_h_px + 16.0) * 72.0 / fig.dpi)
+
+#     order = np.argsort(x_display)
+#     x_offsets_pt = np.zeros(len(labels), dtype=float)
+#     y_offsets_pt = np.zeros(len(labels), dtype=float)
+#     placements: list[dict[str, float]] = []
+
+#     def _label_y_nudge_pt(label_text: str) -> float:
+#         label_key = str(label_text).replace("\n", " ").strip().lower()
+#         for key, delta in TOP_LABEL_SPECIAL_Y_NUDGE_PT.items():
+#             if key in label_key:
+#                 return float(delta)
+#         return 0.0
+
+#     def _vertical_overlap(
+#         bottom_a: float, top_a: float, bottom_b: float, top_b: float
+#     ) -> bool:
+#         return not (
+#             bottom_a >= top_b + TOP_LABEL_VERTICAL_GAP_PX
+#             or top_a <= bottom_b - TOP_LABEL_VERTICAL_GAP_PX
+#         )
+
+#     for idx in order:
+#         target_x_px = float(x_display[idx])
+#         width_px = float(widths[idx])
+#         height_px = float(heights[idx])
+#         half_width_px = width_px / 2.0
+#         min_center_px = float(axes_bbox.x0 + TOP_LABEL_GAP_PX + half_width_px)
+#         max_center_px = float(axes_bbox.x1 - TOP_LABEL_GAP_PX - half_width_px)
+#         target_center_px = min(max(target_x_px, min_center_px), max_center_px)
+#         label_y_nudge_pt = _label_y_nudge_pt(labels[idx])
+
+#         best_row = None
+#         best_center_px = None
+#         best_cost = None
+#         best_y_offset_pt = None
+#         for row_idx in range(len(labels)):
+#             y_offset_pt = TOP_LABEL_BASE_PT + row_idx * row_step_pt + label_y_nudge_pt
+#             bottom_px = float(axes_bbox.y1 + y_offset_pt * fig.dpi / 72.0)
+#             top_px = bottom_px + height_px
+#             center_px = target_center_px
+#             for placed in placements:
+#                 if not _vertical_overlap(
+#                     bottom_px,
+#                     top_px,
+#                     placed["bottom"],
+#                     placed["top"],
+#                 ):
+#                     continue
+#                 center_px = max(
+#                     center_px,
+#                     float(placed["right"]) + TOP_LABEL_GAP_PX + half_width_px,
+#                 )
+#             if center_px > max_center_px:
+#                 continue
+#             shift_px = abs(center_px - target_x_px)
+#             allowed_shift_px = TOP_LABEL_MAX_SHIFT_PX + (
+#                 row_idx * TOP_LABEL_EXTRA_SHIFT_PER_ROW_PX
+#             )
+#             if shift_px > allowed_shift_px:
+#                 continue
+#             cost = shift_px + row_idx * TOP_LABEL_ROW_PENALTY_PX
+#             if best_cost is None or cost < best_cost:
+#                 best_row = row_idx
+#                 best_center_px = center_px
+#                 best_cost = cost
+#                 best_y_offset_pt = y_offset_pt
+
+#         if best_row is None:
+#             best_row = len(labels)
+#             best_y_offset_pt = (
+#                 TOP_LABEL_BASE_PT + best_row * row_step_pt + label_y_nudge_pt
+#             )
+#             best_center_px = target_center_px
+#             bottom_px = float(axes_bbox.y1 + best_y_offset_pt * fig.dpi / 72.0)
+#             top_px = bottom_px + height_px
+#             for placed in placements:
+#                 if not _vertical_overlap(
+#                     bottom_px,
+#                     top_px,
+#                     placed["bottom"],
+#                     placed["top"],
+#                 ):
+#                     continue
+#                 best_center_px = max(
+#                     best_center_px,
+#                     float(placed["right"]) + TOP_LABEL_GAP_PX + half_width_px,
+#                 )
+#             best_center_px = min(best_center_px, max_center_px)
+
+#         x_offsets_pt[idx] = (best_center_px - target_x_px) * 72.0 / fig.dpi
+#         y_offsets_pt[idx] = float(best_y_offset_pt)
+#         bottom_px = float(axes_bbox.y1 + y_offsets_pt[idx] * fig.dpi / 72.0)
+#         placements.append(
+#             {
+#                 "right": float(best_center_px + half_width_px),
+#                 "bottom": bottom_px,
+#                 "top": float(bottom_px + height_px),
+#             }
+#         )
+
+#     label_artists = [None] * len(labels)
+#     leader_artists = [None] * len(labels)
+
+#     for idx, (xpos, label, x_offset_pt, y_offset_pt) in enumerate(
+#         zip(x_positions, labels, x_offsets_pt, y_offsets_pt)
+#     ):
+#         label_artists[idx] = ax.annotate(
+#             label,
+#             xy=(float(xpos), 1.0),
+#             xycoords=("data", "axes fraction"),
+#             xytext=(float(x_offset_pt), y_offset_pt),
+#             textcoords="offset points",
+#             ha="center",
+#             va="bottom",
+#             fontsize=TOP_LABEL_FONTSIZE,
+#             fontweight="semibold",
+#             color="#374151",
+#             zorder=8,
+#             clip_on=False,
+#             bbox=bbox_style,
+#         )
+#         leader_artists[idx] = ax.annotate(
+#             "",
+#             xy=(float(xpos), 1.0),
+#             xycoords=("data", "axes fraction"),
+#             xytext=(float(x_offset_pt), y_offset_pt - 1.2),
+#             textcoords="offset points",
+#             arrowprops={
+#                 "arrowstyle": "-",
+#                 "color": "#9ca3af",
+#                 "lw": 0.7,
+#                 "shrinkA": 0.0,
+#                 "shrinkB": 0.0,
+#             },
+#             zorder=7,
+#             clip_on=False,
+#         )
+
+#     def _set_annotation_offsets(idx: int):
+#         xytext = (float(x_offsets_pt[idx]), float(y_offsets_pt[idx]))
+#         label_artists[idx].set_position(xytext)
+#         leader_artists[idx].set_position((xytext[0], xytext[1] - 1.2))
+
+#     def _actual_label_bbox(idx: int):
+#         patch = label_artists[idx].get_bbox_patch()
+#         if patch is not None:
+#             return patch.get_window_extent(renderer=renderer)
+#         return label_artists[idx].get_window_extent(renderer=renderer)
+
+#     def _bbox_overlap(box_a, box_b) -> bool:
+#         return not (
+#             box_a.x0 >= box_b.x1 + TOP_LABEL_DRAW_GAP_PX
+#             or box_a.x1 <= box_b.x0 - TOP_LABEL_DRAW_GAP_PX
+#             or box_a.y0 >= box_b.y1 + TOP_LABEL_DRAW_VERTICAL_GAP_PX
+#             or box_a.y1 <= box_b.y0 - TOP_LABEL_DRAW_VERTICAL_GAP_PX
+#         )
+
+#     # Finalize against the actual drawn annotation boxes instead of the
+#     # estimated pre-draw extents; this catches any bbox growth after render.
+#     for _ in range(TOP_LABEL_RELAX_MAX_PASSES):
+#         fig.canvas.draw()
+#         renderer = fig.canvas.get_renderer()
+#         bboxes = {
+#             idx: _actual_label_bbox(idx)
+#             for idx in range(len(labels))
+#             if label_artists[idx] is not None
+#         }
+#         sorted_idx = sorted(
+#             bboxes.keys(),
+#             key=lambda idx: (float(bboxes[idx].x0), float(bboxes[idx].y0)),
+#         )
+
+#         changed = False
+#         seen: list[int] = []
+#         for idx in sorted_idx:
+#             bbox = bboxes[idx]
+#             delta_y_px = 0.0
+#             for prev_idx in seen:
+#                 prev_bbox = bboxes[prev_idx]
+#                 if not _bbox_overlap(bbox, prev_bbox):
+#                     continue
+#                 delta_y_px = max(
+#                     delta_y_px,
+#                     float(prev_bbox.y1 + TOP_LABEL_DRAW_VERTICAL_GAP_PX - bbox.y0),
+#                 )
+
+#             if delta_y_px > 0.5:
+#                 y_offsets_pt[idx] += delta_y_px * 72.0 / fig.dpi
+#                 _set_annotation_offsets(idx)
+#                 changed = True
+
+#             seen.append(idx)
+
+
+#         if not changed:
+#             break
 def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[str]):
     if len(x_positions) == 0 or len(labels) == 0:
         return
 
-    fig = ax.figure
-    fig.canvas.draw()
-    renderer = fig.canvas.get_renderer()
-    axes_bbox = ax.get_window_extent(renderer=renderer)
-    x_display = ax.transData.transform(
-        np.column_stack([x_positions, np.zeros_like(x_positions)])
-    )[:, 0]
     bbox_style = {
         "boxstyle": "round,pad=0.18",
         "facecolor": "white",
@@ -304,139 +531,33 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
         "alpha": 0.98,
     }
 
-    widths = []
-    heights = []
-    for label in labels:
-        tmp = fig.text(
-            0,
-            0,
+    # Staircase stagger: labels climb over `num_levels` steps then reset to the
+    # baseline, producing a repeating "/ / /" pattern of angled labels.
+    num_levels = 6  # length of each climbing run before the staircase resets
+    base_y_pt = 6.0  # starting height right above the axis
+    step_y_pt = 14.0  # vertical rise per step within a run
+
+    # Sort left-to-right to ensure a perfect zipper pattern
+    order = np.argsort(x_positions)
+
+    for i, idx in enumerate(order):
+        xpos = float(x_positions[idx])
+        label = labels[idx]
+
+        # Alternates every other label: row 0, row 1, row 0, row 1...
+        level = i % num_levels
+        y_offset_pt = base_y_pt + (level * step_y_pt)
+
+        # 1. Rotated Annotation Box
+        ax.annotate(
             label,
-            fontsize=TOP_LABEL_FONTSIZE,
-            fontweight="semibold",
-            visible=False,
-            bbox=bbox_style,
-        )
-        bbox = tmp.get_window_extent(renderer=renderer)
-        widths.append(float(bbox.width) + TOP_LABEL_PAD_PX)
-        heights.append(float(bbox.height))
-        tmp.remove()
-
-    max_h_px = max(heights) if heights else 0.0
-    row_step_pt = max(TOP_LABEL_ROW_STEP_PT, (max_h_px + 16.0) * 72.0 / fig.dpi)
-
-    order = np.argsort(x_display)
-    x_offsets_pt = np.zeros(len(labels), dtype=float)
-    y_offsets_pt = np.zeros(len(labels), dtype=float)
-    placements: list[dict[str, float]] = []
-
-    def _label_y_nudge_pt(label_text: str) -> float:
-        label_key = str(label_text).replace("\n", " ").strip().lower()
-        for key, delta in TOP_LABEL_SPECIAL_Y_NUDGE_PT.items():
-            if key in label_key:
-                return float(delta)
-        return 0.0
-
-    def _vertical_overlap(
-        bottom_a: float, top_a: float, bottom_b: float, top_b: float
-    ) -> bool:
-        return not (
-            bottom_a >= top_b + TOP_LABEL_VERTICAL_GAP_PX
-            or top_a <= bottom_b - TOP_LABEL_VERTICAL_GAP_PX
-        )
-
-    for idx in order:
-        target_x_px = float(x_display[idx])
-        width_px = float(widths[idx])
-        height_px = float(heights[idx])
-        half_width_px = width_px / 2.0
-        min_center_px = float(axes_bbox.x0 + TOP_LABEL_GAP_PX + half_width_px)
-        max_center_px = float(axes_bbox.x1 - TOP_LABEL_GAP_PX - half_width_px)
-        target_center_px = min(max(target_x_px, min_center_px), max_center_px)
-        label_y_nudge_pt = _label_y_nudge_pt(labels[idx])
-
-        best_row = None
-        best_center_px = None
-        best_cost = None
-        best_y_offset_pt = None
-        for row_idx in range(len(labels)):
-            y_offset_pt = TOP_LABEL_BASE_PT + row_idx * row_step_pt + label_y_nudge_pt
-            bottom_px = float(axes_bbox.y1 + y_offset_pt * fig.dpi / 72.0)
-            top_px = bottom_px + height_px
-            center_px = target_center_px
-            for placed in placements:
-                if not _vertical_overlap(
-                    bottom_px,
-                    top_px,
-                    placed["bottom"],
-                    placed["top"],
-                ):
-                    continue
-                center_px = max(
-                    center_px,
-                    float(placed["right"]) + TOP_LABEL_GAP_PX + half_width_px,
-                )
-            if center_px > max_center_px:
-                continue
-            shift_px = abs(center_px - target_x_px)
-            allowed_shift_px = TOP_LABEL_MAX_SHIFT_PX + (
-                row_idx * TOP_LABEL_EXTRA_SHIFT_PER_ROW_PX
-            )
-            if shift_px > allowed_shift_px:
-                continue
-            cost = shift_px + row_idx * TOP_LABEL_ROW_PENALTY_PX
-            if best_cost is None or cost < best_cost:
-                best_row = row_idx
-                best_center_px = center_px
-                best_cost = cost
-                best_y_offset_pt = y_offset_pt
-
-        if best_row is None:
-            best_row = len(labels)
-            best_y_offset_pt = (
-                TOP_LABEL_BASE_PT + best_row * row_step_pt + label_y_nudge_pt
-            )
-            best_center_px = target_center_px
-            bottom_px = float(axes_bbox.y1 + best_y_offset_pt * fig.dpi / 72.0)
-            top_px = bottom_px + height_px
-            for placed in placements:
-                if not _vertical_overlap(
-                    bottom_px,
-                    top_px,
-                    placed["bottom"],
-                    placed["top"],
-                ):
-                    continue
-                best_center_px = max(
-                    best_center_px,
-                    float(placed["right"]) + TOP_LABEL_GAP_PX + half_width_px,
-                )
-            best_center_px = min(best_center_px, max_center_px)
-
-        x_offsets_pt[idx] = (best_center_px - target_x_px) * 72.0 / fig.dpi
-        y_offsets_pt[idx] = float(best_y_offset_pt)
-        bottom_px = float(axes_bbox.y1 + y_offsets_pt[idx] * fig.dpi / 72.0)
-        placements.append(
-            {
-                "right": float(best_center_px + half_width_px),
-                "bottom": bottom_px,
-                "top": float(bottom_px + height_px),
-            }
-        )
-
-    label_artists = [None] * len(labels)
-    leader_artists = [None] * len(labels)
-
-    for idx, (xpos, label, x_offset_pt, y_offset_pt) in enumerate(
-        zip(x_positions, labels, x_offsets_pt, y_offsets_pt)
-    ):
-        label_artists[idx] = ax.annotate(
-            label,
-            xy=(float(xpos), 1.0),
+            xy=(xpos, 1.0),
             xycoords=("data", "axes fraction"),
-            xytext=(float(x_offset_pt), y_offset_pt),
+            xytext=(0, y_offset_pt),
             textcoords="offset points",
-            ha="center",
+            ha="left",  # Crucial: anchors text at the left edge so it slants up and right
             va="bottom",
+            rotation=45,  # angled labels stack into the diagonal "/" of each run
             fontsize=TOP_LABEL_FONTSIZE,
             fontweight="semibold",
             color="#374151",
@@ -444,11 +565,13 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
             clip_on=False,
             bbox=bbox_style,
         )
-        leader_artists[idx] = ax.annotate(
+
+        # 2. Leader Line straight down to the peak point
+        ax.annotate(
             "",
-            xy=(float(xpos), 1.0),
+            xy=(xpos, 1.0),
             xycoords=("data", "axes fraction"),
-            xytext=(float(x_offset_pt), y_offset_pt - 1.2),
+            xytext=(0, y_offset_pt - 1.2),
             textcoords="offset points",
             arrowprops={
                 "arrowstyle": "-",
@@ -460,64 +583,6 @@ def _add_non_overlapping_top_labels(ax, x_positions: np.ndarray, labels: list[st
             zorder=7,
             clip_on=False,
         )
-
-    def _set_annotation_offsets(idx: int):
-        xytext = (float(x_offsets_pt[idx]), float(y_offsets_pt[idx]))
-        label_artists[idx].set_position(xytext)
-        leader_artists[idx].set_position((xytext[0], xytext[1] - 1.2))
-
-    def _actual_label_bbox(idx: int):
-        patch = label_artists[idx].get_bbox_patch()
-        if patch is not None:
-            return patch.get_window_extent(renderer=renderer)
-        return label_artists[idx].get_window_extent(renderer=renderer)
-
-    def _bbox_overlap(box_a, box_b) -> bool:
-        return not (
-            box_a.x0 >= box_b.x1 + TOP_LABEL_DRAW_GAP_PX
-            or box_a.x1 <= box_b.x0 - TOP_LABEL_DRAW_GAP_PX
-            or box_a.y0 >= box_b.y1 + TOP_LABEL_DRAW_VERTICAL_GAP_PX
-            or box_a.y1 <= box_b.y0 - TOP_LABEL_DRAW_VERTICAL_GAP_PX
-        )
-
-    # Finalize against the actual drawn annotation boxes instead of the
-    # estimated pre-draw extents; this catches any bbox growth after render.
-    for _ in range(TOP_LABEL_RELAX_MAX_PASSES):
-        fig.canvas.draw()
-        renderer = fig.canvas.get_renderer()
-        bboxes = {
-            idx: _actual_label_bbox(idx)
-            for idx in range(len(labels))
-            if label_artists[idx] is not None
-        }
-        sorted_idx = sorted(
-            bboxes.keys(),
-            key=lambda idx: (float(bboxes[idx].x0), float(bboxes[idx].y0)),
-        )
-
-        changed = False
-        seen: list[int] = []
-        for idx in sorted_idx:
-            bbox = bboxes[idx]
-            delta_y_px = 0.0
-            for prev_idx in seen:
-                prev_bbox = bboxes[prev_idx]
-                if not _bbox_overlap(bbox, prev_bbox):
-                    continue
-                delta_y_px = max(
-                    delta_y_px,
-                    float(prev_bbox.y1 + TOP_LABEL_DRAW_VERTICAL_GAP_PX - bbox.y0),
-                )
-
-            if delta_y_px > 0.5:
-                y_offsets_pt[idx] += delta_y_px * 72.0 / fig.dpi
-                _set_annotation_offsets(idx)
-                changed = True
-
-            seen.append(idx)
-
-        if not changed:
-            break
 
 
 def _unique_peak_topic_labels(
@@ -896,7 +961,7 @@ def _plot_regime_ternary(
     ax.text(
         v1[0] - 0.03,
         v1[1] - 0.015,
-        "Regime 1",
+        "Mode 1",
         ha="right",
         va="top",
         color=REGION_COLORS[1],
@@ -914,7 +979,7 @@ def _plot_regime_ternary(
     ax.text(
         v2[0] + 0.03,
         v2[1] - 0.015,
-        "Regime 2",
+        "Mode 2",
         ha="left",
         va="top",
         color=REGION_COLORS[2],
@@ -932,7 +997,7 @@ def _plot_regime_ternary(
     ax.text(
         v3[0],
         v3[1] + 0.05,
-        "Regime 3",
+        "Mode 3",
         ha="center",
         va="bottom",
         color=REGION_COLORS[3],
@@ -1085,7 +1150,7 @@ for _, row in region_df.sort_values("region_id").iterrows():
     ax_a.text(
         0.5 * (left + right),
         0.985,
-        f"Regime {rid}",
+        f"Mode {rid}",
         transform=ax_a.get_xaxis_transform(),
         ha="center",
         va="top",
@@ -1103,9 +1168,9 @@ for tick, reg in zip(
 ):
     tick.set_color(REGION_COLORS.get(int(reg), "black"))
 ax_a.format(
-    xlabel="MDS-scaled position in topic space (0-1)",
+    xlabel="Position in topic space (MDS-scaled)",
     ylabel="",
-    title="Regime Exemplars in the Space of Concerns",
+    title="Mode Exemplars in the Space of Concerns",
     labelsize=FS_LABEL,
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
@@ -1155,7 +1220,7 @@ ax_a_subset_slide.set_ylim(n_subset - 0.5 + 0.18, -RIDGE_HEIGHT - 0.22)
 ax_a_subset_slide.set_yticks(np.arange(n_subset, dtype=float))
 ax_a_subset_slide.set_yticklabels(subset_df["actor"].tolist(), fontsize=FS_ACTOR_YTICK)
 ax_a_subset_slide.format(
-    xlabel="MDS-scaled position in topic space (0-1)",
+    xlabel="Position in topic space (MDS-scaled)",
     ylabel="",
     title="Selected Members in the Space of Concerns",
     labelsize=FS_LABEL,
@@ -1216,7 +1281,7 @@ for _, row in region_df.sort_values("region_id").iterrows():
     ax_a_all.text(
         0.5 * (left + right),
         y0 + REGIME_LABEL_Y_DELTA,
-        f"Regime {rid}",
+        f"Mode {rid}",
         ha="center",
         va="top",
         fontsize=FS_SMALL,
@@ -1233,7 +1298,7 @@ for tick, reg in zip(
 ):
     tick.set_color(REGION_COLORS.get(int(reg), "black"))
 ax_a_all.format(
-    xlabel="MDS-scaled position in topic space (0-1)",
+    xlabel="Position in topic space (MDS-scaled)",
     ylabel="",
     title="",
     labelsize=FS_LABEL,
@@ -1287,7 +1352,7 @@ ax_a_slide.set_ylim(n_all - 0.5 + 0.18, -RIDGE_HEIGHT - 0.22)
 ax_a_slide.set_yticks(np.arange(n_all, dtype=float))
 ax_a_slide.set_yticklabels(actor_df["actor"].tolist(), fontsize=FS_ACTOR_YTICK)
 ax_a_slide.format(
-    xlabel="MDS-scaled position in topic space (0-1)",
+    xlabel="Position in topic space (MDS-scaled)",
     ylabel="",
     title="All Members in the Space of Concerns",
     labelsize=FS_LABEL,
@@ -1334,11 +1399,11 @@ for rid in [1, 2, 3]:
 
 ax_b.set_xlim(0.5, 3.5)
 ax_b.set_xticks([1, 2, 3])
-ax_b.set_xticklabels(["Regime 1", "Regime 2", "Regime 3"])
+ax_b.set_xticklabels(["Mode 1", "Mode 2", "Mode 3"])
 ax_b.format(
-    xlabel="Dominant regime",
-    ylabel="Portfolio centroid (MDS 0-1)",
-    title="Centroid Separation by Regime",
+    xlabel="Dominant mode",
+    ylabel="Portfolio centroid",
+    title="Centroid Separation by Mode",
     labelsize=FS_LABEL,
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
@@ -1361,7 +1426,7 @@ _plot_regime_ternary(
     ax_c,
     actor_df=actor_df,
     flags=flag_images,
-    title="Regime Share Fractions Across Actors",
+    title="Mode Share Fractions Across Actors",
 )
 ax_c.format(
     labelsize=FS_LABEL, ticklabelsize=FS_TICK, titlesize=FS_TITLE, titlepad="1.0em"
@@ -1376,133 +1441,6 @@ fig_c.savefig(
 print(f"Wrote {OUT_C}")
 
 # %%
-# Joint figure with A/B/C in one layout.
-layout = [[1, 2], [1, 3]]
-joint_height = max(8.6, 0.33 * n_subset + 1.4)
-fig_j, axs = uplt.subplots(
-    layout,
-    figsize=(13.6, joint_height),
-    share=0,
-    wspace="10em",
-    hspace="30em",
-)
-ax_ja, ax_jb, ax_jc = axs
-
-# A (left): exemplar ridgelines.
-for row_idx, row in subset_df.iterrows():
-    actor = row["actor"]
-    vals = np.clip(rca[actor].to_numpy(dtype=float), 0.0, None)
-    ridge = _smooth_1d(vals)
-    m = float(np.nanmax(ridge))
-    if m > 0:
-        ridge = ridge / m
-    baseline = float(row_idx)
-    ax_ja.fill_between(
-        x_plot,
-        baseline,
-        baseline - RIDGE_HEIGHT * ridge,
-        color=RIDGE_COLOR,
-        alpha=0.34,
-        lw=0,
-        zorder=2,
-    )
-    ax_ja.plot(
-        x_plot,
-        baseline - RIDGE_HEIGHT * ridge,
-        color=RIDGE_COLOR,
-        lw=1.0,
-        alpha=0.95,
-        zorder=3,
-    )
-    _plot_interest_dots(ax_ja, x_plot, vals, baseline)
-
-for _, row in region_df.sort_values("region_id").iterrows():
-    rid = int(row["region_id"])
-    left = float(row["boundary_left"])
-    right = float(row["boundary_right"])
-    color = REGION_COLORS.get(rid, "#777777")
-    ax_ja.axvspan(left, right, color=color, alpha=0.14, lw=0, zorder=0)
-    ax_ja.text(
-        0.5 * (left + right),
-        0.985,
-        f"Regime {rid}",
-        transform=ax_ja.get_xaxis_transform(),
-        ha="center",
-        va="top",
-        fontsize=FS_SMALL,
-        color=color,
-        zorder=5,
-    )
-
-ax_ja.set_xlim(0.0, 1.0)
-ax_ja.set_ylim(n_subset - 0.5 + 0.18, -RIDGE_HEIGHT - 0.22)
-ax_ja.set_yticks(np.arange(n_subset, dtype=float))
-ax_ja.set_yticklabels(subset_df["actor"].tolist(), fontsize=FS_ACTOR_YTICK)
-for tick, reg in zip(
-    ax_ja.get_yticklabels(), subset_df["dominant_region"].to_numpy(dtype=int)
-):
-    tick.set_color(REGION_COLORS.get(int(reg), "black"))
-ax_ja.format(
-    xlabel="MDS-scaled position in topic space (0-1)",
-    ylabel="",
-    title="Regime Exemplars in the Space of Concerns",
-)
-ax_ja.grid(axis="x", alpha=0.22, linewidth=0.7)
-ax_ja.grid(axis="y", visible=False)
-ax_ja.yaxis.set_minor_locator(NullLocator())
-
-# B (top-right): centroid separation.
-for rid in [1, 2, 3]:
-    vals = actor_df.loc[
-        actor_df["dominant_region"] == rid, "centroid_xplot_raw_rca"
-    ].to_numpy(dtype=float)
-    if vals.size == 0:
-        continue
-    xj = np.full(vals.size, float(rid)) + _jitter(vals.size, width=0.14)
-    color = REGION_COLORS[rid]
-    ax_jb.scatter(
-        xj,
-        vals,
-        s=40,
-        color=color,
-        alpha=0.9,
-        edgecolor="black",
-        linewidth=0.45,
-        zorder=3,
-    )
-    med = float(np.median(vals))
-    q1, q3 = np.quantile(vals, [0.25, 0.75])
-    ax_jb.vlines(rid, q1, q3, color=color, lw=3.0, zorder=2)
-    ax_jb.hlines(med, rid - 0.16, rid + 0.16, color="black", lw=1.2, zorder=5)
-
-ax_jb.set_xlim(0.5, 3.5)
-ax_jb.set_xticks([1, 2, 3])
-ax_jb.set_xticklabels(["Regime 1", "Regime 2", "Regime 3"])
-ax_jb.format(
-    xlabel="Dominant regime",
-    ylabel="Portfolio centroid (MDS 0-1)",
-    title="Centroid Separation by Regime",
-)
-ax_jb.grid(axis="y", alpha=0.22, linewidth=0.7)
-ax_jb.grid(axis="x", visible=False)
-
-# C (bottom-right): regime-share ternary with flags.
-_plot_regime_ternary(
-    ax_jc,
-    actor_df=actor_df,
-    flags=flag_images,
-    title=None,
-)
-axs.format(
-    labelsize=FS_LABEL,
-    ticklabelsize=FS_TICK,
-    titlesize=FS_TITLE,
-)
-
-fig_j.savefig(OUT_JOINT, dpi=230, bbox_inches="tight", pad_inches=0.16)
-print(f"Wrote {OUT_JOINT}")
-
-# %%
 # Joint all-members figure (paper-ready left panel).
 layout = [[1, 2], [1, 3]]
 joint_all_height = max(10.0, 0.22 * n_all + 1.8)
@@ -1511,11 +1449,12 @@ fig_ja, axs_all = uplt.subplots(
     width_ratios=(1.22, 1.0),
     figsize=(14.2, joint_all_height),
     share=0,
-    wspace="10em",
-    hspace="6em",
+    wspace="12em",
+    hspace="12em",
 )
 ax_la, ax_tb, ax_cb = axs_all
 
+# --- Plot Ridges on Left Panel ---
 for row_idx, row in actor_df.iterrows():
     actor = row["actor"]
     vals = np.clip(rca[actor].to_numpy(dtype=float), 0.0, None)
@@ -1543,16 +1482,20 @@ for row_idx, row in actor_df.iterrows():
     )
     _plot_interest_dots(ax_la, x_plot, vals, baseline)
 
+# --- Plot Mode Regions and Labels (MOVED INSIDE) ---
 for _, row in region_df.sort_values("region_id").iterrows():
     rid = int(row["region_id"])
     left = float(row["boundary_left"])
     right = float(row["boundary_right"])
     color = REGION_COLORS.get(rid, "#777777")
     ax_la.axvspan(left, right, color=color, alpha=0.13, lw=0, zorder=0)
+
+    # FIXED: Placed at 96% height inside the axis, hanging downwards
     ax_la.text(
         0.5 * (left + right),
-        y0 + REGIME_LABEL_Y_DELTA,
-        f"Regime {rid}",
+        0.96,
+        f"Mode {rid}",
+        transform=ax_la.get_xaxis_transform(),
         ha="center",
         va="top",
         fontsize=FS_SMALL,
@@ -1560,8 +1503,11 @@ for _, row in region_df.sort_values("region_id").iterrows():
         zorder=5,
     )
 
+# --- Configure Left Panel Axis limits & Ticks (Tightened Margin) ---
 ax_la.set_xlim(0.0, 1.0)
+# No extra top space padding needed anymore since Mode text is inside!
 ax_la.set_ylim(n_all - 0.5 + 0.18, -RIDGE_HEIGHT - RIDGE_TOP_PAD)
+
 ax_la.set_yticks(np.arange(n_all, dtype=float))
 ax_la.set_yticklabels(actor_df["actor"].tolist(), fontsize=FS_ACTOR_YTICK)
 for tick, reg in zip(
@@ -1572,6 +1518,7 @@ ax_la.grid(axis="x", alpha=0.22, linewidth=0.7)
 ax_la.grid(axis="y", visible=False)
 ax_la.yaxis.set_minor_locator(NullLocator())
 
+# --- Plot Centroid Separation by Mode (Top Right) ---
 for rid in [1, 2, 3]:
     vals = actor_df.loc[
         actor_df["dominant_region"] == rid, "centroid_xplot_raw_rca"
@@ -1596,40 +1543,48 @@ for rid in [1, 2, 3]:
 
 ax_tb.set_xlim(0.5, 3.5)
 ax_tb.set_xticks([1, 2, 3])
-ax_tb.set_xticklabels(["Regime 1", "Regime 2", "Regime 3"])
+ax_tb.set_xticklabels(["Mode 1", "Mode 2", "Mode 3"])
 ax_tb.grid(axis="y", alpha=0.22, linewidth=0.7)
 ax_tb.grid(axis="x", visible=False)
 
+# --- Plot Ternary Component (Bottom Right) ---
 _plot_regime_ternary(
     ax_cb,
     actor_df=actor_df,
     flags=flag_images,
-    title="Regime Share Fractions Across Actors",
+    title="Mode Share Fractions Across Actors",
 )
 
+# --- Formatting and Titles ---
 ax_la.format(
-    xlabel="MDS-scaled position in topic space (0-1)",
+    xlabel="Position in topic space (MDS-scaled)",
     ylabel="",
     title="",
 )
 peak_x_joint_all, peak_labels_joint_all = _aggregate_top_topic_labels(
     rca, actor_df["actor"].tolist(), ordered_topics, x_plot
 )
+# This calls the upgraded spreading function below
 _add_non_overlapping_top_labels(ax_la, peak_x_joint_all, peak_labels_joint_all)
+
 ax_tb.format(
-    xlabel="Dominant regime",
-    ylabel="Portfolio centroid (MDS 0-1)",
-    title="Centroid Separation by Regime",
+    xlabel="Dominant mode",
+    ylabel="Portfolio centroid",
+    title="Centroid Separation by Mode",
 )
 ax_cb.format(
     xlabel="",
     ylabel="",
-    title="Regime Share Fractions Across Actors",
+    title="Mode Share Fractions Across Actors",
 )
 axs_all.format(
     labelsize=FS_LABEL,
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
+    abcloc="ul",
+    abc="[A]",
 )
+
+# --- Save Figure ---
 fig_ja.savefig(OUT_JOINT_ALL, dpi=230, bbox_inches="tight", pad_inches=0.16)
 print(f"Wrote {OUT_JOINT_ALL}")

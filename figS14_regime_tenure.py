@@ -49,7 +49,7 @@ def main() -> None:
     summary.to_csv(OUT_SUMMARY, index=False)
 
     colors = {1: '#1f77b4', 2: '#2a9d8f', 3: '#d62728'}
-    labels = ['Regime 1', 'Regime 2', 'Regime 3']
+    labels = ['Mode 1', 'Mode 2', 'Mode 3']
     xpos = np.arange(3)
 
     fig, axs = uplt.subplots(ncols=2, refwidth=3.3, refaspect=1.0, share=False)
@@ -57,7 +57,7 @@ def main() -> None:
 
     metrics = [
         ('active_years', 'Active years in archive', 'Archive participation length'),
-        ('first_year', 'First year in archive', 'Entry timing by regime'),
+        ('first_year', 'First year in archive', 'Entry timing by mode'),
     ]
     for ax, (metric, ylabel, title) in zip(axs, metrics):
         ymax = -np.inf
@@ -76,7 +76,7 @@ def main() -> None:
             ax.vlines(idx, q25, q75, color='black', lw=3.2, zorder=4)
             ax.hlines(q50, idx - 0.16, idx + 0.16, color='black', lw=1.2, zorder=5)
         pad = 2 if metric == 'active_years' else 1
-        ax.format(title=title, ylabel=ylabel, xlabel='Dominant regime', xticks=xpos, xticklabels=labels, ylim=(ymin - pad, ymax + pad))
+        ax.format(title=title, ylabel=ylabel, xlabel='Dominant mode', xticks=xpos, xticklabels=labels, ylim=(ymin - pad, ymax + pad))
 
     fig.save(OUT_PDF)
     fig.save(OUT_PNG, transparent=False)
