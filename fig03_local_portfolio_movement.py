@@ -558,11 +558,17 @@ def _plot_transition_matrix_panel(
     if show_title:
         format_kwargs["title"] = f"Mode shifts are mostly local ({matrix_label})"
     ax.format(**format_kwargs)
-    ax.xaxis.tick_top()
-    ax.tick_params(axis="x", top=True, labeltop=True, bottom=False, labelbottom=False)
     if xlabel_on_top:
+        ax.xaxis.tick_top()
+        ax.tick_params(
+            axis="x", top=True, labeltop=True, bottom=False, labelbottom=False
+        )
         ax.xaxis.set_label_position("top")
     else:
+        ax.xaxis.tick_bottom()
+        ax.tick_params(
+            axis="x", top=False, labeltop=False, bottom=True, labelbottom=True
+        )
         ax.xaxis.set_label_position("bottom")
     cbar = ax.colorbar(img)
     cbar.set_label("Transition probability")
@@ -639,6 +645,7 @@ def main():
         window_size=regime_window_size,
         time_unit=regime_time_unit,
         regime_matrix_source=regime_matrix_source,
+        xlabel_on_top=False,
     )
 
     # Panel letters drawn manually: ultraplot's abc shifts a long centered title

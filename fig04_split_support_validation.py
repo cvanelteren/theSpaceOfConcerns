@@ -352,11 +352,17 @@ def _draw_network_state(
             lw = 0.8
         if node in added_nodes:
             face = accent  # only newly adopted topics carry the model color
-            edge = "#111111"
+            # edge = "#111111"
+            edge = accent
             lw = 1.5
         ax.add_patch(
             Circle(
-                (x, y), radius=radius, facecolor=face, edgecolor=edge, lw=lw, zorder=3
+                (x, y),
+                radius=radius,
+                facecolor=face,
+                edgecolor=edge,
+                lw=lw,
+                zorder=3,
             )
         )
 

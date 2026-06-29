@@ -40,13 +40,22 @@ REFRESH_SIDE_LAYOUT = False
 SIDE_LAYOUT_CACHE_VERSION = 9
 SIDE_LAYOUT_CACHE_PATH = Path("assets/cache/fig01_side_layout_cache.json")
 USE_SAVED_NODE_LAYOUT = False
-SAVE_MAIN_SVG = False
+SAVE_MAIN_SVG = True
 GENERATE_REVEAL_SEQUENCE = False
 DEBUG_PROGRESS = True
 REVEAL_OUTPUT_DIR = Path("./output/fig01_reveals")
 SAVE_MAIN_PNG = True
 SAVE_MAIN_PDF = True
 MAIN_PNG_DPI = 1200
+
+# Poster-friendly variant: same layout, but all text is enlarged so it reads
+# from a distance, while crispness is preserved via a vector PDF plus a
+# high-DPI PNG. Exported in addition to the manuscript figure.
+SAVE_POSTER = True
+POSTER_TEXT_SCALE = 1.3  # multiply every text size
+POSTER_LINE_SCALE = 1.4  # thicken connector arrows to balance the larger text
+POSTER_FIG_SCALE = 1.4  # enlarge the canvas so dense side columns gain headroom
+POSTER_PNG_DPI = 600  # high enough to stay crisp at large print sizes
 
 
 def debug_print(message):
@@ -805,6 +814,7 @@ else:
     pos = saved_pos
 
 fp = Path("1024px-AntarcticaContour.svg.png")
+# fp = Path("taklsdfj;asdf.png")
 if fp.exists():
     _t0 = time.perf_counter()
     debug_print("Loading Antarctica mask and tessellation...")
@@ -3033,6 +3043,93 @@ if SAVE_MAIN_SVG:
         pad_inches=0.05,
     )
 debug_print(f"Saved main figure assets in {time.perf_counter() - _t0:.2f}s")
+
+
+if SAVE_POSTER:
+    from matplotlib.patches import FancyArrowPatch as _PosterArrow
+    from matplotlib.text import Text as _PosterText
+
+    debug_print(
+        f"Saving poster variant (canvas x{POSTER_FIG_SCALE}, text x{POSTER_TEXT_SCALE}, "
+        f"lines x{POSTER_LINE_SCALE})..."
+    )
+    _t0 = time.perf_counter()
+
+    # Enlarge the physical canvas first. Side labels live in data coordinates,
+    # so a bigger canvas stretches the gaps between them; enlarging text by a
+    # slightly smaller factor then keeps the dense columns collision-free while
+    # still printing larger, more legible labels.
+    _poster_figsize = fig.get_size_inches().copy()
+    fig.set_size_inches(_poster_figsize * float(POSTER_FIG_SCALE))
+
+    # Scale every text artist up so labels read at a distance. bbox_inches=
+    # "tight" reflows the canvas around the enlarged text so nothing clips.
+    _poster_text_state = []
+    for _txt in fig.findobj(match=_PosterText):
+        _fs = _txt.get_fontsize()
+        if _fs is None:
+            continue
+        _poster_text_state.append((_txt, _fs))
+        _txt.set_fontsize(float(_fs) * float(POSTER_TEXT_SCALE))
+
+    # Thicken connector arrows/arrowheads so they stay proportionate to the
+    # larger labels.
+    _poster_arrow_state = []
+    for _art in fig.findobj(match=_PosterArrow):
+        _lw = _art.get_linewidth()
+        _ms = _art.get_mutation_scale()
+        _poster_arrow_state.append((_art, _lw, _ms))
+        if _lw is not None:
+            _art.set_linewidth(float(_lw) * float(POSTER_LINE_SCALE))
+        if _ms is not None:
+            _art.set_mutation_scale(float(_ms) * float(POSTER_LINE_SCALE))
+
+    # Keep node markers prominent relative to the enlarged canvas (marker area
+    # is in points**2, so scale by the square of the canvas factor).
+    _poster_size_state = []
+    for _coll in ax.collections:
+        if not hasattr(_coll, "get_sizes"):
+            continue
+        _sizes = _coll.get_sizes()
+        if _sizes is None or len(_sizes) == 0:
+            continue
+        _poster_size_state.append((_coll, _sizes.copy()))
+        _coll.set_sizes(_sizes * float(POSTER_FIG_SCALE) ** 2)
+
+    # Drop the Themes legend on the poster (colors are self-evident at this
+    # size and it frees vertical room).
+    _poster_legend_visible = None
+    if legend_obj is not None:
+        _poster_legend_visible = legend_obj.get_visible()
+        legend_obj.set_visible(False)
+
+    fig.savefig(
+        "./figures/fig01_space_of_concerns_topology_poster.pdf",
+        bbox_inches="tight",
+        pad_inches=0.08,
+    )
+    fig.savefig(
+        "./figures/fig01_space_of_concerns_topology_poster.png",
+        dpi=POSTER_PNG_DPI,
+        bbox_inches="tight",
+        pad_inches=0.08,
+        transparent=True,
+    )
+
+    # Restore original styling so any later exports (e.g. reveal frames) match
+    # the manuscript figure.
+    fig.set_size_inches(_poster_figsize)
+    for _txt, _fs in _poster_text_state:
+        _txt.set_fontsize(_fs)
+    for _art, _lw, _ms in _poster_arrow_state:
+        _art.set_linewidth(_lw)
+        _art.set_mutation_scale(_ms)
+    for _coll, _sizes in _poster_size_state:
+        _coll.set_sizes(_sizes)
+    if legend_obj is not None and _poster_legend_visible is not None:
+        legend_obj.set_visible(_poster_legend_visible)
+
+    debug_print(f"Saved poster variant in {time.perf_counter() - _t0:.2f}s")
 
 
 def _slugify_label(text):

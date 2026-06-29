@@ -23,7 +23,7 @@ OUT_A_ALL_SLIDE = SLIDES_DIR / "fig02_regime_allmembers_ridgelines_slide_clean.p
 OUT_B = Path("output/fig02_centroid_separation.png")
 OUT_C = Path("slides/fig02_regime_share_fractions.png")
 OUT_JOINT = Path("output/fig02_regime_engagement_panels.png")
-OUT_JOINT_ALL = Path("figures/fig02_regime_engagement_panels_allmembers.png")
+OUT_JOINT_ALL = Path("figures/fig02_regime_engagement_panels_allmembers.pdf")
 OUT_SUBSET = Path("output/fig02_regime_exemplar_actors.csv")
 
 RIDGE_HEIGHT = 0.78
@@ -1493,7 +1493,7 @@ for _, row in region_df.sort_values("region_id").iterrows():
     # FIXED: Placed at 96% height inside the axis, hanging downwards
     ax_la.text(
         0.5 * (left + right),
-        0.96,
+        0.99,
         f"Mode {rid}",
         transform=ax_la.get_xaxis_transform(),
         ha="center",
@@ -1586,5 +1586,5 @@ axs_all.format(
 )
 
 # --- Save Figure ---
-fig_ja.savefig(OUT_JOINT_ALL, dpi=230, bbox_inches="tight", pad_inches=0.16)
+fig_ja.savefig(OUT_JOINT_ALL, dpi=600, bbox_inches="tight", pad_inches=0.16)
 print(f"Wrote {OUT_JOINT_ALL}")
