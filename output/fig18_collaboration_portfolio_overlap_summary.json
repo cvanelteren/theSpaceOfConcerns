@@ -1,0 +1,35 @@
+{
+  "period_years": 10,
+  "n_pair_periods_all": 15015,
+  "n_pair_periods_collaborating": 1548,
+  "share_zero_collaboration_all_pairs": 0.8969030969030969,
+  "max_collaboration_count": 50,
+  "specialized_jaccard": {
+    "n_collaborating_pair_periods_active": 1548,
+    "spearman_rho": 0.1919811800518797,
+    "spearman_p": 2.5704380731758345e-14,
+    "pearson_r_log1p": 0.21828363818415064,
+    "pearson_p_log1p": 3.7442254165229135e-18,
+    "median_overlap": 0.19047619047619047
+  },
+  "presence_jaccard": {
+    "n_collaborating_pair_periods_active": 1548,
+    "spearman_rho": 0.3949364964234879,
+    "spearman_p": 6.0527528855790315e-59,
+    "pearson_r_log1p": 0.43639263723323174,
+    "pearson_p_log1p": 5.537584313068326e-73,
+    "median_overlap": 0.37037037037037035
+  },
+  "overall_specialized_jaccard": {
+    "n_collaborating_pairs_active": 782,
+    "spearman_rho": 0.2709003862552223,
+    "spearman_p": 1.2780914135227513e-14,
+    "median_overlap": 0.1967741935483871
+  },
+  "overall_presence_jaccard": {
+    "n_collaborating_pairs_active": 782,
+    "spearman_rho": 0.5563190592675546,
+    "spearman_p": 9.666489365003453e-65,
+    "median_overlap": 0.45
+  }
+}

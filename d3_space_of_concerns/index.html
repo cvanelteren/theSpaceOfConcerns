@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Space of Concerns - D3 Force Compare</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="title">Space of Concerns (Force-Directed Compare)</div>
+      <button id="save-layout">Save Layout</button>
+      <button id="reset">Reheat</button>
+      <span id="status" class="status" aria-live="polite"></span>
+    </header>
+
+    <main class="layout">
+      <section class="panel graph-panel">
+        <svg id="chart" aria-label="Space of concerns force-directed graph"></svg>
+      </section>
+      <aside class="panel side-panel">
+        <h3>Legend</h3>
+        <div id="legend"></div>
+        <div class="settings-card">
+          <div class="settings-title">Layout</div>
+          <div class="settings-row">
+            <label for="layout-mode">Mode</label>
+            <select id="layout-mode" class="settings-input">
+              <option value="network" selected>Network</option>
+              <option value="bubble">Theme Bubble</option>
+              <option value="ego">Ego Radial</option>
+              <option value="mst-shell">MST Shell</option>
+            </select>
+          </div>
+          <div class="settings-row">
+            <label for="focus-node">Focus Node</label>
+            <select id="focus-node" class="settings-input"></select>
+          </div>
+          <div class="settings-row">
+            <label class="inline-check">
+              <input id="fit-to-antarctica" type="checkbox" checked />
+              Fit Inside Antarctica Shape
+            </label>
+          </div>
+          <div class="settings-row">
+            <label for="charge">Charge</label>
+            <div class="settings-controls">
+              <input id="charge" type="range" min="-900" max="-20" step="10" value="-280" />
+              <input id="charge-box" class="value-input" type="number" min="-900" max="-20" step="10" value="-280" />
+            </div>
+          </div>
+          <div class="settings-row">
+            <label for="distance">Link Distance</label>
+            <div class="settings-controls">
+              <input id="distance" type="range" min="20" max="180" step="2" value="85" />
+              <input id="distance-box" class="value-input" type="number" min="20" max="180" step="2" value="85" />
+            </div>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-title">Appearance</div>
+          <div class="settings-row">
+            <label for="edge-scale">Edge Width</label>
+            <div class="settings-controls">
+              <input id="edge-scale" type="range" min="0.4" max="2.8" step="0.05" value="1.00" />
+              <input id="edge-scale-box" class="value-input" type="number" min="0.4" max="2.8" step="0.05" value="1.00" />
+            </div>
+          </div>
+          <div class="settings-row">
+            <label for="node-scale">Node Size</label>
+            <div class="settings-controls">
+              <input id="node-scale" type="range" min="0.5" max="2.2" step="0.05" value="1.00" />
+              <input id="node-scale-box" class="value-input" type="number" min="0.5" max="2.2" step="0.05" value="1.00" />
+            </div>
+          </div>
+          <div class="settings-row">
+            <label class="inline-check">
+              <input id="uniform-node-size" type="checkbox" />
+              Uniform Node Size
+            </label>
+          </div>
+          <div class="settings-row">
+            <label class="inline-check">
+              <input id="labels" type="checkbox" />
+              Show All Labels
+            </label>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-title">Layout Forces</div>
+          <div class="settings-row">
+            <label for="edge-repel-strength">Edge Repel Strength</label>
+            <div class="settings-controls">
+              <input id="edge-repel-strength" type="range" min="0.00" max="0.30" step="0.005" value="0.09" />
+              <input id="edge-repel-strength-box" class="value-input" type="number" min="0.00" max="0.30" step="0.005" value="0.09" />
+            </div>
+          </div>
+          <div class="settings-row">
+            <label for="edge-repel-radius">Edge Repel Radius</label>
+            <div class="settings-controls">
+              <input id="edge-repel-radius" type="range" min="40" max="320" step="5" value="190" />
+              <input id="edge-repel-radius-box" class="value-input" type="number" min="40" max="320" step="5" value="190" />
+            </div>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-title">Interaction</div>
+          <div class="settings-row">
+            <label class="inline-check">
+              <input id="pin-dragged" type="checkbox" checked />
+              Pin Dragged Nodes
+            </label>
+          </div>
+          <div class="settings-row">
+            <label class="inline-check">
+              <input id="box-select" type="checkbox" />
+              Box Select (drag on canvas)
+            </label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-buttons">
+              <button id="clear-selection" type="button">Clear Selection</button>
+              <button id="clear-pins" type="button">Clear Pins</button>
+            </div>
+          </div>
+        </div>
+        <h3>Hover</h3>
+        <div id="info" class="info">Hover a node for details.</div>
+      </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

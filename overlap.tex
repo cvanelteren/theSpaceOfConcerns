@@ -1,0 +1,81 @@
+\documentclass[tikz,border=6pt]{standalone}
+
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+% -------------------------------------------------
+% Colors
+% -------------------------------------------------
+\definecolor{colA}{RGB}{70,130,180}   % set i (blue)
+\definecolor{colB}{RGB}{220,80,80}    % set j (red)
+\colorlet{mixcol}{colA!50!colB}       % blended overlap
+
+\newcommand{\setalpha}{0.45}
+
+% -------------------------------------------------
+% Make TikZ behave like a TRUE math symbol
+% -------------------------------------------------
+\newcommand{\mathglyph}[1]{%
+  \mathord{\vcenter{\hbox{#1}}}%
+}
+
+% -------------------------------------------------
+% Overlap glyph
+% Draw BOTH circles (as paths) to define symmetric bbox,
+% fill ONLY the lens, and DRAW outlines of the circles.
+% -------------------------------------------------
+\newcommand{\OverlapGlyph}{%
+\mathglyph{%
+\tikz[scale=0.22]{
+  % symmetric bounding box (no stroke)
+  \path (-0.6,0) circle (1);
+  \path ( 0.6,0) circle (1);
+
+  % fill only intersection (lens)
+  \begin{scope}
+    \clip (-0.6,0) circle (1);
+    \fill[mixcol] (0.6,0) circle (1);
+  \end{scope}
+
+  % outlines of both sets
+  \draw[colA, line width=0.6pt] (-0.6,0) circle (1);
+  \draw[colB, line width=0.6pt] ( 0.6,0) circle (1);
+}}}
+
+% -------------------------------------------------
+% Single set glyphs
+% -------------------------------------------------
+\newcommand{\SingleGlyphA}{%
+\mathglyph{%
+\tikz[scale=0.22]{
+  \fill[colA, opacity=\setalpha] (0,0) circle (1);
+  \draw[colA, line width=0.6pt] (0,0) circle (1);
+}}}
+
+\newcommand{\SingleGlyphB}{%
+\mathglyph{%
+\tikz[scale=0.22]{
+  \fill[colB, opacity=\setalpha] (0,0) circle (1);
+  \draw[colB, line width=0.6pt] (0,0) circle (1);
+}}}
+
+% -------------------------------------------------
+\begin{document}
+% -------------------------------------------------
+
+\begin{tikzpicture}[font=\small]
+
+\node[align=center] at (0,0) {%
+\Large
+  \textrm{Topic Proximity}\\[6pt]
+  $\displaystyle
+  \phi_{ij} = \min\left\{
+    \frac{P(\OverlapGlyph)}{P(\SingleGlyphA)},
+    \frac{P(\OverlapGlyph)}{P(\SingleGlyphB)}
+  \right\}
+  $
+};
+
+\end{tikzpicture}
+
+\end{document}

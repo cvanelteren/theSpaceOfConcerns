@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Figure 2 Ribbon Plot - Interactive D3</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="title">Figure 2 Interactive Ribbon Plot</div>
+      <div class="toolbar-right">
+        <button id="reset-btn" type="button">Reset View</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel chart-panel">
+        <svg id="chart" aria-label="Interactive ribbon plot"></svg>
+      </section>
+
+      <aside class="panel side-panel">
+        <h3>Controls</h3>
+
+        <div class="controls-card">
+          <label for="theme-select">Theme filter</label>
+          <select id="theme-select"></select>
+
+          <label for="country-select">Country trace</label>
+          <select id="country-select"></select>
+
+          <label for="min-flow">Min actors on edge</label>
+          <div class="inline-input">
+            <input id="min-flow" type="range" min="0" max="20" step="1" value="0" />
+            <span id="min-flow-value">0</span>
+          </div>
+
+          <label class="checkbox-row">
+            <input id="show-labels" type="checkbox" checked />
+            Show topic labels
+          </label>
+        </div>
+
+        <h3>Themes</h3>
+        <div id="legend"></div>
+
+        <h3>Hover info</h3>
+        <div id="info" class="info">Hover ribbons or nodes.</div>
+
+        <h3>Status</h3>
+        <div id="status" class="status">Loading…</div>
+      </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

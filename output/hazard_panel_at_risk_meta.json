@@ -1,0 +1,23 @@
+{
+  "window_size": 1,
+  "window_years": 1,
+  "time_unit": "year",
+  "rca_threshold": 1.0,
+  "distance_mode": "aggregate",
+  "distance_metric": "proximity",
+  "distance_definition": "shortest_path_neg_log_proximity",
+  "n_rows_at_risk": 58387,
+  "n_adopted": 2281,
+  "adoption_rate": 0.03906691558052306,
+  "n_rows_prev_active": 4973,
+  "n_persisted": 1773,
+  "persistence_rate": 0.3565252362758898,
+  "n_members": 66,
+  "n_topics": 45,
+  "year_min": 1961,
+  "year_max": 2025,
+  "period_min": 1961,
+  "period_max": 2025,
+  "n_windows": 65,
+  "n_transitions": 64
+}

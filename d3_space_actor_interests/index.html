@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ATS Space of Concerns - Actor Interests</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div>
+        <div class="eyebrow">Antarctic Treaty System</div>
+        <div class="title">Space of Concerns and Actor Interests</div>
+      </div>
+      <div class="toolbar-right">
+        <div class="toolbar-field">
+          <span>View</span>
+          <div class="segmented-control" id="view-mode" role="tablist" aria-label="View mode">
+            <button type="button" class="segmented-button is-active" data-view-mode="space" aria-pressed="true">
+              Space of concerns
+            </button>
+            <button type="button" class="segmented-button" data-view-mode="ribbon" aria-pressed="false">
+              Specialized support ribbons
+            </button>
+          </div>
+        </div>
+        <div class="toolbar-meta" id="meta"></div>
+      </div>
+    </header>
+
+    <main id="app-layout" class="layout">
+      <section id="graph-panel" class="panel graph-panel">
+        <svg id="chart" aria-label="ATS space of concerns with actor interest overlays"></svg>
+      </section>
+
+      <aside id="space-sidebar" class="panel side-panel">
+        <div id="actor-overlay-card" class="control-card mode-card">
+          <div class="control-title">Actor Overlay</div>
+          <label>
+            Search actor
+            <input id="actor-search" type="search" placeholder="Type a country or organization" />
+          </label>
+          <label>
+            Actor
+            <select id="actor-select"></select>
+          </label>
+          <div class="button-row">
+            <button id="prev-actor" type="button">Previous</button>
+            <button id="next-actor" type="button">Next</button>
+          </div>
+          <label>
+            Minimum RPA to show
+            <div class="range-row">
+              <input id="rpa-threshold" type="range" min="0" max="4" step="0.1" value="1" />
+              <span id="rpa-threshold-value">1.0</span>
+            </div>
+          </label>
+        </div>
+
+        <div id="ribbon-controls-card" class="control-card mode-card" hidden>
+          <div class="control-title">Ribbon Controls</div>
+          <label>
+            Theme filter
+            <select id="ribbon-theme-select"></select>
+          </label>
+          <label>
+            Country trace
+            <select id="ribbon-country-select"></select>
+          </label>
+          <label>
+            Minimum edge flow
+            <div class="range-row">
+              <input id="ribbon-min-flow" type="range" min="0" max="20" step="1" value="0" />
+              <span id="ribbon-min-flow-value">0</span>
+            </div>
+          </label>
+          <label class="inline-check">
+            <input id="ribbon-show-labels" type="checkbox" checked />
+            Show topic labels
+          </label>
+          <div class="button-row">
+            <button id="ribbon-reset" type="button">Reset Ribbon</button>
+          </div>
+          <div class="muted small-note" id="ribbon-status">Loading ribbon view…</div>
+        </div>
+
+        <div id="selected-actor-card" class="control-card mode-card">
+          <div class="control-title">Selected Actor</div>
+          <div id="actor-card" class="actor-card"></div>
+        </div>
+
+        <div class="control-card">
+          <div class="control-title">Topic Hover</div>
+          <div id="topic-card" class="topic-card muted">Hover a topic to inspect support and top actors.</div>
+        </div>
+
+        <div class="control-card">
+          <div class="control-title">Theme Legend</div>
+          <div id="legend"></div>
+        </div>
+
+        <details id="layout-display-card" class="control-card collapsible-card mode-card">
+          <summary class="control-summary">
+            <span class="control-title">Layout &amp; display</span>
+            <span class="control-summary-note">Optional</span>
+          </summary>
+          <div class="control-body">
+            <label>
+              Space layout
+              <select id="layout-mode">
+                <option value="space" selected>Saved concern space</option>
+                <option value="columns">Theme columns</option>
+                <option value="ring">Theme ring</option>
+              </select>
+            </label>
+            <div class="button-row">
+              <button id="reset-layout" type="button">Reset Layout</button>
+            </div>
+            <label>
+              Node size
+              <div class="range-row">
+                <input id="node-size-scale" type="range" min="0.7" max="2.4" step="0.05" value="1.35" />
+                <span id="node-size-scale-value">1.35x</span>
+              </div>
+            </label>
+            <label>
+              Edge length / spread
+              <div class="range-row">
+                <input id="layout-spread" type="range" min="0.7" max="1.8" step="0.05" value="1.00" />
+                <span id="layout-spread-value">1.00x</span>
+              </div>
+            </label>
+            <label>
+              Extra edge percentile
+              <div class="range-row">
+                <input id="edge-percentile" type="range" min="0" max="100" step="1" value="95" />
+                <span id="edge-percentile-value">95</span>
+              </div>
+            </label>
+            <label class="inline-check">
+              <input id="show-all-labels" type="checkbox" />
+              Show all topic labels
+            </label>
+            <label class="inline-check">
+              <input id="show-selected-labels" type="checkbox" checked />
+              Label selected topics
+            </label>
+            <label class="inline-check">
+              <input id="show-base-support" type="checkbox" checked />
+              Show aggregate support density when no actor is selected
+            </label>
+            <div class="muted small-note" id="edge-threshold-note">Strong edges shown from the 95th percentile upward; MST scaffold retained.</div>
+            <div class="muted small-note">Drag topic nodes directly to rearrange the layout in the current session.</div>
+          </div>
+        </details>
+      </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

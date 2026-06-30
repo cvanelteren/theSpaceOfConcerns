@@ -1,0 +1,55 @@
+country,consultative_party,non_consultative_party,original_signatory,gateway_state,operator
+Argentina,1,0,1,1,1
+Australia,1,0,1,1,1
+Belgium,1,0,1,0,1
+Brazil,1,0,0,0,1
+Bulgaria,1,0,0,0,1
+Chile,1,0,1,1,1
+China,1,0,0,0,1
+Czech Republic,1,0,0,0,1
+Ecuador,1,0,0,0,1
+Finland,1,0,0,0,1
+France,1,0,1,1,1
+Germany,1,0,0,0,1
+India,1,0,0,0,1
+Italy,1,0,0,0,1
+Japan,1,0,1,0,1
+South Korea,1,0,0,0,1
+Netherlands,1,0,0,0,1
+New Zealand,1,0,1,1,1
+Norway,1,0,1,0,1
+Peru,1,0,0,0,1
+Poland,1,0,0,0,1
+Russia,1,0,1,0,1
+South Africa,1,0,1,1,1
+Spain,1,0,0,0,1
+Sweden,1,0,0,0,1
+Ukraine,1,0,0,0,1
+United Kingdom,1,0,1,1,1
+United States,1,0,1,1,1
+Austria,0,1,0,0,0
+Belarus,0,1,0,0,0
+Canada,0,1,0,0,0
+Colombia,0,1,0,0,0
+Cuba,0,1,0,0,0
+Denmark,0,1,0,0,0
+Estonia,0,1,0,0,0
+Greece,0,1,0,0,0
+Guatemala,0,1,0,0,0
+Hungary,0,1,0,0,0
+Iceland,0,1,0,0,0
+Kazakhstan,0,1,0,0,0
+North Korea,0,1,0,0,0
+Malaysia,0,1,0,0,0
+Monaco,0,1,0,0,0
+Mongolia,0,1,0,0,0
+Pakistan,0,1,0,0,0
+Papua New Guinea,0,1,0,0,0
+Portugal,0,1,0,0,0
+Romania,0,1,0,0,0
+San Marino,0,1,0,0,0
+Slovakia,0,1,0,0,0
+Switzerland,0,1,0,0,0
+Turkey,0,1,0,0,0
+Uruguay,0,1,0,0,0
+Venezuela,0,1,0,0,0

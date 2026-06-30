@@ -1,0 +1,716 @@
+{
+  "meta": {
+    "n_nodes": 46,
+    "n_edges": 62,
+    "strong_edge_percentile": 95,
+    "strong_edge_cutoff": 0.450565
+  },
+  "theme_colors": {
+    "Environmental Protection": "#2E7D32",
+    "Marine & Wildlife": "#0277BD",
+    "Operations & Safety": "#F57C00",
+    "Governance & Legal": "#6A1B9A",
+    "Science & Research": "#C62828",
+    "Tourism & Human Activity": "#D84315",
+    "Infrastructure & Planning": "#5D4037",
+    "Resource Extraction": "#00838F"
+  },
+  "nodes": [
+    {
+      "id": "Area Protection and Management Plans General",
+      "theme": "Infrastructure & Planning",
+      "color": "#5D4037",
+      "weighted_degree": 2.0,
+      "degree": 4
+    },
+    {
+      "id": "Biological Prospecting",
+      "theme": "Resource Extraction",
+      "color": "#00838F",
+      "weighted_degree": 1.285714,
+      "degree": 3
+    },
+    {
+      "id": "CEP Strategy Discussions",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 0.428571,
+      "degree": 1
+    },
+    {
+      "id": "Climate Change",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 0.920588,
+      "degree": 2
+    },
+    {
+      "id": "Comprehensive Environmental Evaluations",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 1.384615,
+      "degree": 3
+    },
+    {
+      "id": "Cooperation with Other Organisations",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 1.011111,
+      "degree": 2
+    },
+    {
+      "id": "Drilling",
+      "theme": "Resource Extraction",
+      "color": "#00838F",
+      "weighted_degree": 0.428571,
+      "degree": 1
+    },
+    {
+      "id": "Educational issues",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 2.143921,
+      "degree": 4
+    },
+    {
+      "id": "Emergency report and contingency planning",
+      "theme": "Operations & Safety",
+      "color": "#F57C00",
+      "weighted_degree": 0.5,
+      "degree": 1
+    },
+    {
+      "id": "Environmental Domains Analysis",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 1.028571,
+      "degree": 2
+    },
+    {
+      "id": "Environmental Impact Assessment EIA Other EIA Matters",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 3.503963,
+      "degree": 7
+    },
+    {
+      "id": "Environmental Monitoring and Reporting",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 0.45,
+      "degree": 1
+    },
+    {
+      "id": "Environmental Protection General",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 3.076464,
+      "degree": 6
+    },
+    {
+      "id": "Exchange of Information",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 3.949991,
+      "degree": 8
+    },
+    {
+      "id": "Fauna and Flora_General",
+      "theme": "Marine & Wildlife",
+      "color": "#0277BD",
+      "weighted_degree": 1.403922,
+      "degree": 3
+    },
+    {
+      "id": "Historic Sites and Monuments",
+      "theme": "Infrastructure & Planning",
+      "color": "#5D4037",
+      "weighted_degree": 0.961538,
+      "degree": 2
+    },
+    {
+      "id": "Human Footprint and wilderness values",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 2.193939,
+      "degree": 5
+    },
+    {
+      "id": "Inspections",
+      "theme": "Operations & Safety",
+      "color": "#F57C00",
+      "weighted_degree": 3.000978,
+      "degree": 6
+    },
+    {
+      "id": "Institutional and legal matters",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 1.375566,
+      "degree": 3
+    },
+    {
+      "id": "International Polar Year",
+      "theme": "Science & Research",
+      "color": "#C62828",
+      "weighted_degree": 0.428571,
+      "degree": 1
+    },
+    {
+      "id": "Liability",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 1.461481,
+      "degree": 3
+    },
+    {
+      "id": "Management Plans",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 1.6,
+      "degree": 3
+    },
+    {
+      "id": "Marine Acoustics",
+      "theme": "Science & Research",
+      "color": "#C62828",
+      "weighted_degree": 1.142857,
+      "degree": 3
+    },
+    {
+      "id": "Marine Protected Areas",
+      "theme": "Marine & Wildlife",
+      "color": "#0277BD",
+      "weighted_degree": 1.859091,
+      "degree": 4
+    },
+    {
+      "id": "Marine living resources",
+      "theme": "Resource Extraction",
+      "color": "#00838F",
+      "weighted_degree": 1.621212,
+      "degree": 3
+    },
+    {
+      "id": "Mineral resources",
+      "theme": "Resource Extraction",
+      "color": "#00838F",
+      "weighted_degree": 0.666667,
+      "degree": 1
+    },
+    {
+      "id": "Multiyear strategic workplan",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 0.883117,
+      "degree": 2
+    },
+    {
+      "id": "Nonnative Species and Quarantine",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 1.0,
+      "degree": 2
+    },
+    {
+      "id": "Opening statements",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 2.903226,
+      "degree": 6
+    },
+    {
+      "id": "Operation of the Antarctic Treaty system General",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 3.026906,
+      "degree": 6
+    },
+    {
+      "id": "Operation of the Antarctic Treaty system Reports",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 0.611111,
+      "degree": 1
+    },
+    {
+      "id": "Operation of the Antarctic Treaty system The Secretariat",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 0.47619,
+      "degree": 1
+    },
+    {
+      "id": "Operation of the CEP",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 1.0,
+      "degree": 2
+    },
+    {
+      "id": "Operational issues",
+      "theme": "Operations & Safety",
+      "color": "#F57C00",
+      "weighted_degree": 0.982143,
+      "degree": 2
+    },
+    {
+      "id": "Other",
+      "theme": "Governance & Legal",
+      "color": "#6A1B9A",
+      "weighted_degree": 1.889744,
+      "degree": 4
+    },
+    {
+      "id": "Prevention of marine pollution",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 0.363636,
+      "degree": 1
+    },
+    {
+      "id": "Repair and remediation of environmental damage",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 0.954545,
+      "degree": 2
+    },
+    {
+      "id": "Safety and Operations in Antarctica",
+      "theme": "Operations & Safety",
+      "color": "#F57C00",
+      "weighted_degree": 0.529412,
+      "degree": 1
+    },
+    {
+      "id": "Science issues",
+      "theme": "Science & Research",
+      "color": "#C62828",
+      "weighted_degree": 1.653846,
+      "degree": 3
+    },
+    {
+      "id": "Search and Rescue",
+      "theme": "Operations & Safety",
+      "color": "#F57C00",
+      "weighted_degree": 0.454545,
+      "degree": 1
+    },
+    {
+      "id": "Site Guidelines for Visitors",
+      "theme": "Tourism & Human Activity",
+      "color": "#D84315",
+      "weighted_degree": 0.555556,
+      "degree": 1
+    },
+    {
+      "id": "Specially Protected Species",
+      "theme": "Marine & Wildlife",
+      "color": "#0277BD",
+      "weighted_degree": 0.384615,
+      "degree": 1
+    },
+    {
+      "id": "State of the Antarctic Environment Report SAER",
+      "theme": "Environmental Protection",
+      "color": "#2E7D32",
+      "weighted_degree": 1.171429,
+      "degree": 2
+    },
+    {
+      "id": "Sub glacial Lakes",
+      "theme": "Science & Research",
+      "color": "#C62828",
+      "weighted_degree": 0.285714,
+      "degree": 1
+    },
+    {
+      "id": "Tourism and NG_Activities",
+      "theme": "Tourism & Human Activity",
+      "color": "#D84315",
+      "weighted_degree": 1.010101,
+      "degree": 2
+    },
+    {
+      "id": "Waste management and disposal",
+      "theme": "Operations & Safety",
+      "color": "#F57C00",
+      "weighted_degree": 0.461538,
+      "degree": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "Area Protection and Management Plans General",
+      "target": "Human Footprint and wilderness values",
+      "weight": 0.466667,
+      "kind": "mst"
+    },
+    {
+      "source": "Area Protection and Management Plans General",
+      "target": "Management Plans",
+      "weight": 0.6,
+      "kind": "mst"
+    },
+    {
+      "source": "Area Protection and Management Plans General",
+      "target": "Nonnative Species and Quarantine",
+      "weight": 0.466667,
+      "kind": "mst"
+    },
+    {
+      "source": "Area Protection and Management Plans General",
+      "target": "Other",
+      "weight": 0.466667,
+      "kind": "strong"
+    },
+    {
+      "source": "Biological Prospecting",
+      "target": "CEP Strategy Discussions",
+      "weight": 0.428571,
+      "kind": "mst"
+    },
+    {
+      "source": "Biological Prospecting",
+      "target": "Exchange of Information",
+      "weight": 0.428571,
+      "kind": "mst"
+    },
+    {
+      "source": "Biological Prospecting",
+      "target": "International Polar Year",
+      "weight": 0.428571,
+      "kind": "mst"
+    },
+    {
+      "source": "Climate Change",
+      "target": "Environmental Monitoring and Reporting",
+      "weight": 0.45,
+      "kind": "mst"
+    },
+    {
+      "source": "Climate Change",
+      "target": "Fauna and Flora_General",
+      "weight": 0.470588,
+      "kind": "mst"
+    },
+    {
+      "source": "Comprehensive Environmental Evaluations",
+      "target": "Historic Sites and Monuments",
+      "weight": 0.461538,
+      "kind": "mst"
+    },
+    {
+      "source": "Comprehensive Environmental Evaluations",
+      "target": "Institutional and legal matters",
+      "weight": 0.461538,
+      "kind": "mst"
+    },
+    {
+      "source": "Comprehensive Environmental Evaluations",
+      "target": "Other",
+      "weight": 0.461538,
+      "kind": "mst"
+    },
+    {
+      "source": "Cooperation with Other Organisations",
+      "target": "Fauna and Flora_General",
+      "weight": 0.4,
+      "kind": "mst"
+    },
+    {
+      "source": "Cooperation with Other Organisations",
+      "target": "Operation of the Antarctic Treaty system Reports",
+      "weight": 0.611111,
+      "kind": "mst"
+    },
+    {
+      "source": "Drilling",
+      "target": "Marine Acoustics",
+      "weight": 0.428571,
+      "kind": "mst"
+    },
+    {
+      "source": "Educational issues",
+      "target": "Environmental Impact Assessment EIA Other EIA Matters",
+      "weight": 0.538462,
+      "kind": "mst"
+    },
+    {
+      "source": "Educational issues",
+      "target": "Exchange of Information",
+      "weight": 0.5,
+      "kind": "strong"
+    },
+    {
+      "source": "Educational issues",
+      "target": "Opening statements",
+      "weight": 0.451613,
+      "kind": "strong"
+    },
+    {
+      "source": "Educational issues",
+      "target": "Science issues",
+      "weight": 0.653846,
+      "kind": "mst"
+    },
+    {
+      "source": "Emergency report and contingency planning",
+      "target": "Marine Protected Areas",
+      "weight": 0.5,
+      "kind": "mst"
+    },
+    {
+      "source": "Environmental Domains Analysis",
+      "target": "Marine Acoustics",
+      "weight": 0.428571,
+      "kind": "mst"
+    },
+    {
+      "source": "Environmental Domains Analysis",
+      "target": "State of the Antarctic Environment Report SAER",
+      "weight": 0.6,
+      "kind": "mst"
+    },
+    {
+      "source": "Environmental Impact Assessment EIA Other EIA Matters",
+      "target": "Environmental Protection General",
+      "weight": 0.555556,
+      "kind": "mst"
+    },
+    {
+      "source": "Environmental Impact Assessment EIA Other EIA Matters",
+      "target": "Exchange of Information",
+      "weight": 0.5,
+      "kind": "strong"
+    },
+    {
+      "source": "Environmental Impact Assessment EIA Other EIA Matters",
+      "target": "Opening statements",
+      "weight": 0.451613,
+      "kind": "strong"
+    },
+    {
+      "source": "Environmental Impact Assessment EIA Other EIA Matters",
+      "target": "Operation of the Antarctic Treaty system General",
+      "weight": 0.48,
+      "kind": "strong"
+    },
+    {
+      "source": "Environmental Impact Assessment EIA Other EIA Matters",
+      "target": "Operational issues",
+      "weight": 0.458333,
+      "kind": "strong"
+    },
+    {
+      "source": "Environmental Impact Assessment EIA Other EIA Matters",
+      "target": "Science issues",
+      "weight": 0.52,
+      "kind": "strong"
+    },
+    {
+      "source": "Environmental Protection General",
+      "target": "Exchange of Information",
+      "weight": 0.481481,
+      "kind": "strong"
+    },
+    {
+      "source": "Environmental Protection General",
+      "target": "Inspections",
+      "weight": 0.555556,
+      "kind": "mst"
+    },
+    {
+      "source": "Environmental Protection General",
+      "target": "Liability",
+      "weight": 0.481481,
+      "kind": "strong"
+    },
+    {
+      "source": "Environmental Protection General",
+      "target": "Opening statements",
+      "weight": 0.483871,
+      "kind": "strong"
+    },
+    {
+      "source": "Environmental Protection General",
+      "target": "Operation of the Antarctic Treaty system General",
+      "weight": 0.518519,
+      "kind": "strong"
+    },
+    {
+      "source": "Exchange of Information",
+      "target": "Inspections",
+      "weight": 0.52381,
+      "kind": "mst"
+    },
+    {
+      "source": "Exchange of Information",
+      "target": "Opening statements",
+      "weight": 0.516129,
+      "kind": "strong"
+    },
+    {
+      "source": "Exchange of Information",
+      "target": "Operation of the Antarctic Treaty system The Secretariat",
+      "weight": 0.47619,
+      "kind": "mst"
+    },
+    {
+      "source": "Exchange of Information",
+      "target": "Operational issues",
+      "weight": 0.52381,
+      "kind": "mst"
+    },
+    {
+      "source": "Fauna and Flora_General",
+      "target": "Nonnative Species and Quarantine",
+      "weight": 0.533333,
+      "kind": "mst"
+    },
+    {
+      "source": "Historic Sites and Monuments",
+      "target": "Marine living resources",
+      "weight": 0.5,
+      "kind": "mst"
+    },
+    {
+      "source": "Human Footprint and wilderness values",
+      "target": "Marine Protected Areas",
+      "weight": 0.454545,
+      "kind": "mst"
+    },
+    {
+      "source": "Human Footprint and wilderness values",
+      "target": "Marine living resources",
+      "weight": 0.454545,
+      "kind": "strong"
+    },
+    {
+      "source": "Human Footprint and wilderness values",
+      "target": "Prevention of marine pollution",
+      "weight": 0.363636,
+      "kind": "mst"
+    },
+    {
+      "source": "Human Footprint and wilderness values",
+      "target": "Search and Rescue",
+      "weight": 0.454545,
+      "kind": "mst"
+    },
+    {
+      "source": "Inspections",
+      "target": "Liability",
+      "weight": 0.5,
+      "kind": "mst"
+    },
+    {
+      "source": "Inspections",
+      "target": "Marine Protected Areas",
+      "weight": 0.45,
+      "kind": "mst"
+    },
+    {
+      "source": "Inspections",
+      "target": "Opening statements",
+      "weight": 0.451613,
+      "kind": "strong"
+    },
+    {
+      "source": "Inspections",
+      "target": "Operation of the Antarctic Treaty system General",
+      "weight": 0.52,
+      "kind": "mst"
+    },
+    {
+      "source": "Institutional and legal matters",
+      "target": "Safety and Operations in Antarctica",
+      "weight": 0.529412,
+      "kind": "mst"
+    },
+    {
+      "source": "Institutional and legal matters",
+      "target": "Specially Protected Species",
+      "weight": 0.384615,
+      "kind": "mst"
+    },
+    {
+      "source": "Liability",
+      "target": "Operation of the Antarctic Treaty system General",
+      "weight": 0.48,
+      "kind": "strong"
+    },
+    {
+      "source": "Management Plans",
+      "target": "Other",
+      "weight": 0.5,
+      "kind": "mst"
+    },
+    {
+      "source": "Management Plans",
+      "target": "Repair and remediation of environmental damage",
+      "weight": 0.5,
+      "kind": "mst"
+    },
+    {
+      "source": "Marine Acoustics",
+      "target": "Sub glacial Lakes",
+      "weight": 0.285714,
+      "kind": "mst"
+    },
+    {
+      "source": "Marine Protected Areas",
+      "target": "Tourism and NG_Activities",
+      "weight": 0.454545,
+      "kind": "mst"
+    },
+    {
+      "source": "Marine living resources",
+      "target": "Mineral resources",
+      "weight": 0.666667,
+      "kind": "mst"
+    },
+    {
+      "source": "Multiyear strategic workplan",
+      "target": "Operation of the CEP",
+      "weight": 0.428571,
+      "kind": "mst"
+    },
+    {
+      "source": "Multiyear strategic workplan",
+      "target": "Repair and remediation of environmental damage",
+      "weight": 0.454545,
+      "kind": "mst"
+    },
+    {
+      "source": "Opening statements",
+      "target": "Operation of the Antarctic Treaty system General",
+      "weight": 0.548387,
+      "kind": "mst"
+    },
+    {
+      "source": "Operation of the Antarctic Treaty system General",
+      "target": "Science issues",
+      "weight": 0.48,
+      "kind": "strong"
+    },
+    {
+      "source": "Operation of the CEP",
+      "target": "State of the Antarctic Environment Report SAER",
+      "weight": 0.571429,
+      "kind": "mst"
+    },
+    {
+      "source": "Other",
+      "target": "Waste management and disposal",
+      "weight": 0.461538,
+      "kind": "mst"
+    },
+    {
+      "source": "Site Guidelines for Visitors",
+      "target": "Tourism and NG_Activities",
+      "weight": 0.555556,
+      "kind": "mst"
+    }
+  ]
+}

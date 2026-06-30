@@ -1,0 +1,293 @@
+{
+  "saved_at": "2026-02-11T05:46:02.210Z",
+  "charge": -20,
+  "distance": 68,
+  "layout_mode": "network",
+  "focus_node": "Opening statements",
+  "edge_repel_strength": 0.3,
+  "edge_repel_radius": 320,
+  "edge_scale": 2.8,
+  "node_scale": 2.2,
+  "uniform_node_size": true,
+  "pin_dragged": true,
+  "box_select": true,
+  "selected_ids": [],
+  "nodes": [
+    {
+      "id": "Area Protection and Management Plans General",
+      "x": 1087.355,
+      "y": 627.634,
+      "pinned": false
+    },
+    {
+      "id": "Biological Prospecting",
+      "x": 1190.424,
+      "y": 171.376,
+      "pinned": false
+    },
+    {
+      "id": "CEP Strategy Discussions",
+      "x": 1293.15,
+      "y": 169.557,
+      "pinned": true
+    },
+    {
+      "id": "Climate Change",
+      "x": 846.236,
+      "y": 587.387,
+      "pinned": false
+    },
+    {
+      "id": "Comprehensive Environmental Evaluations",
+      "x": 1211.813,
+      "y": 760.734,
+      "pinned": false
+    },
+    {
+      "id": "Cooperation with Other Organisations",
+      "x": 844.603,
+      "y": 649.62,
+      "pinned": false
+    },
+    {
+      "id": "Drilling",
+      "x": 625.386,
+      "y": 1053.484,
+      "pinned": false
+    },
+    {
+      "id": "Educational issues",
+      "x": 1030.029,
+      "y": 139.969,
+      "pinned": false
+    },
+    {
+      "id": "Emergency report and contingency planning",
+      "x": 1183.099,
+      "y": 402.709,
+      "pinned": true
+    },
+    {
+      "id": "Environmental Domains Analysis",
+      "x": 763.449,
+      "y": 1014.492,
+      "pinned": false
+    },
+    {
+      "id": "Environmental Impact Assessment EIA Other EIA Matters",
+      "x": 981.67,
+      "y": 179.982,
+      "pinned": false
+    },
+    {
+      "id": "Environmental Monitoring and Reporting",
+      "x": 779.647,
+      "y": 561.558,
+      "pinned": false
+    },
+    {
+      "id": "Environmental Protection General",
+      "x": 1030.16,
+      "y": 251.311,
+      "pinned": false
+    },
+    {
+      "id": "Exchange of Information",
+      "x": 1095.087,
+      "y": 208.463,
+      "pinned": false
+    },
+    {
+      "id": "Fauna and Flora_General",
+      "x": 912.769,
+      "y": 619.581,
+      "pinned": false
+    },
+    {
+      "id": "Historic Sites and Monuments",
+      "x": 1226.199,
+      "y": 680.923,
+      "pinned": false
+    },
+    {
+      "id": "Human Footprint and wilderness values",
+      "x": 1127.948,
+      "y": 532.345,
+      "pinned": false
+    },
+    {
+      "id": "Inspections",
+      "x": 1064.103,
+      "y": 316.855,
+      "pinned": false
+    },
+    {
+      "id": "Institutional and legal matters",
+      "x": 1264.13,
+      "y": 824.804,
+      "pinned": false
+    },
+    {
+      "id": "International Polar Year",
+      "x": 1267.896,
+      "y": 116.315,
+      "pinned": true
+    },
+    {
+      "id": "Liability",
+      "x": 1077.121,
+      "y": 268.559,
+      "pinned": false
+    },
+    {
+      "id": "Management Plans",
+      "x": 1060.514,
+      "y": 713.258,
+      "pinned": false
+    },
+    {
+      "id": "Marine Acoustics",
+      "x": 696.129,
+      "y": 1050.034,
+      "pinned": false
+    },
+    {
+      "id": "Marine Protected Areas",
+      "x": 1111.536,
+      "y": 424.722,
+      "pinned": false
+    },
+    {
+      "id": "Marine living resources",
+      "x": 1203.004,
+      "y": 599.827,
+      "pinned": false
+    },
+    {
+      "id": "Mineral resources",
+      "x": 1275.054,
+      "y": 612.188,
+      "pinned": false
+    },
+    {
+      "id": "Multiyear strategic workplan",
+      "x": 954.256,
+      "y": 860.271,
+      "pinned": false
+    },
+    {
+      "id": "Nonnative Species and Quarantine",
+      "x": 999.004,
+      "y": 623.999,
+      "pinned": false
+    },
+    {
+      "id": "Opening statements",
+      "x": 996.495,
+      "y": 232.276,
+      "pinned": false
+    },
+    {
+      "id": "Operation of the Antarctic Treaty system General",
+      "x": 979.756,
+      "y": 292.661,
+      "pinned": false
+    },
+    {
+      "id": "Operation of the Antarctic Treaty system Reports",
+      "x": 779.792,
+      "y": 680.374,
+      "pinned": false
+    },
+    {
+      "id": "Operation of the Antarctic Treaty system The Secretariat",
+      "x": 1190.325,
+      "y": 232.898,
+      "pinned": true
+    },
+    {
+      "id": "Operation of the CEP",
+      "x": 895.278,
+      "y": 920.961,
+      "pinned": false
+    },
+    {
+      "id": "Operational issues",
+      "x": 1060.195,
+      "y": 142.085,
+      "pinned": false
+    },
+    {
+      "id": "Other",
+      "x": 1134.538,
+      "y": 722.604,
+      "pinned": false
+    },
+    {
+      "id": "Prevention of marine pollution",
+      "x": 1200.905,
+      "y": 514.65,
+      "pinned": true
+    },
+    {
+      "id": "Repair and remediation of environmental damage",
+      "x": 1008.93,
+      "y": 789.332,
+      "pinned": false
+    },
+    {
+      "id": "Safety and Operations in Antarctica",
+      "x": 1318.834,
+      "y": 872.482,
+      "pinned": false
+    },
+    {
+      "id": "Science issues",
+      "x": 1017.051,
+      "y": 210.097,
+      "pinned": false
+    },
+    {
+      "id": "Search and Rescue",
+      "x": 1205.797,
+      "y": 554.21,
+      "pinned": true
+    },
+    {
+      "id": "Site Guidelines for Visitors",
+      "x": 1261.028,
+      "y": 461.073,
+      "pinned": true
+    },
+    {
+      "id": "Specially Protected Species",
+      "x": 1291.759,
+      "y": 891.927,
+      "pinned": false
+    },
+    {
+      "id": "State of the Antarctic Environment Report SAER",
+      "x": 831.19,
+      "y": 971.703,
+      "pinned": false
+    },
+    {
+      "id": "Sub glacial Lakes",
+      "x": 640.462,
+      "y": 1093.796,
+      "pinned": false
+    },
+    {
+      "id": "Tourism and NG_Activities",
+      "x": 1188.341,
+      "y": 452.96,
+      "pinned": true
+    },
+    {
+      "id": "Waste management and disposal",
+      "x": 1143.542,
+      "y": 793.941,
+      "pinned": false
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+:root {
+  --bg: #f8f9fb;
+  --panel: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --line: #d1d5db;
+  --accent: #0f766e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.toolbar .title {
+  font-weight: 700;
+}
+
+.toolbar button {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: var(--panel);
+  cursor: pointer;
+}
+
+.status {
+  min-width: 220px;
+  font-size: 12px;
+  text-align: right;
+  color: var(--muted);
+}
+
+.value-input {
+  width: 62px;
+  padding: 2px 4px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--panel);
+}
+
+.value-input::-webkit-outer-spin-button,
+.value-input::-webkit-inner-spin-button {
+  margin: 0;
+}
+
+.value-badge {
+  min-width: 42px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 12px;
+  padding: 12px;
+  height: calc(100vh - 58px);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.graph-panel {
+  position: relative;
+}
+
+.graph-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("./assets/antarctica_contour.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 68% auto;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+#chart {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.side-panel {
+  padding: 12px;
+  overflow: auto;
+}
+
+.side-panel h3 {
+  margin: 8px 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+  font-size: 12px;
+}
+
+.settings-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #dce3ea;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f8fbff 0%, #f2f6fb 100%);
+}
+
+.settings-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.settings-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.settings-row:last-child {
+  margin-bottom: 0;
+}
+
+.settings-row label {
+  font-size: 12px;
+  color: #475569;
+}
+
+.settings-controls {
+  display: grid;
+  grid-template-columns: 1fr 68px;
+  gap: 8px;
+  align-items: center;
+}
+
+.settings-controls input[type="range"] {
+  width: 100%;
+}
+
+.settings-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 12px;
+  background: #fff;
+  color: var(--text);
+}
+
+.inline-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.settings-buttons button {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.selection-rect {
+  fill: #0ea5e91f;
+  stroke: #0284c7;
+  stroke-width: 1;
+  stroke-dasharray: 4 2;
+  pointer-events: none;
+}
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid #00000022;
+}
+
+.info {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+}

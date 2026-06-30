@@ -1,0 +1,74 @@
+{
+  "rpa_threshold": 1.0,
+  "min_specialized_topics": 5,
+  "n_states": 36,
+  "n_pairs": 629,
+  "median_overlap_jaccard_rpa": 0.21739130434782608,
+  "median_exclusive_phi_proximity": 0.38083216671578746,
+  "share_complementary": 0.2845786963434022,
+  "share_aligned": 0.21621621621621623,
+  "share_same_regime": 0.39268680445151033,
+  "corr_overlap_vs_exclusive_phi": -0.21001104088242564,
+  "top_complementary_pairs": [
+    {
+      "pair_label": "Canada - Italy",
+      "overlap_jaccard_rpa": 0.16666666666666666,
+      "exclusive_phi_proximity": 0.47087873931623936,
+      "complementarity_score": 0.30421207264957273
+    },
+    {
+      "pair_label": "Belarus - Spain",
+      "overlap_jaccard_rpa": 0.08,
+      "exclusive_phi_proximity": 0.45627497207634515,
+      "complementarity_score": 0.37627497207634514
+    },
+    {
+      "pair_label": "Czechia - Ecuador",
+      "overlap_jaccard_rpa": 0.15,
+      "exclusive_phi_proximity": 0.45314247292332593,
+      "complementarity_score": 0.30314247292332597
+    },
+    {
+      "pair_label": "Ecuador - France",
+      "overlap_jaccard_rpa": 0.10714285714285714,
+      "exclusive_phi_proximity": 0.45072689565336627,
+      "complementarity_score": 0.3435840385105091
+    },
+    {
+      "pair_label": "Chile - Ukraine",
+      "overlap_jaccard_rpa": 0.045454545454545456,
+      "exclusive_phi_proximity": 0.45055147810565765,
+      "complementarity_score": 0.4050969326511122
+    },
+    {
+      "pair_label": "Colombia - Uruguay",
+      "overlap_jaccard_rpa": 0.21052631578947367,
+      "exclusive_phi_proximity": 0.44780564263322886,
+      "complementarity_score": 0.2372793268437552
+    },
+    {
+      "pair_label": "Italy - Ukraine",
+      "overlap_jaccard_rpa": 0.19047619047619047,
+      "exclusive_phi_proximity": 0.4469306825184568,
+      "complementarity_score": 0.25645449204226634
+    },
+    {
+      "pair_label": "Czechia - India",
+      "overlap_jaccard_rpa": 0.21052631578947367,
+      "exclusive_phi_proximity": 0.44579113150914423,
+      "complementarity_score": 0.23526481571967056
+    },
+    {
+      "pair_label": "Ecuador - Ukraine",
+      "overlap_jaccard_rpa": 0.21052631578947367,
+      "exclusive_phi_proximity": 0.4412624285630584,
+      "complementarity_score": 0.23073611277358475
+    },
+    {
+      "pair_label": "Australia - Bulgaria",
+      "overlap_jaccard_rpa": 0.03571428571428571,
+      "exclusive_phi_proximity": 0.4401443565508901,
+      "complementarity_score": 0.4044300708366044
+    }
+  ]
+}
