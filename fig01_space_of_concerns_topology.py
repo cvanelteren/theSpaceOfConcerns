@@ -1195,6 +1195,7 @@ top_nodes = []
 right_nodes = []
 bottom_nodes = []
 left_nodes = []
+r = {k.replace("_", " "): v for k, v in r.items()}
 for node, (x, y) in r.items():
     angle = np.degrees(np.arctan2(y - cy, x - cx)) % 360
     if 45 <= angle < 135:

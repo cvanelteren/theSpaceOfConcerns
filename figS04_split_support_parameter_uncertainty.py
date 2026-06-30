@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import ultraplot as uplt
 
-
 PROJECT_ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = PROJECT_ROOT / "output"
 FIG_DIR = PROJECT_ROOT / "figures"
@@ -50,7 +49,9 @@ def build_figure() -> plt.Figure:
         stage_df = df[df["stage"] == stage].copy()
         y = list(range(len(stage_df), 0, -1))
         color = STAGE_COLORS[stage]
-        term_labels = [TERM_LABELS.get(term, term) for term in stage_df["term"].tolist()]
+        term_labels = [
+            TERM_LABELS.get(term, term) for term in stage_df["term"].tolist()
+        ]
 
         ax.axvline(0.0, color="#999999", lw=1.0, linestyle="--", zorder=1)
         ax.hlines(
@@ -78,15 +79,15 @@ def build_figure() -> plt.Figure:
             grid=True,
         )
 
-    fig.text(
-        0.5,
-        0.02,
-        "Points show MLEs; horizontal lines show approximate 95% Wald intervals from the inverse-Hessian.",
-        ha="center",
-        va="bottom",
-        fontsize=9,
-        color="#333333",
-    )
+    # fig.text(
+    #     0.5,
+    #     0.02,
+    #     "Points show MLEs; horizontal lines show approximate 95% Wald intervals from the inverse-Hessian.",
+    #     ha="center",
+    #     va="bottom",
+    #     fontsize=9,
+    #     color="#333333",
+    # )
     return fig
 
 

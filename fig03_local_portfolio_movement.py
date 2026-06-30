@@ -296,7 +296,7 @@ def _compute_retention_curves(
         km["t_step"] = km["t"]
         curves[allowed_gaps] = {
             "curve": km,
-            "label": f"{allowed_gaps}-gap tolerance",
+            "label": f"{allowed_gaps}",
             "color": color,
         }
 
@@ -375,51 +375,6 @@ def _binned_adoption_curve(df: pd.DataFrame) -> tuple[pd.DataFrame, float]:
     return agg, event_rate
 
 
-def _build_regime_summary_lines(
-    hazard_meta: dict, regime_transition_meta: dict
-) -> list[str]:
-    topic_persistence_rate = float(hazard_meta.get("persistence_rate", np.nan))
-    hazard_time_unit = str(hazard_meta.get("time_unit", "year")).strip().lower()
-    hazard_window_size = int(
-        hazard_meta.get(
-            "window_size",
-            hazard_meta.get("window_years", RETENTION_WINDOW_SIZE),
-        )
-    )
-    regime_source = str(regime_transition_meta.get("_source_path", ""))
-    regime_time_unit = str(regime_transition_meta.get("time_unit", "")).strip().lower()
-    if regime_time_unit not in {"meeting", "year"}:
-        regime_time_unit = "meeting" if "_meeting_" in regime_source else "year"
-    regime_window_size = regime_transition_meta.get(
-        "window_size",
-        regime_transition_meta.get("window_years", np.nan),
-    )
-    same_region_rate = float(regime_transition_meta.get("same_region_rate", np.nan))
-    adjacent_or_same_rate = float(
-        regime_transition_meta.get("adjacent_or_same_rate", np.nan)
-    )
-    far_jump_rate = float(regime_transition_meta.get("far_jump_rate", np.nan))
-
-    lines: list[str] = []
-    if np.isfinite(topic_persistence_rate):
-        lines.append(
-            f"Topic persistence ({_format_window_unit(hazard_window_size, hazard_time_unit)}): "
-            f"{topic_persistence_rate:.1%}"
-        )
-    if np.isfinite(same_region_rate):
-        regime_label = (
-            _format_window_unit(int(regime_window_size), regime_time_unit)
-            if np.isfinite(regime_window_size)
-            else "windowed"
-        )
-        lines.append(f"Same mode ({regime_label}): {same_region_rate:.1%}")
-    if np.isfinite(adjacent_or_same_rate):
-        lines.append(f"Same/adjacent mode: {adjacent_or_same_rate:.1%}")
-    if np.isfinite(far_jump_rate):
-        lines.append(f"Far 1<->3 jumps: {far_jump_rate:.1%}")
-    return lines
-
-
 def _plot_adoption_panel(
     ax,
     agg: pd.DataFrame,
@@ -457,7 +412,6 @@ def _plot_adoption_panel(
 def _plot_retention_panel(
     ax,
     retention_curves: dict[int, dict],
-    regime_lines: list[str],
     *,
     step_label: str,
 ):
@@ -480,29 +434,17 @@ def _plot_retention_panel(
         title="Adopted topics usually persist after entry",
     )
     ax.legend(
-        title="Allowed consecutive gaps",
-        loc="cr",
+        title="Gap tolerance",
+        loc="ur",
         frameon=False,
-        fontsize=7,
-        titlefontsize=8,
+        fontsize=6.8,
+        titlefontsize=7.1,
         ncols=1,
+        handlelength=1.15,
+        handletextpad=0.35,
+        labelspacing=0.35,
+        borderaxespad=0.2,
     )
-    if regime_lines:
-        ax.text(
-            0.97,
-            0.97,
-            "\n".join(regime_lines),
-            transform=ax.transAxes,
-            va="top",
-            ha="right",
-            fontsize=8,
-            bbox={
-                "facecolor": "white",
-                "edgecolor": "0.7",
-                "alpha": 0.9,
-                "boxstyle": "round,pad=0.25",
-            },
-        )
 
 
 def _plot_transition_matrix_panel(
@@ -611,7 +553,6 @@ def main():
     adoption_df = adoption_df.copy()
     adoption_df["plot_distance"] = raw_distance
     agg, event_rate = _binned_adoption_curve(adoption_df)
-    regime_lines = _build_regime_summary_lines(hazard_meta, regime_transition_meta)
     regime_window_size = regime_transition_meta.get(
         "window_size",
         regime_transition_meta.get("window_years", np.nan),
@@ -636,7 +577,6 @@ def main():
     _plot_retention_panel(
         ax=ax2,
         retention_curves=retention_curves,
-        regime_lines=regime_lines,
         step_label=retention_step_label,
     )
     _plot_transition_matrix_panel(
@@ -683,7 +623,6 @@ def main():
     _plot_retention_panel(
         ax=ax_r,
         retention_curves=retention_curves,
-        regime_lines=regime_lines,
         step_label=retention_step_label,
     )
     _save_panel(fig_r, OUT_RETENTION_PNG, OUT_RETENTION_PDF)
@@ -702,10 +641,6 @@ def main():
     )
     _save_panel(fig_t, OUT_TRANSITION_PNG, OUT_TRANSITION_PDF)
 
-    # uplt.show(block=1)
-
 
 if __name__ == "__main__":
     main()
-
-# %%
