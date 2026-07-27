@@ -2,7 +2,6 @@
 
 \title{Structuring International Governance through the Space of Concerns}
 \definecolor{orcidlogocol}{HTML}{A6CE39}
-\newcommand{\orcid}[1]{\,\href{https://orcid.org/#1}{\textsuperscript{\textcolor{orcidlogocol}{\faOrcid}}}}
 
 \author[*, 1, 2, 3]{Casper van Elteren\orcid{0000-0001-9862-8936}}
 \author[5]{Fiona Lippert\orcid{0000-0003-4174-2230}}
@@ -40,33 +39,6 @@
 \newcommand{\AbstractLettrine}[2]{\initial{#1}\textbf{#2}}
 \makeatother
 % ---------------------------------------------------------------------------
-\usepackage[most]{tcolorbox}
-\newtcolorbox{significancebox}{
-  enhanced,
-  colback=Linen!75!white,
-  colframe=DarkGoldenrod,
-  coltitle=DarkRed,
-  title=Significance,
-  fonttitle=\bfseries\usefont{OT1}{phv}{b}{n},
-  fontupper=\footnotesize,
-  boxrule=0.9pt,
-  arc=2.5mm,
-  left=1.6mm,
-  right=1.6mm,
-  top=1.0mm,
-  bottom=1.0mm,
-  attach boxed title to top left={xshift=2.5mm, yshift=-2mm},
-  boxed title style={
-    colback=black!8,
-    colframe=DarkGoldenrod,
-    boxrule=0.8pt,
-    arc=1.8mm,
-    left=1.2mm,
-    right=1.2mm,
-    top=0.4mm,
-    bottom=0.4mm
-  }
-}
 \newcommand{\significancetext}{%
     \textbf{The Problem} Protecting global commons like Antarctica requires consensus among diverse nations. However, because consensus regimes rely on unanimity, formal voting records do not exist. This makes it difficult to understand how national priorities emerge, how agendas expand, or why certain crucial governance issues stall.
 
@@ -77,6 +49,12 @@
     \vspace{1em}
 
     \textbf{The Impact} As environmental pressures, tourism, and resource interest in Antarctica intensify ahead of the 2048 Madrid Protocol review horizon, reliance on informal consensus risks institutional inertia. The space of concerns provides global commons managers and diplomats with a predictive tool to identify structural bottlenecks, evaluate agenda power, and design mechanisms for more equitable, anticipatory governance.
+}
+
+\sidebar{%
+    \begin{significancebox}
+    \significancetext
+    \end{significancebox}
 }
 
 \makeatletter
@@ -97,29 +75,17 @@
 \makeatother
 \begin{abstract}
 % --- ABSTRACT (single paragraph, ~150 words, no citations) ---
-\AbstractLettrine{C}{onsensus-based regimes govern critical global commons, yet their rule of unanimity makes formal decision-making opaque, concealing how national agendas evolve long before formal policies are enacted. Here, we map 64 years of archival records from the Antarctic Treaty Consultative Meetings (1961–2024) into a quantitative "space of concerns" — an empirical network of issue proximity adapted from economic complexity. We reveal strictly path-dependent agenda expansion, with states introducing new policy concerns only within the immediate neighborhood of their historical expertise and remaining bound by structural persistence. Tenure within the governance regime amplifies state centrality, allowing longer-standing parties to disproportionately shape the trajectory of consensus building. As pressure mounts from Antarctic tourism, bioprospecting, and the upcoming 2048 Madrid Protocol review, our findings show that institutional adaptability is fundamentally constrained by historical path dependencies. Mapping these  topological constraints allows diplomats and scholars to forecast where consensus will stall—and where targeted interventions can open new pathways for protecting planetary commons.}
+\AbstractLettrine{C}{onsensus-based regimes govern critical global commons, yet their rule of unanimity makes formal decision-making opaque, concealing how national agendas evolve long before formal policies are enacted. Here, we map 64 years of archival records from the Antarctic Treaty Consultative Meetings (1961–2024) into a quantitative "space of concerns" — an empirical network of issue proximity. We reveal strictly path-dependent agenda expansion, with states introducing new policy concerns only within the immediate neighborhood of their historical expertise and remaining bound by structural persistence. Institutional experience within the governance regime amplifies state centrality, allowing longer-standing parties to disproportionately shape the trajectory of consensus building. Mounting pressures from Antarctic tourism, bioprospecting, and the upcoming 2048 Madrid Protocol review, our findings show that institutional adaptability is fundamentally constrained by historical path dependencies. Mapping these  topological constraints allows diplomats and scholars to anticipate where consensus will stall—and where targeted interventions can open new pathways for protecting planetary commons.}
 \end{abstract}
 
-\begin{strip}
-\vspace{-0.25em}
-\noindent
-\begin{minipage}[t]{0.65\textwidth}
-\vspace{0pt}
 \section{Introduction}
 Consensus institutions make pre-decisional positioning difficult to observe. When decisions are formally unanimous, the final record registers agreement without showing who shaped the range of issues under discussion, which concerns were connected to recognized procedures, or whose evidence made some problems harder to ignore \cite{Stone2013,Abbott2015,Steinberg2002}. In such settings, much of the consequential positioning occurs before the decision stage through agenda-setting, issue linkage, evidence production, and repeated attention to selected concerns \cite{BachrachBaratz1962,Kingdon1984,JonesBaumgartner2005,Haas1992}. The empirical challenge is therefore not identifying who agreed at the end, but recovering the structure through which issues become visible and actionable in the first place \cite{Drubel2023HiddenContestation}.
 
 The Antarctic Treaty System (ATS) provides a long-running empirical case for studying this problem. Since 1959, the Antarctic Treaty has demilitarized the continent, suspended sovereignty claims, and institutionalized consensus decision-making \cite{AntarcticTreaty1959,BASTreatyExplained,Yao2021,Gould1965}. Antarctica and the Southern Ocean are also integral to the Earth system and constitute an iconic global commons whose rapid environmental change has planetary consequences \cite{Kennicutt2019}. Because decisions cannot be forced by majority vote and much of the visible record is procedural rather than electoral, the Treaty-centered archive is especially well suited to measuring how issues are routed through institutional attention \cite{Joyner1998,Dodds2019,Sampaio2022}. Our object is this full submission arena, not formal decision authority alone. Consultative parties, non-consultative parties, observers, expert bodies, and Secretariat actors all help determine what enters the record, how issues are classified, and which concerns become repeatedly linked before any final consensus outcome.
 
 We use \emph{agenda capacity} to describe an actor's ability to keep issues present in the record, connect them to established institutional procedures, and move into related concerns over time. These practical capabilities are not observed directly, and they should not be read as control over final consensus outcomes. Instead, we infer them from patterned specialization, co-specialization, and movement within the Treaty-centered archive. In this sense, agenda capacity captures issue-space positioning by identifying which concerns actors repeatedly make visible, which adjacent concerns they can plausibly enter, and how their activity connects emerging issues to established institutional pathways. We show that even when final decisions appear unanimous, the prior documentary record contains a structured trace of agenda formation.
-\end{minipage}\hfill
-\begin{minipage}[t]{0.3\textwidth}
-\vspace{0pt}
-\begin{significancebox}
-\significancetext
-\end{significancebox}
-\end{minipage}
-\vspace{-0.2em}
-\end{strip}
+
+\beginarticlecolumns
 
 To recover this structure, we adapt the ``product space'' framework from economic complexity \cite{Hidalgo2007} to international governance. In economic complexity, product-space methods infer latent structure from repeated co-occurrence patterns across high-dimensional activity profiles. The relatedness logic behind these methods---actors diversify preferentially into activities close to what they already do---has been documented across products, technologies, industries, and research fields \cite{Hidalgo2018,Neffke2011,Boschma2017,Guevara2016}; we ask whether it extends to political attention in a formally equal consensus institution. Where large-scale agenda-setting research has measured how much attention issues receive and how abruptly priorities shift \cite{BaumgartnerJones1993,JonesBaumgartner2005,GreenPedersenWalgrave2014}, our relational object asks which concerns are held together, by whom, and where actors can credibly move next. We apply the same logic to Treaty-centered issue activity. Each actor leaves a specialized topic profile in the Antarctic Treaty Consultative Meeting (ATCM) archive, and topics are close when the same actors repeatedly specialize in both. By calculating \emph{Revealed Policy Advantage} (RPA)---a governance adaptation of revealed comparative advantage---we reconstruct what we term the \emph{space of concerns}. This is a latent network of institution-assigned issues where proximity reflects shared actor specialization rather than semantic text similarity. If the same actors repeatedly deploy disproportionate effort on two otherwise distinct topics, those topics are strongly linked in the resulting topology of institutional attention.
 
