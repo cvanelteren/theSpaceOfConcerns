@@ -12,7 +12,7 @@
 %
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{fun_article}[A fun article class]
-\LoadClass[a4paper, 9pt, twocolumn]{article}
+\LoadClass[a4paper, 9pt]{article}
 \usepackage[utf8]{inputenc}
 % \usepackage[standard]{ntheorem}
 % \usepackage{amsthm}   % Or load amsthm for compatibility
@@ -89,6 +89,87 @@
 
 \PassOptionsToPackage{svgnames}{xcolor}
 \usepackage{awesomebox}
+
+% ---- Packages moved from document preamble ----
+\usepackage{xcolor}
+\usepackage{flafter}
+\usepackage[most]{tcolorbox}
+\usetikzlibrary{arrows.meta,calc,tikzmark}
+
+% ---- Project colour palette ----
+\definecolor{DarkRed}{HTML}{8B0000}
+\definecolor{DarkGoldenrod}{HTML}{B8860B}
+\definecolor{Linen}{HTML}{FAF0E6}
+\definecolor{effortcolor}{HTML}{B57F00}
+\definecolor{congruencecolor}{HTML}{1B8A3B}
+\definecolor{vetocostcolor}{HTML}{B23A2B}
+
+% ---- Significance box ----
+\newtcolorbox{significancebox}{
+    enhanced,
+    colback=Linen!75!white,
+    colframe=DarkGoldenrod,
+    coltitle=DarkRed,
+    title=Significance,
+    fonttitle=\bfseries\usefont{OT1}{phv}{b}{n},
+    fontupper=\footnotesize,
+    boxrule=0.9pt,
+    arc=2.5mm,
+    left=1.6mm,
+    right=1.6mm,
+    top=1.0mm,
+    bottom=1.0mm,
+    attach boxed title to top left={xshift=2.5mm, yshift=-2mm},
+    boxed title style={
+        colback=black!8,
+        colframe=DarkGoldenrod,
+        boxrule=0.8pt,
+        arc=1.8mm,
+        left=1.2mm,
+        right=1.2mm,
+        top=0.4mm,
+        bottom=0.4mm
+    }
+}
+
+% ---- TikZ equation annotation helpers ----
+\newcommand{\eqnmarkbox}[3][black]{%
+    \tikzmark{#2-start}\textcolor{#1}{#3}\tikzmark{#2-end}%
+}
+\newcommand{\annotate}[4][]{%
+    \begin{tikzpicture}[remember picture, overlay, >=Stealth]
+        \coordinate (#3-mid) at ($(pic cs:#3-start)!0.5!(pic cs:#3-end)$);
+        \IfStrEq{#2}{right, above}{%
+            \node[anchor=east, font=\small, align=right, #1] (ann-#3) at ($(#3-mid)+(1.6em,1.35em)$) {#4};
+            \draw[->, thick] (ann-#3.east) to[out=0, in=60] ($(#3-mid)+(0,1.1ex)$);
+        }{}%
+        \IfStrEq{#2}{left, above}{%
+            \node[anchor=east, font=\small, align=right, #1] (ann-#3) at ($(#3-mid)+(-0.9em,1.35em)$) {#4};
+            \draw[->, thick] (ann-#3.east) to[out=0, in=120] ($(#3-mid)+(0,1.1ex)$);
+        }{}%
+        \IfStrEq{#2}{center, above}{%
+            \node[anchor=south, font=\small, align=center, #1] (ann-#3) at ($(#3-mid)+(0,1.35em)$) {#4};
+            \draw[->, thick] (ann-#3.south) to ($(#3-mid)+(0,1.1ex)$);
+        }{}%
+        \IfStrEq{#2}{left, below}{%
+            \node[anchor=east, font=\small, align=right, #1] (ann-#3) at ($(#3-mid)+(-0.9em,-1.25em)$) {#4};
+            \draw[->, thick] (ann-#3.east) to[out=0, in=240] ($(#3-mid)+(0,-0.8ex)$);
+        }{}%
+        \IfStrEq{#2}{right, below}{%
+            \node[anchor=west, font=\small, align=left, #1] (ann-#3) at ($(#3-mid)+(0.9em,-1.25em)$) {#4};
+            \draw[->, thick] (ann-#3.west) to[out=180, in=300] ($(#3-mid)+(0,-0.8ex)$);
+        }{}%
+    \end{tikzpicture}%
+}
+
+% ---- Float tuning ----
+\setcounter{topnumber}{1}
+\setcounter{dbltopnumber}{1}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\dblfloatpagefraction}{0.85}
 \usepackage{cleveref}
 % \usepackage[svgnames]{xcolor} % Enabling colors by their 'svgnames'
 
@@ -160,7 +241,8 @@
 
 \fancypagestyle{firstpage}{ % Page style for the first page with the title
 	\fancyhf{}
-	\renewcommand{\footrulewidth}{0pt} % Suppress footer rule
+	\renewcommand{\footrulewidth}{0.4pt}
+	\rfoot{\footnotesize Page \thepage\ of \pageref{LastPage}}
 }
 
 %----------------------------------------------------------------------------------------
@@ -240,27 +322,64 @@
 \makeatletter
 \RequirePackage{environ}
 \RenewEnviron{abstract}{%
-    \twocolumn[%
-        \maketitle
-        \begin{@twocolumnfalse}%
-            \small \relax \vspace{-9em}%
-            \begin{list}{}{%
-                \setlength{\leftmargin}{5mm}%
-                \setlength{\rightmargin}{\leftmargin}%
-                \setlength{\topmargin}{0mm}%
-            }%
-            \item\relax
-            \lettrineabstract{\BODY}
-            \end{list}%
-        \vspace{0.25em}
-        \end{@twocolumnfalse}%
-    ]%
+    \maketitle
+    \thispagestyle{firstpage}%
+    \small\relax\vspace{-7em}%
+    \begin{list}{}{%
+        \setlength{\leftmargin}{5mm}%
+        \setlength{\rightmargin}{\leftmargin}%
+        \setlength{\topmargin}{0mm}%
+    }%
+    \item\relax
+    \lettrineabstract{\BODY}
+    \end{list}%
+    \vspace{0.75em}%
 }
 \newcommand{\makeabstract}{%
     \begin{abstract}
         \@abstractcontent
     \end{abstract}
 }
+
+% Optional fixed first-page grid. The first section occupies the left
+% column and the sidebar occupies the right; neither column wraps beneath
+% the other. \beginarticlecolumns closes the grid and starts page 2.
+\newif\if@funsidebar
+\@funsidebarfalse
+\newif\if@funfirstcolumnsopen
+\@funfirstcolumnsopenfalse
+\newcommand{\@funsidebarcontent}{}
+\newcommand{\sidebar}[1]{%
+    \gdef\@funsidebarcontent{#1}%
+    \global\@funsidebartrue
+}
+\newlength{\@funleftcol}
+\newlength{\@funrightcol}
+\setlength{\@funleftcol}{0.64\textwidth}
+\setlength{\@funrightcol}{0.31\textwidth}
+\newcommand{\beginarticlecolumns}{%
+    \if@funfirstcolumnsopen
+        \par
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[t]{\@funrightcol}%
+            \vspace{0pt}%
+            \@funsidebarcontent
+        \end{minipage}%
+        \global\@funfirstcolumnsopenfalse
+    \fi
+    \par\clearpage\twocolumn
+}
+\newcommand{\@funstartfirstpagecolumns}{%
+    \if@funsidebar
+        \par\noindent
+        \begin{minipage}[t]{\@funleftcol}%
+            \vspace{0pt}%
+        \global\@funsidebarfalse
+        \global\@funfirstcolumnsopentrue
+    \fi
+}
+\pretocmd{\@sect}{\@funstartfirstpagecolumns}{}{}
 
 % ---------------------------------------------------------------------
 
@@ -364,3 +483,16 @@ This chapter is based on the publication \printbibentry{#1}{author} (\printbiben
 
 \usepackage{sidecap}
 \sidecaptionvpos{figure}{c}
+
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\newcommand{\orcid}[1]{\,\href{https://orcid.org/#1}{\textsuperscript{\textcolor{orcidlogocol}{\faOrcid}}}}
+
+\DeclareFontFamily{U}{stix2bb}{}
+\DeclareFontShape{U}{stix2bb}{m}{n} {<-> stix2-mathbb}{}
+\NewDocumentCommand{\indicator}{}{\text{\usefont{U}{stix2bb}{m}{n}1}}
+
+% \RequirePackage[columnwise]{lineno}
+% \AtBeginDocument{%
+%   \setlength\linenumbersep{4pt}%
+%   \linenumbers
+% }
