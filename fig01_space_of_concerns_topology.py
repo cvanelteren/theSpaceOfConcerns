@@ -1,22 +1,23 @@
 # %%
-"""Graph-only figure: space of concerns fitted to Antarctica silhouette.
+"""Graph-only figure: space of concerns fitted to the Antarctica silhouette.
 
-The expensive part of this figure is not the node layout itself, which is
-already loaded from disk when available, but the side-label assignment and
-connector-routing scaffold. Cache that derived layout so routine reruns only
-recompute it when the underlying geometry changes.
+The silhouette is a real cartopy geoaxis (South Polar Stereographic, Antarctic
+landmass only) rather than a bitmap tracing, and the node layout is snapped to
+points sampled inside that same projected coastline, so map and graph register
+exactly.
+
+The expensive part of the figure is the side-label assignment, not the node
+layout. Cache that derived layout so routine reruns only recompute it when the
+underlying geometry changes.
 """
 
 import json
 import time
-from dataclasses import dataclass
-from heapq import heappop, heappush
 from pathlib import Path
 
 import networkx as nx
 import numpy as np
 import ultraplot as uplt
-from PIL import Image
 from scipy.interpolate import splev, splprep
 from scipy.spatial import ConvexHull
 
@@ -24,25 +25,21 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
 try:
+    from shapely import contains_xy
     from shapely.geometry import LineString, Point, Polygon
+    from shapely.ops import unary_union
 
     HAS_SHAPELY = True
 except Exception:  # pragma: no cover
     HAS_SHAPELY = False
 
-from utils import (
-    compute_product_space,
-    get_rca,
-    load_data,
-    load_flag,
-    load_saved_layout_positions,
-)
+import figstyle
+from utils import compute_product_space, get_rca, load_data, load_flag
 
 USE_CACHED_SIDE_LAYOUT = True
 REFRESH_SIDE_LAYOUT = False
-SIDE_LAYOUT_CACHE_VERSION = 9
+SIDE_LAYOUT_CACHE_VERSION = 10
 SIDE_LAYOUT_CACHE_PATH = Path("assets/cache/fig01_side_layout_cache.json")
-USE_SAVED_NODE_LAYOUT = False
 SAVE_MAIN_SVG = True
 GENERATE_REVEAL_SEQUENCE = False
 DEBUG_PROGRESS = True
@@ -59,6 +56,21 @@ POSTER_TEXT_SCALE = 1.3  # multiply every text size
 POSTER_LINE_SCALE = 1.4  # thicken connector arrows to balance the larger text
 POSTER_FIG_SCALE = 1.4  # enlarge the canvas so dense side columns gain headroom
 POSTER_PNG_DPI = 600  # high enough to stay crisp at large print sizes
+
+# Basemap. central_longitude=0 puts the Antarctic Peninsula in the upper left,
+# which is the orientation the node layout was tuned against. MAP_LAT_MAX keeps
+# every non-Antarctic landmass out of the frame, so nothing can clip in.
+MAP_PROJECTION = ccrs.SouthPolarStereo(central_longitude=0)
+MAP_RESOLUTION = "50m"
+MAP_LAT_MAX = -60.0
+MAP_MARGIN = 0.04  # ocean rim around the coastline bounding box
+MAP_SILHOUETTE_WIDTH = 7.0  # width of the silhouette in figure data units
+MAP_LAND_COLOR = "#e9e9e9"
+MAP_COAST_COLOR = "#9a9a9a"
+
+# Layout orientation applied to the coastline-snapped node positions.
+GRAPH_ROTATION_DEG = 45.0
+GRAPH_SPREAD = 4.0  # >1 pushes the graph past the coast so it dominates the frame
 
 
 def debug_print(message):
@@ -125,71 +137,6 @@ def _scale_linear(values, out_min, out_max):
     if not np.isfinite(lo) or not np.isfinite(hi) or hi <= lo:
         return np.full_like(arr, 0.5 * (out_min + out_max), dtype=float)
     return out_min + (arr - lo) * (out_max - out_min) / (hi - lo)
-
-
-def bridging_centrality(graph, distance="distance"):
-    """Bridging centrality = betweenness * bridging coefficient."""
-    betweenness = nx.betweenness_centrality(
-        graph,
-        weight=distance,
-        normalized=True,
-    )
-    degree = dict(graph.degree())
-    scores = {}
-    for node in graph.nodes():
-        k_node = int(degree.get(node, 0))
-        if k_node <= 0:
-            scores[node] = 0.0
-            continue
-        denom = 0.0
-        for nbr in graph.neighbors(node):
-            k_nbr = int(degree.get(nbr, 0))
-            if k_nbr > 0:
-                denom += 1.0 / float(k_nbr)
-        bridge_coef = (1.0 / float(k_node)) / denom if denom > 0.0 else 0.0
-        scores[node] = float(betweenness.get(node, 0.0)) * bridge_coef
-    return scores
-
-
-def sparsify_full_graph(graph, top_k=6, min_weight=None):
-    """Keep strongest local ties per node, then re-add MST edges for connectivity."""
-    sparse = nx.Graph()
-    sparse.add_nodes_from(graph.nodes(data=True))
-    for node in graph.nodes():
-        neighbors = sorted(
-            graph[node].items(),
-            key=lambda kv: float(kv[1].get("weight", 0.0)),
-            reverse=True,
-        )
-        kept = 0
-        for nbr, data in neighbors:
-            weight = float(data.get("weight", 0.0))
-            if min_weight is not None and weight < float(min_weight):
-                continue
-            sparse.add_edge(node, nbr, **data)
-            kept += 1
-            if kept >= int(top_k):
-                break
-
-    mst_full = nx.maximum_spanning_tree(graph, weight="weight")
-    for u, v, data in mst_full.edges(data=True):
-        if not sparse.has_edge(u, v):
-            sparse.add_edge(u, v, **data)
-    return sparse
-
-
-def detect_topic_communities(graph):
-    try:
-        communities = nx.community.louvain_communities(
-            graph, weight="weight", resolution=1.0, seed=1991
-        )
-    except Exception:  # pragma: no cover
-        communities = nx.community.greedy_modularity_communities(graph, weight="weight")
-    communities = [set(c) for c in communities]
-    communities = sorted(
-        communities, key=lambda c: (-len(c), sorted(c)[0] if c else "")
-    )
-    return communities
 
 
 def _chaikin_closed(coords: np.ndarray, refinements: int = 2):
@@ -335,82 +282,6 @@ def build_cluster_hulls(communities, positions, padding):
     return hulls
 
 
-def _short_theme_name(name: str) -> str:
-    short = {
-        "Environmental Protection": "Environmental",
-        "Marine & Wildlife": "Marine/Wildlife",
-        "Operations & Safety": "Operations",
-        "Governance & Legal": "Governance",
-        "Science & Research": "Science",
-        "Tourism & Human Activity": "Tourism",
-        "Infrastructure & Planning": "Planning",
-        "Resource Extraction": "Resource",
-    }
-    return short.get(name, name)
-
-
-def _theme_semantic_name(name: str) -> str:
-    semantic = {
-        "Environmental Protection": "Stewardship & impact",
-        "Marine & Wildlife": "Marine ecosystems",
-        "Operations & Safety": "Operations & safety",
-        "Governance & Legal": "Governance process",
-        "Science & Research": "Scientific evidence",
-        "Tourism & Human Activity": "Tourism management",
-        "Infrastructure & Planning": "Infrastructure planning",
-        "Resource Extraction": "Resource politics",
-    }
-    return semantic.get(name, _short_theme_name(name))
-
-
-def cluster_theme_counts(nodes, topic_to_theme):
-    counts = {}
-    for node in nodes:
-        theme = topic_to_theme.get(node, "Governance & Legal")
-        counts[theme] = counts.get(theme, 0) + 1
-    return counts
-
-
-def cluster_dominant_theme(nodes, topic_to_theme):
-    counts = cluster_theme_counts(nodes, topic_to_theme)
-    if not counts:
-        return "Governance & Legal"
-    ranked = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
-    return ranked[0][0]
-
-
-def semantic_cluster_label(nodes, topic_to_theme):
-    counts = cluster_theme_counts(nodes, topic_to_theme)
-    if not counts:
-        return "Mixed cluster"
-    ranked = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
-    top_name, top_n = ranked[0]
-    if len(ranked) == 1:
-        return _theme_semantic_name(top_name)
-    second_name, second_n = ranked[1]
-    if second_n / max(top_n, 1) < 0.5:
-        return _theme_semantic_name(top_name)
-    return f"{_theme_semantic_name(top_name)}\n+ {_theme_semantic_name(second_name)}"
-
-
-def longest_leaf_path(tree, weight="distance"):
-    leaves = [n for n, d in tree.degree() if d == 1]
-    if len(leaves) < 2:
-        return list(tree.nodes())
-    best_dist = -np.inf
-    best_path = None
-    for i, u in enumerate(leaves):
-        lengths, paths = nx.single_source_dijkstra(tree, u, weight=weight)
-        for v in leaves[i + 1 :]:
-            dist = lengths.get(v)
-            if dist is None:
-                continue
-            if dist > best_dist:
-                best_dist = float(dist)
-                best_path = paths[v]
-    return list(best_path) if best_path else list(tree.nodes())
-
-
 def normalize_topic_key(name):
     if name is None:
         return ""
@@ -434,7 +305,7 @@ def detect_structural_regions(backbone, full_graph, topic_to_theme):
         dict(
             kind="branch",
             label="Drilling, Monitoring\n& CEP Oversight",
-            color="#1f77b4",
+            color=figstyle.BRANCH_COLORS["drilling"],
             nodes=resolve_nodes(
                 [
                     "Drilling",
@@ -449,7 +320,7 @@ def detect_structural_regions(backbone, full_graph, topic_to_theme):
         dict(
             kind="branch",
             label="Human Impact\n& Marine Stewardship",
-            color="#F57C00",
+            color=figstyle.BRANCH_COLORS["human_impact"],
             nodes=resolve_nodes(
                 [
                     "Tourism and NG Activities",
@@ -467,7 +338,7 @@ def detect_structural_regions(backbone, full_graph, topic_to_theme):
         dict(
             kind="branch",
             label="Environmental\nProtection",
-            color="#2E7D32",
+            color=figstyle.BRANCH_COLORS["environmental"],
             nodes=resolve_nodes(
                 [
                     "Nonnative Species and Quarantine",
@@ -485,7 +356,7 @@ def detect_structural_regions(backbone, full_graph, topic_to_theme):
         dict(
             kind="core",
             label="Procedural core",
-            color="#6A1B9A",
+            color=figstyle.BRANCH_COLORS["core"],
             nodes=resolve_nodes(
                 [
                     "Operational issues",
@@ -712,57 +583,58 @@ def draw_cluster_semantic_labels(ax, hulls, color_by_id, label_by_id, mask_exten
     return artists_by_cluster
 
 
-def tessellate_mask(png_path, stride=6):
-    img = Image.open(png_path).convert("RGBA")
-    arr = np.array(img)
-    # Premultiply RGB by alpha to avoid white halo fringes on transparent export.
-    premult = arr.copy()
-    alpha_frac = premult[:, :, 3:4].astype(np.float32) / 255.0
-    premult[:, :, :3] = np.clip(
-        premult[:, :, :3].astype(np.float32) * alpha_frac, 0.0, 255.0
-    ).astype(np.uint8)
-    img = Image.fromarray(premult, mode="RGBA")
-    arr = premult
-    alpha = arr[:, :, 3]
-    mask = alpha > 10
+def antarctic_landmass(projection, lat_max=MAP_LAT_MAX):
+    """Antarctic land polygons only, projected.
 
-    # Erode one pixel so we are inside the boundary.
-    m = mask.astype(np.uint8)
-    up = np.pad(m[1:, :], ((0, 1), (0, 0)), mode="constant")
-    down = np.pad(m[:-1, :], ((1, 0), (0, 0)), mode="constant")
-    left = np.pad(m[:, 1:], ((0, 0), (0, 1)), mode="constant")
-    right = np.pad(m[:, :-1], ((0, 0), (1, 0)), mode="constant")
-    inner = (m == 1) & (up == 1) & (down == 1) & (left == 1) & (right == 1)
+    Selecting geometries that lie entirely south of ``lat_max`` is the clip:
+    South America never enters the frame because its polygon is never added.
+    """
+    feature = cfeature.NaturalEarthFeature("physical", "land", MAP_RESOLUTION)
+    polygons = []
+    for geom in feature.geometries():
+        if geom.bounds[3] > lat_max:
+            continue
+        projected = projection.project_geometry(geom, ccrs.PlateCarree())
+        if not projected.is_empty:
+            polygons.append(projected)
+    if not polygons:
+        raise RuntimeError("No Antarctic land geometry in Natural Earth data.")
+    return unary_union(polygons).buffer(0)
 
-    ys, xs = np.where(inner)
-    coords = np.vstack([xs, ys]).T
 
-    # Tessellate by subsampling a grid of interior pixels.
-    coords = coords[(coords[:, 0] % stride == 0) & (coords[:, 1] % stride == 0)]
-    if len(coords) == 0:
-        raise ValueError("No interior points found for tessellation.")
+def build_antarctica_basemap(projection=MAP_PROJECTION, n_across=180):
+    """Silhouette plus a tessellation of its interior, in figure data units.
 
-    coords = coords.astype(float)
-    coords[:, 0] = (coords[:, 0] - coords[:, 0].min()) / (
-        coords[:, 0].max() - coords[:, 0].min()
+    Returns the interior sample points, the projected map extent, the data
+    extent the map occupies, and the projected coastline. The two extents are
+    two views of the same rectangle, which is what lets the geoaxis be laid over
+    the graph without drift.
+    """
+    land = antarctic_landmass(projection)
+    x_lo, y_lo, x_hi, y_hi = land.bounds
+    margin_x = MAP_MARGIN * (x_hi - x_lo)
+    margin_y = MAP_MARGIN * (y_hi - y_lo)
+    proj_extent = (x_lo - margin_x, x_hi + margin_x, y_lo - margin_y, y_hi + margin_y)
+
+    width = MAP_SILHOUETTE_WIDTH
+    height = width * (proj_extent[3] - proj_extent[2]) / (proj_extent[1] - proj_extent[0])
+    data_extent = [-width / 2, width / 2, -height / 2, height / 2]
+
+    n_down = max(8, int(round(n_across * (y_hi - y_lo) / (x_hi - x_lo))))
+    grid_x, grid_y = np.meshgrid(
+        np.linspace(x_lo, x_hi, n_across), np.linspace(y_lo, y_hi, n_down)
     )
-    coords[:, 1] = (coords[:, 1].max() - coords[:, 1]) / (
-        coords[:, 1].max() - coords[:, 1].min()
+    inside = contains_xy(land, grid_x, grid_y)
+    if not inside.any():
+        raise RuntimeError("No interior points found for tessellation.")
+
+    tess = np.column_stack(
+        [
+            np.interp(grid_x[inside], proj_extent[:2], data_extent[:2]),
+            np.interp(grid_y[inside], proj_extent[2:], data_extent[2:]),
+        ]
     )
-
-    aspect = arr.shape[0] / arr.shape[1]
-    target_width = 7.0
-    target_height = target_width * aspect
-    coords[:, 0] = (coords[:, 0] - 0.5) * target_width
-    coords[:, 1] = (coords[:, 1] - 0.5) * target_height
-
-    extent = [
-        -target_width / 2,
-        target_width / 2,
-        -target_height / 2,
-        target_height / 2,
-    ]
-    return coords, img, extent
+    return tess, proj_extent, data_extent, land
 
 
 def snap_to_tessellation(pos, tess_points):
@@ -794,93 +666,47 @@ mst, full_graph = build_graphs()
 debug_print(f"Built graphs in {time.perf_counter() - _t0:.2f}s")
 
 _t0 = time.perf_counter()
-debug_print("Loading saved node layout...")
-saved_pos = load_saved_layout_positions(mst)
-debug_print(
-    "Loaded saved node layout in " f"{time.perf_counter() - _t0:.2f}s"
-    if saved_pos is not None
-    else f"No saved node layout found ({time.perf_counter() - _t0:.2f}s)"
-)
-if not USE_SAVED_NODE_LAYOUT:
-    debug_print(
-        "Ignoring saved node layout; using deterministic layout to preserve figure geometry."
+debug_print("Computing deterministic node layout...")
+pos = deterministic_layout(mst)
+debug_print(f"Computed deterministic node layout in {time.perf_counter() - _t0:.2f}s")
+
+_t0 = time.perf_counter()
+debug_print("Building Antarctica silhouette and tessellation from cartopy...")
+tess_points, map_proj_extent, mask_extent, land_geometry = build_antarctica_basemap()
+debug_print(f"Prepared silhouette/tessellation in {time.perf_counter() - _t0:.2f}s")
+
+# Map Kamada-Kawai positions onto the coastline interior, then orient the result:
+# point-reflect so the long backbone runs from the peninsula inward, rotate onto
+# the diagonal, and spread past the coast so the graph -- not the map -- sets the
+# scale of the figure.
+_t0 = time.perf_counter()
+debug_print("Snapping graph layout to Antarctica tessellation...")
+snapped = snap_to_tessellation(pos, tess_points)
+x_min, x_max, y_min, y_max = mask_extent
+cx, cy = (x_min + x_max) / 2, (y_min + y_max) / 2
+theta = np.deg2rad(GRAPH_ROTATION_DEG)
+cos_t, sin_t = np.cos(theta), np.sin(theta)
+
+
+def _orient(point):
+    px = x_min + x_max - float(point[0])
+    py = y_min + y_max - float(point[1])
+    dx, dy = px - cx, py - cy
+    return np.array(
+        [
+            cx + GRAPH_SPREAD * (dx * cos_t - dy * sin_t),
+            cy + GRAPH_SPREAD * (dx * sin_t + dy * cos_t),
+        ]
     )
-    saved_pos = None
-if saved_pos is None:
-    _t0 = time.perf_counter()
-    debug_print("Computing deterministic node layout...")
-    pos = deterministic_layout(mst)
-    debug_print(
-        f"Computed deterministic node layout in {time.perf_counter() - _t0:.2f}s"
-    )
-else:
-    pos = saved_pos
 
-fp = Path("1024px-AntarcticaContour.svg.png")
-# fp = Path("taklsdfj;asdf.png")
-if fp.exists():
-    _t0 = time.perf_counter()
-    debug_print("Loading Antarctica mask and tessellation...")
-    tess_points, mask_img, mask_extent = tessellate_mask(fp)
-    debug_print(f"Prepared mask/tessellation in {time.perf_counter() - _t0:.2f}s")
 
-    # Map Kamada-Kawai positions to tessellated points.
-    _t0 = time.perf_counter()
-    debug_print("Snapping graph layout to Antarctica tessellation...")
-    snapped = snap_to_tessellation(pos, tess_points)
-    x_min, x_max, y_min, y_max = mask_extent
-    snapped = {
-        n: np.array([x_min + x_max - p[0], y_min + y_max - p[1]])
-        for n, p in snapped.items()
-    }
+snapped = {node: _orient(point) for node, point in snapped.items()}
+debug_print(f"Snapped and transformed layout in {time.perf_counter() - _t0:.2f}s")
 
-    # Rotate snapped positions by 45 degrees around the center of the extent.
-    theta = np.deg2rad(45.0)
-    cos_t, sin_t = np.cos(theta), np.sin(theta)
-    cx, cy = (x_min + x_max) / 2, (y_min + y_max) / 2
-    snapped = {
-        n: np.array(
-            [
-                cx + (p[0] - cx) * cos_t - (p[1] - cy) * sin_t,
-                cy + (p[0] - cx) * sin_t + (p[1] - cy) * cos_t,
-            ]
-        )
-        for n, p in snapped.items()
-    }
-
-    # Scale snapped positions to make the graph occupy more of the map.
-    scale = 4
-    snapped = {
-        n: np.array([cx + (p[0] - cx) * scale, cy + (p[1] - cy) * scale])
-        for n, p in snapped.items()
-    }
-    debug_print(f"Snapped and transformed layout in {time.perf_counter() - _t0:.2f}s")
-else:
-    print(f"Warning: mask image not found at {fp}. Falling back to graph-only layout.")
-    mask_img = None
-    snapped = {n: np.array(p, dtype=float) * 4.0 for n, p in pos.items()}
-    coords = np.array(list(snapped.values()))
-    x_min, x_max = float(coords[:, 0].min()), float(coords[:, 0].max())
-    y_min, y_max = float(coords[:, 1].min()), float(coords[:, 1].max())
-    dx = max(x_max - x_min, 1e-6)
-    dy = max(y_max - y_min, 1e-6)
-    mask_extent = [
-        x_min - 0.3 * dx,
-        x_max + 0.3 * dx,
-        y_min - 0.3 * dy,
-        y_max + 0.3 * dy,
-    ]
-
-theme_colors = {
-    "Environmental Protection": "#2E7D32",
-    "Marine & Wildlife": "#0277BD",
-    "Operations & Safety": "#F57C00",
-    "Governance & Legal": "#6A1B9A",
-    "Science & Research": "#C62828",
-    "Tourism & Human Activity": "#D84315",
-    "Infrastructure & Planning": "#5D4037",
-    "Resource Extraction": "#00838F",
-}
+# Sourced from the shared palette rather than declared here: the three mode
+# hues used in Figures 2 and 5 are reserved, and these eight are kept clear of
+# them so a reader does not read a theme in this figure as a mode in the next.
+theme_colors = dict(figstyle.THEME_COLORS)
 
 topic_to_theme = {
     "State of the Antarctic Environment Report SAER": "Environmental Protection",
@@ -934,16 +760,6 @@ node_colors = [
     theme_colors[topic_to_theme.get(node, "Governance & Legal")] for node in mst.nodes()
 ]
 
-all_weights = np.array(
-    [float(d.get("weight", 0.0)) for _, _, d in full_graph.edges(data=True)],
-    dtype=float,
-)
-min_sparse_weight = float(np.percentile(all_weights, 75)) if all_weights.size else None
-sparse_full_graph = sparsify_full_graph(
-    full_graph,
-    top_k=6,
-    min_weight=min_sparse_weight,
-)
 weighted_degree_scores = dict(full_graph.degree(weight="weight"))
 node_sizes = _scale_linear(
     [weighted_degree_scores.get(n, 0.0) for n in mst.nodes()], 190, 600
@@ -999,52 +815,26 @@ semantic_label_artists_by_cluster = draw_cluster_semantic_labels(
     cluster_label_by_id,
     mask_extent=mask_extent,
 )
-offset = 0
-inax = ax.inset((0 - offset, 0 - offset, 1 + offset, 1 + offset), zoom=0)
-
-# Create a proper geoaxis for Antarctica using cartopy
-# positioned as an overlay on the inset area
-try:
-    # Create a GeoAxes with South Polar Stereographic projection
-    geoax = fig.add_axes(
-        inax.get_position(),
-        projection=ccrs.SouthPolarStereo(central_longitude=0),
-        zorder=-2
-    )
-    
-    # Add Antarctic coast and land features using vector data
-    geoax.coastlines(resolution='50m', linewidth=0.4, color='#555555', alpha=0.5)
-    geoax.add_feature(cfeature.LAND, facecolor='#e8e8e8', alpha=0.12, edgecolor='none')
-    geoax.add_feature(cfeature.OCEAN, facecolor='white', alpha=0)
-    
-    # NO gridlines - user specified clean background
-    # geoax.gridlines(draw_labels=False, linewidth=0.3, alpha=0.3, linestyle=':')
-    
-    # Center on south pole and expand extent to give network more space
-    # Set to -90° to -50°S to show more context around Antarctica
-    geoax.set_extent([-180, 180, -90, -50], crs=ccrs.PlateCarree())
-    
-    # Make inset invisible and show geoaxis instead
-    inax.set_visible(False)
-    geoax.set_facecolor("white")
-    geoax.spines['geo'].set_visible(False)
-    debug_print("Rendered Antarctica via cartopy geoaxis (clean, centered, expanded)")
-except Exception as e:
-    # Fallback to original mask display if geoaxis creation fails
-    debug_print(f"Geoaxis rendering failed ({type(e).__name__}): {e}")
-    inax.set_visible(True)
-    if mask_img is not None:
-        inax.imshow(
-            mask_img,
-            extent=mask_extent,
-            alpha=0.18,
-            zorder=-1,
-            interpolation="bilinear",
-        )
-    inax.set_facecolor("none")
-    
-for spine in inax.spines.values():
+# Antarctica background: a real geoaxis filling the plot box, so the silhouette
+# spans the whole frame the way the graph does. ax.inset keeps an axes locator on
+# the parent, so the map follows the graph through tight layout and the poster
+# rescale instead of drifting off it, and the geoaxis keeps its true aspect. Only
+# the Antarctic polygon is drawn, so no other continent can clip into the frame.
+geoax = ax.inset([0, 0, 1, 1], proj=MAP_PROJECTION, zoom=False, zorder=-2)
+geoax.set_extent(map_proj_extent, crs=MAP_PROJECTION)
+geoax.add_geometries(
+    [land_geometry],
+    crs=MAP_PROJECTION,
+    facecolor=MAP_LAND_COLOR,
+    edgecolor=MAP_COAST_COLOR,
+    linewidth=0.4,
+    zorder=0,
+)
+geoax.patch.set_visible(False)
+geoax.format(grid=False, labels=False)
+for spine in geoax.spines.values():
     spine.set_visible(False)
+debug_print("Placed Antarctica geoaxis over the graph extent")
 
 
 def smartwrap(text, width):
@@ -1097,8 +887,11 @@ def draw_grouped_rca_inset(
     col_a = theme_colors[topic_to_theme.get(edge_a, "Governance & Legal")]
     col_b = theme_colors[topic_to_theme.get(edge_b, "Governance & Legal")]
     col_mix = tuple((np.array(to_rgb(col_a)) + np.array(to_rgb(col_b))) / 2.0)
-    # Keep edge semantics fixed for presentation: drilling=blue, marine=red, both=purple.
-    edge_semantic = {"drilling": "#1f77b4", "both": "#7b3294", "marine": "#d62728"}
+    # Take the group colours from the two topics' own themes rather than a fixed
+    # blue/red/purple triple. The anchors at the top of the inset are already
+    # drawn in col_a and col_b, so the groups below now match them, and the
+    # inset inherits the guarantee that no mode hue appears in this figure.
+    edge_semantic = {"drilling": col_a, "both": col_mix, "marine": col_b}
 
     # Topic anchors at the top.
     anc_a = (0.28, 0.94)
@@ -1876,722 +1669,6 @@ def save_cached_side_layout(
     print(f"Saved side layout cache to {SIDE_LAYOUT_CACHE_PATH}.")
 
 
-def draw_chamfered_trace(ax, points, color, lw, alpha, zorder, chamfer):
-    pts = [np.asarray(p, dtype=float) for p in points]
-    if len(pts) < 2:
-        return
-
-    chamfer = float(max(chamfer, 0.0))
-    out_points = [pts[0]]
-
-    for i in range(1, len(pts) - 1):
-        p_prev = pts[i - 1]
-        p = pts[i]
-        p_next = pts[i + 1]
-
-        vin = p - p_prev
-        vout = p_next - p
-        len_in = float(np.hypot(vin[0], vin[1]))
-        len_out = float(np.hypot(vout[0], vout[1]))
-        if len_in < 1e-9 or len_out < 1e-9:
-            out_points.append(p)
-            continue
-
-        same_dir = (
-            abs(vin[0] * vout[1] - vin[1] * vout[0]) < 1e-9
-            and vin[0] * vout[0] + vin[1] * vout[1] > 0
-        )
-        if same_dir:
-            out_points.append(p)
-            continue
-
-        cut = min(chamfer, 0.35 * len_in, 0.35 * len_out)
-        p_before = p - vin / len_in * cut
-        p_after = p + vout / len_out * cut
-        out_points.extend([p_before, p_after])
-
-    out_points.append(pts[-1])
-    xs = [float(p[0]) for p in out_points]
-    ys = [float(p[1]) for p in out_points]
-    ax.plot(
-        xs,
-        ys,
-        color=color,
-        lw=lw,
-        alpha=alpha,
-        zorder=zorder,
-        solid_capstyle="round",
-        solid_joinstyle="round",
-    )
-
-
-def _oct_dir(vec, tol=1e-9):
-    vx = float(vec[0])
-    vy = float(vec[1])
-    sx = 0 if abs(vx) <= tol else (1 if vx > 0 else -1)
-    sy = 0 if abs(vy) <= tol else (1 if vy > 0 else -1)
-    return sx, sy
-
-
-def octilinear_smooth_path(points, step):
-    pts = [np.asarray(p, dtype=float) for p in points]
-    if len(pts) <= 2:
-        return pts
-
-    step = float(max(step, 1e-9))
-    pts = _compress_polyline(pts, tol=1e-9)
-    out = [pts[0]]
-
-    for i in range(1, len(pts) - 1):
-        p_prev = out[-1]
-        p = pts[i]
-        p_next = pts[i + 1]
-
-        vin = p - p_prev
-        vout = p_next - p
-        len_in = float(np.hypot(vin[0], vin[1]))
-        len_out = float(np.hypot(vout[0], vout[1]))
-        if len_in < 1e-9 or len_out < 1e-9:
-            out.append(p)
-            continue
-
-        d1 = _oct_dir(vin)
-        d2 = _oct_dir(vout)
-        if d1 == d2:
-            out.append(p)
-            continue
-
-        # For orthogonal cardinal turns, replace hard 90-degree corner with
-        # two segments meeting at 45 degrees.
-        card1 = (abs(d1[0]) + abs(d1[1])) == 1
-        card2 = (abs(d2[0]) + abs(d2[1])) == 1
-        orth = (d1[0] * d2[0] + d1[1] * d2[1]) == 0
-        if card1 and card2 and orth:
-            cut = min(0.48 * step, 0.45 * len_in, 0.45 * len_out)
-            before = p - np.array([d1[0], d1[1]], dtype=float) * cut
-            after = p + np.array([d2[0], d2[1]], dtype=float) * cut
-            out.extend([before, after])
-            continue
-
-        out.append(p)
-
-    out.append(pts[-1])
-    return _compress_polyline(out, tol=1e-9)
-
-
-def _octilinear_bridge(a, b, step):
-    """Connect two grid-snapped points with cardinal/diagonal octilinear steps."""
-    a = np.asarray(a, dtype=float)
-    b = np.asarray(b, dtype=float)
-    step = float(max(step, 1e-9))
-    dx_steps = int(round((b[0] - a[0]) / step))
-    dy_steps = int(round((b[1] - a[1]) / step))
-    sx = 0 if dx_steps == 0 else (1 if dx_steps > 0 else -1)
-    sy = 0 if dy_steps == 0 else (1 if dy_steps > 0 else -1)
-    nx = abs(dx_steps)
-    ny = abs(dy_steps)
-    n_diag = min(nx, ny)
-    n_x = nx - n_diag
-    n_y = ny - n_diag
-
-    out = [a]
-    p = a.copy()
-    for _ in range(n_diag):
-        p = p + np.array([sx * step, sy * step], dtype=float)
-        out.append(p.copy())
-    for _ in range(n_x):
-        p = p + np.array([sx * step, 0.0], dtype=float)
-        out.append(p.copy())
-    for _ in range(n_y):
-        p = p + np.array([0.0, sy * step], dtype=float)
-        out.append(p.copy())
-
-    if not np.allclose(out[-1], b, atol=1e-8):
-        out.append(np.asarray(b, dtype=float))
-    return out
-
-
-def spline_snap_to_octilinear(points, router, smooth_scale=0.12):
-    """
-    Fit a smooth route, then snap to router grid and re-express as octilinear steps.
-    """
-    pts = [np.asarray(p, dtype=float) for p in points]
-    if router is None or len(pts) < 4:
-        return _compress_polyline(pts, tol=1e-9)
-
-    arr = np.vstack(pts)
-    seg = np.hypot(np.diff(arr[:, 0]), np.diff(arr[:, 1]))
-    if not np.isfinite(seg).all() or float(seg.sum()) <= 1e-9:
-        return _compress_polyline(pts, tol=1e-9)
-
-    u = np.hstack([[0.0], np.cumsum(seg)])
-    u = u / float(u[-1])
-    k = int(min(3, len(pts) - 1))
-    sample_n = int(max(36, len(pts) * 9))
-    try:
-        tck, _ = splprep(
-            [arr[:, 0], arr[:, 1]],
-            u=u,
-            s=float(max(0.0, smooth_scale)) * len(pts),
-            k=k,
-            per=False,
-        )
-        uu = np.linspace(0.0, 1.0, sample_n)
-        x_new, y_new = splev(uu, tck)
-        smooth_pts = [np.array([x, y], dtype=float) for x, y in zip(x_new, y_new)]
-    except Exception:
-        smooth_pts = pts
-
-    snapped = [
-        router.cell_to_world(router.world_to_cell(np.asarray(p, dtype=float)))
-        for p in smooth_pts
-    ]
-    if snapped:
-        snapped[0] = np.asarray(pts[0], dtype=float)
-        snapped[-1] = np.asarray(pts[-1], dtype=float)
-    snapped = _compress_polyline(snapped, tol=1e-9)
-    if len(snapped) < 2:
-        return _compress_polyline(pts, tol=1e-9)
-
-    out = [snapped[0]]
-    for i in range(len(snapped) - 1):
-        bridge = _octilinear_bridge(snapped[i], snapped[i + 1], step=router.step)
-        out.extend(bridge[1:])
-    out = _compress_polyline(out, tol=1e-9)
-    if len(out) < 2:
-        return _compress_polyline(pts, tol=1e-9)
-    return out
-
-
-def _polyline_segments(points):
-    pts = [np.asarray(p, dtype=float) for p in points]
-    return [(pts[i], pts[i + 1]) for i in range(len(pts) - 1)]
-
-
-def _compress_polyline(points, tol=1e-9):
-    pts = [np.asarray(p, dtype=float) for p in points]
-    if len(pts) <= 2:
-        return pts
-    out = [pts[0]]
-    for idx in range(1, len(pts) - 1):
-        a = out[-1]
-        b = pts[idx]
-        c = pts[idx + 1]
-        ab = b - a
-        bc = c - b
-        if float(np.hypot(ab[0], ab[1])) < tol:
-            continue
-        if float(np.hypot(bc[0], bc[1])) < tol:
-            continue
-        cross = abs(float(ab[0] * bc[1] - ab[1] * bc[0]))
-        denom = float(np.hypot(ab[0], ab[1]) + np.hypot(bc[0], bc[1]))
-        if denom <= tol:
-            continue
-        if cross / denom <= tol:
-            continue
-        out.append(b)
-    out.append(pts[-1])
-    return out
-
-
-@dataclass(frozen=True)
-class ConnectorRoutingConfig:
-    grid_step_scale: float = 0.055
-    router_margin_scale: float = 1.55
-    lane_offset_scale: float = 0.36
-    arrow_diag_scale: float = 0.08
-    corner_cut_scale: float = 0.22
-    reservation_scale: float = 0.06
-    corridor_weight: float = 0.38
-    turn_penalty: float = 0.45
-    stem_grid_steps: float = 2.0
-    spline_smooth_scale: float = 0.14
-    start_open_radius_scale: float = 0.14
-    goal_open_radius_scale: float = 0.22
-    allow_diagonal_steps: bool = False
-    apply_spline_snap: bool = False
-    apply_corner_softening: bool = False
-
-
-USE_ASTAR_CONNECTOR_ROUTER = False
-
-
-class GridAStarRouter:
-    """Global obstacle-aware connector routing on a rasterized grid."""
-
-    _DIRS = (
-        (1, 0, 1.0),
-        (-1, 0, 1.0),
-        (0, 1, 1.0),
-        (0, -1, 1.0),
-        (1, 1, np.sqrt(2.0)),
-        (1, -1, np.sqrt(2.0)),
-        (-1, 1, np.sqrt(2.0)),
-        (-1, -1, np.sqrt(2.0)),
-    )
-
-    def __init__(self, bounds, step, turn_penalty=0.24):
-        self.x_min, self.x_max, self.y_min, self.y_max = [float(v) for v in bounds]
-        self.step = float(max(step, 1e-4))
-        self.turn_penalty = float(max(turn_penalty, 0.0))
-        self.nx = int(np.ceil((self.x_max - self.x_min) / self.step)) + 1
-        self.ny = int(np.ceil((self.y_max - self.y_min) / self.step)) + 1
-        self.static_blocked = np.zeros((self.ny, self.nx), dtype=bool)
-        self.reserved_blocked = np.zeros((self.ny, self.nx), dtype=bool)
-
-    def _inside(self, ix, iy):
-        return 0 <= ix < self.nx and 0 <= iy < self.ny
-
-    def _clamp_cell(self, ix, iy):
-        return int(np.clip(ix, 0, self.nx - 1)), int(np.clip(iy, 0, self.ny - 1))
-
-    def world_to_cell(self, point):
-        x, y = float(point[0]), float(point[1])
-        ix = int(round((x - self.x_min) / self.step))
-        iy = int(round((y - self.y_min) / self.step))
-        return self._clamp_cell(ix, iy)
-
-    def cell_to_world(self, cell):
-        ix, iy = int(cell[0]), int(cell[1])
-        return np.array(
-            [self.x_min + ix * self.step, self.y_min + iy * self.step], dtype=float
-        )
-
-    def _mark_disk(self, arr, center_cell, radius_cells):
-        ix0, iy0 = int(center_cell[0]), int(center_cell[1])
-        rr = int(max(0, radius_cells))
-        r2 = rr * rr
-        x_lo = max(0, ix0 - rr)
-        x_hi = min(self.nx - 1, ix0 + rr)
-        y_lo = max(0, iy0 - rr)
-        y_hi = min(self.ny - 1, iy0 + rr)
-        for iy in range(y_lo, y_hi + 1):
-            dy = iy - iy0
-            for ix in range(x_lo, x_hi + 1):
-                dx = ix - ix0
-                if dx * dx + dy * dy <= r2:
-                    arr[iy, ix] = True
-
-    def mark_circle(self, center_xy, radius, target="static"):
-        radius = float(max(radius, 0.0))
-        if radius <= 0.0:
-            return
-        arr = self.static_blocked if target == "static" else self.reserved_blocked
-        cell = self.world_to_cell(center_xy)
-        r_cells = int(np.ceil(radius / self.step))
-        self._mark_disk(arr, cell, r_cells)
-
-    def mark_segment(self, a, b, radius, target="static"):
-        a = np.asarray(a, dtype=float)
-        b = np.asarray(b, dtype=float)
-        radius = float(max(radius, 0.0))
-        arr = self.static_blocked if target == "static" else self.reserved_blocked
-        seg_len = float(np.hypot(*(b - a)))
-        samples = max(2, int(np.ceil(seg_len / max(0.45 * self.step, 1e-6))))
-        r_cells = int(np.ceil(radius / self.step))
-        for t in np.linspace(0.0, 1.0, samples):
-            pt = a + t * (b - a)
-            self._mark_disk(arr, self.world_to_cell(pt), r_cells)
-
-    def reserve_polyline(self, points, radius):
-        for a, b in _polyline_segments(points):
-            self.mark_segment(a, b, radius=radius, target="reserved")
-
-    def _is_blocked(self, ix, iy, open_cells):
-        if not self._inside(ix, iy):
-            return True
-        if open_cells:
-            for cx, cy, rr2 in open_cells:
-                dx = ix - cx
-                dy = iy - cy
-                if dx * dx + dy * dy <= rr2:
-                    return False
-        return bool(self.static_blocked[iy, ix] or self.reserved_blocked[iy, ix])
-
-    def _nearest_free(
-        self, start_cell, open_cells, fallback_cell=None, search_radius=24
-    ):
-        sx, sy = int(start_cell[0]), int(start_cell[1])
-        if not self._is_blocked(sx, sy, open_cells):
-            return sx, sy
-        best = None
-        best_d = np.inf
-        fx, fy = (None, None) if fallback_cell is None else fallback_cell
-        for rr in range(1, int(search_radius) + 1):
-            x_lo = max(0, sx - rr)
-            x_hi = min(self.nx - 1, sx + rr)
-            y_lo = max(0, sy - rr)
-            y_hi = min(self.ny - 1, sy + rr)
-            for iy in range(y_lo, y_hi + 1):
-                for ix in (x_lo, x_hi):
-                    if self._is_blocked(ix, iy, open_cells):
-                        continue
-                    d = (
-                        float(np.hypot(ix - fx, iy - fy))
-                        if fx is not None
-                        else float(np.hypot(ix - sx, iy - sy))
-                    )
-                    if d < best_d:
-                        best_d = d
-                        best = (ix, iy)
-            for ix in range(x_lo + 1, x_hi):
-                for iy in (y_lo, y_hi):
-                    if self._is_blocked(ix, iy, open_cells):
-                        continue
-                    d = (
-                        float(np.hypot(ix - fx, iy - fy))
-                        if fx is not None
-                        else float(np.hypot(ix - sx, iy - sy))
-                    )
-                    if d < best_d:
-                        best_d = d
-                        best = (ix, iy)
-            if best is not None:
-                return best
-        return None
-
-    def route(
-        self,
-        start_xy,
-        goal_xy,
-        prefer_axis=None,
-        corridor_value=None,
-        corridor_weight=0.0,
-        start_open_radius=0.0,
-        goal_open_radius=0.0,
-        snap_endpoints=False,
-        allow_diagonal=True,
-    ):
-        start_cell_raw = self.world_to_cell(start_xy)
-        goal_cell_raw = self.world_to_cell(goal_xy)
-
-        open_cells = []
-        if start_open_radius > 0.0:
-            rr = int(np.ceil(float(start_open_radius) / self.step))
-            open_cells.append((start_cell_raw[0], start_cell_raw[1], rr * rr))
-        if goal_open_radius > 0.0:
-            rr = int(np.ceil(float(goal_open_radius) / self.step))
-            open_cells.append((goal_cell_raw[0], goal_cell_raw[1], rr * rr))
-
-        start_cell = self._nearest_free(
-            start_cell_raw,
-            open_cells=open_cells,
-            fallback_cell=goal_cell_raw,
-        )
-        goal_cell = self._nearest_free(
-            goal_cell_raw,
-            open_cells=open_cells,
-            fallback_cell=start_cell_raw,
-        )
-        if start_cell is None or goal_cell is None:
-            return None
-
-        sx, sy = start_cell
-        gx, gy = goal_cell
-
-        def heuristic(ix, iy):
-            return float(np.hypot(gx - ix, gy - iy))
-
-        start_state = (sx, sy, -1)
-        g_score = {start_state: 0.0}
-        parent = {}
-        open_heap = []
-        heappush(open_heap, (heuristic(sx, sy), 0.0, sx, sy, -1))
-        end_state = None
-        dirs = self._DIRS if bool(allow_diagonal) else self._DIRS[:4]
-
-        while open_heap:
-            _, g_curr, ix, iy, dir_idx = heappop(open_heap)
-            state = (ix, iy, dir_idx)
-            if g_curr > g_score.get(state, np.inf) + 1e-12:
-                continue
-            if ix == gx and iy == gy:
-                end_state = state
-                break
-
-            for ndi, (dx, dy, move_cost) in enumerate(dirs):
-                jx = ix + dx
-                jy = iy + dy
-                if self._is_blocked(jx, jy, open_cells):
-                    continue
-                turn_cost = (
-                    self.turn_penalty if (dir_idx != -1 and ndi != dir_idx) else 0.0
-                )
-                corridor_cost = 0.0
-                if corridor_value is not None and corridor_weight > 0.0:
-                    if prefer_axis == "horizontal":
-                        y = self.y_min + jy * self.step
-                        corridor_cost = (
-                            float(corridor_weight)
-                            * abs(y - float(corridor_value))
-                            / max(self.step, 1e-9)
-                        )
-                    elif prefer_axis == "vertical":
-                        x = self.x_min + jx * self.step
-                        corridor_cost = (
-                            float(corridor_weight)
-                            * abs(x - float(corridor_value))
-                            / max(self.step, 1e-9)
-                        )
-                g_next = float(g_curr + move_cost + turn_cost + corridor_cost)
-                nstate = (jx, jy, ndi)
-                if g_next + 1e-12 < g_score.get(nstate, np.inf):
-                    g_score[nstate] = g_next
-                    parent[nstate] = state
-                    heappush(
-                        open_heap, (g_next + heuristic(jx, jy), g_next, jx, jy, ndi)
-                    )
-
-        if end_state is None:
-            return None
-
-        cells = []
-        state = end_state
-        while True:
-            cells.append((state[0], state[1]))
-            if state == start_state:
-                break
-            state = parent[state]
-        cells.reverse()
-        points = [self.cell_to_world(cell) for cell in cells]
-        if points:
-            if snap_endpoints:
-                points[0] = self.cell_to_world(start_cell)
-                points[-1] = self.cell_to_world(goal_cell)
-            else:
-                points[0] = np.asarray(start_xy, dtype=float)
-                points[-1] = np.asarray(goal_xy, dtype=float)
-        return _compress_polyline(points, tol=1e-8)
-
-
-def _sign(val, fallback=1.0):
-    if abs(float(val)) < 1e-9:
-        return float(fallback)
-    return 1.0 if float(val) >= 0 else -1.0
-
-
-def draw_box_connector(
-    ax,
-    side,
-    text_anchor,
-    node_xy,
-    rect_bounds,
-    pad,
-    color="0.35",
-    route_value=None,
-    approach_extra=0.0,
-    pre_entry_coord=None,
-    router=None,
-    routing_config=None,
-):
-    rect_x_min, rect_x_max, rect_y_min, rect_y_max = rect_bounds
-    x_node, y_node = float(node_xy[0]), float(node_xy[1])
-    x0, y0 = float(text_anchor[0]), float(text_anchor[1])
-
-    if routing_config is None:
-        routing_config = ConnectorRoutingConfig()
-
-    route_color = color
-    route_lw = 0.9
-    route_alpha = 0.8
-    route_z = 0.7
-    edge_offset = float(routing_config.lane_offset_scale) * pad
-    arrow_diag = float(routing_config.arrow_diag_scale) * pad + float(approach_extra)
-    corner_cut = float(routing_config.corner_cut_scale) * pad
-    reserve_radius = float(routing_config.reservation_scale) * pad
-
-    if side == "top":
-        lane = (
-            float(route_value) if route_value is not None else rect_y_max + edge_offset
-        )
-        leave_dir = np.array([0.0, -1.0], dtype=float)
-        pre_axis = (
-            float(pre_entry_coord)
-            if pre_entry_coord is not None
-            else (x_node + _sign(x0 - x_node) * arrow_diag)
-        )
-        s = _sign(x0 - x_node, fallback=1.0)
-        pre_entry = (x_node + s * arrow_diag, y_node + arrow_diag)
-        waypoints = [
-            (x0, y0),
-            (x0, lane),
-            (pre_axis, lane),
-            (pre_axis, pre_entry[1]),
-            pre_entry,
-        ]
-        hints = [
-            ("vertical", x0),
-            ("horizontal", lane),
-            ("vertical", pre_axis),
-            (None, None),
-        ]
-    elif side == "bottom":
-        lane = (
-            float(route_value) if route_value is not None else rect_y_min - edge_offset
-        )
-        leave_dir = np.array([0.0, 1.0], dtype=float)
-        pre_axis = (
-            float(pre_entry_coord)
-            if pre_entry_coord is not None
-            else (x_node + _sign(x0 - x_node) * arrow_diag)
-        )
-        s = _sign(x0 - x_node, fallback=1.0)
-        pre_entry = (x_node + s * arrow_diag, y_node - arrow_diag)
-        waypoints = [
-            (x0, y0),
-            (x0, lane),
-            (pre_axis, lane),
-            (pre_axis, pre_entry[1]),
-            pre_entry,
-        ]
-        hints = [
-            ("vertical", x0),
-            ("horizontal", lane),
-            ("vertical", pre_axis),
-            (None, None),
-        ]
-    elif side == "left":
-        lane = (
-            float(route_value) if route_value is not None else rect_x_min - edge_offset
-        )
-        leave_dir = np.array([1.0, 0.0], dtype=float)
-        pre_axis = (
-            float(pre_entry_coord)
-            if pre_entry_coord is not None
-            else (y_node + _sign(y0 - y_node) * arrow_diag)
-        )
-        s = _sign(y0 - y_node, fallback=1.0)
-        pre_entry = (x_node - arrow_diag, y_node + s * arrow_diag)
-        waypoints = [
-            (x0, y0),
-            (lane, y0),
-            (lane, pre_axis),
-            (pre_entry[0], pre_axis),
-            pre_entry,
-        ]
-        hints = [
-            ("horizontal", y0),
-            ("vertical", lane),
-            ("horizontal", pre_axis),
-            (None, None),
-        ]
-    else:
-        lane = (
-            float(route_value) if route_value is not None else rect_x_max + edge_offset
-        )
-        leave_dir = np.array([-1.0, 0.0], dtype=float)
-        pre_axis = (
-            float(pre_entry_coord)
-            if pre_entry_coord is not None
-            else (y_node + _sign(y0 - y_node) * arrow_diag)
-        )
-        s = _sign(y0 - y_node, fallback=1.0)
-        pre_entry = (x_node + arrow_diag, y_node + s * arrow_diag)
-        waypoints = [
-            (x0, y0),
-            (lane, y0),
-            (lane, pre_axis),
-            (pre_entry[0], pre_axis),
-            pre_entry,
-        ]
-        hints = [
-            ("horizontal", y0),
-            ("vertical", lane),
-            ("horizontal", pre_axis),
-            (None, None),
-        ]
-
-    if router is None:
-        routed = [np.asarray(p, dtype=float) for p in waypoints]
-    else:
-        # Mesh-based routing: snap exits/entries to grid and route globally.
-        grid_step = float(max(router.step, 1e-9))
-        box_anchor = np.asarray([x0, y0], dtype=float)
-        stem_len = float(max(1.0, routing_config.stem_grid_steps)) * grid_step
-        start_exit = box_anchor + leave_dir * stem_len
-        node_xy = np.asarray([x_node, y_node], dtype=float)
-        goal_entry = node_xy - leave_dir * stem_len
-        start_exit = router.cell_to_world(router.world_to_cell(start_exit))
-        goal_entry = router.cell_to_world(router.world_to_cell(goal_entry))
-
-        side_axis = "horizontal" if side in ("left", "right") else "vertical"
-        side_corridor = float(
-            start_exit[1] if side in ("left", "right") else start_exit[0]
-        )
-        mid = router.route(
-            start_exit,
-            goal_entry,
-            prefer_axis=side_axis,
-            corridor_value=side_corridor,
-            corridor_weight=float(max(0.0, routing_config.corridor_weight)),
-            start_open_radius=max(
-                float(routing_config.start_open_radius_scale) * pad,
-                1.2 * grid_step,
-            ),
-            goal_open_radius=max(
-                float(routing_config.goal_open_radius_scale) * pad,
-                1.5 * grid_step,
-            ),
-            snap_endpoints=True,
-            allow_diagonal=bool(routing_config.allow_diagonal_steps),
-        )
-        if mid is None:
-            mid = [
-                np.asarray(start_exit, dtype=float),
-                np.asarray(goal_entry, dtype=float),
-            ]
-        mid = [np.asarray(p, dtype=float) for p in mid]
-        routed = [box_anchor, np.asarray(start_exit, dtype=float)]
-        routed.extend(mid[1:])
-        routed = _compress_polyline(routed, tol=1e-8)
-        if bool(routing_config.apply_spline_snap):
-            routed = spline_snap_to_octilinear(
-                routed,
-                router=router,
-                smooth_scale=float(max(0.0, routing_config.spline_smooth_scale)),
-            )
-        pre_entry = (float(routed[-1][0]), float(routed[-1][1]))
-        router.reserve_polyline(routed, radius=reserve_radius)
-        router.mark_segment(
-            np.asarray(pre_entry, dtype=float),
-            np.asarray([x_node, y_node], dtype=float),
-            radius=0.85 * reserve_radius,
-            target="reserved",
-        )
-
-    routed_plot = routed
-    chamfer_plot = corner_cut
-    if router is not None and bool(routing_config.apply_corner_softening):
-        routed_plot = octilinear_smooth_path(
-            routed,
-            step=float(max(router.step, 1e-9)),
-        )
-        chamfer_plot = 0.0
-    elif router is not None:
-        chamfer_plot = 0.0
-
-    draw_chamfered_trace(
-        ax,
-        routed_plot,
-        route_color,
-        route_lw,
-        route_alpha,
-        route_z,
-        chamfer_plot,
-    )
-    # Keep the final approach as a plain segment (no arrowhead).
-    ax.plot(
-        [float(pre_entry[0]), x_node],
-        [float(pre_entry[1]), y_node],
-        color=route_color,
-        lw=route_lw,
-        alpha=route_alpha,
-        zorder=route_z,
-        solid_capstyle="round",
-    )
-    return _polyline_segments(routed)
-
-
 _rect_bounds = (rect_x_min, rect_x_max, rect_y_min, rect_y_max)
 _t0 = time.perf_counter()
 side_layouts = load_cached_side_layout(
@@ -2663,92 +1740,6 @@ _swap_label_slots(
     "Exchange of Information",
     "Operation of the Antarctic Treaty system General",
 )
-
-
-def estimate_connector_mesh_step(positions, side_layouts, rect_bounds, pad, fallback):
-    rect_x_min, rect_x_max, rect_y_min, rect_y_max = rect_bounds
-    pts = [np.asarray(v, dtype=float) for v in positions.values()]
-
-    def _anchor_for_side(side, pos):
-        if side == "top":
-            return np.array([float(pos), rect_y_max + pad], dtype=float)
-        if side == "bottom":
-            return np.array([float(pos), rect_y_min - pad], dtype=float)
-        if side == "left":
-            return np.array([rect_x_min - pad, float(pos)], dtype=float)
-        return np.array([rect_x_max + pad, float(pos)], dtype=float)
-
-    for side in ("top", "right", "bottom", "left"):
-        payload = side_layouts.get(side, {})
-        for pos in np.asarray(payload.get("label_positions", []), dtype=float):
-            pts.append(_anchor_for_side(side, pos))
-
-    if len(pts) < 3:
-        return float(fallback)
-
-    arr = np.vstack(pts)
-    try:
-        from scipy.spatial import cKDTree
-
-        tree = cKDTree(arr)
-        dists, _ = tree.query(arr, k=2)
-        nn = np.asarray(dists[:, 1], dtype=float)
-    except Exception:
-        diff = arr[:, None, :] - arr[None, :, :]
-        dist = np.sqrt(np.sum(diff * diff, axis=2))
-        np.fill_diagonal(dist, np.inf)
-        nn = np.min(dist, axis=1)
-
-    nn = nn[np.isfinite(nn) & (nn > 1e-8)]
-    if nn.size == 0:
-        return float(fallback)
-    raw = 0.55 * float(np.median(nn))
-    return float(np.clip(raw, 0.030 * pad, 0.160 * pad))
-
-
-graph_edge_segments = []
-for u, v in mst_draw.edges():
-    if u in r and v in r:
-        graph_edge_segments.append(
-            (np.asarray(r[u], dtype=float), np.asarray(r[v], dtype=float))
-        )
-# Keep dashed highlighted edge as an obstacle to prevent label connector overlap.
-if edge_a in r and edge_b in r:
-    graph_edge_segments.append(
-        (np.asarray(r[edge_a], dtype=float), np.asarray(r[edge_b], dtype=float))
-    )
-node_obstacle_points = [np.asarray(r[n], dtype=float) for n in r]
-connector_node_avoid_radius = max(0.28 * pad, 2.1 * marker_radius_data)
-connector_edge_clearance = 0.16 * pad
-routing_cfg = ConnectorRoutingConfig()
-connector_router = None
-if USE_ASTAR_CONNECTOR_ROUTER:
-    mesh_step = estimate_connector_mesh_step(
-        r,
-        side_layouts,
-        (rect_x_min, rect_x_max, rect_y_min, rect_y_max),
-        pad,
-        fallback=routing_cfg.grid_step_scale * pad,
-    )
-    router_bounds = (
-        rect_x_min - routing_cfg.router_margin_scale * pad,
-        rect_x_max + routing_cfg.router_margin_scale * pad,
-        rect_y_min - routing_cfg.router_margin_scale * pad,
-        rect_y_max + routing_cfg.router_margin_scale * pad,
-    )
-    connector_router = GridAStarRouter(
-        router_bounds,
-        step=mesh_step,
-        turn_penalty=routing_cfg.turn_penalty,
-    )
-    for pt in node_obstacle_points:
-        connector_router.mark_circle(
-            pt, radius=connector_node_avoid_radius, target="static"
-        )
-    for a, b in graph_edge_segments:
-        connector_router.mark_segment(
-            a, b, radius=connector_edge_clearance, target="static"
-        )
 
 
 def _label_anchor(side, pos):
@@ -2939,9 +1930,9 @@ if edge_a in snapped and edge_b in snapped:
     drill_xy = snapped.get("Drilling")
     inset_x_target = mx - 0.84 * inset_w
     if drill_xy is not None:
-        inset_y_target = float(drill_xy[1]) - 3.45 * pad
+        inset_y_target = float(drill_xy[1]) - 4.05 * pad
     else:
-        inset_y_target = rect_y_min - 3.45 * pad
+        inset_y_target = rect_y_min - 4.05 * pad
 
     inset_x = float(
         np.clip(
@@ -2953,7 +1944,7 @@ if edge_a in snapped and edge_b in snapped:
     inset_y = float(
         np.clip(
             inset_y_target,
-            rect_y_min - 4.35 * pad,
+            rect_y_min - 4.95 * pad,
             rect_y_max - inset_h - 0.03 * extent_h,
         )
     )

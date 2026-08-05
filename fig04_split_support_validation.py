@@ -710,32 +710,16 @@ def _build_metric_slide(
     return fig
 
 
-def build_figure() -> plt.Figure:
-    summary = _load_summary()
-    process_history = _load_history(PROCESS_HISTORY)
-    process_entry = _load_history(PROCESS_ENTRY)
-    hist_one = process_history[process_history["model"] == "one_stage"].sort_values(
-        "window_end"
-    )
-    hist_two = process_history[process_history["model"] == "two_stage"].sort_values(
-        "window_end"
-    )
-    hist_split = process_history[
-        process_history["model"] == "split_support"
-    ].sort_values("window_end")
+def draw_schematic_panel(
+    ax_a, *, title: str = "Three alternative updates from the same portfolio at $t$",
+    show_note: bool = True,
+) -> None:
+    """Panel A: the three alternative portfolio-update rules.
 
-    years = hist_split["window_end"]
-    observed_breadth = hist_split["mean_active_topics_obs"]
-    observed_popularity = hist_split["mean_topic_popularity_obs"]
-
-    layout = [
-        [1, 1, 1],
-        [2, 3, 4],
-    ]
-    fig, axs = uplt.subplots(layout, share=0, refnum=2, hratios=(1.05, 1.0))
-    ax_a, ax_b, ax_c, ax_d = axs
-    axs.format(abc="[A]", abcloc="ul")
-
+    `title` and `show_note` are parameterised so a caller embedding this
+    panel in a denser figure can shorten the heading and drop the standing
+    note, without changing how the standalone figure renders.
+    """
     # Panel A: portfolio evolution schematic
     ax_a.format(
         xlim=(0, 1),
@@ -747,7 +731,7 @@ def build_figure() -> plt.Figure:
     ax_a.text(
         0.5,
         0.99,
-        "Three alternative updates from the same portfolio at $t$",
+        title,
         ha="center",
         va="top",
         fontsize=12,
@@ -917,15 +901,45 @@ def build_figure() -> plt.Figure:
                 )
                 prev = (final_x0 + final_w, y)
 
-    ax_a.text(
-        0.02,
-        0.03,
-        "Observed actors, budgets $K_{at}$, and the pooled concern space $\\Phi$ are fixed.\nThe three rules differ only in how they update support from $t$ to $t+1$.",
-        fontsize=8.5,
-        ha="left",
-        va="bottom",
-        color="#333333",
+    if show_note:
+        ax_a.text(
+            0.02,
+            0.03,
+            "Observed actors, budgets $K_{at}$, and the pooled concern space $\\Phi$ are fixed.\nThe three rules differ only in how they update support from $t$ to $t+1$.",
+            fontsize=8.5,
+            ha="left",
+            va="bottom",
+            color="#333333",
+        )
+
+
+def build_figure() -> plt.Figure:
+    summary = _load_summary()
+    process_history = _load_history(PROCESS_HISTORY)
+    process_entry = _load_history(PROCESS_ENTRY)
+    hist_one = process_history[process_history["model"] == "one_stage"].sort_values(
+        "window_end"
     )
+    hist_two = process_history[process_history["model"] == "two_stage"].sort_values(
+        "window_end"
+    )
+    hist_split = process_history[
+        process_history["model"] == "split_support"
+    ].sort_values("window_end")
+
+    years = hist_split["window_end"]
+    observed_breadth = hist_split["mean_active_topics_obs"]
+    observed_popularity = hist_split["mean_topic_popularity_obs"]
+
+    layout = [
+        [1, 1, 1],
+        [2, 3, 4],
+    ]
+    fig, axs = uplt.subplots(layout, share=0, refnum=2, hratios=(1.05, 1.0))
+    ax_a, ax_b, ax_c, ax_d = axs
+    axs.format(abc="[A]", abcloc="ul")
+
+    draw_schematic_panel(ax_a)
 
     # Panel B: actor breadth over time
     ax_b.plot(
