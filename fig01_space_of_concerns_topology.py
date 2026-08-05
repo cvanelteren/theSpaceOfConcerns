@@ -20,6 +20,9 @@ from PIL import Image
 from scipy.interpolate import splev, splprep
 from scipy.spatial import ConvexHull
 
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+
 try:
     from shapely.geometry import LineString, Point, Polygon
 
@@ -998,16 +1001,44 @@ semantic_label_artists_by_cluster = draw_cluster_semantic_labels(
 )
 offset = 0
 inax = ax.inset((0 - offset, 0 - offset, 1 + offset, 1 + offset), zoom=0)
-if mask_img is not None:
-    inax.imshow(
-        mask_img,
-        extent=mask_extent,
-        alpha=0.18,
-        zorder=-1,
-        interpolation="bilinear",
+
+# Create a proper geoaxis for Antarctica using cartopy
+# positioned as an overlay on the inset area
+try:
+    # Create a GeoAxes with South Polar Stereographic projection
+    geoax = fig.add_axes(
+        inax.get_position(),
+        projection=ccrs.SouthPolarStereo(),
+        zorder=-2
     )
-inax.axis("off")
-inax.set_facecolor("none")
+    
+    # Add Antarctic coast and land features using vector data
+    geoax.coastlines(resolution='50m', linewidth=0.5, color='black', alpha=0.6)
+    geoax.add_feature(cfeature.LAND, facecolor='lightgray', alpha=0.15, edgecolor='none')
+    geoax.add_feature(cfeature.OCEAN, facecolor='white', alpha=0)
+    geoax.gridlines(draw_labels=False, linewidth=0.3, alpha=0.3, linestyle=':')
+    
+    # Set extent to focus on Antarctica
+    geoax.set_extent([-180, 180, -90, -55], crs=ccrs.PlateCarree())
+    
+    # Make inset invisible and show geoaxis instead
+    inax.set_visible(False)
+    geoax.set_facecolor("none")
+    debug_print("Rendered Antarctica via cartopy geoaxis")
+except Exception as e:
+    # Fallback to original mask display if geoaxis creation fails
+    debug_print(f"Geoaxis rendering failed ({type(e).__name__}): {e}")
+    inax.set_visible(True)
+    if mask_img is not None:
+        inax.imshow(
+            mask_img,
+            extent=mask_extent,
+            alpha=0.18,
+            zorder=-1,
+            interpolation="bilinear",
+        )
+    inax.set_facecolor("none")
+    
 for spine in inax.spines.values():
     spine.set_visible(False)
 
