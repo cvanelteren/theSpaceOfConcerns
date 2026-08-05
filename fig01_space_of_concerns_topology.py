@@ -1008,23 +1008,27 @@ try:
     # Create a GeoAxes with South Polar Stereographic projection
     geoax = fig.add_axes(
         inax.get_position(),
-        projection=ccrs.SouthPolarStereo(),
+        projection=ccrs.SouthPolarStereo(central_longitude=0),
         zorder=-2
     )
     
     # Add Antarctic coast and land features using vector data
-    geoax.coastlines(resolution='50m', linewidth=0.5, color='black', alpha=0.6)
-    geoax.add_feature(cfeature.LAND, facecolor='lightgray', alpha=0.15, edgecolor='none')
+    geoax.coastlines(resolution='50m', linewidth=0.4, color='#555555', alpha=0.5)
+    geoax.add_feature(cfeature.LAND, facecolor='#e8e8e8', alpha=0.12, edgecolor='none')
     geoax.add_feature(cfeature.OCEAN, facecolor='white', alpha=0)
-    geoax.gridlines(draw_labels=False, linewidth=0.3, alpha=0.3, linestyle=':')
     
-    # Set extent to focus on Antarctica
-    geoax.set_extent([-180, 180, -90, -55], crs=ccrs.PlateCarree())
+    # NO gridlines - user specified clean background
+    # geoax.gridlines(draw_labels=False, linewidth=0.3, alpha=0.3, linestyle=':')
+    
+    # Center on south pole and expand extent to give network more space
+    # Set to -90° to -50°S to show more context around Antarctica
+    geoax.set_extent([-180, 180, -90, -50], crs=ccrs.PlateCarree())
     
     # Make inset invisible and show geoaxis instead
     inax.set_visible(False)
-    geoax.set_facecolor("none")
-    debug_print("Rendered Antarctica via cartopy geoaxis")
+    geoax.set_facecolor("white")
+    geoax.spines['geo'].set_visible(False)
+    debug_print("Rendered Antarctica via cartopy geoaxis (clean, centered, expanded)")
 except Exception as e:
     # Fallback to original mask display if geoaxis creation fails
     debug_print(f"Geoaxis rendering failed ({type(e).__name__}): {e}")
