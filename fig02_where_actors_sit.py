@@ -134,6 +134,7 @@ def _draw_position(ax) -> dict:
     rho_tenure = stats.spearmanr(x, y)
     rho_breadth = stats.spearmanr(x, breadth)
     ax.format(
+        title="Position tracks tenure",
         xlabel="Position on the concern axis (RPA-weighted)",
         ylabel="First year active",
         xlim=(0, 1),
@@ -241,6 +242,7 @@ def _draw_transitions(ax) -> dict:
                 zorder=6)
 
     ax.format(
+        title="Movement is local",
         xlim=(-1.0, 4.0), ylim=(-1.05, 2.05),
         xticks=[], yticks=[], xlabel="", ylabel="", grid=False,
     )
@@ -282,31 +284,12 @@ def _draw_complementarity(ax) -> dict:
         label=f"Complementary ({int(is_complementary.sum())})",
     )
     ax.format(
+        title="Low overlap, still adjacent",
         xlabel=r"Portfolio overlap (Jaccard on $RPA>1$ topics)",
         ylabel=r"Exclusive support proximity in $\phi$",
     )
     ax.legend(loc="lr", frame=False, fontsize=figstyle.FS_LEGEND, ncols=1)
 
-    # The upper-left quadrant is the whole point of the panel, and it is the one
-    # thing a reader cannot infer from the axis labels: these pairs would look
-    # unrelated to anyone counting shared topics. Open a strip of headroom above
-    # the cloud rather than dropping the note onto the points.
-    # Open a clear band above the cloud and sit the note in the middle of it,
-    # centred over the quadrant it describes. Wedged into the corner it competed
-    # with the panel letter on one side and the topmost points on the other.
-    y_lo, y_hi = ax.get_ylim()
-    band = 0.26 * (y_hi - y_lo)
-    ax.set_ylim(y_lo, y_hi + band)
-    # Sit the note on the floor of the new band, just clear of the topmost
-    # points: centred in the band it collided with the panel letter, and pushed
-    # to the corner it competed with the y-axis label.
-    ax.text(
-        0.5 * (ax.get_xlim()[0] + x_threshold),
-        y_hi + 0.04 * band,
-        "Few shared topics,\n" r"still adjacent in $\phi$",
-        ha="center", va="bottom", fontsize=figstyle.FS_ANNOT,
-        color=PAIR_ACCENT, zorder=6, linespacing=1.3,
-    )
     return {
         "n_pairs": int(len(pairs)),
         "share_complementary": float(len(complementary) / max(len(pairs), 1)),
@@ -322,7 +305,10 @@ def build_figure() -> tuple[uplt.Figure, dict]:
         "transitions": _draw_transitions(axs[1]),
         "complementarity": _draw_complementarity(axs[2]),
     }
-    axs.format(abc="[A]", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False)
+    axs.format(
+        abc="[A]", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False,
+        titlesize=figstyle.FS_TITLE, titleweight="bold", titleloc="uc",
+    )
     figstyle.apply_typography(axs)
 
     # Tie B back to A: the mode names on both axes carry the same colours as the

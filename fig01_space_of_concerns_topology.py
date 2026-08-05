@@ -12,15 +12,14 @@ underlying geometry changes.
 """
 
 import json
+import os
 import time
 from pathlib import Path
 
 import networkx as nx
 import numpy as np
+import pandas as pd
 import ultraplot as uplt
-from scipy.interpolate import splev, splprep
-from scipy.spatial import ConvexHull
-
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
@@ -38,8 +37,36 @@ from utils import compute_product_space, get_rca, load_data, load_flag
 
 USE_CACHED_SIDE_LAYOUT = True
 REFRESH_SIDE_LAYOUT = False
-SIDE_LAYOUT_CACHE_VERSION = 10
-SIDE_LAYOUT_CACHE_PATH = Path("assets/cache/fig01_side_layout_cache.json")
+SIDE_LAYOUT_CACHE_VERSION = 11
+# "landmark" renders the manuscript figure with the structural landmarks
+# labelled at print-legible size; "all" (FIG01_LABELS=all) renders the
+# fully labelled appendix variant at the older, smaller size.
+LABEL_SET = os.environ.get("FIG01_LABELS", "landmark")
+SIDE_LAYOUT_CACHE_PATH = Path(
+    f"assets/cache/fig01_side_layout_cache_{LABEL_SET}.json"
+)
+LANDMARK_TOPICS = {
+    "opening statements",
+    "exchange of information",
+    "environmental monitoring and reporting",
+    "environmental protection general",
+    "liability",
+    "inspections",
+    "waste management and disposal",
+    "climate change",
+    "marine protected areas",
+    "tourism and ng activities",
+    "mineral resources",
+    "biological prospecting",
+    "drilling",
+    "sub glacial lakes",
+    "marine acoustics",
+    "state of the antarctic environment report saer",
+    "environmental domains analysis",
+    "operation of the cep",
+    "multiyear strategic workplan",
+    "search and rescue",
+}
 SAVE_MAIN_SVG = True
 GENERATE_REVEAL_SEQUENCE = False
 DEBUG_PROGRESS = True
@@ -139,448 +166,12 @@ def _scale_linear(values, out_min, out_max):
     return out_min + (arr - lo) * (out_max - out_min) / (hi - lo)
 
 
-def _chaikin_closed(coords: np.ndarray, refinements: int = 2):
-    ring = np.asarray(coords, dtype=float)
-    if ring.shape[0] < 4:
-        return ring
-    if not np.allclose(ring[0], ring[-1]):
-        ring = np.vstack([ring, ring[0]])
-    for _ in range(max(0, int(refinements))):
-        out = []
-        for i in range(ring.shape[0] - 1):
-            p0 = ring[i]
-            p1 = ring[i + 1]
-            q = 0.75 * p0 + 0.25 * p1
-            r = 0.25 * p0 + 0.75 * p1
-            out.extend([q, r])
-        ring = np.vstack(out + [out[0]])
-    return ring
-
-
-def _fit_closed_spline(
-    coords: np.ndarray, out_points: int = 220, smooth_scale: float = 0.004
-):
-    ring = np.asarray(coords, dtype=float)
-    if ring.shape[0] < 4:
-        return ring
-    if np.allclose(ring[0], ring[-1]):
-        ring = ring[:-1]
-    if ring.shape[0] < 4:
-        return np.vstack([ring, ring[0]])
-
-    # Remove near-duplicate vertices for stable spline fitting.
-    keep = [0]
-    for i in range(1, ring.shape[0]):
-        if np.hypot(*(ring[i] - ring[keep[-1]])) > 1e-8:
-            keep.append(i)
-    ring = ring[keep]
-    if ring.shape[0] < 4:
-        return np.vstack([ring, ring[0]])
-
-    # Arc-length parameterization for a closed periodic spline.
-    diffs = np.diff(np.vstack([ring, ring[0]]), axis=0)
-    seg = np.hypot(diffs[:, 0], diffs[:, 1])
-    total = float(seg.sum())
-    if total <= 1e-10:
-        return np.vstack([ring, ring[0]])
-    u = np.hstack([[0.0], np.cumsum(seg[:-1]) / total])
-
-    try:
-        k = int(min(3, ring.shape[0] - 1))
-        s = float(smooth_scale) * ring.shape[0]
-        tck, _ = splprep([ring[:, 0], ring[:, 1]], u=u, s=s, per=True, k=k)
-        uu = np.linspace(0.0, 1.0, int(max(48, out_points)), endpoint=False)
-        x_new, y_new = splev(uu, tck)
-        smooth = np.column_stack([x_new, y_new])
-        return np.vstack([smooth, smooth[0]])
-    except Exception:
-        # Robust fallback if periodic spline fit fails.
-        ring2 = _chaikin_closed(np.vstack([ring, ring[0]]), refinements=2)
-        return ring2
-
-
-def build_cluster_hulls(communities, positions, padding):
-    hulls = []
-    for cid, nodes in enumerate(communities, start=1):
-        pts = np.array([positions[n] for n in nodes if n in positions], dtype=float)
-        if pts.shape[0] < 2:
-            continue
-        if HAS_SHAPELY:
-            if pts.shape[0] == 2:
-                poly = LineString(pts).buffer(
-                    float(padding) * 0.9, cap_style=1, join_style=1
-                )
-            elif (
-                pts.shape[0] == 3 and np.linalg.matrix_rank(pts - pts.mean(axis=0)) < 2
-            ):
-                poly = LineString(pts).buffer(
-                    float(padding) * 0.9, cap_style=1, join_style=1
-                )
-            else:
-                try:
-                    hull = ConvexHull(pts)
-                    coords = pts[hull.vertices]
-                    coords = np.vstack([coords, coords[0]])
-                    coords = _chaikin_closed(coords, refinements=2)
-                    poly = Polygon(coords)
-                except Exception:
-                    poly = LineString(pts).buffer(
-                        float(padding) * 0.9, cap_style=1, join_style=1
-                    )
-            if not poly.is_valid:
-                poly = poly.buffer(0)
-            if poly.is_empty:
-                continue
-            poly = poly.buffer(float(padding), join_style=1).buffer(0)
-            if poly.is_empty:
-                continue
-            hulls.append({"cluster_id": cid, "nodes": set(nodes), "poly": poly})
-        else:  # pragma: no cover
-            if pts.shape[0] < 3:
-                continue
-            try:
-                hull = ConvexHull(pts)
-            except Exception:
-                continue
-            coords = pts[hull.vertices]
-            coords = np.vstack([coords, coords[0]])
-            coords = _chaikin_closed(coords, refinements=2)
-            hulls.append({"cluster_id": cid, "nodes": set(nodes), "coords": coords})
-
-    if HAS_SHAPELY:
-        # Keep full padded hulls so every assigned node remains enclosed.
-        # Fit smooth closed splines on padded hull boundaries for drawing.
-        for item in hulls:
-            coords = np.asarray(item["poly"].exterior.coords, dtype=float)
-            spline = _fit_closed_spline(coords, out_points=240, smooth_scale=0.003)
-            if spline.shape[0] >= 4:
-                spoly = Polygon(spline)
-                if not spoly.is_valid:
-                    spoly = spoly.buffer(0)
-                if (not spoly.is_empty) and float(spoly.area) > 1e-8:
-                    # Enforce coverage of all assigned nodes for visual demarcation.
-                    node_pts = np.array(
-                        [positions[n] for n in item["nodes"] if n in positions],
-                        dtype=float,
-                    )
-                    max_miss = 0.0
-                    for px, py in node_pts:
-                        p = Point(float(px), float(py))
-                        if not spoly.covers(p):
-                            max_miss = max(max_miss, float(spoly.distance(p)))
-                    if max_miss > 0.0:
-                        spoly = spoly.buffer(
-                            max_miss + 0.22 * float(padding),
-                            join_style=1,
-                        ).buffer(0)
-                    item["poly_spline"] = spoly
-                    item["outline_coords"] = np.asarray(
-                        spoly.exterior.coords, dtype=float
-                    )
-                    continue
-            item["outline_coords"] = coords
-    return hulls
-
-
 def normalize_topic_key(name):
     if name is None:
         return ""
     text = str(name).strip().lower().replace("_", " ").replace("-", " ")
     text = " ".join(text.split())
     return text
-
-
-def detect_structural_regions(backbone, full_graph, topic_to_theme):
-    node_lookup = {normalize_topic_key(n): n for n in backbone.nodes()}
-
-    def resolve_nodes(topic_names):
-        resolved = set()
-        for name in topic_names:
-            key = normalize_topic_key(name)
-            if key in node_lookup:
-                resolved.add(node_lookup[key])
-        return resolved
-
-    regions = [
-        dict(
-            kind="branch",
-            label="Drilling, Monitoring\n& CEP Oversight",
-            color=figstyle.BRANCH_COLORS["drilling"],
-            nodes=resolve_nodes(
-                [
-                    "Drilling",
-                    "Sub glacial Lakes",
-                    "Operation of the CEP",
-                    "Environmental Domains Analysis",
-                    "Marine Acoustics",
-                    "State of the Antarctic Environment Report SAER",
-                ]
-            ),
-        ),
-        dict(
-            kind="branch",
-            label="Human Impact\n& Marine Stewardship",
-            color=figstyle.BRANCH_COLORS["human_impact"],
-            nodes=resolve_nodes(
-                [
-                    "Tourism and NG Activities",
-                    "Marine Protected Areas",
-                    "Marine living resources",
-                    "Prevention of marine pollution",
-                    "Site Guidelines for Visitors",
-                    "Mineral resources",
-                    "Multiyear strategic workplan",
-                    "Human Footprint and wilderness values",
-                    "Search and Rescue",
-                ]
-            ),
-        ),
-        dict(
-            kind="branch",
-            label="Environmental\nProtection",
-            color=figstyle.BRANCH_COLORS["environmental"],
-            nodes=resolve_nodes(
-                [
-                    "Nonnative Species and Quarantine",
-                    "Specially Protected Species",
-                    "Climate Change",
-                    "CEP Strategy Discussions",
-                    "Biological Prospecting",
-                    "Fauna and Flora General",
-                    "Repair and remediation of environmental damage",
-                    "Operation of the Antarctic Treaty system Reports",
-                    "Cooperation with Other Organisations",
-                ]
-            ),
-        ),
-        dict(
-            kind="core",
-            label="Procedural core",
-            color=figstyle.BRANCH_COLORS["core"],
-            nodes=resolve_nodes(
-                [
-                    "Operational issues",
-                    "Liability",
-                    "Educational issues",
-                    "Exchange of Information",
-                    "Environmental Protection General",
-                    "Opening statements",
-                    "International Polar Year",
-                    "Waste management and disposal",
-                    "Inspections",
-                    "Environmental Impact Assessment EIA Other EIA Matters",
-                    "Science issues",
-                    "Management Plans",
-                    "Environmental Monitoring and Reporting",
-                    "Safety and Operations in Antarctica",
-                    "Comprehensive Environmental Evaluations",
-                    "Emergency report and contingency planning",
-                    "Institutional and legal matters",
-                    "Area Protection and Management Plans General",
-                    "Historic Sites and Monuments",
-                    "Operation of the Antarctic Treaty system General",
-                    "Operation of the Antarctic Treaty system The Secretariat",
-                ]
-            ),
-        ),
-    ]
-
-    assigned = set().union(*(r["nodes"] for r in regions))
-    leftovers = set(backbone.nodes()) - assigned
-    if leftovers:
-        for region in regions:
-            if region["kind"] == "core":
-                region["nodes"].update(leftovers)
-                break
-
-    regions = [r for r in regions if len(r["nodes"]) >= 2]
-    return regions
-
-
-def draw_cluster_hulls(ax, hulls, color_by_id):
-    artists_by_cluster = {}
-    for item in hulls:
-        cluster_id = int(item["cluster_id"])
-        color = color_by_id.get(item["cluster_id"], "#777777")
-        if HAS_SHAPELY:
-            outline = np.asarray(item.get("outline_coords"), dtype=float)
-            if outline.ndim == 2 and outline.shape[1] == 2 and outline.shape[0] >= 3:
-                x, y = outline[:, 0], outline[:, 1]
-            else:
-                x, y = item["poly"].exterior.xy
-            patches = ax.fill(
-                x,
-                y,
-                facecolor=color,
-                edgecolor=color,
-                linewidth=1.0,
-                alpha=0.14,
-                zorder=0.18,
-            )
-        else:  # pragma: no cover
-            xy = np.asarray(item["coords"], dtype=float)
-            patches = ax.fill(
-                xy[:, 0],
-                xy[:, 1],
-                facecolor=color,
-                edgecolor=color,
-                linewidth=1.0,
-                alpha=0.14,
-                zorder=0.18,
-            )
-        artists_by_cluster.setdefault(cluster_id, []).extend(list(patches))
-    return artists_by_cluster
-
-
-def get_hull_bounds(hulls):
-    if not hulls:
-        return None
-    mins = []
-    maxs = []
-    for item in hulls:
-        if HAS_SHAPELY and "poly" in item:
-            if "outline_coords" in item:
-                xy = np.asarray(item["outline_coords"], dtype=float)
-                if xy.ndim == 2 and xy.shape[1] == 2 and xy.shape[0] >= 2:
-                    mins.append(np.min(xy, axis=0))
-                    maxs.append(np.max(xy, axis=0))
-                    continue
-            bounds = item["poly"].bounds
-            mins.append(np.array([bounds[0], bounds[1]], dtype=float))
-            maxs.append(np.array([bounds[2], bounds[3]], dtype=float))
-        else:  # pragma: no cover
-            xy = np.asarray(item.get("coords", []), dtype=float)
-            if xy.ndim == 2 and xy.shape[1] == 2 and xy.shape[0] >= 2:
-                mins.append(np.min(xy, axis=0))
-                maxs.append(np.max(xy, axis=0))
-    if not mins:
-        return None
-    mins = np.vstack(mins)
-    maxs = np.vstack(maxs)
-    return (
-        float(np.min(mins[:, 0])),
-        float(np.max(maxs[:, 0])),
-        float(np.min(mins[:, 1])),
-        float(np.max(maxs[:, 1])),
-    )
-
-
-def draw_cluster_semantic_labels(ax, hulls, color_by_id, label_by_id, mask_extent):
-    from matplotlib.patches import FancyArrowPatch
-
-    width = float(mask_extent[1] - mask_extent[0])
-    height = float(mask_extent[3] - mask_extent[2])
-    min_dx = 0.10 * width
-    min_dy = 0.08 * height
-    label_nudges = {
-        "Environmental\nProtection": (0.18 * width, -0.18 * height),
-        "Drilling, Monitoring\n& CEP Oversight": (-0.18 * width, 0.0),
-        "Human Impact\n& Marine Stewardship": (-0.10 * width, 0.0),
-        "Procedural core": (0.18 * width, 0.06 * height),
-    }
-    artists_by_cluster = {}
-    placed = []
-    for item in hulls:
-        cluster_id = int(item["cluster_id"])
-        color = color_by_id.get(item["cluster_id"], "#777777")
-        label = label_by_id.get(item["cluster_id"], "Cluster")
-        if HAS_SHAPELY:
-            poly = item["poly"]
-            exterior = np.asarray(poly.exterior.coords, dtype=float)
-            if exterior.shape[0] < 3:
-                continue
-            center = poly.representative_point()
-            cx, cy = float(center.x), float(center.y)
-            idx = int(np.argmax(exterior[:, 1]))
-            anchor = exterior[idx]
-            prev_pt = exterior[idx - 1]
-            next_pt = exterior[(idx + 1) % (exterior.shape[0] - 1)]
-        else:  # pragma: no cover
-            xy = np.asarray(item["coords"], dtype=float)
-            if xy.shape[0] < 3:
-                continue
-            cx, cy = float(np.mean(xy[:, 0])), float(np.mean(xy[:, 1]))
-            idx = int(np.argmax(xy[:, 1]))
-            anchor = xy[idx]
-            prev_pt = xy[idx - 1]
-            next_pt = xy[(idx + 1) % (xy.shape[0] - 1)]
-
-        tangent = np.asarray(next_pt - prev_pt, dtype=float)
-        tnorm = float(np.hypot(tangent[0], tangent[1]))
-        if tnorm < 1e-9:
-            tangent = np.array([1.0, 0.0], dtype=float)
-            tnorm = 1.0
-        tangent /= tnorm
-        angle = float(np.degrees(np.arctan2(tangent[1], tangent[0])))
-        if angle > 90.0:
-            angle -= 180.0
-        elif angle < -90.0:
-            angle += 180.0
-
-        radial = np.asarray(anchor - np.array([cx, cy]), dtype=float)
-        rnorm = float(np.hypot(radial[0], radial[1]))
-        if rnorm < 1e-9:
-            radial = np.array([0.0, 1.0], dtype=float)
-            rnorm = 1.0
-        radial /= rnorm
-        lx, ly = anchor + radial * (0.06 * max(width, height))
-
-        dx_dy = label_nudges.get(label)
-        if dx_dy is not None:
-            dx, dy = dx_dy
-            lx += float(dx)
-            if label == "Environmental\nProtection":
-                # Pull toward shape center in y for better in-hull readability.
-                ly = 0.55 * float(cy) + 0.45 * float(ly) + float(dy)
-            else:
-                ly += float(dy)
-
-        for px, py in placed:
-            if abs(lx - px) < min_dx and abs(ly - py) < min_dy:
-                ly += 0.75 * min_dy
-        lx = float(
-            np.clip(lx, mask_extent[0] + 0.02 * width, mask_extent[1] - 0.02 * width)
-        )
-        ly = float(
-            np.clip(ly, mask_extent[2] + 0.03 * height, mask_extent[3] - 0.03 * height)
-        )
-        placed.append((lx, ly))
-
-        # For moved labels, target the nearest hull point and pull slightly
-        # inward so the connector stays short and reads as attached "inside"
-        # the outline rather than jumping to a distant top anchor.
-        if label in {"Environmental\nProtection", "Procedural core"}:
-            boundary = np.asarray(exterior[:-1], dtype=float)
-            if boundary.ndim == 2 and boundary.shape[0] > 0:
-                d2 = (boundary[:, 0] - lx) ** 2 + (boundary[:, 1] - ly) ** 2
-                near_idx = int(np.argmin(d2))
-                boundary_anchor = boundary[near_idx]
-                center_vec = np.array([cx, cy], dtype=float)
-                anchor = 0.86 * boundary_anchor + 0.14 * center_vec
-
-        txt = ax.text(
-            lx,
-            ly,
-            label,
-            ha="center",
-            va="center",
-            rotation=angle,
-            rotation_mode="anchor",
-            fontsize=8.6,
-            color="0.1",
-            bbox={
-                "boxstyle": "round,pad=0.18",
-                "facecolor": "white",
-                "edgecolor": color,
-                "linewidth": 0.7,
-                "alpha": 1,
-            },
-            zorder=2.1,
-        )
-        artists_by_cluster.setdefault(cluster_id, []).append(txt)
-
-        # Removed leader connectors for cleaner label-only semantic regions.
-    return artists_by_cluster
 
 
 def antarctic_landmass(projection, lat_max=MAP_LAT_MAX):
@@ -703,62 +294,30 @@ def _orient(point):
 snapped = {node: _orient(point) for node, point in snapped.items()}
 debug_print(f"Snapped and transformed layout in {time.perf_counter() - _t0:.2f}s")
 
-# Sourced from the shared palette rather than declared here: the three mode
-# hues used in Figures 2 and 5 are reserved, and these eight are kept clear of
-# them so a reader does not read a theme in this figure as a mode in the next.
-theme_colors = dict(figstyle.THEME_COLORS)
+# The three reserved mode hues are the single categorical colour vocabulary of
+# the paper: Figure 1 now draws the same partition (coordination / compliance /
+# strategy) that Figures 2 and 5 colour, so a reader carries one legend through
+# the results instead of re-learning a theme palette that never recurs.
+_mode_order = pd.read_csv("output/soc_small_mds_1d_topic_order.csv")
+_mode_regions = pd.read_csv(
+    "output/fig45_portfolio_space_ridgelines_region_summary.csv"
+)
+topic_to_mode = {}
+for _row in _mode_order.itertuples(index=False):
+    _bounds = _mode_regions[
+        (_mode_regions["boundary_left"] <= _row.x_plot)
+        & (_row.x_plot <= _mode_regions["boundary_right"])
+    ]
+    topic_to_mode[normalize_topic_key(_row.topic)] = int(
+        _bounds["region_id"].iloc[0]
+    )
 
-topic_to_theme = {
-    "State of the Antarctic Environment Report SAER": "Environmental Protection",
-    "Management Plans": "Governance & Legal",
-    "Biological Prospecting": "Resource Extraction",
-    "Climate Change": "Environmental Protection",
-    "Environmental Domains Analysis": "Environmental Protection",
-    "Educational issues": "Governance & Legal",
-    "Comprehensive Environmental Evaluations": "Environmental Protection",
-    "Site Guidelines for Visitors": "Tourism & Human Activity",
-    "Repair and remediation of environmental damage": "Environmental Protection",
-    "Multiyear strategic workplan": "Governance & Legal",
-    "Inspections": "Operations & Safety",
-    "Sub glacial Lakes": "Science & Research",
-    "Drilling": "Resource Extraction",
-    "Opening statements": "Governance & Legal",
-    "Operation of the Antarctic Treaty system General": "Governance & Legal",
-    "CEP Strategy Discussions": "Governance & Legal",
-    "Fauna and Flora General": "Marine & Wildlife",
-    "Historic Sites and Monuments": "Infrastructure & Planning",
-    "Operational issues": "Operations & Safety",
-    "Operation of the Antarctic Treaty system Reports": "Governance & Legal",
-    "Science issues": "Science & Research",
-    "International Polar Year": "Science & Research",
-    "Liability": "Governance & Legal",
-    "Prevention of marine pollution": "Environmental Protection",
-    "Safety and Operations in Antarctica": "Operations & Safety",
-    "Marine living resources": "Resource Extraction",
-    "Institutional and legal matters": "Governance & Legal",
-    "Nonnative Species and Quarantine": "Environmental Protection",
-    "Marine Protected Areas": "Marine & Wildlife",
-    "Tourism and NG Activities": "Tourism & Human Activity",
-    "Cooperation with Other Organisations": "Governance & Legal",
-    "Environmental Impact Assessment EIA Other EIA Matters": "Environmental Protection",
-    "Specially Protected Species": "Marine & Wildlife",
-    "Marine Acoustics": "Science & Research",
-    "Mineral resources": "Resource Extraction",
-    "Environmental Monitoring and Reporting": "Environmental Protection",
-    "Exchange of Information": "Governance & Legal",
-    "Area Protection and Management Plans General": "Infrastructure & Planning",
-    "Operation of the CEP": "Governance & Legal",
-    "Waste management and disposal": "Operations & Safety",
-    "Human Footprint and wilderness values": "Environmental Protection",
-    "Search and Rescue": "Operations & Safety",
-    "Environmental Protection General": "Environmental Protection",
-    "Emergency report and contingency planning": "Operations & Safety",
-    "Operation of the Antarctic Treaty system The Secretariat": "Governance & Legal",
-}
 
-node_colors = [
-    theme_colors[topic_to_theme.get(node, "Governance & Legal")] for node in mst.nodes()
-]
+def mode_color_of(node):
+    return figstyle.MODE_COLORS[topic_to_mode.get(normalize_topic_key(node), 2)]
+
+
+node_colors = [mode_color_of(node) for node in mst.nodes()]
 
 weighted_degree_scores = dict(full_graph.degree(weight="weight"))
 node_sizes = _scale_linear(
@@ -766,22 +325,12 @@ node_sizes = _scale_linear(
 )
 node_sizes_draw = node_sizes * 8 + 10
 
-structural_regions = detect_structural_regions(mst, full_graph, topic_to_theme)
-region_nodes = [r["nodes"] for r in structural_regions]
-extent_w = float(mask_extent[1] - mask_extent[0])
-extent_h = float(mask_extent[3] - mask_extent[2])
-coords_arr = np.array(list(snapped.values()), dtype=float)
-graph_span = float(
-    max(np.ptp(coords_arr[:, 0]), np.ptp(coords_arr[:, 1])) if coords_arr.size else 1.0
-)
-max_marker_radius_pts = float(np.sqrt(np.max(node_sizes_draw) / np.pi))
-# Approximate conversion from marker radius (points) to data units.
-marker_radius_data = max_marker_radius_pts * (graph_span / 780.0)
-hull_padding = max(0.022 * max(extent_w, extent_h), 1.25 * marker_radius_data)
-cluster_hulls = build_cluster_hulls(region_nodes, snapped, padding=hull_padding)
-hull_bounds = get_hull_bounds(cluster_hulls)
-cluster_color_by_id = {i + 1: r["color"] for i, r in enumerate(structural_regions)}
-cluster_label_by_id = {i + 1: r["label"] for i, r in enumerate(structural_regions)}
+# No region blobs: the node colours, the coloured side labels and the legend
+# already carry the mode partition, and the translucent hulls overlapped into
+# mud exactly where Compliance bridges the other two modes.
+cluster_hulls = []
+hull_bounds = None
+cluster_label_by_id = {mode: figstyle.MODE_GLOSS[mode] for mode in (1, 2, 3)}
 
 fig, ax = uplt.subplots(width="30cm")
 # Draw graph without the highlighted edge so only the dashed version shows.
@@ -793,7 +342,7 @@ if mst_draw.has_edge(edge_a, edge_b):
 edge_widths = np.array(
     [float(mst_draw[u][v].get("weight", 1.0)) * 8 for u, v in mst_draw.edges()]
 )
-hull_artists_by_cluster = draw_cluster_hulls(ax, cluster_hulls, cluster_color_by_id)
+hull_artists_by_cluster = {}
 ax.graph(
     mst_draw,
     snapped,
@@ -808,13 +357,38 @@ ax.collections[0].set_sizes(o * 8 + 10)
 ax.collections[0].set_zorder(3.2)
 
 
-semantic_label_artists_by_cluster = draw_cluster_semantic_labels(
-    ax,
-    cluster_hulls,
-    cluster_color_by_id,
-    cluster_label_by_id,
-    mask_extent=mask_extent,
-)
+# Mode labels sit at each mode's own centroid rather than at the hull top, so
+# the three region names land inside the node clusters they describe instead
+# of colliding along the top edge the way the hull-anchor placement did.
+semantic_label_artists_by_cluster = {}
+for _mode in (1, 2, 3):
+    _members = [
+        n
+        for n in mst.nodes()
+        if topic_to_mode.get(normalize_topic_key(n), 2) == _mode
+    ]
+    _pts = np.array([snapped[n] for n in _members], dtype=float)
+    _cx, _cy = _pts.mean(axis=0)
+    semantic_label_artists_by_cluster[_mode] = [
+        ax.text(
+            _cx,
+            _cy,
+            figstyle.MODE_GLOSS[_mode],
+            ha="center",
+            va="center",
+            fontsize=12.5,
+            fontweight="bold",
+            color="white",
+            bbox={
+                "boxstyle": "round,pad=0.30",
+                "facecolor": figstyle.MODE_COLORS[_mode],
+                "edgecolor": "white",
+                "linewidth": 1.0,
+                "alpha": 0.9,
+            },
+            zorder=3.4,
+        )
+    ]
 # Antarctica background: a real geoaxis filling the plot box, so the silhouette
 # spans the whole frame the way the graph does. ax.inset keeps an axes locator on
 # the parent, so the map follows the graph through tight layout and the poster
@@ -884,13 +458,11 @@ def draw_grouped_rca_inset(
     from matplotlib.colors import to_rgb
     from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 
-    col_a = theme_colors[topic_to_theme.get(edge_a, "Governance & Legal")]
-    col_b = theme_colors[topic_to_theme.get(edge_b, "Governance & Legal")]
+    col_a = mode_color_of(edge_a)
+    col_b = mode_color_of(edge_b)
     col_mix = tuple((np.array(to_rgb(col_a)) + np.array(to_rgb(col_b))) / 2.0)
-    # Take the group colours from the two topics' own themes rather than a fixed
-    # blue/red/purple triple. The anchors at the top of the inset are already
-    # drawn in col_a and col_b, so the groups below now match them, and the
-    # inset inherits the guarantee that no mode hue appears in this figure.
+    # Group colours follow the mode of the two anchor topics, so the inset
+    # stays inside the single mode palette the main map now uses.
     edge_semantic = {"drilling": col_a, "both": col_mix, "marine": col_b}
 
     # Topic anchors at the top.
@@ -916,7 +488,7 @@ def draw_grouped_rca_inset(
         smartwrap(edge_a, 14),
         ha="center",
         va="top",
-        fontsize=9.0,
+        fontsize=11.5,
         clip_on=False,
     )
     ax.text(
@@ -925,7 +497,7 @@ def draw_grouped_rca_inset(
         smartwrap(edge_b, 16),
         ha="center",
         va="top",
-        fontsize=9.0,
+        fontsize=11.5,
         clip_on=False,
     )
 
@@ -1040,8 +612,18 @@ right_nodes.sort(key=lambda n: r[n][1])
 bottom_nodes.sort(key=lambda n: r[n][0])
 left_nodes.sort(key=lambda n: r[n][1])
 
+if LABEL_SET == "landmark":
+    top_nodes = [n for n in top_nodes if normalize_topic_key(n) in LANDMARK_TOPICS]
+    right_nodes = [
+        n for n in right_nodes if normalize_topic_key(n) in LANDMARK_TOPICS
+    ]
+    bottom_nodes = [
+        n for n in bottom_nodes if normalize_topic_key(n) in LANDMARK_TOPICS
+    ]
+    left_nodes = [n for n in left_nodes if normalize_topic_key(n) in LANDMARK_TOPICS]
+
 pad = 0.22 * (rect_x_max - rect_x_min)
-side_fs = 11.6
+side_fs = 13.5 if LABEL_SET == "landmark" else 11.6
 SPREAD_BLEND = 0.62
 LEFT_SIDE_SPREAD_BLEND = 0.18
 RIGHT_SIDE_SPREAD_BLEND = 0.18
@@ -1779,7 +1361,7 @@ def _draw_side_labels_and_connectors(side, nodes, label_positions):
             bbox=dict(
                 boxstyle="round,pad=0.3",
                 facecolor=(1, 1, 1, 1),
-                edgecolor=theme_colors[topic_to_theme.get(node, "Governance & Legal")],
+                edgecolor=mode_color_of(node),
                 alpha=1,
                 linewidth=1.2,
             ),
@@ -1816,7 +1398,7 @@ def _draw_side_labels_and_connectors(side, nodes, label_positions):
         else:
             start = np.asarray(xytext, dtype=float)
 
-        node_color = theme_colors[topic_to_theme.get(node, "Governance & Legal")]
+        node_color = mode_color_of(node)
         arrow = FancyArrowPatch(
             (float(start[0]), float(start[1])),
             (float(xy[0]), float(xy[1])),
@@ -2021,15 +1603,17 @@ if edge_a in snapped and edge_b in snapped:
 from matplotlib import patches as mpatches
 
 legend_elements = [
-    mpatches.Patch(facecolor=color, label=theme)
-    for theme, color in theme_colors.items()
+    mpatches.Patch(
+        facecolor=figstyle.MODE_COLORS[mode], label=figstyle.MODE_GLOSS[mode]
+    )
+    for mode in (1, 2, 3)
 ]
 legend_obj = ax.legend(
     handles=legend_elements,
     loc="b",
     fontsize=14,
     framealpha=0.0,
-    title="Themes",
+    title="Modes",
     title_fontsize=20,
 )
 plot_margin_x = 2.1 * pad
@@ -2048,9 +1632,14 @@ ax.set_ylim(plot_y_min - plot_margin_y, plot_y_max + plot_margin_y)
 Path("./figures").mkdir(parents=True, exist_ok=True)
 debug_print("Saving main figure assets...")
 _t0 = time.perf_counter()
+OUT_STEM = (
+    "fig01_space_of_concerns_topology"
+    if LABEL_SET == "landmark"
+    else "figS23_space_all_labels"
+)
 if SAVE_MAIN_PNG:
     fig.savefig(
-        "./figures/fig01_space_of_concerns_topology.png",
+        f"./figures/{OUT_STEM}.png",
         dpi=MAIN_PNG_DPI,
         bbox_inches="tight",
         pad_inches=0.05,
@@ -2058,11 +1647,11 @@ if SAVE_MAIN_PNG:
     )
 if SAVE_MAIN_PDF:
     fig.savefig(
-        "./figures/fig01_space_of_concerns_topology.pdf",
+        f"./figures/{OUT_STEM}.pdf",
         bbox_inches="tight",
         pad_inches=0.05,
     )
-if SAVE_MAIN_SVG:
+if SAVE_MAIN_SVG and LABEL_SET == "landmark":
     debug_print("Saving SVG export...")
     fig.savefig(
         "./output/fig01_space_of_concerns_topology.svg",
@@ -2072,7 +1661,7 @@ if SAVE_MAIN_SVG:
 debug_print(f"Saved main figure assets in {time.perf_counter() - _t0:.2f}s")
 
 
-if SAVE_POSTER:
+if SAVE_POSTER and LABEL_SET == "landmark":
     from matplotlib.patches import FancyArrowPatch as _PosterArrow
     from matplotlib.text import Text as _PosterText
 

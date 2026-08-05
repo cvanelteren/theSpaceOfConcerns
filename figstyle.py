@@ -90,6 +90,9 @@ FS_TICK = 10.0
 FS_LEGEND = 9.5
 FS_ANNOT = 8.5
 FS_PANEL = 12.0
+# Panel titles are short claims ("Movement is local"), not object
+# descriptions, so they sit above the axis label in the hierarchy.
+FS_TITLE = 11.5
 
 
 def apply_typography(

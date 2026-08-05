@@ -44,6 +44,7 @@ import fig03_local_portfolio_movement as f3
 import figstyle
 
 SPECIFICATIONS_CSV = Path("output/hazard_locality_specifications.csv")
+OR_X_LO = 0.60
 
 # Shared limits for the movement panel: the zone shading, the diagonal and
 # the axes all key off these so the band stays flush with the panel edges.
@@ -261,7 +262,10 @@ def _draw_specification_strength(ax) -> pd.DataFrame:
         or_lo[key] = float(np.exp(0.1 * row["distance_ci_low_95"]))
         or_hi[key] = float(np.exp(0.1 * row["distance_ci_high_95"]))
 
-    ax.axvspan(min(or_lo.values()), max(or_hi.values()),
+    # Anchored at the left spine instead of floating at the envelope's lower
+    # bound: a band read as a highlighted interval, but the claim is that every
+    # estimate sits left of the null line, so the shading fills that space.
+    ax.axvspan(OR_X_LO, max(or_hi.values()),
                color=ENVELOPE, lw=0, zorder=0)
     ax.axvline(1.0, color="0.45", lw=1.0, zorder=2)
 
