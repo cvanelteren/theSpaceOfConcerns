@@ -69,11 +69,22 @@ MODEL_SHORT = {
 }
 
 
+# The three allocation rules are a nominal variable that is *not* mode, so they
+# must stay clear of the reserved orange/blue/green triple (see figstyle). The
+# previous red/blue/green landed on top of it: the single-support blue was
+# dE=9.4 from Compliance and the retain-and-adopt green dE=16.1 from Strategy,
+# against the dE<15 "reads alike" threshold figstyle defines. A reader arriving
+# from Figures 1-3, where blue means Compliance and green means Strategy, was
+# being invited to map rules onto modes.
+#
+# This triple is pairwise dE>=33 and at least dE=22 from every reserved mode
+# colour and every Figure 1 theme colour. Verify with figstyle.delta_e after
+# any edit.
 COLORS = {
     "observed": "#111111",
-    "one_stage": "#c44e52",
-    "two_stage": "#4c72b0",
-    "split_support": "#2a9d55",
+    "one_stage": "#7D2B2B",       # maroon
+    "two_stage": "#3F5661",       # slate
+    "split_support": "#8C510A",   # ochre -- the rule the paper adopts
     "baseline": "#9a9a9a",
 }
 
