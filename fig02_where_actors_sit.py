@@ -1,17 +1,19 @@
-"""Main-text Figure 2: actors hold distinct, sticky, complementary positions.
+"""Main-text Figure 2: actors hold distinct, complementary positions.
 
-The old version opened with a strip plot of actor positions grouped by the mode
-each actor had been *assigned from that same position*, which cannot fail to
-separate. This replaces it with displays that can fail:
+Displays that can fail:
 
   A  position against tenure and breadth -- the tenure gradient the text claims
      is shown, along with the breadth entanglement that qualifies it
-  B  dominant-mode transitions -- positions are sticky, not momentary
-  C  pairwise portfolios -- low topic overlap does not mean disconnected work
+  B  pairwise portfolios -- low topic overlap does not mean disconnected work
+
+The dominant-mode transition chain that used to sit between these panels moved
+to Figure 3, where it opens the locality evidence: stickiness and locality are
+one claim, and showing them in two figures made each look like a restatement
+of the other.
 
 Colour is reserved: the orange/blue/green triple means "mode" throughout the
-paper, so panel B uses a grey ramp and panel C a single off-palette accent
-rather than borrowing those hues for unrelated categories.
+paper, so panel B uses a single off-palette accent rather than borrowing those
+hues for unrelated categories.
 """
 
 from __future__ import annotations
@@ -22,10 +24,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import ultraplot as uplt
-from matplotlib.patches import FancyArrowPatch
 from scipy import stats
 
-import fig03_local_portfolio_movement as f3
 import figstyle
 
 ACTOR_CSV = Path("output/fig45_portfolio_space_ridgelines_actor_summary.csv")
@@ -148,112 +148,6 @@ def _draw_position(ax) -> dict:
     }
 
 
-def _draw_transitions(ax) -> dict:
-    """Dominant-mode transitions as an ordered chain rather than a 3x3 grid.
-
-    The finding is topological -- movement runs along the gradient and almost
-    never skips the middle -- and a grid buries that in two corner cells. Laying
-    the three modes out in their concern-axis order turns it into shape: fat
-    links to the neighbour, hairlines across the gap.
-
-    The layout is a flattened triangle, not a force-directed graph and not a
-    straight line. Raising the middle mode gives every pair a direct, unobscured
-    edge -- on a straight line the coordination-to-strategy link had to arc over
-    the middle node, crossing its label -- while keeping the left-to-right
-    concern-axis order, so the gradient still reads. It also frees the three
-    corners for the mode names, which no longer need masking boxes.
-
-    Figure 1 is a network of topics; a free layout here would invite the reader
-    to treat these three zones as objects of the same kind. Spacing is even,
-    since panel A already carries the real spacing.
-    """
-    matrix, _ = f3._load_regime_transition_matrix(f3.REGIME_MATRIX_PATHS)
-    meta = f3._load_regime_transition_summary(f3.REGIME_SUMMARY_PATHS)
-    values = matrix.to_numpy(dtype=float)
-
-    names = ["Coordination", "Compliance", "Strategy"]
-    # Flattened triangle: x keeps the concern-axis order, the raised apex gives
-    # the 1<->3 pair a clear run along the base.
-    pos = [(0.0, 0.0), (1.5, 1.05), (3.0, 0.0)]
-    # Where each name sits relative to its node, and how it anchors: the two
-    # base corners hang their labels below and outward, the apex above.
-    name_offsets = [(-0.10, -0.46, "center", "top"),
-                    (0.0, 0.46, "center", "bottom"),
-                    (0.10, -0.46, "center", "top")]
-
-    def _width(p: float) -> float:
-        # Wide dynamic range: width is the only quantitative channel here, so
-        # it has to carry the 1.6% vs 21.1% contrast on its own. The floor keeps
-        # the near-zero 1<->3 links visible instead of vanishing.
-        return 1.1 + 13.0 * float(p)
-
-    # One rad sign for every edge. Negative rad bows an arc to the left of its
-    # direction of travel, so the two directions of a pair land on opposite
-    # sides automatically; the obvious `* (1 if forward else -1)` would stack
-    # them on top of each other instead.
-    for i in range(3):
-        for j in range(3):
-            if i == j:
-                continue
-            p = float(values[i, j])
-            span = abs(j - i)
-            rad = -(0.20 if span == 1 else 0.13)
-            colour = REGION_COLORS[i + 1]
-            p0, p1 = np.array(pos[i], float), np.array(pos[j], float)
-            ax.add_patch(
-                FancyArrowPatch(
-                    tuple(p0), tuple(p1),
-                    connectionstyle=f"arc3,rad={rad}",
-                    arrowstyle="-|>", mutation_scale=11,
-                    lw=_width(p), color=colour, alpha=0.92,
-                    # Must exceed the node radius (sqrt(s/pi) pt) or the arc and
-                    # its arrowhead vanish under the marker.
-                    shrinkA=22, shrinkB=22, zorder=2,
-                )
-            )
-            # Put the label on the side the arc actually bulges toward, found
-            # from the chord's left normal rather than hard-coded per edge.
-            chord = p1 - p0
-            normal = np.array([-chord[1], chord[0]])
-            normal = normal / np.linalg.norm(normal)
-            offset = 0.30 if span == 1 else 0.26
-            lx, ly = (p0 + p1) / 2.0 + normal * offset
-            ax.text(
-                lx, ly, f"{p * 100:.1f}%",
-                ha="center", va="center", fontsize=figstyle.FS_ANNOT, color=colour, zorder=5,
-                bbox=dict(facecolor="white", edgecolor="none", alpha=0.8, pad=0.9),
-            )
-
-    for i, (name, (x, y)) in enumerate(zip(names, pos)):
-        colour = REGION_COLORS[i + 1]
-        # The self-edge is the node's own ring: staying put is the diagonal of
-        # the matrix, and a separate loop would collide with the arcs. Ring
-        # thickness uses the same width scale as the arrows, so persistence and
-        # movement are directly comparable.
-        ax.scatter(
-            [x], [y], s=1500, marker="o", zorder=3,
-            c="white", edgecolor=colour, linewidth=_width(values[i, i]),
-            absolute_size=True,
-        )
-        ax.text(x, y, f"{values[i, i] * 100:.0f}%", ha="center", va="center",
-                fontsize=figstyle.FS_LABEL, color=colour, fontweight="bold", zorder=4)
-        dx, dy, ha, va = name_offsets[i]
-        ax.text(x + dx, y + dy, name, ha=ha, va=va, fontsize=figstyle.FS_LEGEND, color=colour,
-                zorder=6)
-
-    ax.format(
-        title="Movement is local",
-        xlim=(-1.0, 4.0), ylim=(-1.05, 2.05),
-        xticks=[], yticks=[], xlabel="", ylabel="", grid=False,
-    )
-    for side in ("top", "bottom", "left", "right"):
-        ax.spines[side].set_visible(False)
-    return {
-        "same_mode_rate": float(meta.get("same_region_rate", np.nan)),
-        "adjacent_or_same_rate": float(meta.get("adjacent_or_same_rate", np.nan)),
-    }
-
-
 def _draw_complementarity(ax) -> dict:
     pairs = pd.read_csv(PAIRS_CSV)
     # Draw the thresholds that define the categories, so the reader can see the
@@ -298,26 +192,17 @@ def _draw_complementarity(ax) -> dict:
 
 def build_figure() -> tuple[uplt.Figure, dict]:
     fig, axs = uplt.subplots(
-        nrows=1, ncols=3, share=0, refwidth=2.9, refaspect=1, wspace=10.0
+        nrows=1, ncols=2, share=0, refwidth=3.3, refaspect=1, wspace=10.0
     )
     stats_out = {
         "position": _draw_position(axs[0]),
-        "transitions": _draw_transitions(axs[1]),
-        "complementarity": _draw_complementarity(axs[2]),
+        "complementarity": _draw_complementarity(axs[1]),
     }
     axs.format(
         abc="[A]", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False,
         titlesize=figstyle.FS_TITLE, titleweight="bold", titleloc="uc",
     )
     figstyle.apply_typography(axs)
-
-    # Tie B back to A: the mode names on both axes carry the same colours as the
-    # zone bands and markers in A, so the two panels read as one view. Applied
-    # after format(), which regenerates tick labels and would drop the colours.
-    for labels in (axs[1].get_xticklabels(), axs[1].get_yticklabels()):
-        for position, label in enumerate(labels, start=1):
-            if position in REGION_COLORS:
-                label.set_color(REGION_COLORS[position])
     return fig, stats_out
 
 

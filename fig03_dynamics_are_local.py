@@ -1,34 +1,37 @@
 """Main-text Figure 3: attention moves locally, and that is not an artifact.
 
-Three panels, in the order picture -> proof -> robustness:
+Four panels, in the order readable claim -> picture -> proof -> robustness:
 
-  A  where actors actually stepped, drawn on the concern axis
-  B  how strongly does entry fall off with distance?  (observed, nonparametric)
-  C  does that hold under every way of building the space?  (one number each)
+  A  dominant-mode transitions between adjacent windows -- the readable version
+     of the claim, which inherits the partition caveat
+  B  where actors actually stepped, drawn on the concern axis -- the same claim
+     without any partition
+  C  how strongly does entry fall off with distance?  (observed, nonparametric)
+  D  does that hold under every way of building the space?  (one number each)
 
-Panel A exists because the earlier version of this figure opened on a decay
-curve, which abandoned the terrain the paper had spent Figure 1 building and
-asked the reader to accept locality as a statistic before ever seeing it. Each
-of the 1,895 individual entries is drawn as an arc from the nearest topic the
-actor already held to the topic it moved into, over the same zone bands that
-Figure 2 uses. Short arcs hug the axis; a move across the space would rise. The
-shape of the resulting band is the claim, and B and C are what make it a result
-rather than an impression.
+A and B state one claim at two resolutions: A aggregates actor-windows into
+dominant modes and is easy to read but depends on the zone partition, while B
+plots each of the 1,895 individual entries from the nearest topic the actor
+already held to the topic it moved into, over the same zone bands Figure 2
+uses, and needs no partition at all. Keeping the two side by side is the point
+-- the reader can see that the partition-free picture says what the matrix
+says. C and D are what make it a result rather than an impression.
 
-B and C must not be two views of the same curve. An earlier draft drew C as
-fitted decay curves over the panel-B axis, but the primary curve there was just
-a smoothed restatement of B, which forced a five-entry legend to carry the only
+C and D must not be two views of the same curve. An earlier draft drew D as
+fitted decay curves over the panel-C axis, but the primary curve there was just
+a smoothed restatement of C, which forced a five-entry legend to carry the only
 real content -- the spread across specifications. Collapsing each specification
 to a single effect size makes that spread the subject and removes the legend
 entirely, since the row labels identify the rows.
 
 The retention curves moved to the appendix; they show that adoptions persist,
-which is a weaker and more expected effect than locality itself. The mode
-transition matrix lives in the positioning figure, where the partition it
-depends on is introduced.
+which is a weaker and more expected effect than locality itself. The transition
+panel moved here from the positioning figure so that locality is shown once,
+in one place, instead of being split across two figures.
 
-Colour discipline: the zone bands in A carry the reserved mode palette, because
-they are the same three modes Figure 2 shades. Nothing else in the figure is
+Colour discipline: the zone bands in B carry the reserved mode palette, because
+they are the same three modes Figure 2 shades, and panel A draws its nodes and
+arrows in the same colours for the same modes. Nothing else in the figure is
 coloured, so no second categorical scheme can be mistaken for a related one.
 """
 
@@ -39,6 +42,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import ultraplot as uplt
+from matplotlib.patches import FancyArrowPatch
 
 import fig03_local_portfolio_movement as f3
 import figstyle
@@ -92,6 +96,120 @@ SPEC_GROUPS = [
 GROUP_GAP = 1.7
 
 
+def _draw_transitions(ax) -> dict:
+    """Dominant-mode transitions as an ordered chain rather than a 3x3 grid.
+
+    The finding is topological -- movement runs along the gradient and almost
+    never skips the middle -- and a grid buries that in two corner cells. Laying
+    the three modes out in their concern-axis order turns it into shape: fat
+    links to the neighbour, hairlines across the gap.
+
+    The layout is a flattened triangle, not a force-directed graph and not a
+    straight line. Raising the middle mode gives every pair a direct, unobscured
+    edge -- on a straight line the coordination-to-strategy link had to arc over
+    the middle node, crossing its label -- while keeping the left-to-right
+    concern-axis order, so the gradient still reads. It also frees the three
+    corners for the mode names, which no longer need masking boxes.
+
+    Figure 1 is a network of topics; a free layout here would invite the reader
+    to treat these three zones as objects of the same kind. Spacing is even,
+    since panel B already carries the real spacing.
+    """
+    matrix, _ = f3._load_regime_transition_matrix(f3.REGIME_MATRIX_PATHS)
+    meta = f3._load_regime_transition_summary(f3.REGIME_SUMMARY_PATHS)
+    values = matrix.to_numpy(dtype=float)
+
+    names = ["Coordination", "Compliance", "Strategy"]
+    # Flattened triangle: x keeps the concern-axis order, the raised apex gives
+    # the 1<->3 pair a clear run along the base.
+    pos = [(0.0, 0.0), (1.5, 1.05), (3.0, 0.0)]
+    # Where each name sits relative to its node, and how it anchors: the two
+    # base corners hang their labels below and outward, the apex above.
+    name_offsets = [(-0.10, -0.46, "center", "top"),
+                    (0.0, 0.46, "center", "bottom"),
+                    (0.10, -0.46, "center", "top")]
+
+    def _width(p: float) -> float:
+        # Wide dynamic range: width is the only quantitative channel here, so
+        # it has to carry the 1.6% vs 21.1% contrast on its own. The floor keeps
+        # the near-zero 1<->3 links visible instead of vanishing.
+        return 1.1 + 13.0 * float(p)
+
+    # One rad sign for every edge. Negative rad bows an arc to the left of its
+    # direction of travel, so the two directions of a pair land on opposite
+    # sides automatically; the obvious `* (1 if forward else -1)` would stack
+    # them on top of each other instead.
+    for i in range(3):
+        for j in range(3):
+            if i == j:
+                continue
+            p = float(values[i, j])
+            span = abs(j - i)
+            rad = -(0.20 if span == 1 else 0.13)
+            colour = figstyle.MODE_COLORS[i + 1]
+            p0, p1 = np.array(pos[i], float), np.array(pos[j], float)
+            ax.add_patch(
+                FancyArrowPatch(
+                    tuple(p0), tuple(p1),
+                    connectionstyle=f"arc3,rad={rad}",
+                    arrowstyle="-|>", mutation_scale=11,
+                    lw=_width(p), color=colour, alpha=0.92,
+                    # Must exceed the node radius (sqrt(s/pi) pt) or the arc and
+                    # its arrowhead vanish under the marker.
+                    shrinkA=22, shrinkB=22, zorder=2,
+                )
+            )
+            # Put the label on the side the arc actually bulges toward, found
+            # from the chord's left normal rather than hard-coded per edge.
+            # The two 1<->3 labels are placed explicitly below the base instead:
+            # above it they crowd the span-1 labels in the middle of the
+            # triangle, and the normal-based rule would strand one above anyway.
+            if span == 1:
+                chord = p1 - p0
+                normal = np.array([-chord[1], chord[0]])
+                normal = normal / np.linalg.norm(normal)
+                lx, ly = (p0 + p1) / 2.0 + normal * 0.30
+            else:
+                # Both 1<->3 labels are near-identical short strings ("1.6%",
+                # "3.4%"), so at +-0.32 their boxes met in the middle and read as
+                # one token. The separation has to exceed a label width (~0.55
+                # data units at FS_ANNOT on this axis), not merely a gap.
+                lx, ly = 1.5 + (-0.62 if i == 0 else 0.62), -0.30
+            ax.text(
+                lx, ly, f"{p * 100:.1f}%",
+                ha="center", va="center", fontsize=figstyle.FS_ANNOT, color=colour, zorder=5,
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.8, pad=0.9),
+            )
+
+    for i, (name, (x, y)) in enumerate(zip(names, pos)):
+        colour = figstyle.MODE_COLORS[i + 1]
+        # The self-edge is the node's own ring: staying put is the diagonal of
+        # the matrix, and a separate loop would collide with the arcs. Ring
+        # thickness uses the same width scale as the arrows, so persistence and
+        # movement are directly comparable.
+        ax.scatter(
+            [x], [y], s=1500, marker="o", zorder=3,
+            c="white", edgecolor=colour, linewidth=_width(values[i, i]),
+            absolute_size=True,
+        )
+        ax.text(x, y, f"{values[i, i] * 100:.0f}%", ha="center", va="center",
+                fontsize=figstyle.FS_LABEL, color=colour, fontweight="bold", zorder=4)
+        dx, dy, ha, va = name_offsets[i]
+        ax.text(x + dx, y + dy, name, ha=ha, va=va, fontsize=figstyle.FS_LEGEND, color=colour,
+                zorder=6)
+
+    ax.format(
+        xlim=(-1.0, 4.0), ylim=(-1.05, 2.05),
+        xticks=[], yticks=[], xlabel="", ylabel="", grid=False,
+    )
+    for side in ("top", "bottom", "left", "right"):
+        ax.spines[side].set_visible(False)
+    return {
+        "same_mode_rate": float(meta.get("same_region_rate", np.nan)),
+        "adjacent_or_same_rate": float(meta.get("adjacent_or_same_rate", np.nan)),
+    }
+
+
 def _draw_movement(ax) -> dict:
     """Where each expansion came from, against where it went.
 
@@ -109,8 +227,8 @@ def _draw_movement(ax) -> dict:
     both encoded the same quantity, so the vertical axis carried no information
     a reader could use. Here the two axes are independent measurements and the
     diagonal is the reference; the same zone bands run along both, which makes
-    the panel the continuous counterpart of the mode transition matrix in
-    Figure 2B -- the same claim without the partition that one depends on.
+    the panel the continuous counterpart of the transition chain in panel A --
+    the same claim without the partition that one depends on.
     """
     moves = pd.read_csv(MOVES_CSV)
     topics = pd.read_csv(TOPIC_ORDER_CSV)
@@ -315,43 +433,46 @@ def build_figure() -> tuple[uplt.Figure, pd.DataFrame, dict]:
     d_lo = float(np.min(agg["x"]))
     d_hi = float(np.max(agg["x"]))
 
-    # Panel C hangs its specification names off the left spine, so its gutter
-    # has to be wider than the one between A and B.
+    # Panel D hangs its specification names off the left spine, so its gutter
+    # has to be wider than the ones between A/B and B/C. Panel A is a free
+    # chain drawing with no tick labels, so it can sit closer to B.
     fig, axs = uplt.subplots(
-        ncols=3, share=0, refwidth=2.7, refaspect=1, wspace=(9.5, 16.0)
+        ncols=4, share=0, refwidth=2.35, refaspect=1, wspace=(5.0, 9.5, 16.0)
     )
-    ax_a, ax_b, ax_c = axs
+    ax_a, ax_b, ax_c, ax_d = axs
 
-    movement = _draw_movement(ax_a)
+    transitions = _draw_transitions(ax_a)
+    movement = _draw_movement(ax_b)
 
     f3._plot_adoption_panel(
-        ax=ax_b, agg=agg,
+        ax=ax_c, agg=agg,
         plot_distance=adoption_df["plot_distance"].to_numpy(float),
         event_rate=event_rate, show_legend=False, show_title=False,
     )
     # The source panel draws in the Mode 2 blue, which is reserved. Recolour to
-    # the neutral primary so the only hue in this figure is the zone shading.
-    for line in ax_b.lines:
+    # the neutral primary so the only hues in this figure are the mode colours
+    # in panels A and B.
+    for line in ax_c.lines:
         line.set_color(PRIMARY)
         line.set_markerfacecolor(PRIMARY)
         line.set_markeredgecolor(PRIMARY)
-    for container in ax_b.containers:
+    for container in ax_c.containers:
         for bar in getattr(container, "lines", [])[1:]:
             for artist in np.atleast_1d(bar):
                 artist.set_color(PRIMARY)
-    for collection in ax_b.collections:
+    for collection in ax_c.collections:
         collection.set_color(PRIMARY)
-    ax_b.format(
+    ax_c.format(
         xlabel=r"Distance to prior portfolio, $1-\max(\phi)$",
         ylabel="Entry probability",
         xlim=(d_lo, d_hi),
     )
 
-    table = _draw_specification_strength(ax_c)
+    table = _draw_specification_strength(ax_d)
 
     axs.format(abc="[A]", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False)
     figstyle.apply_typography(axs)
-    return fig, table, movement
+    return fig, table, {**movement, "transitions": transitions}
 
 
 def build_retention_figure() -> uplt.Figure:

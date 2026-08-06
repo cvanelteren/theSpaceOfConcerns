@@ -1,0 +1,9 @@
+{
+  "rpa_threshold": 1.0,
+  "min_specialized_topics": 5,
+  "n_states": 36,
+  "match_neighbors": 250,
+  "n_permutations": 2000,
+  "rng_seed": 42,
+  "note": "Triplets are built from sovereign-state actors only. Coverage efficiency is union_topics / total specialized-topic memberships across the triplet. Residual panels subtract the mean of size-matched triplets using nearest neighbors in sorted support-size space. Permutation inference shuffles dominant-regime labels across actors while preserving regime counts."
+}

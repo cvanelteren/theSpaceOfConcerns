@@ -1,0 +1,1036 @@
+actor_i,actor_j,presence_jaccard,rpa_jaccard,both_eu,both_nato,both_brics
+Argentina,Australia,0.8536585365853658,0.2,False,False,False
+Argentina,Austria,0.05405405405405406,0.0,False,False,False
+Argentina,Belarus,0.40540540540540543,0.12,False,False,False
+Argentina,Belgium,0.6410256410256411,0.2,False,False,False
+Argentina,Brazil,0.6842105263157895,0.28,False,False,False
+Argentina,Bulgaria,0.35135135135135137,0.19047619047619047,False,False,False
+Argentina,Canada,0.2702702702702703,0.0,False,False,False
+Argentina,Chile,0.8,0.38095238095238093,False,False,False
+Argentina,China,0.6052631578947368,0.2692307692307692,False,False,False
+Argentina,Colombia,0.24324324324324326,0.1,False,False,False
+Argentina,Czechia,0.2972972972972973,0.08333333333333333,False,False,False
+Argentina,Denmark,0.05405405405405406,0.058823529411764705,False,False,False
+Argentina,Ecuador,0.5945945945945946,0.3181818181818182,False,False,False
+Argentina,Estonia,0.10810810810810811,0.1111111111111111,False,False,False
+Argentina,Finland,0.4864864864864865,0.11538461538461539,False,False,False
+Argentina,France,0.825,0.36,False,False,False
+Argentina,Germany,0.7804878048780488,0.16666666666666666,False,False,False
+Argentina,Greece,0.05405405405405406,0.0,False,False,False
+Argentina,Iceland,0.02702702702702703,0.0,False,False,False
+Argentina,India,0.6486486486486487,0.11538461538461539,False,False,False
+Argentina,Italy,0.6578947368421053,0.24,False,False,False
+Argentina,Japan,0.631578947368421,0.16,False,False,False
+Argentina,Kazakhstan,0.02702702702702703,0.0,False,False,False
+Argentina,Korea (DPRK),0.05405405405405406,0.058823529411764705,False,False,False
+Argentina,Korea (ROK),0.5641025641025641,0.18518518518518517,False,False,False
+Argentina,Malaysia,0.10810810810810811,0.0,False,False,False
+Argentina,Netherlands,0.6756756756756757,0.2608695652173913,False,False,False
+Argentina,New Zealand,0.8181818181818182,0.15625,False,False,False
+Argentina,Norway,0.8536585365853658,0.21428571428571427,False,False,False
+Argentina,Peru,0.6052631578947368,0.07407407407407407,False,False,False
+Argentina,Poland,0.4864864864864865,0.22727272727272727,False,False,False
+Argentina,Portugal,0.2972972972972973,0.0,False,False,False
+Argentina,Romania,0.40540540540540543,0.19047619047619047,False,False,False
+Argentina,Russian Federation,0.6904761904761905,0.20689655172413793,False,False,False
+Argentina,Slovakia,0.02702702702702703,0.0,False,False,False
+Argentina,South Africa,0.6666666666666666,0.25925925925925924,False,False,False
+Argentina,Spain,0.6578947368421053,0.24,False,False,False
+Argentina,Sweden,0.4358974358974359,0.15384615384615385,False,False,False
+Argentina,Switzerland,0.08108108108108109,0.0,False,False,False
+Argentina,Türkiye,0.35135135135135137,0.1,False,False,False
+Argentina,Ukraine,0.42105263157894735,0.23809523809523808,False,False,False
+Argentina,United Kingdom,0.9024390243902439,0.4074074074074074,False,False,False
+Argentina,United States,0.85,0.34615384615384615,False,False,False
+Argentina,Uruguay,0.7567567567567568,0.17857142857142858,False,False,False
+Argentina,Venezuela,0.13513513513513514,0.0,False,False,False
+Australia,Austria,0.05128205128205128,0.047619047619047616,False,False,False
+Australia,Belarus,0.38461538461538464,0.23076923076923078,False,False,False
+Australia,Belgium,0.65,0.1724137931034483,False,False,False
+Australia,Brazil,0.65,0.16129032258064516,False,False,False
+Australia,Bulgaria,0.3333333333333333,0.03571428571428571,False,False,False
+Australia,Canada,0.2564102564102564,0.13043478260869565,False,False,False
+Australia,Chile,0.7619047619047619,0.2222222222222222,False,False,False
+Australia,China,0.6153846153846154,0.27586206896551724,False,False,False
+Australia,Colombia,0.23076923076923078,0.13043478260869565,False,False,False
+Australia,Czechia,0.28205128205128205,0.2,False,False,False
+Australia,Denmark,0.05128205128205128,0.047619047619047616,False,False,False
+Australia,Ecuador,0.5641025641025641,0.2222222222222222,False,False,False
+Australia,Estonia,0.10256410256410256,0.043478260869565216,False,False,False
+Australia,Finland,0.46153846153846156,0.1,False,False,False
+Australia,France,0.7857142857142857,0.1875,False,False,False
+Australia,Germany,0.7857142857142857,0.25806451612903225,False,False,False
+Australia,Greece,0.05128205128205128,0.047619047619047616,False,False,False
+Australia,Iceland,0.02564102564102564,0.05,False,False,False
+Australia,India,0.6153846153846154,0.17857142857142858,False,False,False
+Australia,Italy,0.5853658536585366,0.25,False,False,False
+Australia,Japan,0.6,0.32,False,False,False
+Australia,Kazakhstan,0.02564102564102564,0.0,False,False,False
+Australia,Korea (DPRK),0.05128205128205128,0.0,False,False,False
+Australia,Korea (ROK),0.575,0.2857142857142857,False,False,False
+Australia,Malaysia,0.10256410256410256,0.09090909090909091,False,False,False
+Australia,Netherlands,0.6,0.2692307692307692,False,False,False
+Australia,New Zealand,0.8636363636363636,0.3225806451612903,False,False,False
+Australia,Norway,0.9024390243902439,0.46153846153846156,False,False,False
+Australia,Peru,0.6153846153846154,0.13793103448275862,False,False,False
+Australia,Poland,0.425,0.24,False,False,False
+Australia,Portugal,0.28205128205128205,0.08,False,False,False
+Australia,Romania,0.38461538461538464,0.16,False,False,False
+Australia,Russian Federation,0.6590909090909091,0.25806451612903225,False,False,False
+Australia,Slovakia,0.02564102564102564,0.05,False,False,False
+Australia,South Africa,0.6341463414634146,0.3103448275862069,False,False,False
+Australia,Spain,0.625,0.25,False,False,False
+Australia,Sweden,0.45,0.21428571428571427,False,False,False
+Australia,Switzerland,0.07692307692307693,0.0,False,False,False
+Australia,Türkiye,0.3333333333333333,0.04,False,False,False
+Australia,Ukraine,0.4358974358974359,0.2,False,False,False
+Australia,United Kingdom,0.9047619047619048,0.3548387096774194,False,False,False
+Australia,United States,0.8095238095238095,0.3448275862068966,False,False,False
+Australia,Uruguay,0.717948717948718,0.27586206896551724,False,False,False
+Australia,Venezuela,0.1282051282051282,0.08695652173913043,False,False,False
+Austria,Belarus,0.0625,0.07692307692307693,False,False,False
+Austria,Belgium,0.07407407407407407,0.06666666666666667,True,False,False
+Austria,Brazil,0.07407407407407407,0.058823529411764705,False,False,False
+Austria,Bulgaria,0.07142857142857142,0.1,True,False,False
+Austria,Canada,0.09090909090909091,0.14285714285714285,False,False,False
+Austria,Chile,0.05714285714285714,0.0,False,False,False
+Austria,China,0.04,0.05555555555555555,False,False,False
+Austria,Colombia,0.1,0.0,False,False,False
+Austria,Czechia,0.0,0.0,True,False,False
+Austria,Denmark,0.3333333333333333,0.3333333333333333,True,False,False
+Austria,Ecuador,0.09090909090909091,0.07142857142857142,False,False,False
+Austria,Estonia,0.0,0.0,True,False,False
+Austria,Finland,0.1111111111111111,0.07142857142857142,True,False,False
+Austria,France,0.05555555555555555,0.05263157894736842,True,False,False
+Austria,Germany,0.05555555555555555,0.0,True,False,False
+Austria,Greece,0.3333333333333333,0.3333333333333333,True,False,False
+Austria,Iceland,0.0,0.0,False,False,False
+Austria,India,0.08333333333333333,0.07142857142857142,False,False,False
+Austria,Italy,0.07692307692307693,0.0625,True,False,False
+Austria,Japan,0.08,0.07142857142857142,False,False,False
+Austria,Kazakhstan,0.0,0.0,False,False,False
+Austria,Korea (DPRK),0.3333333333333333,0.3333333333333333,False,False,False
+Austria,Korea (ROK),0.04,0.058823529411764705,False,False,False
+Austria,Malaysia,0.0,0.0,False,False,False
+Austria,Netherlands,0.038461538461538464,0.07142857142857142,True,False,False
+Austria,New Zealand,0.046511627906976744,0.0,False,False,False
+Austria,Norway,0.05128205128205128,0.05263157894736842,False,False,False
+Austria,Peru,0.08333333333333333,0.07142857142857142,False,False,False
+Austria,Poland,0.05263157894736842,0.08333333333333333,True,False,False
+Austria,Portugal,0.0,0.0,True,False,False
+Austria,Romania,0.0625,0.0,True,False,False
+Austria,Russian Federation,0.058823529411764705,0.05,False,False,False
+Austria,Slovakia,0.0,0.0,True,False,False
+Austria,South Africa,0.07142857142857142,0.05263157894736842,False,False,False
+Austria,Spain,0.07692307692307693,0.0625,True,False,False
+Austria,Sweden,0.10526315789473684,0.06666666666666667,True,False,False
+Austria,Switzerland,0.25,0.25,False,False,False
+Austria,Türkiye,0.0,0.0,False,False,False
+Austria,Ukraine,0.0,0.0,False,False,False
+Austria,United Kingdom,0.04878048780487805,0.0,False,False,False
+Austria,United States,0.05405405405405406,0.0,False,False,False
+Austria,Uruguay,0.07142857142857142,0.05555555555555555,False,False,False
+Austria,Venezuela,0.4,0.4,False,False,False
+Belarus,Belgium,0.4482758620689655,0.23809523809523808,False,False,False
+Belarus,Brazil,0.5,0.4,False,False,False
+Belarus,Bulgaria,0.3333333333333333,0.16666666666666666,False,False,False
+Belarus,Canada,0.3157894736842105,0.2857142857142857,False,False,False
+Belarus,Chile,0.35135135135135137,0.08695652173913043,False,False,False
+Belarus,China,0.3448275862068966,0.16,False,False,False
+Belarus,Colombia,0.5,0.2857142857142857,False,False,False
+Belarus,Czechia,0.3,0.2222222222222222,False,False,False
+Belarus,Denmark,0.0,0.0,False,False,False
+Belarus,Ecuador,0.48,0.25,False,False,False
+Belarus,Estonia,0.1875,0.06666666666666667,False,False,False
+Belarus,Finland,0.43478260869565216,0.3157894736842105,False,False,False
+Belarus,France,0.3783783783783784,0.25,False,False,False
+Belarus,Germany,0.34210526315789475,0.24,False,False,False
+Belarus,Greece,0.0625,0.07692307692307693,False,False,False
+Belarus,Iceland,0.06666666666666667,0.08333333333333333,False,False,False
+Belarus,India,0.4444444444444444,0.3157894736842105,False,False,False
+Belarus,Italy,0.41379310344827586,0.22727272727272727,False,False,False
+Belarus,Japan,0.3333333333333333,0.13636363636363635,False,False,False
+Belarus,Kazakhstan,0.06666666666666667,0.08333333333333333,False,False,False
+Belarus,Korea (DPRK),0.0,0.0,False,False,False
+Belarus,Korea (ROK),0.39285714285714285,0.2727272727272727,False,False,False
+Belarus,Malaysia,0.26666666666666666,0.14285714285714285,False,False,False
+Belarus,Netherlands,0.3793103448275862,0.19047619047619047,False,False,False
+Belarus,New Zealand,0.3488372093023256,0.2222222222222222,False,False,False
+Belarus,Norway,0.38461538461538464,0.25,False,False,False
+Belarus,Peru,0.4444444444444444,0.3157894736842105,False,False,False
+Belarus,Poland,0.32,0.15,False,False,False
+Belarus,Portugal,0.3,0.1875,False,False,False
+Belarus,Romania,0.36363636363636365,0.23529411764705882,False,False,False
+Belarus,Russian Federation,0.32432432432432434,0.19230769230769232,False,False,False
+Belarus,Slovakia,0.06666666666666667,0.08333333333333333,False,False,False
+Belarus,South Africa,0.34375,0.15384615384615385,False,False,False
+Belarus,Spain,0.36666666666666664,0.08,False,False,False
+Belarus,Sweden,0.36,0.23809523809523808,False,False,False
+Belarus,Switzerland,0.125,0.15384615384615385,False,False,False
+Belarus,Türkiye,0.4,0.2857142857142857,False,False,False
+Belarus,Ukraine,0.28,0.2222222222222222,False,False,False
+Belarus,United Kingdom,0.36585365853658536,0.13333333333333333,False,False,False
+Belarus,United States,0.3333333333333333,0.14814814814814814,False,False,False
+Belarus,Uruguay,0.3870967741935484,0.20833333333333334,False,False,False
+Belarus,Venezuela,0.25,0.21428571428571427,False,False,False
+Belgium,Brazil,0.6875,0.25,False,False,False
+Belgium,Bulgaria,0.48148148148148145,0.35294117647058826,True,True,False
+Belgium,Canada,0.32142857142857145,0.17647058823529413,False,True,False
+Belgium,Chile,0.7222222222222222,0.22727272727272727,False,False,False
+Belgium,China,0.59375,0.2916666666666667,False,False,False
+Belgium,Colombia,0.3333333333333333,0.17647058823529413,False,False,False
+Belgium,Czechia,0.35714285714285715,0.2631578947368421,True,True,False
+Belgium,Denmark,0.07407407407407407,0.14285714285714285,True,True,False
+Belgium,Ecuador,0.6896551724137931,0.2857142857142857,False,False,False
+Belgium,Estonia,0.14814814814814814,0.2857142857142857,True,True,False
+Belgium,Finland,0.5,0.35,True,True,False
+Belgium,France,0.75,0.3333333333333333,True,True,False
+Belgium,Germany,0.7027027027027027,0.17857142857142858,True,True,False
+Belgium,Greece,0.07407407407407407,0.14285714285714285,True,True,False
+Belgium,Iceland,0.037037037037037035,0.07142857142857142,False,True,False
+Belgium,India,0.59375,0.125,False,False,False
+Belgium,Italy,0.7666666666666667,0.3181818181818182,True,True,False
+Belgium,Japan,0.625,0.22727272727272727,False,False,False
+Belgium,Kazakhstan,0.037037037037037035,0.0,False,False,False
+Belgium,Korea (DPRK),0.07407407407407407,0.14285714285714285,False,False,False
+Belgium,Korea (ROK),0.5454545454545454,0.25,False,False,False
+Belgium,Malaysia,0.14814814814814814,0.125,False,False,False
+Belgium,Netherlands,0.6774193548387096,0.42105263157894735,True,True,False
+Belgium,New Zealand,0.5909090909090909,0.16666666666666666,False,False,False
+Belgium,Norway,0.65,0.18518518518518517,False,True,False
+Belgium,Peru,0.7586206896551724,0.2857142857142857,False,False,False
+Belgium,Poland,0.5,0.13636363636363635,True,True,False
+Belgium,Portugal,0.3103448275862069,0.23529411764705882,True,True,False
+Belgium,Romania,0.4482758620689655,0.2777777777777778,True,True,False
+Belgium,Russian Federation,0.6052631578947368,0.13793103448275862,False,False,False
+Belgium,Slovakia,0.037037037037037035,0.07142857142857142,True,True,False
+Belgium,South Africa,0.7741935483870968,0.45454545454545453,False,False,False
+Belgium,Spain,0.65625,0.3181818181818182,True,True,False
+Belgium,Sweden,0.4838709677419355,0.2727272727272727,True,True,False
+Belgium,Switzerland,0.1111111111111111,0.0625,False,False,False
+Belgium,Türkiye,0.3793103448275862,0.17647058823529413,False,True,False
+Belgium,Ukraine,0.4666666666666667,0.14285714285714285,False,False,False
+Belgium,United Kingdom,0.6585365853658537,0.2,False,True,False
+Belgium,United States,0.6410256410256411,0.17857142857142858,False,True,False
+Belgium,Uruguay,0.6666666666666666,0.2916666666666667,False,False,False
+Belgium,Venezuela,0.18518518518518517,0.1875,False,False,False
+Brazil,Bulgaria,0.3793103448275862,0.3157894736842105,False,False,False
+Brazil,Canada,0.37037037037037035,0.2222222222222222,False,False,False
+Brazil,Chile,0.7222222222222222,0.16,False,False,False
+Brazil,China,0.59375,0.32,False,False,True
+Brazil,Colombia,0.3333333333333333,0.2222222222222222,False,False,False
+Brazil,Czechia,0.26666666666666666,0.23809523809523808,False,False,False
+Brazil,Denmark,0.07407407407407407,0.058823529411764705,False,False,False
+Brazil,Ecuador,0.6896551724137931,0.5263157894736842,False,False,False
+Brazil,Estonia,0.14814814814814814,0.25,False,False,False
+Brazil,Finland,0.5517241379310345,0.38095238095238093,False,False,False
+Brazil,France,0.6578947368421053,0.25925925925925924,False,False,False
+Brazil,Germany,0.6153846153846154,0.20689655172413793,False,False,False
+Brazil,Greece,0.07407407407407407,0.058823529411764705,False,False,False
+Brazil,Iceland,0.037037037037037035,0.0,False,False,False
+Brazil,India,0.59375,0.38095238095238093,False,False,True
+Brazil,Italy,0.6060606060606061,0.2916666666666667,False,False,False
+Brazil,Japan,0.5757575757575758,0.2608695652173913,False,False,False
+Brazil,Kazakhstan,0.037037037037037035,0.0625,False,False,False
+Brazil,Korea (DPRK),0.07407407407407407,0.125,False,False,False
+Brazil,Korea (ROK),0.5454545454545454,0.3333333333333333,False,False,False
+Brazil,Malaysia,0.14814814814814814,0.17647058823529413,False,False,False
+Brazil,Netherlands,0.5757575757575758,0.16,False,False,False
+Brazil,New Zealand,0.5909090909090909,0.1935483870967742,False,False,False
+Brazil,Norway,0.6097560975609756,0.25925925925925924,False,False,False
+Brazil,Peru,0.7,0.45,False,False,False
+Brazil,Poland,0.5517241379310345,0.35,False,False,False
+Brazil,Portugal,0.26666666666666666,0.15,False,False,False
+Brazil,Romania,0.5,0.47058823529411764,False,False,False
+Brazil,Russian Federation,0.6052631578947368,0.2962962962962963,False,False,True
+Brazil,Slovakia,0.037037037037037035,0.0,False,False,False
+Brazil,South Africa,0.5714285714285714,0.25925925925925924,False,False,True
+Brazil,Spain,0.6060606060606061,0.19230769230769232,False,False,False
+Brazil,Sweden,0.3939393939393939,0.15384615384615385,False,False,False
+Brazil,Switzerland,0.1111111111111111,0.1875,False,False,False
+Brazil,Türkiye,0.42857142857142855,0.2222222222222222,False,False,False
+Brazil,Ukraine,0.41935483870967744,0.23809523809523808,False,False,False
+Brazil,United Kingdom,0.6585365853658537,0.26666666666666666,False,False,False
+Brazil,United States,0.6,0.20689655172413793,False,False,False
+Brazil,Uruguay,0.6666666666666666,0.375,False,False,False
+Brazil,Venezuela,0.18518518518518517,0.16666666666666666,False,False,False
+Bulgaria,Canada,0.4375,0.25,False,True,False
+Bulgaria,Chile,0.37142857142857144,0.1,False,False,False
+Bulgaria,China,0.37037037037037035,0.18181818181818182,False,False,False
+Bulgaria,Colombia,0.375,0.25,False,False,False
+Bulgaria,Czechia,0.3333333333333333,0.26666666666666666,True,True,False
+Bulgaria,Denmark,0.15384615384615385,0.2222222222222222,True,True,False
+Bulgaria,Ecuador,0.5217391304347826,0.29411764705882354,False,False,False
+Bulgaria,Estonia,0.21428571428571427,0.18181818181818182,True,True,False
+Bulgaria,Finland,0.55,0.375,True,True,False
+Bulgaria,France,0.3611111111111111,0.22727272727272727,True,True,False
+Bulgaria,Germany,0.3611111111111111,0.037037037037037035,True,True,False
+Bulgaria,Greece,0.15384615384615385,0.1,True,True,False
+Bulgaria,Iceland,0.07692307692307693,0.0,False,True,False
+Bulgaria,India,0.5416666666666666,0.29411764705882354,False,False,False
+Bulgaria,Italy,0.4444444444444444,0.2631578947368421,True,True,False
+Bulgaria,Japan,0.46153846153846156,0.2222222222222222,False,False,False
+Bulgaria,Kazakhstan,0.07692307692307693,0.1111111111111111,False,False,False
+Bulgaria,Korea (DPRK),0.15384615384615385,0.2222222222222222,False,False,False
+Bulgaria,Korea (ROK),0.37037037037037035,0.25,False,False,False
+Bulgaria,Malaysia,0.21428571428571427,0.18181818181818182,False,False,False
+Bulgaria,Netherlands,0.4074074074074074,0.2222222222222222,True,True,False
+Bulgaria,New Zealand,0.2727272727272727,0.034482758620689655,False,False,False
+Bulgaria,Norway,0.3,0.125,False,True,False
+Bulgaria,Peru,0.4230769230769231,0.29411764705882354,False,False,False
+Bulgaria,Poland,0.55,0.25,True,True,False
+Bulgaria,Portugal,0.3333333333333333,0.3333333333333333,True,True,False
+Bulgaria,Romania,0.47368421052631576,0.2857142857142857,True,True,False
+Bulgaria,Russian Federation,0.34285714285714286,0.12,False,False,False
+Bulgaria,Slovakia,0.07692307692307693,0.0,True,True,False
+Bulgaria,South Africa,0.41379310344827586,0.125,False,False,False
+Bulgaria,Spain,0.4444444444444444,0.2631578947368421,True,True,False
+Bulgaria,Sweden,0.45454545454545453,0.2777777777777778,True,True,False
+Bulgaria,Switzerland,0.23076923076923078,0.3333333333333333,False,False,False
+Bulgaria,Türkiye,0.3684210526315789,0.25,False,True,False
+Bulgaria,Ukraine,0.42857142857142855,0.1875,False,False,False
+Bulgaria,United Kingdom,0.3170731707317073,0.06896551724137931,False,True,False
+Bulgaria,United States,0.3157894736842105,0.07692307692307693,False,True,False
+Bulgaria,Uruguay,0.41379310344827586,0.3,False,False,False
+Bulgaria,Venezuela,0.2857142857142857,0.2727272727272727,False,False,False
+Canada,Chile,0.2857142857142857,0.05555555555555555,False,False,False
+Canada,China,0.25925925925925924,0.15,False,False,False
+Canada,Colombia,0.35714285714285715,0.2,False,False,False
+Canada,Czechia,0.3125,0.14285714285714285,False,True,False
+Canada,Denmark,0.09090909090909091,0.14285714285714285,False,True,False
+Canada,Ecuador,0.391304347826087,0.11764705882352941,False,False,False
+Canada,Estonia,0.16666666666666666,0.1111111111111111,False,True,False
+Canada,Finland,0.4,0.35714285714285715,False,True,False
+Canada,France,0.24324324324324326,0.2,False,True,False
+Canada,Germany,0.2777777777777778,0.13636363636363635,False,True,False
+Canada,Greece,0.2,0.3333333333333333,False,True,False
+Canada,Iceland,0.1,0.16666666666666666,False,True,False
+Canada,India,0.36,0.26666666666666666,False,False,False
+Canada,Italy,0.3333333333333333,0.16666666666666666,False,True,False
+Canada,Japan,0.4,0.26666666666666666,False,False,False
+Canada,Kazakhstan,0.1,0.16666666666666666,False,False,False
+Canada,Korea (DPRK),0.09090909090909091,0.14285714285714285,False,False,False
+Canada,Korea (ROK),0.36,0.29411764705882354,False,False,False
+Canada,Malaysia,0.4,0.25,False,False,False
+Canada,Netherlands,0.34615384615384615,0.1875,False,True,False
+Canada,New Zealand,0.23255813953488372,0.038461538461538464,False,False,False
+Canada,Norway,0.2564102564102564,0.09090909090909091,False,True,False
+Canada,Peru,0.3076923076923077,0.35714285714285715,False,False,False
+Canada,Poland,0.4,0.13333333333333333,False,True,False
+Canada,Portugal,0.3125,0.18181818181818182,False,True,False
+Canada,Romania,0.47058823529411764,0.25,False,True,False
+Canada,Russian Federation,0.2571428571428571,0.25,False,False,False
+Canada,Slovakia,0.1,0.16666666666666666,False,True,False
+Canada,South Africa,0.3103448275862069,0.14285714285714285,False,False,False
+Canada,Spain,0.38461538461538464,0.16666666666666666,False,True,False
+Canada,Sweden,0.20833333333333334,0.25,False,True,False
+Canada,Switzerland,0.3,0.5,False,False,False
+Canada,Türkiye,0.35294117647058826,0.09090909090909091,False,True,False
+Canada,Ukraine,0.2857142857142857,0.14285714285714285,False,False,False
+Canada,United Kingdom,0.24390243902439024,0.037037037037037035,False,True,False
+Canada,United States,0.23684210526315788,0.08695652173913043,False,True,False
+Canada,Uruguay,0.35714285714285715,0.35294117647058826,False,False,False
+Canada,Venezuela,0.36363636363636365,0.375,False,False,False
+Chile,China,0.5526315789473685,0.25,False,False,False
+Chile,Colombia,0.2571428571428571,0.1875,False,False,False
+Chile,Czechia,0.2777777777777778,0.21052631578947367,False,False,False
+Chile,Denmark,0.05714285714285714,0.0,False,False,False
+Chile,Ecuador,0.5833333333333334,0.18181818181818182,False,False,False
+Chile,Estonia,0.11428571428571428,0.13333333333333333,False,False,False
+Chile,Finland,0.4722222222222222,0.13043478260869565,False,False,False
+Chile,France,0.8205128205128205,0.19230769230769232,False,False,False
+Chile,Germany,0.775,0.28,False,False,False
+Chile,Greece,0.05714285714285714,0.07142857142857142,False,False,False
+Chile,Iceland,0.02857142857142857,0.07692307692307693,False,False,False
+Chile,India,0.5526315789473685,0.18181818181818182,False,False,False
+Chile,Italy,0.6052631578947368,0.21739130434782608,False,False,False
+Chile,Japan,0.6216216216216216,0.13043478260869565,False,False,False
+Chile,Kazakhstan,0.02857142857142857,0.0,False,False,False
+Chile,Korea (DPRK),0.05714285714285714,0.0,False,False,False
+Chile,Korea (ROK),0.475,0.20833333333333334,False,False,False
+Chile,Malaysia,0.11428571428571428,0.13333333333333333,False,False,False
+Chile,Netherlands,0.6216216216216216,0.18181818181818182,False,False,False
+Chile,New Zealand,0.7727272727272727,0.21428571428571427,False,False,False
+Chile,Norway,0.7619047619047619,0.2916666666666667,False,False,False
+Chile,Peru,0.6388888888888888,0.13043478260869565,False,False,False
+Chile,Poland,0.4722222222222222,0.2631578947368421,False,False,False
+Chile,Portugal,0.2777777777777778,0.05263157894736842,False,False,False
+Chile,Romania,0.42857142857142855,0.15789473684210525,False,False,False
+Chile,Russian Federation,0.725,0.18518518518518517,False,False,False
+Chile,Slovakia,0.02857142857142857,0.07692307692307693,False,False,False
+Chile,South Africa,0.7027027027027027,0.24,False,False,False
+Chile,Spain,0.6052631578947368,0.2727272727272727,False,False,False
+Chile,Sweden,0.42105263157894735,0.125,False,False,False
+Chile,Switzerland,0.08571428571428572,0.0,False,False,False
+Chile,Türkiye,0.3333333333333333,0.11764705882352941,False,False,False
+Chile,Ukraine,0.4444444444444444,0.045454545454545456,False,False,False
+Chile,United Kingdom,0.8536585365853658,0.2962962962962963,False,False,False
+Chile,United States,0.8,0.3333333333333333,False,False,False
+Chile,Uruguay,0.7027027027027027,0.25,False,False,False
+Chile,Venezuela,0.14285714285714285,0.125,False,False,False
+China,Colombia,0.2222222222222222,0.09523809523809523,False,False,False
+China,Czechia,0.34615384615384615,0.17391304347826086,False,False,False
+China,Denmark,0.08333333333333333,0.11764705882352941,False,False,False
+China,Ecuador,0.4375,0.25,False,False,False
+China,Estonia,0.12,0.16666666666666666,False,False,False
+China,Finland,0.4482758620689655,0.30434782608695654,False,False,False
+China,France,0.6216216216216216,0.2962962962962963,False,False,False
+China,Germany,0.6216216216216216,0.3333333333333333,False,False,False
+China,Greece,0.08333333333333333,0.05555555555555555,False,False,False
+China,Iceland,0.041666666666666664,0.0,False,False,False
+China,India,0.6551724137931034,0.36363636363636365,False,False,True
+China,Italy,0.5625,0.23076923076923078,False,False,False
+China,Japan,0.5806451612903226,0.25,False,False,False
+China,Kazakhstan,0.041666666666666664,0.0,False,False,False
+China,Korea (DPRK),0.08333333333333333,0.11764705882352941,False,False,False
+China,Korea (ROK),0.6551724137931034,0.2692307692307692,False,False,False
+China,Malaysia,0.07692307692307693,0.0,False,False,False
+China,Netherlands,0.53125,0.15384615384615385,False,False,False
+China,New Zealand,0.5227272727272727,0.26666666666666666,False,False,False
+China,Norway,0.5365853658536586,0.25,False,False,False
+China,Peru,0.6,0.2,False,False,False
+China,Poland,0.5,0.2727272727272727,False,False,False
+China,Portugal,0.34615384615384615,0.09090909090909091,False,False,False
+China,Romania,0.5,0.23809523809523808,False,False,False
+China,Russian Federation,0.5675675675675675,0.2857142857142857,False,False,True
+China,Slovakia,0.041666666666666664,0.0,False,False,False
+China,South Africa,0.5294117647058824,0.34615384615384615,False,False,True
+China,Spain,0.5151515151515151,0.28,False,False,False
+China,Sweden,0.43333333333333335,0.14814814814814814,False,False,False
+China,Switzerland,0.125,0.05263157894736842,False,False,False
+China,Türkiye,0.4230769230769231,0.21052631578947367,False,False,False
+China,Ukraine,0.4642857142857143,0.17391304347826086,False,False,False
+China,United Kingdom,0.5853658536585366,0.39285714285714285,False,False,False
+China,United States,0.5641025641025641,0.2,False,False,False
+China,Uruguay,0.6774193548387096,0.36,False,False,False
+China,Venezuela,0.11538461538461539,0.047619047619047616,False,False,False
+Colombia,Czechia,0.25,0.23076923076923078,False,False,False
+Colombia,Denmark,0.1,0.14285714285714285,False,False,False
+Colombia,Ecuador,0.4090909090909091,0.35714285714285715,False,False,False
+Colombia,Estonia,0.08333333333333333,0.1111111111111111,False,False,False
+Colombia,Finland,0.2857142857142857,0.26666666666666666,False,False,False
+Colombia,France,0.25,0.043478260869565216,False,False,False
+Colombia,Germany,0.25,0.13636363636363635,False,False,False
+Colombia,Greece,0.1,0.14285714285714285,False,False,False
+Colombia,Iceland,0.1111111111111111,0.16666666666666666,False,False,False
+Colombia,India,0.32,0.26666666666666666,False,False,False
+Colombia,Italy,0.34615384615384615,0.23529411764705882,False,False,False
+Colombia,Japan,0.36,0.26666666666666666,False,False,False
+Colombia,Kazakhstan,0.1111111111111111,0.16666666666666666,False,False,False
+Colombia,Korea (DPRK),0.0,0.0,False,False,False
+Colombia,Korea (ROK),0.2692307692307692,0.2222222222222222,False,False,False
+Colombia,Malaysia,0.4444444444444444,0.42857142857142855,False,False,False
+Colombia,Netherlands,0.25925925925925924,0.11764705882352941,False,False,False
+Colombia,New Zealand,0.18181818181818182,0.038461538461538464,False,False,False
+Colombia,Norway,0.2,0.09090909090909091,False,False,False
+Colombia,Peru,0.375,0.26666666666666666,False,False,False
+Colombia,Poland,0.2857142857142857,0.13333333333333333,False,False,False
+Colombia,Portugal,0.25,0.18181818181818182,False,False,False
+Colombia,Romania,0.2631578947368421,0.25,False,False,False
+Colombia,Russian Federation,0.19444444444444445,0.19047619047619047,False,False,False
+Colombia,Slovakia,0.1111111111111111,0.16666666666666666,False,False,False
+Colombia,South Africa,0.32142857142857145,0.14285714285714285,False,False,False
+Colombia,Spain,0.2962962962962963,0.10526315789473684,False,False,False
+Colombia,Sweden,0.21739130434782608,0.05263157894736842,False,False,False
+Colombia,Switzerland,0.2,0.125,False,False,False
+Colombia,Türkiye,0.375,0.5,False,False,False
+Colombia,Ukraine,0.3,0.23076923076923078,False,False,False
+Colombia,United Kingdom,0.21951219512195122,0.0,False,False,False
+Colombia,United States,0.24324324324324326,0.041666666666666664,False,False,False
+Colombia,Uruguay,0.32142857142857145,0.21052631578947367,False,False,False
+Colombia,Venezuela,0.4,0.375,False,False,False
+Czechia,Denmark,0.0,0.0,True,True,False
+Czechia,Ecuador,0.32,0.15,False,False,False
+Czechia,Estonia,0.25,0.2727272727272727,True,True,False
+Czechia,Finland,0.3181818181818182,0.2777777777777778,True,True,False
+Czechia,France,0.2702702702702703,0.16666666666666666,True,True,False
+Czechia,Germany,0.2702702702702703,0.16,True,True,False
+Czechia,Greece,0.08333333333333333,0.0,True,True,False
+Czechia,Iceland,0.09090909090909091,0.0,False,True,False
+Czechia,India,0.34615384615384615,0.21052631578947367,False,False,False
+Czechia,Italy,0.37037037037037035,0.25,True,True,False
+Czechia,Japan,0.38461538461538464,0.21052631578947367,False,False,False
+Czechia,Kazakhstan,0.09090909090909091,0.1,False,False,False
+Czechia,Korea (DPRK),0.08333333333333333,0.09090909090909091,False,False,False
+Czechia,Korea (ROK),0.4,0.3,False,False,False
+Czechia,Malaysia,0.25,0.16666666666666666,False,False,False
+Czechia,Netherlands,0.38461538461538464,0.21052631578947367,True,True,False
+Czechia,New Zealand,0.2558139534883721,0.19230769230769232,False,False,False
+Czechia,Norway,0.28205128205128205,0.2727272727272727,False,True,False
+Czechia,Peru,0.4,0.35294117647058826,False,False,False
+Czechia,Poland,0.38095238095238093,0.16666666666666666,True,True,False
+Czechia,Portugal,0.29411764705882354,0.21428571428571427,True,True,False
+Czechia,Romania,0.4444444444444444,0.35714285714285715,True,True,False
+Czechia,Russian Federation,0.2857142857142857,0.16,False,False,False
+Czechia,Slovakia,0.09090909090909091,0.0,True,True,False
+Czechia,South Africa,0.39285714285714285,0.2727272727272727,False,False,False
+Czechia,Spain,0.37037037037037035,0.25,True,True,False
+Czechia,Sweden,0.25,0.14285714285714285,True,True,False
+Czechia,Switzerland,0.07692307692307693,0.08333333333333333,False,False,False
+Czechia,Türkiye,0.4117647058823529,0.23076923076923078,False,True,False
+Czechia,Ukraine,0.4,0.3333333333333333,False,False,False
+Czechia,United Kingdom,0.2682926829268293,0.23076923076923078,False,True,False
+Czechia,United States,0.2972972972972973,0.20833333333333334,False,True,False
+Czechia,Uruguay,0.39285714285714285,0.22727272727272727,False,False,False
+Czechia,Venezuela,0.23076923076923078,0.15384615384615385,False,False,False
+Denmark,Ecuador,0.09090909090909091,0.15384615384615385,False,False,False
+Denmark,Estonia,0.0,0.0,True,True,False
+Denmark,Finland,0.05263157894736842,0.07142857142857142,True,True,False
+Denmark,France,0.05555555555555555,0.05263157894736842,True,True,False
+Denmark,Germany,0.05555555555555555,0.0,True,True,False
+Denmark,Greece,0.3333333333333333,0.3333333333333333,True,True,False
+Denmark,Iceland,0.0,0.0,False,True,False
+Denmark,India,0.08333333333333333,0.07142857142857142,False,False,False
+Denmark,Italy,0.07692307692307693,0.13333333333333333,True,True,False
+Denmark,Japan,0.08,0.15384615384615385,False,False,False
+Denmark,Kazakhstan,0.0,0.0,False,False,False
+Denmark,Korea (DPRK),0.3333333333333333,0.3333333333333333,False,False,False
+Denmark,Korea (ROK),0.04,0.058823529411764705,False,False,False
+Denmark,Malaysia,0.0,0.0,False,False,False
+Denmark,Netherlands,0.08,0.15384615384615385,True,True,False
+Denmark,New Zealand,0.022727272727272728,0.0,False,False,False
+Denmark,Norway,0.025,0.05263157894736842,False,True,False
+Denmark,Peru,0.08333333333333333,0.07142857142857142,False,False,False
+Denmark,Poland,0.05263157894736842,0.08333333333333333,True,True,False
+Denmark,Portugal,0.0,0.0,True,True,False
+Denmark,Romania,0.0625,0.0,True,True,False
+Denmark,Russian Federation,0.02857142857142857,0.05,False,False,False
+Denmark,Slovakia,0.0,0.0,True,True,False
+Denmark,South Africa,0.07142857142857142,0.1111111111111111,False,False,False
+Denmark,Spain,0.037037037037037035,0.0625,True,True,False
+Denmark,Sweden,0.05,0.06666666666666667,True,True,False
+Denmark,Switzerland,0.25,0.25,False,False,False
+Denmark,Türkiye,0.07142857142857142,0.14285714285714285,False,True,False
+Denmark,Ukraine,0.05555555555555555,0.09090909090909091,False,False,False
+Denmark,United Kingdom,0.04878048780487805,0.0,False,True,False
+Denmark,United States,0.05405405405405406,0.0,False,True,False
+Denmark,Uruguay,0.07142857142857142,0.11764705882352941,False,False,False
+Denmark,Venezuela,0.16666666666666666,0.16666666666666666,False,False,False
+Ecuador,Estonia,0.18181818181818182,0.13333333333333333,False,False,False
+Ecuador,Finland,0.5384615384615384,0.23809523809523808,False,False,False
+Ecuador,France,0.5675675675675675,0.10714285714285714,False,False,False
+Ecuador,Germany,0.5675675675675675,0.10344827586206896,False,False,False
+Ecuador,Greece,0.09090909090909091,0.07142857142857142,False,False,False
+Ecuador,Iceland,0.045454545454545456,0.0,False,False,False
+Ecuador,India,0.5862068965517241,0.3,False,False,False
+Ecuador,Italy,0.7142857142857143,0.2727272727272727,False,False,False
+Ecuador,Japan,0.6206896551724138,0.3,False,False,False
+Ecuador,Kazakhstan,0.045454545454545456,0.07692307692307693,False,False,False
+Ecuador,Korea (DPRK),0.09090909090909091,0.07142857142857142,False,False,False
+Ecuador,Korea (ROK),0.5333333333333333,0.2608695652173913,False,False,False
+Ecuador,Malaysia,0.18181818181818182,0.21428571428571427,False,False,False
+Ecuador,Netherlands,0.6206896551724138,0.13043478260869565,False,False,False
+Ecuador,New Zealand,0.4772727272727273,0.13333333333333333,False,False,False
+Ecuador,Norway,0.525,0.19230769230769232,False,False,False
+Ecuador,Peru,0.7037037037037037,0.23809523809523808,False,False,False
+Ecuador,Poland,0.6,0.3333333333333333,False,False,False
+Ecuador,Portugal,0.375,0.17647058823529413,False,False,False
+Ecuador,Romania,0.5416666666666666,0.375,False,False,False
+Ecuador,Russian Federation,0.47368421052631576,0.18518518518518517,False,False,False
+Ecuador,Slovakia,0.045454545454545456,0.0,False,False,False
+Ecuador,South Africa,0.5625,0.19230769230769232,False,False,False
+Ecuador,Spain,0.6551724137931034,0.2727272727272727,False,False,False
+Ecuador,Sweden,0.4642857142857143,0.125,False,False,False
+Ecuador,Switzerland,0.13636363636363635,0.14285714285714285,False,False,False
+Ecuador,Türkiye,0.4,0.26666666666666666,False,False,False
+Ecuador,Ukraine,0.5,0.21052631578947367,False,False,False
+Ecuador,United Kingdom,0.5365853658536586,0.20689655172413793,False,False,False
+Ecuador,United States,0.5526315789473685,0.14285714285714285,False,False,False
+Ecuador,Uruguay,0.6129032258064516,0.25,False,False,False
+Ecuador,Venezuela,0.22727272727272727,0.2,False,False,False
+Estonia,Finland,0.2222222222222222,0.21428571428571427,True,True,False
+Estonia,France,0.1111111111111111,0.15789473684210525,True,True,False
+Estonia,Germany,0.1111111111111111,0.045454545454545456,True,True,False
+Estonia,Greece,0.0,0.0,True,True,False
+Estonia,Iceland,0.0,0.0,False,True,False
+Estonia,India,0.16666666666666666,0.0625,False,False,False
+Estonia,Italy,0.15384615384615385,0.11764705882352941,True,True,False
+Estonia,Japan,0.16,0.13333333333333333,False,False,False
+Estonia,Kazakhstan,0.0,0.0,False,False,False
+Estonia,Korea (DPRK),0.2,0.2,False,False,False
+Estonia,Korea (ROK),0.16666666666666666,0.17647058823529413,False,False,False
+Estonia,Malaysia,0.14285714285714285,0.14285714285714285,False,False,False
+Estonia,Netherlands,0.11538461538461539,0.13333333333333333,True,True,False
+Estonia,New Zealand,0.09302325581395349,0.08695652173913043,False,False,False
+Estonia,Norway,0.10256410256410256,0.047619047619047616,False,True,False
+Estonia,Peru,0.16666666666666666,0.21428571428571427,False,False,False
+Estonia,Poland,0.15789473684210525,0.07142857142857142,True,True,False
+Estonia,Portugal,0.15384615384615385,0.1,True,True,False
+Estonia,Romania,0.26666666666666666,0.4444444444444444,True,True,False
+Estonia,Russian Federation,0.11764705882352941,0.09523809523809523,False,False,False
+Estonia,Slovakia,0.0,0.0,True,True,False
+Estonia,South Africa,0.14285714285714285,0.15789473684210525,False,False,False
+Estonia,Spain,0.1111111111111111,0.11764705882352941,True,True,False
+Estonia,Sweden,0.15,0.058823529411764705,True,True,False
+Estonia,Switzerland,0.0,0.0,False,False,False
+Estonia,Türkiye,0.13333333333333333,0.1111111111111111,False,True,False
+Estonia,Ukraine,0.10526315789473684,0.16666666666666666,False,False,False
+Estonia,United Kingdom,0.0975609756097561,0.08333333333333333,False,True,False
+Estonia,United States,0.10810810810810811,0.045454545454545456,False,True,False
+Estonia,Uruguay,0.14285714285714285,0.23529411764705882,False,False,False
+Estonia,Venezuela,0.125,0.125,False,False,False
+Finland,France,0.4594594594594595,0.2916666666666667,True,True,False
+Finland,Germany,0.5,0.23076923076923078,True,True,False
+Finland,Greece,0.1111111111111111,0.15384615384615385,True,True,False
+Finland,Iceland,0.05555555555555555,0.07692307692307693,False,True,False
+Finland,India,0.5555555555555556,0.3,False,False,False
+Finland,Italy,0.4666666666666667,0.21739130434782608,True,True,False
+Finland,Japan,0.4827586206896552,0.23809523809523808,False,False,False
+Finland,Kazakhstan,0.05555555555555555,0.07692307692307693,False,False,False
+Finland,Korea (DPRK),0.1111111111111111,0.15384615384615385,False,False,False
+Finland,Korea (ROK),0.4,0.2608695652173913,False,False,False
+Finland,Malaysia,0.15789473684210525,0.21428571428571427,False,False,False
+Finland,Netherlands,0.4827586206896552,0.3,True,True,False
+Finland,New Zealand,0.4186046511627907,0.13333333333333333,False,False,False
+Finland,Norway,0.46153846153846156,0.19230769230769232,False,True,False
+Finland,Peru,0.5,0.3684210526315789,False,False,False
+Finland,Poland,0.38461538461538464,0.09090909090909091,True,True,False
+Finland,Portugal,0.3181818181818182,0.25,True,True,False
+Finland,Romania,0.5,0.375,True,True,False
+Finland,Russian Federation,0.4857142857142857,0.28,False,False,False
+Finland,Slovakia,0.05555555555555555,0.07692307692307693,True,True,False
+Finland,South Africa,0.4375,0.19230769230769232,False,False,False
+Finland,Spain,0.5172413793103449,0.4,True,True,False
+Finland,Sweden,0.5416666666666666,0.2857142857142857,True,True,False
+Finland,Switzerland,0.16666666666666666,0.14285714285714285,False,False,False
+Finland,Türkiye,0.2916666666666667,0.26666666666666666,False,True,False
+Finland,Ukraine,0.34615384615384615,0.21052631578947367,False,False,False
+Finland,United Kingdom,0.43902439024390244,0.12903225806451613,False,True,False
+Finland,United States,0.41025641025641024,0.10344827586206896,False,True,False
+Finland,Uruguay,0.5333333333333333,0.42857142857142855,False,False,False
+Finland,Venezuela,0.2777777777777778,0.2857142857142857,False,False,False
+France,Germany,0.8461538461538461,0.32142857142857145,True,True,False
+France,Greece,0.05555555555555555,0.1111111111111111,True,True,False
+France,Iceland,0.027777777777777776,0.05555555555555555,False,True,False
+France,India,0.6216216216216216,0.14814814814814814,False,False,False
+France,Italy,0.6756756756756757,0.32,True,True,False
+France,Japan,0.6052631578947368,0.24,False,False,False
+France,Kazakhstan,0.027777777777777776,0.0,False,False,False
+France,Korea (DPRK),0.05555555555555555,0.1111111111111111,False,False,False
+France,Korea (ROK),0.5,0.3076923076923077,False,False,False
+France,Malaysia,0.1111111111111111,0.047619047619047616,False,False,False
+France,Netherlands,0.6052631578947368,0.4090909090909091,True,True,False
+France,New Zealand,0.7954545454545454,0.3,False,False,False
+France,Norway,0.7857142857142857,0.2,False,True,False
+France,Peru,0.6216216216216216,0.2916666666666667,False,False,False
+France,Poland,0.4594594594594595,0.20833333333333334,True,True,False
+France,Portugal,0.3055555555555556,0.13636363636363635,True,True,False
+France,Romania,0.3783783783783784,0.17391304347826086,True,True,False
+France,Russian Federation,0.7073170731707317,0.37037037037037035,False,False,False
+France,Slovakia,0.027777777777777776,0.05555555555555555,True,True,False
+France,South Africa,0.7297297297297297,0.38461538461538464,False,False,False
+France,Spain,0.631578947368421,0.2692307692307692,True,True,False
+France,Sweden,0.4473684210526316,0.391304347826087,True,True,False
+France,Switzerland,0.08333333333333333,0.10526315789473684,False,False,False
+France,Türkiye,0.3611111111111111,0.043478260869565216,False,True,False
+France,Ukraine,0.43243243243243246,0.16666666666666666,False,False,False
+France,United Kingdom,0.8780487804878049,0.3333333333333333,False,True,False
+France,United States,0.8717948717948718,0.27586206896551724,False,True,False
+France,Uruguay,0.6410256410256411,0.2962962962962963,False,False,False
+France,Venezuela,0.1388888888888889,0.09523809523809523,False,False,False
+Germany,Greece,0.05555555555555555,0.05,True,True,False
+Germany,Iceland,0.027777777777777776,0.05263157894736842,False,True,False
+Germany,India,0.6666666666666666,0.18518518518518517,False,False,False
+Germany,Italy,0.6756756756756757,0.3076923076923077,True,True,False
+Germany,Japan,0.6486486486486487,0.18518518518518517,False,False,False
+Germany,Kazakhstan,0.027777777777777776,0.0,False,False,False
+Germany,Korea (DPRK),0.05555555555555555,0.0,False,False,False
+Germany,Korea (ROK),0.5384615384615384,0.20689655172413793,False,False,False
+Germany,Malaysia,0.1111111111111111,0.045454545454545456,False,False,False
+Germany,Netherlands,0.6052631578947368,0.23076923076923078,True,True,False
+Germany,New Zealand,0.7954545454545454,0.3333333333333333,False,False,False
+Germany,Norway,0.7441860465116279,0.23333333333333334,False,True,False
+Germany,Peru,0.6666666666666666,0.23076923076923078,False,False,False
+Germany,Poland,0.42105263157894735,0.2,True,True,False
+Germany,Portugal,0.2702702702702703,0.13043478260869565,True,True,False
+Germany,Romania,0.4166666666666667,0.07692307692307693,True,True,False
+Germany,Russian Federation,0.75,0.35714285714285715,False,False,False
+Germany,Slovakia,0.027777777777777776,0.05263157894736842,True,True,False
+Germany,South Africa,0.6410256410256411,0.37037037037037035,False,False,False
+Germany,Spain,0.7222222222222222,0.25925925925925924,True,True,False
+Germany,Sweden,0.41025641025641024,0.2222222222222222,True,True,False
+Germany,Switzerland,0.08333333333333333,0.047619047619047616,False,False,False
+Germany,Türkiye,0.3611111111111111,0.08695652173913043,False,True,False
+Germany,Ukraine,0.43243243243243246,0.20833333333333334,False,False,False
+Germany,United Kingdom,0.8333333333333334,0.3225806451612903,False,True,False
+Germany,United States,0.825,0.26666666666666666,False,True,False
+Germany,Uruguay,0.7297297297297297,0.2413793103448276,False,False,False
+Germany,Venezuela,0.1388888888888889,0.043478260869565216,False,False,False
+Greece,Iceland,0.5,0.5,False,True,False
+Greece,India,0.08333333333333333,0.07142857142857142,False,False,False
+Greece,Italy,0.07692307692307693,0.13333333333333333,True,True,False
+Greece,Japan,0.08,0.15384615384615385,False,False,False
+Greece,Kazakhstan,0.0,0.0,False,False,False
+Greece,Korea (DPRK),0.3333333333333333,0.3333333333333333,False,False,False
+Greece,Korea (ROK),0.08333333333333333,0.125,False,False,False
+Greece,Malaysia,0.2,0.2,False,False,False
+Greece,Netherlands,0.08,0.15384615384615385,True,True,False
+Greece,New Zealand,0.046511627906976744,0.0,False,False,False
+Greece,Norway,0.05128205128205128,0.05263157894736842,False,True,False
+Greece,Peru,0.08333333333333333,0.15384615384615385,False,False,False
+Greece,Poland,0.1111111111111111,0.08333333333333333,True,True,False
+Greece,Portugal,0.0,0.0,True,True,False
+Greece,Romania,0.13333333333333333,0.0,True,True,False
+Greece,Russian Federation,0.058823529411764705,0.10526315789473684,False,False,False
+Greece,Slovakia,0.5,0.5,True,True,False
+Greece,South Africa,0.07142857142857142,0.1111111111111111,False,False,False
+Greece,Spain,0.07692307692307693,0.13333333333333333,True,True,False
+Greece,Sweden,0.10526315789473684,0.14285714285714285,True,True,False
+Greece,Switzerland,0.25,0.25,False,False,False
+Greece,Türkiye,0.07142857142857142,0.0,False,True,False
+Greece,Ukraine,0.05555555555555555,0.0,False,False,False
+Greece,United Kingdom,0.04878048780487805,0.0,False,True,False
+Greece,United States,0.05405405405405406,0.05,False,True,False
+Greece,Uruguay,0.07142857142857142,0.11764705882352941,False,False,False
+Greece,Venezuela,0.4,0.4,False,False,False
+Iceland,India,0.041666666666666664,0.0,False,False,False
+Iceland,Italy,0.038461538461538464,0.06666666666666667,False,True,False
+Iceland,Japan,0.04,0.07692307692307693,False,False,False
+Iceland,Kazakhstan,0.0,0.0,False,False,False
+Iceland,Korea (DPRK),0.0,0.0,False,False,False
+Iceland,Korea (ROK),0.041666666666666664,0.0625,False,False,False
+Iceland,Malaysia,0.25,0.25,False,False,False
+Iceland,Netherlands,0.04,0.07692307692307693,False,True,False
+Iceland,New Zealand,0.023255813953488372,0.0,False,False,False
+Iceland,Norway,0.02564102564102564,0.0,False,True,False
+Iceland,Peru,0.041666666666666664,0.07692307692307693,False,False,False
+Iceland,Poland,0.05555555555555555,0.0,False,True,False
+Iceland,Portugal,0.0,0.0,False,True,False
+Iceland,Romania,0.06666666666666667,0.0,False,True,False
+Iceland,Russian Federation,0.029411764705882353,0.05263157894736842,False,False,False
+Iceland,Slovakia,1.0,1.0,False,True,False
+Iceland,South Africa,0.03571428571428571,0.05555555555555555,False,False,False
+Iceland,Spain,0.038461538461538464,0.06666666666666667,False,True,False
+Iceland,Sweden,0.05263157894736842,0.07142857142857142,False,True,False
+Iceland,Switzerland,0.0,0.0,False,False,False
+Iceland,Türkiye,0.07692307692307693,0.0,False,True,False
+Iceland,Ukraine,0.058823529411764705,0.0,False,False,False
+Iceland,United Kingdom,0.024390243902439025,0.0,False,True,False
+Iceland,United States,0.02702702702702703,0.05263157894736842,False,True,False
+Iceland,Uruguay,0.03571428571428571,0.058823529411764705,False,False,False
+Iceland,Venezuela,0.2,0.2,False,False,False
+India,Italy,0.6129032258064516,0.3333333333333333,False,False,False
+India,Japan,0.6896551724137931,0.3,False,False,False
+India,Kazakhstan,0.041666666666666664,0.07692307692307693,False,False,False
+India,Korea (DPRK),0.08333333333333333,0.07142857142857142,False,False,False
+India,Korea (ROK),0.6,0.38095238095238093,False,False,False
+India,Malaysia,0.12,0.13333333333333333,False,False,False
+India,Netherlands,0.5806451612903226,0.08333333333333333,False,False,False
+India,New Zealand,0.5227272727272727,0.21428571428571427,False,False,False
+India,Norway,0.5365853658536586,0.2916666666666667,False,False,False
+India,Peru,0.6,0.3,False,False,False
+India,Poland,0.5555555555555556,0.3333333333333333,False,False,False
+India,Portugal,0.25,0.17647058823529413,False,False,False
+India,Romania,0.625,0.29411764705882354,False,False,False
+India,Russian Federation,0.6111111111111112,0.28,False,False,True
+India,Slovakia,0.041666666666666664,0.0,False,False,False
+India,South Africa,0.5294117647058824,0.14814814814814814,False,False,True
+India,Spain,0.6666666666666666,0.16666666666666666,False,False,False
+India,Sweden,0.43333333333333335,0.17391304347826086,False,False,False
+India,Switzerland,0.125,0.23076923076923078,False,False,False
+India,Türkiye,0.5416666666666666,0.35714285714285715,False,False,False
+India,Ukraine,0.4642857142857143,0.15,False,False,False
+India,United Kingdom,0.5853658536585366,0.12903225806451613,False,False,False
+India,United States,0.5641025641025641,0.18518518518518517,False,False,False
+India,Uruguay,0.7333333333333333,0.30434782608695654,False,False,False
+India,Venezuela,0.20833333333333334,0.2,False,False,False
+Italy,Japan,0.7586206896551724,0.4,False,False,False
+Italy,Kazakhstan,0.038461538461538464,0.0,False,False,False
+Italy,Korea (DPRK),0.07692307692307693,0.13333333333333333,False,False,False
+Italy,Korea (ROK),0.6666666666666666,0.47619047619047616,False,False,False
+Italy,Malaysia,0.15384615384615385,0.11764705882352941,False,False,False
+Italy,Netherlands,0.59375,0.3333333333333333,True,True,False
+Italy,New Zealand,0.5681818181818182,0.2,False,False,False
+Italy,Norway,0.5853658536585366,0.17857142857142858,False,True,False
+Italy,Peru,0.6666666666666666,0.4,False,False,False
+Italy,Poland,0.5714285714285714,0.3,True,True,False
+Italy,Portugal,0.27586206896551724,0.1,True,True,False
+Italy,Romania,0.41379310344827586,0.2,True,True,False
+Italy,Russian Federation,0.6216216216216216,0.25925925925925924,False,False,False
+Italy,Slovakia,0.038461538461538464,0.06666666666666667,True,True,False
+Italy,South Africa,0.7419354838709677,0.43478260869565216,False,False,False
+Italy,Spain,0.625,0.30434782608695654,True,True,False
+Italy,Sweden,0.45161290322580644,0.2608695652173913,True,True,False
+Italy,Switzerland,0.11538461538461539,0.125,False,False,False
+Italy,Türkiye,0.39285714285714285,0.16666666666666666,False,True,False
+Italy,Ukraine,0.4827586206896552,0.19047619047619047,False,False,False
+Italy,United Kingdom,0.6341463414634146,0.15625,False,True,False
+Italy,United States,0.7027027027027027,0.36,False,True,False
+Italy,Uruguay,0.7419354838709677,0.3333333333333333,False,False,False
+Italy,Venezuela,0.19230769230769232,0.17647058823529413,False,False,False
+Japan,Kazakhstan,0.04,0.07692307692307693,False,False,False
+Japan,Korea (DPRK),0.08,0.15384615384615385,False,False,False
+Japan,Korea (ROK),0.6333333333333333,0.45,False,False,False
+Japan,Malaysia,0.16,0.21428571428571427,False,False,False
+Japan,Netherlands,0.6129032258064516,0.3,False,False,False
+Japan,New Zealand,0.5454545454545454,0.13333333333333333,False,False,False
+Japan,Norway,0.5609756097560976,0.14814814814814814,False,False,False
+Japan,Peru,0.5806451612903226,0.3,False,False,False
+Japan,Poland,0.5357142857142857,0.09090909090909091,False,False,False
+Japan,Portugal,0.2857142857142857,0.05263157894736842,False,False,False
+Japan,Romania,0.48148148148148145,0.29411764705882354,False,False,False
+Japan,Russian Federation,0.5526315789473685,0.391304347826087,False,False,False
+Japan,Slovakia,0.04,0.07692307692307693,False,False,False
+Japan,South Africa,0.65625,0.34782608695652173,False,False,False
+Japan,Spain,0.6451612903225806,0.21739130434782608,False,False,False
+Japan,Sweden,0.41935483870967744,0.17391304347826086,False,False,False
+Japan,Switzerland,0.12,0.14285714285714285,False,False,False
+Japan,Türkiye,0.35714285714285715,0.11764705882352941,False,False,False
+Japan,Ukraine,0.5,0.2777777777777778,False,False,False
+Japan,United Kingdom,0.6097560975609756,0.09375,False,False,False
+Japan,United States,0.631578947368421,0.23076923076923078,False,False,False
+Japan,Uruguay,0.7666666666666667,0.42857142857142855,False,False,False
+Japan,Venezuela,0.2,0.2,False,False,False
+Kazakhstan,Korea (DPRK),0.0,0.0,False,False,False
+Kazakhstan,Korea (ROK),0.041666666666666664,0.0625,False,False,False
+Kazakhstan,Malaysia,0.25,0.25,False,False,False
+Kazakhstan,Netherlands,0.04,0.0,False,False,False
+Kazakhstan,New Zealand,0.023255813953488372,0.0,False,False,False
+Kazakhstan,Norway,0.02564102564102564,0.0,False,False,False
+Kazakhstan,Peru,0.041666666666666664,0.07692307692307693,False,False,False
+Kazakhstan,Poland,0.05555555555555555,0.0,False,False,False
+Kazakhstan,Portugal,0.09090909090909091,0.14285714285714285,False,False,False
+Kazakhstan,Romania,0.06666666666666667,0.1111111111111111,False,False,False
+Kazakhstan,Russian Federation,0.029411764705882353,0.05263157894736842,False,False,False
+Kazakhstan,Slovakia,0.0,0.0,False,False,False
+Kazakhstan,South Africa,0.03571428571428571,0.0,False,False,False
+Kazakhstan,Spain,0.038461538461538464,0.0,False,False,False
+Kazakhstan,Sweden,0.05263157894736842,0.0,False,False,False
+Kazakhstan,Switzerland,0.3333333333333333,0.3333333333333333,False,False,False
+Kazakhstan,Türkiye,0.07692307692307693,0.16666666666666666,False,False,False
+Kazakhstan,Ukraine,0.058823529411764705,0.1,False,False,False
+Kazakhstan,United Kingdom,0.024390243902439025,0.0,False,False,False
+Kazakhstan,United States,0.02702702702702703,0.0,False,False,False
+Kazakhstan,Uruguay,0.03571428571428571,0.058823529411764705,False,False,False
+Kazakhstan,Venezuela,0.2,0.2,False,False,False
+Korea (DPRK),Korea (ROK),0.08333333333333333,0.125,False,False,False
+Korea (DPRK),Malaysia,0.0,0.0,False,False,False
+Korea (DPRK),Netherlands,0.08,0.15384615384615385,False,False,False
+Korea (DPRK),New Zealand,0.046511627906976744,0.0,False,False,False
+Korea (DPRK),Norway,0.05128205128205128,0.05263157894736842,False,False,False
+Korea (DPRK),Peru,0.08333333333333333,0.15384615384615385,False,False,False
+Korea (DPRK),Poland,0.1111111111111111,0.08333333333333333,False,False,False
+Korea (DPRK),Portugal,0.0,0.0,False,False,False
+Korea (DPRK),Romania,0.13333333333333333,0.1,False,False,False
+Korea (DPRK),Russian Federation,0.058823529411764705,0.05,False,False,False
+Korea (DPRK),Slovakia,0.0,0.0,False,False,False
+Korea (DPRK),South Africa,0.07142857142857142,0.1111111111111111,False,False,False
+Korea (DPRK),Spain,0.07692307692307693,0.13333333333333333,False,False,False
+Korea (DPRK),Sweden,0.10526315789473684,0.06666666666666667,False,False,False
+Korea (DPRK),Switzerland,0.25,0.25,False,False,False
+Korea (DPRK),Türkiye,0.0,0.0,False,False,False
+Korea (DPRK),Ukraine,0.05555555555555555,0.09090909090909091,False,False,False
+Korea (DPRK),United Kingdom,0.04878048780487805,0.0,False,False,False
+Korea (DPRK),United States,0.05405405405405406,0.05,False,False,False
+Korea (DPRK),Uruguay,0.07142857142857142,0.11764705882352941,False,False,False
+Korea (DPRK),Venezuela,0.16666666666666666,0.16666666666666666,False,False,False
+Korea (ROK),Malaysia,0.16666666666666666,0.17647058823529413,False,False,False
+Korea (ROK),Netherlands,0.48484848484848486,0.16,False,False,False
+Korea (ROK),New Zealand,0.5227272727272727,0.15625,False,False,False
+Korea (ROK),Norway,0.5365853658536586,0.1724137931034483,False,False,False
+Korea (ROK),Peru,0.6,0.38095238095238093,False,False,False
+Korea (ROK),Poland,0.6153846153846154,0.2857142857142857,False,False,False
+Korea (ROK),Portugal,0.2962962962962963,0.15,False,False,False
+Korea (ROK),Romania,0.56,0.3157894736842105,False,False,False
+Korea (ROK),Russian Federation,0.6111111111111112,0.4,False,False,False
+Korea (ROK),Slovakia,0.041666666666666664,0.0625,False,False,False
+Korea (ROK),South Africa,0.5294117647058824,0.3076923076923077,False,False,False
+Korea (ROK),Spain,0.6129032258064516,0.2916666666666667,False,False,False
+Korea (ROK),Sweden,0.3870967741935484,0.2,False,False,False
+Korea (ROK),Switzerland,0.125,0.1875,False,False,False
+Korea (ROK),Türkiye,0.37037037037037035,0.15789473684210525,False,False,False
+Korea (ROK),Ukraine,0.4642857142857143,0.23809523809523808,False,False,False
+Korea (ROK),United Kingdom,0.5476190476190477,0.1875,False,False,False
+Korea (ROK),United States,0.525,0.25,False,False,False
+Korea (ROK),Uruguay,0.6774193548387096,0.43478260869565216,False,False,False
+Korea (ROK),Venezuela,0.16,0.23529411764705882,False,False,False
+Malaysia,Netherlands,0.11538461538461539,0.0625,False,False,False
+Malaysia,New Zealand,0.09302325581395349,0.0,False,False,False
+Malaysia,Norway,0.10256410256410256,0.0,False,False,False
+Malaysia,Peru,0.16666666666666666,0.3076923076923077,False,False,False
+Malaysia,Poland,0.15789473684210525,0.07142857142857142,False,False,False
+Malaysia,Portugal,0.15384615384615385,0.2222222222222222,False,False,False
+Malaysia,Romania,0.1875,0.18181818181818182,False,False,False
+Malaysia,Russian Federation,0.08571428571428572,0.09523809523809523,False,False,False
+Malaysia,Slovakia,0.25,0.25,False,False,False
+Malaysia,South Africa,0.14285714285714285,0.047619047619047616,False,False,False
+Malaysia,Spain,0.15384615384615385,0.11764705882352941,False,False,False
+Malaysia,Sweden,0.09523809523809523,0.058823529411764705,False,False,False
+Malaysia,Switzerland,0.16666666666666666,0.16666666666666666,False,False,False
+Malaysia,Türkiye,0.21428571428571427,0.25,False,False,False
+Malaysia,Ukraine,0.16666666666666666,0.07692307692307693,False,False,False
+Malaysia,United Kingdom,0.0975609756097561,0.04,False,False,False
+Malaysia,United States,0.10810810810810811,0.09523809523809523,False,False,False
+Malaysia,Uruguay,0.14285714285714285,0.23529411764705882,False,False,False
+Malaysia,Venezuela,0.5,0.5,False,False,False
+Netherlands,New Zealand,0.5454545454545454,0.21428571428571427,False,False,False
+Netherlands,Norway,0.6,0.24,False,True,False
+Netherlands,Peru,0.5806451612903226,0.23809523809523808,False,False,False
+Netherlands,Poland,0.3870967741935484,0.043478260869565216,True,True,False
+Netherlands,Portugal,0.2857142857142857,0.05263157894736842,True,True,False
+Netherlands,Romania,0.48148148148148145,0.15789473684210525,True,True,False
+Netherlands,Russian Federation,0.475,0.18518518518518517,False,False,False
+Netherlands,Slovakia,0.04,0.07692307692307693,True,True,False
+Netherlands,South Africa,0.5588235294117647,0.4090909090909091,False,False,False
+Netherlands,Spain,0.6451612903225806,0.2727272727272727,True,True,False
+Netherlands,Sweden,0.4666666666666667,0.35,True,True,False
+Netherlands,Switzerland,0.12,0.06666666666666667,False,False,False
+Netherlands,Türkiye,0.35714285714285715,0.05555555555555555,False,True,False
+Netherlands,Ukraine,0.5,0.2777777777777778,False,False,False
+Netherlands,United Kingdom,0.6097560975609756,0.16666666666666666,False,True,False
+Netherlands,United States,0.55,0.23076923076923078,False,True,False
+Netherlands,Uruguay,0.6060606060606061,0.30434782608695654,False,False,False
+Netherlands,Venezuela,0.1111111111111111,0.125,False,False,False
+New Zealand,Norway,0.9069767441860465,0.5,False,False,False
+New Zealand,Peru,0.5227272727272727,0.13333333333333333,False,False,False
+New Zealand,Poland,0.4186046511627907,0.18518518518518517,False,False,False
+New Zealand,Portugal,0.2558139534883721,0.07692307692307693,False,False,False
+New Zealand,Romania,0.3488372093023256,0.15384615384615385,False,False,False
+New Zealand,Russian Federation,0.75,0.25,False,False,False
+New Zealand,Slovakia,0.023255813953488372,0.0,False,False,False
+New Zealand,South Africa,0.6136363636363636,0.21875,False,False,False
+New Zealand,Spain,0.6046511627906976,0.125,False,False,False
+New Zealand,Sweden,0.4418604651162791,0.20689655172413793,False,False,False
+New Zealand,Switzerland,0.06976744186046512,0.0,False,False,False
+New Zealand,Türkiye,0.2727272727272727,0.08,False,False,False
+New Zealand,Ukraine,0.36363636363636365,0.19230769230769232,False,False,False
+New Zealand,United Kingdom,0.9090909090909091,0.3870967741935484,False,False,False
+New Zealand,United States,0.8181818181818182,0.25,False,False,False
+New Zealand,Uruguay,0.6136363636363636,0.15151515151515152,False,False,False
+New Zealand,Venezuela,0.11627906976744186,0.0,False,False,False
+Norway,Peru,0.5365853658536586,0.10714285714285714,False,False,False
+Norway,Poland,0.425,0.2608695652173913,False,True,False
+Norway,Portugal,0.28205128205128205,0.08695652173913043,False,True,False
+Norway,Romania,0.35,0.125,False,True,False
+Norway,Russian Federation,0.6976744186046512,0.27586206896551724,False,False,False
+Norway,Slovakia,0.02564102564102564,0.0,False,True,False
+Norway,South Africa,0.675,0.2413793103448276,False,False,False
+Norway,Spain,0.5853658536585366,0.17857142857142858,False,True,False
+Norway,Sweden,0.45,0.28,False,True,False
+Norway,Switzerland,0.07692307692307693,0.05,False,False,False
+Norway,Türkiye,0.2682926829268293,0.09090909090909091,False,True,False
+Norway,Ukraine,0.4,0.21739130434782608,False,False,False
+Norway,United Kingdom,0.9047619047619048,0.3793103448275862,False,True,False
+Norway,United States,0.8095238095238095,0.27586206896551724,False,True,False
+Norway,Uruguay,0.6341463414634146,0.12903225806451613,False,False,False
+Norway,Venezuela,0.1282051282051282,0.045454545454545456,False,False,False
+Peru,Poland,0.5,0.2,False,False,False
+Peru,Portugal,0.2962962962962963,0.17647058823529413,False,False,False
+Peru,Romania,0.56,0.29411764705882354,False,False,False
+Peru,Russian Federation,0.6111111111111112,0.28,False,False,False
+Peru,Slovakia,0.041666666666666664,0.07692307692307693,False,False,False
+Peru,South Africa,0.625,0.34782608695652173,False,False,False
+Peru,Spain,0.6666666666666666,0.21739130434782608,False,False,False
+Peru,Sweden,0.43333333333333335,0.22727272727272727,False,False,False
+Peru,Switzerland,0.125,0.23076923076923078,False,False,False
+Peru,Türkiye,0.4230769230769231,0.1875,False,False,False
+Peru,Ukraine,0.41379310344827586,0.21052631578947367,False,False,False
+Peru,United Kingdom,0.5853658536585366,0.12903225806451613,False,False,False
+Peru,United States,0.6052631578947368,0.23076923076923078,False,False,False
+Peru,Uruguay,0.7333333333333333,0.5,False,False,False
+Peru,Venezuela,0.20833333333333334,0.2857142857142857,False,False,False
+Poland,Portugal,0.38095238095238093,0.2,True,True,False
+Poland,Romania,0.5714285714285714,0.17647058823529413,True,True,False
+Poland,Russian Federation,0.4857142857142857,0.15384615384615385,False,False,False
+Poland,Slovakia,0.05555555555555555,0.0,True,True,False
+Poland,South Africa,0.4838709677419355,0.16,False,False,False
+Poland,Spain,0.5714285714285714,0.3,True,True,False
+Poland,Sweden,0.32142857142857145,0.13636363636363635,True,True,False
+Poland,Switzerland,0.16666666666666666,0.16666666666666666,False,False,False
+Poland,Türkiye,0.47619047619047616,0.0625,False,True,False
+Poland,Ukraine,0.4583333333333333,0.05,False,False,False
+Poland,United Kingdom,0.43902439024390244,0.2692307692307692,False,True,False
+Poland,United States,0.4864864864864865,0.2,False,True,False
+Poland,Uruguay,0.5333333333333333,0.16666666666666666,False,False,False
+Poland,Venezuela,0.21052631578947367,0.14285714285714285,False,False,False
+Portugal,Romania,0.3,0.14285714285714285,True,True,False
+Portugal,Russian Federation,0.21621621621621623,0.04,False,False,False
+Portugal,Slovakia,0.0,0.0,True,True,False
+Portugal,South Africa,0.25806451612903225,0.041666666666666664,False,False,False
+Portugal,Spain,0.32142857142857145,0.15789473684210525,True,True,False
+Portugal,Sweden,0.30434782608695654,0.16666666666666666,True,True,False
+Portugal,Switzerland,0.16666666666666666,0.25,False,False,False
+Portugal,Türkiye,0.2631578947368421,0.18181818181818182,False,True,False
+Portugal,Ukraine,0.2727272727272727,0.0625,False,False,False
+Portugal,United Kingdom,0.2682926829268293,0.11538461538461539,False,True,False
+Portugal,United States,0.2631578947368421,0.08333333333333333,False,True,False
+Portugal,Uruguay,0.25806451612903225,0.14285714285714285,False,False,False
+Portugal,Venezuela,0.14285714285714285,0.2,False,False,False
+Romania,Russian Federation,0.4411764705882353,0.21739130434782608,False,False,False
+Romania,Slovakia,0.06666666666666667,0.0,True,True,False
+Romania,South Africa,0.34375,0.17391304347826086,False,False,False
+Romania,Spain,0.5185185185185185,0.2631578947368421,True,True,False
+Romania,Sweden,0.36,0.09523809523809523,True,True,False
+Romania,Switzerland,0.2,0.09090909090909091,False,False,False
+Romania,Türkiye,0.4,0.15384615384615385,False,True,False
+Romania,Ukraine,0.3333333333333333,0.26666666666666666,False,False,False
+Romania,United Kingdom,0.36585365853658536,0.10714285714285714,False,True,False
+Romania,United States,0.3333333333333333,0.07692307692307693,False,True,False
+Romania,Uruguay,0.4827586206896552,0.3,False,False,False
+Romania,Venezuela,0.25,0.16666666666666666,False,False,False
+Russian Federation,Slovakia,0.029411764705882353,0.05263157894736842,False,False,False
+Russian Federation,South Africa,0.631578947368421,0.4230769230769231,False,False,True
+Russian Federation,Spain,0.6216216216216216,0.21428571428571427,False,False,False
+Russian Federation,Sweden,0.39473684210526316,0.2692307692307692,False,False,False
+Russian Federation,Switzerland,0.08823529411764706,0.1,False,False,False
+Russian Federation,Türkiye,0.34285714285714286,0.08695652173913043,False,False,False
+Russian Federation,Ukraine,0.3783783783783784,0.20833333333333334,False,False,False
+Russian Federation,United Kingdom,0.7441860465116279,0.24242424242424243,False,False,False
+Russian Federation,United States,0.6904761904761905,0.15151515151515152,False,False,False
+Russian Federation,Uruguay,0.6756756756756757,0.2857142857142857,False,False,False
+Russian Federation,Venezuela,0.14705882352941177,0.14285714285714285,False,False,False
+Slovakia,South Africa,0.03571428571428571,0.05555555555555555,False,False,False
+Slovakia,Spain,0.038461538461538464,0.06666666666666667,True,True,False
+Slovakia,Sweden,0.05263157894736842,0.07142857142857142,True,True,False
+Slovakia,Switzerland,0.0,0.0,False,False,False
+Slovakia,Türkiye,0.07692307692307693,0.0,False,True,False
+Slovakia,Ukraine,0.058823529411764705,0.0,False,False,False
+Slovakia,United Kingdom,0.024390243902439025,0.0,False,True,False
+Slovakia,United States,0.02702702702702703,0.05263157894736842,False,True,False
+Slovakia,Uruguay,0.03571428571428571,0.058823529411764705,False,False,False
+Slovakia,Venezuela,0.2,0.2,False,False,False
+South Africa,Spain,0.5428571428571428,0.2222222222222222,False,False,False
+South Africa,Sweden,0.42424242424242425,0.23076923076923078,False,False,False
+South Africa,Switzerland,0.10714285714285714,0.05,False,False,False
+South Africa,Türkiye,0.3225806451612903,0.09090909090909091,False,False,False
+South Africa,Ukraine,0.40625,0.21739130434782608,False,False,False
+South Africa,United Kingdom,0.6829268292682927,0.3333333333333333,False,False,False
+South Africa,United States,0.7567567567567568,0.37037037037037035,False,False,False
+South Africa,Uruguay,0.696969696969697,0.34615384615384615,False,False,False
+South Africa,Venezuela,0.17857142857142858,0.09523809523809523,False,False,False
+Spain,Sweden,0.45161290322580644,0.3181818181818182,True,True,False
+Spain,Switzerland,0.11538461538461539,0.058823529411764705,False,False,False
+Spain,Türkiye,0.39285714285714285,0.05,False,True,False
+Spain,Ukraine,0.4827586206896552,0.13636363636363635,False,False,False
+Spain,United Kingdom,0.5952380952380952,0.23333333333333334,False,True,False
+Spain,United States,0.575,0.21428571428571427,False,True,False
+Spain,Uruguay,0.6875,0.28,False,False,False
+Spain,Venezuela,0.19230769230769232,0.17647058823529413,False,False,False
+Sweden,Switzerland,0.15789473684210525,0.13333333333333333,False,False,False
+Sweden,Türkiye,0.14285714285714285,0.0,False,True,False
+Sweden,Ukraine,0.3333333333333333,0.14285714285714285,False,False,False
+Sweden,United Kingdom,0.3953488372093023,0.16129032258064516,False,True,False
+Sweden,United States,0.36585365853658536,0.17857142857142858,False,True,False
+Sweden,Uruguay,0.42424242424242425,0.24,False,False,False
+Sweden,Venezuela,0.2,0.11764705882352941,False,False,False
+Switzerland,Türkiye,0.06666666666666667,0.125,False,False,False
+Switzerland,Ukraine,0.05263157894736842,0.08333333333333333,False,False,False
+Switzerland,United Kingdom,0.07317073170731707,0.0,False,False,False
+Switzerland,United States,0.08108108108108109,0.047619047619047616,False,False,False
+Switzerland,Uruguay,0.10714285714285714,0.17647058823529413,False,False,False
+Switzerland,Venezuela,0.3333333333333333,0.3333333333333333,False,False,False
+Türkiye,Ukraine,0.5,0.23076923076923078,False,False,False
+Türkiye,United Kingdom,0.3170731707317073,0.07692307692307693,False,True,False
+Türkiye,United States,0.35135135135135137,0.041666666666666664,False,True,False
+Türkiye,Uruguay,0.4642857142857143,0.21052631578947367,False,False,False
+Türkiye,Venezuela,0.2,0.2222222222222222,False,False,False
+Ukraine,United Kingdom,0.4146341463414634,0.23076923076923078,False,False,False
+Ukraine,United States,0.42105263157894735,0.11538461538461539,False,False,False
+Ukraine,Uruguay,0.5,0.22727272727272727,False,False,False
+Ukraine,Venezuela,0.1,0.07142857142857142,False,False,False
+United Kingdom,United States,0.9024390243902439,0.41379310344827586,False,True,False
+United Kingdom,Uruguay,0.6829268292682927,0.18181818181818182,False,False,False
+United Kingdom,Venezuela,0.12195121951219512,0.0,False,False,False
+United States,Uruguay,0.7105263157894737,0.2413793103448276,False,False,False
+United States,Venezuela,0.13513513513513514,0.043478260869565216,False,False,False
+Uruguay,Venezuela,0.17857142857142858,0.2222222222222222,False,False,False

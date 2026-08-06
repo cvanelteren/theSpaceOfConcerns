@@ -1,0 +1,6 @@
+{
+  "rpa_threshold": 1.0,
+  "n_permutations": 5000,
+  "rng_seed": 42,
+  "note": "Current EU, NATO, and BRICS memberships were coded from current official membership lists. Permutation inference preserves the number of bloc members among ATS sovereign states and randomizes the bloc label across actors."
+}

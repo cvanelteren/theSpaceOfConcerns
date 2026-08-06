@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import ultraplot as uplt
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
+
+import figstyle
 from matplotlib.ticker import NullLocator
 
 from utils import get_rca, load_data, load_flag, standardize_index_labels
@@ -83,9 +85,9 @@ FORCED_TOP_LABEL_KEYWORDS = (
 )
 
 REGION_COLORS = {
-    1: "#e41a1c",  # red
-    2: "#377eb8",  # blue
-    3: "#4daf4a",  # green
+    1: figstyle.MODE_COLORS[1],
+    2: figstyle.MODE_COLORS[2],
+    3: figstyle.MODE_COLORS[3],
 }
 RIDGE_COLOR = "#4b5563"
 

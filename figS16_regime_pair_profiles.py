@@ -10,6 +10,8 @@ import numpy as np
 import pandas as pd
 import ultraplot as uplt
 from scipy import sparse
+
+import figstyle
 from sknetwork.clustering import Leiden
 
 from utils import _split_multi_value, load_data
@@ -238,7 +240,7 @@ def main() -> None:
         summary.iloc[order]["share_1_3"],
         y,
         s=54,
-        color="#d62728",
+        color=figstyle.MODE_COLORS[3],
         label="Anchored 1-3 pairs",
         zorder=4,
     )
@@ -278,7 +280,7 @@ def main() -> None:
     yy = np.arange(len(actor_panel))
     colors = (
         actor_panel["dominant_region"]
-        .map({1: "#1f77b4", 3: "#d62728"})
+        .map({1: figstyle.MODE_COLORS[1], 3: figstyle.MODE_COLORS[3]})
         .fillna("0.45")
         .to_numpy()
     )
@@ -319,8 +321,8 @@ def main() -> None:
     from matplotlib.lines import Line2D
 
     handles = [
-        Line2D([0], [0], color="#1f77b4", lw=2, label="Mode 1 anchor"),
-        Line2D([0], [0], color="#d62728", lw=2, label="Mode 3 anchor"),
+        Line2D([0], [0], color=figstyle.MODE_COLORS[1], lw=2, label="Mode 1 anchor"),
+        Line2D([0], [0], color=figstyle.MODE_COLORS[3], lw=2, label="Mode 3 anchor"),
         Line2D(
             [0],
             [0],

@@ -1,0 +1,14 @@
+{
+  "rpa": {
+    "n_pairs": 1035,
+    "mean_overlap": 0.17082024779992633,
+    "spearman_rho_geo_km": 0.09352595006576858,
+    "spearman_p_geo_km": 0.0025967803469316756
+  },
+  "presence": {
+    "n_pairs": 1035,
+    "mean_overlap": 0.3293609868248181,
+    "spearman_rho_geo_km": 0.17921016338511953,
+    "spearman_p_geo_km": 6.415930112811952e-09
+  }
+}

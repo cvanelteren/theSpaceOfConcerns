@@ -1,0 +1,1896 @@
+member,period_end,from_topic,to_topic,distance
+Australia,1966,Historic Sites and Monuments,Area Protection and Management Plans General,0.5384615384615384
+Australia,1966,Operational issues,Exchange of Information,0.4545454545454546
+Australia,1966,Historic Sites and Monuments,Management Plans,0.4375
+Australia,1966,Science issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Australia,1966,Institutional and legal matters,Tourism and NG_Activities,0.6153846153846154
+Belgium,1966,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Chile,1966,Inspections,Operation of the Antarctic Treaty system Reports,0.75
+Chile,1966,Inspections,Operational issues,0.5789473684210527
+Chile,1966,Inspections,Tourism and NG_Activities,0.6842105263157895
+Japan,1966,Opening statements,Operational issues,0.6551724137931034
+New Zealand,1966,Historic Sites and Monuments,Area Protection and Management Plans General,0.5384615384615384
+New Zealand,1966,Opening statements,Fauna and Flora_General,0.7586206896551724
+New Zealand,1966,Historic Sites and Monuments,Management Plans,0.4375
+New Zealand,1966,Historic Sites and Monuments,Specially Protected Species,0.6923076923076923
+Russian Federation,1966,Operational issues,Exchange of Information,0.4545454545454546
+United Kingdom,1966,Cooperation with Other Organisations,Fauna and Flora_General,0.625
+United Kingdom,1966,Environmental Protection General,Marine Protected Areas,0.72
+United Kingdom,1966,Operation of the CEP,Specially Protected Species,0.7
+United States,1966,Historic Sites and Monuments,Area Protection and Management Plans General,0.5384615384615384
+United States,1966,Environmental Protection General,Institutional and legal matters,0.56
+United States,1966,Historic Sites and Monuments,Management Plans,0.4375
+United States,1966,Environmental Protection General,Marine Protected Areas,0.72
+United States,1966,Fauna and Flora_General,Specially Protected Species,0.625
+United States,1966,Historic Sites and Monuments,Tourism and NG_Activities,0.6923076923076923
+Argentina,1967,Exchange of Information,Operational issues,0.4545454545454546
+Argentina,1967,Exchange of Information,Tourism and NG_Activities,0.8181818181818181
+Australia,1967,Exchange of Information,Environmental Protection General,0.48
+New Zealand,1967,Management Plans,Exchange of Information,0.6818181818181819
+Chile,1968,Inspections,Area Protection and Management Plans General,0.5789473684210527
+France,1968,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+France,1968,Opening statements,Operation of the Antarctic Treaty system Reports,0.7586206896551724
+France,1968,Opening statements,Operational issues,0.6551724137931034
+South Africa,1968,Operation of the Antarctic Treaty system General,Tourism and NG_Activities,0.8846153846153846
+United Kingdom,1968,Operational issues,Historic Sites and Monuments,0.631578947368421
+Argentina,1969,Opening statements,Environmental Protection General,0.5172413793103448
+Australia,1969,Operation of the Antarctic Treaty system General,Exchange of Information,0.5384615384615384
+Belgium,1969,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+New Zealand,1969,Exchange of Information,Environmental Protection General,0.48
+Russian Federation,1969,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+United Kingdom,1969,Cooperation with Other Organisations,Fauna and Flora_General,0.625
+United Kingdom,1969,Historic Sites and Monuments,Management Plans,0.4375
+Argentina,1970,Opening statements,Science issues,0.5517241379310345
+Australia,1970,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Chile,1970,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+France,1970,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Japan,1970,Operational issues,Historic Sites and Monuments,0.631578947368421
+Japan,1970,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Japan,1970,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+New Zealand,1970,Exchange of Information,Science issues,0.5833333333333333
+Russian Federation,1970,Opening statements,Science issues,0.5517241379310345
+United Kingdom,1970,Management Plans,Area Protection and Management Plans General,0.4375
+United Kingdom,1970,Marine Protected Areas,Human Footprint and wilderness values,0.4545454545454546
+United Kingdom,1970,Environmental Protection General,Institutional and legal matters,0.56
+United States,1970,Marine Protected Areas,Human Footprint and wilderness values,0.4545454545454546
+Chile,1971,Opening statements,Environmental Protection General,0.5172413793103448
+New Zealand,1971,Specially Protected Species,Tourism and NG_Activities,0.6
+United Kingdom,1971,Environmental Protection General,Exchange of Information,0.48
+United Kingdom,1971,Area Protection and Management Plans General,Management Plans,0.4375
+United Kingdom,1971,Marine Protected Areas,Tourism and NG_Activities,0.5454545454545454
+United States,1971,Management Plans,Historic Sites and Monuments,0.4375
+United States,1971,Exchange of Information,Operational issues,0.4545454545454546
+Argentina,1972,Science issues,Environmental Protection General,0.6
+Argentina,1972,Tourism and NG_Activities,Fauna and Flora_General,0.8125
+Argentina,1972,Tourism and NG_Activities,Mineral resources,0.7
+Argentina,1972,Science issues,Operational issues,0.6666666666666667
+Australia,1972,Exchange of Information,Fauna and Flora_General,0.7727272727272727
+Belgium,1972,Environmental Protection General,Exchange of Information,0.48
+Belgium,1972,Environmental Protection General,Operational issues,0.56
+Belgium,1972,Environmental Protection General,Tourism and NG_Activities,0.72
+Chile,1972,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Chile,1972,Human Footprint and wilderness values,Tourism and NG_Activities,0.6363636363636364
+France,1972,Operational issues,Mineral resources,0.6842105263157895
+Japan,1972,Operation of the Antarctic Treaty system Reports,Operational issues,0.6
+New Zealand,1972,Historic Sites and Monuments,Area Protection and Management Plans General,0.5384615384615384
+New Zealand,1972,Historic Sites and Monuments,Fauna and Flora_General,0.8125
+New Zealand,1972,Historic Sites and Monuments,Institutional and legal matters,0.6153846153846154
+New Zealand,1972,Science issues,Opening statements,0.5517241379310345
+New Zealand,1972,Historic Sites and Monuments,Operational issues,0.631578947368421
+Norway,1972,Environmental Protection General,Fauna and Flora_General,0.72
+Norway,1972,Environmental Protection General,Historic Sites and Monuments,0.72
+Norway,1972,Environmental Protection General,Human Footprint and wilderness values,0.64
+Norway,1972,Environmental Protection General,Tourism and NG_Activities,0.72
+Russian Federation,1972,Operational issues,Historic Sites and Monuments,0.631578947368421
+South Africa,1972,Tourism and NG_Activities,Area Protection and Management Plans General,0.7692307692307692
+South Africa,1972,Tourism and NG_Activities,Fauna and Flora_General,0.8125
+South Africa,1972,Tourism and NG_Activities,Human Footprint and wilderness values,0.6363636363636364
+South Africa,1972,Tourism and NG_Activities,Mineral resources,0.7
+United Kingdom,1972,Fauna and Flora_General,Cooperation with Other Organisations,0.625
+United Kingdom,1972,Historic Sites and Monuments,Mineral resources,0.6153846153846154
+United States,1972,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+United States,1972,Exchange of Information,Environmental Protection General,0.48
+Australia,1973,Exchange of Information,Environmental Protection General,0.48
+France,1973,Operational issues,Exchange of Information,0.4545454545454546
+France,1973,Mineral resources,Tourism and NG_Activities,0.7
+Japan,1973,Operational issues,Historic Sites and Monuments,0.631578947368421
+New Zealand,1973,Opening statements,Environmental Protection General,0.5172413793103448
+United States,1973,Human Footprint and wilderness values,Area Protection and Management Plans General,0.46153846153846156
+Argentina,1975,Mineral resources,Marine living resources,0.33333333333333337
+Argentina,1975,Science issues,Opening statements,0.5517241379310345
+Argentina,1975,Science issues,Operational issues,0.6666666666666667
+Australia,1975,Environmental Protection General,Marine living resources,0.76
+Australia,1975,Exchange of Information,Opening statements,0.48275862068965514
+Australia,1975,Environmental Protection General,Tourism and NG_Activities,0.72
+Belgium,1975,Exchange of Information,Environmental Protection General,0.48
+Belgium,1975,Exchange of Information,Opening statements,0.48275862068965514
+Chile,1975,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+Chile,1975,Operational issues,Mineral resources,0.6842105263157895
+Chile,1975,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+France,1975,Environmental Protection General,Fauna and Flora_General,0.72
+France,1975,Exchange of Information,Opening statements,0.48275862068965514
+Japan,1975,Historic Sites and Monuments,Area Protection and Management Plans General,0.5384615384615384
+Japan,1975,Historic Sites and Monuments,Human Footprint and wilderness values,0.6923076923076923
+Norway,1975,Human Footprint and wilderness values,Area Protection and Management Plans General,0.46153846153846156
+Norway,1975,Environmental Protection General,Institutional and legal matters,0.56
+Norway,1975,Historic Sites and Monuments,Management Plans,0.4375
+Norway,1975,Human Footprint and wilderness values,Marine Protected Areas,0.4545454545454546
+Norway,1975,Human Footprint and wilderness values,Marine living resources,0.5454545454545454
+Norway,1975,Historic Sites and Monuments,Mineral resources,0.6153846153846154
+Norway,1975,Environmental Protection General,Opening statements,0.5172413793103448
+Norway,1975,Fauna and Flora_General,Operation of the Antarctic Treaty system Reports,0.6
+Russian Federation,1975,Historic Sites and Monuments,Area Protection and Management Plans General,0.5384615384615384
+Russian Federation,1975,Operational issues,Fauna and Flora_General,0.6842105263157895
+Russian Federation,1975,Historic Sites and Monuments,Mineral resources,0.6153846153846154
+Russian Federation,1975,Science issues,Opening statements,0.5517241379310345
+SCAR,1975,Operational issues,Cooperation with Other Organisations,0.8421052631578947
+South Africa,1975,Fauna and Flora_General,Operational issues,0.6842105263157895
+United Kingdom,1975,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+United Kingdom,1975,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+United States,1975,Human Footprint and wilderness values,Marine Protected Areas,0.4545454545454546
+United States,1975,Human Footprint and wilderness values,Marine living resources,0.5454545454545454
+United States,1975,Human Footprint and wilderness values,Mineral resources,0.7272727272727273
+United States,1975,Exchange of Information,Operational issues,0.4545454545454546
+Argentina,1977,Operational issues,Exchange of Information,0.4545454545454546
+Argentina,1977,Marine living resources,Prevention of marine pollution,0.7777777777777778
+Chile,1977,Human Footprint and wilderness values,Area Protection and Management Plans General,0.46153846153846156
+Chile,1977,Environmental Protection General,Cooperation with Other Organisations,0.84
+Chile,1977,Human Footprint and wilderness values,Marine Protected Areas,0.4545454545454546
+Chile,1977,Environmental Protection General,Operational issues,0.56
+France,1977,Tourism and NG_Activities,Drilling,0.7
+France,1977,Mineral resources,Marine living resources,0.33333333333333337
+France,1977,Exchange of Information,Operational issues,0.4545454545454546
+New Zealand,1977,Historic Sites and Monuments,Area Protection and Management Plans General,0.5384615384615384
+New Zealand,1977,Historic Sites and Monuments,Comprehensive Environmental Evaluations,0.6
+New Zealand,1977,Institutional and legal matters,Human Footprint and wilderness values,0.6153846153846154
+Russian Federation,1977,Mineral resources,Marine living resources,0.33333333333333337
+Russian Federation,1977,Historic Sites and Monuments,Operational issues,0.631578947368421
+SCAR,1977,Operational issues,Environmental Protection General,0.56
+South Africa,1977,Mineral resources,Marine living resources,0.33333333333333337
+South Africa,1977,Operational issues,Opening statements,0.6551724137931034
+United Kingdom,1977,Exchange of Information,Environmental Monitoring and Reporting,0.6363636363636364
+United Kingdom,1977,Mineral resources,Marine living resources,0.33333333333333337
+United Kingdom,1977,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+United Kingdom,1977,Exchange of Information,Science issues,0.5833333333333333
+United States,1977,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Argentina,1979,Mineral resources,Marine living resources,0.33333333333333337
+Chile,1979,Tourism and NG_Activities,Drilling,0.7
+Chile,1979,Marine Protected Areas,Prevention of marine pollution,0.5454545454545454
+Chile,1979,Operational issues,Science issues,0.6666666666666667
+France,1979,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+New Zealand,1979,Environmental Protection General,Operational issues,0.56
+New Zealand,1979,Opening statements,Science issues,0.5517241379310345
+Poland,1979,Opening statements,Area Protection and Management Plans General,0.8620689655172413
+Poland,1979,Opening statements,Management Plans,0.7241379310344828
+Poland,1979,Opening statements,Mineral resources,0.8275862068965517
+Poland,1979,Opening statements,Tourism and NG_Activities,0.9310344827586207
+Russian Federation,1979,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+SCAR,1979,Environmental Protection General,Operational issues,0.56
+United States,1979,Marine Protected Areas,Mineral resources,0.6363636363636364
+United States,1979,Marine Protected Areas,Prevention of marine pollution,0.5454545454545454
+United States,1979,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Argentina,1980,Marine living resources,Mineral resources,0.33333333333333337
+Norway,1980,Marine Protected Areas,Marine living resources,0.6363636363636364
+United Kingdom,1980,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+United Kingdom,1980,Operation of the Antarctic Treaty system General,Exchange of Information,0.5384615384615384
+Argentina,1981,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Argentina,1981,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+Australia,1981,Opening statements,Exchange of Information,0.48275862068965514
+Chile,1981,Operational issues,Exchange of Information,0.4545454545454546
+Chile,1981,Science issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+New Zealand,1981,Operational issues,Exchange of Information,0.4545454545454546
+New Zealand,1981,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Norway,1981,Opening statements,Exchange of Information,0.48275862068965514
+United Kingdom,1981,Marine living resources,Mineral resources,0.33333333333333337
+Argentina,1982,Prevention of marine pollution,Area Protection and Management Plans General,0.7692307692307692
+Poland,1982,Management Plans,Mineral resources,0.6875
+United Kingdom,1982,Environmental Protection General,Operational issues,0.56
+United States,1982,Mineral resources,Marine living resources,0.33333333333333337
+Argentina,1983,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+Australia,1983,Opening statements,Cooperation with Other Organisations,0.8620689655172413
+Australia,1983,Opening statements,Environmental Monitoring and Reporting,0.5862068965517242
+Australia,1983,Exchange of Information,Human Footprint and wilderness values,0.7727272727272727
+Australia,1983,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Australia,1983,Exchange of Information,Operation of the Antarctic Treaty system Reports,0.7272727272727273
+Australia,1983,Exchange of Information,Operational issues,0.4545454545454546
+India,1983,Opening statements,Historic Sites and Monuments,0.7241379310344828
+New Zealand,1983,Exchange of Information,Opening statements,0.48275862068965514
+Russian Federation,1983,Operational issues,Opening statements,0.6551724137931034
+SCAR,1983,Operational issues,Cooperation with Other Organisations,0.8421052631578947
+United Kingdom,1983,Operational issues,Exchange of Information,0.4545454545454546
+Argentina,1984,Area Protection and Management Plans General,Mineral resources,0.7692307692307692
+Argentina,1984,Area Protection and Management Plans General,Tourism and NG_Activities,0.7692307692307692
+Australia,1984,Human Footprint and wilderness values,Tourism and NG_Activities,0.6363636363636364
+Chile,1984,Marine Protected Areas,Human Footprint and wilderness values,0.4545454545454546
+New Zealand,1984,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+United Kingdom,1984,Environmental Protection General,Area Protection and Management Plans General,0.6799999999999999
+United Kingdom,1984,Tourism and NG_Activities,Human Footprint and wilderness values,0.6363636363636364
+United Kingdom,1984,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+United States,1984,Marine living resources,Area Protection and Management Plans General,0.6923076923076923
+United States,1984,Science issues,Exchange of Information,0.5833333333333333
+United States,1984,Science issues,Opening statements,0.5517241379310345
+Argentina,1985,Operation of the Antarctic Treaty system Reports,Operational issues,0.6
+Belgium,1985,Opening statements,Environmental Protection General,0.5172413793103448
+Belgium,1985,Opening statements,Historic Sites and Monuments,0.7241379310344828
+Belgium,1985,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Belgium,1985,Opening statements,Operational issues,0.6551724137931034
+Brazil,1985,Operational issues,Operation of the Antarctic Treaty system General,0.6923076923076923
+France,1985,Opening statements,Historic Sites and Monuments,0.7241379310344828
+France,1985,Opening statements,Mineral resources,0.8275862068965517
+Germany,1985,Exchange of Information,Tourism and NG_Activities,0.8181818181818181
+New Zealand,1985,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+Norway,1985,Exchange of Information,Human Footprint and wilderness values,0.7727272727272727
+Poland,1985,Opening statements,Historic Sites and Monuments,0.7241379310344828
+South Africa,1985,Opening statements,Exchange of Information,0.48275862068965514
+United Kingdom,1985,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+United Kingdom,1985,Science issues,Cooperation with Other Organisations,0.8333333333333334
+United Kingdom,1985,Area Protection and Management Plans General,Management Plans,0.4375
+United States,1985,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+United States,1985,Marine living resources,Tourism and NG_Activities,0.7
+Argentina,1986,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+Belgium,1986,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+Chile,1986,Operational issues,Historic Sites and Monuments,0.631578947368421
+Argentina,1987,Operational issues,Environmental Protection General,0.56
+Argentina,1987,Operational issues,Operation of the Antarctic Treaty system The Secretariat,0.631578947368421
+Argentina,1987,Operational issues,Science issues,0.6666666666666667
+Argentina,1987,Human Footprint and wilderness values,Tourism and NG_Activities,0.6363636363636364
+Australia,1987,Human Footprint and wilderness values,Area Protection and Management Plans General,0.46153846153846156
+Australia,1987,Environmental Monitoring and Reporting,Comprehensive Environmental Evaluations,0.6
+Australia,1987,Operation of the Antarctic Treaty system General,Inspections,0.5
+Australia,1987,Operational issues,Operation of the Antarctic Treaty system The Secretariat,0.631578947368421
+Belgium,1987,Environmental Protection General,Exchange of Information,0.48
+Belgium,1987,Environmental Protection General,Operational issues,0.56
+Brazil,1987,Operation of the Antarctic Treaty system General,Educational issues,0.5769230769230769
+Brazil,1987,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Brazil,1987,Operational issues,Institutional and legal matters,0.736842105263158
+Brazil,1987,Operational issues,Mineral resources,0.6842105263157895
+Brazil,1987,Operational issues,Tourism and NG_Activities,0.7894736842105263
+Chile,1987,Historic Sites and Monuments,Human Footprint and wilderness values,0.6923076923076923
+Chile,1987,Operation of the Antarctic Treaty system General,Inspections,0.5
+Chile,1987,Operation of the Antarctic Treaty system General,Marine Protected Areas,0.7307692307692308
+Chile,1987,Historic Sites and Monuments,Tourism and NG_Activities,0.6923076923076923
+China,1987,Historic Sites and Monuments,Operation of the Antarctic Treaty system General,0.8076923076923077
+China,1987,Historic Sites and Monuments,Operation of the Antarctic Treaty system The Secretariat,0.7647058823529411
+Finland,1987,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Germany,1987,Tourism and NG_Activities,Operation of the Antarctic Treaty system General,0.8846153846153846
+Germany,1987,Tourism and NG_Activities,Operational issues,0.7894736842105263
+Germany,1987,Tourism and NG_Activities,Safety and Operations in Antarctica,0.8235294117647058
+Germany,1987,Tourism and NG_Activities,Waste management and disposal,0.9230769230769231
+India,1987,Historic Sites and Monuments,Operation of the Antarctic Treaty system General,0.8076923076923077
+Netherlands,1987,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+New Zealand,1987,Comprehensive Environmental Evaluations,Drilling,0.8
+New Zealand,1987,Comprehensive Environmental Evaluations,Environmental Protection General,0.64
+New Zealand,1987,Comprehensive Environmental Evaluations,Historic Sites and Monuments,0.6
+New Zealand,1987,Comprehensive Environmental Evaluations,Tourism and NG_Activities,0.8
+Norway,1987,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+Norway,1987,Exchange of Information,Operational issues,0.4545454545454546
+Peru,1987,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Poland,1987,Historic Sites and Monuments,Operation of the Antarctic Treaty system General,0.8076923076923077
+SCAR,1987,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+South Africa,1987,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+United Kingdom,1987,Science issues,Exchange of Information,0.5833333333333333
+United Kingdom,1987,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+United Kingdom,1987,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+United Kingdom,1987,Comprehensive Environmental Evaluations,Operation of the Antarctic Treaty system The Secretariat,0.6470588235294117
+United Kingdom,1987,Management Plans,Operational issues,0.5789473684210527
+United States,1987,Tourism and NG_Activities,Drilling,0.7
+United States,1987,Exchange of Information,Environmental Protection General,0.48
+United States,1987,Exchange of Information,Inspections,0.5
+United States,1987,Exchange of Information,Science issues,0.5833333333333333
+Australia,1988,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Australia,1989,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Australia,1989,Inspections,Waste management and disposal,0.5263157894736843
+Brazil,1989,Environmental Protection General,Exchange of Information,0.48
+Chile,1989,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Finland,1989,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+France,1989,Historic Sites and Monuments,Environmental Monitoring and Reporting,0.7
+France,1989,Historic Sites and Monuments,Environmental Protection General,0.72
+France,1989,Historic Sites and Monuments,Management Plans,0.4375
+France,1989,Mineral resources,Operation of the Antarctic Treaty system Reports,0.85
+France,1989,Historic Sites and Monuments,Science issues,0.875
+France,1989,Historic Sites and Monuments,Tourism and NG_Activities,0.6923076923076923
+France,1989,Historic Sites and Monuments,Waste management and disposal,0.6923076923076923
+Germany,1989,Waste management and disposal,Area Protection and Management Plans General,0.6923076923076923
+Germany,1989,Safety and Operations in Antarctica,Prevention of marine pollution,0.7647058823529411
+Poland,1989,Historic Sites and Monuments,Operation of the Antarctic Treaty system General,0.8076923076923077
+Russian Federation,1989,Operational issues,Exchange of Information,0.4545454545454546
+South Africa,1989,Exchange of Information,Emergency report and contingency planning,0.7727272727272727
+South Africa,1989,Exchange of Information,Environmental Protection General,0.48
+Spain,1989,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Spain,1989,Operation of the Antarctic Treaty system General,Exchange of Information,0.5384615384615384
+Spain,1989,Operation of the Antarctic Treaty system General,Safety and Operations in Antarctica,0.7692307692307692
+Sweden,1989,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+United Kingdom,1989,Comprehensive Environmental Evaluations,Environmental Monitoring and Reporting,0.6
+United Kingdom,1989,Human Footprint and wilderness values,Tourism and NG_Activities,0.6363636363636364
+United States,1989,Human Footprint and wilderness values,Area Protection and Management Plans General,0.46153846153846156
+United States,1989,Inspections,Historic Sites and Monuments,0.631578947368421
+United States,1989,Human Footprint and wilderness values,Prevention of marine pollution,0.6363636363636364
+United States,1989,Inspections,Waste management and disposal,0.5263157894736843
+Uruguay,1989,Operation of the Antarctic Treaty system General,Operational issues,0.6923076923076923
+Argentina,1990,Operational issues,Exchange of Information,0.4545454545454546
+Norway,1990,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+United States,1990,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Argentina,1991,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Argentina,1991,Exchange of Information,Operational issues,0.4545454545454546
+Australia,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Australia,1991,Environmental Protection General,Operational issues,0.56
+Belgium,1991,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Brazil,1991,Educational issues,Operation of the Antarctic Treaty system Reports,0.6153846153846154
+Chile,1991,Human Footprint and wilderness values,Area Protection and Management Plans General,0.46153846153846156
+Chile,1991,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+China,1991,Operation of the Antarctic Treaty system The Secretariat,Institutional and legal matters,0.7647058823529411
+China,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Ecuador,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Ecuador,1991,Operation of the Antarctic Treaty system General,Operation of the Antarctic Treaty system Reports,0.7692307692307692
+Finland,1991,Environmental Monitoring and Reporting,Cooperation with Other Organisations,0.85
+Finland,1991,Operation of the Antarctic Treaty system General,Exchange of Information,0.5384615384615384
+Finland,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+France,1991,Environmental Protection General,Opening statements,0.5172413793103448
+France,1991,Environmental Protection General,Operational issues,0.56
+Germany,1991,Waste management and disposal,Environmental Monitoring and Reporting,0.65
+Germany,1991,Safety and Operations in Antarctica,Institutional and legal matters,0.47058823529411764
+Germany,1991,Waste management and disposal,Operation of the Antarctic Treaty system General,0.6153846153846154
+Greece,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+India,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Italy,1991,Operation of the Antarctic Treaty system General,Area Protection and Management Plans General,0.8076923076923077
+Italy,1991,Operation of the Antarctic Treaty system General,Cooperation with Other Organisations,0.8846153846153846
+Italy,1991,Operation of the Antarctic Treaty system General,Exchange of Information,0.5384615384615384
+Italy,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Italy,1991,Operation of the Antarctic Treaty system General,Tourism and NG_Activities,0.8846153846153846
+Korea (ROK),1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Netherlands,1991,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Netherlands,1991,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Netherlands,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+New Zealand,1991,Environmental Protection General,Institutional and legal matters,0.56
+Norway,1991,Comprehensive Environmental Evaluations,Area Protection and Management Plans General,0.6666666666666667
+Norway,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Peru,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Peru,1991,Exchange of Information,Operation of the Antarctic Treaty system Reports,0.7272727272727273
+Poland,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Russian Federation,1991,Operational issues,Cooperation with Other Organisations,0.8421052631578947
+Russian Federation,1991,Exchange of Information,Opening statements,0.48275862068965514
+Russian Federation,1991,Operational issues,Safety and Operations in Antarctica,0.631578947368421
+SCAR,1991,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+South Africa,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Spain,1991,Environmental Monitoring and Reporting,Area Protection and Management Plans General,0.75
+Spain,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Sweden,1991,Environmental Protection General,Cooperation with Other Organisations,0.84
+Sweden,1991,Operation of the Antarctic Treaty system General,Inspections,0.5
+Sweden,1991,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+United Kingdom,1991,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+United Kingdom,1991,Area Protection and Management Plans General,Inspections,0.5789473684210527
+United States,1991,Environmental Protection General,Exchange of Information,0.48
+United States,1991,Inspections,Operation of the Antarctic Treaty system The Secretariat,0.631578947368421
+United States,1991,Prevention of marine pollution,Site Guidelines for Visitors,0.6666666666666667
+Uruguay,1991,Operational issues,Institutional and legal matters,0.736842105263158
+Uruguay,1991,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+ASOC,1992,Environmental Protection General,Cooperation with Other Organisations,0.84
+ASOC,1992,Environmental Protection General,Liability,0.52
+ASOC,1992,Institutional and legal matters,Tourism and NG_Activities,0.6153846153846154
+Argentina,1992,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Argentina,1992,Operational issues,Exchange of Information,0.4545454545454546
+Argentina,1992,Operational issues,Historic Sites and Monuments,0.631578947368421
+Argentina,1992,Science issues,Opening statements,0.5517241379310345
+Australia,1992,Human Footprint and wilderness values,CEP Strategy Discussions,0.5833333333333333
+Australia,1992,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Belgium,1992,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Brazil,1992,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+CCAMLR,1992,Operation of the Antarctic Treaty system Reports,Marine living resources,0.8
+COMNAP,1992,Operational issues,Cooperation with Other Organisations,0.8421052631578947
+COMNAP,1992,Operational issues,Exchange of Information,0.4545454545454546
+Chile,1992,Operational issues,Exchange of Information,0.4545454545454546
+Chile,1992,Inspections,Liability,0.5789473684210527
+Chile,1992,Inspections,Operation of the Antarctic Treaty system General,0.5
+Chile,1992,Marine Protected Areas,Prevention of marine pollution,0.5454545454545454
+Chile,1992,Operational issues,Safety and Operations in Antarctica,0.631578947368421
+China,1992,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Finland,1992,Exchange of Information,Environmental Protection General,0.48
+Finland,1992,Exchange of Information,Operational issues,0.4545454545454546
+Germany,1992,Institutional and legal matters,Area Protection and Management Plans General,0.6153846153846154
+Germany,1992,Operational issues,Cooperation with Other Organisations,0.8421052631578947
+Germany,1992,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+IHO,1992,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+IUCN,1992,Area Protection and Management Plans General,Tourism and NG_Activities,0.7692307692307692
+Italy,1992,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Korea (DPRK),1992,Opening statements,Exchange of Information,0.48275862068965514
+Netherlands,1992,Environmental Protection General,Liability,0.52
+Netherlands,1992,Operation of the Antarctic Treaty system General,Operation of the Antarctic Treaty system The Secretariat,0.6538461538461539
+New Zealand,1992,Environmental Protection General,Opening statements,0.5172413793103448
+Norway,1992,Area Protection and Management Plans General,Tourism and NG_Activities,0.7692307692307692
+Russian Federation,1992,Opening statements,Environmental Monitoring and Reporting,0.5862068965517242
+SCAR,1992,Operation of the Antarctic Treaty system Reports,Area Protection and Management Plans General,0.8
+SCAR,1992,Operation of the Antarctic Treaty system Reports,Exchange of Information,0.7272727272727273
+SCAR,1992,Operation of the Antarctic Treaty system Reports,Science issues,0.6666666666666667
+Spain,1992,Area Protection and Management Plans General,Tourism and NG_Activities,0.7692307692307692
+United Kingdom,1992,Management Plans,Historic Sites and Monuments,0.4375
+United Kingdom,1992,Human Footprint and wilderness values,Marine living resources,0.5454545454545454
+United States,1992,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Uruguay,1992,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Uruguay,1992,Operational issues,Operation of the Antarctic Treaty system The Secretariat,0.631578947368421
+WMO,1992,Exchange of Information,Environmental Monitoring and Reporting,0.6363636363636364
+WMO,1992,Exchange of Information,Operation of the Antarctic Treaty system Reports,0.7272727272727273
+ASOC,1994,Environmental Protection General,Environmental Monitoring and Reporting,0.64
+ASOC,1994,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Argentina,1994,Historic Sites and Monuments,Area Protection and Management Plans General,0.5384615384615384
+Argentina,1994,Exchange of Information,Environmental Protection General,0.48
+Argentina,1994,Exchange of Information,Inspections,0.5
+Argentina,1994,Operation of the Antarctic Treaty system Reports,Prevention of marine pollution,0.7
+Australia,1994,Environmental Protection General,Area Protection and Management Plans General,0.6799999999999999
+Australia,1994,Operational issues,Exchange of Information,0.4545454545454546
+Australia,1994,Waste management and disposal,Marine living resources,0.6923076923076923
+Australia,1994,CEP Strategy Discussions,Tourism and NG_Activities,0.6666666666666667
+Belgium,1994,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+Belgium,1994,Exchange of Information,Environmental Protection General,0.48
+Belgium,1994,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+COMNAP,1994,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+COMNAP,1994,Exchange of Information,Prevention of marine pollution,0.7727272727272727
+Chile,1994,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+Chile,1994,Exchange of Information,Operational issues,0.4545454545454546
+France,1994,Management Plans,Area Protection and Management Plans General,0.4375
+France,1994,Environmental Protection General,CEP Strategy Discussions,0.64
+France,1994,Operational issues,Exchange of Information,0.4545454545454546
+France,1994,Environmental Protection General,Opening statements,0.5172413793103448
+Germany,1994,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Germany,1994,Institutional and legal matters,Tourism and NG_Activities,0.6153846153846154
+IAATO,1994,Educational issues,Comprehensive Environmental Evaluations,0.7307692307692308
+IAATO,1994,Educational issues,Cooperation with Other Organisations,0.7692307692307692
+IOC,1994,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+IUCN,1994,Area Protection and Management Plans General,Cooperation with Other Organisations,0.8571428571428572
+IUCN,1994,Area Protection and Management Plans General,Prevention of marine pollution,0.7692307692307692
+Italy,1994,Exchange of Information,Inspections,0.5
+Italy,1994,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Japan,1994,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Japan,1994,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Korea (ROK),1994,Opening statements,Inspections,0.6206896551724138
+New Zealand,1994,Environmental Protection General,Exchange of Information,0.48
+Peru,1994,Exchange of Information,Environmental Protection General,0.48
+Russian Federation,1994,Operational issues,Drilling,0.7894736842105263
+Russian Federation,1994,Exchange of Information,Environmental Protection General,0.48
+Russian Federation,1994,Environmental Monitoring and Reporting,Prevention of marine pollution,0.75
+Russian Federation,1994,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+SCAR,1994,Science issues,Educational issues,0.3846153846153846
+SCAR,1994,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+SCAR,1994,Exchange of Information,Inspections,0.5
+South Africa,1994,Environmental Protection General,Comprehensive Environmental Evaluations,0.64
+South Africa,1994,Environmental Protection General,Operation of the Antarctic Treaty system Reports,0.6799999999999999
+Spain,1994,Environmental Monitoring and Reporting,Operation of the Antarctic Treaty system Reports,0.7
+United Kingdom,1994,Management Plans,Comprehensive Environmental Evaluations,0.5625
+United States,1994,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Uruguay,1994,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+ASOC,1995,Area Protection and Management Plans General,Climate Change,0.6875
+ASOC,1995,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+Australia,1995,CEP Strategy Discussions,Climate Change,0.5625
+Brazil,1995,Opening statements,Exchange of Information,0.48275862068965514
+CCAMLR,1995,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+COMNAP,1995,Exchange of Information,Environmental Monitoring and Reporting,0.6363636363636364
+Ecuador,1995,Operation of the Antarctic Treaty system Reports,Environmental Protection General,0.6799999999999999
+Ecuador,1995,Operation of the Antarctic Treaty system Reports,Opening statements,0.7586206896551724
+France,1995,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+IUCN,1995,Cooperation with Other Organisations,Educational issues,0.7692307692307692
+IUCN,1995,Area Protection and Management Plans General,Environmental Protection General,0.6799999999999999
+IUCN,1995,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Italy,1995,Inspections,Tourism and NG_Activities,0.6842105263157895
+Korea (ROK),1995,Opening statements,Environmental Monitoring and Reporting,0.5862068965517242
+Korea (ROK),1995,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Korea (ROK),1995,Inspections,Waste management and disposal,0.5263157894736843
+Netherlands,1995,Environmental Monitoring and Reporting,Comprehensive Environmental Evaluations,0.6
+New Zealand,1995,Comprehensive Environmental Evaluations,Management Plans,0.5625
+Peru,1995,Opening statements,Environmental Monitoring and Reporting,0.5862068965517242
+Peru,1995,Environmental Protection General,Exchange of Information,0.48
+SCAR,1995,Inspections,Area Protection and Management Plans General,0.5789473684210527
+SCAR,1995,Educational issues,Climate Change,0.6923076923076923
+South Africa,1995,Comprehensive Environmental Evaluations,Operation of the Antarctic Treaty system The Secretariat,0.6470588235294117
+UNEP,1995,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+UNEP,1995,Operation of the Antarctic Treaty system Reports,Operation of the Antarctic Treaty system General,0.7692307692307692
+United States,1995,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+WMO,1995,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+ASOC,1996,Institutional and legal matters,Tourism and NG_Activities,0.6153846153846154
+Argentina,1996,Exchange of Information,Environmental Protection General,0.48
+Argentina,1996,Inspections,Tourism and NG_Activities,0.6842105263157895
+Australia,1996,CEP Strategy Discussions,Cooperation with Other Organisations,0.7142857142857143
+Australia,1996,Exchange of Information,Educational issues,0.5
+Australia,1996,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+Australia,1996,Area Protection and Management Plans General,Management Plans,0.4375
+Australia,1996,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Belgium,1996,Comprehensive Environmental Evaluations,Emergency report and contingency planning,0.7333333333333334
+Brazil,1996,Operation of the Antarctic Treaty system Reports,Area Protection and Management Plans General,0.8
+Brazil,1996,Exchange of Information,Educational issues,0.5
+Brazil,1996,Operation of the Antarctic Treaty system Reports,Emergency report and contingency planning,0.7
+Brazil,1996,Exchange of Information,Environmental Protection General,0.48
+Brazil,1996,Exchange of Information,Inspections,0.5
+Brazil,1996,Exchange of Information,Operational issues,0.4545454545454546
+CCAMLR,1996,Operation of the Antarctic Treaty system Reports,Liability,0.75
+Canada,1996,Environmental Protection General,Opening statements,0.5172413793103448
+Chile,1996,Science issues,Educational issues,0.3846153846153846
+Chile,1996,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Chile,1996,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Chile,1996,Safety and Operations in Antarctica,Institutional and legal matters,0.47058823529411764
+France,1996,Opening statements,Science issues,0.5517241379310345
+Germany,1996,Environmental Protection General,Cooperation with Other Organisations,0.84
+Germany,1996,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+IAATO,1996,Tourism and NG_Activities,Emergency report and contingency planning,0.6363636363636364
+IOC,1996,Operation of the Antarctic Treaty system Reports,Opening statements,0.7586206896551724
+IUCN,1996,Environmental Protection General,Liability,0.52
+IUCN,1996,Area Protection and Management Plans General,Management Plans,0.4375
+Italy,1996,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+Italy,1996,Inspections,Historic Sites and Monuments,0.631578947368421
+Italy,1996,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+Italy,1996,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Japan,1996,Tourism and NG_Activities,Drilling,0.7
+Japan,1996,Operation of the Antarctic Treaty system Reports,Fauna and Flora_General,0.6
+Japan,1996,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Korea (ROK),1996,Environmental Monitoring and Reporting,Operation of the Antarctic Treaty system Reports,0.7
+Netherlands,1996,Comprehensive Environmental Evaluations,Area Protection and Management Plans General,0.6666666666666667
+Netherlands,1996,Operation of the Antarctic Treaty system General,Inspections,0.5
+Netherlands,1996,Environmental Protection General,Operation of the Antarctic Treaty system Reports,0.6799999999999999
+New Zealand,1996,Comprehensive Environmental Evaluations,Drilling,0.8
+New Zealand,1996,Exchange of Information,Educational issues,0.5
+New Zealand,1996,Opening statements,Science issues,0.5517241379310345
+New Zealand,1996,Institutional and legal matters,Tourism and NG_Activities,0.6153846153846154
+Norway,1996,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+Peru,1996,Exchange of Information,Educational issues,0.5
+Peru,1996,Environmental Protection General,Safety and Operations in Antarctica,0.6799999999999999
+Peru,1996,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+SCAR,1996,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+South Africa,1996,Opening statements,Environmental Protection General,0.5172413793103448
+South Africa,1996,Operation of the Antarctic Treaty system The Secretariat,Operation of the Antarctic Treaty system Reports,0.75
+United Kingdom,1996,Operational issues,Cooperation with Other Organisations,0.8421052631578947
+United Kingdom,1996,Comprehensive Environmental Evaluations,Institutional and legal matters,0.6
+United Kingdom,1996,Area Protection and Management Plans General,Management Plans,0.4375
+United States,1996,Environmental Protection General,Liability,0.52
+United States,1996,Area Protection and Management Plans General,Management Plans,0.4375
+United States,1996,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Uruguay,1996,Institutional and legal matters,Comprehensive Environmental Evaluations,0.6
+Uruguay,1996,Operation of the Antarctic Treaty system Reports,Operational issues,0.6
+Uruguay,1996,Operation of the Antarctic Treaty system The Secretariat,Waste management and disposal,0.6470588235294117
+WMO,1996,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+ASOC,1997,Liability,Waste management and disposal,0.6470588235294117
+Argentina,1997,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+Argentina,1997,Environmental Protection General,Cooperation with Other Organisations,0.84
+Argentina,1997,Historic Sites and Monuments,Management Plans,0.4375
+Argentina,1997,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Argentina,1997,Inspections,Waste management and disposal,0.5263157894736843
+Australia,1997,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Belgium,1997,Exchange of Information,Educational issues,0.5
+Brazil,1997,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Brazil,1997,Emergency report and contingency planning,Tourism and NG_Activities,0.6363636363636364
+Bulgaria,1997,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Bulgaria,1997,Opening statements,Science issues,0.5517241379310345
+COMNAP,1997,Prevention of marine pollution,Tourism and NG_Activities,0.8
+Chile,1997,Inspections,Operation of the Antarctic Treaty system The Secretariat,0.631578947368421
+China,1997,Opening statements,Emergency report and contingency planning,0.8275862068965517
+China,1997,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Ecuador,1997,Opening statements,Operation of the Antarctic Treaty system The Secretariat,0.6551724137931034
+Finland,1997,Exchange of Information,Environmental Protection General,0.48
+France,1997,Exchange of Information,Opening statements,0.48275862068965514
+France,1997,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Germany,1997,Environmental Protection General,Inspections,0.52
+IAATO,1997,Comprehensive Environmental Evaluations,Liability,0.7058823529411764
+IAATO,1997,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+IAATO,1997,Educational issues,Science issues,0.3846153846153846
+IUCN,1997,Management Plans,Area Protection and Management Plans General,0.4375
+Italy,1997,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Italy,1997,Inspections,Operational issues,0.5789473684210527
+Italy,1997,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Japan,1997,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+New Zealand,1997,Management Plans,Area Protection and Management Plans General,0.4375
+New Zealand,1997,Management Plans,Historic Sites and Monuments,0.4375
+New Zealand,1997,Environmental Protection General,Institutional and legal matters,0.56
+New Zealand,1997,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Norway,1997,Human Footprint and wilderness values,Inspections,0.5789473684210527
+Norway,1997,Opening statements,Operational issues,0.6551724137931034
+Norway,1997,Opening statements,Science issues,0.5517241379310345
+Peru,1997,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Russian Federation,1997,Environmental Protection General,Liability,0.52
+Russian Federation,1997,Environmental Protection General,Opening statements,0.5172413793103448
+SCAR,1997,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+SCAR,1997,Area Protection and Management Plans General,Management Plans,0.4375
+United Kingdom,1997,Institutional and legal matters,Emergency report and contingency planning,0.6153846153846154
+Uruguay,1997,Opening statements,Science issues,0.5517241379310345
+WMO,1997,Exchange of Information,Operational issues,0.4545454545454546
+Argentina,1998,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Argentina,1998,Exchange of Information,Inspections,0.5
+Australia,1998,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Australia,1998,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+Brazil,1998,Area Protection and Management Plans General,Management Plans,0.4375
+COMNAP,1998,Exchange of Information,Educational issues,0.5
+COMNAP,1998,Tourism and NG_Activities,Emergency report and contingency planning,0.6363636363636364
+COMNAP,1998,Exchange of Information,Operational issues,0.4545454545454546
+China,1998,Environmental Protection General,Exchange of Information,0.48
+Germany,1998,Tourism and NG_Activities,Emergency report and contingency planning,0.6363636363636364
+Greece,1998,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+IAATO,1998,Emergency report and contingency planning,Safety and Operations in Antarctica,0.5882352941176471
+IOC,1998,Operation of the Antarctic Treaty system Reports,Opening statements,0.7586206896551724
+IUCN,1998,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+IUCN,1998,Area Protection and Management Plans General,Nonnative Species and Quarantine,0.4666666666666667
+India,1998,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Italy,1998,Inspections,Waste management and disposal,0.5263157894736843
+Japan,1998,Drilling,Tourism and NG_Activities,0.7
+Netherlands,1998,Operation of the Antarctic Treaty system General,Inspections,0.5
+Netherlands,1998,Area Protection and Management Plans General,Operation of the CEP,0.6923076923076923
+New Zealand,1998,Management Plans,Operation of the CEP,0.6875
+New Zealand,1998,Area Protection and Management Plans General,State of the Antarctic Environment Report SAER,0.7692307692307692
+Norway,1998,Human Footprint and wilderness values,Area Protection and Management Plans General,0.46153846153846156
+Norway,1998,Operational issues,Emergency report and contingency planning,0.6842105263157895
+Norway,1998,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+Norway,1998,Inspections,Historic Sites and Monuments,0.631578947368421
+Norway,1998,Inspections,Liability,0.5789473684210527
+Norway,1998,Human Footprint and wilderness values,Operation of the CEP,0.5454545454545454
+Norway,1998,Operational issues,Safety and Operations in Antarctica,0.631578947368421
+Norway,1998,Human Footprint and wilderness values,State of the Antarctic Environment Report SAER,0.7272727272727273
+Peru,1998,Exchange of Information,Environmental Protection General,0.48
+Peru,1998,Educational issues,Fauna and Flora_General,0.6923076923076923
+Peru,1998,Exchange of Information,Operational issues,0.4545454545454546
+Peru,1998,Environmental Monitoring and Reporting,Prevention of marine pollution,0.75
+Russian Federation,1998,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Russian Federation,1998,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+SCAR,1998,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+United Kingdom,1998,Tourism and NG_Activities,CEP Strategy Discussions,0.6666666666666667
+United Kingdom,1998,Inspections,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+United Kingdom,1998,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+United States,1998,Opening statements,Environmental Monitoring and Reporting,0.5862068965517242
+United States,1998,Exchange of Information,Operation of the Antarctic Treaty system Reports,0.7272727272727273
+United States,1998,Inspections,Waste management and disposal,0.5263157894736843
+Uruguay,1998,Opening statements,Environmental Protection General,0.5172413793103448
+ASOC,1999,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+ASOC,1999,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+ASOC,1999,Liability,Tourism and NG_Activities,0.7058823529411764
+Argentina,1999,Exchange of Information,Opening statements,0.48275862068965514
+Belgium,1999,Exchange of Information,Inspections,0.5
+Brazil,1999,Environmental Protection General,Liability,0.52
+Bulgaria,1999,Science issues,Educational issues,0.3846153846153846
+COMNAP,1999,Educational issues,Environmental Impact Assessment EIA Other EIA Matters,0.5769230769230769
+COMNAP,1999,Operational issues,Exchange of Information,0.4545454545454546
+COMNAP,1999,Emergency report and contingency planning,Safety and Operations in Antarctica,0.5882352941176471
+Canada,1999,Opening statements,International Polar Year,0.6551724137931034
+Canada,1999,Opening statements,Science issues,0.5517241379310345
+Chile,1999,Environmental Protection General,International Polar Year,0.6799999999999999
+China,1999,Opening statements,Science issues,0.5517241379310345
+Denmark,1999,Opening statements,Operation of the Antarctic Treaty system The Secretariat,0.6551724137931034
+Ecuador,1999,Environmental Protection General,Liability,0.52
+Ecuador,1999,Opening statements,Science issues,0.5517241379310345
+France,1999,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+France,1999,Exchange of Information,Inspections,0.5
+Germany,1999,Tourism and NG_Activities,Drilling,0.7
+Germany,1999,Opening statements,Environmental Monitoring and Reporting,0.5862068965517242
+Germany,1999,Environmental Protection General,Operational issues,0.56
+Germany,1999,Tourism and NG_Activities,Site Guidelines for Visitors,0.5
+IAATO,1999,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+IMO,1999,Emergency report and contingency planning,Safety and Operations in Antarctica,0.5882352941176471
+India,1999,Opening statements,Exchange of Information,0.48275862068965514
+India,1999,Opening statements,Science issues,0.5517241379310345
+Italy,1999,Inspections,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Italy,1999,Opening statements,Environmental Protection General,0.5172413793103448
+Italy,1999,Operational issues,Exchange of Information,0.4545454545454546
+Japan,1999,Fauna and Flora_General,Area Protection and Management Plans General,0.5625
+Japan,1999,Opening statements,Educational issues,0.5172413793103448
+Japan,1999,Environmental Protection General,Exchange of Information,0.48
+Japan,1999,Environmental Protection General,Operational issues,0.56
+Japan,1999,Operation of the Antarctic Treaty system General,Waste management and disposal,0.6153846153846154
+Korea (ROK),1999,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+New Zealand,1999,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+New Zealand,1999,Operation of the Antarctic Treaty system General,Inspections,0.5
+Norway,1999,Operational issues,Exchange of Information,0.4545454545454546
+Norway,1999,Area Protection and Management Plans General,Management Plans,0.4375
+Norway,1999,Inspections,Waste management and disposal,0.5263157894736843
+Peru,1999,Safety and Operations in Antarctica,Emergency report and contingency planning,0.5882352941176471
+Peru,1999,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Russian Federation,1999,Environmental Protection General,Institutional and legal matters,0.56
+SCAR,1999,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+SCAR,1999,Area Protection and Management Plans General,State of the Antarctic Environment Report SAER,0.7692307692307692
+South Africa,1999,Environmental Protection General,Exchange of Information,0.48
+Spain,1999,Opening statements,Environmental Protection General,0.5172413793103448
+Sweden,1999,Environmental Protection General,State of the Antarctic Environment Report SAER,0.84
+UNEP,1999,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+United Kingdom,1999,Environmental Impact Assessment EIA Other EIA Matters,Educational issues,0.5769230769230769
+United Kingdom,1999,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+United Kingdom,1999,Area Protection and Management Plans General,Management Plans,0.4375
+United Kingdom,1999,Institutional and legal matters,Safety and Operations in Antarctica,0.47058823529411764
+United Kingdom,1999,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+Uruguay,1999,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Uruguay,1999,Environmental Protection General,Liability,0.52
+ASOC,2000,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Bulgaria,2000,Exchange of Information,Environmental Protection General,0.48
+China,2000,Exchange of Information,Environmental Protection General,0.48
+France,2000,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Japan,2000,Exchange of Information,Environmental Protection General,0.48
+Korea (ROK),2000,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Norway,2000,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Peru,2000,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+ASOC,2001,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+ASOC,2001,Environmental Impact Assessment EIA Other EIA Matters,Management Plans,0.5454545454545454
+Argentina,2001,Management Plans,Operation of the CEP,0.6875
+Argentina,2001,Tourism and NG_Activities,Specially Protected Species,0.6
+Australia,2001,Management Plans,Area Protection and Management Plans General,0.4375
+Australia,2001,Management Plans,Historic Sites and Monuments,0.4375
+Belgium,2001,Inspections,Liability,0.5789473684210527
+Brazil,2001,Exchange of Information,Opening statements,0.48275862068965514
+Brazil,2001,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+Bulgaria,2001,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+Chile,2001,Environmental Protection General,Liability,0.52
+Chile,2001,Historic Sites and Monuments,Management Plans,0.4375
+Germany,2001,Operational issues,Exchange of Information,0.4545454545454546
+Germany,2001,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+IAATO,2001,Safety and Operations in Antarctica,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+IAATO,2001,Comprehensive Environmental Evaluations,Management Plans,0.5625
+India,2001,Opening statements,Historic Sites and Monuments,0.7241379310344828
+Italy,2001,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+Italy,2001,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Japan,2001,Operational issues,Exchange of Information,0.4545454545454546
+Netherlands,2001,Environmental Protection General,Exchange of Information,0.48
+Netherlands,2001,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+New Zealand,2001,State of the Antarctic Environment Report SAER,Environmental Domains Analysis,0.4
+Peru,2001,Fauna and Flora_General,Cooperation with Other Organisations,0.625
+Peru,2001,Environmental Monitoring and Reporting,Liability,0.65
+Poland,2001,Opening statements,Area Protection and Management Plans General,0.8620689655172413
+Russian Federation,2001,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+Russian Federation,2001,Environmental Impact Assessment EIA Other EIA Matters,Waste management and disposal,0.5909090909090908
+SCAR,2001,Environmental Impact Assessment EIA Other EIA Matters,Emergency report and contingency planning,0.6818181818181819
+Spain,2001,Environmental Protection General,Exchange of Information,0.48
+Spain,2001,Environmental Protection General,Management Plans,0.72
+Sweden,2001,Environmental Protection General,Exchange of Information,0.48
+Sweden,2001,Environmental Protection General,Liability,0.52
+United Kingdom,2001,Comprehensive Environmental Evaluations,Environmental Monitoring and Reporting,0.6
+United Kingdom,2001,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+United Kingdom,2001,Environmental Protection General,Operational issues,0.56
+United States,2001,Exchange of Information,Inspections,0.5
+Uruguay,2001,Operational issues,Exchange of Information,0.4545454545454546
+Uruguay,2001,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+ASOC,2002,Waste management and disposal,Emergency report and contingency planning,0.6153846153846154
+ASOC,2002,Operation of the Antarctic Treaty system Reports,Fauna and Flora_General,0.6
+ASOC,2002,Tourism and NG_Activities,Marine Protected Areas,0.5454545454545454
+Argentina,2002,Management Plans,Operational issues,0.5789473684210527
+Australia,2002,Exchange of Information,Inspections,0.5
+Australia,2002,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Australia,2002,Area Protection and Management Plans General,State of the Antarctic Environment Report SAER,0.7692307692307692
+Australia,2002,Nonnative Species and Quarantine,Waste management and disposal,0.6
+Bulgaria,2002,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+CCAMLR,2002,Operation of the Antarctic Treaty system Reports,Operation of the Antarctic Treaty system The Secretariat,0.75
+COMNAP,2002,Environmental Impact Assessment EIA Other EIA Matters,Waste management and disposal,0.5909090909090908
+Chile,2002,Safety and Operations in Antarctica,Emergency report and contingency planning,0.5882352941176471
+Chile,2002,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+China,2002,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Czechia,2002,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Finland,2002,Opening statements,International Polar Year,0.6551724137931034
+France,2002,Inspections,Exchange of Information,0.5
+France,2002,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+IAATO,2002,Safety and Operations in Antarctica,Emergency report and contingency planning,0.5882352941176471
+India,2002,Historic Sites and Monuments,Management Plans,0.4375
+Italy,2002,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Italy,2002,Environmental Impact Assessment EIA Other EIA Matters,Management Plans,0.5454545454545454
+Italy,2002,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Japan,2002,Educational issues,Science issues,0.3846153846153846
+Korea (ROK),2002,Environmental Protection General,Operational issues,0.56
+New Zealand,2002,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+New Zealand,2002,Inspections,Waste management and disposal,0.5263157894736843
+Norway,2002,Exchange of Information,Opening statements,0.48275862068965514
+Norway,2002,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Peru,2002,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Poland,2002,Opening statements,Environmental Impact Assessment EIA Other EIA Matters,0.6206896551724138
+Poland,2002,Opening statements,Environmental Monitoring and Reporting,0.5862068965517242
+Poland,2002,Opening statements,Environmental Protection General,0.5172413793103448
+Poland,2002,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Russian Federation,2002,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+SCAR,2002,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+SCAR,2002,Emergency report and contingency planning,Marine Acoustics,0.6363636363636364
+SCAR,2002,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+SCAR,2002,State of the Antarctic Environment Report SAER,Sub glacial Lakes,0.8
+Ukraine,2002,Science issues,Exchange of Information,0.5833333333333333
+Ukraine,2002,Science issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+United Kingdom,2002,CEP Strategy Discussions,Biological Prospecting,0.5714285714285714
+United Kingdom,2002,Inspections,Environmental Protection General,0.52
+United Kingdom,2002,Inspections,Waste management and disposal,0.5263157894736843
+Uruguay,2002,Environmental Impact Assessment EIA Other EIA Matters,Management Plans,0.5454545454545454
+ASOC,2003,Environmental Protection General,Inspections,0.52
+ASOC,2003,Emergency report and contingency planning,Marine Acoustics,0.6363636363636364
+ASOC,2003,Marine Protected Areas,Prevention of marine pollution,0.5454545454545454
+Argentina,2003,Specially Protected Species,Fauna and Flora_General,0.625
+Argentina,2003,Environmental Impact Assessment EIA Other EIA Matters,Operation of the Antarctic Treaty system General,0.5769230769230769
+Argentina,2003,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Australia,2003,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Australia,2003,Inspections,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+COMNAP,2003,Emergency report and contingency planning,Tourism and NG_Activities,0.6363636363636364
+Chile,2003,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Chile,2003,Management Plans,Nonnative Species and Quarantine,0.5625
+Chile,2003,Educational issues,Science issues,0.3846153846153846
+China,2003,Emergency report and contingency planning,Waste management and disposal,0.6153846153846154
+Czechia,2003,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+Estonia,2003,Operational issues,Exchange of Information,0.4545454545454546
+Finland,2003,Environmental Protection General,Liability,0.52
+France,2003,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+France,2003,Inspections,Historic Sites and Monuments,0.631578947368421
+Germany,2003,Operation of the Antarctic Treaty system General,Opening statements,0.4482758620689655
+IAATO,2003,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+IHO,2003,Operation of the Antarctic Treaty system Reports,Operational issues,0.6
+IUCN,2003,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+IUCN,2003,Area Protection and Management Plans General,Marine Protected Areas,0.6153846153846154
+India,2003,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+India,2003,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Italy,2003,Management Plans,Area Protection and Management Plans General,0.4375
+Japan,2003,Waste management and disposal,International Polar Year,0.5
+Japan,2003,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Korea (ROK),2003,Operational issues,Exchange of Information,0.4545454545454546
+Netherlands,2003,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+New Zealand,2003,Management Plans,Biological Prospecting,0.6875
+Norway,2003,Exchange of Information,Biological Prospecting,0.5909090909090908
+Norway,2003,Exchange of Information,Operational issues,0.4545454545454546
+Peru,2003,Fauna and Flora_General,Area Protection and Management Plans General,0.5625
+Peru,2003,Fauna and Flora_General,Emergency report and contingency planning,0.625
+Poland,2003,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Russian Federation,2003,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+Russian Federation,2003,Waste management and disposal,International Polar Year,0.5
+Russian Federation,2003,Drilling,Sub glacial Lakes,0.8333333333333334
+SCAR,2003,Environmental Monitoring and Reporting,Comprehensive Environmental Evaluations,0.6
+SCAR,2003,Science issues,International Polar Year,0.625
+South Africa,2003,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Spain,2003,Environmental Protection General,Cooperation with Other Organisations,0.84
+Spain,2003,Opening statements,International Polar Year,0.6551724137931034
+Spain,2003,Environmental Protection General,Liability,0.52
+Spain,2003,Environmental Protection General,Marine Acoustics,0.84
+Sweden,2003,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+UNEP,2003,Opening statements,Inspections,0.6206896551724138
+United Kingdom,2003,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+United States,2003,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Uruguay,2003,Opening statements,Environmental Monitoring and Reporting,0.5862068965517242
+Uruguay,2003,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+ASOC,2004,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+ASOC,2004,Environmental Protection General,Operational issues,0.56
+Argentina,2004,Comprehensive Environmental Evaluations,Management Plans,0.5625
+Australia,2004,Nonnative Species and Quarantine,Tourism and NG_Activities,0.6666666666666667
+Belgium,2004,Inspections,Operation of the Antarctic Treaty system General,0.5
+Belgium,2004,Exchange of Information,Operational issues,0.4545454545454546
+COMNAP,2004,Operation of the Antarctic Treaty system Reports,Fauna and Flora_General,0.6
+Chile,2004,Operational issues,Exchange of Information,0.4545454545454546
+China,2004,Waste management and disposal,International Polar Year,0.5
+Czechia,2004,Environmental Protection General,Exchange of Information,0.48
+Estonia,2004,Exchange of Information,Environmental Protection General,0.48
+Finland,2004,Exchange of Information,Inspections,0.5
+Finland,2004,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+France,2004,Tourism and NG_Activities,Drilling,0.7
+France,2004,Historic Sites and Monuments,Management Plans,0.4375
+France,2004,Tourism and NG_Activities,Search and Rescue,0.7
+Germany,2004,Inspections,Area Protection and Management Plans General,0.5789473684210527
+Germany,2004,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Germany,2004,Exchange of Information,Environmental Protection General,0.48
+Germany,2004,Opening statements,International Polar Year,0.6551724137931034
+Germany,2004,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+IAATO,2004,Environmental Impact Assessment EIA Other EIA Matters,Liability,0.6818181818181819
+IHO,2004,Operational issues,Tourism and NG_Activities,0.7894736842105263
+India,2004,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+India,2004,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Italy,2004,Area Protection and Management Plans General,Drilling,0.8461538461538461
+Italy,2004,Exchange of Information,Liability,0.6363636363636364
+Italy,2004,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Japan,2004,Exchange of Information,Environmental Protection General,0.48
+Japan,2004,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Korea (ROK),2004,Science issues,International Polar Year,0.625
+Korea (ROK),2004,Operational issues,Safety and Operations in Antarctica,0.631578947368421
+Netherlands,2004,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+New Zealand,2004,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+New Zealand,2004,Comprehensive Environmental Evaluations,Environmental Monitoring and Reporting,0.6
+New Zealand,2004,Area Protection and Management Plans General,Search and Rescue,0.6153846153846154
+Norway,2004,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Norway,2004,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Norway,2004,Waste management and disposal,Search and Rescue,0.6923076923076923
+Peru,2004,Operational issues,Exchange of Information,0.4545454545454546
+Peru,2004,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Peru,2004,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Poland,2004,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Russian Federation,2004,Institutional and legal matters,Area Protection and Management Plans General,0.6153846153846154
+Russian Federation,2004,Environmental Protection General,Inspections,0.52
+South Africa,2004,Exchange of Information,Climate Change,0.7272727272727273
+South Africa,2004,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+South Africa,2004,Opening statements,Science issues,0.5517241379310345
+South Africa,2004,Operation of the Antarctic Treaty system General,Search and Rescue,0.8076923076923077
+Spain,2004,Cooperation with Other Organisations,Fauna and Flora_General,0.625
+Sweden,2004,State of the Antarctic Environment Report SAER,Environmental Domains Analysis,0.4
+UNEP,2004,Opening statements,Biological Prospecting,0.6551724137931034
+UNEP,2004,Inspections,Fauna and Flora_General,0.6842105263157895
+United Kingdom,2004,Fauna and Flora_General,Operation of the Antarctic Treaty system Reports,0.6
+United Kingdom,2004,Inspections,Site Guidelines for Visitors,0.6842105263157895
+United Kingdom,2004,Specially Protected Species,Tourism and NG_Activities,0.6
+United States,2004,Environmental Impact Assessment EIA Other EIA Matters,Emergency report and contingency planning,0.6818181818181819
+United States,2004,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Uruguay,2004,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Uruguay,2004,Waste management and disposal,Historic Sites and Monuments,0.6923076923076923
+ASOC,2005,Fauna and Flora_General,Climate Change,0.5625
+ASOC,2005,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+ATS,2005,Operation of the Antarctic Treaty system The Secretariat,Comprehensive Environmental Evaluations,0.6470588235294117
+ATS,2005,Operation of the Antarctic Treaty system The Secretariat,Environmental Impact Assessment EIA Other EIA Matters,0.6363636363636364
+ATS,2005,Operation of the Antarctic Treaty system The Secretariat,Environmental Monitoring and Reporting,0.8
+ATS,2005,Operation of the Antarctic Treaty system The Secretariat,Historic Sites and Monuments,0.7647058823529411
+ATS,2005,Operation of the Antarctic Treaty system The Secretariat,Management Plans,0.6470588235294117
+ATS,2005,Operation of the Antarctic Treaty system The Secretariat,Operation of the Antarctic Treaty system General,0.6538461538461539
+ATS,2005,Operation of the Antarctic Treaty system The Secretariat,Prevention of marine pollution,0.8235294117647058
+Argentina,2005,Operation of the CEP,CEP Strategy Discussions,0.5833333333333333
+Argentina,2005,Operational issues,Exchange of Information,0.4545454545454546
+Australia,2005,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Australia,2005,Waste management and disposal,International Polar Year,0.5
+Australia,2005,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Australia,2005,Tourism and NG_Activities,Site Guidelines for Visitors,0.5
+Belgium,2005,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Brazil,2005,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Brazil,2005,Exchange of Information,Science issues,0.5833333333333333
+COMNAP,2005,Environmental Impact Assessment EIA Other EIA Matters,Environmental Monitoring and Reporting,0.5909090909090908
+COMNAP,2005,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+COMNAP,2005,Operation of the Antarctic Treaty system Reports,Prevention of marine pollution,0.7
+Chile,2005,Science issues,Educational issues,0.3846153846153846
+Chile,2005,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Chile,2005,Nonnative Species and Quarantine,Prevention of marine pollution,0.6666666666666667
+China,2005,Exchange of Information,Operational issues,0.4545454545454546
+China,2005,Environmental Protection General,Safety and Operations in Antarctica,0.6799999999999999
+Ecuador,2005,Science issues,Exchange of Information,0.5833333333333333
+Ecuador,2005,Science issues,Operational issues,0.6666666666666667
+France,2005,Comprehensive Environmental Evaluations,Environmental Monitoring and Reporting,0.6
+Germany,2005,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+Germany,2005,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+IAATO,2005,Cooperation with Other Organisations,Nonnative Species and Quarantine,0.6666666666666667
+IAATO,2005,Emergency report and contingency planning,Prevention of marine pollution,0.7272727272727273
+IAATO,2005,Tourism and NG_Activities,Site Guidelines for Visitors,0.5
+IHO,2005,Operational issues,Science issues,0.6666666666666667
+IUCN,2005,Operation of the Antarctic Treaty system Reports,Nonnative Species and Quarantine,0.65
+India,2005,Environmental Protection General,Operational issues,0.56
+India,2005,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Italy,2005,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Italy,2005,Opening statements,Exchange of Information,0.48275862068965514
+Japan,2005,International Polar Year,Waste management and disposal,0.5
+Netherlands,2005,Exchange of Information,Environmental Protection General,0.48
+Norway,2005,Search and Rescue,Prevention of marine pollution,0.7
+Peru,2005,Exchange of Information,Inspections,0.5
+Romania,2005,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+South Africa,2005,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+South Africa,2005,Search and Rescue,Marine Protected Areas,0.5454545454545454
+Spain,2005,Exchange of Information,Biological Prospecting,0.5909090909090908
+Sweden,2005,Exchange of Information,Biological Prospecting,0.5909090909090908
+Sweden,2005,Environmental Protection General,CEP Strategy Discussions,0.64
+Sweden,2005,Exchange of Information,Operational issues,0.4545454545454546
+Sweden,2005,Operation of the Antarctic Treaty system General,Waste management and disposal,0.6153846153846154
+UNEP,2005,Inspections,Tourism and NG_Activities,0.6842105263157895
+Ukraine,2005,Exchange of Information,Tourism and NG_Activities,0.8181818181818181
+United Kingdom,2005,Management Plans,Comprehensive Environmental Evaluations,0.5625
+United Kingdom,2005,Operation of the Antarctic Treaty system General,Inspections,0.5
+United Kingdom,2005,Site Guidelines for Visitors,Prevention of marine pollution,0.6666666666666667
+United States,2005,Management Plans,Comprehensive Environmental Evaluations,0.5625
+United States,2005,Inspections,Site Guidelines for Visitors,0.6842105263157895
+Uruguay,2005,Science issues,Educational issues,0.3846153846153846
+Uruguay,2005,Historic Sites and Monuments,Tourism and NG_Activities,0.6923076923076923
+ASOC,2006,Environmental Protection General,International Polar Year,0.6799999999999999
+ASOC,2006,Tourism and NG_Activities,Site Guidelines for Visitors,0.5
+ATS,2006,Management Plans,Area Protection and Management Plans General,0.4375
+Argentina,2006,CEP Strategy Discussions,Biological Prospecting,0.5714285714285714
+Argentina,2006,Exchange of Information,Educational issues,0.5
+Argentina,2006,Management Plans,Historic Sites and Monuments,0.4375
+Argentina,2006,Management Plans,Site Guidelines for Visitors,0.6875
+Argentina,2006,Specially Protected Species,Tourism and NG_Activities,0.6
+Australia,2006,State of the Antarctic Environment Report SAER,CEP Strategy Discussions,0.5833333333333333
+Australia,2006,State of the Antarctic Environment Report SAER,Operation of the CEP,0.5
+Belgium,2006,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+Belgium,2006,Operational issues,Fauna and Flora_General,0.6842105263157895
+Brazil,2006,Management Plans,Area Protection and Management Plans General,0.4375
+COMNAP,2006,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+COMNAP,2006,Emergency report and contingency planning,Marine Acoustics,0.6363636363636364
+Chile,2006,Exchange of Information,Biological Prospecting,0.5909090909090908
+China,2006,Environmental Protection General,Area Protection and Management Plans General,0.6799999999999999
+Ecuador,2006,Operational issues,Management Plans,0.5789473684210527
+France,2006,Exchange of Information,Biological Prospecting,0.5909090909090908
+France,2006,Tourism and NG_Activities,CEP Strategy Discussions,0.6666666666666667
+France,2006,Search and Rescue,Emergency report and contingency planning,0.6363636363636364
+Germany,2006,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+IHO,2006,Science issues,Cooperation with Other Organisations,0.8333333333333334
+India,2006,Environmental Impact Assessment EIA Other EIA Matters,Waste management and disposal,0.5909090909090908
+Italy,2006,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Japan,2006,Exchange of Information,Operational issues,0.4545454545454546
+Korea (ROK),2006,Safety and Operations in Antarctica,Area Protection and Management Plans General,0.7647058823529411
+Korea (ROK),2006,Science issues,Educational issues,0.3846153846153846
+New Zealand,2006,Biological Prospecting,Climate Change,0.625
+New Zealand,2006,Waste management and disposal,Inspections,0.5263157894736843
+New Zealand,2006,Area Protection and Management Plans General,Nonnative Species and Quarantine,0.4666666666666667
+Norway,2006,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+Norway,2006,Prevention of marine pollution,Site Guidelines for Visitors,0.6666666666666667
+Peru,2006,Inspections,Management Plans,0.5789473684210527
+Poland,2006,Area Protection and Management Plans General,Management Plans,0.4375
+Romania,2006,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Romania,2006,Environmental Protection General,Operational issues,0.56
+Russian Federation,2006,Science issues,Educational issues,0.3846153846153846
+Russian Federation,2006,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Russian Federation,2006,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+SCAR,2006,Comprehensive Environmental Evaluations,Environmental Impact Assessment EIA Other EIA Matters,0.5909090909090908
+South Africa,2006,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Ukraine,2006,Exchange of Information,Environmental Protection General,0.48
+United Kingdom,2006,Biological Prospecting,CEP Strategy Discussions,0.5714285714285714
+United Kingdom,2006,Prevention of marine pollution,Marine Protected Areas,0.5454545454545454
+United States,2006,Inspections,Waste management and disposal,0.5263157894736843
+Uruguay,2006,Exchange of Information,Operational issues,0.4545454545454546
+Uruguay,2006,Environmental Monitoring and Reporting,Prevention of marine pollution,0.75
+ASOC,2007,Fauna and Flora_General,Area Protection and Management Plans General,0.5625
+ASOC,2007,Marine Protected Areas,Human Footprint and wilderness values,0.4545454545454546
+Argentina,2007,Biological Prospecting,International Polar Year,0.6428571428571428
+Australia,2007,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+Belarus,2007,Biological Prospecting,Science issues,0.7083333333333333
+Belgium,2007,Exchange of Information,Biological Prospecting,0.5909090909090908
+Belgium,2007,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Brazil,2007,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+COMNAP,2007,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+COMNAP,2007,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Chile,2007,Management Plans,Area Protection and Management Plans General,0.4375
+Chile,2007,Emergency report and contingency planning,Search and Rescue,0.6363636363636364
+China,2007,Area Protection and Management Plans General,Management Plans,0.4375
+Ecuador,2007,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Ecuador,2007,Exchange of Information,Environmental Protection General,0.48
+Ecuador,2007,Management Plans,Site Guidelines for Visitors,0.6875
+Finland,2007,Exchange of Information,Operational issues,0.4545454545454546
+Finland,2007,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+France,2007,Exchange of Information,Environmental Protection General,0.48
+France,2007,Exchange of Information,Inspections,0.5
+Germany,2007,Environmental Impact Assessment EIA Other EIA Matters,Educational issues,0.5769230769230769
+Germany,2007,Drilling,Marine Acoustics,0.5714285714285714
+Germany,2007,Environmental Protection General,Operational issues,0.56
+IAATO,2007,Nonnative Species and Quarantine,Inspections,0.5789473684210527
+IAATO,2007,Emergency report and contingency planning,Liability,0.7058823529411764
+IHO,2007,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+India,2007,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Italy,2007,Opening statements,Operation of the Antarctic Treaty system General,0.4482758620689655
+Netherlands,2007,Exchange of Information,Biological Prospecting,0.5909090909090908
+Netherlands,2007,Environmental Protection General,International Polar Year,0.6799999999999999
+New Zealand,2007,Climate Change,CEP Strategy Discussions,0.5625
+New Zealand,2007,Nonnative Species and Quarantine,Cooperation with Other Organisations,0.6666666666666667
+New Zealand,2007,Inspections,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+New Zealand,2007,Environmental Domains Analysis,Marine Acoustics,0.5714285714285714
+New Zealand,2007,Nonnative Species and Quarantine,Tourism and NG_Activities,0.6666666666666667
+Norway,2007,Biological Prospecting,Climate Change,0.625
+Norway,2007,Search and Rescue,Emergency report and contingency planning,0.6363636363636364
+Norway,2007,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Peru,2007,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Peru,2007,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Poland,2007,Environmental Protection General,Exchange of Information,0.48
+Romania,2007,Operational issues,Exchange of Information,0.4545454545454546
+Romania,2007,Science issues,International Polar Year,0.625
+Russian Federation,2007,Drilling,Marine Acoustics,0.5714285714285714
+Russian Federation,2007,Inspections,Marine Protected Areas,0.5789473684210527
+Russian Federation,2007,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+SCAR,2007,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+South Africa,2007,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Sweden,2007,Operation of the Antarctic Treaty system General,Inspections,0.5
+Sweden,2007,Biological Prospecting,Site Guidelines for Visitors,0.7142857142857143
+UNEP,2007,Biological Prospecting,Educational issues,0.6923076923076923
+UNEP,2007,Biological Prospecting,International Polar Year,0.6428571428571428
+United Kingdom,2007,Area Protection and Management Plans General,Management Plans,0.4375
+United Kingdom,2007,Marine Protected Areas,Search and Rescue,0.5454545454545454
+United Kingdom,2007,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+United States,2007,Waste management and disposal,Drilling,0.6923076923076923
+Uruguay,2007,Science issues,International Polar Year,0.625
+ASOC,2008,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+ASOC,2008,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Argentina,2008,Management Plans,Inspections,0.5789473684210527
+Australia,2008,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Australia,2008,Operation of the Antarctic Treaty system General,Inspections,0.5
+Belgium,2008,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Brazil,2008,Environmental Monitoring and Reporting,CEP Strategy Discussions,0.75
+Brazil,2008,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Bulgaria,2008,Exchange of Information,Climate Change,0.7272727272727273
+Bulgaria,2008,Exchange of Information,Safety and Operations in Antarctica,0.7727272727272727
+COMNAP,2008,Environmental Protection General,Operational issues,0.56
+Chile,2008,Operational issues,Exchange of Information,0.4545454545454546
+China,2008,Environmental Protection General,CEP Strategy Discussions,0.64
+China,2008,Management Plans,Comprehensive Environmental Evaluations,0.5625
+China,2008,Area Protection and Management Plans General,Nonnative Species and Quarantine,0.4666666666666667
+Czechia,2008,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Ecuador,2008,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Ecuador,2008,Management Plans,Fauna and Flora_General,0.625
+Germany,2008,Operational issues,Safety and Operations in Antarctica,0.631578947368421
+IAATO,2008,Emergency report and contingency planning,Search and Rescue,0.6363636363636364
+India,2008,Waste management and disposal,International Polar Year,0.5
+India,2008,Management Plans,Nonnative Species and Quarantine,0.5625
+New Zealand,2008,Marine Acoustics,Drilling,0.5714285714285714
+New Zealand,2008,Environmental Impact Assessment EIA Other EIA Matters,Educational issues,0.5769230769230769
+New Zealand,2008,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+Norway,2008,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Romania,2008,Environmental Protection General,Area Protection and Management Plans General,0.6799999999999999
+Romania,2008,Operational issues,Nonnative Species and Quarantine,0.5789473684210527
+Russian Federation,2008,Area Protection and Management Plans General,Climate Change,0.6875
+Russian Federation,2008,Marine Protected Areas,Tourism and NG_Activities,0.5454545454545454
+South Africa,2008,Exchange of Information,Operational issues,0.4545454545454546
+Spain,2008,Fauna and Flora_General,Climate Change,0.5625
+Spain,2008,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Spain,2008,Management Plans,Site Guidelines for Visitors,0.6875
+Ukraine,2008,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Ukraine,2008,Science issues,Safety and Operations in Antarctica,0.6666666666666667
+Ukraine,2008,Tourism and NG_Activities,Site Guidelines for Visitors,0.5
+United Kingdom,2008,CEP Strategy Discussions,Climate Change,0.5625
+United Kingdom,2008,Waste management and disposal,Drilling,0.6923076923076923
+United States,2008,Management Plans,Area Protection and Management Plans General,0.4375
+United States,2008,Inspections,Marine Protected Areas,0.5789473684210527
+Uruguay,2008,Operational issues,Nonnative Species and Quarantine,0.5789473684210527
+Uruguay,2008,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Venezuela,2008,Opening statements,Science issues,0.5517241379310345
+ACAP,2009,Cooperation with Other Organisations,Fauna and Flora_General,0.625
+ASOC,2009,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+ATS,2009,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Argentina,2009,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Australia,2009,Nonnative Species and Quarantine,Prevention of marine pollution,0.6666666666666667
+Belgium,2009,Fauna and Flora_General,Cooperation with Other Organisations,0.625
+Belgium,2009,Fauna and Flora_General,Search and Rescue,0.6875
+Brazil,2009,CEP Strategy Discussions,Biological Prospecting,0.5714285714285714
+Brazil,2009,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Brazil,2009,Science issues,International Polar Year,0.625
+Brazil,2009,Management Plans,Operational issues,0.5789473684210527
+Bulgaria,2009,Climate Change,Biological Prospecting,0.625
+Bulgaria,2009,Safety and Operations in Antarctica,Science issues,0.6666666666666667
+Canada,2009,Educational issues,Environmental Monitoring and Reporting,0.6153846153846154
+Ecuador,2009,Science issues,Educational issues,0.3846153846153846
+Finland,2009,Inspections,Biological Prospecting,0.6842105263157895
+Finland,2009,Science issues,Educational issues,0.3846153846153846
+France,2009,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Germany,2009,Environmental Protection General,Biological Prospecting,0.64
+Germany,2009,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Italy,2009,Management Plans,Area Protection and Management Plans General,0.4375
+Korea (ROK),2009,Exchange of Information,Environmental Protection General,0.48
+Norway,2009,Environmental Impact Assessment EIA Other EIA Matters,Inspections,0.5454545454545454
+Norway,2009,Environmental Impact Assessment EIA Other EIA Matters,Operation of the Antarctic Treaty system General,0.5769230769230769
+Peru,2009,Management Plans,Fauna and Flora_General,0.625
+Romania,2009,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Russian Federation,2009,Climate Change,Cooperation with Other Organisations,0.75
+Russian Federation,2009,Area Protection and Management Plans General,Management Plans,0.4375
+SCAR,2009,Marine Acoustics,Environmental Domains Analysis,0.5714285714285714
+SCAR,2009,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+South Africa,2009,Climate Change,Fauna and Flora_General,0.5625
+United Kingdom,2009,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+United States,2009,Inspections,Operation of the Antarctic Treaty system General,0.5
+United States,2009,Marine Protected Areas,Search and Rescue,0.5454545454545454
+Uruguay,2009,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+ASOC,2010,Environmental Protection General,Inspections,0.52
+ASOC,2010,Environmental Protection General,Operational issues,0.56
+Argentina,2010,Management Plans,Historic Sites and Monuments,0.4375
+Argentina,2010,Inspections,Operation of the Antarctic Treaty system General,0.5
+Australia,2010,CEP Strategy Discussions,Climate Change,0.5625
+Australia,2010,Operation of the CEP,Human Footprint and wilderness values,0.5454545454545454
+Belgium,2010,Search and Rescue,Marine Protected Areas,0.5454545454545454
+COMNAP,2010,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+COMNAP,2010,Operational issues,Exchange of Information,0.4545454545454546
+Chile,2010,Prevention of marine pollution,Site Guidelines for Visitors,0.6666666666666667
+Ecuador,2010,Fauna and Flora_General,Climate Change,0.5625
+France,2010,CEP Strategy Discussions,Cooperation with Other Organisations,0.7142857142857143
+France,2010,Inspections,Nonnative Species and Quarantine,0.5789473684210527
+France,2010,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+France,2010,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Germany,2010,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+Germany,2010,Comprehensive Environmental Evaluations,Waste management and disposal,0.6
+IAATO,2010,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+Italy,2010,Area Protection and Management Plans General,Marine Protected Areas,0.6153846153846154
+Japan,2010,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+Japan,2010,Exchange of Information,Inspections,0.5
+New Zealand,2010,Inspections,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+New Zealand,2010,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+New Zealand,2010,Area Protection and Management Plans General,Management Plans,0.4375
+New Zealand,2010,Nonnative Species and Quarantine,Prevention of marine pollution,0.6666666666666667
+Norway,2010,Inspections,International Polar Year,0.6842105263157895
+Romania,2010,Area Protection and Management Plans General,Climate Change,0.6875
+Romania,2010,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Russian Federation,2010,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Russian Federation,2010,Science issues,Educational issues,0.3846153846153846
+SCAR,2010,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+South Africa,2010,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+South Africa,2010,Environmental Impact Assessment EIA Other EIA Matters,Waste management and disposal,0.5909090909090908
+Spain,2010,Management Plans,Area Protection and Management Plans General,0.4375
+Spain,2010,Climate Change,Fauna and Flora_General,0.5625
+Spain,2010,Management Plans,Nonnative Species and Quarantine,0.5625
+United Kingdom,2010,Fauna and Flora_General,Emergency report and contingency planning,0.625
+United Kingdom,2010,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+United Kingdom,2010,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+United Kingdom,2010,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+United States,2010,Waste management and disposal,Emergency report and contingency planning,0.6153846153846154
+United States,2010,Management Plans,Historic Sites and Monuments,0.4375
+United States,2010,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Uruguay,2010,Exchange of Information,Environmental Protection General,0.48
+Uruguay,2010,Nonnative Species and Quarantine,Historic Sites and Monuments,0.6
+ASOC,2011,Climate Change,CEP Strategy Discussions,0.5625
+ASOC,2011,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+ASOC,2011,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Australia,2011,Management Plans,Area Protection and Management Plans General,0.4375
+Australia,2011,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Australia,2011,Environmental Protection General,Inspections,0.52
+Bulgaria,2011,Science issues,Educational issues,0.3846153846153846
+Bulgaria,2011,Biological Prospecting,Tourism and NG_Activities,0.7857142857142857
+COMNAP,2011,Operation of the Antarctic Treaty system Reports,Climate Change,0.7
+Chile,2011,Educational issues,Science issues,0.3846153846153846
+China,2011,Management Plans,Historic Sites and Monuments,0.4375
+Czechia,2011,Environmental Protection General,Human Footprint and wilderness values,0.64
+Ecuador,2011,Climate Change,Site Guidelines for Visitors,0.75
+Finland,2011,Operational issues,Environmental Protection General,0.56
+Germany,2011,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Germany,2011,Area Protection and Management Plans General,Operation of the CEP,0.6923076923076923
+Germany,2011,Area Protection and Management Plans General,Search and Rescue,0.6153846153846154
+IAATO,2011,Fauna and Flora_General,Operation of the Antarctic Treaty system Reports,0.6
+IUCN,2011,Operation of the Antarctic Treaty system Reports,Climate Change,0.7
+India,2011,Management Plans,Nonnative Species and Quarantine,0.5625
+Korea (ROK),2011,Exchange of Information,Comprehensive Environmental Evaluations,0.5909090909090908
+Netherlands,2011,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Netherlands,2011,Environmental Protection General,Tourism and NG_Activities,0.72
+New Zealand,2011,Environmental Impact Assessment EIA Other EIA Matters,Educational issues,0.5769230769230769
+Norway,2011,Management Plans,Area Protection and Management Plans General,0.4375
+Norway,2011,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Peru,2011,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Romania,2011,Climate Change,Area Protection and Management Plans General,0.6875
+Russian Federation,2011,Inspections,Area Protection and Management Plans General,0.5789473684210527
+Russian Federation,2011,Climate Change,Biological Prospecting,0.625
+Russian Federation,2011,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+SCAR,2011,Climate Change,Biological Prospecting,0.625
+SCAR,2011,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+UNEP,2011,Educational issues,Environmental Protection General,0.6153846153846154
+Ukraine,2011,Environmental Protection General,Climate Change,0.72
+United Kingdom,2011,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+United Kingdom,2011,Comprehensive Environmental Evaluations,Environmental Monitoring and Reporting,0.6
+United Kingdom,2011,Area Protection and Management Plans General,Management Plans,0.4375
+United Kingdom,2011,Marine Protected Areas,Search and Rescue,0.5454545454545454
+United Kingdom,2011,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+United States,2011,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+United States,2011,Management Plans,Operation of the CEP,0.6875
+Uruguay,2011,Nonnative Species and Quarantine,Area Protection and Management Plans General,0.4666666666666667
+Uruguay,2011,Prevention of marine pollution,Human Footprint and wilderness values,0.6363636363636364
+ASOC,2012,Safety and Operations in Antarctica,Emergency report and contingency planning,0.5882352941176471
+Argentina,2012,Historic Sites and Monuments,Management Plans,0.4375
+Argentina,2012,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Australia,2012,CEP Strategy Discussions,Climate Change,0.5625
+Australia,2012,Waste management and disposal,Emergency report and contingency planning,0.6153846153846154
+Australia,2012,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Belgium,2012,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Brazil,2012,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+COMNAP,2012,Climate Change,CEP Strategy Discussions,0.5625
+Chile,2012,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+China,2012,Exchange of Information,Environmental Protection General,0.48
+Germany,2012,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Germany,2012,Operational issues,Exchange of Information,0.4545454545454546
+Germany,2012,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+IUCN,2012,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+IUCN,2012,Nonnative Species and Quarantine,Management Plans,0.5625
+Japan,2012,Educational issues,Climate Change,0.6923076923076923
+Korea (ROK),2012,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Korea (ROK),2012,Area Protection and Management Plans General,Management Plans,0.4375
+Netherlands,2012,Tourism and NG_Activities,Human Footprint and wilderness values,0.6363636363636364
+Netherlands,2012,Environmental Protection General,Operational issues,0.56
+New Zealand,2012,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+New Zealand,2012,Educational issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Romania,2012,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Russian Federation,2012,Science issues,Educational issues,0.3846153846153846
+Russian Federation,2012,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+Russian Federation,2012,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+SCAR,2012,Climate Change,CEP Strategy Discussions,0.5625
+South Africa,2012,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Spain,2012,Exchange of Information,Environmental Protection General,0.48
+Sweden,2012,Inspections,Operation of the Antarctic Treaty system General,0.5
+UNEP,2012,Environmental Protection General,Inspections,0.52
+ASOC,2013,Environmental Impact Assessment EIA Other EIA Matters,Environmental Monitoring and Reporting,0.5909090909090908
+Argentina,2013,Science issues,Educational issues,0.3846153846153846
+Argentina,2013,Operational issues,Exchange of Information,0.4545454545454546
+Belgium,2013,Biological Prospecting,CEP Strategy Discussions,0.5714285714285714
+Belgium,2013,Cooperation with Other Organisations,Fauna and Flora_General,0.625
+Belgium,2013,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Belgium,2013,Exchange of Information,Operational issues,0.4545454545454546
+Brazil,2013,Safety and Operations in Antarctica,Emergency report and contingency planning,0.5882352941176471
+Brazil,2013,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+CCAMLR,2013,Cooperation with Other Organisations,Search and Rescue,0.7857142857142857
+COMNAP,2013,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+COMNAP,2013,CEP Strategy Discussions,Human Footprint and wilderness values,0.5833333333333333
+COMNAP,2013,Emergency report and contingency planning,Search and Rescue,0.6363636363636364
+Chile,2013,Educational issues,Cooperation with Other Organisations,0.7692307692307692
+China,2013,Management Plans,Area Protection and Management Plans General,0.4375
+China,2013,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+China,2013,Exchange of Information,Science issues,0.5833333333333333
+Ecuador,2013,Fauna and Flora_General,Climate Change,0.5625
+France,2013,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+France,2013,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+France,2013,Exchange of Information,Operational issues,0.4545454545454546
+Germany,2013,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+Germany,2013,Exchange of Information,Inspections,0.5
+Germany,2013,Search and Rescue,Marine Protected Areas,0.5454545454545454
+Germany,2013,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+IAATO,2013,Fauna and Flora_General,Climate Change,0.5625
+IAATO,2013,Fauna and Flora_General,Safety and Operations in Antarctica,0.7647058823529411
+IHO,2013,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+IHO,2013,Operation of the Antarctic Treaty system Reports,Operational issues,0.6
+India,2013,Management Plans,Area Protection and Management Plans General,0.4375
+India,2013,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+India,2013,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Italy,2013,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Italy,2013,Environmental Impact Assessment EIA Other EIA Matters,Environmental Monitoring and Reporting,0.5909090909090908
+Italy,2013,Exchange of Information,Inspections,0.5
+Italy,2013,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Japan,2013,Climate Change,Cooperation with Other Organisations,0.75
+Japan,2013,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Korea (ROK),2013,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Netherlands,2013,Operation of the Antarctic Treaty system General,Inspections,0.5
+Netherlands,2013,Human Footprint and wilderness values,Marine Protected Areas,0.4545454545454546
+New Zealand,2013,Management Plans,Comprehensive Environmental Evaluations,0.5625
+New Zealand,2013,Fauna and Flora_General,Emergency report and contingency planning,0.625
+New Zealand,2013,Educational issues,Exchange of Information,0.5
+New Zealand,2013,Management Plans,Historic Sites and Monuments,0.4375
+New Zealand,2013,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Norway,2013,Climate Change,CEP Strategy Discussions,0.5625
+Norway,2013,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+Peru,2013,Fauna and Flora_General,Management Plans,0.625
+SCAR,2013,Science issues,Environmental Protection General,0.6
+South Africa,2013,Exchange of Information,Environmental Protection General,0.48
+South Africa,2013,Exchange of Information,Inspections,0.5
+Spain,2013,Exchange of Information,Inspections,0.5
+Spain,2013,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Ukraine,2013,Environmental Impact Assessment EIA Other EIA Matters,Management Plans,0.5454545454545454
+United Kingdom,2013,Management Plans,Historic Sites and Monuments,0.4375
+United Kingdom,2013,Marine Protected Areas,Liability,0.6470588235294117
+United States,2013,Emergency report and contingency planning,Safety and Operations in Antarctica,0.5882352941176471
+Uruguay,2013,Exchange of Information,Inspections,0.5
+Uruguay,2013,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+Venezuela,2013,Science issues,Cooperation with Other Organisations,0.8333333333333334
+Venezuela,2013,Science issues,Educational issues,0.3846153846153846
+WMO,2013,Operation of the Antarctic Treaty system General,Operational issues,0.6923076923076923
+ASOC,2014,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Argentina,2014,Exchange of Information,Biological Prospecting,0.5909090909090908
+Argentina,2014,Management Plans,Fauna and Flora_General,0.625
+Australia,2014,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Australia,2014,Inspections,Site Guidelines for Visitors,0.6842105263157895
+Belarus,2014,Cooperation with Other Organisations,Comprehensive Environmental Evaluations,0.9333333333333333
+Belgium,2014,Operational issues,Comprehensive Environmental Evaluations,0.631578947368421
+Belgium,2014,Operation of the Antarctic Treaty system General,Educational issues,0.5769230769230769
+Brazil,2014,Science issues,Educational issues,0.3846153846153846
+COMNAP,2014,Operation of the Antarctic Treaty system Reports,Educational issues,0.6153846153846154
+COMNAP,2014,Nonnative Species and Quarantine,Waste management and disposal,0.6
+Chile,2014,Operational issues,Exchange of Information,0.4545454545454546
+China,2014,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Ecuador,2014,Exchange of Information,Biological Prospecting,0.5909090909090908
+Ecuador,2014,Environmental Impact Assessment EIA Other EIA Matters,Management Plans,0.5454545454545454
+Ecuador,2014,Climate Change,Site Guidelines for Visitors,0.75
+Finland,2014,Environmental Protection General,Tourism and NG_Activities,0.72
+France,2014,Exchange of Information,Environmental Protection General,0.48
+France,2014,Exchange of Information,Inspections,0.5
+France,2014,Comprehensive Environmental Evaluations,Institutional and legal matters,0.6
+France,2014,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+France,2014,Comprehensive Environmental Evaluations,Operation of the CEP,0.8
+Germany,2014,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+India,2014,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Italy,2014,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Malaysia,2014,Operation of the Antarctic Treaty system General,Operation of the Antarctic Treaty system Reports,0.7692307692307692
+New Zealand,2014,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+New Zealand,2014,Emergency report and contingency planning,Tourism and NG_Activities,0.6363636363636364
+Norway,2014,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Norway,2014,Safety and Operations in Antarctica,Institutional and legal matters,0.47058823529411764
+Poland,2014,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Portugal,2014,Climate Change,Educational issues,0.6923076923076923
+Romania,2014,Exchange of Information,Biological Prospecting,0.5909090909090908
+Russian Federation,2014,Climate Change,Biological Prospecting,0.625
+Russian Federation,2014,Safety and Operations in Antarctica,Emergency report and contingency planning,0.5882352941176471
+Russian Federation,2014,Inspections,Marine Protected Areas,0.5789473684210527
+South Africa,2014,Environmental Protection General,Liability,0.52
+South Africa,2014,Operational issues,Safety and Operations in Antarctica,0.631578947368421
+South Africa,2014,Inspections,Tourism and NG_Activities,0.6842105263157895
+Sweden,2014,Operation of the Antarctic Treaty system General,Inspections,0.5
+United Kingdom,2014,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+WMO,2014,Operational issues,Climate Change,0.736842105263158
+ASOC,2015,CEP Strategy Discussions,Biological Prospecting,0.5714285714285714
+Argentina,2015,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+Argentina,2015,Management Plans,Repair and remediation of environmental damage,0.375
+Australia,2015,Environmental Protection General,Exchange of Information,0.48
+Belarus,2015,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+Brazil,2015,Environmental Impact Assessment EIA Other EIA Matters,Repair and remediation of environmental damage,0.5909090909090908
+Bulgaria,2015,Tourism and NG_Activities,Historic Sites and Monuments,0.6923076923076923
+CCAMLR,2015,Operation of the Antarctic Treaty system Reports,Educational issues,0.6153846153846154
+COMNAP,2015,Operational issues,Operation of the Antarctic Treaty system The Secretariat,0.631578947368421
+Chile,2015,Exchange of Information,Environmental Protection General,0.48
+Chile,2015,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Colombia,2015,Operation of the Antarctic Treaty system General,Safety and Operations in Antarctica,0.7692307692307692
+Colombia,2015,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Czechia,2015,Human Footprint and wilderness values,Climate Change,0.75
+Czechia,2015,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+Czechia,2015,Human Footprint and wilderness values,Inspections,0.5789473684210527
+Ecuador,2015,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Finland,2015,Environmental Protection General,Liability,0.52
+Finland,2015,Environmental Protection General,Science issues,0.6
+Germany,2015,Marine Protected Areas,Tourism and NG_Activities,0.5454545454545454
+IAATO,2015,Operation of the Antarctic Treaty system Reports,Operational issues,0.6
+Italy,2015,Science issues,Educational issues,0.3846153846153846
+Korea (ROK),2015,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+Malaysia,2015,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Netherlands,2015,Environmental Protection General,Liability,0.52
+New Zealand,2015,Emergency report and contingency planning,Fauna and Flora_General,0.625
+New Zealand,2015,Management Plans,Historic Sites and Monuments,0.4375
+New Zealand,2015,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+Norway,2015,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Norway,2015,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Norway,2015,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Poland,2015,Management Plans,Nonnative Species and Quarantine,0.5625
+Portugal,2015,Educational issues,Science issues,0.3846153846153846
+Russian Federation,2015,Inspections,Exchange of Information,0.5
+Russian Federation,2015,Inspections,Operation of the Antarctic Treaty system General,0.5
+South Africa,2015,Science issues,Educational issues,0.3846153846153846
+South Africa,2015,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Spain,2015,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Sweden,2015,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+Ukraine,2015,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+United Kingdom,2015,Area Protection and Management Plans General,Inspections,0.5789473684210527
+United Kingdom,2015,Area Protection and Management Plans General,Institutional and legal matters,0.6153846153846154
+United States,2015,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+United States,2015,Management Plans,Repair and remediation of environmental damage,0.375
+Uruguay,2015,Educational issues,Science issues,0.3846153846153846
+ASOC,2016,Human Footprint and wilderness values,Area Protection and Management Plans General,0.46153846153846156
+Argentina,2016,Exchange of Information,Inspections,0.5
+Argentina,2016,Tourism and NG_Activities,Marine Protected Areas,0.5454545454545454
+Argentina,2016,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Australia,2016,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Australia,2016,Exchange of Information,Operational issues,0.4545454545454546
+Belarus,2016,Comprehensive Environmental Evaluations,Environmental Impact Assessment EIA Other EIA Matters,0.5909090909090908
+Belarus,2016,Comprehensive Environmental Evaluations,Safety and Operations in Antarctica,0.7647058823529411
+Belgium,2016,Educational issues,Science issues,0.3846153846153846
+Brazil,2016,Operational issues,Exchange of Information,0.4545454545454546
+COMNAP,2016,Safety and Operations in Antarctica,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+COMNAP,2016,Educational issues,Science issues,0.3846153846153846
+Chile,2016,Area Protection and Management Plans General,Marine Protected Areas,0.6153846153846154
+Chile,2016,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Chile,2016,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+China,2016,Environmental Protection General,Inspections,0.52
+Colombia,2016,Science issues,Educational issues,0.3846153846153846
+Colombia,2016,Science issues,Operation of the Antarctic Treaty system Reports,0.6666666666666667
+Czechia,2016,Inspections,Operation of the Antarctic Treaty system General,0.5
+Finland,2016,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+France,2016,Comprehensive Environmental Evaluations,Historic Sites and Monuments,0.6
+IAATO,2016,Safety and Operations in Antarctica,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+IAATO,2016,Climate Change,Fauna and Flora_General,0.5625
+IAATO,2016,Operational issues,Historic Sites and Monuments,0.631578947368421
+India,2016,Environmental Protection General,Tourism and NG_Activities,0.72
+Italy,2016,Inspections,Operation of the Antarctic Treaty system General,0.5
+Japan,2016,International Polar Year,Operation of the CEP,0.7142857142857143
+Japan,2016,Inspections,Tourism and NG_Activities,0.6842105263157895
+Korea (ROK),2016,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+Korea (ROK),2016,Environmental Impact Assessment EIA Other EIA Matters,Inspections,0.5454545454545454
+Korea (ROK),2016,Area Protection and Management Plans General,Nonnative Species and Quarantine,0.4666666666666667
+Korea (ROK),2016,Environmental Impact Assessment EIA Other EIA Matters,Operation of the Antarctic Treaty system General,0.5769230769230769
+New Zealand,2016,Management Plans,Comprehensive Environmental Evaluations,0.5625
+New Zealand,2016,Exchange of Information,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+New Zealand,2016,Exchange of Information,Environmental Protection General,0.48
+New Zealand,2016,Human Footprint and wilderness values,Operation of the CEP,0.5454545454545454
+Norway,2016,Management Plans,Historic Sites and Monuments,0.4375
+Norway,2016,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Norway,2016,CEP Strategy Discussions,Operation of the CEP,0.5833333333333333
+Poland,2016,Environmental Impact Assessment EIA Other EIA Matters,Operation of the Antarctic Treaty system General,0.5769230769230769
+Portugal,2016,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Russian Federation,2016,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+SCAR,2016,CEP Strategy Discussions,Operation of the CEP,0.5833333333333333
+SCAR,2016,Environmental Protection General,Operational issues,0.56
+South Africa,2016,Environmental Protection General,Operational issues,0.56
+Spain,2016,Management Plans,Operation of the CEP,0.6875
+Sweden,2016,Inspections,Historic Sites and Monuments,0.631578947368421
+Ukraine,2016,Tourism and NG_Activities,Site Guidelines for Visitors,0.5
+United Kingdom,2016,Inspections,Environmental Protection General,0.52
+United Kingdom,2016,Management Plans,Historic Sites and Monuments,0.4375
+United States,2016,Environmental Impact Assessment EIA Other EIA Matters,Operation of the Antarctic Treaty system The Secretariat,0.6363636363636364
+Uruguay,2016,Inspections,Operation of the Antarctic Treaty system General,0.5
+WMO,2016,Climate Change,Cooperation with Other Organisations,0.75
+WMO,2016,Operational issues,Operation of the Antarctic Treaty system Reports,0.6
+WMO,2016,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+ASOC,2017,Safety and Operations in Antarctica,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Argentina,2017,Biological Prospecting,CEP Strategy Discussions,0.5714285714285714
+Argentina,2017,Management Plans,Safety and Operations in Antarctica,0.5882352941176471
+Australia,2017,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Australia,2017,Management Plans,Repair and remediation of environmental damage,0.375
+Australia,2017,Emergency report and contingency planning,Safety and Operations in Antarctica,0.5882352941176471
+Belarus,2017,Environmental Impact Assessment EIA Other EIA Matters,Repair and remediation of environmental damage,0.5909090909090908
+Belarus,2017,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Belgium,2017,CEP Strategy Discussions,Climate Change,0.5625
+Belgium,2017,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+COMNAP,2017,Operational issues,Exchange of Information,0.4545454545454546
+Chile,2017,Environmental Protection General,Inspections,0.52
+Chile,2017,Management Plans,Nonnative Species and Quarantine,0.5625
+Chile,2017,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+China,2017,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Ecuador,2017,Management Plans,Repair and remediation of environmental damage,0.375
+Ecuador,2017,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Ecuador,2017,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Finland,2017,Biological Prospecting,Climate Change,0.625
+Finland,2017,Science issues,Safety and Operations in Antarctica,0.6666666666666667
+Germany,2017,Fauna and Flora_General,Climate Change,0.5625
+Germany,2017,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Italy,2017,Environmental Impact Assessment EIA Other EIA Matters,Management Plans,0.5454545454545454
+Italy,2017,Environmental Impact Assessment EIA Other EIA Matters,Repair and remediation of environmental damage,0.5909090909090908
+Japan,2017,Operation of the CEP,Management Plans,0.6875
+Korea (ROK),2017,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Monaco,2017,Fauna and Flora_General,Climate Change,0.5625
+Netherlands,2017,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+New Zealand,2017,Management Plans,Area Protection and Management Plans General,0.4375
+Peru,2017,Management Plans,Educational issues,0.6923076923076923
+Peru,2017,Management Plans,Safety and Operations in Antarctica,0.5882352941176471
+Peru,2017,Management Plans,Science issues,0.8333333333333334
+Poland,2017,Nonnative Species and Quarantine,Climate Change,0.75
+Poland,2017,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+Romania,2017,Science issues,Educational issues,0.3846153846153846
+Russian Federation,2017,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Russian Federation,2017,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+SCAR,2017,Nonnative Species and Quarantine,Area Protection and Management Plans General,0.4666666666666667
+SCAR,2017,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+Spain,2017,Fauna and Flora_General,Climate Change,0.5625
+Sweden,2017,Biological Prospecting,Climate Change,0.625
+Türkiye,2017,Science issues,Educational issues,0.3846153846153846
+Türkiye,2017,Science issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Türkiye,2017,Science issues,Operation of the Antarctic Treaty system The Secretariat,0.7083333333333333
+United Kingdom,2017,Area Protection and Management Plans General,Human Footprint and wilderness values,0.46153846153846156
+United Kingdom,2017,Management Plans,Repair and remediation of environmental damage,0.375
+United States,2017,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+United States,2017,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+WMO,2017,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+ASOC,2018,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+ASOC,2018,Marine Protected Areas,Site Guidelines for Visitors,0.6363636363636364
+Argentina,2018,Safety and Operations in Antarctica,Institutional and legal matters,0.47058823529411764
+Argentina,2018,Repair and remediation of environmental damage,Management Plans,0.375
+Argentina,2018,Exchange of Information,Operational issues,0.4545454545454546
+Australia,2018,Exchange of Information,Inspections,0.5
+Australia,2018,Repair and remediation of environmental damage,Multiyear strategic workplan,0.5833333333333333
+Belarus,2018,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Belarus,2018,Environmental Impact Assessment EIA Other EIA Matters,Operational issues,0.5909090909090908
+Belgium,2018,Educational issues,Science issues,0.3846153846153846
+Brazil,2018,Exchange of Information,Biological Prospecting,0.5909090909090908
+Brazil,2018,Exchange of Information,Environmental Protection General,0.48
+Chile,2018,Environmental Protection General,Biological Prospecting,0.64
+China,2018,Environmental Protection General,Operational issues,0.56
+Ecuador,2018,Science issues,Educational issues,0.3846153846153846
+France,2018,Exchange of Information,Biological Prospecting,0.5909090909090908
+France,2018,Historic Sites and Monuments,Management Plans,0.4375
+France,2018,Tourism and NG_Activities,Marine Protected Areas,0.5454545454545454
+France,2018,Inspections,Nonnative Species and Quarantine,0.5789473684210527
+Italy,2018,Educational issues,Climate Change,0.6923076923076923
+Japan,2018,Environmental Protection General,Tourism and NG_Activities,0.72
+Korea (ROK),2018,Inspections,Multiyear strategic workplan,0.6842105263157895
+Korea (ROK),2018,Nonnative Species and Quarantine,Sub glacial Lakes,0.8666666666666667
+Netherlands,2018,Biological Prospecting,Climate Change,0.625
+Netherlands,2018,Inspections,Management Plans,0.5789473684210527
+New Zealand,2018,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+New Zealand,2018,Human Footprint and wilderness values,Marine Protected Areas,0.4545454545454546
+New Zealand,2018,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Norway,2018,CEP Strategy Discussions,Biological Prospecting,0.5714285714285714
+Norway,2018,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Poland,2018,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Romania,2018,Educational issues,Biological Prospecting,0.6923076923076923
+Romania,2018,Educational issues,Operational issues,0.6153846153846154
+Russian Federation,2018,Area Protection and Management Plans General,Management Plans,0.4375
+Russian Federation,2018,Exchange of Information,Operational issues,0.4545454545454546
+Russian Federation,2018,Marine Protected Areas,Tourism and NG_Activities,0.5454545454545454
+South Africa,2018,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Sweden,2018,Inspections,Site Guidelines for Visitors,0.6842105263157895
+Türkiye,2018,Science issues,Institutional and legal matters,0.7083333333333333
+Ukraine,2018,Science issues,Institutional and legal matters,0.7083333333333333
+Ukraine,2018,Site Guidelines for Visitors,Multiyear strategic workplan,0.7777777777777778
+United States,2018,Management Plans,Comprehensive Environmental Evaluations,0.5625
+United States,2018,Environmental Impact Assessment EIA Other EIA Matters,Exchange of Information,0.5454545454545454
+United States,2018,Environmental Impact Assessment EIA Other EIA Matters,Operation of the Antarctic Treaty system General,0.5769230769230769
+Uruguay,2018,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+ASOC,2019,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+Argentina,2019,Inspections,Operation of the Antarctic Treaty system General,0.5
+Australia,2019,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Australia,2019,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+Belarus,2019,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Belgium,2019,Marine Protected Areas,Area Protection and Management Plans General,0.6153846153846154
+Belgium,2019,Comprehensive Environmental Evaluations,Historic Sites and Monuments,0.6
+Bulgaria,2019,Educational issues,Science issues,0.3846153846153846
+CCAMLR,2019,Operation of the Antarctic Treaty system Reports,Marine living resources,0.8
+COMNAP,2019,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+China,2019,Area Protection and Management Plans General,Nonnative Species and Quarantine,0.4666666666666667
+Colombia,2019,Safety and Operations in Antarctica,Operation of the Antarctic Treaty system The Secretariat,0.7058823529411764
+Czechia,2019,Inspections,Area Protection and Management Plans General,0.5789473684210527
+Ecuador,2019,Repair and remediation of environmental damage,Management Plans,0.375
+Finland,2019,Tourism and NG_Activities,Specially Protected Species,0.6
+France,2019,Tourism and NG_Activities,Specially Protected Species,0.6
+Germany,2019,Environmental Impact Assessment EIA Other EIA Matters,Educational issues,0.5769230769230769
+Germany,2019,Tourism and NG_Activities,Specially Protected Species,0.6
+IAATO,2019,Tourism and NG_Activities,CEP Strategy Discussions,0.6666666666666667
+IAATO,2019,Environmental Impact Assessment EIA Other EIA Matters,Environmental Monitoring and Reporting,0.5909090909090908
+India,2019,Science issues,Educational issues,0.3846153846153846
+Italy,2019,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Italy,2019,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+Japan,2019,Operation of the CEP,Management Plans,0.6875
+Korea (ROK),2019,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+Korea (ROK),2019,Historic Sites and Monuments,Management Plans,0.4375
+Monaco,2019,Fauna and Flora_General,Specially Protected Species,0.625
+Netherlands,2019,Climate Change,CEP Strategy Discussions,0.5625
+Netherlands,2019,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+New Zealand,2019,Management Plans,Comprehensive Environmental Evaluations,0.5625
+New Zealand,2019,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Norway,2019,Institutional and legal matters,Safety and Operations in Antarctica,0.47058823529411764
+Norway,2019,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+Peru,2019,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Peru,2019,Safety and Operations in Antarctica,Management Plans,0.5882352941176471
+Poland,2019,Environmental Impact Assessment EIA Other EIA Matters,Management Plans,0.5454545454545454
+Poland,2019,Environmental Impact Assessment EIA Other EIA Matters,Repair and remediation of environmental damage,0.5909090909090908
+Portugal,2019,Educational issues,Climate Change,0.6923076923076923
+Portugal,2019,Science issues,Environmental Protection General,0.6
+Portugal,2019,Educational issues,Fauna and Flora_General,0.6923076923076923
+Portugal,2019,Educational issues,Site Guidelines for Visitors,0.8846153846153846
+Russian Federation,2019,Inspections,Operation of the Antarctic Treaty system General,0.5
+SCAR,2019,CEP Strategy Discussions,Biological Prospecting,0.5714285714285714
+SCAR,2019,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+SCAR,2019,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+South Africa,2019,Educational issues,Climate Change,0.6923076923076923
+Spain,2019,Operation of the Antarctic Treaty system General,Educational issues,0.5769230769230769
+Spain,2019,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Spain,2019,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+Sweden,2019,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Türkiye,2019,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Ukraine,2019,Operation of the Antarctic Treaty system The Secretariat,Inspections,0.631578947368421
+Ukraine,2019,Science issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+United Kingdom,2019,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+Uruguay,2019,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+WMO,2019,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Argentina,2020,Biological Prospecting,CEP Strategy Discussions,0.5714285714285714
+Belgium,2020,Educational issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Brazil,2020,Operational issues,Nonnative Species and Quarantine,0.5789473684210527
+Brazil,2020,Educational issues,Science issues,0.3846153846153846
+COMNAP,2020,Fauna and Flora_General,Climate Change,0.5625
+Ecuador,2020,Science issues,Educational issues,0.3846153846153846
+Germany,2020,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+Netherlands,2020,Inspections,Management Plans,0.5789473684210527
+Norway,2020,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Norway,2020,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Norway,2020,Operation of the Antarctic Treaty system General,Inspections,0.5
+Russian Federation,2020,Science issues,Educational issues,0.3846153846153846
+Russian Federation,2020,Historic Sites and Monuments,Management Plans,0.4375
+Spain,2020,Area Protection and Management Plans General,Management Plans,0.4375
+United Kingdom,2020,Climate Change,CEP Strategy Discussions,0.5625
+United States,2020,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+ASOC,2021,Operation of the Antarctic Treaty system Reports,Educational issues,0.6153846153846154
+ASOC,2021,Comprehensive Environmental Evaluations,Environmental Protection General,0.64
+ASOC,2021,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Australia,2021,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+Australia,2021,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Australia,2021,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+Australia,2021,Exchange of Information,Inspections,0.5
+Australia,2021,Repair and remediation of environmental damage,Management Plans,0.375
+Belarus,2021,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Belarus,2021,Safety and Operations in Antarctica,Institutional and legal matters,0.47058823529411764
+Belgium,2021,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Belgium,2021,Marine Protected Areas,Tourism and NG_Activities,0.5454545454545454
+Brazil,2021,Repair and remediation of environmental damage,Management Plans,0.375
+Bulgaria,2021,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+COMNAP,2021,Exchange of Information,Operation of the Antarctic Treaty system General,0.5384615384615384
+Canada,2021,Science issues,Area Protection and Management Plans General,0.9583333333333334
+Canada,2021,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Canada,2021,Science issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Chile,2021,Inspections,Nonnative Species and Quarantine,0.5789473684210527
+Chile,2021,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+China,2021,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Colombia,2021,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+Colombia,2021,Educational issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Finland,2021,Safety and Operations in Antarctica,Institutional and legal matters,0.47058823529411764
+France,2021,Biological Prospecting,Climate Change,0.625
+France,2021,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+Germany,2021,Fauna and Flora_General,Climate Change,0.5625
+Germany,2021,Safety and Operations in Antarctica,Institutional and legal matters,0.47058823529411764
+Germany,2021,Specially Protected Species,Marine Acoustics,0.7
+IAATO,2021,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+India,2021,Area Protection and Management Plans General,Management Plans,0.4375
+Italy,2021,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Italy,2021,Environmental Protection General,Exchange of Information,0.48
+Italy,2021,Climate Change,Fauna and Flora_General,0.5625
+Italy,2021,Comprehensive Environmental Evaluations,Marine Protected Areas,0.6666666666666667
+Japan,2021,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+Korea (ROK),2021,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Netherlands,2021,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+New Zealand,2021,CEP Strategy Discussions,Climate Change,0.5625
+Norway,2021,Biological Prospecting,Climate Change,0.625
+Poland,2021,Nonnative Species and Quarantine,Tourism and NG_Activities,0.6666666666666667
+Russian Federation,2021,Operation of the Antarctic Treaty system General,Inspections,0.5
+Russian Federation,2021,Management Plans,Nonnative Species and Quarantine,0.5625
+SCAR,2021,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+South Africa,2021,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+South Africa,2021,Climate Change,Fauna and Flora_General,0.5625
+Spain,2021,Management Plans,Comprehensive Environmental Evaluations,0.5625
+Spain,2021,Operation of the Antarctic Treaty system General,Inspections,0.5
+Türkiye,2021,Institutional and legal matters,Comprehensive Environmental Evaluations,0.6
+Türkiye,2021,Science issues,Educational issues,0.3846153846153846
+Türkiye,2021,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Ukraine,2021,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+United Kingdom,2021,Environmental Monitoring and Reporting,Educational issues,0.6153846153846154
+United Kingdom,2021,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+United Kingdom,2021,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+United States,2021,Operation of the Antarctic Treaty system General,Exchange of Information,0.5384615384615384
+United States,2021,Operation of the Antarctic Treaty system General,Inspections,0.5
+United States,2021,Area Protection and Management Plans General,Marine Protected Areas,0.6153846153846154
+Uruguay,2021,Science issues,Safety and Operations in Antarctica,0.6666666666666667
+Argentina,2022,Inspections,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Australia,2022,CEP Strategy Discussions,Climate Change,0.5625
+Belarus,2022,Environmental Protection General,CEP Strategy Discussions,0.64
+Belgium,2022,Climate Change,CEP Strategy Discussions,0.5625
+Belgium,2022,Area Protection and Management Plans General,Management Plans,0.4375
+Brazil,2022,Nonnative Species and Quarantine,Cooperation with Other Organisations,0.6666666666666667
+CCAMLR,2022,Operation of the Antarctic Treaty system Reports,Science issues,0.6666666666666667
+COMNAP,2022,Exchange of Information,Environmental Protection General,0.48
+Chile,2022,Nonnative Species and Quarantine,Area Protection and Management Plans General,0.4666666666666667
+Chile,2022,Nonnative Species and Quarantine,Management Plans,0.5625
+China,2022,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+China,2022,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+Colombia,2022,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+Ecuador,2022,Management Plans,Area Protection and Management Plans General,0.4375
+Ecuador,2022,Educational issues,Cooperation with Other Organisations,0.7692307692307692
+Ecuador,2022,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Ecuador,2022,Educational issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Germany,2022,Nonnative Species and Quarantine,Area Protection and Management Plans General,0.4666666666666667
+India,2022,Management Plans,Operation of the CEP,0.6875
+India,2022,Environmental Protection General,Tourism and NG_Activities,0.72
+Italy,2022,Exchange of Information,Educational issues,0.5
+Italy,2022,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Japan,2022,Management Plans,Area Protection and Management Plans General,0.4375
+Korea (ROK),2022,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+Korea (ROK),2022,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+Monaco,2022,Specially Protected Species,Area Protection and Management Plans General,0.5384615384615384
+Netherlands,2022,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Norway,2022,Climate Change,CEP Strategy Discussions,0.5625
+Norway,2022,Tourism and NG_Activities,Site Guidelines for Visitors,0.5
+Peru,2022,Educational issues,Cooperation with Other Organisations,0.7692307692307692
+Peru,2022,Educational issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Poland,2022,Management Plans,Safety and Operations in Antarctica,0.5882352941176471
+Portugal,2022,Climate Change,CEP Strategy Discussions,0.5625
+South Africa,2022,Fauna and Flora_General,Area Protection and Management Plans General,0.5625
+South Africa,2022,Tourism and NG_Activities,Historic Sites and Monuments,0.6923076923076923
+Spain,2022,Comprehensive Environmental Evaluations,Environmental Monitoring and Reporting,0.6
+Spain,2022,Educational issues,Exchange of Information,0.5
+Spain,2022,Management Plans,Safety and Operations in Antarctica,0.5882352941176471
+Sweden,2022,Climate Change,CEP Strategy Discussions,0.5625
+Sweden,2022,Environmental Protection General,Environmental Monitoring and Reporting,0.64
+Türkiye,2022,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+Ukraine,2022,Science issues,Operation of the Antarctic Treaty system Reports,0.6666666666666667
+United Kingdom,2022,CEP Strategy Discussions,Operation of the CEP,0.5833333333333333
+United States,2022,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Uruguay,2022,Environmental Protection General,Climate Change,0.72
+Uruguay,2022,Nonnative Species and Quarantine,Cooperation with Other Organisations,0.6666666666666667
+Venezuela,2022,Educational issues,Cooperation with Other Organisations,0.7692307692307692
+Venezuela,2022,Educational issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+WMO,2022,Climate Change,CEP Strategy Discussions,0.5625
+ASOC,2023,Operation of the Antarctic Treaty system Reports,Cooperation with Other Organisations,0.44999999999999996
+Argentina,2023,Nonnative Species and Quarantine,Area Protection and Management Plans General,0.4666666666666667
+Argentina,2023,Environmental Impact Assessment EIA Other EIA Matters,Comprehensive Environmental Evaluations,0.5909090909090908
+Australia,2023,Environmental Protection General,Liability,0.52
+Australia,2023,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+Brazil,2023,Management Plans,Nonnative Species and Quarantine,0.5625
+Brazil,2023,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+COMNAP,2023,Environmental Protection General,Climate Change,0.72
+COMNAP,2023,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+Canada,2023,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+China,2023,Fauna and Flora_General,Climate Change,0.5625
+Czechia,2023,Area Protection and Management Plans General,Climate Change,0.6875
+Czechia,2023,Science issues,Educational issues,0.3846153846153846
+Ecuador,2023,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Finland,2023,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+France,2023,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+France,2023,Environmental Protection General,Liability,0.52
+Germany,2023,Marine Protected Areas,Liability,0.6470588235294117
+IHO,2023,Operation of the Antarctic Treaty system Reports,Climate Change,0.7
+India,2023,Educational issues,Climate Change,0.6923076923076923
+India,2023,Safety and Operations in Antarctica,Institutional and legal matters,0.47058823529411764
+India,2023,Educational issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Italy,2023,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Japan,2023,Area Protection and Management Plans General,Climate Change,0.6875
+Japan,2023,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Korea (ROK),2023,Management Plans,Repair and remediation of environmental damage,0.375
+Malaysia,2023,Science issues,Educational issues,0.3846153846153846
+Netherlands,2023,Environmental Protection General,Liability,0.52
+Netherlands,2023,Environmental Impact Assessment EIA Other EIA Matters,Safety and Operations in Antarctica,0.5454545454545454
+New Zealand,2023,Management Plans,Historic Sites and Monuments,0.4375
+New Zealand,2023,Environmental Protection General,Liability,0.52
+New Zealand,2023,Area Protection and Management Plans General,Nonnative Species and Quarantine,0.4666666666666667
+New Zealand,2023,Management Plans,Repair and remediation of environmental damage,0.375
+New Zealand,2023,Marine Protected Areas,Site Guidelines for Visitors,0.6363636363636364
+Norway,2023,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Norway,2023,Operation of the Antarctic Treaty system General,Liability,0.5769230769230769
+Norway,2023,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Peru,2023,Management Plans,Area Protection and Management Plans General,0.4375
+Poland,2023,Management Plans,Area Protection and Management Plans General,0.4375
+Poland,2023,Operation of the Antarctic Treaty system General,Educational issues,0.5769230769230769
+Russian Federation,2023,Nonnative Species and Quarantine,Management Plans,0.5625
+SCAR,2023,Environmental Impact Assessment EIA Other EIA Matters,Environmental Monitoring and Reporting,0.5909090909090908
+South Africa,2023,Environmental Monitoring and Reporting,Educational issues,0.6153846153846154
+Spain,2023,Inspections,Liability,0.5789473684210527
+Spain,2023,Inspections,Operation of the Antarctic Treaty system General,0.5
+Sweden,2023,Environmental Protection General,Liability,0.52
+Türkiye,2023,Environmental Impact Assessment EIA Other EIA Matters,Environmental Protection General,0.48
+Ukraine,2023,Inspections,Area Protection and Management Plans General,0.5789473684210527
+United States,2023,Management Plans,Repair and remediation of environmental damage,0.375
+United States,2023,Area Protection and Management Plans General,Specially Protected Species,0.5384615384615384
+Uruguay,2023,Environmental Protection General,Liability,0.52
+WMO,2023,Environmental Protection General,Educational issues,0.6153846153846154
+WMO,2023,Environmental Protection General,Science issues,0.6
+ASOC,2024,Specially Protected Species,Area Protection and Management Plans General,0.5384615384615384
+Argentina,2024,Inspections,Exchange of Information,0.5
+Argentina,2024,Area Protection and Management Plans General,Repair and remediation of environmental damage,0.5384615384615384
+Australia,2024,Area Protection and Management Plans General,Fauna and Flora_General,0.5625
+Australia,2024,Repair and remediation of environmental damage,Multiyear strategic workplan,0.5833333333333333
+Belgium,2024,Management Plans,Safety and Operations in Antarctica,0.5882352941176471
+Brazil,2024,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Bulgaria,2024,Science issues,Environmental Protection General,0.6
+Bulgaria,2024,Environmental Monitoring and Reporting,Historic Sites and Monuments,0.7
+CCAMLR,2024,Operation of the Antarctic Treaty system Reports,Safety and Operations in Antarctica,0.8
+Canada,2024,Science issues,Operation of the Antarctic Treaty system Reports,0.6666666666666667
+Chile,2024,Management Plans,Historic Sites and Monuments,0.4375
+China,2024,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Finland,2024,Operation of the Antarctic Treaty system General,Educational issues,0.5769230769230769
+Finland,2024,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+Finland,2024,Specially Protected Species,Tourism and NG_Activities,0.6
+France,2024,Operation of the Antarctic Treaty system General,Inspections,0.5
+Germany,2024,Nonnative Species and Quarantine,Site Guidelines for Visitors,0.7333333333333334
+IAATO,2024,Operation of the Antarctic Treaty system Reports,Educational issues,0.6153846153846154
+IAATO,2024,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+IUCN,2024,Area Protection and Management Plans General,Environmental Monitoring and Reporting,0.75
+IUCN,2024,Area Protection and Management Plans General,Tourism and NG_Activities,0.7692307692307692
+India,2024,Climate Change,Biological Prospecting,0.625
+India,2024,Climate Change,Cooperation with Other Organisations,0.75
+India,2024,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+India,2024,Educational issues,Science issues,0.3846153846153846
+Italy,2024,Management Plans,Area Protection and Management Plans General,0.4375
+Korea (ROK),2024,Science issues,Environmental Monitoring and Reporting,0.5416666666666667
+Netherlands,2024,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+New Zealand,2024,Repair and remediation of environmental damage,Multiyear strategic workplan,0.5833333333333333
+Norway,2024,Environmental Protection General,Exchange of Information,0.48
+Norway,2024,Operation of the CEP,Multiyear strategic workplan,0.625
+Peru,2024,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+Peru,2024,Area Protection and Management Plans General,Nonnative Species and Quarantine,0.4666666666666667
+Poland,2024,Educational issues,Environmental Protection General,0.6153846153846154
+Russian Federation,2024,Management Plans,Historic Sites and Monuments,0.4375
+Russian Federation,2024,Nonnative Species and Quarantine,Tourism and NG_Activities,0.6666666666666667
+SCAR,2024,Climate Change,CEP Strategy Discussions,0.5625
+SCAR,2024,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+Spain,2024,Exchange of Information,Environmental Protection General,0.48
+Spain,2024,Management Plans,Safety and Operations in Antarctica,0.5882352941176471
+Türkiye,2024,Environmental Protection General,Operation of the Antarctic Treaty system General,0.5
+United Kingdom,2024,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+United Kingdom,2024,Environmental Impact Assessment EIA Other EIA Matters,Inspections,0.5454545454545454
+United Kingdom,2024,Repair and remediation of environmental damage,Multiyear strategic workplan,0.5833333333333333
+United States,2024,Exchange of Information,Operation of the Antarctic Treaty system The Secretariat,0.5454545454545454
+Uruguay,2024,Operation of the Antarctic Treaty system General,Environmental Monitoring and Reporting,0.5769230769230769
+Uruguay,2024,Operation of the Antarctic Treaty system General,Science issues,0.5769230769230769
+Venezuela,2024,Operation of the Antarctic Treaty system General,Educational issues,0.5769230769230769
+ASOC,2025,Environmental Protection General,Safety and Operations in Antarctica,0.6799999999999999
+Australia,2025,Science issues,Environmental Impact Assessment EIA Other EIA Matters,0.5
+Australia,2025,Inspections,Operation of the Antarctic Treaty system General,0.5
+Australia,2025,Inspections,Operation of the Antarctic Treaty system The Secretariat,0.631578947368421
+Australia,2025,Multiyear strategic workplan,Operation of the CEP,0.625
+Australia,2025,Management Plans,Repair and remediation of environmental damage,0.375
+Belgium,2025,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Belgium,2025,Management Plans,Operation of the Antarctic Treaty system The Secretariat,0.6470588235294117
+Brazil,2025,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+Brazil,2025,Management Plans,Nonnative Species and Quarantine,0.5625
+Brazil,2025,Educational issues,Science issues,0.3846153846153846
+CCAMLR,2025,Operation of the Antarctic Treaty system Reports,Fauna and Flora_General,0.6
+COMNAP,2025,Environmental Protection General,Educational issues,0.6153846153846154
+COMNAP,2025,Environmental Protection General,Exchange of Information,0.48
+COMNAP,2025,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+COMNAP,2025,Environmental Protection General,Operational issues,0.56
+Chile,2025,Educational issues,Science issues,0.3846153846153846
+Chile,2025,Nonnative Species and Quarantine,Tourism and NG_Activities,0.6666666666666667
+China,2025,Management Plans,Comprehensive Environmental Evaluations,0.5625
+China,2025,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+China,2025,Environmental Impact Assessment EIA Other EIA Matters,Science issues,0.5
+Ecuador,2025,Fauna and Flora_General,Biological Prospecting,0.6875
+Ecuador,2025,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+France,2025,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+Germany,2025,Fauna and Flora_General,Climate Change,0.5625
+Germany,2025,Fauna and Flora_General,Operation of the Antarctic Treaty system The Secretariat,0.7058823529411764
+Germany,2025,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+India,2025,Biological Prospecting,Climate Change,0.625
+Korea (ROK),2025,Science issues,Educational issues,0.3846153846153846
+Korea (ROK),2025,Nonnative Species and Quarantine,Fauna and Flora_General,0.4375
+Korea (ROK),2025,Environmental Monitoring and Reporting,Operation of the Antarctic Treaty system General,0.5769230769230769
+Monaco,2025,Area Protection and Management Plans General,Environmental Monitoring and Reporting,0.75
+Netherlands,2025,Tourism and NG_Activities,Site Guidelines for Visitors,0.5
+New Zealand,2025,Climate Change,CEP Strategy Discussions,0.5625
+New Zealand,2025,Management Plans,Environmental Impact Assessment EIA Other EIA Matters,0.5454545454545454
+New Zealand,2025,Operation of the Antarctic Treaty system General,Environmental Protection General,0.5
+New Zealand,2025,Multiyear strategic workplan,Operation of the CEP,0.625
+New Zealand,2025,Site Guidelines for Visitors,Tourism and NG_Activities,0.5
+Norway,2025,Environmental Protection General,Environmental Impact Assessment EIA Other EIA Matters,0.48
+Norway,2025,Area Protection and Management Plans General,Repair and remediation of environmental damage,0.5384615384615384
+Peru,2025,Management Plans,Biological Prospecting,0.6875
+Peru,2025,Operation of the Antarctic Treaty system General,Exchange of Information,0.5384615384615384
+Portugal,2025,CEP Strategy Discussions,Specially Protected Species,0.6666666666666667
+Russian Federation,2025,Inspections,Multiyear strategic workplan,0.6842105263157895
+SCAR,2025,Fauna and Flora_General,Nonnative Species and Quarantine,0.4375
+SCAR,2025,Cooperation with Other Organisations,Operation of the Antarctic Treaty system Reports,0.44999999999999996
+South Africa,2025,Fauna and Flora_General,Cooperation with Other Organisations,0.625
+South Africa,2025,Environmental Monitoring and Reporting,Liability,0.65
+South Africa,2025,Educational issues,Operation of the Antarctic Treaty system General,0.5769230769230769
+Sweden,2025,Environmental Monitoring and Reporting,Science issues,0.5416666666666667
+Ukraine,2025,Area Protection and Management Plans General,Historic Sites and Monuments,0.5384615384615384
+United Kingdom,2025,Repair and remediation of environmental damage,Site Guidelines for Visitors,0.6666666666666667
+United States,2025,Management Plans,Safety and Operations in Antarctica,0.5882352941176471
+Uruguay,2025,Nonnative Species and Quarantine,Area Protection and Management Plans General,0.4666666666666667

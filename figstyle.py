@@ -88,7 +88,9 @@ ACCENT_MUTED = "#C3C7CE"
 FS_LABEL = 11.0
 FS_TICK = 10.0
 FS_LEGEND = 9.5
-FS_ANNOT = 8.5
+# Annotations print at ~0.78x on a three-panel row; 8.5 used to land near
+# 6.6pt, below the ~7pt floor, so the floor moves with the measurement.
+FS_ANNOT = 9.5
 FS_PANEL = 12.0
 # Panel titles are short claims ("Movement is local"), not object
 # descriptions, so they sit above the axis label in the hierarchy.

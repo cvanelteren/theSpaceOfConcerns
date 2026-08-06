@@ -1,0 +1,259 @@
+topic,topic_total_volume,emergence_year,emergence_percentile,threshold_pct
+Area Protection and Management Plans General,377,1972,0.05,5.0
+Area Protection and Management Plans General,377,1975,0.1,10.0
+Area Protection and Management Plans General,377,1985,0.15,15.0
+Area Protection and Management Plans General,377,1991,0.2,20.0
+Area Protection and Management Plans General,377,1991,0.25,25.0
+Area Protection and Management Plans General,377,1997,0.3,30.0
+Biological Prospecting,55,2003,0.05,5.0
+Biological Prospecting,55,2005,0.1,10.0
+Biological Prospecting,55,2006,0.15,15.0
+Biological Prospecting,55,2006,0.2,20.0
+Biological Prospecting,55,2008,0.25,25.0
+Biological Prospecting,55,2009,0.3,30.0
+CEP Strategy Discussions,43,1994,0.05,5.0
+CEP Strategy Discussions,43,2005,0.1,10.0
+CEP Strategy Discussions,43,2006,0.15,15.0
+CEP Strategy Discussions,43,2006,0.2,20.0
+CEP Strategy Discussions,43,2008,0.25,25.0
+CEP Strategy Discussions,43,2008,0.3,30.0
+Climate Change,200,2006,0.05,5.0
+Climate Change,200,2008,0.1,10.0
+Climate Change,200,2010,0.15,15.0
+Climate Change,200,2011,0.2,20.0
+Climate Change,200,2011,0.25,25.0
+Climate Change,200,2013,0.3,30.0
+Comprehensive Environmental Evaluations,145,1987,0.05,5.0
+Comprehensive Environmental Evaluations,145,1994,0.1,10.0
+Comprehensive Environmental Evaluations,145,1995,0.15,15.0
+Comprehensive Environmental Evaluations,145,1995,0.2,20.0
+Comprehensive Environmental Evaluations,145,1996,0.25,25.0
+Comprehensive Environmental Evaluations,145,1997,0.3,30.0
+Cooperation with Other Organisations,200,1983,0.05,5.0
+Cooperation with Other Organisations,200,1991,0.1,10.0
+Cooperation with Other Organisations,200,1992,0.15,15.0
+Cooperation with Other Organisations,200,1995,0.2,20.0
+Cooperation with Other Organisations,200,1996,0.25,25.0
+Cooperation with Other Organisations,200,1999,0.3,30.0
+Drilling,24,1979,0.05,5.0
+Drilling,24,1987,0.1,10.0
+Drilling,24,1994,0.15,15.0
+Drilling,24,1996,0.2,20.0
+Drilling,24,1996,0.25,25.0
+Drilling,24,1998,0.3,30.0
+Educational issues,184,1996,0.05,5.0
+Educational issues,184,1997,0.1,10.0
+Educational issues,184,1999,0.15,15.0
+Educational issues,184,2006,0.2,20.0
+Educational issues,184,2007,0.25,25.0
+Educational issues,184,2008,0.3,30.0
+Emergency report and contingency planning,49,1996,0.05,5.0
+Emergency report and contingency planning,49,1997,0.1,10.0
+Emergency report and contingency planning,49,1998,0.15,15.0
+Emergency report and contingency planning,49,1998,0.2,20.0
+Emergency report and contingency planning,49,1998,0.25,25.0
+Emergency report and contingency planning,49,1999,0.3,30.0
+Environmental Domains Analysis,17,1991,0.05,5.0
+Environmental Domains Analysis,17,2001,0.1,10.0
+Environmental Domains Analysis,17,2002,0.15,15.0
+Environmental Domains Analysis,17,2003,0.2,20.0
+Environmental Domains Analysis,17,2003,0.25,25.0
+Environmental Domains Analysis,17,2004,0.3,30.0
+Environmental Impact Assessment EIA Other EIA Matters,203,1999,0.05,5.0
+Environmental Impact Assessment EIA Other EIA Matters,203,2001,0.1,10.0
+Environmental Impact Assessment EIA Other EIA Matters,203,2002,0.15,15.0
+Environmental Impact Assessment EIA Other EIA Matters,203,2004,0.2,20.0
+Environmental Impact Assessment EIA Other EIA Matters,203,2005,0.25,25.0
+Environmental Impact Assessment EIA Other EIA Matters,203,2005,0.3,30.0
+Environmental Monitoring and Reporting,233,1991,0.05,5.0
+Environmental Monitoring and Reporting,233,1994,0.1,10.0
+Environmental Monitoring and Reporting,233,1996,0.15,15.0
+Environmental Monitoring and Reporting,233,1997,0.2,20.0
+Environmental Monitoring and Reporting,233,2002,0.25,25.0
+Environmental Monitoring and Reporting,233,2005,0.3,30.0
+Environmental Protection General,351,1964,0.05,5.0
+Environmental Protection General,351,1966,0.1,10.0
+Environmental Protection General,351,1968,0.15,15.0
+Environmental Protection General,351,1975,0.2,20.0
+Environmental Protection General,351,1989,0.25,25.0
+Environmental Protection General,351,1992,0.3,30.0
+Exchange of Information,310,1962,0.05,5.0
+Exchange of Information,310,1970,0.1,10.0
+Exchange of Information,310,1983,0.15,15.0
+Exchange of Information,310,1989,0.2,20.0
+Exchange of Information,310,1992,0.25,25.0
+Exchange of Information,310,1995,0.3,30.0
+Fauna and Flora General,148,1970,0.05,5.0
+Fauna and Flora General,148,1972,0.1,10.0
+Fauna and Flora General,148,1998,0.15,15.0
+Fauna and Flora General,148,2003,0.2,20.0
+Fauna and Flora General,148,2005,0.25,25.0
+Fauna and Flora General,148,2007,0.3,30.0
+Historic Sites and Monuments,152,1970,0.05,5.0
+Historic Sites and Monuments,152,1972,0.1,10.0
+Historic Sites and Monuments,152,1985,0.15,15.0
+Historic Sites and Monuments,152,1989,0.2,20.0
+Historic Sites and Monuments,152,1994,0.25,25.0
+Historic Sites and Monuments,152,1998,0.3,30.0
+Human Footprint and wilderness values,49,1970,0.05,5.0
+Human Footprint and wilderness values,49,1972,0.1,10.0
+Human Footprint and wilderness values,49,1972,0.15,15.0
+Human Footprint and wilderness values,49,1975,0.2,20.0
+Human Footprint and wilderness values,49,1979,0.25,25.0
+Human Footprint and wilderness values,49,1983,0.3,30.0
+Inspections,92,1987,0.05,5.0
+Inspections,92,1994,0.1,10.0
+Inspections,92,1994,0.15,15.0
+Inspections,92,1995,0.2,20.0
+Inspections,92,1996,0.25,25.0
+Inspections,92,1997,0.3,30.0
+Institutional and legal matters,38,1966,0.05,5.0
+Institutional and legal matters,38,1970,0.1,10.0
+Institutional and legal matters,38,1972,0.15,15.0
+Institutional and legal matters,38,1987,0.2,20.0
+Institutional and legal matters,38,1991,0.25,25.0
+Institutional and legal matters,38,1991,0.3,30.0
+International Polar Year,62,2003,0.05,5.0
+International Polar Year,62,2003,0.1,10.0
+International Polar Year,62,2004,0.15,15.0
+International Polar Year,62,2004,0.2,20.0
+International Polar Year,62,2005,0.25,25.0
+International Polar Year,62,2005,0.3,30.0
+Liability,76,1992,0.05,5.0
+Liability,76,1996,0.1,10.0
+Liability,76,1996,0.15,15.0
+Liability,76,1997,0.2,20.0
+Liability,76,1997,0.25,25.0
+Liability,76,1997,0.3,30.0
+Management Plans,377,1996,0.05,5.0
+Management Plans,377,2001,0.1,10.0
+Management Plans,377,2002,0.15,15.0
+Management Plans,377,2004,0.2,20.0
+Management Plans,377,2005,0.25,25.0
+Management Plans,377,2006,0.3,30.0
+Marine Acoustics,16,2002,0.05,5.0
+Marine Acoustics,16,2002,0.1,10.0
+Marine Acoustics,16,2003,0.15,15.0
+Marine Acoustics,16,2003,0.2,20.0
+Marine Acoustics,16,2003,0.25,25.0
+Marine Acoustics,16,2003,0.3,30.0
+Marine Protected Areas,48,1975,0.05,5.0
+Marine Protected Areas,48,1981,0.1,10.0
+Marine Protected Areas,48,2003,0.15,15.0
+Marine Protected Areas,48,2006,0.2,20.0
+Marine Protected Areas,48,2006,0.25,25.0
+Marine Protected Areas,48,2007,0.3,30.0
+Marine living resources,41,1975,0.05,5.0
+Marine living resources,41,1975,0.1,10.0
+Marine living resources,41,1977,0.15,15.0
+Marine living resources,41,1977,0.2,20.0
+Marine living resources,41,1977,0.25,25.0
+Marine living resources,41,1977,0.3,30.0
+Mineral resources,54,1972,0.05,5.0
+Mineral resources,54,1975,0.1,10.0
+Mineral resources,54,1975,0.15,15.0
+Mineral resources,54,1975,0.2,20.0
+Mineral resources,54,1977,0.25,25.0
+Mineral resources,54,1977,0.3,30.0
+Nonnative Species and Quarantine,125,2004,0.05,5.0
+Nonnative Species and Quarantine,125,2006,0.1,10.0
+Nonnative Species and Quarantine,125,2006,0.15,15.0
+Nonnative Species and Quarantine,125,2008,0.2,20.0
+Nonnative Species and Quarantine,125,2009,0.25,25.0
+Nonnative Species and Quarantine,125,2010,0.3,30.0
+Opening statements,297,1964,0.05,5.0
+Opening statements,297,1966,0.1,10.0
+Opening statements,297,1970,0.15,15.0
+Opening statements,297,1975,0.2,20.0
+Opening statements,297,1977,0.25,25.0
+Opening statements,297,1981,0.3,30.0
+Operation of the Antarctic Treaty system General,404,1964,0.05,5.0
+Operation of the Antarctic Treaty system General,404,1964,0.1,10.0
+Operation of the Antarctic Treaty system General,404,1968,0.15,15.0
+Operation of the Antarctic Treaty system General,404,1979,0.2,20.0
+Operation of the Antarctic Treaty system General,404,1983,0.25,25.0
+Operation of the Antarctic Treaty system General,404,1985,0.3,30.0
+Operation of the Antarctic Treaty system Reports,317,1975,0.05,5.0
+Operation of the Antarctic Treaty system Reports,317,1981,0.1,10.0
+Operation of the Antarctic Treaty system Reports,317,1991,0.15,15.0
+Operation of the Antarctic Treaty system Reports,317,1992,0.2,20.0
+Operation of the Antarctic Treaty system Reports,317,1994,0.25,25.0
+Operation of the Antarctic Treaty system Reports,317,1997,0.3,30.0
+Operation of the Antarctic Treaty system The Secretariat,63,1987,0.05,5.0
+Operation of the Antarctic Treaty system The Secretariat,63,1992,0.1,10.0
+Operation of the Antarctic Treaty system The Secretariat,63,1992,0.15,15.0
+Operation of the Antarctic Treaty system The Secretariat,63,1994,0.2,20.0
+Operation of the Antarctic Treaty system The Secretariat,63,1998,0.25,25.0
+Operation of the Antarctic Treaty system The Secretariat,63,2002,0.3,30.0
+Operation of the CEP,26,1998,0.05,5.0
+Operation of the CEP,26,1998,0.1,10.0
+Operation of the CEP,26,2001,0.15,15.0
+Operation of the CEP,26,2009,0.2,20.0
+Operation of the CEP,26,2011,0.25,25.0
+Operation of the CEP,26,2011,0.3,30.0
+Operational issues,281,1964,0.05,5.0
+Operational issues,281,1966,0.1,10.0
+Operational issues,281,1966,0.15,15.0
+Operational issues,281,1968,0.2,20.0
+Operational issues,281,1970,0.25,25.0
+Operational issues,281,1972,0.3,30.0
+Prevention of marine pollution,41,1977,0.05,5.0
+Prevention of marine pollution,41,1979,0.1,10.0
+Prevention of marine pollution,41,1979,0.15,15.0
+Prevention of marine pollution,41,1979,0.2,20.0
+Prevention of marine pollution,41,1979,0.25,25.0
+Prevention of marine pollution,41,1981,0.3,30.0
+Repair and remediation of environmental damage,22,2015,0.05,5.0
+Repair and remediation of environmental damage,22,2015,0.1,10.0
+Repair and remediation of environmental damage,22,2016,0.15,15.0
+Repair and remediation of environmental damage,22,2017,0.2,20.0
+Repair and remediation of environmental damage,22,2017,0.25,25.0
+Repair and remediation of environmental damage,22,2017,0.3,30.0
+Safety and Operations in Antarctica,296,1999,0.05,5.0
+Safety and Operations in Antarctica,296,2006,0.1,10.0
+Safety and Operations in Antarctica,296,2009,0.15,15.0
+Safety and Operations in Antarctica,296,2011,0.2,20.0
+Safety and Operations in Antarctica,296,2012,0.25,25.0
+Safety and Operations in Antarctica,296,2013,0.3,30.0
+Science issues,493,1994,0.05,5.0
+Science issues,493,1997,0.1,10.0
+Science issues,493,1999,0.15,15.0
+Science issues,493,2004,0.2,20.0
+Science issues,493,2006,0.25,25.0
+Science issues,493,2008,0.3,30.0
+Search and Rescue,35,2004,0.05,5.0
+Search and Rescue,35,2007,0.1,10.0
+Search and Rescue,35,2008,0.15,15.0
+Search and Rescue,35,2008,0.2,20.0
+Search and Rescue,35,2008,0.25,25.0
+Search and Rescue,35,2009,0.3,30.0
+Site Guidelines for Visitors,98,2005,0.05,5.0
+Site Guidelines for Visitors,98,2006,0.1,10.0
+Site Guidelines for Visitors,98,2007,0.15,15.0
+Site Guidelines for Visitors,98,2008,0.2,20.0
+Site Guidelines for Visitors,98,2008,0.25,25.0
+Site Guidelines for Visitors,98,2009,0.3,30.0
+Specially Protected Species,27,1966,0.05,5.0
+Specially Protected Species,27,1999,0.1,10.0
+Specially Protected Species,27,2002,0.15,15.0
+Specially Protected Species,27,2002,0.2,20.0
+Specially Protected Species,27,2003,0.25,25.0
+Specially Protected Species,27,2005,0.3,30.0
+State of the Antarctic Environment Report SAER,14,1998,0.05,5.0
+State of the Antarctic Environment Report SAER,14,1998,0.1,10.0
+State of the Antarctic Environment Report SAER,14,1998,0.15,15.0
+State of the Antarctic Environment Report SAER,14,1998,0.2,20.0
+State of the Antarctic Environment Report SAER,14,1999,0.25,25.0
+State of the Antarctic Environment Report SAER,14,1999,0.3,30.0
+Tourism and NG Activities,441,1972,0.05,5.0
+Tourism and NG Activities,441,1985,0.1,10.0
+Tourism and NG Activities,441,1991,0.15,15.0
+Tourism and NG Activities,441,1994,0.2,20.0
+Tourism and NG Activities,441,1996,0.25,25.0
+Tourism and NG Activities,441,2002,0.3,30.0
+Waste management and disposal,37,1989,0.05,5.0
+Waste management and disposal,37,1989,0.1,10.0
+Waste management and disposal,37,1994,0.15,15.0
+Waste management and disposal,37,1996,0.2,20.0
+Waste management and disposal,37,1997,0.25,25.0
+Waste management and disposal,37,1998,0.3,30.0

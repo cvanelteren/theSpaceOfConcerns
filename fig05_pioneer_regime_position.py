@@ -7,6 +7,8 @@ import pandas as pd
 import statsmodels.api as sm
 import ultraplot as uplt
 from matplotlib.lines import Line2D
+
+import figstyle
 from matplotlib.offsetbox import AnnotationBbox, DrawingArea, OffsetImage
 from matplotlib.patches import Wedge
 
@@ -14,7 +16,7 @@ from utils import get_rca, load_data, load_flag, standardize_index_labels
 
 REGIME_COLS = ["region_1_share", "region_2_share", "region_3_share"]
 REGIME_NAMES = ["Mode 1", "Mode 2", "Mode 3"]
-REGIME_COLORS = ["#d94841", "#3f88c5", "#4daf4a"]
+REGIME_COLORS = [figstyle.MODE_COLORS[i] for i in (1, 2, 3)]
 N_FLAG_TOP_RIGHT = 7
 N_FLAG_ENVELOPE = 4
 

@@ -2,5 +2,5 @@ label,group,order,distance_coef,distance_ci_low_95,distance_ci_high_95,odds_rati
 Cumulative-lagged space,primary,0,-2.929670864950992,-3.273618212837692,-2.585723517064292,0.7460466953046923,40129,1055,output/fig15_hazard_space_pooled_coefficients.csv
 Previous-window space,space definition,1,-2.978372185651728,-3.3480249569259755,-2.60871941437748,0.7424221824601409,40129,1055,output/fig15_hazard_space_pooled_coefficients.csv
 Pooled full-history space,space definition,2,-4.399154427198668,-4.896656915846353,-3.901651938550983,0.6440908813536885,40129,1055,output/fig15_hazard_space_pooled_coefficients.csv
-Leave-one-actor-out space,circularity check,3,-2.57,-2.9,-2.24,0.7733682137654491,40129,1055,manuscript Methods (not yet recomputed in-repo)
-Fractional co-sponsorship counting,circularity check,4,-2.84,-3.18,-2.5,0.7527666447061963,40129,1055,manuscript Methods (not yet recomputed in-repo)
+Leave-one-actor-out space,circularity check,3,-2.572429101225058,-2.90368041072222,-2.241177791727897,0.7731803776124763,40129,1055,output/hazard_circularity_coefficients.csv
+Fractional co-sponsorship counting,circularity check,4,-2.838493139339391,-3.176772007716685,-2.5002142709620965,0.7528800846972472,40129,1055,output/hazard_circularity_coefficients.csv

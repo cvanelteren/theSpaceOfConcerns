@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import ultraplot as uplt
 
+import figstyle
 from utils import _split_multi_value, load_data
 
 ROOT = Path(__file__).resolve().parent
@@ -48,7 +49,7 @@ def main() -> None:
     )
     summary.to_csv(OUT_SUMMARY, index=False)
 
-    colors = {1: '#1f77b4', 2: '#2a9d8f', 3: '#d62728'}
+    colors = dict(figstyle.MODE_COLORS)
     labels = ['Mode 1', 'Mode 2', 'Mode 3']
     xpos = np.arange(3)
 

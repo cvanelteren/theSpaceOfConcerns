@@ -1,0 +1,64 @@
+# --- LaTeX build artifacts -------------------------------------------------
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+build/
+
+# latexdiff scratch (dif*/diff* are generated, not sources)
+dif.*
+diff.*
+old.tex
+
+# --- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+
+# --- OS / editor -----------------------------------------------------------
+.DS_Store
+*.swp
+
+# --- Local working state, never part of the record -------------------------
+.local_backups/
+.recovery/
+scratch/
+plots/
+nohup.out
+*.bundle
+
+# --- Large presentation material, not needed to build the paper ------------
+slides/
+assets/
+submissions/
+manuscript/
+antarctic-database-go/
+
+# --- Derived data ----------------------------------------------------------
+# output/ holds ~150 MB of intermediates. Only the files the paper's figure
+# scripts actually read are committed, and they are force-added so that this
+# blanket ignore cannot silently drop them again. Run `make check-data` (or
+# scripts/check_required_data.py) to verify the committed set still covers
+# every path referenced by a figure script.
+output/*
+!output/.gitkeep
+
+# Regenerable image formats. The manuscript \includegraphics only PDFs (32 of
+# them); the PNG/SVG siblings are build products of the same scripts. Note that
+# .gitignore does not untrack anything: the 50 PNGs already in the repo stay
+# tracked and keep showing modifications. This only stops *new* ones from
+# accumulating as untracked noise. Drop these two lines if the PNGs are wanted
+# for slides or a README.
+figures/*.png
+figures/*.svg

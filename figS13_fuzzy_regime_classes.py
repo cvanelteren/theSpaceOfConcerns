@@ -6,6 +6,8 @@ import numpy as np
 import pandas as pd
 import ultraplot as uplt
 
+import figstyle
+
 ROOT = Path(__file__).resolve().parent
 ACTOR_FP = ROOT / "output/fig45_portfolio_space_ridgelines_actor_summary.csv"
 OUT_PDF = ROOT / "figures/figS13_fuzzy_regime_classes.pdf"
@@ -13,13 +15,15 @@ OUT_PNG = ROOT / "figures/figS13_fuzzy_regime_classes.png"
 OUT_CSV = ROOT / "output/fig33_fuzzy_regime_classes.csv"
 TAU = 0.25
 ORDER = ["1", "1+2", "2", "2+3", "3", "1+2+3"]
+# Pure anchors carry the reserved mode hues; bridging classes are neutral
+# greys so "between modes" reads the same way it does in the main text.
 COLORS = {
-    "1": "#1f77b4",
-    "1+2": "#5b9bd5",
-    "2": "#6f9f44",
-    "2+3": "#d98c3f",
-    "3": "#d62728",
-    "1+2+3": "#7f7f7f",
+    "1": figstyle.MODE_COLORS[1],
+    "1+2": figstyle.MUTED,
+    "2": figstyle.MODE_COLORS[2],
+    "2+3": "#5B6470",
+    "3": figstyle.MODE_COLORS[3],
+    "1+2+3": figstyle.TEXT,
 }
 
 

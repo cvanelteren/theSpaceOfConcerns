@@ -1,0 +1,31 @@
+{
+  "distance_definition": "all-pairs_shortest_path_neg_log_phi",
+  "embedding": "classical_mds_3d",
+  "rendered_edges": "full_graph_all_edges",
+  "edge_width_mapping": "0.08 + 2.4 * phi_weight",
+  "static_outputs": [
+    "figures/fig01_space_of_concerns_mds3d.png",
+    "figures/fig01_space_of_concerns_mds3d.pdf"
+  ],
+  "rotation_output": "figures/fig01_space_of_concerns_mds3d_rotate.mp4",
+  "rotation_fps": 24,
+  "rotation_seconds": 8,
+  "n_topics": 45,
+  "n_edges_full": 953,
+  "n_edges_scaffold": 57,
+  "leading_eigenvalues": [
+    19.77901797054223,
+    10.690035620276605,
+    9.470639480105525,
+    7.108619297614914,
+    5.886343249560778,
+    4.381090476678766,
+    4.253590898905878,
+    3.7429870009837676
+  ],
+  "explained_share_first_3_positive_axes": [
+    0.23763990803490267,
+    0.12843807945752744,
+    0.11378734264946404
+  ]
+}
