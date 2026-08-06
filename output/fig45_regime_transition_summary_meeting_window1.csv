@@ -1,0 +1,2 @@
+time_unit,window_size,window_years,rca_threshold,min_active_topics,data_path,n_member_period_rows,n_members,n_periods,n_transitions,same_region_rate,adjacent_or_same_rate,far_jump_rate,mean_from_dominant_share
+meeting,1,1,1.0,3,antarctic-database-go/data/processed/document-summary.parquet,830,44,46,625,0.5776,0.9696,0.0304,0.7143232025250931

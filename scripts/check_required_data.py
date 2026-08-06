@@ -54,6 +54,15 @@ SKIP_SELF = Path(__file__).name
 # brace anywhere in the literal marks it as a template rather than a real file.
 TEMPLATE = re.compile(r"[{}]")
 
+# Templates are the guard's remaining blind spot, and it is a real one: the
+# rolling-window regime files are all referenced as
+# f"output/{stem}_year_window{window_size}.csv" and were therefore invisible
+# here while fig03 failed on a fresh clone. Rather than try to evaluate the
+# f-strings, each template is reduced to its literal prefix and every file in
+# output/ sharing that prefix is required. That over-collects slightly, which
+# is the right direction to err for files of this size.
+TEMPLATE_PREFIX_MIN = 12
+
 
 def tracked_files() -> set[str]:
     out = subprocess.run(
@@ -72,14 +81,31 @@ def referenced_files() -> dict[str, set[str]]:
                 text = script.read_text()
             except (OSError, UnicodeDecodeError):
                 continue
+            who = str(script.relative_to(ROOT))
             for match in DATA_REF.finditer(text):
                 path = match.group(1)
                 if TEMPLATE.search(path):
+                    for expanded in expand_template(path):
+                        refs.setdefault(expanded, set()).add(who)
                     continue
-                refs.setdefault(path, set()).add(
-                    str(script.relative_to(ROOT))
-                )
+                refs.setdefault(path, set()).add(who)
     return refs
+
+
+def expand_template(path: str) -> list[str]:
+    """Every existing file whose name starts with the template's literal prefix."""
+    prefix = path.split("{", 1)[0]
+    directory, _, stem = prefix.rpartition("/")
+    if not directory or len(stem) < TEMPLATE_PREFIX_MIN:
+        return []
+    base = ROOT / directory
+    if not base.is_dir():
+        return []
+    return [
+        f"{directory}/{p.name}"
+        for p in sorted(base.iterdir())
+        if p.is_file() and p.name.startswith(stem)
+    ]
 
 
 def candidates(ref: str) -> list[str]:
