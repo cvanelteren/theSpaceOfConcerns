@@ -47,12 +47,20 @@ weaker as it went. It now closes on the retain-and-adopt model. **If your
 contribution centred on the pioneer analysis, this is the change to push back
 on.**
 
-**(b) The framing moved from method to object.**
-Was: "we adapt economic-complexity methods to Antarctic governance."
-Now: "there is a relational structure to agenda formation; here it is."
-Same evidence, larger claim. This is the change most likely to draw fire, and
-it is why the missing ATS predecessors above mattered — under the old framing a
-predecessor was harmless, under this one it is not.
+**(b) The framing is simpler and application-forward.**
+After Science and NHB, the high-ambition generalist pitch has been tried twice
+and has not landed. The abstract is now results-first — what we did, three
+numbered findings, and the practical lever — rather than opening on a claim
+about what the literature has missed. The Introduction's epistemics paragraph
+on counting versus co-specialization was cut from 150 words to about 60, with
+the full trade-off moved to Methods where it belongs, and the Introduction now
+closes on the intervention rather than on an abstraction about political
+structure.
+
+The application is the pitch: because concerns are taken up through adjacent
+ones, the lever is adjacency — shortening the distance between an emerging
+concern and one a Party already sustains, rather than general capacity-building.
+That is narrower and more testable than the usual prescriptions.
 
 **(c) The mode caveats were consolidated.**
 The partition limit was stated five times in ~110 lines while three of four
@@ -93,9 +101,11 @@ most lexically similar pairs sit far apart. This is now in Results and Methods.
 ## 5. Proposed next steps
 
 1. Sign-off on 2(a)–(c), and a view on the modes question.
-2. Target: Nature Human Behaviour. Abstract is rewritten and now 197 words,
-   inside their 200 cap — worth a read, since it is the part an editor uses to
-   decide whether to send us out.
+2. Venue. Science desk-rejected and NHB rejected, so the generalist framing has
+   had two goes. The current draft is pitched at a venue where the application
+   carries weight — the abstract is 208 words and ends on the intervention, not
+   on a claim of novelty. Agreeing the target is the next decision, and it
+   determines how hard we push the policy section.
 3. Reconcile the arXiv preprint, which reports 6,591 documents and a
    binding-law finding that is not in this manuscript. We now say 6,573. A
    reviewer who finds the preprint will see both.
