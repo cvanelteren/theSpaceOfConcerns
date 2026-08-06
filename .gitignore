@@ -62,3 +62,9 @@ output/*
 # for slides or a README.
 figures/*.png
 figures/*.svg
+
+# --- Internal review artifacts ---------------------------------------------
+coauthor_diff.tex
+dif.tex
+diff.tex
+old.tex
