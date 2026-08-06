@@ -29,10 +29,26 @@ ROOT = Path(__file__).resolve().parent.parent
 # Directories searched for scripts that consume derived data.
 SCRIPT_GLOBS = ("*.py", "old_scripts/*.py", "scripts/*.py", "analysis/*.py")
 
-# String literals that look like a derived-data path.
+# Any quoted literal ending in a data extension. An earlier version matched only
+# paths that began with "output/", which missed every script building its paths
+# as ``OUTPUT_DIR / "name.csv"`` -- including fig04, whose input was therefore
+# absent from a fresh clone while this script reported success. Bare filenames
+# are resolved against output/ as well as the repository root.
 DATA_REF = re.compile(
-    r"""["']((?:output|data|derived_data)/[^"']+\.(?:csv|parquet|json|npz|npy))["']"""
+    r"""["']([A-Za-z0-9_./\-]+\.(?:csv|parquet|json|npz|npy))["']"""
 )
+
+# Resolved relative to the repository root when a reference has no directory.
+SEARCH_DIRS = ("output", "data", "derived_data", "")
+
+# The raw submission table is a 12 MB generated artifact that the upstream
+# scraper repository does not track. It is documented in the README and
+# archived in the Zenodo record rather than committed here, so it is expected
+# to be absent from the repository and must not fail this check.
+EXTERNAL = ("antarctic-database-go/data/processed/document-summary.parquet",)
+
+# This file's own docstring and examples contain path-shaped strings.
+SKIP_SELF = Path(__file__).name
 
 # Paths built with str.format or f-strings cannot be resolved statically; a
 # brace anywhere in the literal marks it as a template rather than a real file.
@@ -50,6 +66,8 @@ def referenced_files() -> dict[str, set[str]]:
     refs: dict[str, set[str]] = {}
     for pattern in SCRIPT_GLOBS:
         for script in sorted(ROOT.glob(pattern)):
+            if script.name == SKIP_SELF:
+                continue
             try:
                 text = script.read_text()
             except (OSError, UnicodeDecodeError):
@@ -64,22 +82,36 @@ def referenced_files() -> dict[str, set[str]]:
     return refs
 
 
+def candidates(ref: str) -> list[str]:
+    """Where a reference could resolve to, most specific first."""
+    if "/" in ref:
+        # Strip leading ./ and ../ so a symlinked sibling checkout and an
+        # in-tree path are recognised as the same reference.
+        cleaned = ref.lstrip("./")
+        return [ref, cleaned]
+    return [f"{d}/{ref}" if d else ref for d in SEARCH_DIRS]
+
+
 def main() -> int:
     tracked = tracked_files()
     refs = referenced_files()
 
     missing_from_git = {}
     missing_from_disk = {}
-    for path, users in sorted(refs.items()):
-        if path in tracked:
+    for ref, users in sorted(refs.items()):
+        if any(ref.lstrip("./").endswith(e) for e in EXTERNAL):
             continue
-        # A referenced path that is absent locally too is almost always an
-        # output the script writes rather than an input it reads, so it is
-        # reported separately and does not fail the check.
-        if (ROOT / path).exists():
-            missing_from_git[path] = users
+        cands = candidates(ref)
+        if any(c in tracked for c in cands):
+            continue
+        # A reference that is absent locally too is almost always an output the
+        # script writes rather than an input it reads, so it is reported
+        # separately and does not fail the check.
+        present = [c for c in cands if (ROOT / c).exists()]
+        if present:
+            missing_from_git[present[0]] = users
         else:
-            missing_from_disk[path] = users
+            missing_from_disk[ref] = users
 
     print(f"referenced data paths: {len(refs)}")
     print(f"  committed:           {len(refs) - len(missing_from_git) - len(missing_from_disk)}")

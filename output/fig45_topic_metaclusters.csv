@@ -1,0 +1,46 @@
+region_id,metacluster_label,topic_order,topic,x_plot,is_region_anchor
+1,Institutional Coordination & Information Exchange,0,Educational issues,0.0,False
+1,Institutional Coordination & Information Exchange,1,Science issues,0.057015827524624,False
+1,Institutional Coordination & Information Exchange,2,Opening statements,0.0727898750255539,False
+1,Institutional Coordination & Information Exchange,3,Exchange of Information,0.1115886883252107,True
+1,Institutional Coordination & Information Exchange,4,Operation of the Antarctic Treaty system The Secretariat,0.1239191250643632,False
+1,Institutional Coordination & Information Exchange,5,Operation of the Antarctic Treaty system General,0.1747690528081452,False
+1,Institutional Coordination & Information Exchange,6,Environmental Monitoring and Reporting,0.1887137517787508,False
+1,Institutional Coordination & Information Exchange,7,Operation of the Antarctic Treaty system Reports,0.198252858097526,False
+1,Institutional Coordination & Information Exchange,8,Operational issues,0.2203005980925826,False
+2,"Compliance, Environmental Management & Operations",9,Safety and Operations in Antarctica,0.2599556617261369,False
+2,"Compliance, Environmental Management & Operations",10,Environmental Impact Assessment EIA Other EIA Matters,0.260554648701896,False
+2,"Compliance, Environmental Management & Operations",11,Environmental Protection General,0.262004231896308,False
+2,"Compliance, Environmental Management & Operations",12,Biological Prospecting,0.2728040707719589,False
+2,"Compliance, Environmental Management & Operations",13,Comprehensive Environmental Evaluations,0.284098204033489,False
+2,"Compliance, Environmental Management & Operations",14,International Polar Year,0.3052279433304536,False
+2,"Compliance, Environmental Management & Operations",15,Fauna and Flora_General,0.3076348840643272,False
+2,"Compliance, Environmental Management & Operations",16,Cooperation with Other Organisations,0.3117596457888806,False
+2,"Compliance, Environmental Management & Operations",17,Management Plans,0.3369819084088448,False
+2,"Compliance, Environmental Management & Operations",18,Inspections,0.3478955433775928,True
+2,"Compliance, Environmental Management & Operations",19,Liability,0.3591321581558953,False
+2,"Compliance, Environmental Management & Operations",20,Nonnative Species and Quarantine,0.3687894715932999,False
+2,"Compliance, Environmental Management & Operations",21,Waste management and disposal,0.3776634228511229,False
+2,"Compliance, Environmental Management & Operations",22,Climate Change,0.3800837228694215,False
+2,"Compliance, Environmental Management & Operations",23,Prevention of marine pollution,0.4071732495247115,False
+2,"Compliance, Environmental Management & Operations",24,Institutional and legal matters,0.4326060447198915,False
+2,"Compliance, Environmental Management & Operations",25,Marine Protected Areas,0.4491593348272531,False
+2,"Compliance, Environmental Management & Operations",26,Emergency report and contingency planning,0.4714397070089907,False
+2,"Compliance, Environmental Management & Operations",27,Repair and remediation of environmental damage,0.4785603220035299,False
+2,"Compliance, Environmental Management & Operations",28,Historic Sites and Monuments,0.4823429046539809,False
+2,"Compliance, Environmental Management & Operations",29,Area Protection and Management Plans General,0.500415799343748,False
+3,"Frontier Impacts, Resources & Strategic Planning",30,Mineral resources,0.5486928120359825,False
+3,"Frontier Impacts, Resources & Strategic Planning",31,Human Footprint and wilderness values,0.5570278693771725,False
+3,"Frontier Impacts, Resources & Strategic Planning",32,CEP Strategy Discussions,0.5652259283677762,False
+3,"Frontier Impacts, Resources & Strategic Planning",33,Search and Rescue,0.5782303524397046,False
+3,"Frontier Impacts, Resources & Strategic Planning",34,Site Guidelines for Visitors,0.5815045003879168,False
+3,"Frontier Impacts, Resources & Strategic Planning",35,Marine living resources,0.6072600948648527,False
+3,"Frontier Impacts, Resources & Strategic Planning",36,Specially Protected Species,0.6187624363507288,False
+3,"Frontier Impacts, Resources & Strategic Planning",37,Tourism and NG_Activities,0.6351007320692917,False
+3,"Frontier Impacts, Resources & Strategic Planning",38,Drilling,0.7067438005772659,False
+3,"Frontier Impacts, Resources & Strategic Planning",39,Operation of the CEP,0.7077185661800903,True
+3,"Frontier Impacts, Resources & Strategic Planning",40,Multiyear strategic workplan,0.7604580634912673,False
+3,"Frontier Impacts, Resources & Strategic Planning",41,Marine Acoustics,0.7856949393318446,False
+3,"Frontier Impacts, Resources & Strategic Planning",42,Sub glacial Lakes,0.8368881874706648,False
+3,"Frontier Impacts, Resources & Strategic Planning",43,State of the Antarctic Environment Report SAER,0.9134550153435368,False
+3,"Frontier Impacts, Resources & Strategic Planning",44,Environmental Domains Analysis,1.0,False
