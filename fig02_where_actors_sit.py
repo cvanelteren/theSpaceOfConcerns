@@ -199,7 +199,7 @@ def build_figure() -> tuple[uplt.Figure, dict]:
         "complementarity": _draw_complementarity(axs[1]),
     }
     axs.format(
-        abc="[A]", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False,
+        abc="a", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False,
         titlesize=figstyle.FS_TITLE, titleweight="bold", titleloc="uc",
     )
     figstyle.apply_typography(axs)

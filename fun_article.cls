@@ -268,15 +268,17 @@
 
 \posttitle{
   % \vspace{-10pt}
-  \par\vskip 8pt
+  \par\vskip 1em
   % \par\vskip 3pt
 } % Whitespace under the title
 
-\preauthor{} % Anything that will appear before \author is printed
+\preauthor{\noindent} % Anything that will appear before \author is printed
+% \noindent: the author block starts a fresh paragraph and would otherwise
+% pick up \parindent, leaving it indented relative to the ragged-right title
 
 \postauthor{ % Anything that will appear after \author is printed
   \par\HorRule
-  \vspace{25pt}
+  \vspace{1em}
 }
 
 
@@ -300,10 +302,20 @@
 }
 \usepackage{xstring} % Required for string manipulation
 
-\newcommand{\lettrineabstract}[1]{
-	\StrLeft{#1}{1}[\firstletter] % Capture the first letter of the abstract for the lettrine
-	\initial{\firstletter}\textbf{\StrGobbleLeft{#1}{1}} % Print the abstract with the first letter as a lettrine and the rest in bold
+\makeatletter
+\newcommand{\lettrineabstract}[1]{%
+	% Split off the first character with plain TeX, not xstring, so long
+	% abstracts with em-dashes or math are never run through \StrGobbleLeft.
+	% \BODY (from environ) begins with the newline that follows
+	% \begin{abstract}, so leading spaces are skipped before splitting.
+	\expandafter\@funlettrinecheck#1\@funlettrineend
 }
+\def\@funlettrinecheck{\@ifnextchar\space{\@funlettrineskip\space\@funlettrinecheck}{\@funlettrinesplit}}
+\def\@funlettrineskip\space#1{#1}
+\def\@funlettrinesplit#1#2\@funlettrineend{%
+	\initial{#1}\textbf{#2}%
+}
+\makeatother
 
 \makeatletter
 \newcommand{\PaperTitle}[1]{\def\@PaperTitle{#1}}
@@ -321,19 +333,55 @@
 
 \makeatletter
 \RequirePackage{environ}
+% ---------------------------------------------------------------------
+% FRONT MATTER
+%
+% The title, abstract and Significance sidebar are typeset as spanning
+% material through \twocolumn[...], so the two-column body begins on the
+% same page instead of after a \clearpage. This keeps figure* floats
+% working (they need real \twocolumn) while leaving no gap under the
+% front matter. Nothing has to be inserted by hand in the document.
+% ---------------------------------------------------------------------
+\newif\if@funsidebar
+\@funsidebarfalse
+\newcommand{\@funsidebarcontent}{}
+\newcommand{\sidebar}[1]{%
+    \gdef\@funsidebarcontent{#1}%
+    \global\@funsidebartrue
+}
+\newlength{\@funabstractcol}
+\newlength{\@funsidebarcol}
+\newlength{\@funabstractwidth}
+\setlength{\@funabstractcol}{0.56\textwidth}
+\setlength{\@funsidebarcol}{0.40\textwidth}
+\setlength{\@funabstractwidth}{\textwidth}
+
+\newsavebox{\@funabsbox}
+\newsavebox{\@funsidebox}
 \RenewEnviron{abstract}{%
-    \maketitle
-    \thispagestyle{firstpage}%
-    \small\relax\vspace{-7em}%
-    \begin{list}{}{%
-        \setlength{\leftmargin}{5mm}%
-        \setlength{\rightmargin}{\leftmargin}%
-        \setlength{\topmargin}{0mm}%
+    % Both columns are built into boxes first. \BODY cannot be expanded
+    % inside the optional argument of \twocolumn, where minipage argument
+    % parsing breaks on the paragraph it contains.
+    % Without a sidebar (the One Earth look) the abstract spans the full
+    % width; with \sidebar the abstract shares the line with the sidebar.
+    \if@funsidebar
+        \setlength{\@funabstractwidth}{\@funabstractcol}%
+    \else
+        \setlength{\@funabstractwidth}{\textwidth}%
+    \fi
+    \sbox{\@funabsbox}{%
+        \parbox[t]{\@funabstractwidth}{\vspace{0pt}\small\relax\lettrineabstract{\BODY}}%
     }%
-    \item\relax
-    \lettrineabstract{\BODY}
-    \end{list}%
-    \vspace{0.75em}%
+    \sbox{\@funsidebox}{%
+        \parbox[t]{\@funsidebarcol}{\vspace{0pt}\if@funsidebar\@funsidebarcontent\fi}%
+    }%
+    \twocolumn[%
+        \maketitle
+        \vspace{-6em}%
+        \noindent\usebox{\@funabsbox}\if@funsidebar\hfill\usebox{\@funsidebox}\fi%
+        \par\vspace{1.25em}%
+    ]%
+    \thispagestyle{firstpage}%
 }
 \newcommand{\makeabstract}{%
     \begin{abstract}
@@ -341,45 +389,8 @@
     \end{abstract}
 }
 
-% Optional fixed first-page grid. The first section occupies the left
-% column and the sidebar occupies the right; neither column wraps beneath
-% the other. \beginarticlecolumns closes the grid and starts page 2.
-\newif\if@funsidebar
-\@funsidebarfalse
-\newif\if@funfirstcolumnsopen
-\@funfirstcolumnsopenfalse
-\newcommand{\@funsidebarcontent}{}
-\newcommand{\sidebar}[1]{%
-    \gdef\@funsidebarcontent{#1}%
-    \global\@funsidebartrue
-}
-\newlength{\@funleftcol}
-\newlength{\@funrightcol}
-\setlength{\@funleftcol}{0.64\textwidth}
-\setlength{\@funrightcol}{0.31\textwidth}
-\newcommand{\beginarticlecolumns}{%
-    \if@funfirstcolumnsopen
-        \par
-        \end{minipage}%
-        \hfill
-        \begin{minipage}[t]{\@funrightcol}%
-            \vspace{0pt}%
-            \@funsidebarcontent
-        \end{minipage}%
-        \global\@funfirstcolumnsopenfalse
-    \fi
-    \par\clearpage\twocolumn
-}
-\newcommand{\@funstartfirstpagecolumns}{%
-    \if@funsidebar
-        \par\noindent
-        \begin{minipage}[t]{\@funleftcol}%
-            \vspace{0pt}%
-        \global\@funsidebarfalse
-        \global\@funfirstcolumnsopentrue
-    \fi
-}
-\pretocmd{\@sect}{\@funstartfirstpagecolumns}{}{}
+% Retained as a no-op so existing documents that still call it compile.
+\newcommand{\beginarticlecolumns}{}
 
 % ---------------------------------------------------------------------
 

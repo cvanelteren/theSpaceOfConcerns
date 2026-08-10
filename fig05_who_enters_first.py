@@ -2,7 +2,7 @@
 
 This is the closing beat. Figures 1--4 establish that the space exists, that
 actors hold distinct positions in it, that movement is local, and that a
-retain-and-adopt rule reproduces the record. The question left is the one the
+evolving-portfolio rule reproduces the record. The question left is the one the
 abstract opens on: if where you can go is bounded by where you already are,
 who gets to new concerns early?
 
@@ -232,7 +232,7 @@ def build_figure() -> tuple[uplt.Figure, dict]:
         loc="b", frame=False, fontsize=figstyle.FS_LEGEND, ncols=3,
     )
 
-    axs.format(abc="[A]", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False)
+    axs.format(abc="a", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False)
     figstyle.apply_typography(axs)
 
     summary = {

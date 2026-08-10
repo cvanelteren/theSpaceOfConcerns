@@ -1,20 +1,20 @@
 {
   "n_triplets": 7140,
   "spearman_region2_vs_coverage_resid": {
-    "rho": -0.08686183616952561,
-    "pvalue": 1.9480938246337894e-13
+    "rho": -0.0869964740851745,
+    "pvalue": 1.7881406018754192e-13
   },
   "spearman_region2_vs_overlap_resid": {
-    "rho": 0.058903024114071445,
-    "pvalue": 6.336398978415414e-07
+    "rho": 0.059017545699443535,
+    "pvalue": 6.026308909155993e-07
   },
   "linear_region2_vs_coverage_resid": {
-    "slope": -0.03486354176337691,
-    "intercept": 0.017262977395279735
+    "slope": -0.03477145234557423,
+    "intercept": 0.0172548609822385
   },
   "linear_region2_vs_overlap_resid": {
-    "slope": 0.024752729085400292,
-    "intercept": -0.012165237060681651
+    "slope": 0.024762053966845724,
+    "intercept": -0.01218179400618487
   },
   "note": "Triplet residuals come from fig28. The x-axis is mean Regime 2 share across the three actors in each triplet."
 }

@@ -70,9 +70,9 @@ def _legend_handles() -> tuple[list, list]:
     ]
     labels = [
         "Observed",
-        "Direct allocation",
+        "Full reallocation",
         "Single-rule support",
-        "Retain-and-adopt",
+        "Evolving portfolio",
         "Random baseline",
     ]
     return handles, labels
@@ -153,14 +153,14 @@ def build_panel_a(summary) -> plt.Figure:
     rows = [
         {
             "y": ROW_Y[0],
-            "color": COLORS["one_stage"], "label": "Direct allocation",
+            "color": COLORS["one_stage"], "label": "Full reallocation",
             "stages": [("Allocate", DIRECT_STAGE_X), ("t+1", NET_X0 + NET_W / 2)],
             "portfolio": direct_portfolio,
             "added": {"Albizzi", "Barbadori", "Guadagni", "Salviati", "Strozzi"},
         },
         {
             "y": ROW_Y[1],
-            "color": COLORS["two_stage"], "label": "Single support",
+            "color": COLORS["two_stage"], "label": "Fixed portfolio",
             "stages": [
                 ("Choose support", SUPPORT_STAGE_X),
                 ("Allocate", ALLOCATE_STAGE_X),
@@ -171,9 +171,9 @@ def build_panel_a(summary) -> plt.Figure:
         },
         {
             "y": ROW_Y[2],
-            "color": COLORS["split_support"], "label": "Retain-and-adopt",
+            "color": COLORS["split_support"], "label": "Evolving portfolio",
             "stages": [
-                ("Retain + adopt", SUPPORT_STAGE_X),
+                ("Evolving portfolio", SUPPORT_STAGE_X),
                 ("Allocate", ALLOCATE_STAGE_X),
                 ("t+1", NET_X0 + NET_W / 2),
             ],
@@ -238,9 +238,9 @@ def build_panel_a(summary) -> plt.Figure:
 # ---------------------------------------------------------------------------
 _B_STAGES = [
     # (model_key, linestyle, label)  — cumulative: each stage adds the next model
-    ("one_stage",    "--", "Direct allocation"),
+    ("one_stage",    "--", "Full reallocation"),
     ("two_stage",    ":",  "Single-rule support"),
-    ("split_support", "-", "Retain-and-adopt"),
+    ("split_support", "-", "Evolving portfolio"),
 ]
 
 
@@ -291,7 +291,7 @@ def build_panel_b(summary, process_history) -> plt.Figure:
 
 
 def build_panel_b_frames(summary, process_history) -> list[tuple[str, plt.Figure]]:
-    """Sequential reveal frames: observed → +direct → +single → +retain-and-adopt."""
+    """Sequential reveal frames: observed → +full → +fixed → +evolving-portfolio."""
     ylim = _breadth_ylim(process_history)
     frames = []
 
@@ -344,7 +344,7 @@ def build_panel_c(summary, process_history) -> plt.Figure:
         0.98, 0.97,
         (
             f"Observed mean = {summary['mean_topic_popularity_obs_avg']:.2f}\n"
-            f"Retain-and-adopt = {summary['mean_topic_popularity_split_avg']:.2f}\n"
+            f"Evolving portfolio = {summary['mean_topic_popularity_split_avg']:.2f}\n"
             f"$r$ = {summary['corr_mean_topic_popularity_split']:.3f}\n"
             f"Band = 5–95% over {int(summary['process_uncertainty_reps'])} runs"
         ),
@@ -403,7 +403,7 @@ def build_panel_d(summary, process_entry) -> plt.Figure:
         0.98, 0.97,
         (
             f"Observed = {entry_obs['mean_entry_phi_rank_mean']:.3f}\n"
-            f"Retain-and-adopt = {entry_split['mean_entry_phi_rank_mean']:.3f}\n"
+            f"Evolving portfolio = {entry_split['mean_entry_phi_rank_mean']:.3f}\n"
             f"5–95% = [{entry_split['mean_entry_phi_rank_q05']:.3f}, "
             f"{entry_split['mean_entry_phi_rank_q95']:.3f}]"
         ),

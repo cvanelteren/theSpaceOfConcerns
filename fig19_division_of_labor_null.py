@@ -302,7 +302,7 @@ def main() -> None:
 
     colors = {"rpa": "blue7", "presence": "orange7"}
     fig, axs = uplt.subplots(ncols=2, share=False, refwidth=3.2, refaspect=0.95)
-    axs.format(abc="[A]", grid=False)
+    axs.format(abc="a", grid=False)
 
     for ax, (basis_key, basis_label) in zip(axs, bases):
         dfi = summary_df[summary_df["basis"] == basis_key].copy()

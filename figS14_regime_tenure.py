@@ -54,7 +54,7 @@ def main() -> None:
     xpos = np.arange(3)
 
     fig, axs = uplt.subplots(ncols=2, refwidth=3.3, refaspect=1.0, share=False)
-    axs.format(abc='[A]', grid=True)
+    axs.format(abc='a', grid=True)
 
     metrics = [
         ('active_years', 'Active years in archive', 'Archive participation length'),

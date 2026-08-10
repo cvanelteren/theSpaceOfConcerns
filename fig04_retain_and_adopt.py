@@ -1,4 +1,4 @@
-"""Main-text Figure 4: a retain-and-adopt rule is enough to reproduce the record.
+"""Main-text Figure 4: a evolving-portfolio rule is enough to reproduce the record.
 
   A  what the three candidate rules actually do to a portfolio between periods
   B  how far each one lands from the observed locality of real entries
@@ -7,19 +7,19 @@ The two panels sit side by side and share a vertical position: each bar in B is
 drawn at the same height as the rule it scores in A, so the mapping from
 mechanism to performance needs no reading of category labels. That alignment is
 the point of the layout -- vertical bars under a stacked schematic forced the
-reader to match "Single support" in one panel to "Single support" in another.
+reader to match "Fixed portfolio" in one panel to "Fixed portfolio" in another.
 
 The figure used to open with two time series (breadth and topic popularity) and
 carry the rules only as a caption description. That inverted the difficulty: a
-reader cannot judge whether "single support" undershooting breadth is damning
+reader cannot judge whether "fixed portfolio" undershooting breadth is damning
 without first knowing what a support rule is. Those two series move to the
 appendix, where they remain the evidence that the fit is not circular -- nothing
 in the fitted rule sets breadth or popularity directly.
 
 Panel B is a sufficiency check, not an independent test of locality: the
-retain-and-adopt entry stage contains a phi-proximity term, so matching the
+evolving-portfolio entry stage contains a phi-proximity term, so matching the
 observed entry rank is the model doing what it was built to do. What the panel
-adds is the contrast -- direct allocation overshoots and single support
+adds is the contrast -- full reallocation overshoots and fixed portfolio
 undershoots -- so the observed value is not trivially reachable by any rule.
 """
 
@@ -124,9 +124,9 @@ def build_figure() -> uplt.Figure:
     _draw_aligned_scores(ax_b, entry)
 
     # The schematic axis is turned off, so its letter is placed manually.
-    ax_a.text(0.0, 1.0, "[A]", transform=ax_a.transAxes, ha="left", va="top",
+    ax_a.text(0.0, 1.0, "a", transform=ax_a.transAxes, ha="left", va="top",
               fontweight="bold", fontsize=11, zorder=10)
-    ax_b.text(0.03, 0.97, "[B]", transform=ax_b.transAxes, ha="left", va="top",
+    ax_b.text(0.03, 0.97, "b", transform=ax_b.transAxes, ha="left", va="top",
               fontweight="bold", fontsize=11, zorder=10)
 
     figstyle.apply_typography(ax_b)

@@ -157,7 +157,7 @@ def main():
     s5 = _load_summary(WINDOW_SIZES[1])
 
     fig, axs = uplt.subplots(ncols=3, share=0)
-    axs.format(abc="[A]")
+    axs.format(abc="a")
     ax1, ax2, ax3 = axs
 
     img = _plot_transition_matrix(

@@ -470,7 +470,7 @@ def build_figure() -> tuple[uplt.Figure, pd.DataFrame, dict]:
 
     table = _draw_specification_strength(ax_d)
 
-    axs.format(abc="[A]", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False)
+    axs.format(abc="a", abcloc="ul", abcsize=figstyle.FS_PANEL, grid=False)
     figstyle.apply_typography(axs)
     return fig, table, {**movement, "transitions": transitions}
 

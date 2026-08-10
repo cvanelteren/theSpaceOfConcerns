@@ -317,12 +317,12 @@ def draw_silhouette(ax_map, land, proj_extent):
         spine.set_visible(False)
 
 
-def draw_base(ax, backbone, pos, *, edge_alpha=0.8, edge_lw=1.0):
+def draw_base(ax, backbone, pos, *, edge_alpha=0.8, edge_lw=1.0, color="0.70"):
     for u, v, d in backbone.edges(data=True):
         p0, p1 = np.array(pos[u]), np.array(pos[v])
         ax.plot(
             [p0[0], p1[0]], [p0[1], p1[1]],
-            color="0.70", lw=edge_lw * (0.6 + 3.6 * float(d.get("weight", 0.0))),
+            color=color, lw=edge_lw * (0.6 + 3.6 * float(d.get("weight", 0.0))),
             alpha=edge_alpha, zorder=1, solid_capstyle="round",
         )
 
@@ -559,13 +559,19 @@ def build_figure(*, all_labels: bool):
     display_of, mode_of, xplot_of = load_topic_meta()
     pos, land, proj_extent = fitted_layout(mst, g, mode_of)
 
-    layout = [
-        [0, 1, 1, 1, 1, 0],
-        [2, 2, 3, 3, 4, 4],
-    ]
-    fig, axs = uplt.subplots(
-        layout, figwidth=11.8, hratios=[4.1, 1.15], share=False
-    )
+    if all_labels:
+        # the appendix variant draws no actor cards, so it gets a single axes;
+        # keeping the two-row layout left three empty framed panels below the map
+        layout = [[0, 1, 1, 1, 1, 0]]
+        fig, axs = uplt.subplots(layout, figwidth=11.8, share=False)
+    else:
+        layout = [
+            [0, 1, 1, 1, 1, 0],
+            [2, 2, 3, 3, 4, 4],
+        ]
+        fig, axs = uplt.subplots(
+            layout, figwidth=11.8, hratios=[4.1, 1.15], share=False
+        )
     ax_map = axs[0]
     draw_silhouette(ax_map, land, proj_extent)
     draw_main_map(ax_map, backbone, mst, g, pos, mode_of, display_of,

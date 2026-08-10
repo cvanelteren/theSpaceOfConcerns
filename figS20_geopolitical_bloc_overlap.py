@@ -257,7 +257,7 @@ def main() -> None:
     )
 
     fig, axs = uplt.subplots(ncols=2, refwidth=3.4, refaspect=0.82, share=False)
-    axs.format(abc="[A]", grid=False)
+    axs.format(abc="a", grid=False)
 
     panel_specs = [
         ("rpa_jaccard", "RPA > 1", "blue7"),

@@ -1584,7 +1584,7 @@ axs_all.format(
     ticklabelsize=FS_TICK,
     titlesize=FS_TITLE,
     abcloc="ul",
-    abc="[A]",
+    abc="a",
 )
 
 # --- Save Figure ---

@@ -1,4 +1,4 @@
-"""Supplementary Figure S05. Tests the retain-and-enter model under year-balanced thinning of the archive. Checks that the mechanism result is not driven only by dense late-period data."""
+"""Supplementary Figure S05. Tests the evolving-portfolio model under year-balanced thinning of the archive. Checks that the mechanism result is not driven only by dense late-period data."""
 
 from __future__ import annotations
 
@@ -20,9 +20,9 @@ OUT_PDF = FIG_DIR / "figS05_split_support_thinning.pdf"
 OUT_PNG = FIG_DIR / "figS05_split_support_thinning.png"
 
 MODEL_COLORS = {
-    "Direct allocation": "#c44e52",
-    "Single-rule support": "#4c72b0",
-    "Retain-and-enter": "#2a9d55",
+    "Full reallocation": "#c44e52",
+    "Fixed portfolio": "#4c72b0",
+    "Evolving portfolio": "#2a9d55",
     "Observed": "#111111",
 }
 
@@ -38,42 +38,42 @@ def _aggregate_subsample_results(df: pd.DataFrame) -> pd.DataFrame:
             [
                 {
                     "keep_fraction": float(keep_fraction),
-                    "model": "Direct allocation",
+                    "model": "Full reallocation",
                     "metric": "active_corr",
                     "mean": float(group["corr_mean_active_topics"].mean()),
                     "sd": float(group["corr_mean_active_topics"].std(ddof=1)),
                 },
                 {
                     "keep_fraction": float(keep_fraction),
-                    "model": "Single-rule support",
+                    "model": "Fixed portfolio",
                     "metric": "active_corr",
                     "mean": float(group["corr_mean_active_topics_two_stage"].mean()),
                     "sd": float(group["corr_mean_active_topics_two_stage"].std(ddof=1)),
                 },
                 {
                     "keep_fraction": float(keep_fraction),
-                    "model": "Retain-and-enter",
+                    "model": "Evolving portfolio",
                     "metric": "active_corr",
                     "mean": float(group["corr_mean_active_topics_split"].mean()),
                     "sd": float(group["corr_mean_active_topics_split"].std(ddof=1)),
                 },
                 {
                     "keep_fraction": float(keep_fraction),
-                    "model": "Direct allocation",
+                    "model": "Full reallocation",
                     "metric": "pop_corr",
                     "mean": float(group["corr_mean_topic_popularity"].mean()),
                     "sd": float(group["corr_mean_topic_popularity"].std(ddof=1)),
                 },
                 {
                     "keep_fraction": float(keep_fraction),
-                    "model": "Single-rule support",
+                    "model": "Fixed portfolio",
                     "metric": "pop_corr",
                     "mean": float(group["corr_mean_topic_popularity_two_stage"].mean()),
                     "sd": float(group["corr_mean_topic_popularity_two_stage"].std(ddof=1)),
                 },
                 {
                     "keep_fraction": float(keep_fraction),
-                    "model": "Retain-and-enter",
+                    "model": "Evolving portfolio",
                     "metric": "pop_corr",
                     "mean": float(group["corr_mean_topic_popularity_split"].mean()),
                     "sd": float(group["corr_mean_topic_popularity_split"].std(ddof=1)),
@@ -87,7 +87,7 @@ def _aggregate_subsample_results(df: pd.DataFrame) -> pd.DataFrame:
                 },
                 {
                     "keep_fraction": float(keep_fraction),
-                    "model": "Retain-and-enter",
+                    "model": "Evolving portfolio",
                     "metric": "entry_rank",
                     "mean": float(group["mean_entry_phi_rank_split"].mean()),
                     "sd": float(group["mean_entry_phi_rank_split"].std(ddof=1)),
@@ -101,42 +101,42 @@ def _append_full_data_points(df: pd.DataFrame, summary: dict[str, float]) -> pd.
     full_rows = [
         {
             "keep_fraction": 1.0,
-            "model": "Direct allocation",
+            "model": "Full reallocation",
             "metric": "active_corr",
             "mean": float(summary["corr_mean_active_topics"]),
             "sd": 0.0,
         },
         {
             "keep_fraction": 1.0,
-            "model": "Single-rule support",
+            "model": "Fixed portfolio",
             "metric": "active_corr",
             "mean": float(summary["corr_mean_active_topics_two_stage"]),
             "sd": 0.0,
         },
         {
             "keep_fraction": 1.0,
-            "model": "Retain-and-enter",
+            "model": "Evolving portfolio",
             "metric": "active_corr",
             "mean": float(summary["corr_mean_active_topics_split"]),
             "sd": 0.0,
         },
         {
             "keep_fraction": 1.0,
-            "model": "Direct allocation",
+            "model": "Full reallocation",
             "metric": "pop_corr",
             "mean": float(summary["corr_mean_topic_popularity"]),
             "sd": 0.0,
         },
         {
             "keep_fraction": 1.0,
-            "model": "Single-rule support",
+            "model": "Fixed portfolio",
             "metric": "pop_corr",
             "mean": float(summary["corr_mean_topic_popularity_two_stage"]),
             "sd": 0.0,
         },
         {
             "keep_fraction": 1.0,
-            "model": "Retain-and-enter",
+            "model": "Evolving portfolio",
             "metric": "pop_corr",
             "mean": float(summary["corr_mean_topic_popularity_split"]),
             "sd": 0.0,
@@ -150,7 +150,7 @@ def _append_full_data_points(df: pd.DataFrame, summary: dict[str, float]) -> pd.
         },
         {
             "keep_fraction": 1.0,
-            "model": "Retain-and-enter",
+            "model": "Evolving portfolio",
             "metric": "entry_rank",
             "mean": float(summary["mean_entry_phi_rank_split"]),
             "sd": 0.0,
@@ -193,7 +193,7 @@ def build_figure():
     plot_df = _append_full_data_points(plot_df, summary)
 
     fig, axs = uplt.subplots(ncols=3, refwidth=3.6, refheight=2.6, share=False)
-    axs.format(abc="[A]")
+    axs.format(abc="a")
 
     _plot_metric(
         axs[0],
@@ -237,7 +237,7 @@ def build_figure():
     )
     fig.format(
         suptitle=(
-            "Retain-and-Enter Validation Under Year-Balanced Thinning of the Raw ATS Corpus"
+            "Evolving-Portfolio Validation Under Year-Balanced Thinning of the Raw ATS Corpus"
         )
     )
     return fig

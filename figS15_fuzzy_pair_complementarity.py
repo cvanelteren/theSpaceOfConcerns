@@ -260,7 +260,7 @@ def main() -> None:
         refaspect=1.05,
         share=False,
     )
-    axs.format(abc="[A]", grid=True)
+    axs.format(abc="a", grid=True)
 
     panel_specs = [
         (

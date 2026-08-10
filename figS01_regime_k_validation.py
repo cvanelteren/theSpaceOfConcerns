@@ -234,7 +234,7 @@ def main() -> None:
         refaspect=1.0,
         share=False,
     )
-    axs.format(abc="[A]", grid=False)
+    axs.format(abc="a", grid=False)
 
     ax = axs[0]
     ax.plot(

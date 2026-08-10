@@ -168,7 +168,7 @@ def main() -> None:
     agreement = summary["3"]["dominant_regime_agreement"]
 
     fig, axs = uplt.subplots(nrows=2, figsize=(8.4, 3.2), sharex=True)
-    axs.format(abc="[A]", leftlabels=("Weighted", "Unweighted"))
+    axs.format(abc="a", leftlabels=("Weighted", "Unweighted"))
     _draw_partition_bar(axs[0], plot_df, "weighted_region", "Current weighted partition")
     _draw_partition_bar(axs[1], plot_df, "unweighted_region", "Same geometry, uniform weights")
     fig.format(

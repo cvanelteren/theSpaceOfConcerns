@@ -105,7 +105,7 @@ def main() -> None:
     OUT_SUMMARY.write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
     fig, axs = uplt.subplots(ncols=2, refwidth=3.1, refaspect=1.0, share=False)
-    axs.format(abc="[A]", grid=False)
+    axs.format(abc="a", grid=False)
 
     panel_specs = [
         ("jaccard_rpa", "RPA > 1", "blue7"),

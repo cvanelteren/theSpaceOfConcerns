@@ -209,7 +209,7 @@ def main() -> None:
     triplet_df["regime_triplet"] = pd.Categorical(triplet_df["regime_triplet"], categories=order, ordered=True)
 
     fig, axs = uplt.subplots(ncols=2, refwidth=3.4, refaspect=1.05, share=False)
-    axs.format(abc="[A]", grid=False)
+    axs.format(abc="a", grid=False)
 
     color_map = {
         "1-1-1": "#7f7f7f",

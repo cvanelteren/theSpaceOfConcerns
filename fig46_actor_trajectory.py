@@ -255,7 +255,7 @@ def _make_multi_actor_figure(
     )
     ax = axs[0]
     share_axes = axs[1:]
-    axs.format(abc="[A]")
+    axs.format(abc="a")
 
     _add_regime_background(ax, region_df)
 

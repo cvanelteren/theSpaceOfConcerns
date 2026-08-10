@@ -75,7 +75,7 @@ def build_figure(actors: list[str], window_size: int) -> uplt.Figure:
         fontsize=9,
         ncols=3,
     )
-    axs.format(abc="[A]", abcloc="ul", abcsize=10)
+    axs.format(abc="a", abcloc="ul", abcsize=10)
     return fig
 
 

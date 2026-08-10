@@ -113,7 +113,7 @@ def main() -> None:
     ylim = _centered_limits(y, y_med, pad_frac=0.18)
 
     ax.format(
-        abc="[A]",
+        abc="a",
         xlabel=r"Country-country overlap (Jaccard on $RPA>1$ topics)",
         ylabel=r"Best-match $\phi$ of non-overlapping support",
         xlim=xlim,

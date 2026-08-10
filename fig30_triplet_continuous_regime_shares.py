@@ -98,7 +98,7 @@ def main() -> None:
     colors = [color_map.get(code, "gray6") for code in triplets["regime_triplet"]]
 
     fig, axs = uplt.subplots(ncols=2, refwidth=3.5, refaspect=1.0, share=False)
-    axs.format(abc="[A]", grid=False)
+    axs.format(abc="a", grid=False)
 
     panels = [
         (

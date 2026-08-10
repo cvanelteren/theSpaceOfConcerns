@@ -80,7 +80,7 @@ def main() -> None:
     )
 
     fig, axs = uplt.subplots(ncols=2, share=False, refwidth=3.2, refaspect=1.0)
-    axs.format(abc="[A]", grid=False)
+    axs.format(abc="a", grid=False)
 
     ks = summary_df["k"].to_numpy(dtype=int)
     inertia = summary_df["weighted_inertia"].to_numpy(dtype=float)

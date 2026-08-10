@@ -198,7 +198,7 @@ def main() -> None:
         top="5em",
         wspace="3em",
     )
-    axs.format(abc="[A]", grid=False)
+    axs.format(abc="a", grid=False)
 
     collab_pair_df = pair_df[pair_df["collaboration_count"] > 0].copy()
     summary: dict[str, object] = {

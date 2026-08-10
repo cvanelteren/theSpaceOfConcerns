@@ -34,7 +34,7 @@ SLIDE_OUTPUTS = {
     },
     "one_stage": {
         "title": "Model 1: Direct Allocation",
-        "label": "Direct allocation",
+        "label": "Full reallocation",
         "stem": "fig04_direct_allocation_validation_slide",
     },
     "two_stage": {
@@ -59,7 +59,7 @@ STAGE_SEQUENCE = {
 MODEL_DISPLAY = {
     "one_stage": "Direct\nallocation",
     "two_stage": "Single\nsupport",
-    "split_support": "Retain-and-adopt",
+    "split_support": "Evolving portfolio",
 }
 
 MODEL_SHORT = {
@@ -72,7 +72,7 @@ MODEL_SHORT = {
 # The three allocation rules are a nominal variable that is *not* mode, so they
 # must stay clear of the reserved orange/blue/green triple (see figstyle). The
 # previous red/blue/green landed on top of it: the single-support blue was
-# dE=9.4 from Compliance and the retain-and-adopt green dE=16.1 from Strategy,
+# dE=9.4 from Compliance and the evolving-portfolio green dE=16.1 from Strategy,
 # against the dE<15 "reads alike" threshold figstyle defines. A reader arriving
 # from Figures 1-3, where blue means Compliance and green means Strategy, was
 # being invited to map rules onto modes.
@@ -99,7 +99,7 @@ SUPPORT_STAGE_X = 0.46
 ALLOCATE_STAGE_X = 0.61
 STAGE_BOX_HALF_WIDTHS = {
     "Choose support": 0.056,
-    "Retain + adopt": 0.062,
+    "Evolving portfolio": 0.062,
     "Allocate": 0.046,
 }
 ROW_Y = (0.74, 0.50, 0.26)
@@ -832,7 +832,7 @@ def draw_schematic_panel(
             "y": ROW_Y[0],
             "y_inset": ROW_INSET_Y[0],
             "color": COLORS["one_stage"],
-            "label": "Direct allocation",
+            "label": "Full reallocation",
             "stages": [("Allocate", DIRECT_STAGE_X), ("t+1", final_xc)],
             "portfolio": direct_portfolio,
             "added": {"Albizzi", "Barbadori", "Guadagni", "Salviati", "Strozzi"},
@@ -841,7 +841,7 @@ def draw_schematic_panel(
             "y": ROW_Y[1],
             "y_inset": ROW_INSET_Y[1],
             "color": COLORS["two_stage"],
-            "label": "Single support",
+            "label": "Fixed portfolio",
             "stages": [
                 ("Choose support", SUPPORT_STAGE_X),
                 ("Allocate", ALLOCATE_STAGE_X),
@@ -855,9 +855,9 @@ def draw_schematic_panel(
             "y": ROW_Y[2],
             "y_inset": ROW_INSET_Y[2],
             "color": COLORS["split_support"],
-            "label": "Retain-and-adopt",
+            "label": "Evolving portfolio",
             "stages": [
-                ("Retain + adopt", SUPPORT_STAGE_X),
+                ("Evolving portfolio", SUPPORT_STAGE_X),
                 ("Allocate", ALLOCATE_STAGE_X),
                 ("t+1", final_xc),
             ],
@@ -948,7 +948,7 @@ def build_figure() -> plt.Figure:
     ]
     fig, axs = uplt.subplots(layout, share=0, refnum=2, hratios=(1.05, 1.0))
     ax_a, ax_b, ax_c, ax_d = axs
-    axs.format(abc="[A]", abcloc="ul")
+    axs.format(abc="a", abcloc="ul")
 
     draw_schematic_panel(ax_a)
 
@@ -971,7 +971,7 @@ def build_figure() -> plt.Figure:
         lw=1.6,
         alpha=0.9,
         linestyle="--",
-        label="Direct allocation",
+        label="Full reallocation",
     )
     ax_b.fill_between(
         years,
@@ -1004,7 +1004,7 @@ def build_figure() -> plt.Figure:
         color=COLORS["split_support"],
         lw=2.0,
         alpha=0.95,
-        label="Retain-and-adopt",
+        label="Evolving portfolio",
     )
     ax_b.format(
         title="",
@@ -1035,7 +1035,7 @@ def build_figure() -> plt.Figure:
         lw=1.6,
         alpha=0.9,
         linestyle="--",
-        label="Direct allocation",
+        label="Full reallocation",
     )
     ax_c.fill_between(
         years,
@@ -1068,7 +1068,7 @@ def build_figure() -> plt.Figure:
         color=COLORS["split_support"],
         lw=2.0,
         alpha=0.95,
-        label="Retain-and-adopt",
+        label="Evolving portfolio",
     )
     ax_c.format(
         title="",

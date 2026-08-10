@@ -231,7 +231,7 @@ def main() -> None:
     xpos = np.arange(len(order))
 
     fig, axs = uplt.subplots(ncols=2, refwidth=3.25, refaspect=1.05, share=False)
-    axs.format(abc="[A]", grid=True)
+    axs.format(abc="a", grid=True)
 
     panel_specs = [
         (

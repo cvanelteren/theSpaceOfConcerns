@@ -556,7 +556,7 @@ layout = [
     [2, 3, 4],
 ]
 fig, ax = uplt.subplots(layout, share=0, refnum=1)
-ax.format(abc="[A]")
+ax.format(abc="a")
 
 ax[0].graph(
     g_country,

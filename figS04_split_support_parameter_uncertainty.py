@@ -43,7 +43,7 @@ def build_figure() -> plt.Figure:
     df = pd.read_csv(PARAM_PATH)
     stages = ["allocation", "entry", "retention"]
     fig, axs = uplt.subplots(ncols=3, sharex=0, sharey=0, refnum=2)
-    axs.format(abc="[A]")
+    axs.format(abc="a")
 
     for ax, stage in zip(axs, stages):
         stage_df = df[df["stage"] == stage].copy()

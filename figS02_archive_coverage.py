@@ -93,7 +93,7 @@ def build_figure():
         share=False,
     )
     fig.patch.set_facecolor("white")
-    axs.format(abc="[A]")
+    axs.format(abc="a")
 
     ax0 = axs[0]
     bars = ax0.barh(

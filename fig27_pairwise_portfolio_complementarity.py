@@ -149,7 +149,7 @@ def main() -> None:
     }
 
     fig, ax = uplt.subplots(refwidth=5.8, refaspect=0.78)
-    ax.format(abc="[A]", xlabel=r"Overlap (Jaccard on $RPA>1$ topics)", ylabel=r"Exclusive support proximity in $\phi$")
+    ax.format(abc="a", xlabel=r"Overlap (Jaccard on $RPA>1$ topics)", ylabel=r"Exclusive support proximity in $\phi$")
 
     for label, group in pair_df.groupby("pair_type", sort=False):
         ax.scatter(

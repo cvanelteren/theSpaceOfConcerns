@@ -3,9 +3,9 @@
   "median_overlap_jaccard_rpa": 0.21739130434782608,
   "median_exclusive_phi_proximity": 0.38083216671578746,
   "spearman_rho": -0.20620503554210043,
-  "spearman_p": 1.813707800401755e-07,
-  "pearson_r": -0.2100110408824264,
-  "pearson_p": 1.0609157778335195e-07,
+  "spearman_p": 1.8137078004017545e-07,
+  "pearson_r": -0.21001104088242642,
+  "pearson_p": 1.0609157778334909e-07,
   "share_low_overlap_high_phi": 0.29252782193958665,
   "quadrant_counts": {
     "low_overlap_high_phi": 184,
