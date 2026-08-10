@@ -413,8 +413,8 @@ def draw_rect_labels(ax, pos, display_of, *, frame_margin=1.9):
         else:
             sides[s].sort(key=lambda n: pos[n][1])
 
-    fs = 10.0
-    wrap_w = 42
+    fs = 12.0
+    wrap_w = 38
     span_x = rect[1] - rect[0]
     span_y = rect[3] - rect[2]
     label_gap = 1.6 * max(pad_x, pad_y)
@@ -961,7 +961,7 @@ def build_figure(*, all_labels: bool):
             [2, 2, 3, 3, 4, 4],
         ]
         fig, axs = uplt.subplots(
-            layout, figwidth=16.0, hratios=[4.1, 1.15], share=False
+            layout, figwidth=16.0, hratios=[4.1, 1.15], hspace=0, share=False
         )
     ax_map = axs[0]
     draw_silhouette(ax_map, land, proj_extent)
