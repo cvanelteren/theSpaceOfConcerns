@@ -327,7 +327,134 @@ def draw_base(ax, backbone, pos, *, edge_alpha=0.8, edge_lw=1.0, color="0.70"):
         )
 
 
-def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels):
+def _monotone_packed(desired, start, end, min_gap):
+    desired = np.asarray(desired, dtype=float)
+    n = desired.size
+    if n == 0:
+        return np.array([], dtype=float)
+    if n == 1:
+        return np.array([float(np.clip(desired[0], start, end))], dtype=float)
+    span = float(end - start)
+    eff_gap = min(float(min_gap), span / max(n - 1, 1))
+    pos = np.clip(desired.copy(), start, end)
+    pos[0] = max(pos[0], start)
+    for i in range(1, n):
+        pos[i] = max(pos[i], pos[i - 1] + eff_gap)
+    if pos[-1] > end:
+        pos[-1] = end
+        for i in range(n - 2, -1, -1):
+            pos[i] = min(pos[i], pos[i + 1] - eff_gap)
+        if pos[0] < start:
+            pos[0] = start
+            for i in range(1, n):
+                pos[i] = max(pos[i], pos[i - 1] + eff_gap)
+    return np.clip(pos, start, end)
+
+
+def _spaced_monotone(desired, start, end, min_gap, blend=0.62):
+    desired = np.asarray(desired, dtype=float)
+    n = desired.size
+    if n == 0:
+        return np.array([], dtype=float)
+    if n == 1:
+        return np.array([float(np.clip(desired[0], start, end))], dtype=float)
+    even = np.linspace(start, end, n)
+    return _monotone_packed(float(blend) * desired + (1.0 - blend) * even, start, end, min_gap)
+
+
+def draw_rect_labels(ax, pos, display_of, *, rect_margin=0.65):
+    """Side-label scaffold from the original Figure 1: all topic labels sit
+    around the four sides of a rectangle framing the map, each connected to
+    its node by a light line, instead of inside the topology."""
+    nodes = list(pos.keys())
+    xy = np.array([pos[n] for n in nodes], dtype=float)
+    x_lo, x_hi = float(xy[:, 0].min()), float(xy[:, 0].max())
+    y_lo, y_hi = float(xy[:, 1].min()), float(xy[:, 1].max())
+    pad = rect_margin
+    rect = (x_lo - pad, x_hi + pad, y_lo - pad, y_hi + pad)
+    cx, cy = 0.5 * (rect[0] + rect[1]), 0.5 * (rect[2] + rect[3])
+
+    sides: dict[str, list] = {"top": [], "right": [], "bottom": [], "left": []}
+    for n in nodes:
+        x, y = pos[n]
+        ang = float(np.degrees(np.arctan2(y - cy, x - cx))) % 360.0
+        if 45 <= ang < 135:
+            sides["top"].append(n)
+        elif 135 <= ang < 225:
+            sides["left"].append(n)
+        elif 225 <= ang < 315:
+            sides["bottom"].append(n)
+        else:
+            sides["right"].append(n)
+    for s in sides:
+        if s in ("top", "bottom"):
+            sides[s].sort(key=lambda n: pos[n][0])
+        else:
+            sides[s].sort(key=lambda n: pos[n][1])
+
+    ax.add_patch(
+        __import__("matplotlib.patches", fromlist=["Rectangle"]).Rectangle(
+            (rect[0], rect[2]), rect[1] - rect[0], rect[3] - rect[2],
+            fill=False, edgecolor="0.6", linewidth=1.0, zorder=0.5,
+        )
+    )
+
+    fs = 10.0
+    span_x = rect[1] - rect[0]
+    span_y = rect[3] - rect[2]
+    label_style = {
+        "top": dict(ha="center", va="bottom", rotation=90),
+        "bottom": dict(ha="center", va="top", rotation=90),
+        "left": dict(ha="right", va="center", rotation=0),
+        "right": dict(ha="left", va="center", rotation=0),
+    }
+
+    def _place(side, nodes_, anchor_start, anchor_end, min_gap, blend):
+        raw = np.array(
+            [pos[n][0] if side in ("top", "bottom") else pos[n][1] for n in nodes_]
+        )
+        posn = _spaced_monotone(raw, anchor_start, anchor_end, min_gap, blend=blend)
+        for n, pv in zip(nodes_, posn):
+            node_xy = np.asarray(pos[n], dtype=float)
+            if side == "top":
+                txy = (float(pv), rect[3])
+            elif side == "bottom":
+                txy = (float(pv), rect[2])
+            elif side == "left":
+                txy = (rect[0], float(pv))
+            else:
+                txy = (rect[1], float(pv))
+            name = display_of.get(normalize_topic_key(n), str(n))
+            name = "\n".join(textwrap.wrap(name, 22) or [name])
+            ax.annotate(
+                name,
+                xy=(float(node_xy[0]), float(node_xy[1])),
+                xytext=txy,
+                fontsize=fs,
+                color=TEXT,
+                ha=label_style[side]["ha"],
+                va=label_style[side]["va"],
+                rotation=label_style[side]["rotation"],
+                zorder=4,
+                arrowprops=dict(
+                    arrowstyle="-", color="0.55", lw=0.7,
+                    shrinkA=0, shrinkB=0, connectionstyle="arc3,rad=0.0",
+                ),
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.8, pad=0.5),
+            )
+
+    _place("top", sides["top"], rect[0] + 0.10 * span_x, rect[1] - 0.10 * span_x,
+           0.09 * span_x, blend=0.62)
+    _place("bottom", sides["bottom"], rect[0] + 0.10 * span_x,
+           rect[1] - 0.10 * span_x, 0.09 * span_x, blend=0.62)
+    _place("left", sides["left"], rect[2] + 0.10 * span_y, rect[3] - 0.10 * span_y,
+           0.14 * span_y, blend=0.30)
+    _place("right", sides["right"], rect[2] + 0.10 * span_y,
+           rect[3] - 0.10 * span_y, 0.14 * span_y, blend=0.30)
+
+
+def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels,
+                  rect_labels=True):
     nodes = list(backbone.nodes())
     deg = dict(g.degree(weight="weight"))
     dvals = np.array([deg.get(n, 0.0) for n in nodes], dtype=float)
@@ -410,6 +537,8 @@ def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels)
     line_h = 0.26 if all_labels else 0.30
     centroid = xy.mean(axis=0)
     for key in sorted(keys):
+        if not all_labels and not rect_labels:
+            continue
         node = next((n for n in pos if normalize_topic_key(n) == key), None)
         if node is None:
             continue
@@ -536,8 +665,13 @@ def build_figure(*, all_labels: bool):
         )
     ax_map = axs[0]
     draw_silhouette(ax_map, land, proj_extent)
-    draw_main_map(ax_map, backbone, mst, g, pos, mode_of, display_of,
-                  all_labels=all_labels)
+    if all_labels:
+        draw_main_map(ax_map, backbone, mst, g, pos, mode_of, display_of,
+                      all_labels=all_labels)
+    else:
+        draw_main_map(ax_map, backbone, mst, g, pos, mode_of, display_of,
+                      all_labels=all_labels, rect_labels=False)
+        draw_rect_labels(ax_map, pos, display_of)
 
     if not all_labels:
         rca_keyed = rca.copy()
