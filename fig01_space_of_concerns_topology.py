@@ -54,11 +54,16 @@ MAP_COAST_COLOR = "#9a9a9a"
 # Node fill for the space itself: a warm ink that reads as a single neutral
 # family alongside the white node halo and grey land silhouette.
 NODE_COLOR = "#2E3A4A"
+# Offset (data units) from a node centre to its disc rim, used to end the
+# side-label leaders on the inward-facing edge of the node instead of its
+# centre.
+NODE_RIM = 0.35
 MAP_SILHOUETTE_WIDTH = 7.0
 GRAPH_ROTATION_DEG = 45.0
 # >1 pushes the graph past the coast so the graph, not the map, sets the scale;
-# raised from 4.0 to give the larger node discs room to breathe in the centre.
-GRAPH_SPREAD = 4.8
+# the label frame is fixed in draw_rect_labels, so this controls how far the
+# network spreads to fill the space between the map and the side labels.
+GRAPH_SPREAD = 2.4
 
 LANDMARK_TOPICS = {
     "opening statements",
@@ -278,6 +283,9 @@ def fitted_layout(mst, g, mode_of=None):
     w = data_extent[1] - data_extent[0]
     h = data_extent[3] - data_extent[2]
     s = min(1.05 * w / np.ptp(xs), 1.05 * h / np.ptp(ys))
+    # Push the graph past the silhouette so the topology spreads across the
+    # frame and uses the white space between the map and the side labels.
+    s *= GRAPH_SPREAD
     pos = {
         n: (float((x - 0.5 * (xs.max() + xs.min())) * s),
             float((y - 0.5 * (ys.max() + ys.min())) * s))
@@ -370,24 +378,21 @@ def _spaced_monotone(desired, start, end, min_gap, blend=0.62):
     return _monotone_packed(float(blend) * desired + (1.0 - blend) * even, start, end, min_gap)
 
 
-def draw_rect_labels(ax, pos, display_of, *, frame_fill_x=0.80, frame_fill_y=0.68):
+def draw_rect_labels(ax, pos, display_of, *, frame_margin=1.9):
     """Side-label scaffold from the original Figure 1: all topic labels sit
     around the four sides of the map, each connected to its node by a light
     line, instead of inside the topology. The frame itself is not drawn; its
-    margins are set so the labels spread across most of the axes. The frame is
-    taller than wide because the left and right sides carry the most labels."""
+    margins are fixed (data units) so the labels stay put while the network
+    spreads to fill the space between them."""
     nodes = list(pos.keys())
     xy = np.array([pos[n] for n in nodes], dtype=float)
     x_lo, x_hi = float(xy[:, 0].min()), float(xy[:, 0].max())
     y_lo, y_hi = float(xy[:, 1].min()), float(xy[:, 1].max())
     cx_map, cy_map = 0.5 * (x_lo + x_hi), 0.5 * (y_lo + y_hi)
     node_w, node_h = (x_hi - x_lo), (y_hi - y_lo)
-    frame_w = node_w / frame_fill_x
-    frame_h = node_h / frame_fill_y
-    pad_x, pad_y = 0.5 * (frame_w - node_w), 0.5 * (frame_h - node_h)
-    pad = max(pad_x, pad_y)
-    rect = (cx_map - frame_w / 2, cx_map + frame_w / 2,
-            cy_map - frame_h / 2, cy_map + frame_h / 2)
+    pad_x, pad_y = frame_margin, frame_margin
+    pad = frame_margin
+    rect = (x_lo - pad_x, x_hi + pad_x, y_lo - pad_y, y_hi + pad_y)
     cx, cy = cx_map, cy_map
 
     sides: dict[str, list] = {"top": [], "right": [], "bottom": [], "left": []}
@@ -428,22 +433,27 @@ def draw_rect_labels(ax, pos, display_of, *, frame_fill_x=0.80, frame_fill_y=0.6
         posn = _spaced_monotone(raw, anchor_start, anchor_end, min_gap, blend=blend)
         for n, pv in zip(nodes_, posn):
             node_xy = np.asarray(pos[n], dtype=float)
-            # The label sits on its side of the frame; the leader runs from the
-            # label to its node, stopping just short of the disc (shrinkB) so it
-            # points at the right topic without covering it.
+            # The leader terminates on the rim of the disc that faces the label
+            # (the inward-facing side toward the map), not at the node centre,
+            # so it visibly points at the topic without a line running through
+            # the disc.
             if side == "top":
                 txy = (float(pv), rect[3] + label_gap)
+                rim = (node_xy[0], node_xy[1] + NODE_RIM)
             elif side == "bottom":
                 txy = (float(pv), rect[2] - label_gap)
+                rim = (node_xy[0], node_xy[1] - NODE_RIM)
             elif side == "left":
                 txy = (rect[0] - label_gap, float(pv))
+                rim = (node_xy[0] - NODE_RIM, node_xy[1])
             else:
                 txy = (rect[1] + label_gap, float(pv))
+                rim = (node_xy[0] + NODE_RIM, node_xy[1])
             name = display_of.get(normalize_topic_key(n), str(n))
             name = "\n".join(textwrap.wrap(name, wrap_w) or [name])
             ax.annotate(
                 name,
-                xy=(float(node_xy[0]), float(node_xy[1])),
+                xy=rim,
                 xytext=txy,
                 fontsize=fs,
                 color=TEXT,
@@ -453,7 +463,7 @@ def draw_rect_labels(ax, pos, display_of, *, frame_fill_x=0.80, frame_fill_y=0.6
                 zorder=4,
                 arrowprops=dict(
                     arrowstyle="-", color="0.45", lw=0.7,
-                    shrinkA=0, shrinkB=14, connectionstyle="arc3,rad=0.0",
+                    shrinkA=0, shrinkB=0, connectionstyle="arc3,rad=0.0",
                 ),
                 bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=0.3),
             )
@@ -694,6 +704,16 @@ def draw_region_hulls(ax, hulls, alpha_fill=0.12, alpha_edge=0.55):
 def draw_region_labels(ax, hulls, pos):
     from matplotlib.path import Path
 
+    # Manual nudges (data units) so each region label clears its own nodes and
+    # sits where the hull has room. Applied on top of the automatic in-hull
+    # placement.
+    NUDGES = {
+        "Environmental\nProtection": (0.55, -0.10),
+        "Drilling, Monitoring\n& CEP Oversight": (0.15, -0.70),
+        "Human Impact\n& Marine Stewardship": (-0.75, -0.65),
+        "Procedural core": (0.0, 0.45),
+    }
+
     for item in hulls:
         label = item["label"]
         color = item["color"]
@@ -721,6 +741,10 @@ def draw_region_labels(ax, hulls, pos):
         # toward the region centroid along the inward direction.
         dx, dy = anchor - np.array([lx, ly])
         lx, ly = lx + 0.45 * (cx - lx), ly + 0.45 * (cy - ly)
+        nudge = NUDGES.get(label)
+        if nudge is not None:
+            lx += float(nudge[0])
+            ly += float(nudge[1])
         ax.text(
             lx, ly, label,
             ha="center", va="center",
@@ -912,16 +936,11 @@ def draw_actor_card(ax, actor, pos, backbone, rca, mode_of):
         xlim=(xy[:, 0].min() - 1.2, xy[:, 0].max() + 1.2),
         ylim=(xy[:, 1].min() - 1.2, xy[:, 1].max() + 1.2),
         xticks=[], yticks=[], grid=False,
-        title=actor, titleloc="l", titlesize=figstyle.FS_LABEL,
+        title=actor, titleloc="l", titlesize=18.0,
         titleweight="bold", titlecolor=CARD_COLORS.get(actor, figstyle.PRIMARY),
     )
     for side in ("top", "bottom", "left", "right"):
         ax.spines[side].set_visible(False)
-    ax.text(
-        0.99, 1.02, f"{len(held)} specialized topics",
-        transform=ax.transAxes, ha="right", va="bottom",
-        fontsize=11.0, color="0.55",
-    )
 
 
 def build_figure(*, all_labels: bool):
