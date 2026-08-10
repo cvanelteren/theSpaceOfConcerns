@@ -408,11 +408,11 @@ def draw_rect_labels(ax, pos, display_of, *, frame_fill_x=0.80, frame_fill_y=0.6
         else:
             sides[s].sort(key=lambda n: pos[n][1])
 
-    fs = 8.5
-    wrap_w = 48
+    fs = 10.0
+    wrap_w = 42
     span_x = rect[1] - rect[0]
     span_y = rect[3] - rect[2]
-    label_gap = 0.25 * max(pad_x, pad_y)
+    label_gap = 1.6 * max(pad_x, pad_y)
     corner_in = 0.14
     label_style = {
         "top": dict(ha="center", va="bottom", rotation=90),
@@ -427,20 +427,26 @@ def draw_rect_labels(ax, pos, display_of, *, frame_fill_x=0.80, frame_fill_y=0.6
         )
         posn = _spaced_monotone(raw, anchor_start, anchor_end, min_gap, blend=blend)
         for n, pv in zip(nodes_, posn):
-            node_xy = np.asarray(pos[n], dtype=float)
+            # The label's position along the side already identifies its node,
+            # so the connector only needs to reach the frame edge -- short and
+            # perpendicular, never crossing into the map or over the nodes.
             if side == "top":
                 txy = (float(pv), rect[3] + label_gap)
+                frame_pt = (float(pv), rect[3])
             elif side == "bottom":
                 txy = (float(pv), rect[2] - label_gap)
+                frame_pt = (float(pv), rect[2])
             elif side == "left":
                 txy = (rect[0] - label_gap, float(pv))
+                frame_pt = (rect[0], float(pv))
             else:
                 txy = (rect[1] + label_gap, float(pv))
+                frame_pt = (rect[1], float(pv))
             name = display_of.get(normalize_topic_key(n), str(n))
             name = "\n".join(textwrap.wrap(name, wrap_w) or [name])
             ax.annotate(
                 name,
-                xy=(float(node_xy[0]), float(node_xy[1])),
+                xy=frame_pt,
                 xytext=txy,
                 fontsize=fs,
                 color=TEXT,
@@ -449,10 +455,10 @@ def draw_rect_labels(ax, pos, display_of, *, frame_fill_x=0.80, frame_fill_y=0.6
                 rotation=label_style[side]["rotation"],
                 zorder=4,
                 arrowprops=dict(
-                    arrowstyle="-", color="0.6", lw=0.6,
+                    arrowstyle="-", color="0.6", lw=0.7,
                     shrinkA=0, shrinkB=0, connectionstyle="arc3,rad=0.0",
                 ),
-                bbox=dict(facecolor="white", edgecolor="none", alpha=0.8, pad=0.25),
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=0.3),
             )
 
     _place("top", sides["top"], rect[0] + corner_in * span_x,
