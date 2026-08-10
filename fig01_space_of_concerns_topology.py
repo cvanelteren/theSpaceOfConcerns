@@ -10,9 +10,9 @@ multiples reuse the identical snapped layout to show where individual actors
 sit in the space (topics with RPA>1, sized by RPA, coloured by mode), so
 co-specialization and positioning are one visual statement.
 
-Annotation stays light: a few halo landmark labels, the three mode pills, and
-the grey italic structural callouts. No margin label columns, no leaders
-crossing the map, no inset.
+Annotation stays light: a few halo landmark labels and the grey italic
+structural callouts. No margin label columns, no leaders crossing the map,
+no inset, no mode pills.
 """
 
 from __future__ import annotations
@@ -349,44 +349,16 @@ def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels)
     xy = np.array([pos[n] for n in nodes], dtype=float)
     ax.scatter(
         xy[:, 0], xy[:, 1], s=sizes,
-        c=[figstyle.MODE_COLORS[mode_of.get(normalize_topic_key(n), 2)] for n in nodes],
-        alpha=0.92, edgecolor="white", linewidth=0.8, zorder=3,
-        absolute_size=True,
+        c=figstyle.PRIMARY, alpha=0.92, edgecolor="white", linewidth=0.8,
+        zorder=3, absolute_size=True,
     )
 
-    # The three pills form a triangle around the network, one per mode
-    # direction (coordination west, compliance north, strategy east), each
-    # placed just beyond the outermost node inside a cone around that
-    # direction -- outside the network by construction, so a pill can never
-    # land on a disc or edge.
-    center = xy.mean(axis=0)
-    ang_of = np.arctan2(xy[:, 1] - center[1], xy[:, 0] - center[0])
-    rad_of = np.hypot(xy[:, 0] - center[0], xy[:, 1] - center[1])
-    pill_centers = {}
-    hard: list[tuple[float, float, float, float]] = []
-    for mode in (1, 2, 3):
-        members = [
-            i for i, n in enumerate(nodes)
-            if mode_of.get(normalize_topic_key(n), 2) == mode
-        ]
-        if not members:
-            continue
-        mang = np.arctan2(
-            np.mean([np.sin(ang_of[i]) for i in members]),
-            np.mean([np.cos(ang_of[i]) for i in members]),
-        )
-        cone = np.abs(np.angle(np.exp(1j * (ang_of - mang)))) < np.radians(50)
-        r_out = float(rad_of[cone].max()) if cone.any() else float(rad_of.max())
-        margin = {1: 1.4, 2: 0.55, 3: 1.4}[mode]
-        pc = center + np.array([np.cos(mang), np.sin(mang)]) * (r_out + margin)
-        pill_centers[mode] = pc
-        w = 0.19 * len(figstyle.MODE_GLOSS[mode]) + 0.7
-        hard.append((pc[0] - w / 2, pc[0] + w / 2, pc[1] - 0.4, pc[1] + 0.4))
     # Obstacle boxes (data units) that labels must dodge. Hard obstacles are
-    # the mode pills, the structural callouts, and already-placed labels; node
-    # discs are soft obstacles, dodged in a first pass so that a label never
-    # rides on a foreign node when free space exists nearby, but tolerated in
-    # a second pass so labels stay close to their own node either way.
+    # the structural callouts and already-placed labels; node discs are soft
+    # obstacles, dodged in a first pass so that a label never rides on a
+    # foreign node when free space exists nearby, but tolerated in a second
+    # pass so labels stay close to their own node either way.
+    hard: list[tuple[float, float, float, float]] = []
 
     by_key = {normalize_topic_key(k): v for k, v in pos.items()}
     callouts = []
@@ -421,8 +393,8 @@ def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels)
 
     node_obs = [(x - 0.45, x + 0.45, y - 0.45, y + 0.45) for x, y in pos.values()]
 
-    pill_x = [b[k] for b in hard[:len(pill_centers)] for k in (0, 1)]
-    pill_y = [b[k] for b in hard[:len(pill_centers)] for k in (2, 3)]
+    pill_x = [b[k] for b in hard for k in (0, 1)]
+    pill_y = [b[k] for b in hard for k in (2, 3)]
     lo = np.array([min(xy[:, 0].min(), min(pill_x)), min(xy[:, 1].min(), min(pill_y))]) - 0.6
     hi = np.array([max(xy[:, 0].max(), max(pill_x)), max(xy[:, 1].max(), max(pill_y))]) + 0.6
 
@@ -493,16 +465,6 @@ def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels)
             zorder=3.3,
         )
 
-    for mode, (cx, cy) in pill_centers.items():
-        ax.text(
-            cx, cy, figstyle.MODE_GLOSS[mode],
-            ha="center", va="center",
-            fontsize=18.0, fontweight="bold",
-            color="white", zorder=3.4,
-            bbox=dict(boxstyle="round,pad=0.30", facecolor=figstyle.MODE_COLORS[mode],
-                      edgecolor="white", linewidth=1.0, alpha=0.9),
-        )
-
     ax.format(
         xlim=(xy[:, 0].min() - 1.2, xy[:, 0].max() + 1.2),
         ylim=(xy[:, 1].min() - 1.2, xy[:, 1].max() + 1.2),
@@ -531,7 +493,7 @@ def draw_actor_card(ax, actor, pos, backbone, rca, mode_of):
         hv = np.array([v for _, v in held], dtype=float)
         ax.scatter(
             hx[:, 0], hx[:, 1], s=32 + 90 * hv,
-            c=[figstyle.MODE_COLORS[mode_of.get(normalize_topic_key(n), 2)] for n, _ in held],
+            c=figstyle.PRIMARY,
             alpha=0.95, edgecolor="white", linewidth=0.8, zorder=3,
             absolute_size=True,
         )
