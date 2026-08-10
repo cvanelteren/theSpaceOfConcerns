@@ -51,6 +51,9 @@ MAP_LAT_MAX = -60.0
 MAP_MARGIN = 0.04
 MAP_LAND_COLOR = "#e9e9e9"
 MAP_COAST_COLOR = "#9a9a9a"
+# Node fill for the space itself: a warm ink that reads as a single neutral
+# family alongside the white node halo and grey land silhouette.
+NODE_COLOR = "#2E3A4A"
 MAP_SILHOUETTE_WIDTH = 7.0
 GRAPH_ROTATION_DEG = 45.0
 # >1 pushes the graph past the coast so the graph, not the map, sets the scale;
@@ -68,11 +71,16 @@ LANDMARK_TOPICS = {
 
 CARD_ACTORS = ["Australia", "Netherlands", "Ukraine"]
 
-STRUCTURE_CALLOUTS = [
-    ("procedural core", "Opening statements", -1.1, -1.0),
-    ("resource–science corridor", "Drilling", 0.4, 1.5),
-    ("tourism & visitation branch", "Tourism and NG Activities", 1.7, -1.1),
-]
+# Distinct accent per actor card so the three bottom panels read as separate
+# allocations rather than one neutral field. Picked to stay clear of the
+# neutral map nodes and of one another.
+CARD_COLORS = {
+    "Australia": "#C96A2B",
+    "Netherlands": "#2C6E9C",
+    "Ukraine": "#5B7F45",
+}
+
+STRUCTURE_CALLOUTS = []
 
 TEXT = figstyle.TEXT
 
@@ -362,17 +370,25 @@ def _spaced_monotone(desired, start, end, min_gap, blend=0.62):
     return _monotone_packed(float(blend) * desired + (1.0 - blend) * even, start, end, min_gap)
 
 
-def draw_rect_labels(ax, pos, display_of, *, rect_margin=0.65):
+def draw_rect_labels(ax, pos, display_of, *, frame_fill_x=0.80, frame_fill_y=0.68):
     """Side-label scaffold from the original Figure 1: all topic labels sit
-    around the four sides of a rectangle framing the map, each connected to
-    its node by a light line, instead of inside the topology."""
+    around the four sides of the map, each connected to its node by a light
+    line, instead of inside the topology. The frame itself is not drawn; its
+    margins are set so the labels spread across most of the axes. The frame is
+    taller than wide because the left and right sides carry the most labels."""
     nodes = list(pos.keys())
     xy = np.array([pos[n] for n in nodes], dtype=float)
     x_lo, x_hi = float(xy[:, 0].min()), float(xy[:, 0].max())
     y_lo, y_hi = float(xy[:, 1].min()), float(xy[:, 1].max())
-    pad = rect_margin
-    rect = (x_lo - pad, x_hi + pad, y_lo - pad, y_hi + pad)
-    cx, cy = 0.5 * (rect[0] + rect[1]), 0.5 * (rect[2] + rect[3])
+    cx_map, cy_map = 0.5 * (x_lo + x_hi), 0.5 * (y_lo + y_hi)
+    node_w, node_h = (x_hi - x_lo), (y_hi - y_lo)
+    frame_w = node_w / frame_fill_x
+    frame_h = node_h / frame_fill_y
+    pad_x, pad_y = 0.5 * (frame_w - node_w), 0.5 * (frame_h - node_h)
+    pad = max(pad_x, pad_y)
+    rect = (cx_map - frame_w / 2, cx_map + frame_w / 2,
+            cy_map - frame_h / 2, cy_map + frame_h / 2)
+    cx, cy = cx_map, cy_map
 
     sides: dict[str, list] = {"top": [], "right": [], "bottom": [], "left": []}
     for n in nodes:
@@ -392,16 +408,12 @@ def draw_rect_labels(ax, pos, display_of, *, rect_margin=0.65):
         else:
             sides[s].sort(key=lambda n: pos[n][1])
 
-    ax.add_patch(
-        __import__("matplotlib.patches", fromlist=["Rectangle"]).Rectangle(
-            (rect[0], rect[2]), rect[1] - rect[0], rect[3] - rect[2],
-            fill=False, edgecolor="0.6", linewidth=1.0, zorder=0.5,
-        )
-    )
-
-    fs = 10.0
+    fs = 8.5
+    wrap_w = 48
     span_x = rect[1] - rect[0]
     span_y = rect[3] - rect[2]
+    label_gap = 0.25 * max(pad_x, pad_y)
+    corner_in = 0.14
     label_style = {
         "top": dict(ha="center", va="bottom", rotation=90),
         "bottom": dict(ha="center", va="top", rotation=90),
@@ -417,15 +429,15 @@ def draw_rect_labels(ax, pos, display_of, *, rect_margin=0.65):
         for n, pv in zip(nodes_, posn):
             node_xy = np.asarray(pos[n], dtype=float)
             if side == "top":
-                txy = (float(pv), rect[3])
+                txy = (float(pv), rect[3] + label_gap)
             elif side == "bottom":
-                txy = (float(pv), rect[2])
+                txy = (float(pv), rect[2] - label_gap)
             elif side == "left":
-                txy = (rect[0], float(pv))
+                txy = (rect[0] - label_gap, float(pv))
             else:
-                txy = (rect[1], float(pv))
+                txy = (rect[1] + label_gap, float(pv))
             name = display_of.get(normalize_topic_key(n), str(n))
-            name = "\n".join(textwrap.wrap(name, 22) or [name])
+            name = "\n".join(textwrap.wrap(name, wrap_w) or [name])
             ax.annotate(
                 name,
                 xy=(float(node_xy[0]), float(node_xy[1])),
@@ -437,20 +449,286 @@ def draw_rect_labels(ax, pos, display_of, *, rect_margin=0.65):
                 rotation=label_style[side]["rotation"],
                 zorder=4,
                 arrowprops=dict(
-                    arrowstyle="-", color="0.55", lw=0.7,
+                    arrowstyle="-", color="0.6", lw=0.6,
                     shrinkA=0, shrinkB=0, connectionstyle="arc3,rad=0.0",
                 ),
-                bbox=dict(facecolor="white", edgecolor="none", alpha=0.8, pad=0.5),
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.8, pad=0.25),
             )
 
-    _place("top", sides["top"], rect[0] + 0.10 * span_x, rect[1] - 0.10 * span_x,
-           0.09 * span_x, blend=0.62)
-    _place("bottom", sides["bottom"], rect[0] + 0.10 * span_x,
-           rect[1] - 0.10 * span_x, 0.09 * span_x, blend=0.62)
-    _place("left", sides["left"], rect[2] + 0.10 * span_y, rect[3] - 0.10 * span_y,
-           0.14 * span_y, blend=0.30)
-    _place("right", sides["right"], rect[2] + 0.10 * span_y,
-           rect[3] - 0.10 * span_y, 0.14 * span_y, blend=0.30)
+    _place("top", sides["top"], rect[0] + corner_in * span_x,
+           rect[1] - corner_in * span_x, 0.25 * span_x, blend=0.30)
+    _place("bottom", sides["bottom"], rect[0] + corner_in * span_x,
+           rect[1] - corner_in * span_x, 0.25 * span_x, blend=0.30)
+    _place("left", sides["left"], rect[2] + corner_in * span_y,
+           rect[3] - corner_in * span_y, 0.18 * span_y, blend=0.30)
+    _place("right", sides["right"], rect[2] + corner_in * span_y,
+           rect[3] - corner_in * span_y, 0.18 * span_y, blend=0.30)
+
+    # Expand the axes so no label is clipped: measure the placed text boxes
+    # and grow the data limits to cover them (plus a small breathing margin).
+    ax.figure.canvas.draw()
+    renderer = ax.figure.canvas.get_renderer()
+    x0 = y0 = np.inf
+    x1 = y1 = -np.inf
+    for t in ax.texts:
+        bb = t.get_window_extent(renderer=renderer)
+        (bx0, by0) = ax.transData.inverted().transform((bb.x0, bb.y0))
+        (bx1, by1) = ax.transData.inverted().transform((bb.x1, bb.y1))
+        x0, y0 = min(x0, bx0), min(y0, by0)
+        x1, y1 = max(x1, bx1), max(y1, by1)
+    if np.isfinite(x0):
+        ax.set_xlim(x0 - 0.1, x1 + 0.1)
+        ax.set_ylim(y0 - 0.1, y1 + 0.1)
+
+
+# --- Structural-region hulls (the original spline outlines) ----------------
+# The three branches and the procedural core are the same regions the earlier
+# Figure 1 wrapped in smooth, semi-transparent hulls labelled with the region
+# name. Ported from the pre-August figure so the map again shows the core /
+# corridor / branch structure behind the dots.
+
+REGION_SPECS = [
+    dict(
+        label="Drilling, Monitoring\n& CEP Oversight",
+        color="#1f77b4",
+        nodes=[
+            "Drilling", "Sub glacial Lakes", "Operation of the CEP",
+            "Environmental Domains Analysis", "Marine Acoustics",
+            "State of the Antarctic Environment Report SAER",
+        ],
+    ),
+    dict(
+        label="Human Impact\n& Marine Stewardship",
+        color="#F57C00",
+        nodes=[
+            "Tourism and NG Activities", "Marine Protected Areas",
+            "Marine living resources", "Prevention of marine pollution",
+            "Site Guidelines for Visitors", "Mineral resources",
+            "Multiyear strategic workplan", "Human Footprint and wilderness values",
+            "Search and Rescue",
+        ],
+    ),
+    dict(
+        label="Environmental\nProtection",
+        color="#2E7D32",
+        nodes=[
+            "Nonnative Species and Quarantine", "Specially Protected Species",
+            "Climate Change", "CEP Strategy Discussions", "Biological Prospecting",
+            "Fauna and Flora General", "Repair and remediation of environmental damage",
+            "Operation of the Antarctic Treaty system Reports",
+            "Cooperation with Other Organisations",
+        ],
+    ),
+    dict(
+        label="Procedural core",
+        color="#6A1B9A",
+        nodes=[
+            "Operational issues", "Liability", "Educational issues",
+            "Exchange of Information", "Environmental Protection General",
+            "Opening statements", "International Polar Year",
+            "Waste management and disposal", "Inspections",
+            "Environmental Impact Assessment EIA Other EIA Matters",
+            "Science issues", "Management Plans", "Environmental Monitoring and Reporting",
+            "Safety and Operations in Antarctica", "Comprehensive Environmental Evaluations",
+            "Emergency report and contingency planning", "Institutional and legal matters",
+            "Area Protection and Management Plans General", "Historic Sites and Monuments",
+            "Operation of the Antarctic Treaty system General",
+            "Operation of the Antarctic Treaty system The Secretariat",
+        ],
+    ),
+]
+
+
+def _chaikin_closed(coords, refinements=2):
+    ring = np.asarray(coords, dtype=float)
+    if ring.shape[0] < 4:
+        return ring
+    if not np.allclose(ring[0], ring[-1]):
+        ring = np.vstack([ring, ring[0]])
+    for _ in range(max(0, int(refinements))):
+        out = []
+        for i in range(ring.shape[0] - 1):
+            p0, p1 = ring[i], ring[i + 1]
+            out.extend([0.75 * p0 + 0.25 * p1, 0.25 * p0 + 0.75 * p1])
+        ring = np.vstack(out + [out[0]])
+    return ring
+
+
+def _fit_closed_spline(coords, out_points=220, smooth_scale=0.004):
+    from scipy.interpolate import splprep, splev
+
+    ring = np.asarray(coords, dtype=float)
+    if ring.shape[0] < 4:
+        return ring
+    if np.allclose(ring[0], ring[-1]):
+        ring = ring[:-1]
+    if ring.shape[0] < 4:
+        return np.vstack([ring, ring[0]])
+    keep = [0]
+    for i in range(1, ring.shape[0]):
+        if np.hypot(*(ring[i] - ring[keep[-1]])) > 1e-8:
+            keep.append(i)
+    ring = ring[keep]
+    if ring.shape[0] < 4:
+        return np.vstack([ring, ring[0]])
+    diffs = np.diff(np.vstack([ring, ring[0]]), axis=0)
+    seg = np.hypot(diffs[:, 0], diffs[:, 1])
+    total = float(seg.sum())
+    if total <= 1e-10:
+        return np.vstack([ring, ring[0]])
+    u = np.hstack([[0.0], np.cumsum(seg[:-1]) / total])
+    try:
+        k = int(min(3, ring.shape[0] - 1))
+        s = float(smooth_scale) * ring.shape[0]
+        tck, _ = splprep([ring[:, 0], ring[:, 1]], u=u, s=s, per=True, k=k)
+        uu = np.linspace(0.0, 1.0, int(max(48, out_points)), endpoint=False)
+        x_new, y_new = splev(uu, tck)
+        smooth = np.column_stack([x_new, y_new])
+        return np.vstack([smooth, smooth[0]])
+    except Exception:
+        return _chaikin_closed(np.vstack([ring, ring[0]]), refinements=2)
+
+
+def _region_hulls(pos, backbone_nodes, padding=0.55):
+    from shapely.geometry import LineString, Point, Polygon
+    from scipy.spatial import ConvexHull
+
+    node_lookup = {normalize_topic_key(n): n for n in backbone_nodes}
+    regions = []
+    for spec in REGION_SPECS:
+        nodes = set()
+        for name in spec["nodes"]:
+            key = normalize_topic_key(name)
+            if key in node_lookup:
+                nodes.add(node_lookup[key])
+        if len(nodes) < 2:
+            continue
+        regions.append({"label": spec["label"], "color": spec["color"], "nodes": nodes})
+    assigned = set().union(*(r["nodes"] for r in regions))
+    leftovers = set(backbone_nodes) - assigned
+    if leftovers:
+        for r in regions:
+            if r["label"] == "Procedural core":
+                r["nodes"].update(leftovers)
+                break
+    regions = [r for r in regions if len(r["nodes"]) >= 2]
+
+    hulls = []
+    for cid, reg in enumerate(regions, start=1):
+        pts = np.array([pos[n] for n in reg["nodes"]], dtype=float)
+        if pts.shape[0] < 2:
+            continue
+        if pts.shape[0] == 2 or (
+            pts.shape[0] == 3 and np.linalg.matrix_rank(pts - pts.mean(axis=0)) < 2
+        ):
+            poly = LineString(pts).buffer(float(padding) * 0.9, cap_style=1, join_style=1)
+        else:
+            try:
+                hull = ConvexHull(pts)
+                coords = pts[hull.vertices]
+                coords = np.vstack([coords, coords[0]])
+                coords = _chaikin_closed(coords, refinements=2)
+                poly = Polygon(coords)
+            except Exception:
+                poly = LineString(pts).buffer(
+                    float(padding) * 0.9, cap_style=1, join_style=1
+                )
+        if not poly.is_valid:
+            poly = poly.buffer(0)
+        if poly.is_empty:
+            continue
+        poly = poly.buffer(float(padding), join_style=1).buffer(0)
+        if poly.is_empty:
+            continue
+        coords = np.asarray(poly.exterior.coords, dtype=float)
+        spline = _fit_closed_spline(coords, out_points=240, smooth_scale=0.003)
+        if spline.shape[0] >= 4:
+            spoly = Polygon(spline)
+            if not spoly.is_valid:
+                spoly = spoly.buffer(0)
+            if (not spoly.is_empty) and float(spoly.area) > 1e-8:
+                node_pts = np.array([pos[n] for n in reg["nodes"]], dtype=float)
+                max_miss = 0.0
+                for px, py in node_pts:
+                    p = Point(float(px), float(py))
+                    if not spoly.covers(p):
+                        max_miss = max(max_miss, float(spoly.distance(p)))
+                if max_miss > 0.0:
+                    spoly = spoly.buffer(
+                        max_miss + 0.22 * float(padding), join_style=1
+                    ).buffer(0)
+                outline = np.asarray(spoly.exterior.coords, dtype=float)
+            else:
+                outline = coords
+        else:
+            outline = coords
+        hulls.append(
+            {
+                "cluster_id": cid,
+                "nodes": reg["nodes"],
+                "label": reg["label"],
+                "color": reg["color"],
+                "outline_coords": outline,
+            }
+        )
+    return hulls
+
+
+def draw_region_hulls(ax, hulls, alpha_fill=0.12, alpha_edge=0.55):
+    for item in hulls:
+        x, y = item["outline_coords"][:, 0], item["outline_coords"][:, 1]
+        ax.fill(
+            x, y,
+            facecolor=item["color"], edgecolor=item["color"],
+            linewidth=1.2, alpha=alpha_fill, zorder=0.5,
+        )
+        ax.plot(
+            x, y, color=item["color"], lw=1.1, alpha=alpha_edge,
+            zorder=0.6, solid_capstyle="round",
+        )
+
+
+def draw_region_labels(ax, hulls, pos):
+    from matplotlib.path import Path
+
+    for item in hulls:
+        label = item["label"]
+        color = item["color"]
+        x, y = item["outline_coords"][:, 0], item["outline_coords"][:, 1]
+        cx, cy = float(np.mean(x)), float(np.mean(y))
+        # Annotate just inside the top of the hull so the region name reads
+        # attached to its spline.
+        idx = int(np.argmax(y))
+        anchor = np.array([x[idx], y[idx]])
+        tangent = np.array([x[idx] - x[idx - 1], y[idx] - y[(idx + 1) % (x.size - 1)]])
+        tnorm = float(np.hypot(tangent[0], tangent[1]))
+        if tnorm > 1e-9:
+            tangent = tangent / tnorm
+        angle = float(np.degrees(np.arctan2(tangent[1], tangent[0])))
+        if angle > 90.0:
+            angle -= 180.0
+        elif angle < -90.0:
+            angle += 180.0
+        radial = anchor - np.array([cx, cy])
+        rnorm = float(np.hypot(radial[0], radial[1]))
+        if rnorm > 1e-9:
+            radial = radial / rnorm
+        lx, ly = anchor + radial * 0.10
+        # Keep long branch labels roughly inside their hull: pull the text
+        # toward the region centroid along the inward direction.
+        dx, dy = anchor - np.array([lx, ly])
+        lx, ly = lx + 0.45 * (cx - lx), ly + 0.45 * (cy - ly)
+        ax.text(
+            lx, ly, label,
+            ha="center", va="center",
+            rotation=angle, rotation_mode="anchor",
+            fontsize=9.5, color="0.15",
+            bbox=dict(
+                boxstyle="round,pad=0.22", facecolor="white", edgecolor=color,
+                linewidth=0.8, alpha=1.0,
+            ),
+            zorder=2.2,
+        )
 
 
 def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels,
@@ -476,7 +754,7 @@ def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels,
     xy = np.array([pos[n] for n in nodes], dtype=float)
     ax.scatter(
         xy[:, 0], xy[:, 1], s=sizes,
-        c=figstyle.PRIMARY, alpha=0.92, edgecolor="white", linewidth=0.8,
+        c=NODE_COLOR, alpha=0.92, edgecolor="white", linewidth=0.8,
         zorder=3, absolute_size=True,
     )
 
@@ -520,8 +798,8 @@ def draw_main_map(ax, backbone, mst, g, pos, mode_of, display_of, *, all_labels,
 
     node_obs = [(x - 0.45, x + 0.45, y - 0.45, y + 0.45) for x, y in pos.values()]
 
-    pill_x = [b[k] for b in hard for k in (0, 1)]
-    pill_y = [b[k] for b in hard for k in (2, 3)]
+    pill_x = [b[k] for b in hard for k in (0, 1)] or [xy[:, 0].min()]
+    pill_y = [b[k] for b in hard for k in (2, 3)] or [xy[:, 1].min()]
     lo = np.array([min(xy[:, 0].min(), min(pill_x)), min(xy[:, 1].min(), min(pill_y))]) - 0.6
     hi = np.array([max(xy[:, 0].max(), max(pill_x)), max(xy[:, 1].max(), max(pill_y))]) + 0.6
 
@@ -622,7 +900,7 @@ def draw_actor_card(ax, actor, pos, backbone, rca, mode_of):
         hv = np.array([v for _, v in held], dtype=float)
         ax.scatter(
             hx[:, 0], hx[:, 1], s=32 + 90 * hv,
-            c=figstyle.PRIMARY,
+            c=CARD_COLORS.get(actor, NODE_COLOR),
             alpha=0.95, edgecolor="white", linewidth=0.8, zorder=3,
             absolute_size=True,
         )
@@ -632,7 +910,7 @@ def draw_actor_card(ax, actor, pos, backbone, rca, mode_of):
         ylim=(xy[:, 1].min() - 1.2, xy[:, 1].max() + 1.2),
         xticks=[], yticks=[], grid=False,
         title=actor, titleloc="l", titlesize=figstyle.FS_LABEL,
-        titleweight="bold", titlecolor=figstyle.PRIMARY,
+        titleweight="bold", titlecolor=CARD_COLORS.get(actor, figstyle.PRIMARY),
     )
     for side in ("top", "bottom", "left", "right"):
         ax.spines[side].set_visible(False)
@@ -654,21 +932,27 @@ def build_figure(*, all_labels: bool):
         # the appendix variant draws no actor cards, so it gets a single axes;
         # keeping the two-row layout left three empty framed panels below the map
         layout = [[0, 1, 1, 1, 1, 0]]
-        fig, axs = uplt.subplots(layout, figwidth=11.8, share=False)
+        fig, axs = uplt.subplots(layout, figwidth=16.0, share=False)
     else:
         layout = [
             [0, 1, 1, 1, 1, 0],
             [2, 2, 3, 3, 4, 4],
         ]
         fig, axs = uplt.subplots(
-            layout, figwidth=11.8, hratios=[4.1, 1.15], share=False
+            layout, figwidth=16.0, hratios=[4.1, 1.15], share=False
         )
     ax_map = axs[0]
     draw_silhouette(ax_map, land, proj_extent)
     if all_labels:
+        hulls = _region_hulls(pos, list(backbone.nodes()))
+        draw_region_hulls(ax_map, hulls)
+        draw_region_labels(ax_map, hulls, pos)
         draw_main_map(ax_map, backbone, mst, g, pos, mode_of, display_of,
                       all_labels=all_labels)
     else:
+        hulls = _region_hulls(pos, list(backbone.nodes()))
+        draw_region_hulls(ax_map, hulls)
+        draw_region_labels(ax_map, hulls, pos)
         draw_main_map(ax_map, backbone, mst, g, pos, mode_of, display_of,
                       all_labels=all_labels, rect_labels=False)
         draw_rect_labels(ax_map, pos, display_of)
