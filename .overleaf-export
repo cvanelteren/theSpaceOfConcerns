@@ -1,0 +1,8 @@
+# Manuscript sources
+theSpaceOfConcerns.tex
+theSpaceOfConcerns.bib
+theSpaceOfConcerns.bbl
+fun_article.cls
+
+# Compiled manuscript figures; analysis code remains only in the main repo
+figures/*.pdf
