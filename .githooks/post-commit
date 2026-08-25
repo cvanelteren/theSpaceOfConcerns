@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -u
+
+if [[ "${SKIP_OVERLEAF_SYNC:-0}" == "1" || "${OVERLEAF_SYNC_ACTIVE:-0}" == "1" ]]; then
+    exit 0
+fi
+
+root="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
+branch="$(git -C "$root" symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
+if [[ "$branch" != "main" ]]; then
+    exit 0
+fi
+
+if ! OVERLEAF_SYNC_ACTIVE=1 "$root/tools/push_overleaf.sh" --push-if-changed; then
+    cat >&2 <<EOF
+The local commit succeeded, but the automatic Overleaf sync failed.
+Retry with:
+  $root/tools/push_overleaf.sh --push
+Bypass automatic sync for one commit with:
+  SKIP_OVERLEAF_SYNC=1 git commit ...
+EOF
+fi
+
+exit 0
