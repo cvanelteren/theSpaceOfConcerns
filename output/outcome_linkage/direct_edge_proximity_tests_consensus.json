@@ -1,0 +1,57 @@
+[
+  {
+    "graph": "decision_map_verified.json",
+    "geometry": "cumulative_prior_meeting_space_consensus_labels",
+    "subset": "all_documented_edges",
+    "edges": 259,
+    "outcomes": 149,
+    "observed_mean_within_meeting_percentile": 0.6293979234090947,
+    "null_mean": 0.5027831195263597,
+    "null_sd": 0.020795476522850787,
+    "upper_tail_p": 0.0001
+  },
+  {
+    "graph": "decision_map_verified.json",
+    "geometry": "cumulative_prior_meeting_space_consensus_labels",
+    "subset": "adoption_or_contribution",
+    "edges": 125,
+    "outcomes": 89,
+    "observed_mean_within_meeting_percentile": 0.7075583726806468,
+    "null_mean": 0.5031003775234066,
+    "null_sd": 0.028565429475750373,
+    "upper_tail_p": 0.0001
+  },
+  {
+    "graph": "decision_map_verified.json",
+    "geometry": "cumulative_prior_meeting_space_consensus_labels",
+    "subset": "adoption_or_contribution_excluding_site_administration",
+    "edges": 66,
+    "outcomes": 45,
+    "observed_mean_within_meeting_percentile": 0.7548233628570017,
+    "null_mean": 0.5031729371964435,
+    "null_sd": 0.03886058278794064,
+    "upper_tail_p": 0.0001
+  },
+  {
+    "graph": "decision_map_verified.json",
+    "geometry": "cumulative_prior_meeting_space_consensus_labels",
+    "subset": "adoption_or_contribution_high_confidence_outcomes",
+    "edges": 110,
+    "outcomes": 80,
+    "observed_mean_within_meeting_percentile": 0.700522633669693,
+    "null_mean": 0.5033904391386759,
+    "null_sd": 0.03014944637486001,
+    "upper_tail_p": 0.0001
+  },
+  {
+    "graph": "decision_map_verified.json",
+    "geometry": "cumulative_prior_meeting_space_consensus_labels",
+    "subset": "proposal_or_discussion",
+    "edges": 134,
+    "outcomes": 81,
+    "observed_mean_within_meeting_percentile": 0.5410902378280413,
+    "null_mean": 0.5028305237644339,
+    "null_sd": 0.028716044466806794,
+    "upper_tail_p": 0.0928
+  }
+]

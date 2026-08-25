@@ -1,0 +1,24 @@
+{
+  "window_meetings": 5,
+  "rpa_threshold": 1.0,
+  "history_rule": "portfolio transitions with rolling-window end before output meeting",
+  "primary_prior_strength": 10.0,
+  "ridge_C": 1.0,
+  "n_transition_samples": 64559,
+  "n_transition_entries": 1724,
+  "n_output_meetings": 30,
+  "n_topics": 45,
+  "latest_meeting": 47,
+  "rate_forward_reverse_spearman": 0.054336481267431416,
+  "ridge_forward_reverse_spearman": 0.14368624104585626,
+  "median_pair_exposure_latest": 150.0,
+  "share_pair_exposure_below_10_latest": 0.007575757575757576,
+  "outputs": {
+    "map": "output/outcome_linkage/directed_transition_maps.csv",
+    "candidate_panel": "output/outcome_linkage/directed_transition_outcome_panel.csv",
+    "auc": "output/outcome_linkage/directed_transition_outcome_auc.csv",
+    "models": "output/outcome_linkage/directed_transition_outcome_models.csv",
+    "movement_validation": "output/outcome_linkage/directed_transition_movement_validation.csv",
+    "report": "output/outcome_linkage/directed_transition_outcome_report.md"
+  }
+}

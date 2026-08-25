@@ -1,0 +1,5 @@
+comparison,score,positives,off_label_only,excludes_site_administration,max_title_overlap,outcomes,auc,ci_low,ci_high,share_above_chance
+"Adoption-linked papers, full proximity",expected_proximity,adoption_linked,False,False,,89,0.6719025328899092,0.6078855095928773,0.7345902056346523,0.6741573033707865
+"Discussion-only papers, full proximity",expected_proximity,discussion_linked,False,False,,79,0.49807385601202725,0.4364380485995241,0.5605467600762636,0.5063291139240507
+"Adoption-linked papers, same-concern mass only",same_concern_mass,adoption_linked,False,False,,89,0.6149274970038258,0.5414454854064769,0.6869959289768894,0.5955056179775281
+"Adoption-linked papers, off-label geometry, exact matches removed",related_concern_proximity,adoption_linked,True,False,,66,0.5589031374762996,0.4886583118780167,0.6266402124976014,0.5757575757575758

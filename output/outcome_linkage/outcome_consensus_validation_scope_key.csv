@@ -1,0 +1,201 @@
+validation_id,outcome_id,in_stratified_120,in_headline_lineage_95
+OV001,Decision 1 (1997),False,True
+OV002,Decision 3 (1998),True,False
+OV003,Decision 1 (1999),False,True
+OV004,Decision 1 (2000),True,False
+OV005,Decision 2 (2001),False,True
+OV006,Decision 3 (2001),False,True
+OV007,Decision 1 (2002),False,True
+OV008,Decision 2 (2002),True,False
+OV009,Decision 4 (2003),False,True
+OV010,Decision 1 (2004),False,True
+OV011,Decision 1 (2005),True,False
+OV012,Decision 10 (2005),False,True
+OV013,Decision 2 (2005),True,False
+OV014,Decision 3 (2005),True,False
+OV015,Decision 4 (2005),False,True
+OV016,Decision 5 (2005),False,True
+OV017,Decision 9 (2005),True,False
+OV018,Decision 3 (2007),False,True
+OV019,Decision 1 (2008),True,True
+OV020,Decision 2 (2008),True,False
+OV021,Decision 4 (2008),False,True
+OV022,Decision 5 (2008),True,False
+OV023,Decision 5 (2009),True,False
+OV024,Decision 6 (2009),True,False
+OV025,Decision 1 (2010),True,False
+OV026,Decision 2 (2010),True,True
+OV027,Decision 3 (2010),True,False
+OV028,Decision 4 (2010),True,False
+OV029,Decision 5 (2010),True,False
+OV030,Decision 1 (2011),True,True
+OV031,Decision 2 (2011),False,True
+OV032,Decision 4 (2012),True,False
+OV033,Decision 1 (2013),True,False
+OV034,Decision 3 (2013),True,False
+OV035,Decision 4 (2013),False,True
+OV036,Decision 3 (2014),True,False
+OV037,Decision 1 (2015),True,False
+OV038,Decision 4 (2015),False,True
+OV039,Decision 2 (2017),True,False
+OV040,Decision 4 (2017),False,True
+OV041,Decision 1 (2018),True,False
+OV042,Decision 1 (2019),True,False
+OV043,Decision 3 (2019),True,False
+OV044,Decision 6 (2019),True,False
+OV045,Decision 1 (2021),False,True
+OV046,Decision 5 (2021),True,False
+OV047,Decision 2 (2022),True,False
+OV048,Decision 5 (2023),False,True
+OV049,Measure 1 (1997),True,True
+OV050,Measure 2 (1997),False,True
+OV051,Measure 3 (1997),False,True
+OV052,Measure 5 (1997),False,True
+OV053,Measure 1 (1998),False,True
+OV054,Measure 2 (1998),False,True
+OV055,Measure 1 (2001),False,True
+OV056,Measure 2 (2001),False,True
+OV057,Measure 3 (2001),True,False
+OV058,Measure 1 (2004),True,False
+OV059,Measure 1 (2006),True,False
+OV060,Measure 1 (2007),True,False
+OV061,Measure 3 (2007),True,False
+OV062,Measure 13 (2008),True,False
+OV063,Measure 13 (2009),True,False
+OV064,Measure 14 (2009),True,False
+OV065,Measure 15 (2009),True,False
+OV066,Measure 16 (2009),False,True
+OV067,Measure 11 (2010),True,False
+OV068,Measure 15 (2010),False,True
+OV069,Measure 2 (2010),True,False
+OV070,Measure 4 (2010),False,True
+OV071,Measure 6 (2010),False,True
+OV072,Measure 3 (2011),True,False
+OV073,Measure 1 (2012),True,False
+OV074,Measure 11 (2012),True,False
+OV075,Measure 1 (2013),True,True
+OV076,Measure 13 (2013),True,False
+OV077,Measure 15 (2013),False,True
+OV078,Measure 4 (2013),False,True
+OV079,Measure 6 (2013),False,True
+OV080,Measure 9 (2013),False,True
+OV081,Measure 14 (2014),False,True
+OV082,Measure 9 (2014),True,False
+OV083,Measure 1 (2015),False,True
+OV084,Measure 18 (2015),True,False
+OV085,Measure 4 (2015),False,True
+OV086,Measure 1 (2016),True,False
+OV087,Measure 2 (2016),True,False
+OV088,Measure 4 (2017),False,True
+OV089,Measure 1 (2018),True,True
+OV090,Measure 4 (2018),False,True
+OV091,Measure 5 (2018),True,False
+OV092,Measure 7 (2019),True,False
+OV093,Measure 17 (2021),True,False
+OV094,Measure 4 (2021),True,False
+OV095,Measure 7 (2021),True,False
+OV096,Measure 1 (2022),False,True
+OV097,Measure 12 (2022),False,True
+OV098,Measure 15 (2022),False,True
+OV099,Measure 18 (2022),False,True
+OV100,Measure 6 (2022),False,True
+OV101,Measure 8 (2023),True,False
+OV102,Measure 12 (2024),True,False
+OV103,Measure 4 (2024),True,False
+OV104,Measure 1 (2025),False,True
+OV105,Recommendation 3-3,True,False
+OV106,Recommendation 4-16,True,False
+OV107,Recommendation 4-22,True,False
+OV108,Recommendation 5-3,True,False
+OV109,Recommendation 6-11,True,False
+OV110,Recommendation 6-12,True,False
+OV111,Recommendation 7-3,True,False
+OV112,Recommendation 7-8,True,False
+OV113,Recommendation 7-9,True,False
+OV114,Recommendation 8-3,True,False
+OV115,Recommendation 8-5,True,False
+OV116,Recommendation 8-7,True,False
+OV117,Recommendation 9-4,True,False
+OV118,Recommendation 10-7,True,False
+OV119,Recommendation 13-11,True,False
+OV120,Recommendation 13-13,True,False
+OV121,Recommendation 14-1,True,False
+OV122,Recommendation 14-2,True,False
+OV123,Recommendation 14-4,True,False
+OV124,Recommendation 14-5,True,False
+OV125,Recommendation 14-6,True,False
+OV126,Recommendation 14-9,True,False
+OV127,Recommendation 15-19,True,False
+OV128,Recommendation 15-2,True,False
+OV129,Recommendation 15-22,True,False
+OV130,Recommendation 15-3,True,False
+OV131,Recommendation 15-7,True,False
+OV132,Recommendation 16-1,False,True
+OV133,Recommendation 16-10,True,False
+OV134,Recommendation 16-5,True,False
+OV135,Recommendation 17-4,True,False
+OV136,Resolution 2 (1995),False,True
+OV137,Resolution 5 (1995),True,False
+OV138,Resolution 8 (1995),True,False
+OV139,Resolution 2 (1996),True,False
+OV140,Resolution 3 (1996),False,True
+OV141,Resolution 5 (1996),True,True
+OV142,Resolution 1 (1997),False,True
+OV143,Resolution 1 (1998),False,True
+OV144,Resolution 2 (1998),True,True
+OV145,Resolution 4 (1998),False,True
+OV146,Resolution 2 (1999),False,True
+OV147,Resolution 6 (1999),True,False
+OV148,Resolution 2 (2001),True,False
+OV149,Resolution 4 (2001),True,True
+OV150,Resolution 5 (2001),True,True
+OV151,Resolution 6 (2001),False,True
+OV152,Resolution 3 (2002),True,False
+OV153,Resolution 4 (2003),True,False
+OV154,Resolution 5 (2004),False,True
+OV155,Resolution 6 (2005),True,True
+OV156,Resolution 7 (2005),True,False
+OV157,Resolution 5 (2007),False,True
+OV158,Resolution 1 (2008),True,True
+OV159,Resolution 3 (2008),True,False
+OV160,Resolution 5 (2008),False,True
+OV161,Resolution 6 (2008),False,True
+OV162,Resolution 5 (2009),False,True
+OV163,Resolution 7 (2009),True,False
+OV164,Resolution 2 (2010),True,False
+OV165,Resolution 7 (2010),False,True
+OV166,Resolution 2 (2011),True,False
+OV167,Resolution 2 (2012),False,True
+OV168,Resolution 3 (2012),False,True
+OV169,Resolution 3 (2013),False,True
+OV170,Resolution 6 (2013),True,True
+OV171,Resolution 2 (2014),False,True
+OV172,Resolution 3 (2015),False,True
+OV173,Resolution 5 (2015),True,False
+OV174,Resolution 6 (2015),True,True
+OV175,Resolution 1 (2016),False,True
+OV176,Resolution 2 (2016),False,True
+OV177,Resolution 4 (2016),False,True
+OV178,Resolution 5 (2016),False,True
+OV179,Resolution 3 (2017),True,False
+OV180,Resolution 4 (2017),True,True
+OV181,Resolution 5 (2017),False,True
+OV182,Resolution 6 (2017),False,True
+OV183,Resolution 1 (2018),False,True
+OV184,Resolution 4 (2018),False,True
+OV185,Resolution 5 (2018),True,False
+OV186,Resolution 2 (2019),False,True
+OV187,Resolution 3 (2019),False,True
+OV188,Resolution 4 (2019),True,False
+OV189,Resolution 6 (2019),True,False
+OV190,Resolution 7 (2019),True,False
+OV191,Resolution 1 (2021),True,False
+OV192,Resolution 5 (2021),False,True
+OV193,Resolution 6 (2021),True,False
+OV194,Resolution 4 (2022),False,True
+OV195,Resolution 2 (2023),False,True
+OV196,Resolution 4 (2023),True,False
+OV197,Resolution 2 (2024),False,True
+OV198,Resolution 1 (2025),False,True
+OV199,Resolution 2 (2025),False,True
+OV200,Resolution 4 (2025),False,True

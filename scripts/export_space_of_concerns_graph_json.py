@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from utils import compute_product_space, get_rca, load_data
+import figstyle
 
 DATA_PATHS = [
     Path("antarctic-database-go/data/processed/document-summary.parquet"),
@@ -27,16 +28,7 @@ DATA_PATHS = [
 
 OUT_PATH = Path("d3_space_of_concerns/data/space_of_concerns_graph.json")
 
-THEME_COLORS = {
-    "Environmental Protection": "#2E7D32",
-    "Marine & Wildlife": "#0277BD",
-    "Operations & Safety": "#F57C00",
-    "Governance & Legal": "#6A1B9A",
-    "Science & Research": "#C62828",
-    "Tourism & Human Activity": "#D84315",
-    "Infrastructure & Planning": "#5D4037",
-    "Resource Extraction": "#00838F",
-}
+THEME_COLORS = dict(figstyle.THEME_COLORS)
 
 TOPIC_TO_THEME = {
     "State of the Antarctic Environment Report SAER": "Environmental Protection",

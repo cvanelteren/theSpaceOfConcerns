@@ -53,6 +53,61 @@ antarctic-database-go/
 # every path referenced by a figure script.
 output/*
 !output/.gitkeep
+# Final formal-output validation is an irreplaceable audit record rather than
+# a regenerable intermediate. Keep the protocol, blind decisions, consensus,
+# and compact result tables visible to version control.
+!output/outcome_linkage/
+output/outcome_linkage/*
+!output/outcome_linkage/outcome_consensus_coding_protocol.md
+!output/outcome_linkage/outcome_consensus_*coder*.csv
+!output/outcome_linkage/outcome_consensus_*adjudicated.csv
+!output/outcome_linkage/outcome_consensus_*audit.csv
+!output/outcome_linkage/outcome_consensus_*arbitration.csv
+!output/outcome_linkage/outcome_consensus_*final.csv
+!output/outcome_linkage/outcome_consensus_*agreement*.csv
+!output/outcome_linkage/outcome_consensus_*blind.csv
+!output/outcome_linkage/outcome_consensus_*unanimous.csv
+!output/outcome_linkage/outcome_consensus_*provisional.csv
+!output/outcome_linkage/outcome_consensus_*revisions*.csv
+!output/outcome_linkage/outcome_consensus_*scope_key.csv
+!output/outcome_linkage/outcome_consensus_validation_*.csv
+!output/outcome_linkage/outcome_consensus_validation_summary.json
+!output/outcome_linkage/outcome_consensus_model_comparison.csv
+!output/outcome_linkage/outcome_consensus_sampling_strata.csv
+!output/outcome_linkage/outcome_consensus_design_weighted_metrics.csv
+!output/outcome_linkage/outcome_consensus_headline_sensitivity.json
+!output/outcome_linkage/outcome_consensus_verification_report.json
+!output/outcome_linkage/outcome_consensus_verification_report.md
+!output/outcome_linkage/space_discrimination_auc_consensus.csv
+!output/outcome_linkage/space_discrimination_race_consensus.csv
+!output/outcome_linkage/actor_output_conversion_model_consensus.csv
+!output/outcome_linkage/space_discrimination_auc_classifier_matched.csv
+!output/outcome_linkage/space_discrimination_race_classifier_matched.csv
+!output/outcome_linkage/actor_output_conversion_model_classifier_matched.csv
+!output/outcome_linkage/direct_edge_proximity_tests_consensus.json
+!output/outcome_linkage/outcome_signal_to_noise_summary.csv
+!output/outcome_linkage/outcome_signal_to_noise_models.csv
+!output/outcome_linkage/outcome_signal_to_noise_summary.json
+!output/outcome_linkage/outcome_signal_to_noise_report.md
+!output/outcome_linkage/outcome_topic_centrality_models.csv
+!output/outcome_linkage/outcome_topic_centrality_correlations.csv
+!output/outcome_linkage/outcome_topic_centrality_cv.csv
+!output/outcome_linkage/outcome_topic_centrality_summary.json
+!output/outcome_linkage/outcome_topic_centrality_report.md
+!output/outcome_linkage/topic_output_centrality_models.csv
+!output/outcome_linkage/topic_output_centrality_cv.csv
+!output/outcome_linkage/directed_transition_outcome_auc.csv
+!output/outcome_linkage/directed_transition_outcome_models.csv
+!output/outcome_linkage/directed_transition_movement_validation.csv
+!output/outcome_linkage/directed_transition_diagnostics.json
+!output/outcome_linkage/directed_transition_outcome_report.md
+!output/outcome_linkage/attention_accumulation_models.csv
+!output/outcome_linkage/attention_accumulation_event_trajectories.csv
+!output/outcome_linkage/attention_accumulation_diagnostics.json
+!output/outcome_linkage/attention_accumulation_report.md
+!output/outcome_linkage/attention_recurrence_models.csv
+!output/outcome_linkage/attention_recurrence_diagnostics.json
+!output/outcome_linkage/attention_recurrence_report.md
 
 # Regenerable image formats. The manuscript \includegraphics only PDFs (32 of
 # them); the PNG/SVG siblings are build products of the same scripts. Note that

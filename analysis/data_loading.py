@@ -7,6 +7,7 @@ from utils import load_data
 
 
 DEFAULT_DATA_PATHS = (
+    Path("data/document-summary-multilabel.parquet"),
     Path("antarctic-database-go/data/processed/document-summary.parquet"),
     Path("antarctic-treaty-system-ATCM-papers/dataset-DATESTAMP-HASH/summary.parquet"),
     Path("Parsayarya-Scraping-ATCM-d1329da/ATCMDataset.csv"),
@@ -29,4 +30,3 @@ def load_submitted_with_fallback(paths: Sequence[Path] = DEFAULT_DATA_PATHS) -> 
     if last_error is not None:
         raise RuntimeError("Could not load submitted dataframe from fallback paths.") from last_error
     raise FileNotFoundError("No known data path was found.")
-

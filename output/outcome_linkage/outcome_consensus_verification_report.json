@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "final consensus has 246 unique titles",
+      "passed": true,
+      "detail": "rows=246, validation_ids=246, outcomes=246"
+    },
+    {
+      "check": "all final labels resolved or explicitly abstained",
+      "passed": true,
+      "detail": "abstentions=16"
+    },
+    {
+      "check": "first-pass consensus count",
+      "passed": true,
+      "detail": "unanimous=232/246"
+    },
+    {
+      "check": "all non-unanimous titles adjudicated",
+      "passed": true,
+      "detail": "expected 14 argument-first adjudications"
+    },
+    {
+      "check": "all independent challenges arbitrated",
+      "passed": true,
+      "detail": "expected 4 anonymous final arbitrations"
+    },
+    {
+      "check": "complete lineage set represented",
+      "passed": true,
+      "detail": "lineage titles=157; codable=149"
+    },
+    {
+      "check": "sensitivity summary uses lineage scope",
+      "passed": true,
+      "detail": "coded=149; abstained=8"
+    },
+    {
+      "check": "population-weighted classifier agreement recomputed from title rows",
+      "passed": true,
+      "detail": "coverage=0.915856; exact|assignable=0.778772; top3|assignable=0.947078"
+    },
+    {
+      "check": "consensus paper-link estimates recomputed from candidate rows",
+      "passed": true,
+      "detail": "adoption=0.660178 (n=89); discussion=0.501821 (n=79); off-label=0.535316 (n=64)"
+    },
+    {
+      "check": "matched classifier comparison uses the consensus-codable output set",
+      "passed": true,
+      "detail": "same output IDs; adoption=0.671903; discussion=0.498074"
+    },
+    {
+      "check": "title-overlap-adjusted nearby effect",
+      "passed": true,
+      "detail": "OR=1.260296, CI=[0.981113,1.618921]"
+    },
+    {
+      "check": "prior-portfolio result remains null",
+      "passed": true,
+      "detail": "OR=1.037881, CI=[0.794814,1.355283], outputs=89"
+    },
+    {
+      "check": "proximity direction is native phi and higher scores rank as closer",
+      "passed": true,
+      "detail": "row-level calculation awards a win when linked-paper phi exceeds unlinked-paper phi; distance is 1-phi"
+    },
+    {
+      "check": "manuscript reports model-consensus results",
+      "passed": true,
+      "detail": "all required result strings present"
+    }
+  ]
+}

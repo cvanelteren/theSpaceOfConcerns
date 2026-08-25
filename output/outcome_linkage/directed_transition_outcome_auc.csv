@@ -1,0 +1,15 @@
+comparison,score,positive,paper_type_matched,estimate,ci_low,ci_high,n_outputs,scale
+symmetric_full,expected_proximity,adoption_linked,False,0.6601784743578887,0.6006174301216486,0.721147471882349,89,probability linked paper ranks above control paper
+exact_only,same_concern_mass,adoption_linked,False,0.6387607723572429,0.5948212542896525,0.6875060289595509,89,probability linked paper ranks above control paper
+symmetric_nearby_only,related_concern_proximity,adoption_linked,False,0.5353162578027875,0.46699953017519324,0.6019665327587252,64,probability linked paper ranks above control paper
+directed_rate_full,directed_rate_full,adoption_linked,False,0.6561369059568335,0.5906876443707252,0.7199882192292433,89,probability linked paper ranks above control paper
+directed_rate_nearby_only,directed_rate_rank_10,adoption_linked,False,0.5361805541838578,0.4670567654359362,0.6043050220096596,64,probability linked paper ranks above control paper
+directed_ridge_full,directed_ridge_full,adoption_linked,False,0.6163920245726321,0.5473754899796711,0.684135279792463,89,probability linked paper ranks above control paper
+directed_ridge_nearby_only,directed_ridge_rank,adoption_linked,False,0.47475686225151936,0.40620847655922215,0.5445090953168963,64,probability linked paper ranks above control paper
+discussion_directed_rate_full,directed_rate_full,discussion_linked,False,0.5356696337041952,0.47916919755573545,0.5916063516743079,79,probability linked paper ranks above control paper
+directed_rate_nearby_prior_5,directed_rate_rank_5,adoption_linked,False,0.5362592451221684,0.46727107358257414,0.6054601357561344,64,probability linked paper ranks above control paper
+directed_rate_nearby_prior_10,directed_rate_rank_10,adoption_linked,False,0.5361805541838578,0.4670567654359362,0.6043050220096596,64,probability linked paper ranks above control paper
+directed_rate_nearby_prior_20,directed_rate_rank_20,adoption_linked,False,0.5297311299260459,0.4617300927432819,0.5963337591840375,64,probability linked paper ranks above control paper
+symmetric_nearby_type_matched,related_concern_proximity,adoption_linked,True,0.5009302699075576,0.43236366430251216,0.5673862406102573,64,probability linked paper ranks above control paper
+directed_rate_nearby_type_matched,directed_rate_rank_10,adoption_linked,True,0.4944194385309695,0.4269524315775344,0.5617107994062308,64,probability linked paper ranks above control paper
+directed_ridge_nearby_type_matched,directed_ridge_rank,adoption_linked,True,0.4452235420944347,0.3748497059691866,0.5161889727938695,64,probability linked paper ranks above control paper

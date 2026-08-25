@@ -1,0 +1,13 @@
+term,comparison,baseline_rank_correlation,augmented_rank_correlation,delta_rank_correlation,delta_ci_low,delta_ci_high,n_test_meetings,training_rule
+betweenness_percentile,betweenness_percentile,0.44379528985507244,0.4402750329380764,-0.003520256916996048,-0.008395092226613953,0.0015233860342555973,32,all earlier meetings; five consecutive future blocks
+closeness_percentile,closeness_percentile,0.44379528985507244,0.4378499670619236,-0.005945322793148882,-0.010734004446640352,-0.0013792819499341342,32,all earlier meetings; five consecutive future blocks
+clustering_percentile,clustering_percentile,0.44379528985507244,0.43804347826086953,-0.005751811594202901,-0.013283823287220017,0.0019231719367588912,32,all earlier meetings; five consecutive future blocks
+degree_percentile,degree_percentile,0.44379528985507244,0.44167078392621867,-0.0021245059288537566,-0.005389595685112017,0.001358695652173902,32,all earlier meetings; five consecutive future blocks
+eigenvector_percentile,eigenvector_percentile,0.44379528985507244,0.44103260869565214,-0.002762681159420294,-0.005360877799736505,-0.00016458745059290492,32,all earlier meetings; five consecutive future blocks
+holder_breadth_percentile,holder_breadth_percentile,0.2883730126862415,0.29184295225173884,0.0034699395654974,-0.007311684936724589,0.014215595815988233,32,all earlier meetings; five consecutive future blocks
+pagerank_percentile,pagerank_percentile,0.44379528985507244,0.44027503293807635,-0.003520256916996053,-0.007287549407114616,0.00047811676548089265,32,all earlier meetings; five consecutive future blocks
+strength_percentile,strength_percentile,0.44379528985507244,0.4392251317523056,-0.004570158102766793,-0.007748991271409747,-0.0011980195981554581,32,all earlier meetings; five consecutive future blocks
+topic_complexity_percentile,topic_complexity_given_holder_breadth,0.3041898288602016,0.30453603508024996,0.00034620622004828585,-0.0044681382121926376,0.005275005512269973,32,all earlier meetings; five consecutive future blocks
+topic_complexity_percentile,topic_complexity_given_ubiquity,0.32375164131792783,0.3241115960638074,0.0003599547458796235,-0.005581710558816046,0.006590250151832115,32,all earlier meetings; five consecutive future blocks
+topic_complexity_percentile,topic_complexity_percentile,0.29621409042534996,0.30787277023965304,0.01165867981430306,0.004702682648620279,0.018847717837185307,32,all earlier meetings; five consecutive future blocks
+ubiquity_percentile,ubiquity_percentile,0.44379528985507244,0.4597496706192358,0.015954380764163376,0.008158967391304369,0.024460741930171257,32,all earlier meetings; five consecutive future blocks

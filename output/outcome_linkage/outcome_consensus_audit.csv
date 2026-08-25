@@ -1,0 +1,201 @@
+validation_id,outcome_id,audit_decision,auditor_primary,auditor_secondary,auditor_confidence,audit_rationale
+OV001,Decision 1 (1997),accept,Operation of the Antarctic Treaty system General,,high,The title explicitly concerns general rules of procedure.
+OV002,Decision 3 (1998),accept,Liability,,high,Liability is the sole explicit subject.
+OV003,Decision 1 (1999),accept,Operation of the CEP,,medium,The title identifies a CEP administrative website.
+OV004,Decision 1 (2000),accept,Operation of the CEP,,high,CEP observer administration is explicit.
+OV005,Decision 2 (2001),accept,Operation of the CEP,,high,The title governs handling of CEP documents as CEP administration.
+OV006,Decision 3 (2001),accept,Liability,,high,The title explicitly concerns a liability annex.
+OV007,Decision 1 (2002),accept,Area Protection and Management Plans General,,high,The naming and numbering system is protected-area framework policy.
+OV008,Decision 2 (2002),accept,Operation of the Antarctic Treaty system General,,high,The Treaty emblem is general Treaty-system machinery.
+OV009,Decision 4 (2003),accept,Operation of the Antarctic Treaty system The Secretariat,,high,Secretariat financial regulations are explicit.
+OV010,Decision 1 (2004),accept,Operation of the Antarctic Treaty system General,,medium,Unqualified rules of procedure fit general Treaty-system procedure.
+OV011,Decision 1 (2005),accept,Liability,,high,The title explicitly names liability from environmental emergencies.
+OV012,Decision 10 (2005),accept,Exchange of Information,,high,An electronic information exchange system is explicit.
+OV013,Decision 2 (2005),accept,Operation of the Antarctic Treaty system General,,high,Recognition as a Consultative Party is Treaty-system status.
+OV014,Decision 3 (2005),accept,Operation of the Antarctic Treaty system General,,medium,Unqualified amendments to rules of procedure fit general Treaty procedure.
+OV015,Decision 4 (2005),accept,Operation of the Antarctic Treaty system General,,high,Consultative Party status is explicit Treaty-system status.
+OV016,Decision 5 (2005),accept,Operation of the Antarctic Treaty system The Secretariat,,medium,Appointment of an external auditor fits Secretariat audit administration.
+OV017,Decision 9 (2005),accept,Marine Protected Areas,Cooperation with Other Organisations,high,Marine protected areas govern the title and CCAMLR is materially involved.
+OV018,Decision 3 (2007),accept,Operation of the Antarctic Treaty system The Secretariat,,medium,Appointment of an external auditor fits Secretariat audit administration.
+OV019,Decision 1 (2008),accept,Operation of the Antarctic Treaty system General,,medium,An unqualified procedural amendment fits general Treaty procedure.
+OV020,Decision 2 (2008),accept,Operation of the Antarctic Treaty system The Secretariat,,high,The title explicitly covers Secretariat reporting and budgeting.
+OV021,Decision 4 (2008),accept,Operation of the Antarctic Treaty system The Secretariat,,high,Selecting the Secretariat Executive Secretary is Secretariat administration.
+OV022,Decision 5 (2008),accept,Exchange of Information,,high,The electronic information exchange system is explicit.
+OV023,Decision 5 (2009),accept,INSUFFICIENT_TITLE,,high,A page reference does not identify any governed concern.
+OV024,Decision 6 (2009),accept,INSUFFICIENT_TITLE,,high,A page reference does not identify any governed concern.
+OV025,Decision 1 (2010),accept,Operation of the Antarctic Treaty system General,,high,Compiling key Treaty-system documents is general system machinery.
+OV026,Decision 2 (2010),accept,Operation of the Antarctic Treaty system The Secretariat,,high,Secretariat reports programmes and budgets are explicit.
+OV027,Decision 3 (2010),accept,INSUFFICIENT_TITLE,,high,The title is visibly truncated before identifying the committee.
+OV028,Decision 4 (2010),accept,Liability,,high,Liability from environmental emergencies is explicit.
+OV029,Decision 5 (2010),accept,Cooperation with Other Organisations,,high,Letters to named external organizations are the explicit action.
+OV030,Decision 1 (2011),accept,Operation of the Antarctic Treaty system General,,high,Determining which measures remain current is Treaty-system housekeeping.
+OV031,Decision 2 (2011),accept,Operation of the Antarctic Treaty system General,Operation of the CEP,high,The title materially covers both ATCM and CEP procedural rules.
+OV032,Decision 4 (2012),accept,Exchange of Information,,high,The title explicitly governs continued use and refinement of EIES.
+OV033,Decision 1 (2013),accept,Operation of the Antarctic Treaty system General,,high,Recognition as a Consultative Party is Treaty-system status.
+OV034,Decision 3 (2013),accept,Operation of the Antarctic Treaty system The Secretariat,,high,The title explicitly concerns the Secretariat external auditor.
+OV035,Decision 4 (2013),accept,Operation of the Antarctic Treaty system The Secretariat,,high,Secretariat reporting programming and budgeting are explicit.
+OV036,Decision 3 (2014),accept,Multiyear strategic workplan,,high,The ATCM multi-year strategic work plan is explicit.
+OV037,Decision 1 (2015),accept,Operation of the Antarctic Treaty system General,,high,ATCM committee and working-group procedure is general meeting machinery.
+OV038,Decision 4 (2015),accept,Multiyear strategic workplan,,high,The ATCM multi-year strategic work plan is explicit.
+OV039,Decision 2 (2017),accept,Operation of the Antarctic Treaty system General,,high,Consultative Party status procedure is general Treaty-system machinery.
+OV040,Decision 4 (2017),accept,Operation of the Antarctic Treaty system General,,high,Appointment of ATCM working-group chairs is general meeting procedure.
+OV041,Decision 1 (2018),accept,Operation of the Antarctic Treaty system The Secretariat,,high,Secretariat reporting programming and budgeting are explicit.
+OV042,Decision 1 (2019),accept,Historic Sites and Monuments,,high,The title explicitly governs the Historic Sites and Monuments list.
+OV043,Decision 3 (2019),accept,Operation of the Antarctic Treaty system The Secretariat,,high,Secretariat reporting programming and budgeting are explicit.
+OV044,Decision 6 (2019),accept,Tourism and NG_Activities,,high,The manual explicitly governs tourism and non-governmental activities.
+OV045,Decision 1 (2021),accept,Historic Sites and Monuments,,high,The reformatted list is explicitly the Historic Sites and Monuments list.
+OV046,Decision 5 (2021),accept,Multiyear strategic workplan,,high,The ATCM multi-year strategic work plan is explicit.
+OV047,Decision 2 (2022),accept,Liability,,high,Liability from environmental emergencies is explicit.
+OV048,Decision 5 (2023),accept,Multiyear strategic workplan,,high,The ATCM multi-year strategic work plan is explicit.
+OV049,Measure 1 (1997),accept,Management Plans,,high,A revised protected-area management plan is explicit.
+OV050,Measure 2 (1997),accept,Management Plans,,high,The title explicitly concerns protected-area management plans.
+OV051,Measure 3 (1997),accept,Management Plans,,high,Revised descriptions and management plans for designated sites are explicit.
+OV052,Measure 5 (1997),accept,Historic Sites and Monuments,,high,A numbered amendment for a named historic hut is explicit.
+OV053,Measure 1 (1998),accept,Management Plans,,high,The title explicitly concerns protected-area management plans.
+OV054,Measure 2 (1998),accept,Historic Sites and Monuments,,high,A specific Historic Sites and Monuments location is named.
+OV055,Measure 1 (2001),accept,Historic Sites and Monuments,,high,Historic Sites and Monuments is the explicit subject.
+OV056,Measure 2 (2001),accept,Historic Sites and Monuments,,high,Historic Sites and Monuments is the explicit subject.
+OV057,Measure 3 (2001),accept,Management Plans,,high,Extending expiry dates for designated scientific-interest sites is site management.
+OV058,Measure 1 (2004),accept,Management Plans,,high,ASMA designations and management plans are explicit.
+OV059,Measure 1 (2006),accept,Management Plans,,high,ASPA designations and management plans are explicit.
+OV060,Measure 1 (2007),accept,Management Plans,,high,Revised ASPA management plans are explicit.
+OV061,Measure 3 (2007),accept,Historic Sites and Monuments,,high,The title identifies a specific Antarctic historic monument.
+OV062,Measure 13 (2008),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV063,Measure 13 (2009),accept,Management Plans,,high,Designation of a numbered individual ASPA is explicit.
+OV064,Measure 14 (2009),accept,Historic Sites and Monuments,,high,Two numbered historic sites are explicit.
+OV065,Measure 15 (2009),accept,Tourism and NG_Activities,,high,Landing passengers from passenger vessels is visitor activity.
+OV066,Measure 16 (2009),accept,Environmental Protection General,,medium,The title supports only a broad Environment Protocol amendment.
+OV067,Measure 11 (2010),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV068,Measure 15 (2010),accept,Historic Sites and Monuments,,high,The title explicitly identifies an Antarctic historic plaque.
+OV069,Measure 2 (2010),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV070,Measure 4 (2010),accept,INSUFFICIENT_TITLE,,high,The named ASPA title is visibly truncated before stating an action.
+OV071,Measure 6 (2010),accept,INSUFFICIENT_TITLE,,high,The named ASPA title is visibly truncated before stating an action.
+OV072,Measure 3 (2011),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV073,Measure 1 (2012),accept,INSUFFICIENT_TITLE,,high,The title ends after a named ASPA and omits the action.
+OV074,Measure 11 (2012),accept,INSUFFICIENT_TITLE,,high,The title is visibly incomplete after its category heading.
+OV075,Measure 1 (2013),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV076,Measure 13 (2013),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV077,Measure 15 (2013),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV078,Measure 4 (2013),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV079,Measure 6 (2013),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV080,Measure 9 (2013),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV081,Measure 14 (2014),accept,Management Plans,,high,A numbered ASMA revised management plan is explicit.
+OV082,Measure 9 (2014),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV083,Measure 1 (2015),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV084,Measure 18 (2015),accept,Management Plans,,high,A numbered ASMA revised management plan is explicit.
+OV085,Measure 4 (2015),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV086,Measure 1 (2016),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV087,Measure 2 (2016),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV088,Measure 4 (2017),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV089,Measure 1 (2018),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV090,Measure 4 (2018),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV091,Measure 5 (2018),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV092,Measure 7 (2019),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV093,Measure 17 (2021),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV094,Measure 4 (2021),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV095,Measure 7 (2021),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV096,Measure 1 (2022),accept,Management Plans,,high,A numbered ASMA revised management plan is explicit.
+OV097,Measure 12 (2022),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV098,Measure 15 (2022),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV099,Measure 18 (2022),accept,Historic Sites and Monuments,,high,The title explicitly updates numbered Historic Sites and Monuments records.
+OV100,Measure 6 (2022),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV101,Measure 8 (2023),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV102,Measure 12 (2024),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV103,Measure 4 (2024),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV104,Measure 1 (2025),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OV105,Recommendation 3-3,accept,Operational issues,,high,Logistics is the explicit operational subject.
+OV106,Recommendation 4-16,accept,Specially Protected Species,,high,Fur seals are explicitly presented as a specially protected species.
+OV107,Recommendation 4-22,accept,Marine living resources,,high,Pelagic sealing is an explicit marine living-resource use.
+OV108,Recommendation 5-3,accept,Science issues,,high,Southern Ocean research is explicit general science.
+OV109,Recommendation 6-11,accept,OUTSIDE_TAXONOMY,,medium,New islands is identifiable but no fixed concern covers island discovery or status.
+OV110,Recommendation 6-12,accept,Exchange of Information,,high,Information exchange on rocket launches is explicit.
+OV111,Recommendation 7-3,accept,Area Protection and Management Plans General,,high,Sites of Special Scientific Interest are presented system-wide.
+OV112,Recommendation 7-8,accept,Operational issues,,high,Transport cooperation is an explicit operational concern.
+OV113,Recommendation 7-9,accept,Historic Sites and Monuments,,high,Historic monuments are the explicit subject.
+OV114,Recommendation 8-3,accept,Area Protection and Management Plans General,,high,Sites of Special Scientific Interest are presented system-wide.
+OV115,Recommendation 8-5,accept,Area Protection and Management Plans General,,high,Entry permits are general rules for protected areas.
+OV116,Recommendation 8-7,accept,Operational issues,,high,Transport cooperation is an explicit operational concern.
+OV117,Recommendation 9-4,accept,Operational issues,,high,Transport cooperation is an explicit operational concern.
+OV118,Recommendation 10-7,accept,Prevention of marine pollution,,high,Oil contamination of the marine environment is explicit.
+OV119,Recommendation 13-11,accept,INSUFFICIENT_TITLE,,high,The title is visibly incomplete after a generic area heading.
+OV120,Recommendation 13-13,accept,INSUFFICIENT_TITLE,,high,The named protected-area title is visibly truncated before an action.
+OV121,Recommendation 14-1,accept,Operation of the Antarctic Treaty system General,,high,Public availability of ATCM documents is general Treaty-system document machinery.
+OV122,Recommendation 14-2,accept,Environmental Impact Assessment EIA Other EIA Matters,,high,Environmental impact assessment is explicitly named.
+OV123,Recommendation 14-4,accept,Area Protection and Management Plans General,Science issues,high,General SSSI designation guidance governs the title and research facilitation is material.
+OV124,Recommendation 14-5,accept,INSUFFICIENT_TITLE,,high,The title is visibly truncated before identifying the scientific-interest subject.
+OV125,Recommendation 14-6,accept,Area Protection and Management Plans General,,medium,Marine scientific-interest sites are protected-area designations rather than MPAs.
+OV126,Recommendation 14-9,accept,Safety and Operations in Antarctica,,high,Air safety in Antarctica is explicit.
+OV127,Recommendation 15-19,accept,Operational issues,,medium,Hydrographic charting is operational mapping for Antarctic waters.
+OV128,Recommendation 15-2,accept,Environmental Protection General,,high,The title calls for comprehensive environmental protection without a narrower mechanism.
+OV129,Recommendation 15-22,accept,Operation of the Antarctic Treaty system Reports,,high,Reports on operation of the Treaty System are explicit.
+OV130,Recommendation 15-3,accept,Waste management and disposal,,high,Waste disposal is the explicit human-impact concern.
+OV131,Recommendation 15-7,accept,Management Plans,,high,Redesignation of an individually numbered protected area is site management.
+OV132,Recommendation 16-1,accept,Exchange of Information,,high,Exchange of information is explicit.
+OV133,Recommendation 16-10,accept,Area Protection and Management Plans General,,high,A review of the protected-area system is system-wide policy.
+OV134,Recommendation 16-5,accept,Area Protection and Management Plans General,,high,The protected-area system is the explicit general subject.
+OV135,Recommendation 17-4,accept,Climate Change,Science issues,medium,Global-change research is the governing topic and scientific research is material.
+OV136,Resolution 2 (1995),accept,Waste management and disposal,,high,Nuclear-waste disposal is the explicit concern.
+OV137,Resolution 5 (1995),accept,Inspections,,high,Inspection checklists are explicit.
+OV138,Resolution 8 (1995),accept,Historic Sites and Monuments,,high,The guidelines explicitly govern proposals for historic sites and monuments.
+OV139,Resolution 2 (1996),accept,Educational issues,,high,Educational and cultural activities are explicit.
+OV140,Resolution 3 (1996),accept,Management Plans,,high,Expiry extensions for individually enumerated sites are site management.
+OV141,Resolution 5 (1996),accept,Area Protection and Management Plans General,,high,An ASPA numbering system is protected-area framework policy.
+OV142,Resolution 1 (1997),accept,Emergency report and contingency planning,,high,Contingency plans are explicit.
+OV143,Resolution 1 (1998),accept,Area Protection and Management Plans General,,high,The protected-areas annex is a system-wide framework subject.
+OV144,Resolution 2 (1998),accept,Area Protection and Management Plans General,,high,A general guide for preparing ASPA management plans is system-wide guidance.
+OV145,Resolution 4 (1998),accept,Exchange of Information,,low,Antarctic data management is closest to information exchange and formatting.
+OV146,Resolution 2 (1999),accept,Specially Protected Species,,high,A list of specially protected species is explicit.
+OV147,Resolution 6 (1999),accept,Environmental Protection General,,high,General adherence to the Environment Protocol is explicit.
+OV148,Resolution 2 (2001),accept,Cooperation with Other Organisations,Marine living resources,high,Supporting CCAMLR is primary and measures against illegal fishing are material.
+OV149,Resolution 4 (2001),accept,Historic Sites and Monuments,,high,Historic Sites and Monuments is the explicit subject.
+OV150,Resolution 5 (2001),accept,Historic Sites and Monuments,,high,Guidelines for historic remains fall squarely within the historic category.
+OV151,Resolution 6 (2001),accept,INSUFFICIENT_TITLE,,high,Article references alone do not state the governed concern.
+OV152,Resolution 3 (2002),accept,Cooperation with Other Organisations,,high,Support for CCAMLR is explicit inter-organizational cooperation.
+OV153,Resolution 4 (2003),accept,Fauna and Flora_General,,high,Conservation of named bird taxa is explicit without special-species status.
+OV154,Resolution 5 (2004),accept,Exchange of Information,,high,Improving exchange of information is explicit.
+OV155,Resolution 6 (2005),accept,Site Guidelines for Visitors,,high,A post-visit site report form is expressly within visitor-site reporting.
+OV156,Resolution 7 (2005),accept,Biological Prospecting,,high,Biological prospecting is explicit.
+OV157,Resolution 5 (2007),accept,Tourism and NG_Activities,,high,Antarctic tourism is the explicit general subject.
+OV158,Resolution 1 (2008),accept,Area Protection and Management Plans General,Historic Sites and Monuments,high,The proposal guide spans protected-area framework rules and historic sites.
+OV159,Resolution 3 (2008),accept,Environmental Domains Analysis,,high,Environmental domains and a geographic framework are explicit.
+OV160,Resolution 5 (2008),accept,Safety and Operations in Antarctica,Environmental Protection General,high,Safe navigation governs the charting initiative and environmental protection is material.
+OV161,Resolution 6 (2008),accept,Search and Rescue,,high,Search-and-rescue coordination centres and regions are explicit.
+OV162,Resolution 5 (2009),accept,Fauna and Flora_General,,high,Protection of a named bird species is explicit without special-species status.
+OV163,Resolution 7 (2009),accept,Tourism and NG_Activities,,high,General principles of Antarctic tourism are explicit.
+OV164,Resolution 2 (2010),accept,International Polar Year,,high,The title explicitly concerns an IPY contribution and legacy.
+OV165,Resolution 7 (2010),accept,INSUFFICIENT_TITLE,,high,The passenger-vessel title is visibly truncated before its destination or purpose.
+OV166,Resolution 2 (2011),accept,Area Protection and Management Plans General,,high,A general guide for preparing ASPA management plans is system-wide guidance.
+OV167,Resolution 2 (2012),accept,Institutional and legal matters,,high,Exercise of jurisdiction is an explicit legal question.
+OV168,Resolution 3 (2012),accept,INSUFFICIENT_TITLE,,medium,Generic cooperation in Antarctica does not identify an organization or substantive concern.
+OV169,Resolution 3 (2013),accept,Site Guidelines for Visitors,,high,Site Guidelines for Visitors is explicit.
+OV170,Resolution 6 (2013),accept,Biological Prospecting,,high,Biological prospecting is explicit.
+OV171,Resolution 2 (2014),accept,Exchange of Information,Science issues,high,Environmental information exchange governs the title and scientific domains are material.
+OV172,Resolution 3 (2015),accept,Exchange of Information,,medium,An Antarctic environments portal is an information dissemination mechanism.
+OV173,Resolution 5 (2015),accept,Fauna and Flora_General,,high,Important Bird Areas explicitly concern fauna conservation.
+OV174,Resolution 6 (2015),accept,Climate Change,,high,Antarctica's role in global climate processes is explicit.
+OV175,Resolution 1 (2016),accept,Environmental Impact Assessment EIA Other EIA Matters,,high,Revised environmental impact assessment guidelines are explicit.
+OV176,Resolution 2 (2016),accept,Site Guidelines for Visitors,,high,Site Guidelines for Visitors is explicit.
+OV177,Resolution 4 (2016),accept,Nonnative Species and Quarantine,,high,A non-native species manual is explicit.
+OV178,Resolution 5 (2016),accept,Area Protection and Management Plans General,Historic Sites and Monuments,high,The proposal guide spans protected-area framework rules and historic sites.
+OV179,Resolution 3 (2017),accept,Environmental Domains Analysis,,high,Conservation biogeographic regions are a spatial environmental framework.
+OV180,Resolution 4 (2017),revise,INSUFFICIENT_TITLE,,medium,Green Expedition is undefined and does not state a codable governing concern.
+OV181,Resolution 5 (2017),accept,Marine Protected Areas,,high,Establishment of a named marine protected area is explicit.
+OV182,Resolution 6 (2017),accept,Emergency report and contingency planning,Tourism and NG_Activities,high,Contingency planning governs the guidelines and tourist activities are material.
+OV183,Resolution 1 (2018),accept,Site Guidelines for Visitors,,high,Site Guidelines for Visitors is explicit.
+OV184,Resolution 4 (2018),accept,Environmental Protection General,Operational issues,high,Environmental rules govern RPAS operation and the operational domain is material.
+OV185,Resolution 5 (2018),accept,Environmental Protection General,Science issues,high,Environmental conduct governs terrestrial scientific field research.
+OV186,Resolution 2 (2019),accept,Site Guidelines for Visitors,,high,Site Guidelines for Visitors is explicit.
+OV187,Resolution 3 (2019),accept,Site Guidelines for Visitors,,high,A checklist for assessing visitor site guidelines is explicit.
+OV188,Resolution 4 (2019),accept,Fauna and Flora_General,Science issues,high,Animal use is the governing conservation concern and scientific purpose is material.
+OV189,Resolution 6 (2019),accept,Operational issues,,medium,Hydrographic mapping is operational charting of Antarctic waters.
+OV190,Resolution 7 (2019),accept,Cooperation with Other Organisations,Science issues,high,The title centres SCAR support for the Treaty System through scientific advice.
+OV191,Resolution 1 (2021),accept,Environmental Protection General,Science issues,high,Environmental conduct governs geoscience field research.
+OV192,Resolution 5 (2021),accept,Safety and Operations in Antarctica,,medium,COVID-19 in Antarctica most directly raises safe operational activity.
+OV193,Resolution 6 (2021),accept,Safety and Operations in Antarctica,,high,Air safety in Antarctica is explicit.
+OV194,Resolution 4 (2022),accept,Climate Change,,high,Antarctic climate change governs the synopsis and recommendations.
+OV195,Resolution 2 (2023),accept,Climate Change,,high,Climate change is explicit in the declaration title.
+OV196,Resolution 4 (2023),accept,Tourism and NG_Activities,,high,Tourist and non-governmental activities are the explicit subject.
+OV197,Resolution 2 (2024),accept,Tourism and NG_Activities,,high,General visitor guidelines govern tourism rather than a particular visitor site.
+OV198,Resolution 1 (2025),accept,Site Guidelines for Visitors,,high,Site Guidelines for Visitors is explicit.
+OV199,Resolution 2 (2025),accept,Area Protection and Management Plans General,,high,Implementation guidance for the ASPA framework is system-wide area policy.
+OV200,Resolution 4 (2025),accept,Tourism and NG_Activities,,high,General visitor guidelines govern tourism rather than a particular visitor site.

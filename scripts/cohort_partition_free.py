@@ -25,6 +25,7 @@ from utils import (_split_multi_value, generate_interaction_matrix, get_rca,
 WIN, N_BOOTC, MIN_TOPICS = 15, 400, 3
 COH = [(1961, 1980, "1961-80"), (1981, 1990, "1981-90"),
        (1991, 2010, "1991-2010")]
+OUT_CSV = _Path("output/cohort_partition_free.csv")
 
 
 def main():
@@ -101,6 +102,7 @@ def main():
 
     print("\npartition-free cohort uptake vs opportunity (ratio of cohort mean "
           "to availability mean):")
+    summary_rows = []
     for _lo, _hi, nm in COH:
         lo_r = np.percentile([b[nm]["reach"] for b in BS], 2.5)
         hi_r = np.percentile([b[nm]["reach"] for b in BS], 97.5)
@@ -108,6 +110,30 @@ def main():
         hi_b = np.percentile([b[nm]["breadth"] for b in BS], 97.5)
         print(f"  {nm}: reach {obs[nm]['reach']:.3f} [{lo_r:.3f},{hi_r:.3f}] | "
               f"breadth {obs[nm]['breadth']:.3f} [{lo_b:.3f},{hi_b:.3f}]")
+        summary_rows.extend(
+            [
+                {
+                    "cohort": nm,
+                    "measure": "existing_holder_portfolio_size",
+                    "ratio": obs[nm]["breadth"],
+                    "ci_low": lo_b,
+                    "ci_high": hi_b,
+                    "n_actors": ncoh[nm],
+                },
+                {
+                    "cohort": nm,
+                    "measure": "nearby_concerns",
+                    "ratio": obs[nm]["reach"],
+                    "ci_low": lo_r,
+                    "ci_high": hi_r,
+                    "n_actors": ncoh[nm],
+                },
+            ]
+        )
+
+    OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(summary_rows).to_csv(OUT_CSV, index=False)
+    print(f"\nWrote {OUT_CSV}")
 
     # continuous equivalents of the availability itself, for the record
     print("\navailability-weighted mean reach and breadth per cohort window:")

@@ -1,0 +1,10 @@
+comparison,score,positives,off_label_only,excludes_site_administration,max_title_overlap,outcomes,auc,ci_low,ci_high,share_above_chance
+"Adoption-linked papers, full proximity",expected_proximity,adoption_linked,False,False,,89,0.6601784743578887,0.5983558477988983,0.721919648275136,0.6629213483146067
+"Discussion-only papers, full proximity",expected_proximity,discussion_linked,False,False,,79,0.5018208865335219,0.44431309781293,0.5579185213657639,0.5316455696202531
+"Adoption-linked papers, off-label geometry only",related_concern_proximity,adoption_linked,False,False,,89,0.3952609902067446,0.33195200282429,0.4592414425087448,0.3707865168539326
+"Adoption-linked papers, off-label geometry, exact matches removed",related_concern_proximity,adoption_linked,True,False,,64,0.5353162578027875,0.4688285200258428,0.6009662531710419,0.5
+"Discussion-only papers, off-label geometry, exact matches removed",related_concern_proximity,discussion_linked,True,False,,76,0.5027656199446167,0.4447118697343158,0.5602850205458139,0.5131578947368421
+"Adoption-linked papers, same-concern match only",same_concern_mass,adoption_linked,False,False,,89,0.6387607723572429,0.592232292945588,0.6862030698537468,0.3595505617977528
+"Adoption-linked papers, excluding site administration",expected_proximity,adoption_linked,False,True,,45,0.6998795674077443,0.6119760858769956,0.781529239446119,0.6888888888888889
+"Adoption-linked papers, title overlap below 0.30",expected_proximity,adoption_linked,False,False,0.3,75,0.6082365305220844,0.542250193668714,0.6739884509426778,0.6
+"Adoption-linked papers, title overlap below 0.15",expected_proximity,adoption_linked,False,False,0.15,61,0.546285557372554,0.47711077911812916,0.614244216211379,0.5409836065573771

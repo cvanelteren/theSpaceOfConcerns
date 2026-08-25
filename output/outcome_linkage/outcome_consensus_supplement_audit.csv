@@ -1,0 +1,47 @@
+validation_id,outcome_id,audit_decision,auditor_primary,auditor_secondary,auditor_confidence,audit_rationale
+OS001,Decision 1 (2007),accept,Area Protection and Management Plans General,,high,Reviewing the status of area-protection and management measures is system-wide framework work.
+OS002,Decision 5 (2019),accept,Multiyear strategic workplan,,high,The ATCM multi-year strategic work plan is explicit.
+OS003,Decision 2 (2021),accept,Operation of the Antarctic Treaty system The Secretariat,,high,Secretariat staff regulations are explicit administration.
+OS004,Decision 5 (2025),accept,Operation of the Antarctic Treaty system The Secretariat,,medium,Appointment of the Executive Secretary is Secretariat administration.
+OS005,Decision 6 (2025),accept,Liability,,high,Liability from environmental emergencies is explicit.
+OS006,Measure 1 (2005),accept,Liability,,high,The annex explicitly concerns liability from environmental emergencies.
+OS007,Measure 3 (2006),accept,Historic Sites and Monuments,,high,A named Antarctic historic site or monument is explicit.
+OS008,Measure 4 (2008),accept,Management Plans,,medium,The title identifies an individual numbered ASPA rather than system-wide policy.
+OS009,Measure 4 (2011),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS010,Measure 4 (2012),accept,INSUFFICIENT_TITLE,,high,The named ASPA title is visibly truncated before stating an action.
+OS011,Measure 4 (2014),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS012,Measure 4 (2016),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS013,Measure 3 (2022),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS014,Measure 4 (2022),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS015,Measure 11 (2023),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS016,Measure 15 (2023),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS017,Measure 4 (2023),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS018,Measure 1 (2024),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS019,Measure 6 (2024),accept,Management Plans,,high,A numbered ASPA revised management plan is explicit.
+OS020,Resolution 1 (2001),accept,Operation of the Antarctic Treaty system General,,high,Determining superseded recommendations is general Treaty-system housekeeping.
+OS021,Resolution 1 (2004),revise,Prevention of marine pollution,Marine living resources,high,Marine pollution prevention governs the title and fishing activity is a material second concern.
+OS022,Resolution 4 (2004),accept,Emergency report and contingency planning,Tourism and NG_Activities,high,Contingency planning governs the guidelines and tourist activities are material.
+OS023,Resolution 4 (2008),accept,Inspections,Area Protection and Management Plans General,high,The checklist governs inspections and materially covers the protected-area system.
+OS024,Resolution 1 (2010),accept,Site Guidelines for Visitors,,high,Site Guidelines for Visitors is explicit.
+OS025,Resolution 3 (2010),accept,Inspections,,high,A revised Antarctic inspection checklist is explicit.
+OS026,Resolution 5 (2010),accept,Cooperation with Other Organisations,,high,Coordination on proposals before the IMO is explicit inter-organizational work.
+OS027,Resolution 6 (2010),accept,Search and Rescue,,high,Maritime search-and-rescue coordination is explicit.
+OS028,Resolution 6 (2011),accept,Nonnative Species and Quarantine,,high,Non-native species are explicit.
+OS029,Resolution 7 (2012),accept,Safety and Operations in Antarctica,,high,Vessel safety is explicit.
+OS030,Resolution 8 (2012),accept,Search and Rescue,,high,Coordination of search and rescue across three operational domains is explicit.
+OS031,Resolution 9 (2012),revise,Operational issues,,medium,The title supports general land-based expedition operations but does not identify tourism or non-governmental actors.
+OS032,Resolution 1 (2013),accept,Safety and Operations in Antarctica,,high,Air safety in Antarctica is explicit.
+OS033,Resolution 1 (2014),accept,Operational issues,,medium,Fuel storage and handling are operational matters without an explicit safety or pollution focus.
+OS034,Resolution 3 (2014),revise,Institutional and legal matters,,medium,Supporting a named regulatory code is institutional or legal action but no other organization is identified.
+OS035,Resolution 4 (2014),accept,Site Guidelines for Visitors,,high,Site Guidelines for Visitors is explicit.
+OS036,Resolution 5 (2014),accept,Operational issues,,high,Hydrographic surveying and charting are explicit operational mapping matters.
+OS037,Resolution 6 (2014),accept,Tourism and NG_Activities,,high,Tourism and non-governmental activities are explicit.
+OS038,Resolution 1 (2015),accept,Operational issues,,high,Cooperative air transport systems are explicit operational logistics.
+OS039,Resolution 3 (2016),accept,Environmental Protection General,,medium,A code governing activity in terrestrial geothermal environments supports broad environmental protection.
+OS040,Resolution 1 (2017),accept,Area Protection and Management Plans General,,high,General guidance for ASMA designations is system-wide protected-area policy.
+OS041,Resolution 2 (2018),accept,Historic Sites and Monuments,,high,Assessment and management of Antarctic heritage fit the historic-sites category.
+OS042,Resolution 1 (2019),accept,Repair and remediation of environmental damage,,medium,An Antarctic clean-up manual most directly concerns cleanup and remediation.
+OS043,Resolution 5 (2019),accept,Prevention of marine pollution,,medium,Reducing plastic pollution including in the Southern Ocean fits marine pollution prevention.
+OS044,Resolution 2 (2021),accept,Area Protection and Management Plans General,Historic Sites and Monuments,high,The proposal guide spans protected-area framework rules and historic sites.
+OS045,Resolution 6 (2022),accept,Site Guidelines for Visitors,,high,A standard post-visit report form is expressly visitor-site reporting.
+OS046,Resolution 1 (2024),accept,Area Protection and Management Plans General,,high,A general guide for preparing ASPA management plans is system-wide guidance.

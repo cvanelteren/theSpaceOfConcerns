@@ -1,0 +1,40 @@
+{
+  "design": {
+    "unit": "candidate paper--output pair",
+    "positive": "adoption-linked paper",
+    "history_rule": "submissions from ATCMs before the focal meeting",
+    "conditional_group": "formal output",
+    "cv_group": "meeting",
+    "n_folds": 5,
+    "n_outputs": 89,
+    "n_rows": 15191
+  },
+  "centrality_terms": [
+    "strength_percentile",
+    "degree_percentile",
+    "closeness_percentile",
+    "betweenness_percentile",
+    "eigenvector_percentile",
+    "pagerank_percentile",
+    "clustering_percentile",
+    "ubiquity_percentile",
+    "holder_breadth_percentile",
+    "topic_complexity_percentile"
+  ],
+  "primary_controls": [
+    "same_concern_mass",
+    "related_concern_proximity",
+    "title_overlap",
+    "working_paper",
+    "prior_document_volume_percentile"
+  ],
+  "outputs": {
+    "metrics": "output/outcome_linkage/prior_meeting_topic_centrality.csv",
+    "models": "output/outcome_linkage/outcome_topic_centrality_models.csv",
+    "correlations": "output/outcome_linkage/outcome_topic_centrality_correlations.csv",
+    "cross_validation": "output/outcome_linkage/outcome_topic_centrality_cv.csv",
+    "topic_output_models": "output/outcome_linkage/topic_output_centrality_models.csv",
+    "topic_output_cross_validation": "output/outcome_linkage/topic_output_centrality_cv.csv",
+    "report": "output/outcome_linkage/outcome_topic_centrality_report.md"
+  }
+}

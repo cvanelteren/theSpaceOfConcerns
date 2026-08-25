@@ -1,2 +1,0 @@
-time_unit,window_size,window_years,rca_threshold,min_active_topics,data_path,n_member_period_rows,n_members,n_periods,n_transitions,same_region_rate,adjacent_or_same_rate,far_jump_rate,mean_from_dominant_share
-year,5,5,1.0,3,antarctic-database-go/data/processed/document-summary.parquet,1513,50,61,1419,0.8195912614517266,0.9901338971106413,0.009866102889358703,0.6943102796038857

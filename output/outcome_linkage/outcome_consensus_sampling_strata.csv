@@ -1,0 +1,7 @@
+instrument,confidence_band,sample_n,population_n,weight
+Decision,high,18,101,5.611111111111111
+Decision,lower,11,34,3.090909090909091
+Measure,high,20,221,11.05
+Measure,lower,10,56,5.6
+Resolution,high,18,111,6.166666666666667
+Resolution,lower,12,61,5.083333333333333

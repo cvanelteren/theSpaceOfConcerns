@@ -1,0 +1,15 @@
+{
+  "classified_outputs": 584,
+  "output_scope": "regular ATCMs 19--47 (1995--2025)",
+  "time_unit": "ordered ATCM meetings",
+  "rolling_horizons_meetings": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    10
+  ],
+  "new_episode_gap_meetings": 5,
+  "model_interpretation": "descriptive within-concern association"
+}

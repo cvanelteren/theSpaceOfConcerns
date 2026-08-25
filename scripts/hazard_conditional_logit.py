@@ -15,6 +15,8 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils import (  # noqa: E402
+    _normalize_topic_label,
+    _split_multi_value,
     compute_product_space,
     generate_interaction_matrix,
     get_rca,
@@ -24,7 +26,10 @@ from utils import (  # noqa: E402
 
 warnings.filterwarnings("ignore")
 
-WINDOW_YEARS = 5
+WINDOW_MEETINGS = 5
+# Transitional alias for older figure scripts.  The value now denotes ATCM
+# meetings, not calendar years.
+WINDOW_YEARS = WINDOW_MEETINGS
 RCA_THRESHOLD = 1.0
 MODE_ORDER = ["aggregate", "instantaneous", "cumulative_lagged"]
 
@@ -53,31 +58,58 @@ def load_data_with_fallback():
     raise FileNotFoundError("No known ATS data path exists.")
 
 
-def sanitize_years(df: pd.DataFrame, year_col: str) -> pd.DataFrame:
+def sanitize_periods(df: pd.DataFrame, period_col: str) -> pd.DataFrame:
     out = df.copy()
-    out[year_col] = pd.to_numeric(out[year_col], errors="coerce")
-    out = out.dropna(subset=[year_col]).copy()
-    out[year_col] = out[year_col].astype(int)
+    out[period_col] = pd.to_numeric(out[period_col], errors="coerce")
+    out = out.dropna(subset=[period_col]).copy()
+    out[period_col] = out[period_col].astype(int)
     return out
 
 
-def build_periods(year_min: int, year_max: int, window: int) -> list[tuple[int, int]]:
-    return [(y - window + 1, y) for y in range(year_min + window - 1, year_max + 1)]
+# Backwards-compatible name for scripts that pass either a year or a meeting
+# column.  The canonical locality analysis calls ``choose_period_col`` and
+# therefore uses meeting order.
+sanitize_years = sanitize_periods
+
+
+def choose_period_col(df: pd.DataFrame) -> str:
+    """Use sequential ATCM meeting order whenever it is available."""
+    for column in ("meeting number", "meeting_number", "meeting year", "year"):
+        if column in df.columns:
+            return column
+    raise KeyError("No meeting number or year column found in source data.")
+
+
+def topic_first_appearance(submitted_df: pd.DataFrame, period_col: str) -> dict[str, int]:
+    """Return first observed year for each label in the multi-category cells."""
+    rows = submitted_df[[period_col, "category"]].dropna().copy()
+    rows["category"] = rows["category"].apply(
+        lambda value: [_normalize_topic_label(v) for v in _split_multi_value(value, "\t")]
+    )
+    rows = rows.explode("category")
+    return rows.groupby("category")[period_col].min().astype(int).to_dict()
+
+
+def build_periods(period_min: int, period_max: int, window: int) -> list[tuple[int, int]]:
+    return [
+        (period - window + 1, period)
+        for period in range(period_min + window - 1, period_max + 1)
+    ]
 
 
 def build_window_interaction(
     submitted_df: pd.DataFrame,
-    year_col: str,
-    year_start: int,
-    year_end: int,
+    period_col: str,
+    period_start: int,
+    period_end: int,
     all_members_raw: set[str],
     all_topics_raw: set[str],
     topics_order: list[str],
     members_order: list[str],
 ) -> pd.DataFrame:
     window_df = submitted_df[
-        (submitted_df[year_col] >= int(year_start))
-        & (submitted_df[year_col] <= int(year_end))
+        (submitted_df[period_col] >= int(period_start))
+        & (submitted_df[period_col] <= int(period_end))
     ]
     interaction = generate_interaction_matrix(
         window_df, all_members_raw, all_topics_raw
@@ -99,32 +131,31 @@ def phi_from_interaction(interaction: pd.DataFrame, topics_order: list[str]) -> 
     return arr
 
 
-def build_conditional_logit_panel() -> tuple[pd.DataFrame, dict[str, int | str]]:
+def build_conditional_logit_panel(
+    prior_available_only: bool = False,
+) -> tuple[pd.DataFrame, dict[str, int | str]]:
     counts_df, submitted_df, members_raw, topics_raw = load_data_with_fallback()
-    year_col = "meeting year" if "meeting year" in submitted_df.columns else "year"
-    if year_col not in submitted_df.columns and "meeting_year" in submitted_df.columns:
-        year_col = "meeting_year"
-    if year_col not in submitted_df.columns:
-        raise KeyError("No meeting year or year column found in source data.")
-    submitted_df = sanitize_years(submitted_df, year_col)
+    period_col = choose_period_col(submitted_df)
+    submitted_df = sanitize_periods(submitted_df, period_col)
 
     topics = counts_df.index.tolist()
     members = counts_df.columns.tolist()
     all_members_raw = set(members_raw)
     all_topics_raw = set(topics_raw)
 
-    year_min = int(submitted_df[year_col].min())
-    year_max = int(submitted_df[year_col].max())
-    periods = build_periods(year_min, year_max, WINDOW_YEARS)
+    period_min = int(submitted_df[period_col].min())
+    period_max = int(submitted_df[period_col].max())
+    first_appearance = topic_first_appearance(submitted_df, period_col)
+    periods = build_periods(period_min, period_max, WINDOW_MEETINGS)
 
     interaction_by_period: list[pd.DataFrame] = []
     active_by_period: list[pd.DataFrame] = []
     for start, end in periods:
         interaction = build_window_interaction(
             submitted_df=submitted_df,
-            year_col=year_col,
-            year_start=int(start),
-            year_end=int(end),
+            period_col=period_col,
+            period_start=int(start),
+            period_end=int(end),
             all_members_raw=all_members_raw,
             all_topics_raw=all_topics_raw,
             topics_order=topics,
@@ -152,9 +183,9 @@ def build_conditional_logit_panel() -> tuple[pd.DataFrame, dict[str, int | str]]
             elif mode == "cumulative_lagged":
                 cumulative_interaction = build_window_interaction(
                     submitted_df=submitted_df,
-                    year_col=year_col,
-                    year_start=year_min,
-                    year_end=prev_end,
+                    period_col=period_col,
+                    period_start=period_min,
+                    period_end=prev_end,
                     all_members_raw=all_members_raw,
                     all_topics_raw=all_topics_raw,
                     topics_order=topics,
@@ -188,6 +219,8 @@ def build_conditional_logit_panel() -> tuple[pd.DataFrame, dict[str, int | str]]
                 for idx, topic in enumerate(topics):
                     if not at_risk[idx]:
                         continue
+                    if prior_available_only and first_appearance.get(topic, period_end) > prev_end:
+                        continue
                     panel_rows.append(
                         {
                             "mode": mode,
@@ -203,17 +236,18 @@ def build_conditional_logit_panel() -> tuple[pd.DataFrame, dict[str, int | str]]
 
     panel_df = pd.DataFrame(panel_rows)
     meta = {
-        "window_years": WINDOW_YEARS,
+        "window_meetings": WINDOW_MEETINGS,
         "rca_threshold": RCA_THRESHOLD,
         "distance_definition": "raw_one_minus_max_phi_to_prior_portfolio",
         "group_definition": "member-period with at least one adoption event",
-        "year_col": year_col,
-        "year_min": year_min,
-        "year_max": year_max,
+        "period_col": period_col,
+        "period_min": period_min,
+        "period_max": period_max,
         "n_topics": int(len(topics)),
         "n_members": int(len(members)),
         "n_panel_rows": int(len(panel_df)),
         "n_groups": int(panel_df["group"].nunique()),
+        "prior_available_only": bool(prior_available_only),
     }
     return panel_df, meta
 

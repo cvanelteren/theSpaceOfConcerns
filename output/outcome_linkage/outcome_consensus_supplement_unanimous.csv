@@ -1,0 +1,46 @@
+validation_id,outcome_id,consensus_primary,consensus_secondary,consensus_confidence,consensus_source
+OS001,Decision 1 (2007),Area Protection and Management Plans General,,high,three_coder_unanimous
+OS002,Decision 5 (2019),Multiyear strategic workplan,,high,three_coder_unanimous
+OS003,Decision 2 (2021),Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OS004,Decision 5 (2025),Operation of the Antarctic Treaty system The Secretariat,,medium,three_coder_unanimous
+OS005,Decision 6 (2025),Liability,,high,three_coder_unanimous
+OS006,Measure 1 (2005),Liability,,high,three_coder_unanimous
+OS007,Measure 3 (2006),Historic Sites and Monuments,,high,three_coder_unanimous
+OS008,Measure 4 (2008),Management Plans,,medium,three_coder_unanimous
+OS009,Measure 4 (2011),Management Plans,,high,three_coder_unanimous
+OS010,Measure 4 (2012),INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OS011,Measure 4 (2014),Management Plans,,high,three_coder_unanimous
+OS012,Measure 4 (2016),Management Plans,,high,three_coder_unanimous
+OS013,Measure 3 (2022),Management Plans,,high,three_coder_unanimous
+OS014,Measure 4 (2022),Management Plans,,high,three_coder_unanimous
+OS015,Measure 11 (2023),Management Plans,,high,three_coder_unanimous
+OS016,Measure 15 (2023),Management Plans,,high,three_coder_unanimous
+OS017,Measure 4 (2023),Management Plans,,high,three_coder_unanimous
+OS018,Measure 1 (2024),Management Plans,,high,three_coder_unanimous
+OS019,Measure 6 (2024),Management Plans,,high,three_coder_unanimous
+OS020,Resolution 1 (2001),Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OS021,Resolution 1 (2004),Prevention of marine pollution,,high,three_coder_unanimous
+OS022,Resolution 4 (2004),Emergency report and contingency planning,Tourism and NG_Activities,high,three_coder_unanimous
+OS023,Resolution 4 (2008),Inspections,Area Protection and Management Plans General,high,three_coder_unanimous
+OS024,Resolution 1 (2010),Site Guidelines for Visitors,,high,three_coder_unanimous
+OS025,Resolution 3 (2010),Inspections,,high,three_coder_unanimous
+OS026,Resolution 5 (2010),Cooperation with Other Organisations,,high,three_coder_unanimous
+OS027,Resolution 6 (2010),Search and Rescue,,high,three_coder_unanimous
+OS028,Resolution 6 (2011),Nonnative Species and Quarantine,,high,three_coder_unanimous
+OS029,Resolution 7 (2012),Safety and Operations in Antarctica,,high,three_coder_unanimous
+OS030,Resolution 8 (2012),Search and Rescue,,high,three_coder_unanimous
+OS031,Resolution 9 (2012),Tourism and NG_Activities,,medium,three_coder_unanimous
+OS032,Resolution 1 (2013),Safety and Operations in Antarctica,,high,three_coder_unanimous
+OS033,Resolution 1 (2014),Operational issues,,medium,three_coder_unanimous
+OS035,Resolution 4 (2014),Site Guidelines for Visitors,,high,three_coder_unanimous
+OS036,Resolution 5 (2014),Operational issues,,high,three_coder_unanimous
+OS037,Resolution 6 (2014),Tourism and NG_Activities,,high,three_coder_unanimous
+OS038,Resolution 1 (2015),Operational issues,,high,three_coder_unanimous
+OS039,Resolution 3 (2016),Environmental Protection General,,medium,three_coder_unanimous
+OS040,Resolution 1 (2017),Area Protection and Management Plans General,,high,three_coder_unanimous
+OS041,Resolution 2 (2018),Historic Sites and Monuments,,high,three_coder_unanimous
+OS042,Resolution 1 (2019),Repair and remediation of environmental damage,,medium,three_coder_unanimous
+OS043,Resolution 5 (2019),Prevention of marine pollution,,medium,three_coder_unanimous
+OS044,Resolution 2 (2021),Area Protection and Management Plans General,Historic Sites and Monuments,high,three_coder_unanimous
+OS045,Resolution 6 (2022),Site Guidelines for Visitors,,high,three_coder_unanimous
+OS046,Resolution 1 (2024),Area Protection and Management Plans General,,high,three_coder_unanimous

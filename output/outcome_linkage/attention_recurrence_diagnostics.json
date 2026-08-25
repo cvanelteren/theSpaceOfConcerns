@@ -1,0 +1,217 @@
+{
+  "single_label_papers": 6572,
+  "papers_with_sponsor_mapping": 6572,
+  "paper_sponsor_mapping_share": 1.0,
+  "actor_concern_meeting_activations": 5787,
+  "actors": 66,
+  "time_unit": "ordered ATCM meetings",
+  "horizons_meetings": [
+    3,
+    5,
+    8,
+    10
+  ],
+  "analysis_restriction": "positive focal-concern attention in the prior window",
+  "predictor_correlations_positive_attention": {
+    "3": {
+      "papers_prior3": {
+        "papers_prior3": 1.0,
+        "active_meetings_prior3": 0.537307,
+        "effective_meetings_prior3": 0.510098,
+        "returning_activation_share_prior3": 0.609327,
+        "latest_attention_lag_prior3": -0.325498,
+        "paper_weighted_lag_prior3": 0.014783
+      },
+      "active_meetings_prior3": {
+        "papers_prior3": 0.537307,
+        "active_meetings_prior3": 1.0,
+        "effective_meetings_prior3": 0.907063,
+        "returning_activation_share_prior3": 0.69367,
+        "latest_attention_lag_prior3": -0.621119,
+        "paper_weighted_lag_prior3": 0.039753
+      },
+      "effective_meetings_prior3": {
+        "papers_prior3": 0.510098,
+        "active_meetings_prior3": 0.907063,
+        "effective_meetings_prior3": 1.0,
+        "returning_activation_share_prior3": 0.705322,
+        "latest_attention_lag_prior3": -0.562924,
+        "paper_weighted_lag_prior3": 0.034961
+      },
+      "returning_activation_share_prior3": {
+        "papers_prior3": 0.609327,
+        "active_meetings_prior3": 0.69367,
+        "effective_meetings_prior3": 0.705322,
+        "returning_activation_share_prior3": 1.0,
+        "latest_attention_lag_prior3": -0.417594,
+        "paper_weighted_lag_prior3": 0.02419
+      },
+      "latest_attention_lag_prior3": {
+        "papers_prior3": -0.325498,
+        "active_meetings_prior3": -0.621119,
+        "effective_meetings_prior3": -0.562924,
+        "returning_activation_share_prior3": -0.417594,
+        "latest_attention_lag_prior3": 1.0,
+        "paper_weighted_lag_prior3": 0.631573
+      },
+      "paper_weighted_lag_prior3": {
+        "papers_prior3": 0.014783,
+        "active_meetings_prior3": 0.039753,
+        "effective_meetings_prior3": 0.034961,
+        "returning_activation_share_prior3": 0.02419,
+        "latest_attention_lag_prior3": 0.631573,
+        "paper_weighted_lag_prior3": 1.0
+      }
+    },
+    "5": {
+      "papers_prior5": {
+        "papers_prior5": 1.0,
+        "active_meetings_prior5": 0.608669,
+        "effective_meetings_prior5": 0.585795,
+        "returning_activation_share_prior5": 0.661624,
+        "latest_attention_lag_prior5": -0.340255,
+        "paper_weighted_lag_prior5": 0.035514
+      },
+      "active_meetings_prior5": {
+        "papers_prior5": 0.608669,
+        "active_meetings_prior5": 1.0,
+        "effective_meetings_prior5": 0.919992,
+        "returning_activation_share_prior5": 0.759833,
+        "latest_attention_lag_prior5": -0.614414,
+        "paper_weighted_lag_prior5": 0.055905
+      },
+      "effective_meetings_prior5": {
+        "papers_prior5": 0.585795,
+        "active_meetings_prior5": 0.919992,
+        "effective_meetings_prior5": 1.0,
+        "returning_activation_share_prior5": 0.753583,
+        "latest_attention_lag_prior5": -0.562256,
+        "paper_weighted_lag_prior5": 0.049035
+      },
+      "returning_activation_share_prior5": {
+        "papers_prior5": 0.661624,
+        "active_meetings_prior5": 0.759833,
+        "effective_meetings_prior5": 0.753583,
+        "returning_activation_share_prior5": 1.0,
+        "latest_attention_lag_prior5": -0.44102,
+        "paper_weighted_lag_prior5": 0.058067
+      },
+      "latest_attention_lag_prior5": {
+        "papers_prior5": -0.340255,
+        "active_meetings_prior5": -0.614414,
+        "effective_meetings_prior5": -0.562256,
+        "returning_activation_share_prior5": -0.44102,
+        "latest_attention_lag_prior5": 1.0,
+        "paper_weighted_lag_prior5": 0.599624
+      },
+      "paper_weighted_lag_prior5": {
+        "papers_prior5": 0.035514,
+        "active_meetings_prior5": 0.055905,
+        "effective_meetings_prior5": 0.049035,
+        "returning_activation_share_prior5": 0.058067,
+        "latest_attention_lag_prior5": 0.599624,
+        "paper_weighted_lag_prior5": 1.0
+      }
+    },
+    "8": {
+      "papers_prior8": {
+        "papers_prior8": 1.0,
+        "active_meetings_prior8": 0.660925,
+        "effective_meetings_prior8": 0.642032,
+        "returning_activation_share_prior8": 0.696948,
+        "latest_attention_lag_prior8": -0.342218,
+        "paper_weighted_lag_prior8": 0.067675
+      },
+      "active_meetings_prior8": {
+        "papers_prior8": 0.660925,
+        "active_meetings_prior8": 1.0,
+        "effective_meetings_prior8": 0.931619,
+        "returning_activation_share_prior8": 0.813731,
+        "latest_attention_lag_prior8": -0.582211,
+        "paper_weighted_lag_prior8": 0.103203
+      },
+      "effective_meetings_prior8": {
+        "papers_prior8": 0.642032,
+        "active_meetings_prior8": 0.931619,
+        "effective_meetings_prior8": 1.0,
+        "returning_activation_share_prior8": 0.796869,
+        "latest_attention_lag_prior8": -0.535704,
+        "paper_weighted_lag_prior8": 0.100437
+      },
+      "returning_activation_share_prior8": {
+        "papers_prior8": 0.696948,
+        "active_meetings_prior8": 0.813731,
+        "effective_meetings_prior8": 0.796869,
+        "returning_activation_share_prior8": 1.0,
+        "latest_attention_lag_prior8": -0.460068,
+        "paper_weighted_lag_prior8": 0.094133
+      },
+      "latest_attention_lag_prior8": {
+        "papers_prior8": -0.342218,
+        "active_meetings_prior8": -0.582211,
+        "effective_meetings_prior8": -0.535704,
+        "returning_activation_share_prior8": -0.460068,
+        "latest_attention_lag_prior8": 1.0,
+        "paper_weighted_lag_prior8": 0.583624
+      },
+      "paper_weighted_lag_prior8": {
+        "papers_prior8": 0.067675,
+        "active_meetings_prior8": 0.103203,
+        "effective_meetings_prior8": 0.100437,
+        "returning_activation_share_prior8": 0.094133,
+        "latest_attention_lag_prior8": 0.583624,
+        "paper_weighted_lag_prior8": 1.0
+      }
+    },
+    "10": {
+      "papers_prior10": {
+        "papers_prior10": 1.0,
+        "active_meetings_prior10": 0.689545,
+        "effective_meetings_prior10": 0.668527,
+        "returning_activation_share_prior10": 0.705564,
+        "latest_attention_lag_prior10": -0.346135,
+        "paper_weighted_lag_prior10": 0.07154
+      },
+      "active_meetings_prior10": {
+        "papers_prior10": 0.689545,
+        "active_meetings_prior10": 1.0,
+        "effective_meetings_prior10": 0.937365,
+        "returning_activation_share_prior10": 0.830316,
+        "latest_attention_lag_prior10": -0.563547,
+        "paper_weighted_lag_prior10": 0.102688
+      },
+      "effective_meetings_prior10": {
+        "papers_prior10": 0.668527,
+        "active_meetings_prior10": 0.937365,
+        "effective_meetings_prior10": 1.0,
+        "returning_activation_share_prior10": 0.812297,
+        "latest_attention_lag_prior10": -0.514621,
+        "paper_weighted_lag_prior10": 0.100034
+      },
+      "returning_activation_share_prior10": {
+        "papers_prior10": 0.705564,
+        "active_meetings_prior10": 0.830316,
+        "effective_meetings_prior10": 0.812297,
+        "returning_activation_share_prior10": 1.0,
+        "latest_attention_lag_prior10": -0.449755,
+        "paper_weighted_lag_prior10": 0.10357
+      },
+      "latest_attention_lag_prior10": {
+        "papers_prior10": -0.346135,
+        "active_meetings_prior10": -0.563547,
+        "effective_meetings_prior10": -0.514621,
+        "returning_activation_share_prior10": -0.449755,
+        "latest_attention_lag_prior10": 1.0,
+        "paper_weighted_lag_prior10": 0.611845
+      },
+      "paper_weighted_lag_prior10": {
+        "papers_prior10": 0.07154,
+        "active_meetings_prior10": 0.102688,
+        "effective_meetings_prior10": 0.100034,
+        "returning_activation_share_prior10": 0.10357,
+        "latest_attention_lag_prior10": 0.611845,
+        "paper_weighted_lag_prior10": 1.0
+      }
+    }
+  }
+}

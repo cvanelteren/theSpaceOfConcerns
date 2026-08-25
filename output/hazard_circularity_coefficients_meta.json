@@ -1,8 +1,0 @@
-{
-  "window_years": 5,
-  "rca_threshold": 1.0,
-  "space": "cumulative_lagged",
-  "outcome_panel": "fixed, full-count RCA",
-  "n_panel_rows": 80258,
-  "n_groups": 1055
-}

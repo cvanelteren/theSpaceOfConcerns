@@ -34,7 +34,7 @@ from utils import (
     _split_multi_value,
 )
 
-WINDOW_YEARS = hcl.WINDOW_YEARS
+WINDOW_MEETINGS = hcl.WINDOW_MEETINGS
 RCA_THRESHOLD = hcl.RCA_THRESHOLD
 CHECK_ORDER = ["leave_one_actor_out", "fractional"]
 
@@ -56,6 +56,9 @@ def build_fractional_interaction(
     ]
     df = win.dropna(subset=["category", "submitted by"]).copy()
     df["category"] = df["category"].apply(lambda v: _split_multi_value(v, "\t"))
+    df["category_weight"] = df["category"].map(
+        lambda values: 1.0 / len(values) if values else np.nan
+    )
     df = df.explode("category")
     df["category"] = df["category"].apply(_normalize_topic_label)
     df = df[~df["category"].apply(_is_excluded_topic_label)]
@@ -68,10 +71,10 @@ def build_fractional_interaction(
     if "paper id" in df.columns:
         df = df.drop_duplicates(subset=["paper id", "category", "submitted by"])
         n_sponsors = df.groupby("paper id")["submitted by"].nunique()
-        df["w"] = 1.0 / df["paper id"].map(n_sponsors)
+        df["w"] = df["category_weight"] / df["paper id"].map(n_sponsors)
     else:  # pragma: no cover
         df = df.drop_duplicates(subset=["category", "submitted by"])
-        df["w"] = 1.0
+        df["w"] = df["category_weight"]
 
     matrix = df.pivot_table(
         index="submitted by", columns="category", values="w", aggfunc="sum"
@@ -84,21 +87,20 @@ def build_fractional_interaction(
 
 def build_panels() -> tuple[pd.DataFrame, dict]:
     counts_df, submitted_df, members_raw, topics_raw = hcl.load_data_with_fallback()
-    year_col = "meeting year" if "meeting year" in submitted_df.columns else "year"
-    if year_col not in submitted_df.columns and "meeting_year" in submitted_df.columns:
-        year_col = "meeting_year"
-    submitted_df = hcl.sanitize_years(submitted_df, year_col)
+    period_col = hcl.choose_period_col(submitted_df)
+    submitted_df = hcl.sanitize_periods(submitted_df, period_col)
 
     topics = counts_df.index.tolist()
     members = counts_df.columns.tolist()
-    year_min = int(submitted_df[year_col].min())
-    year_max = int(submitted_df[year_col].max())
-    periods = hcl.build_periods(year_min, year_max, WINDOW_YEARS)
+    period_min = int(submitted_df[period_col].min())
+    period_max = int(submitted_df[period_col].max())
+    periods = hcl.build_periods(period_min, period_max, WINDOW_MEETINGS)
+    first_appearance = hcl.topic_first_appearance(submitted_df, period_col)
 
     active_by_period = []
     for start, end in periods:
         interaction = hcl.build_window_interaction(
-            submitted_df, year_col, start, end,
+            submitted_df, period_col, start, end,
             set(members_raw), set(topics_raw), topics, members,
         )
         active_by_period.append(hcl.get_rca(interaction) >= RCA_THRESHOLD)
@@ -112,11 +114,11 @@ def build_panels() -> tuple[pd.DataFrame, dict]:
         prev_topic_popularity = prev_active.sum(axis=1) / max(len(members), 1)
 
         cumulative = hcl.build_window_interaction(
-            submitted_df, year_col, year_min, prev_end,
+            submitted_df, period_col, period_min, prev_end,
             set(members_raw), set(topics_raw), topics, members,
         )
         fractional = build_fractional_interaction(
-            submitted_df, year_col, year_min, prev_end, topics, members,
+            submitted_df, period_col, period_min, prev_end, topics, members,
         )
         phi_frac = hcl.phi_from_interaction(fractional, topics)
 
@@ -144,6 +146,8 @@ def build_panels() -> tuple[pd.DataFrame, dict]:
                 for idx, topic in enumerate(topics):
                     if not at_risk[idx]:
                         continue
+                    if first_appearance.get(topic, period_end) > prev_end:
+                        continue
                     panel_rows.append(
                         {
                             "mode": mode,
@@ -161,7 +165,8 @@ def build_panels() -> tuple[pd.DataFrame, dict]:
 
     panel_df = pd.DataFrame(panel_rows)
     meta = {
-        "window_years": WINDOW_YEARS,
+        "window_meetings": WINDOW_MEETINGS,
+        "period_col": period_col,
         "rca_threshold": RCA_THRESHOLD,
         "space": "cumulative_lagged",
         "outcome_panel": "fixed, full-count RCA",
@@ -176,6 +181,11 @@ def main() -> None:
     rows = []
     for mode in CHECK_ORDER:
         df = panel_df[panel_df["mode"] == mode].copy()
+        counts = df.groupby("group")["adopted"].agg(["sum", "count"])
+        informative = counts[
+            (counts["sum"] > 0) & (counts["sum"] < counts["count"])
+        ].index
+        df = df[df["group"].isin(informative)].copy()
         model = ConditionalLogit(
             df["adopted"].astype(int),
             df[["distance", "topic_popularity"]],

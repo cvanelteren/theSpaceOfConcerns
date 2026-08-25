@@ -1,0 +1,6 @@
+specification,term,outcomes,papers,coefficient,se,odds_ratio,ci_low,ci_high,outcome_bootstrap_ci_low,outcome_bootstrap_ci_high,p_value,scale
+adoption_linked_papers,same_concern_mass,89,15191,0.68727554404389,0.07217373094792025,1.9882911357051274,1.7260145653003405,2.2904219464890083,,,1.6903521234235877e-21,one SD within the pooled candidate set
+adoption_linked_papers,related_concern_proximity,89,15191,0.4357344415909745,0.12172622426764652,1.5460981608603541,1.2179279851247569,1.9626936503728585,,,0.00034408539901457534,one SD within the pooled candidate set
+adoption_linked_papers_title_overlap_controlled,same_concern_mass,89,15189,0.5163892003179944,0.08062819677578036,1.6759651366431914,1.4309777253177327,1.9628950818362703,,,1.5079044822752138e-10,one SD within the pooled candidate set
+adoption_linked_papers_title_overlap_controlled,related_concern_proximity,89,15189,0.3916790042886774,0.12090695082489858,1.4794627339808397,1.167309327926195,1.8750899430630197,,,0.0011973621230710583,one SD within the pooled candidate set
+adoption_linked_papers_title_overlap_controlled,title_overlap,89,15189,0.20819783744552003,0.03181087103846355,1.23145677371344,1.1570209210615177,1.3106813869306733,,,5.954939211316701e-11,one SD within the pooled candidate set

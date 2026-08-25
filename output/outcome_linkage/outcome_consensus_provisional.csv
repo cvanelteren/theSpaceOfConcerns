@@ -1,0 +1,201 @@
+validation_id,outcome_id,year,instrument,title,consensus_primary,consensus_secondary,consensus_confidence,consensus_source
+OV001,Decision 1 (1997),1997,Decision,Revised Rules of Procedure (1997),Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV002,Decision 3 (1998),1998,Decision,Liability,Liability,,high,three_coder_unanimous
+OV003,Decision 1 (1999),1999,Decision,CEP WEB SITE,Operation of the CEP,,medium,three_coder_unanimous
+OV004,Decision 1 (2000),2000,Decision,List of CEP observers,Operation of the CEP,,high,three_coder_unanimous
+OV005,Decision 2 (2001),2001,Decision,Guidelines on Circulation and Handling of CEP Documents,Operation of the CEP,,high,three_coder_unanimous
+OV006,Decision 3 (2001),2001,Decision,Elaboration of draft liability annex,Liability,,high,three_coder_unanimous
+OV007,Decision 1 (2002),2002,Decision,Naming and numbering system for Antarctic Specially Protected Areas,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV008,Decision 2 (2002),2002,Decision,Emblem of the Antarctic Treaty,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV009,Decision 4 (2003),2003,Decision,FINANCIAL REGULATIONS FOR THE SECRETARIAT OF THE ANTARCTIC TREATY,Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OV010,Decision 1 (2004),2004,Decision,REVISED RULES OF PROCEDURE,Operation of the Antarctic Treaty system General,,medium,three_coder_unanimous
+OV011,Decision 1 (2005),2005,Decision,Annex VI on Liability Arising from Environmental Emergencies to the Protocol on Environmental Protection to the Antarctic Treaty,Liability,,high,three_coder_unanimous
+OV012,Decision 10 (2005),2005,Decision,Establishment of an Electronic Information Exchange System,Exchange of Information,,high,three_coder_unanimous
+OV013,Decision 2 (2005),2005,Decision,Decision confirming the recognition of Ukraine as a Consultative Party,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV014,Decision 3 (2005),2005,Decision,Amendments to the Rules of Procedure,Operation of the Antarctic Treaty system General,,medium,three_coder_unanimous
+OV015,Decision 4 (2005),2005,Decision,Consultative Party Status,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV016,Decision 5 (2005),2005,Decision,Appointment of External Auditor,Operation of the Antarctic Treaty system The Secretariat,,medium,three_coder_unanimous
+OV017,Decision 9 (2005),2005,Decision,Marine Protected Areas and other areas of interest to CCAMLR,Marine Protected Areas,Cooperation with Other Organisations,high,three_coder_unanimous
+OV018,Decision 3 (2007),2007,Decision,Appointment of an External Auditor,Operation of the Antarctic Treaty system The Secretariat,,medium,three_coder_unanimous
+OV019,Decision 1 (2008),2008,Decision,Amendment to the Rules of Procedure,Operation of the Antarctic Treaty system General,,medium,three_coder_unanimous
+OV020,Decision 2 (2008),2008,Decision,Approval of the Secretariat's Financial Report for 2006/07 and Programme and Budget for 2008/09,Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OV021,Decision 4 (2008),2008,Decision,Procedure for Selection and Appointment of the Executive Secretary of the Secretariat of the Antarctic Treaty,Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OV022,Decision 5 (2008),2008,Decision,Electronic Information Exchange System,Exchange of Information,,high,three_coder_unanimous
+OV023,Decision 5 (2009),2009,Decision,"(Part II, section 2, page 245).",INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV024,Decision 6 (2009),2009,Decision,"(Part II, section 2, page 251).",INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV025,Decision 1 (2010),2010,Decision,Compilation of Key Documents of the Antarctic Treaty System,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV026,Decision 2 (2010),2010,Decision,"Secretariat Reports, Programme and Budgets",Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OV027,Decision 3 (2010),2010,Decision,Revised Rules of Procedure for the Committee for,INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV028,Decision 4 (2010),2010,Decision,Liability arising from Environmental Emergencies,Liability,,high,three_coder_unanimous
+OV029,Decision 5 (2010),2010,Decision,"Letters to UNFCCC, IPCC, WMO and IMO",Cooperation with Other Organisations,,high,three_coder_unanimous
+OV030,Decision 1 (2011),2011,Decision,Measures designated as no longer current,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV031,Decision 2 (2011),2011,Decision,"Revised Rules of Procedure for the Antarctic Treaty Consultative Meeting (2011); Revised Rules of Procedure for the Committee for Environmental Protection (2011); Guidelines for the Submission, Translation and Distribution",Operation of the Antarctic Treaty system General,Operation of the CEP,high,three_coder_unanimous
+OV032,Decision 4 (2012),2012,Decision,"Electronic Information Exchange System, encouraging use of the system and modifying it in several respects; and Parties will continue to work with the Secretariat to refine and improve the EIES.",Exchange of Information,,high,three_coder_unanimous
+OV033,Decision 1 (2013),2013,Decision,Recognition of the Czech Republic as a Consultative Party,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV034,Decision 3 (2013),2013,Decision,Renewal of the Contract of the Secretariat's External Auditor,Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OV035,Decision 4 (2013),2013,Decision,"Secretariat Report, Programme and Budget",Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OV036,Decision 3 (2014),2014,Decision,"Multi-Year Strategic Work Plan for the Antarctic Treaty Consultative Meeting, including two new priorities.",Multiyear strategic workplan,,high,three_coder_unanimous
+OV037,Decision 1 (2015),2015,Decision,Revised Rules of Procedure for the Antarctic Treaty Consultative Meeting (2015): Committees and Working Groups.,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV038,Decision 4 (2015),2015,Decision,Multi-Year Strategic Work Plan for the Antarctic Treaty Consultative Meeting.,Multiyear strategic workplan,,high,three_coder_unanimous
+OV039,Decision 2 (2017),2017,Decision,Guidelines on the procedure to be followed with respect to Consultative Party status.,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV040,Decision 4 (2017),2017,Decision,Procedure for Appointing Antarctic Treaty Consultative Meeting Working Group Chairs,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV041,Decision 1 (2018),2018,Decision,"Secretariat Report, Programme and Budget",Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OV042,Decision 1 (2019),2019,Decision,Redesign of the Format of the List of Historic Sites and Monuments.,Historic Sites and Monuments,,high,three_coder_unanimous
+OV043,Decision 3 (2019),2019,Decision,"Secretariat Report, Programme and Budget",Operation of the Antarctic Treaty system The Secretariat,,high,three_coder_unanimous
+OV044,Decision 6 (2019),2019,Decision,Manual of Regulations and Guidelines Relevant to Tourism and Non-Governmental Activities in Antarctica,Tourism and NG_Activities,,high,three_coder_unanimous
+OV045,Decision 1 (2021),2021,Decision,Antarctic Protected Areas System: Reformatted List of Historic Sites and Monuments,Historic Sites and Monuments,,high,three_coder_unanimous
+OV046,Decision 5 (2021),2021,Decision,Multi-year Strategic Work Plan for the Antarctic Treaty Consultative Meeting,Multiyear strategic workplan,,high,three_coder_unanimous
+OV047,Decision 2 (2022),2022,Decision,Liability arising from environmental emergencies,Liability,,high,three_coder_unanimous
+OV048,Decision 5 (2023),2023,Decision,Multi-year Strategic Work Plan for the Antarctic Treaty Consultative Meeting,Multiyear strategic workplan,,high,three_coder_unanimous
+OV049,Measure 1 (1997),1997,Measure,Antarctic Protected Areas System: Revised Description and Management Plan for Specially Protected Area,Management Plans,,high,three_coder_unanimous
+OV050,Measure 2 (1997),1997,Measure,Antarctic Protected Areas System: Management Plans for Specially Protected Areas,Management Plans,,high,three_coder_unanimous
+OV051,Measure 3 (1997),1997,Measure,Antarctic Protected Areas System: Revised Descriptions and Management Plans for Sites of Special Scientific Interest (SSSI),Management Plans,,high,three_coder_unanimous
+OV052,Measure 5 (1997),1997,Measure,Antarctic Protected Areas System: Historic Sites and Monuments: Amendment Number 41: Stone Hut on Paulet Island,Historic Sites and Monuments,,high,three_coder_unanimous
+OV053,Measure 1 (1998),1998,Measure,Antarctic Protected Areas System: Management Plans for Specially Protected Areas,Management Plans,,high,three_coder_unanimous
+OV054,Measure 2 (1998),1998,Measure,"Antarctic Protected Areas System: Historic Sites and Monuments. South-West Coast of Elephant Island, South Shetland Islands",Historic Sites and Monuments,,high,three_coder_unanimous
+OV055,Measure 1 (2001),2001,Measure,Antarctic Protected Area System Historic Sites And Monuments,Historic Sites and Monuments,,high,three_coder_unanimous
+OV056,Measure 2 (2001),2001,Measure,Antarctic Protected Area System Historic Sites And Monuments,Historic Sites and Monuments,,high,three_coder_unanimous
+OV057,Measure 3 (2001),2001,Measure,Antarctic Protected Areas System: Extension of Expiry Dates for Certain Sites of Special Scientific Interest,Management Plans,,high,three_coder_unanimous
+OV058,Measure 1 (2004),2004,Measure,ANTARCTIC SPECIALLY MANAGED AREAS: DESIGNATIONS AND MANAGEMENT PLANS,Management Plans,,high,three_coder_unanimous
+OV059,Measure 1 (2006),2006,Measure,Antarctic Specially Protected Areas: Designations and Management Plans,Management Plans,,high,three_coder_unanimous
+OV060,Measure 1 (2007),2007,Measure,Antarctic Specially Protected Areas: Revised Management Plans,Management Plans,,high,three_coder_unanimous
+OV061,Measure 3 (2007),2007,Measure,Antarctic Historic Sites and Monuments: Monument to the Antarctic Treaty,Historic Sites and Monuments,,high,three_coder_unanimous
+OV062,Measure 13 (2008),2008,Measure,"Antarctic Specially Protected Area No 160 (Frazier Islands, Windmill Islands, Wilkes Land, East Antarctica): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV063,Measure 13 (2009),2009,Measure,Designation of ASPA 171  (Narębski Point),Management Plans,,high,three_coder_unanimous
+OV064,Measure 14 (2009),2009,Measure,Historic Sites 83 (Base “W”) and 84 (Hut at Damoy Point),Historic Sites and Monuments,,high,three_coder_unanimous
+OV065,Measure 15 (2009),2009,Measure,Landing of Persons from Passenger vessels,Tourism and NG_Activities,,high,three_coder_unanimous
+OV066,Measure 16 (2009),2009,Measure,Amendment of Annex II to the Environment Protocol,Environmental Protection General,,medium,adversarial_adjudication
+OV067,Measure 11 (2010),2010,Measure,"Antarctic Specially Protected Area No 159 (Cape Adare, Borchgrevink Coast): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV068,Measure 15 (2010),2010,Measure,Antarctic Historic Sites and Monuments: Plaque,Historic Sites and Monuments,,high,three_coder_unanimous
+OV069,Measure 2 (2010),2010,Measure,"Antarctic Specially Protected Area No 102 (Rookery Islands, Holme Bay, Mac.Robertson Land): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV070,Measure 4 (2010),2010,Measure,"Antarctic Specially Protected Area No 105 (Beaufort Island,",INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV071,Measure 6 (2010),2010,Measure,Antarctic Specially Protected Area No 119 (Davis Valley and,INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV072,Measure 3 (2011),2011,Measure,"ASPA 122 (Arrival Heights, Hut Point Peninsula, Ross Island): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV073,Measure 1 (2012),2012,Measure,"ASPA No 109 (Moe Island, South Orkney Islands):",INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV074,Measure 11 (2012),2012,Measure,Antarctic Historic Sites and Monuments:,INSUFFICIENT_TITLE,,high,adversarial_adjudication
+OV075,Measure 1 (2013),2013,Measure,"Antarctic Specially Protected Area No 108 (Green Island, Berthelot Islands, Antarctic Peninsula): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV076,Measure 13 (2013),2013,Measure,"Antarctic Specially Protected Area No 156 (Lewis Bay, Mount Erebus, Ross Island): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV077,Measure 15 (2013),2013,Measure,"Antarctic Specially Protected Area No 161 (Terra Nova Bay, Ross Sea): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV078,Measure 4 (2013),2013,Measure,"Antarctic Specially Protected Area No 132 (Potter Peninsula, King George Island (Isla 25 de Mayo), South Shetland Islands): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV079,Measure 6 (2013),2013,Measure,"Antarctic Specially Protected Area No 135 (North-east Bailey Peninsula, Budd Coast, Wilkes Land): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV080,Measure 9 (2013),2013,Measure,"Antarctic Specially Protected Area No 143 (Marine Plain, Mule Peninsula, Vestfold Hills, Princess Elizabeth Land): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV081,Measure 14 (2014),2014,Measure,"Antarctic Specially Managed Area No 1 (Admiralty Bay, King George Island): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV082,Measure 9 (2014),2014,Measure,"Antarctic Specially Protected Area No 162 (Mawson's Huts, Cape Denison, Commonwealth Bay, George V Land, East Antarctica): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV083,Measure 1 (2015),2015,Measure,"Antarctic Specially Protected Area ASPA No. 101 (Taylor Rookery, Mac.Robertson Land): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV084,Measure 18 (2015),2015,Measure,"Antarctic Specially Managed Area ASMA No. 2 (McMurdo Dry Valleys, Southern Victoria Land): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV085,Measure 4 (2015),2015,Measure,"Antarctic Specially Protected Area ASPA No. 104 (Sabrina Island, Balleny Islands): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV086,Measure 1 (2016),2016,Measure,"Antarctic Specially Protected Area ASPA No. 116 (New College Valley, Caughley Beach, Cape Bird, Ross Island): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV087,Measure 2 (2016),2016,Measure,"Antarctic Specially Protected Area ASPA No. 120 (Pointe-Géologie Archipelago, Terre Adélie): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV088,Measure 4 (2017),2017,Measure,"Antarctic Specially Protected Area ASPA No. 115 (Lagotellerie Island, Marguerite Bay, Graham Land): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV089,Measure 1 (2018),2018,Measure,"Antarctic Specially Protected Area ASPA No. 108 (Green Island, Berthelot Islands, Antarctic Peninsula): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV090,Measure 4 (2018),2018,Measure,"Antarctic Specially Protected Area ASPA No. 147 (Ablation Valley and Ganymede Heights, Alexander Island): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV091,Measure 5 (2018),2018,Measure,"Antarctic Specially Protected Area ASPA No. 170 (Marion Nunataks, Charcot Island, Antarctic Peninsula): Revised Management Plan.",Management Plans,,high,three_coder_unanimous
+OV092,Measure 7 (2019),2019,Measure,"Antarctic Specially Protected Area No 161 (Terra Nova Bay, Ross Sea): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV093,Measure 17 (2021),2021,Measure,"Antarctic Specially Protected Area No 163 (Dakshin Gangotri Glacier, Dronning Maud Land): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV094,Measure 4 (2021),2021,Measure,"Antarctic Specially Protected Area No 103 (Ardery Island and Odbert Island, Budd Coast, Wilkes Land, East Antarctica): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV095,Measure 7 (2021),2021,Measure,"Antarctic Specially Protected Area No 106 (Cape Hallett, Northern Victoria Land, Ross Sea): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV096,Measure 1 (2022),2022,Measure,Antarctic Specially Managed Area No 7 (Southwest Anvers Island and Palmer Basin): Revised Management Plan,Management Plans,,high,three_coder_unanimous
+OV097,Measure 12 (2022),2022,Measure,"Antarctic Specially Protected Area No 129 (Rothera Point, Adelaide Island): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV098,Measure 15 (2022),2022,Measure,"Antarctic Specially Protected Area No 140 (Parts of Deception Island, South Shetland Islands): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV099,Measure 18 (2022),2022,Measure,"Revised List of Antarctic Historic Sites and Monuments: Updating information for Historic Sites and Monuments No 26, 29, 36, 38, 39, 40, 41, 42, 43 and 93",Historic Sites and Monuments,,high,three_coder_unanimous
+OV100,Measure 6 (2022),2022,Measure,"Antarctic Specially Protected Area No 115 (Lagotellerie Island, Marguerite Bay, Graham Land): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV101,Measure 8 (2023),2023,Measure,"Antarctic Specially Protected Area No 138 (Linnaeus Terrace, Asgard Range, Victoria Land): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV102,Measure 12 (2024),2024,Measure,"Antarctic Specially Protected Area No 171 (Narębski Point, Barton Peninsula, King George Island): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV103,Measure 4 (2024),2024,Measure,"Antarctic Specially Protected Area No 136 (Clark Peninsula, Budd Coast, Wilkes Land, East Antarctica): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV104,Measure 1 (2025),2025,Measure,"Antarctic Specially Protected Area No 162 (Mawson's Huts, Cape Denison, Commonwealth Bay, George V Land, East Antarctica): Revised Management Plan",Management Plans,,high,three_coder_unanimous
+OV105,Recommendation 3-3,1964,Recommendation,LOGISTICS,Operational issues,,high,three_coder_unanimous
+OV106,Recommendation 4-16,1966,Recommendation,Specially Protected Species: Fur Seals,Specially Protected Species,,high,three_coder_unanimous
+OV107,Recommendation 4-22,1966,Recommendation,Study of pelagic sealing,Marine living resources,,high,three_coder_unanimous
+OV108,Recommendation 5-3,1968,Recommendation,Southern Ocean research,Science issues,,high,three_coder_unanimous
+OV109,Recommendation 6-11,1970,Recommendation,NEW ISLANDS,OUTSIDE_TAXONOMY,,medium,adversarial_adjudication
+OV110,Recommendation 6-12,1970,Recommendation,Information exchange on rocket launching,Exchange of Information,,high,three_coder_unanimous
+OV111,Recommendation 7-3,1972,Recommendation,SITES OF SPECIAL SCIENTIFIC INTEREST,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV112,Recommendation 7-8,1972,Recommendation,CO-OPERATION IN TRANSPORT,Operational issues,,high,three_coder_unanimous
+OV113,Recommendation 7-9,1972,Recommendation,HISTORIC MONUMENTS,Historic Sites and Monuments,,high,three_coder_unanimous
+OV114,Recommendation 8-3,1975,Recommendation,Sites of Special Scientific Interest,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV115,Recommendation 8-5,1975,Recommendation,Permits for Entry to Specially Protected Areas,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV116,Recommendation 8-7,1975,Recommendation,Co-operation in Transport,Operational issues,,high,three_coder_unanimous
+OV117,Recommendation 9-4,1977,Recommendation,Co-operation in transport,Operational issues,,high,three_coder_unanimous
+OV118,Recommendation 10-7,1979,Recommendation,Oil Contamination of the Antarctic Marine Environment,Prevention of marine pollution,,high,three_coder_unanimous
+OV119,Recommendation 13-11,1985,Recommendation,Specially Protected Areas:,INSUFFICIENT_TITLE,,high,adversarial_adjudication
+OV120,Recommendation 13-13,1985,Recommendation,"Specially Protected Area N° 7: Cape Hallett,",INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV121,Recommendation 14-1,1987,Recommendation,Operation of the Antarctic Treaty System: public availability of the documents of Consultative Meetings.,Operation of the Antarctic Treaty system General,,high,three_coder_unanimous
+OV122,Recommendation 14-2,1987,Recommendation,Human impact on the Antarctic environment: Environmental impact assessment.,Environmental Impact Assessment EIA Other EIA Matters,,high,three_coder_unanimous
+OV123,Recommendation 14-4,1987,Recommendation,Facilitation of Scientific Research: Sites of Special Scientific Interest: Interim Guidelines: Extension of Designation.,Area Protection and Management Plans General,Science issues,high,adversarial_adjudication
+OV124,Recommendation 14-5,1987,Recommendation,Facilitation of Scientific Research: Sites of Special,INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV125,Recommendation 14-6,1987,Recommendation,Marine sites of special scientific interest.,Area Protection and Management Plans General,,medium,three_coder_unanimous
+OV126,Recommendation 14-9,1987,Recommendation,Air safety in Antarctica.,Safety and Operations in Antarctica,,high,three_coder_unanimous
+OV127,Recommendation 15-19,1989,Recommendation,Cooperation in the hydrographic charting of Antarctic Waters,Operational issues,,medium,three_coder_unanimous
+OV128,Recommendation 15-2,1989,Recommendation,Comprehensive measures for the protection of the Antarctic environment and dependent and associated ecosystems,Environmental Protection General,,high,three_coder_unanimous
+OV129,Recommendation 15-22,1989,Recommendation,THE OPERATION OF THE ANTARCTIC TREATY SYSTEM: REPORTS (Agenda item 5),Operation of the Antarctic Treaty system Reports,,high,three_coder_unanimous
+OV130,Recommendation 15-3,1989,Recommendation,Human impact on the Antarctic environment: Waste disposal,Waste management and disposal,,high,three_coder_unanimous
+OV131,Recommendation 15-7,1989,Recommendation,"Antarctic Protected Area System: Redesignation of Specially Protected Area, n°11 Cape Shirreff, as Site of Special Scientific Interest No.32",Management Plans,,high,three_coder_unanimous
+OV132,Recommendation 16-1,1991,Recommendation,EXCHANGE OF INFORMATION,Exchange of Information,,high,three_coder_unanimous
+OV133,Recommendation 16-10,1991,Recommendation,ANTARCTIC PROTECTED AREA SYSTEM: REVIEW OF THE SYSTEM,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV134,Recommendation 16-5,1991,Recommendation,ANTARCTIC PROTECTED AREA SYSTEM,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV135,Recommendation 17-4,1992,Recommendation,GLOBAL CHANGE RESEARCH AND INTERNATIONAL COOPERATION IN ANTARCTICA,Climate Change,Science issues,medium,three_coder_unanimous
+OV136,Resolution 2 (1995),1995,Resolution,Disposal of nuclear waste negotiations,Waste management and disposal,,high,three_coder_unanimous
+OV137,Resolution 5 (1995),1995,Resolution,Inspection checklists,Inspections,,high,three_coder_unanimous
+OV138,Resolution 8 (1995),1995,Resolution,Guidelines for proposing new Historic Sites and Monuments,Historic Sites and Monuments,,high,three_coder_unanimous
+OV139,Resolution 2 (1996),1996,Resolution,Educational and cultural activities,Educational issues,,high,three_coder_unanimous
+OV140,Resolution 3 (1996),1996,Resolution,"Extension of expiry dates for SSSI 2 (Arrival Heights), 13 (Potter Peninsula), 20 (Biscoe Point), 23 (Svarthamaren), 24 (Mount Melbourne), 25 (Marine Plain), 26 (Chile Bay), 27 (Port Foster), 28 (South Bay), 29 (Ablation Point), 31 (Mount Flora) and 32 (Cape Shirreff)",Management Plans,,high,three_coder_unanimous
+OV141,Resolution 5 (1996),1996,Resolution,Numbering system for ASPAs,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV142,Resolution 1 (1997),1997,Resolution,Contingency plans,Emergency report and contingency planning,,high,three_coder_unanimous
+OV143,Resolution 1 (1998),1998,Resolution,Annex V. Protected Areas,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV144,Resolution 2 (1998),1998,Resolution,Guide to the Preparation of Management Plans for Antarctic Specially Protected Areas,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV145,Resolution 4 (1998),1998,Resolution,Antarctic Data Management,Exchange of Information,,low,adversarial_adjudication
+OV146,Resolution 2 (1999),1999,Resolution,LIST OF SPECIALLY PROTECTED SPECIES: ANNEX II TO THE ENVIRONMENTAL PROTOCOL,Specially Protected Species,,high,three_coder_unanimous
+OV147,Resolution 6 (1999),1999,Resolution,ADHERENCE TO THE ENVIRONMENTAL PROTOCOL BY NON-CONSULTATIVE PARTIES,Environmental Protection General,,high,three_coder_unanimous
+OV148,Resolution 2 (2001),2001,Resolution,"Support for CCAMLR and its Measures to Combat Illegal, Unreported and Unregulated Fishing, Including a Catch Documentation Scheme for Dissostichus spp. (Toothfish)",Cooperation with Other Organisations,Marine living resources,high,three_coder_unanimous
+OV149,Resolution 4 (2001),2001,Resolution,Historic Sites and Monuments,Historic Sites and Monuments,,high,three_coder_unanimous
+OV150,Resolution 5 (2001),2001,Resolution,Guidelines for handling of pre-1958 historic remains whose existence or present location is not known,Historic Sites and Monuments,,high,three_coder_unanimous
+OV151,Resolution 6 (2001),2001,Resolution,Recalling Article III (1)a and Article VII(5) of the Antarctic Treaty;,INSUFFICIENT_TITLE,,high,three_coder_unanimous
+OV152,Resolution 3 (2002),2002,Resolution,Support for CCAMLR,Cooperation with Other Organisations,,high,three_coder_unanimous
+OV153,Resolution 4 (2003),2003,Resolution,Support for the Conservation of Albatrosses and Petrels,Fauna and Flora_General,,high,three_coder_unanimous
+OV154,Resolution 5 (2004),2004,Resolution,ESTABLISHMENT OF AN INTERSESSIONAL CONTACT GROUP TO IMPROVE EXCHANGE OF INFORMATION,Exchange of Information,,high,three_coder_unanimous
+OV155,Resolution 6 (2005),2005,Resolution,Antarctic Post Visit Site Report Form,Site Guidelines for Visitors,,high,three_coder_unanimous
+OV156,Resolution 7 (2005),2005,Resolution,Biological Prospecting in Antarctica,Biological Prospecting,,high,three_coder_unanimous
+OV157,Resolution 5 (2007),2007,Resolution,Tourism in the Antarctic Treaty Area,Tourism and NG_Activities,,high,three_coder_unanimous
+OV158,Resolution 1 (2008),2008,Resolution,"Guide to the Presentation of Working Papers Containing Proposals for Antarctic Specially Protected Areas, Antarctic Specially Managed Areas or Historic Sites and Monuments",Area Protection and Management Plans General,Historic Sites and Monuments,high,three_coder_unanimous
+OV159,Resolution 3 (2008),2008,Resolution,Environmental Domains Analysis for the Antarctic continent as a dynamic model for a systematic environmental geographic framework,Environmental Domains Analysis,,high,three_coder_unanimous
+OV160,Resolution 5 (2008),2008,Resolution,Improving hydrographic surveying and charting to support safety of navigation and environmental protection in the Antarctic region,Safety and Operations in Antarctica,Environmental Protection General,high,three_coder_unanimous
+OV161,Resolution 6 (2008),2008,Resolution,Enhancing the role of Maritime Rescue Coordination Centres with Search and Rescue Regions in the Antarctic Treaty Area,Search and Rescue,,high,three_coder_unanimous
+OV162,Resolution 5 (2009),2009,Resolution,Protection of the Southern Giant Petrel,Fauna and Flora_General,,high,three_coder_unanimous
+OV163,Resolution 7 (2009),2009,Resolution,General principles of Antarctic tourism,Tourism and NG_Activities,,high,three_coder_unanimous
+OV164,Resolution 2 (2010),2010,Resolution,The contribution of the IPY to hydrographic knowledge,International Polar Year,,high,three_coder_unanimous
+OV165,Resolution 7 (2010),2010,Resolution,Enhancement of port State control for passenger vessels bound,INSUFFICIENT_TITLE,,high,adversarial_adjudication
+OV166,Resolution 2 (2011),2011,Resolution,Revised Guide to the Preparation of Management Plans for Antarctic Specially Protected Areas,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV167,Resolution 2 (2012),2012,Resolution,Cooperation on questions related to the exercise of jurisdiction,Institutional and legal matters,,high,three_coder_unanimous
+OV168,Resolution 3 (2012),2012,Resolution,Improving Cooperation in Antarctica.,INSUFFICIENT_TITLE,,medium,three_coder_unanimous
+OV169,Resolution 3 (2013),2013,Resolution,Site Guidelines for Visitors.,Site Guidelines for Visitors,,high,three_coder_unanimous
+OV170,Resolution 6 (2013),2013,Resolution,Biological Prospecting in Antarctica,Biological Prospecting,,high,three_coder_unanimous
+OV171,Resolution 2 (2014),2014,Resolution,"Cooperation, Facilitation, and Exchange of Meteorological and Related Oceanographic and Cryospheric Environmental Information.",Exchange of Information,Science issues,high,three_coder_unanimous
+OV172,Resolution 3 (2015),2015,Resolution,The Antarctic Environments Portal.,Exchange of Information,,medium,adversarial_adjudication
+OV173,Resolution 5 (2015),2015,Resolution,Important Bird Areas in Antarctica.,Fauna and Flora_General,,high,three_coder_unanimous
+OV174,Resolution 6 (2015),2015,Resolution,The Role of Antarctica in Global Climate Processes.,Climate Change,,high,three_coder_unanimous
+OV175,Resolution 1 (2016),2016,Resolution,"Revised Guidelines for Environmental Impact Assessment in Antarctica, and highlighted the importance of the Guidelines for the ongoing implementation of the Protocol.",Environmental Impact Assessment EIA Other EIA Matters,,high,three_coder_unanimous
+OV176,Resolution 2 (2016),2016,Resolution,Site Guidelines for Visitors.,Site Guidelines for Visitors,,high,three_coder_unanimous
+OV177,Resolution 4 (2016),2016,Resolution,The Committee for Environmental Protection Non-native Species Manual,Nonnative Species and Quarantine,,high,three_coder_unanimous
+OV178,Resolution 5 (2016),2016,Resolution,"Revised Guide to the presentation of Working Papers containing proposals for Antarctic Specially Protected Areas, Antarctic Specially Managed Areas or Historic Sites and Monuments",Area Protection and Management Plans General,Historic Sites and Monuments,high,three_coder_unanimous
+OV179,Resolution 3 (2017),2017,Resolution,Antarctic Conservation Biogeographic Regions (ACBRs Version 2),Environmental Domains Analysis,,high,three_coder_unanimous
+OV180,Resolution 4 (2017),2017,Resolution,Green Expedition in the Antarctic.,Environmental Protection General,,low,three_coder_unanimous
+OV181,Resolution 5 (2017),2017,Resolution,Establishment of the Ross Sea Region Marine Protected Area,Marine Protected Areas,,high,three_coder_unanimous
+OV182,Resolution 6 (2017),2017,Resolution,"Guidelines on Contingency Planning, insurance and other matters for tourist and other non-governmental activities in the Antarctic Treaty Area.",Emergency report and contingency planning,Tourism and NG_Activities,high,three_coder_unanimous
+OV183,Resolution 1 (2018),2018,Resolution,Site Guidelines for Visitors.,Site Guidelines for Visitors,,high,three_coder_unanimous
+OV184,Resolution 4 (2018),2018,Resolution,Environmental guidelines for the operation of Remotely Piloted Aircraft Systems (RPAS) in Antarctica,Environmental Protection General,Operational issues,high,three_coder_unanimous
+OV185,Resolution 5 (2018),2018,Resolution,SCAR's Environmental Code of Conduct for Terrestrial Scientific Field Research in Antarctica.,Environmental Protection General,Science issues,high,adversarial_adjudication
+OV186,Resolution 2 (2019),2019,Resolution,Site Guidelines for Visitors.,Site Guidelines for Visitors,,high,three_coder_unanimous
+OV187,Resolution 3 (2019),2019,Resolution,Visitor Site Guidelines Assessment and Review Checklist,Site Guidelines for Visitors,,high,three_coder_unanimous
+OV188,Resolution 4 (2019),2019,Resolution,Scientific Committee on Antarctic Research's Code of Conduct for the Use of Animals for Scientific Purposes in Antarctica,Fauna and Flora_General,Science issues,high,adversarial_adjudication
+OV189,Resolution 6 (2019),2019,Resolution,Hydrographic Mapping of Antarctic Waters,Operational issues,,medium,three_coder_unanimous
+OV190,Resolution 7 (2019),2019,Resolution,SCAR’s Sixtieth Anniversary and the Role of SCAR in Providing Scientific Advice to Support the Work of the Antarctic Treaty System,Cooperation with Other Organisations,Science issues,high,three_coder_unanimous
+OV191,Resolution 1 (2021),2021,Resolution,SCAR Environmental Code of Conduct for Geosciences Field Research Activities in Antarctica,Environmental Protection General,Science issues,high,adversarial_adjudication
+OV192,Resolution 5 (2021),2021,Resolution,Coronavirus Disease 2019 and Antarctica,Safety and Operations in Antarctica,,medium,three_coder_unanimous
+OV193,Resolution 6 (2021),2021,Resolution,Air Safety in Antarctica,Safety and Operations in Antarctica,,high,three_coder_unanimous
+OV194,Resolution 4 (2022),2022,Resolution,Antarctic Climate Change and the Environment: A Decadal Synopsis and Recommendations for Action report,Climate Change,,high,three_coder_unanimous
+OV195,Resolution 2 (2023),2023,Resolution,Helsinki Declaration on Climate Change and the Antarctic,Climate Change,,high,three_coder_unanimous
+OV196,Resolution 4 (2023),2023,Resolution,Urgent measures to be taken with respect to certain tourist and non-governmental activities,Tourism and NG_Activities,,high,three_coder_unanimous
+OV197,Resolution 2 (2024),2024,Resolution,General Guidelines for Visitors to the Antarctic,Tourism and NG_Activities,,high,adversarial_adjudication
+OV198,Resolution 1 (2025),2025,Resolution,Site Guidelines for Visitors,Site Guidelines for Visitors,,high,three_coder_unanimous
+OV199,Resolution 2 (2025),2025,Resolution,Revised Guidelines for implementation of the Framework for Antarctic Specially Protected Areas,Area Protection and Management Plans General,,high,three_coder_unanimous
+OV200,Resolution 4 (2025),2025,Resolution,General Guidelines for Visitors to the Antarctic,Tourism and NG_Activities,,high,adversarial_adjudication

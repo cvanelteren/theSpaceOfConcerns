@@ -1,0 +1,1518 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{AbbottSnidal2000}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=41e3da91850b1df040194e53fb8aed4b}{%
+           family={Abbott},
+           familyi={A\bibinitperiod},
+           given={Kenneth\bibnamedelima W.},
+           giveni={K\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=c3195c365312537fc0074b189dce404f}{%
+           family={Snidal},
+           familyi={S\bibinitperiod},
+           given={Duncan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{81b550239db1ee8c9af2503f2ec09521}
+      \strng{fullhash}{81b550239db1ee8c9af2503f2ec09521}
+      \strng{fullhashraw}{81b550239db1ee8c9af2503f2ec09521}
+      \strng{bibnamehash}{81b550239db1ee8c9af2503f2ec09521}
+      \strng{authorbibnamehash}{81b550239db1ee8c9af2503f2ec09521}
+      \strng{authornamehash}{81b550239db1ee8c9af2503f2ec09521}
+      \strng{authorfullhash}{81b550239db1ee8c9af2503f2ec09521}
+      \strng{authorfullhashraw}{81b550239db1ee8c9af2503f2ec09521}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Organization}
+      \field{number}{3}
+      \field{title}{Hard and Soft Law in International Governance}
+      \field{volume}{54}
+      \field{year}{2000}
+      \field{pages}{421\bibrangedash 456}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.1162/002081800551280
+      \endverb
+    \endentry
+    \entry{BachrachBaratz1962}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=5e95fa0bdd0d677965f6e7a543a6b9d3}{%
+           family={Bachrach},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5407a41fa7e0a9cffc5c53eaf3c1bda8}{%
+           family={Baratz},
+           familyi={B\bibinitperiod},
+           given={Morton\bibnamedelima S.},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{bab355a972d5b831f9cc9b630163650f}
+      \strng{fullhash}{bab355a972d5b831f9cc9b630163650f}
+      \strng{fullhashraw}{bab355a972d5b831f9cc9b630163650f}
+      \strng{bibnamehash}{bab355a972d5b831f9cc9b630163650f}
+      \strng{authorbibnamehash}{bab355a972d5b831f9cc9b630163650f}
+      \strng{authornamehash}{bab355a972d5b831f9cc9b630163650f}
+      \strng{authorfullhash}{bab355a972d5b831f9cc9b630163650f}
+      \strng{authorfullhashraw}{bab355a972d5b831f9cc9b630163650f}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Political Science Review}
+      \field{number}{4}
+      \field{title}{Two Faces of Power}
+      \field{volume}{56}
+      \field{year}{1962}
+      \field{pages}{947\bibrangedash 952}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.2307/1952796
+      \endverb
+    \endentry
+    \entry{BaumgartnerJones1993}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=3b74bc39361feef1212427c2122f5c9a}{%
+           family={Baumgartner},
+           familyi={B\bibinitperiod},
+           given={Frank\bibnamedelima R.},
+           giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=8f76cb34aea8d463f345ef733b47632a}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Bryan\bibnamedelima D.},
+           giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Chicago}%
+      }
+      \list{publisher}{1}{%
+        {University of Chicago Press}%
+      }
+      \strng{namehash}{7b68395790182a8ac22814bfc0b95a7f}
+      \strng{fullhash}{7b68395790182a8ac22814bfc0b95a7f}
+      \strng{fullhashraw}{7b68395790182a8ac22814bfc0b95a7f}
+      \strng{bibnamehash}{7b68395790182a8ac22814bfc0b95a7f}
+      \strng{authorbibnamehash}{7b68395790182a8ac22814bfc0b95a7f}
+      \strng{authornamehash}{7b68395790182a8ac22814bfc0b95a7f}
+      \strng{authorfullhash}{7b68395790182a8ac22814bfc0b95a7f}
+      \strng{authorfullhashraw}{7b68395790182a8ac22814bfc0b95a7f}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Agendas and Instability in American Politics}
+      \field{year}{1993}
+    \endentry
+    \entry{Boschma2017}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=12f9f4943d6f7476e31a3bd23bf8f73b}{%
+           family={Boschma},
+           familyi={B\bibinitperiod},
+           given={Ron},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{12f9f4943d6f7476e31a3bd23bf8f73b}
+      \strng{fullhash}{12f9f4943d6f7476e31a3bd23bf8f73b}
+      \strng{fullhashraw}{12f9f4943d6f7476e31a3bd23bf8f73b}
+      \strng{bibnamehash}{12f9f4943d6f7476e31a3bd23bf8f73b}
+      \strng{authorbibnamehash}{12f9f4943d6f7476e31a3bd23bf8f73b}
+      \strng{authornamehash}{12f9f4943d6f7476e31a3bd23bf8f73b}
+      \strng{authorfullhash}{12f9f4943d6f7476e31a3bd23bf8f73b}
+      \strng{authorfullhashraw}{12f9f4943d6f7476e31a3bd23bf8f73b}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Regional Studies}
+      \field{number}{3}
+      \field{title}{Relatedness as driver of regional diversification: a research agenda}
+      \field{volume}{51}
+      \field{year}{2017}
+      \field{pages}{351\bibrangedash 364}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1080/00343404.2016.1254767
+      \endverb
+    \endentry
+    \entry{AntarcticTreaty1959}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=51cdc5cb0a08948a531cdc8defc9c07c}{%
+           family={{British Antarctic Survey}},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{51cdc5cb0a08948a531cdc8defc9c07c}
+      \strng{fullhash}{51cdc5cb0a08948a531cdc8defc9c07c}
+      \strng{fullhashraw}{51cdc5cb0a08948a531cdc8defc9c07c}
+      \strng{bibnamehash}{51cdc5cb0a08948a531cdc8defc9c07c}
+      \strng{authorbibnamehash}{51cdc5cb0a08948a531cdc8defc9c07c}
+      \strng{authornamehash}{51cdc5cb0a08948a531cdc8defc9c07c}
+      \strng{authorfullhash}{51cdc5cb0a08948a531cdc8defc9c07c}
+      \strng{authorfullhashraw}{51cdc5cb0a08948a531cdc8defc9c07c}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Antarctic Treaty (1959)}
+      \field{urlday}{29}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.bas.ac.uk/about/antarctica/the-antarctic-treaty/the-antarctic-treaty-1959/
+      \endverb
+      \verb{url}
+      \verb https://www.bas.ac.uk/about/antarctica/the-antarctic-treaty/the-antarctic-treaty-1959/
+      \endverb
+    \endentry
+    \entry{BurchEtAl2019}{article}{}{}
+      \name{author}{26}{}{%
+        {{hash=b98bd8b435aa9b3f5606d403e7490e56}{%
+           family={Burch},
+           familyi={B\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c78f0fae23dd4689ffb0026d7e8a7c8b}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Aarti},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1757968d791f5f38f20ecd101f1c2de8}{%
+           family={Inoue},
+           familyi={I\bibinitperiod},
+           given={Cristina\bibnamedelimb Y.\bibnamedelimi A.},
+           giveni={C\bibinitperiod\bibinitdelim Y\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=c18b84b2bfa7d11d88f130d43dad05c0}{%
+           family={Kalfagianni},
+           familyi={K\bibinitperiod},
+           given={Agni},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b5bcf16a10597df890b8e95169dd32da}{%
+           family={Persson},
+           familyi={P\bibinitperiod},
+           given={{Å}sa},
+           giveni={Å\bibinitperiod}}}%
+        {{hash=6bc3e9831be2e070219ab67cd943b99e}{%
+           family={Gerlak},
+           familyi={G\bibinitperiod},
+           given={Andrea\bibnamedelima K.},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=872c50b56b9df3cc15dd1f557c96f704}{%
+           family={Ishii},
+           familyi={I\bibinitperiod},
+           given={Atsushi},
+           giveni={A\bibinitperiod}}}%
+        {{hash=befcdb856380c1a1b84d8fa48d2e66bd}{%
+           family={Patterson},
+           familyi={P\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=40f93d3e9deebb1825931c1990717986}{%
+           family={Pickering},
+           familyi={P\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a30ab4eddb4ed09714970636cdcc3441}{%
+           family={Scobie},
+           familyi={S\bibinitperiod},
+           given={Michelle},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6b677ac8e4b8b7d82fa046fe6f0e759b}{%
+           family={Heijden},
+           familyi={H\bibinitperiod},
+           given={Jeroen},
+           giveni={J\bibinitperiod},
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+        {{hash=9069c9ac261fe50d5df8961b2f3d3765}{%
+           family={Vervoort},
+           familyi={V\bibinitperiod},
+           given={Joost},
+           giveni={J\bibinitperiod}}}%
+        {{hash=addab469746adc9f7d074cf1427801f5}{%
+           family={Adler},
+           familyi={A\bibinitperiod},
+           given={Carolina},
+           giveni={C\bibinitperiod}}}%
+        {{hash=8402525413246de6f40b7854dc997d47}{%
+           family={Bloomfield},
+           familyi={B\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bdf42c7035956a86a75cc9f848248c8d}{%
+           family={Djalante},
+           familyi={D\bibinitperiod},
+           given={Riyante},
+           giveni={R\bibinitperiod}}}%
+        {{hash=14b4ecb8b87680b56c7834785164859a}{%
+           family={Dryzek},
+           familyi={D\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=424a4631a6be5616d38d111bc1ceb031}{%
+           family={Galaz},
+           familyi={G\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod}}}%
+        {{hash=9bdab3d6af46b78b6e76a7fa0d73ec8c}{%
+           family={Gordon},
+           familyi={G\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+        {{hash=ff849d16398f4a1b98759e27d3fd174a}{%
+           family={Harmon},
+           familyi={H\bibinitperiod},
+           given={Renée},
+           giveni={R\bibinitperiod}}}%
+        {{hash=07d0c2f9d898d2fe4961147502d70abc}{%
+           family={Jinnah},
+           familyi={J\bibinitperiod},
+           given={Sikina},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f061d8ed0f641260d416b4c6ce521bb6}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Rakhyun\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=225fe2dc51207814e7f5882d1bf3c037}{%
+           family={Olsson},
+           familyi={O\bibinitperiod},
+           given={Lennart},
+           giveni={L\bibinitperiod}}}%
+        {{hash=bbdbef43a4e0f672f787850eed84953c}{%
+           family={Leeuwen},
+           familyi={L\bibinitperiod},
+           given={Judith},
+           giveni={J\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=4067059606125a801c45e1c6464dbef8}{%
+           family={Ramasar},
+           familyi={R\bibinitperiod},
+           given={Vasna},
+           giveni={V\bibinitperiod}}}%
+        {{hash=e4b9e83061816347f1c6922d6501a483}{%
+           family={Wapner},
+           familyi={W\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=4f5159a02a6a104e935814eac98dbd22}{%
+           family={Zondervan},
+           familyi={Z\bibinitperiod},
+           given={Ruben},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{6ab6a44552d1e64c21894ff9f1871ad2}
+      \strng{fullhash}{e564d25de37ea0397a0103e497a8e7d0}
+      \strng{fullhashraw}{e564d25de37ea0397a0103e497a8e7d0}
+      \strng{bibnamehash}{6ab6a44552d1e64c21894ff9f1871ad2}
+      \strng{authorbibnamehash}{6ab6a44552d1e64c21894ff9f1871ad2}
+      \strng{authornamehash}{6ab6a44552d1e64c21894ff9f1871ad2}
+      \strng{authorfullhash}{e564d25de37ea0397a0103e497a8e7d0}
+      \strng{authorfullhashraw}{e564d25de37ea0397a0103e497a8e7d0}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Earth System Governance}
+      \field{title}{New Directions in Earth System Governance Research}
+      \field{volume}{1}
+      \field{year}{2019}
+      \field{pages}{100006}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.esg.2019.100006
+      \endverb
+    \endentry
+    \entry{Carter2025}{article}{}{}
+      \name{author}{9}{}{%
+        {{hash=66925be2ad8c7af431a08635a5d9fb06}{%
+           family={Carter},
+           familyi={C\bibinitperiod},
+           given={Zachary\bibnamedelima T.},
+           giveni={Z\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=119efa5945ae80e28a641827afbcd1c0}{%
+           family={Bode},
+           familyi={B\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=07b9bd261b2dd57e93d1c363a9dde5c2}{%
+           family={Chown},
+           familyi={C\bibinitperiod},
+           given={Steven\bibnamedelima L.},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=f427b8ff52e50fc62e1f82ffa49e036b}{%
+           family={Burrows},
+           familyi={B\bibinitperiod},
+           given={Joanna\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=085afba5bc39912e88333461f0d63e30}{%
+           family={Shaw},
+           familyi={S\bibinitperiod},
+           given={Justine\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=d291bee47080ae9d428ba3bc1aa069ab}{%
+           family={Walsh},
+           familyi={W\bibinitperiod},
+           given={Jessica\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=b631a58b474cecc686883e51fa362c90}{%
+           family={Burgman},
+           familyi={B\bibinitperiod},
+           given={Mark\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=3c64d1e2926a9c376708de2e97857bd0}{%
+           family={Cassey},
+           familyi={C\bibinitperiod},
+           given={Phillip},
+           giveni={P\bibinitperiod}}}%
+        {{hash=320dc1b18ec4b09061beb07d32850ea6}{%
+           family={Wilson},
+           familyi={W\bibinitperiod},
+           given={Kerrie\bibnamedelima A.},
+           giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{fcda187d20fbdba0e2839d36c065631a}
+      \strng{fullhash}{62535e232206e33cd2fd613296e09add}
+      \strng{fullhashraw}{62535e232206e33cd2fd613296e09add}
+      \strng{bibnamehash}{fcda187d20fbdba0e2839d36c065631a}
+      \strng{authorbibnamehash}{fcda187d20fbdba0e2839d36c065631a}
+      \strng{authornamehash}{fcda187d20fbdba0e2839d36c065631a}
+      \strng{authorfullhash}{62535e232206e33cd2fd613296e09add}
+      \strng{authorfullhashraw}{62535e232206e33cd2fd613296e09add}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Ecology \& Evolution}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{number}{10}
+      \field{title}{Emerging Threats to Antarctic Conservation}
+      \field{urlday}{23}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{volume}{9}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \field{pages}{1885\bibrangedash 1896}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1038/s41559-025-02814-4
+      \endverb
+    \endentry
+    \entry{CoenEtAl2022}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=c8b0cf2bc6ef6136a52bb736d7313b88}{%
+           family={Coen},
+           familyi={C\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=cf643a59650c416a123e1376355ea07a}{%
+           family={Kreienkamp},
+           familyi={K\bibinitperiod},
+           given={Julia},
+           giveni={J\bibinitperiod}}}%
+        {{hash=efe73c313f085254cdd3a51d92b09877}{%
+           family={Tokhi},
+           familyi={T\bibinitperiod},
+           given={Alexandros},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5d7cfd3ab612592251fa4dfb38e0d8fc}{%
+           family={Pegram},
+           familyi={P\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{dd4437332e534129e410084f850e307c}
+      \strng{fullhash}{38935ec1538c5c47e18dba7e240421d0}
+      \strng{fullhashraw}{38935ec1538c5c47e18dba7e240421d0}
+      \strng{bibnamehash}{dd4437332e534129e410084f850e307c}
+      \strng{authorbibnamehash}{dd4437332e534129e410084f850e307c}
+      \strng{authornamehash}{dd4437332e534129e410084f850e307c}
+      \strng{authorfullhash}{38935ec1538c5c47e18dba7e240421d0}
+      \strng{authorfullhashraw}{38935ec1538c5c47e18dba7e240421d0}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Global Policy}
+      \field{number}{5}
+      \field{title}{Making Global Public Policy Work: A Survey of International Organization Effectiveness}
+      \field{volume}{13}
+      \field{year}{2022}
+      \field{pages}{656\bibrangedash 668}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1111/1758-5899.13125
+      \endverb
+    \endentry
+    \entry{Dodds2019}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7095f736527bcfb91f55471710c29b5f}{%
+           family={Dodds},
+           familyi={D\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{7095f736527bcfb91f55471710c29b5f}
+      \strng{fullhash}{7095f736527bcfb91f55471710c29b5f}
+      \strng{fullhashraw}{7095f736527bcfb91f55471710c29b5f}
+      \strng{bibnamehash}{7095f736527bcfb91f55471710c29b5f}
+      \strng{authorbibnamehash}{7095f736527bcfb91f55471710c29b5f}
+      \strng{authornamehash}{7095f736527bcfb91f55471710c29b5f}
+      \strng{authorfullhash}{7095f736527bcfb91f55471710c29b5f}
+      \strng{authorfullhashraw}{7095f736527bcfb91f55471710c29b5f}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Polar Journal}
+      \field{number}{2}
+      \field{title}{Governing Antarctica: Contemporary Challenges and the Enduring Myth of Exceptionalism}
+      \field{volume}{9}
+      \field{year}{2019}
+      \field{pages}{280\bibrangedash 297}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1080/2154896X.2019.1641543
+      \endverb
+    \endentry
+    \entry{Drubel2023HiddenContestation}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=0b53107f719c123b4ac7ef9339881866}{%
+           family={Drubel},
+           familyi={D\bibinitperiod},
+           given={Johannes},
+           giveni={J\bibinitperiod}}}%
+        {{hash=20151fb5a6c555a3cf9704f3674095dc}{%
+           family={Hoover},
+           familyi={H\bibinitperiod},
+           given={Joe},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b7e9e64240804362cc3180940b9d49d5}
+      \strng{fullhash}{b7e9e64240804362cc3180940b9d49d5}
+      \strng{fullhashraw}{b7e9e64240804362cc3180940b9d49d5}
+      \strng{bibnamehash}{b7e9e64240804362cc3180940b9d49d5}
+      \strng{authorbibnamehash}{b7e9e64240804362cc3180940b9d49d5}
+      \strng{authornamehash}{b7e9e64240804362cc3180940b9d49d5}
+      \strng{authorfullhash}{b7e9e64240804362cc3180940b9d49d5}
+      \strng{authorfullhashraw}{b7e9e64240804362cc3180940b9d49d5}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Global Constitutionalism}
+      \field{number}{2}
+      \field{title}{The hidden contestation of norms: Decent work in the International Labour Organization and the United Nations}
+      \field{volume}{12}
+      \field{year}{2023}
+      \field{pages}{246\bibrangedash 268}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1017/S2045381722000259
+      \endverb
+    \endentry
+    \entry{vanElteren2025}{software}{}{}
+      \name{author}{2}{}{%
+        {{hash=615e0fb6e8511eca3ee51d5db496e35f}{%
+           family={Elteren},
+           familyi={E\bibinitperiod},
+           given={Casper},
+           giveni={C\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=9b5de597a907481cfa763113d6504ff3}{%
+           family={Becker},
+           familyi={B\bibinitperiod},
+           given={Matthew\bibnamedelima R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{c0c4aa42f6bc4781732d6ac9d47fb5e9}
+      \strng{fullhash}{c0c4aa42f6bc4781732d6ac9d47fb5e9}
+      \strng{fullhashraw}{c0c4aa42f6bc4781732d6ac9d47fb5e9}
+      \strng{bibnamehash}{c0c4aa42f6bc4781732d6ac9d47fb5e9}
+      \strng{authorbibnamehash}{c0c4aa42f6bc4781732d6ac9d47fb5e9}
+      \strng{authornamehash}{c0c4aa42f6bc4781732d6ac9d47fb5e9}
+      \strng{authorfullhash}{c0c4aa42f6bc4781732d6ac9d47fb5e9}
+      \strng{authorfullhashraw}{c0c4aa42f6bc4781732d6ac9d47fb5e9}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{UltraPlot: A succinct wrapper for Matplotlib}
+      \field{version}{1.57.1}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://github.com/Ultraplot/UltraPlot
+      \endverb
+      \verb{url}
+      \verb https://github.com/Ultraplot/UltraPlot
+      \endverb
+    \endentry
+    \entry{GreenPedersenWalgrave2014}{book}{}{}
+      \name{editor}{2}{}{%
+        {{hash=3136c41b629395f5c93efab7bd5e4865}{%
+           family={Green-Pedersen},
+           familyi={G\bibinithyphendelim P\bibinitperiod},
+           given={Christoffer},
+           giveni={C\bibinitperiod}}}%
+        {{hash=9567881901c122e7cb512deeb68a8267}{%
+           family={Walgrave},
+           familyi={W\bibinitperiod},
+           given={Stefaan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Chicago}%
+      }
+      \list{publisher}{1}{%
+        {University of Chicago Press}%
+      }
+      \strng{namehash}{2c7a5ce0ca97e3b820fb3e43fd16e496}
+      \strng{fullhash}{2c7a5ce0ca97e3b820fb3e43fd16e496}
+      \strng{fullhashraw}{2c7a5ce0ca97e3b820fb3e43fd16e496}
+      \strng{bibnamehash}{2c7a5ce0ca97e3b820fb3e43fd16e496}
+      \strng{editorbibnamehash}{2c7a5ce0ca97e3b820fb3e43fd16e496}
+      \strng{editornamehash}{2c7a5ce0ca97e3b820fb3e43fd16e496}
+      \strng{editorfullhash}{2c7a5ce0ca97e3b820fb3e43fd16e496}
+      \strng{editorfullhashraw}{2c7a5ce0ca97e3b820fb3e43fd16e496}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{title}{Agenda Setting, Policies, and Political Systems: A Comparative Approach}
+      \field{year}{2014}
+    \endentry
+    \entry{Guevara2016}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=c3dd5ce33a4b7ab6ae1aa7e845e9d6c3}{%
+           family={Guevara},
+           familyi={G\bibinitperiod},
+           given={Miguel\bibnamedelima R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=bb976b0fb3a8891215b62a78c5a98770}{%
+           family={Hartmann},
+           familyi={H\bibinitperiod},
+           given={Dominik},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c2f805d36df194808b62025b3d277022}{%
+           family={Aristarán},
+           familyi={A\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0143fa1a90df904c459c299727d50cae}{%
+           family={Mendoza},
+           familyi={M\bibinitperiod},
+           given={Marcelo},
+           giveni={M\bibinitperiod}}}%
+        {{hash=766f75fa2f6e90fc264b64843a1f0604}{%
+           family={Hidalgo},
+           familyi={H\bibinitperiod},
+           given={César\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f8924284d4660a344bfb081778e4c484}
+      \strng{fullhash}{9e82c7977ccd065a3642b35664bd2025}
+      \strng{fullhashraw}{9e82c7977ccd065a3642b35664bd2025}
+      \strng{bibnamehash}{f8924284d4660a344bfb081778e4c484}
+      \strng{authorbibnamehash}{f8924284d4660a344bfb081778e4c484}
+      \strng{authornamehash}{f8924284d4660a344bfb081778e4c484}
+      \strng{authorfullhash}{9e82c7977ccd065a3642b35664bd2025}
+      \strng{authorfullhashraw}{9e82c7977ccd065a3642b35664bd2025}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientometrics}
+      \field{number}{3}
+      \field{title}{The research space: using career paths to predict the evolution of the research output of individuals, institutions, and nations}
+      \field{volume}{109}
+      \field{year}{2016}
+      \field{pages}{1695\bibrangedash 1709}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1007/s11192-016-2125-9
+      \endverb
+    \endentry
+    \entry{GutnerThompson2010}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=0b8cc46a1311d4face46b468ecc3afdb}{%
+           family={Gutner},
+           familyi={G\bibinitperiod},
+           given={Tamar},
+           giveni={T\bibinitperiod}}}%
+        {{hash=aa95fca049e584c6e6ff8c8da3b1aa4d}{%
+           family={Thompson},
+           familyi={T\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{2df1325d1d206a1ed7729d08f0e69e74}
+      \strng{fullhash}{2df1325d1d206a1ed7729d08f0e69e74}
+      \strng{fullhashraw}{2df1325d1d206a1ed7729d08f0e69e74}
+      \strng{bibnamehash}{2df1325d1d206a1ed7729d08f0e69e74}
+      \strng{authorbibnamehash}{2df1325d1d206a1ed7729d08f0e69e74}
+      \strng{authornamehash}{2df1325d1d206a1ed7729d08f0e69e74}
+      \strng{authorfullhash}{2df1325d1d206a1ed7729d08f0e69e74}
+      \strng{authorfullhashraw}{2df1325d1d206a1ed7729d08f0e69e74}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Review of International Organizations}
+      \field{number}{3}
+      \field{title}{The Politics of {IO} Performance: A Framework}
+      \field{volume}{5}
+      \field{year}{2010}
+      \field{pages}{227\bibrangedash 248}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1007/s11558-010-9096-z
+      \endverb
+    \endentry
+    \entry{Hidalgo2007}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=58a9dac2e65ae15c094ea0f372474211}{%
+           family={Hidalgo},
+           familyi={H\bibinitperiod},
+           given={C.\bibnamedelimi A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=e0fc4934fd6bda3f78c08343c6dd6ad4}{%
+           family={Klinger},
+           familyi={K\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=953467ea1b8e328ccd298c4b59a43b26}{%
+           family={Barabási},
+           familyi={B\bibinitperiod},
+           given={A.-L.},
+           giveni={A\bibinithyphendelim L\bibinitperiod}}}%
+        {{hash=37d0ba25cacb3f187136ada3050c399c}{%
+           family={Hausmann},
+           familyi={H\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{6c126dd7a6152e81bee319508f73ba64}
+      \strng{fullhash}{25fd46747509a885b26341e273789548}
+      \strng{fullhashraw}{25fd46747509a885b26341e273789548}
+      \strng{bibnamehash}{6c126dd7a6152e81bee319508f73ba64}
+      \strng{authorbibnamehash}{6c126dd7a6152e81bee319508f73ba64}
+      \strng{authornamehash}{6c126dd7a6152e81bee319508f73ba64}
+      \strng{authorfullhash}{25fd46747509a885b26341e273789548}
+      \strng{authorfullhashraw}{25fd46747509a885b26341e273789548}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0036-8075}
+      \field{journaltitle}{Science}
+      \field{langid}{english}
+      \field{month}{7}
+      \field{number}{5837}
+      \field{title}{The Product Space Conditions the Development of Nations}
+      \field{urlday}{13}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{volume}{317}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+      \field{pages}{482\bibrangedash 487}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1126/science.1144581
+      \endverb
+    \endentry
+    \entry{Hidalgo2018}{incollection}{}{}
+      \name{author}{15}{}{%
+        {{hash=766f75fa2f6e90fc264b64843a1f0604}{%
+           family={Hidalgo},
+           familyi={H\bibinitperiod},
+           given={César\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=6e2dc24ba39cf62cf93ab90daa965865}{%
+           family={Balland},
+           familyi={B\bibinitperiod},
+           given={Pierre-Alexandre},
+           giveni={P\bibinithyphendelim A\bibinitperiod}}}%
+        {{hash=12f9f4943d6f7476e31a3bd23bf8f73b}{%
+           family={Boschma},
+           familyi={B\bibinitperiod},
+           given={Ron},
+           giveni={R\bibinitperiod}}}%
+        {{hash=5467464674527e69bda55d54c572b4e9}{%
+           family={Delgado},
+           familyi={D\bibinitperiod},
+           given={Mercedes},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0fcd9712dfb09850fdedffec9c9a36b7}{%
+           family={Feldman},
+           familyi={F\bibinitperiod},
+           given={Maryann},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f7dc6d099b1435d52f844e5f4c521050}{%
+           family={Frenken},
+           familyi={F\bibinitperiod},
+           given={Koen},
+           giveni={K\bibinitperiod}}}%
+        {{hash=302583e77eb4f4e8a74b3b9d99c7342a}{%
+           family={Glaeser},
+           familyi={G\bibinitperiod},
+           given={Edward},
+           giveni={E\bibinitperiod}}}%
+        {{hash=1cd8c1fa199728afddf87e2be0d740d5}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Canfei},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d923703692d76fb051bd4f981200e5a9}{%
+           family={Kogler},
+           familyi={K\bibinitperiod},
+           given={Dieter\bibnamedelima F.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=d9564228001fe2824eaa399dd9ce07af}{%
+           family={Morrison},
+           familyi={M\bibinitperiod},
+           given={Andrea},
+           giveni={A\bibinitperiod}}}%
+        {{hash=91fab329e70147338d81cfff93e8c653}{%
+           family={Neffke},
+           familyi={N\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a0b136716a75030f28453d8d6bc4a2dd}{%
+           family={Rigby},
+           familyi={R\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d96fc56a43098f906fa5d3f726995f0b}{%
+           family={Stern},
+           familyi={S\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+        {{hash=706818f7cd0f7fa0b8abc0611d97ed77}{%
+           family={Zheng},
+           familyi={Z\bibinitperiod},
+           given={Siqi},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f73f5668986c32309a19a0b713d650ac}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Shengjun},
+           giveni={S\bibinitperiod}}}%
+      }
+      \name{editor}{5}{}{%
+        {{hash=7c7d0c31015a4d24abeea4d56e248dae}{%
+           family={Morales},
+           familyi={M\bibinitperiod},
+           given={Alfredo\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=02b1f0bb9c6dfe475deb0c329ce03290}{%
+           family={Gershenson},
+           familyi={G\bibinitperiod},
+           given={Carlos},
+           giveni={C\bibinitperiod}}}%
+        {{hash=0884eebe080f4268ad97b896e36002e4}{%
+           family={Braha},
+           familyi={B\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod}}}%
+        {{hash=76647f8320bed897ebf9342f0777cee7}{%
+           family={Minai},
+           familyi={M\bibinitperiod},
+           given={Ali\bibnamedelima A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=bd2fddcc91a11b9322ce2b4ca42715c0}{%
+           family={Bar-Yam},
+           familyi={B\bibinithyphendelim Y\bibinitperiod},
+           given={Yaneer},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{c4c8b38668ad61d7cc7ae7cb88bfe726}
+      \strng{fullhash}{1295a6ae62b5e98a890411d03f97f3b9}
+      \strng{fullhashraw}{1295a6ae62b5e98a890411d03f97f3b9}
+      \strng{bibnamehash}{c4c8b38668ad61d7cc7ae7cb88bfe726}
+      \strng{authorbibnamehash}{c4c8b38668ad61d7cc7ae7cb88bfe726}
+      \strng{authornamehash}{c4c8b38668ad61d7cc7ae7cb88bfe726}
+      \strng{authorfullhash}{1295a6ae62b5e98a890411d03f97f3b9}
+      \strng{authorfullhashraw}{1295a6ae62b5e98a890411d03f97f3b9}
+      \strng{editorbibnamehash}{22e660cdd46e41d0b23d21a1a1d980e7}
+      \strng{editornamehash}{22e660cdd46e41d0b23d21a1a1d980e7}
+      \strng{editorfullhash}{0d5016b4aa6fbf721b2c7cb3a46dce95}
+      \strng{editorfullhashraw}{0d5016b4aa6fbf721b2c7cb3a46dce95}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Unifying Themes in Complex Systems IX}
+      \field{title}{The Principle of Relatedness}
+      \field{year}{2018}
+      \field{pages}{451\bibrangedash 457}
+      \range{pages}{7}
+    \endentry
+    \entry{JonesBaumgartner2005}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=8f76cb34aea8d463f345ef733b47632a}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Bryan\bibnamedelima D.},
+           giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=3b74bc39361feef1212427c2122f5c9a}{%
+           family={Baumgartner},
+           familyi={B\bibinitperiod},
+           given={Frank\bibnamedelima R.},
+           giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Chicago}%
+      }
+      \list{publisher}{1}{%
+        {University of Chicago Press}%
+      }
+      \strng{namehash}{9fe505ac39ec72f550934dcd691b3350}
+      \strng{fullhash}{9fe505ac39ec72f550934dcd691b3350}
+      \strng{fullhashraw}{9fe505ac39ec72f550934dcd691b3350}
+      \strng{bibnamehash}{9fe505ac39ec72f550934dcd691b3350}
+      \strng{authorbibnamehash}{9fe505ac39ec72f550934dcd691b3350}
+      \strng{authornamehash}{9fe505ac39ec72f550934dcd691b3350}
+      \strng{authorfullhash}{9fe505ac39ec72f550934dcd691b3350}
+      \strng{authorfullhashraw}{9fe505ac39ec72f550934dcd691b3350}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Politics of Attention: How Government Prioritizes Problems}
+      \field{year}{2005}
+    \endentry
+    \entry{Joyner1998}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=c342ae39ab00ffaa3f17564f6b3d220d}{%
+           family={Joyner},
+           familyi={J\bibinitperiod},
+           given={Christopher\bibnamedelima C.},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Columbia, SC}%
+      }
+      \list{publisher}{1}{%
+        {University of South Carolina Press}%
+      }
+      \strng{namehash}{c342ae39ab00ffaa3f17564f6b3d220d}
+      \strng{fullhash}{c342ae39ab00ffaa3f17564f6b3d220d}
+      \strng{fullhashraw}{c342ae39ab00ffaa3f17564f6b3d220d}
+      \strng{bibnamehash}{c342ae39ab00ffaa3f17564f6b3d220d}
+      \strng{authorbibnamehash}{c342ae39ab00ffaa3f17564f6b3d220d}
+      \strng{authornamehash}{c342ae39ab00ffaa3f17564f6b3d220d}
+      \strng{authorfullhash}{c342ae39ab00ffaa3f17564f6b3d220d}
+      \strng{authorfullhashraw}{c342ae39ab00ffaa3f17564f6b3d220d}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Governing the Frozen Commons: The Antarctic Regime and Environmental Protection}
+      \field{year}{1998}
+    \endentry
+    \entry{Kennicutt2019}{article}{}{}
+      \name{author}{29}{}{%
+        {{hash=f54f5e48e7dd4477671c7564ce6a0648}{%
+           family={Kennicutt},
+           familyi={K\bibinitperiod},
+           given={II},
+           giveni={I\bibinitperiod},
+           suffix={Mahlon\bibnamedelima C.},
+           suffixi={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=c03ce0227cecee645e777fa8562fd890}{%
+           family={Bromwich},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=8774323f769617ea7a3f62dee24ba609}{%
+           family={Liggett},
+           familyi={L\bibinitperiod},
+           given={Daniela},
+           giveni={D\bibinitperiod}}}%
+        {{hash=466233e5b7416ee9e5793170dce1fcfb}{%
+           family={Nj{å}stad},
+           familyi={N\bibinitperiod},
+           given={Birgit},
+           giveni={B\bibinitperiod}}}%
+        {{hash=4319149802a7bd989140429cb05d7c30}{%
+           family={Peck},
+           familyi={P\bibinitperiod},
+           given={Lloyd},
+           giveni={L\bibinitperiod}}}%
+        {{hash=5e6fccdde92ff909bc5514997b0197bf}{%
+           family={Rintoul},
+           familyi={R\bibinitperiod},
+           given={Stephen\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=019bef21888e830072f3bf29d9399bb9}{%
+           family={Ritz},
+           familyi={R\bibinitperiod},
+           given={Catherine},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d66346ea2885a4f34710b7b0710d1075}{%
+           family={Siegert},
+           familyi={S\bibinitperiod},
+           given={Martin\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=19793661597f60c400894d79a01570f2}{%
+           family={Aitken},
+           familyi={A\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a5b7d502811928431410859c99e1c0c7}{%
+           family={Brooks},
+           familyi={B\bibinitperiod},
+           given={Cassandra\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=f079b2ff1e5332f7628c510fc5be5571}{%
+           family={Cassano},
+           familyi={C\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=03f61d27b75f00938f8fd5fc5c6a12ac}{%
+           family={Chaturvedi},
+           familyi={C\bibinitperiod},
+           given={Sanjay},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0d6a5fa96de0d371adbbc47b654d32df}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Dake},
+           giveni={D\bibinitperiod}}}%
+        {{hash=7095f736527bcfb91f55471710c29b5f}{%
+           family={Dodds},
+           familyi={D\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6412706fb2d2b6eb4225ad53e8a8b02f}{%
+           family={Golledge},
+           familyi={G\bibinitperiod},
+           given={Nicholas\bibnamedelima R.},
+           giveni={N\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=cf80003b96a237e0c891d24364d092d6}{%
+           family={Le\bibnamedelima Bohec},
+           familyi={L\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Céline},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a5944e14c07cc9f3655a1e423c31178c}{%
+           family={Leppe},
+           familyi={L\bibinitperiod},
+           given={Marcelo},
+           giveni={M\bibinitperiod}}}%
+        {{hash=302a03e19b94bebbc6401130f4faacf2}{%
+           family={Murray},
+           familyi={M\bibinitperiod},
+           given={Alison},
+           giveni={A\bibinitperiod}}}%
+        {{hash=f7a5f678a40baa7bb233eb89a8af06b4}{%
+           family={Nath},
+           familyi={N\bibinitperiod},
+           given={P.\bibnamedelimi Chandrika},
+           giveni={P\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=a6c2fc7b4ad2eab83d6b5e4c10a13c59}{%
+           family={Raphael},
+           familyi={R\bibinitperiod},
+           given={Marilyn\bibnamedelima N.},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=b3e400347576cdccaab640f72712bd37}{%
+           family={Rogan-Finnemore},
+           familyi={R\bibinithyphendelim F\bibinitperiod},
+           given={Michelle},
+           giveni={M\bibinitperiod}}}%
+        {{hash=43a334b9ecdc72754ed411a656b8c97f}{%
+           family={Schroeder},
+           familyi={S\bibinitperiod},
+           given={Dustin\bibnamedelima M.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=7cfb311800c6ab63021168d28e2a0fbf}{%
+           family={Talley},
+           familyi={T\bibinitperiod},
+           given={Lynne},
+           giveni={L\bibinitperiod}}}%
+        {{hash=923459ccba717391b84dd0a06f7139bc}{%
+           family={Travouillon},
+           familyi={T\bibinitperiod},
+           given={Tony},
+           giveni={T\bibinitperiod}}}%
+        {{hash=eebe1a6cd344bf1d275105bbb03a1e7f}{%
+           family={Vaughan},
+           familyi={V\bibinitperiod},
+           given={David\bibnamedelima G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=00177670746010a11da41eb730d5060d}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Lifan},
+           giveni={L\bibinitperiod}}}%
+        {{hash=21bb860f16e76404aa1149766a6a5e9c}{%
+           family={Weatherwax},
+           familyi={W\bibinitperiod},
+           given={Allan\bibnamedelima T.},
+           giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=0d45726d150db4765409c97cc5a46158}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Huigen},
+           giveni={H\bibinitperiod}}}%
+        {{hash=07b9bd261b2dd57e93d1c363a9dde5c2}{%
+           family={Chown},
+           familyi={C\bibinitperiod},
+           given={Steven\bibnamedelima L.},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{1fdeb6ad70aca9e31962e82b9faa87db}
+      \strng{fullhash}{dc7b1f02a05e5a00fcb24307c7556490}
+      \strng{fullhashraw}{dc7b1f02a05e5a00fcb24307c7556490}
+      \strng{bibnamehash}{1fdeb6ad70aca9e31962e82b9faa87db}
+      \strng{authorbibnamehash}{1fdeb6ad70aca9e31962e82b9faa87db}
+      \strng{authornamehash}{1fdeb6ad70aca9e31962e82b9faa87db}
+      \strng{authorfullhash}{dc7b1f02a05e5a00fcb24307c7556490}
+      \strng{authorfullhashraw}{dc7b1f02a05e5a00fcb24307c7556490}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2590-3322}
+      \field{journaltitle}{One Earth}
+      \field{langid}{english}
+      \field{month}{9}
+      \field{number}{1}
+      \field{title}{Sustained {Antarctic} Research: A 21st Century Imperative}
+      \field{volume}{1}
+      \field{year}{2019}
+      \field{pages}{95\bibrangedash 113}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1016/j.oneear.2019.08.014
+      \endverb
+    \endentry
+    \entry{Kim2020}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f061d8ed0f641260d416b4c6ce521bb6}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Rakhyun\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{fullhash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{fullhashraw}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{bibnamehash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{authorbibnamehash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{authornamehash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{authorfullhash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{authorfullhashraw}{f061d8ed0f641260d416b4c6ce521bb6}
+      \field{extraname}{1}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Studies Review}
+      \field{number}{4}
+      \field{title}{Is Global Governance Fragmented, Polycentric, or Complex? The State of the Art of the Network Approach}
+      \field{volume}{22}
+      \field{year}{2020}
+      \field{pages}{903\bibrangedash 931}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1093/isr/viz052
+      \endverb
+    \endentry
+    \entry{Kim2013}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f061d8ed0f641260d416b4c6ce521bb6}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Rakhyun\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{fullhash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{fullhashraw}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{bibnamehash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{authorbibnamehash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{authornamehash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{authorfullhash}{f061d8ed0f641260d416b4c6ce521bb6}
+      \strng{authorfullhashraw}{f061d8ed0f641260d416b4c6ce521bb6}
+      \field{extraname}{2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Global Environmental Change}
+      \field{number}{5}
+      \field{title}{The Emergent Network Structure of the Multilateral Environmental Agreement System}
+      \field{volume}{23}
+      \field{year}{2013}
+      \field{pages}{980\bibrangedash 991}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1016/j.gloenvcha.2013.07.006
+      \endverb
+    \endentry
+    \entry{Luo2024AntarcticTourism}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=e43542c63845b561d802a67aa23a6856}{%
+           family={Luo},
+           familyi={L\bibinitperiod},
+           given={Ming},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ca776bc3b063b66ed50c6a0b279d4740}{%
+           family={Zhong},
+           familyi={Z\bibinitperiod},
+           given={Wenbo},
+           giveni={W\bibinitperiod}}}%
+        {{hash=12ff07a883816fe8ae53d6ddd2528dec}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Sisi},
+           giveni={S\bibinitperiod}}}%
+        {{hash=484244d57345eda29efefa1329474f06}{%
+           family={Sonne},
+           familyi={S\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{eeef469e4fde030f3307348742b277bc}
+      \strng{fullhash}{52c5bf5c92c6e18a7fd6cec6acafca12}
+      \strng{fullhashraw}{52c5bf5c92c6e18a7fd6cec6acafca12}
+      \strng{bibnamehash}{eeef469e4fde030f3307348742b277bc}
+      \strng{authorbibnamehash}{eeef469e4fde030f3307348742b277bc}
+      \strng{authornamehash}{eeef469e4fde030f3307348742b277bc}
+      \strng{authorfullhash}{52c5bf5c92c6e18a7fd6cec6acafca12}
+      \strng{authorfullhashraw}{52c5bf5c92c6e18a7fd6cec6acafca12}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{title}{Regulate to protect fragile {Antarctic} ecosystems from growing tourism}
+      \field{volume}{631}
+      \field{year}{2024}
+      \field{pages}{275}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1038/d41586-024-02250-7
+      \endverb
+    \endentry
+    \entry{Neffke2011}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=91fab329e70147338d81cfff93e8c653}{%
+           family={Neffke},
+           familyi={N\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=253049b0872ef0d38193230b596cc548}{%
+           family={Henning},
+           familyi={H\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=12f9f4943d6f7476e31a3bd23bf8f73b}{%
+           family={Boschma},
+           familyi={B\bibinitperiod},
+           given={Ron},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{691db137f26eeab29dbbc2cdd70035e4}
+      \strng{fullhash}{691db137f26eeab29dbbc2cdd70035e4}
+      \strng{fullhashraw}{691db137f26eeab29dbbc2cdd70035e4}
+      \strng{bibnamehash}{691db137f26eeab29dbbc2cdd70035e4}
+      \strng{authorbibnamehash}{691db137f26eeab29dbbc2cdd70035e4}
+      \strng{authornamehash}{691db137f26eeab29dbbc2cdd70035e4}
+      \strng{authorfullhash}{691db137f26eeab29dbbc2cdd70035e4}
+      \strng{authorfullhashraw}{691db137f26eeab29dbbc2cdd70035e4}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Economic Geography}
+      \field{number}{3}
+      \field{title}{How Do Regions Diversify over Time? Industry Relatedness and the Development of New Growth Paths in Regions}
+      \field{volume}{87}
+      \field{year}{2011}
+      \field{pages}{237\bibrangedash 265}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1111/j.1944-8287.2011.01121.x
+      \endverb
+    \endentry
+    \entry{Sampaio2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=be7dd9d18196992b69d07da53ead3aaf}{%
+           family={Sampaio},
+           familyi={S\bibinitperiod},
+           given={Daniela\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{be7dd9d18196992b69d07da53ead3aaf}
+      \strng{fullhash}{be7dd9d18196992b69d07da53ead3aaf}
+      \strng{fullhashraw}{be7dd9d18196992b69d07da53ead3aaf}
+      \strng{bibnamehash}{be7dd9d18196992b69d07da53ead3aaf}
+      \strng{authorbibnamehash}{be7dd9d18196992b69d07da53ead3aaf}
+      \strng{authornamehash}{be7dd9d18196992b69d07da53ead3aaf}
+      \strng{authorfullhash}{be7dd9d18196992b69d07da53ead3aaf}
+      \strng{authorfullhashraw}{be7dd9d18196992b69d07da53ead3aaf}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Since 1961 the Antarctic Treaty has been acknowledged internationally as the legitimate forum through which decision-making for the region takes place. Membership growth and the establishment of new conventions are strong indicators of how this international regime has overcome challenges to its functioning, while preserving peace maintenance, scientific cooperation and environmental protection as the main pillars of Antarctic governance. For this special volume of Annals of the Brazilian Academy of Science, this work provides an overview of the Antarctic Treaty Consultative Meetings’ operation, highlighting how they established specific diplomatic practices: the progressive introduction of issues, the avoidance of contentious issues, and “watereddown”, ambiguous text, all of which have enabled parties to circumvent conflict and reach consensual agreement. Based on analysis of the Antarctic Treaty Database, this work shows the main practices developed through the Antarctic Treaty and concludes that the adaptability of Treaty Parties to manage challenges over the last 60 years will unquestionably continue to underpin the regime.}
+      \field{issn}{1678-2690, 0001-3765}
+      \field{issue}{suppl 1}
+      \field{journaltitle}{Anais da Academia Brasileira de Ciências}
+      \field{langid}{english}
+      \field{shortjournal}{An. Acad. Bras. Ciênc.}
+      \field{shorttitle}{Diplomatic culture and institutional design}
+      \field{title}{Diplomatic culture and institutional design: Analyzing sixty years of Antarctic Treaty governance}
+      \field{urlday}{8}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{volume}{94}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{e20210539}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1590/0001-3765202220210539
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/vanelter@qut.edu.au/Zotero/storage/MA9CFAWM/sampaio-2022-diplomatic-culture-and-institutio-1.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0001-37652022000201803&tlng=en
+      \endverb
+      \verb{url}
+      \verb http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0001-37652022000201803&tlng=en
+      \endverb
+    \endentry
+    \entry{Steinberg2002}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f7d6f70db95b7e91d99f7ab4c0bd6a3c}{%
+           family={Steinberg},
+           familyi={S\bibinitperiod},
+           given={Richard\bibnamedelima H.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{f7d6f70db95b7e91d99f7ab4c0bd6a3c}
+      \strng{fullhash}{f7d6f70db95b7e91d99f7ab4c0bd6a3c}
+      \strng{fullhashraw}{f7d6f70db95b7e91d99f7ab4c0bd6a3c}
+      \strng{bibnamehash}{f7d6f70db95b7e91d99f7ab4c0bd6a3c}
+      \strng{authorbibnamehash}{f7d6f70db95b7e91d99f7ab4c0bd6a3c}
+      \strng{authornamehash}{f7d6f70db95b7e91d99f7ab4c0bd6a3c}
+      \strng{authorfullhash}{f7d6f70db95b7e91d99f7ab4c0bd6a3c}
+      \strng{authorfullhashraw}{f7d6f70db95b7e91d99f7ab4c0bd6a3c}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Organization}
+      \field{number}{2}
+      \field{title}{In the Shadow of Law or Power? Consensus-Based Bargaining and Outcomes in the {GATT/WTO}}
+      \field{volume}{56}
+      \field{year}{2002}
+      \field{pages}{339\bibrangedash 374}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.1162/002081802320005504
+      \endverb
+    \endentry
+    \entry{Stone2013}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=276ef7b7b03f7a1a418dde37dd0de40f}{%
+           family={Stone},
+           familyi={S\bibinitperiod},
+           given={Randall\bibnamedelima W.},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{276ef7b7b03f7a1a418dde37dd0de40f}
+      \strng{fullhash}{276ef7b7b03f7a1a418dde37dd0de40f}
+      \strng{fullhashraw}{276ef7b7b03f7a1a418dde37dd0de40f}
+      \strng{bibnamehash}{276ef7b7b03f7a1a418dde37dd0de40f}
+      \strng{authorbibnamehash}{276ef7b7b03f7a1a418dde37dd0de40f}
+      \strng{authornamehash}{276ef7b7b03f7a1a418dde37dd0de40f}
+      \strng{authorfullhash}{276ef7b7b03f7a1a418dde37dd0de40f}
+      \strng{authorfullhashraw}{276ef7b7b03f7a1a418dde37dd0de40f}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{1559-744X}
+      \field{journaltitle}{The Review of International Organizations}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{number}{2}
+      \field{shorttitle}{Informal Governance in International Organizations}
+      \field{title}{Informal Governance in International Organizations: Introduction to the Special Issue}
+      \field{urlday}{10}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{volume}{8}
+      \field{year}{2013}
+      \field{urldateera}{ce}
+      \field{pages}{121\bibrangedash 136}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1007/s11558-013-9168-y
+      \endverb
+    \endentry
+    \entry{Traag2019}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=e1867a5a25e8c011aa1397fe1b29d30e}{%
+           family={Traag},
+           familyi={T\bibinitperiod},
+           given={V.\bibnamedelimi A.},
+           giveni={V\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=3d02594967691421684117371c8beabc}{%
+           family={Waltman},
+           familyi={W\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=defbb32c5d17dcecbcf4ea558bc9eee0}{%
+           family={{van Eck}},
+           familyi={v\bibinitperiod},
+           given={N.\bibnamedelimi J.},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b60b3046dbd249e82f0d6920d337c8d1}
+      \strng{fullhash}{b60b3046dbd249e82f0d6920d337c8d1}
+      \strng{fullhashraw}{b60b3046dbd249e82f0d6920d337c8d1}
+      \strng{bibnamehash}{b60b3046dbd249e82f0d6920d337c8d1}
+      \strng{authorbibnamehash}{b60b3046dbd249e82f0d6920d337c8d1}
+      \strng{authornamehash}{b60b3046dbd249e82f0d6920d337c8d1}
+      \strng{authorfullhash}{b60b3046dbd249e82f0d6920d337c8d1}
+      \strng{authorfullhashraw}{b60b3046dbd249e82f0d6920d337c8d1}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{2045-2322}
+      \field{journaltitle}{Scientific Reports}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{number}{1}
+      \field{shorttitle}{From Louvain to Leiden}
+      \field{title}{From Louvain to Leiden: Guaranteeing Well-Connected Communities}
+      \field{urlday}{17}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{volume}{9}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{5233}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1038/s41598-019-41695-z
+      \endverb
+      \keyw{Applied mathematics,Computational science,Computer science}
+    \endentry
+    \entry{Yao2021}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f9783e9405f98222c3f786855a517f07}{%
+           family={Yao},
+           familyi={Y\bibinitperiod},
+           given={Joanne},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{f9783e9405f98222c3f786855a517f07}
+      \strng{fullhash}{f9783e9405f98222c3f786855a517f07}
+      \strng{fullhashraw}{f9783e9405f98222c3f786855a517f07}
+      \strng{bibnamehash}{f9783e9405f98222c3f786855a517f07}
+      \strng{authorbibnamehash}{f9783e9405f98222c3f786855a517f07}
+      \strng{authornamehash}{f9783e9405f98222c3f786855a517f07}
+      \strng{authorfullhash}{f9783e9405f98222c3f786855a517f07}
+      \strng{authorfullhashraw}{f9783e9405f98222c3f786855a517f07}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European Journal of International Relations}
+      \field{number}{4}
+      \field{title}{An International Hierarchy of Science: Conquest, Cooperation, and the 1959 Antarctic Treaty System}
+      \field{volume}{28}
+      \field{year}{2022}
+      \field{pages}{939\bibrangedash 963}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1177/13540661211033889
+      \endverb
+    \endentry
+    \entry{Yaryab2024}{dataset}{}{}
+      \name{author}{1}{}{%
+        {{hash=2a0f321fb3761182fb13be9feb6b4b62}{%
+           family={Yaryab},
+           familyi={Y\bibinitperiod},
+           given={Parsa},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Zenodo}%
+      }
+      \strng{namehash}{2a0f321fb3761182fb13be9feb6b4b62}
+      \strng{fullhash}{2a0f321fb3761182fb13be9feb6b4b62}
+      \strng{fullhashraw}{2a0f321fb3761182fb13be9feb6b4b62}
+      \strng{bibnamehash}{2a0f321fb3761182fb13be9feb6b4b62}
+      \strng{authorbibnamehash}{2a0f321fb3761182fb13be9feb6b4b62}
+      \strng{authornamehash}{2a0f321fb3761182fb13be9feb6b4b62}
+      \strng{authorfullhash}{2a0f321fb3761182fb13be9feb6b4b62}
+      \strng{authorfullhashraw}{2a0f321fb3761182fb13be9feb6b4b62}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{Parsayarya/Scraping-ATCM: ATCM WP and IP paper dataset}
+      \field{version}{V1.0}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.5281/zenodo.10578846
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.5281/zenodo.10578846
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.5281/zenodo.10578846
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

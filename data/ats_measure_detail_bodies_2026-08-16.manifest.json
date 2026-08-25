@@ -1,0 +1,12 @@
+{
+  "records": 277,
+  "unique_output_ids": 277,
+  "unique_detail_urls": 277,
+  "unique_valid_body_sha256": 277,
+  "retrieval_date": "2026-08-16",
+  "corpus_path": "data/ats_measure_detail_bodies_2026-08-16.jsonl",
+  "corpus_sha256": "028ff6f7100e13d7679e207e9e73514e50a9ca33c4260e12e77a8233edee0211",
+  "source_inventory_path": "data/ats_treaty_instruments_2026-02-09.csv",
+  "source_inventory_sha256": "2e2cfaa6cc2742221670d35a3e1effa2a38c8c1e0b1b6532b2020486aff8e3f3",
+  "body_extraction": "Visible text inside the official detail page's main-col/text-container instrument body; scripts, styles, tags, and repeated whitespace removed."
+}

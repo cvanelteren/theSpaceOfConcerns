@@ -1,0 +1,5 @@
+# One Earth pre-submission inquiry
+
+**Proposed title:** Attention predicts soft-law focus in Antarctic Treaty governance
+
+**Approach and primary result.** We reconstruct the Antarctic Treaty System's documentary agenda from working and information papers since 1961. We represent concerns as a network, placing them close when the same actors devote a disproportionate share of papers to both. We test whether specialization develops near actors' earlier portfolios and whether paper attention improves retrospective predictions of formal output across successive meetings. Our primary result is that paper attention improves forecasts of the focus of non-binding Resolutions but provides no clear gain for Decisions or potentially binding Measures. The network forms a connected but locally organized agenda, and actors tend to add specializations near existing portfolios. Measures concentrate in recurring area-management work and usually cite earlier formal instruments. Together, the results distinguish shifts in institutional attention from continuity in potentially binding output within a global environmental institution.

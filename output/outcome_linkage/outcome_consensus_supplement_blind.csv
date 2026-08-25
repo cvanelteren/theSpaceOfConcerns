@@ -1,0 +1,47 @@
+validation_id,outcome_id,year,instrument,title
+OS001,Decision 1 (2007),2007,Decision,Review of the Status of Measures Relating to Area Protection and Management
+OS002,Decision 5 (2019),2019,Decision,Multi-year Strategic Work Plan for the Antarctic Treaty Consultative Meeting
+OS003,Decision 2 (2021),2021,Decision,Staff Regulations for the Secretariat of the Antarctic Treaty
+OS004,Decision 5 (2025),2025,Decision,Appointment of the Executive Secretary
+OS005,Decision 6 (2025),2025,Decision,Liability arising from environmental emergencies
+OS006,Measure 1 (2005),2005,Measure,Annex VI to the Protocol on Environmental Protection to the Antarctic Treaty: Liability Arising From Environmental Emergencies
+OS007,Measure 3 (2006),2006,Measure,Antarctic Historic Sites and Monuments: Rocher du Débarquement
+OS008,Measure 4 (2008),2008,Measure,"Antarctic Specially Protected Area No 170: Marion Nunataks, Charcot Island, Antarctic Peninsula"
+OS009,Measure 4 (2011),2011,Measure,"ASPA 126 (Byers Peninsula, Livingston Island, South Shetland Islands): Revised Management Plan"
+OS010,Measure 4 (2012),2012,Measure,"ASPA No 112 (Coppermine Peninsula, Robert Island,"
+OS011,Measure 4 (2014),2014,Measure,"Antarctic Specially Protected Area No 128 (Western shores of Admiralty Bay, King George Island, South Shetland Islands): Revised Management Plan."
+OS012,Measure 4 (2016),2016,Measure,"Antarctic Specially Protected Area ASPA No. 126 (Byers Peninsula, Livingston Island, South Shetland Islands): Revised Management Plan."
+OS013,Measure 3 (2022),2022,Measure,"Antarctic Specially Protected Area No 110 (Lynch Island, South Orkney Islands): Revised Management Plan"
+OS014,Measure 4 (2022),2022,Measure,"Antarctic Specially Protected Area No 111 (Southern Powell Island and adjacent islands, South Orkney Islands): Revised Management Plan"
+OS015,Measure 11 (2023),2023,Measure,"Antarctic Specially Protected Area No 147 (Ablation Valley and Ganymede Heights, Alexander Island): Revised Management Plan"
+OS016,Measure 15 (2023),2023,Measure,"Antarctic Specially Protected Area No 168 (Mount Harding, Grove Mountains, East Antarctica): Revised Management Plan"
+OS017,Measure 4 (2023),2023,Measure,"Antarctic Specially Protected Area No 122 (Arrival Heights, Hut Point Peninsula, Ross Island): Revised Management Plan"
+OS018,Measure 1 (2024),2024,Measure,"Antarctic Specially Protected Area No 116 (New College Valley, Caughley Beach, Cape Bird, Ross Island): Revised Management Plan"
+OS019,Measure 6 (2024),2024,Measure,"Antarctic Specially Protected Area No 141 (Yukidori Valley, Langhovde, Lützow-Holm Bay): Revised Management Plan"
+OS020,Resolution 1 (2001),2001,Resolution,Decision on superseded recommendations
+OS021,Resolution 1 (2004),2004,Resolution,ENHANCING PREVENTION OF MARINE POLLUTION BY FISHING ACTIVITIES
+OS022,Resolution 4 (2004),2004,Resolution,"GUIDELINES ON CONTINGENCY PLANNING, INSURANCE AND OTHER MATTERS FOR TOURIST AND OTHER NON-GOVERNMENTAL ACTIVITIES IN THE ANTARCTIC TREATY AREA"
+OS023,Resolution 4 (2008),2008,Resolution,Checklist to assist in the inspection of Antarctic Specially Protected Areas and Antarctic Specially Managed Areas
+OS024,Resolution 1 (2010),2010,Resolution,Site Guidelines for visitors
+OS025,Resolution 3 (2010),2010,Resolution,"Revised Antarctic inspection Checklist ""A"""
+OS026,Resolution 5 (2010),2010,Resolution,Co-ordination among Antarctic Treaty Parties on Antarctic proposals under consideration in the IMO
+OS027,Resolution 6 (2010),2010,Resolution,Improving the co-ordination of maritime search and rescue
+OS028,Resolution 6 (2011),2011,Resolution,Non-native Species
+OS029,Resolution 7 (2012),2012,Resolution,Vessel Safety in the Antarctic Treaty area.
+OS030,Resolution 8 (2012),2012,Resolution,"Improved Coordination of Maritime, Aeronautical and Land-Based Search and Rescue."
+OS031,Resolution 9 (2012),2012,Resolution,The Assessment of Land-Based Expeditionary Activities.
+OS032,Resolution 1 (2013),2013,Resolution,Air Safety in Antarctica
+OS033,Resolution 1 (2014),2014,Resolution,Fuel Storage and Handling
+OS034,Resolution 3 (2014),2014,Resolution,Supporting the Polar Code
+OS035,Resolution 4 (2014),2014,Resolution,Site Guidelines for visitors
+OS036,Resolution 5 (2014),2014,Resolution,Strengthening Cooperation in Hydrographic Surveying and Charting of Antarctic Waters
+OS037,Resolution 6 (2014),2014,Resolution,Toward a Risk-based Assessment of Tourism and Non-Governmental Activities.
+OS038,Resolution 1 (2015),2015,Resolution,Cooperative Air Transport Systems.
+OS039,Resolution 3 (2016),2016,Resolution,Code of Conduct for Activity within Terrestrial Geothermal Environments in Antarctica
+OS040,Resolution 1 (2017),2017,Resolution,Guidance Material for Antarctic Specially Managed Area (ASMA) designations
+OS041,Resolution 2 (2018),2018,Resolution,Guidelines for the assessment and management of Heritage in Antarctica
+OS042,Resolution 1 (2019),2019,Resolution,Revised Antarctic Clean-Up Manual
+OS043,Resolution 5 (2019),2019,Resolution,Reducing Plastic Pollution in Antarctica and the Southern Ocean
+OS044,Resolution 2 (2021),2021,Resolution,"Revised Guide to the presentation of Working Papers containing proposals for Antarctic Specially Protected Areas, Antarctic Specially Managed Areas or Historic Sites and Monuments"
+OS045,Resolution 6 (2022),2022,Resolution,Revised standard Post Visit Report Form
+OS046,Resolution 1 (2024),2024,Resolution,Revised Guide to the Preparation of Management Plans for Antarctic Specially Protected Areas
